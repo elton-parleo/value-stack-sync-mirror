@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
-  { label: "Problem", href: "#problem" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Product", href: "#dashboard" },
-  { label: "Integration", href: "#integration" },
+  { label: "The Channel", href: "#problem" },
+  { label: "The Window", href: "#how-it-works" },
+  { label: "Command Center", href: "#dashboard" },
+  { label: "Protocol", href: "#integration" },
   { label: "Team", href: "#team" },
 ];
 
