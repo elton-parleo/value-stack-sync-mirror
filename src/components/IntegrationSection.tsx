@@ -83,7 +83,7 @@ const IntegrationSection = () => (
                 <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="font-label text-parleo-muted">INTEGRATION</span>
+            <span className="font-label text-parleo-muted">PROTOCOL NATIVE</span>
           </div>
           <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
             Live in two weeks.<br />No data migration.
