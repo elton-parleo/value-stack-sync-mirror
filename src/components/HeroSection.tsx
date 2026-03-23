@@ -67,7 +67,7 @@ const HeroSection = () => {
             style={{ boxShadow: 'var(--shadow-sm)' }}>
             
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-            <span className="text-[11px] font-medium text-parleo-muted">Agent Command Center for Merchants Now Live</span>
+            <span className="text-[11px] font-medium text-parleo-muted">Honey for Agents — Live</span>
           </motion.div>
 
           <h1 className="font-display text-[36px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
