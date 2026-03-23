@@ -58,7 +58,7 @@ const DashboardSection = () => {
               <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
             </svg>
           </div>
-          <span className="font-label text-parleo-muted">THE CONTROL PANEL</span>
+          <span className="font-label text-parleo-muted">COMMAND CENTER</span>
         </div>
         <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
           One console for your<br />agentic channel.
