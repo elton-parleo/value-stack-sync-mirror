@@ -64,7 +64,7 @@ const DashboardSection = () => {
           One console for your<br />agentic channel.
         </h2>
         <p className="mt-4 max-w-[520px] text-[17px] text-foreground/50" style={{ lineHeight: 1.7 }}>
-          Set margin floors, liability targets, and inventory rules. Activate card offers and loyalty incentives. Monitor agent queries, conversions, and margin impact. Live in two weeks.
+          Margin floors. Liability targets. Inventory rules. Card offers. Loyalty incentives. All programmable per agent query. Live in two weeks.
         </p>
 
         {/* Dashboard mockup with parallax */}
