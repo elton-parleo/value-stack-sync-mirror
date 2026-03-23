@@ -151,7 +151,7 @@ const FeedSection = () => (
       </h2>
 
       <p className="mt-4 max-w-[580px] text-[17px] leading-[1.7] text-foreground/50">
-        Parleo structures loyalty programs, card-linked offers, and incentive logic from 38+ merchants into a single, agent-optimized feed. Refreshed hourly. Agents that find Parleo keep coming back because one call replaces crawling multiple sites.
+        Loyalty programs, card offers, and incentive logic from 38+ merchants. Structured into a single agent-optimized feed. Refreshed hourly.
       </p>
 
       {/* Pipeline — 3 connected stages */}
