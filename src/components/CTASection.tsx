@@ -57,10 +57,10 @@ const CTASection = () => {
             </svg>
           </div>
           <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
-            Ready to be visible<br />to every agent?
+            Be visible to every agent.
           </h2>
           <p className="mt-4 text-[17px] text-foreground/50" style={{ lineHeight: 1.7 }}>
-            We're working with merchants who want to get ahead of the agentic shift. If that's you, let's talk.
+            Working with merchants getting ahead of the agentic shift.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <button

@@ -58,13 +58,13 @@ const DashboardSection = () => {
               <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
             </svg>
           </div>
-          <span className="font-label text-parleo-muted">THE CONTROL PANEL</span>
+          <span className="font-label text-parleo-muted">COMMAND CENTER</span>
         </div>
         <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
           One console for your<br />agentic channel.
         </h2>
-        <p className="mt-4 max-w-[440px] text-[17px] text-foreground/50" style={{ lineHeight: 1.7 }}>
-          Set constraints, activate incentives, monitor performance. No infrastructure rebuild required.
+        <p className="mt-4 max-w-[520px] text-[17px] text-foreground/50" style={{ lineHeight: 1.7 }}>
+          Set margin floors, liability targets, and inventory rules. Activate card offers and loyalty incentives. Monitor agent queries, conversions, and margin impact. Live in two weeks.
         </p>
 
         {/* Dashboard mockup with parallax */}

@@ -28,7 +28,6 @@ const FeedVisual = () => (
 
 const HabitVisual = () => (
   <div className="mt-5 rounded-lg border border-primary/10 bg-primary/[0.02] p-3">
-    {/* Mini query activity chart */}
     <div className="flex items-end gap-[3px]">
       {[18, 24, 20, 32, 28, 38, 42, 36, 44, 48, 40, 52].map((h, i) => (
         <motion.div
@@ -90,23 +89,24 @@ const DirectVisual = () => (
 
 const stages = [
   {
-    label: "SYNDICATED FEED",
+    label: "STRUCTURED FEED",
     color: "text-parleo-muted",
     borderColor: "border-border",
-    headline: "Public data, structured",
+    headline: "Your value, structured.",
+    description: "Public offers, published loyalty tiers, and card benefit directories. Taxonomized and optimized for agent consumption.",
     visual: <FeedVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--parleo-muted))" strokeWidth="1.5">
         <path d="M4 11a9 9 0 019-9M4 4a16 16 0 0116 16M6 21a1 1 0 100-2 1 1 0 000 2z" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    items: ["Public offers", "Published loyalty tiers", "Card benefit directories", "Structured into agent-readable logic"],
   },
   {
-    label: "AGENT HABIT",
+    label: "AGENT ADOPTION",
     color: "text-foreground",
     borderColor: "border-primary/20",
-    headline: "One place to check",
+    headline: "One place to check.",
+    description: "Agents form query habits. A single Parleo call returns comparative value across merchants. Repeat query behavior compounds daily.",
     visual: <HabitVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
@@ -114,13 +114,13 @@ const stages = [
         <path d="M12 7v5l3 3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    items: ["Single lookup point", "Faster value discovery", "Repeated query behavior"],
   },
   {
     label: "DIRECT CONNECTION",
     color: "text-primary",
     borderColor: "border-primary/30",
-    headline: "Full control, live",
+    headline: "Full control when you're ready.",
+    description: "Merchants upgrade from passive to active. Connect your own loyalty logic, set margin rules, get attribution. Agents already know the address.",
     visual: <DirectVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
@@ -128,7 +128,6 @@ const stages = [
         <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    items: ["Merchant rules", "Fresh incentive logic", "Attribution and control"],
   },
 ];
 
@@ -144,20 +143,19 @@ const FeedSection = () => (
             <path d="M4 11a9 9 0 019-9M4 4a16 16 0 0116 16M6 21a1 1 0 100-2 1 1 0 000 2z" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <span className="font-label text-parleo-muted">THE FEED</span>
+        <span className="font-label text-parleo-muted">HONEY FOR AGENTS</span>
       </div>
 
       <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-        Agents learn Parleo before<br />merchants integrate.
+        The directory agents check first.
       </h2>
 
-      <p className="mt-4 max-w-[540px] text-[17px] leading-[1.7] text-foreground/50">
-        Parleo builds a structured shopping feed from public offers, published loyalty tiers, and card programs. Agents use it for faster value discovery. When a merchant turns on a direct connection, they upgrade a surface agents already query.
+      <p className="mt-4 max-w-[580px] text-[17px] leading-[1.7] text-foreground/50">
+        Parleo structures loyalty programs, card-linked offers, and incentive logic from 38+ merchants into a single, agent-optimized feed. Refreshed hourly. Agents that find Parleo keep coming back because one call replaces crawling multiple sites.
       </p>
 
       {/* Pipeline — 3 connected stages */}
       <div className="relative mt-14">
-        {/* Connecting line behind cards (desktop) */}
         <div className="pointer-events-none absolute left-0 right-0 top-[52px] hidden h-px md:block" style={{
           background: "linear-gradient(90deg, transparent 5%, hsl(var(--primary) / 0.12) 20%, hsl(var(--primary) / 0.2) 50%, hsl(var(--primary) / 0.12) 80%, transparent 95%)"
         }} />
@@ -173,7 +171,6 @@ const FeedSection = () => (
               className={`group relative rounded-xl border ${s.borderColor} bg-card p-6 transition-all duration-300 hover:border-primary/20 hover:shadow-card-hover`}
               style={{ boxShadow: "var(--shadow-card)" }}
             >
-              {/* Step node on the connecting line */}
               <div className="pointer-events-none absolute -top-[5px] left-1/2 hidden h-[10px] w-[10px] -translate-x-1/2 rounded-full border-2 border-card md:block" style={{
                 background: i === 2 ? "hsl(var(--primary))" : i === 1 ? "hsl(var(--primary) / 0.4)" : "hsl(var(--parleo-muted) / 0.3)",
               }} />
@@ -189,28 +186,24 @@ const FeedSection = () => (
 
               <span className={`mt-4 block font-label ${s.color}`}>{s.label}</span>
               <h3 className="mt-1.5 text-[16px] font-semibold text-foreground">{s.headline}</h3>
+              <p className="mt-2 text-[14px] leading-[1.6] text-foreground/50">{s.description}</p>
 
-              {/* Compact text labels */}
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {s.items.map((item) => (
-                  <span key={item} className="rounded-md bg-secondary/70 px-2 py-1 text-[11px] text-foreground/50">
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              {/* Unique visual per stage */}
               {s.visual}
 
-              {/* Bottom accent */}
               <div className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-primary/20 transition-all duration-500 group-hover:w-1/2" />
             </motion.div>
           ))}
         </div>
       </div>
 
-
-
+      {/* Metrics strip */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12px] text-parleo-muted">
+        <span>60% fewer tokens than direct crawling</span>
+        <span className="hidden sm:inline">·</span>
+        <span>Hourly refresh</span>
+        <span className="hidden sm:inline">·</span>
+        <span>Sub-50ms response</span>
+      </div>
     </div>
   </AnimatedSection>
 );
