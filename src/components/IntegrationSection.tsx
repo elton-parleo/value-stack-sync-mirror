@@ -86,10 +86,10 @@ const IntegrationSection = () => (
             <span className="font-label text-parleo-muted">PROTOCOL NATIVE</span>
           </div>
           <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-            Live in two weeks.<br />No data migration.
+            Ships on every protocol<br />that matters.
           </h2>
           <p className="mt-4 max-w-[420px] text-[17px] leading-[1.7] text-foreground/50">
-            One API contract covers every agent. OpenAI, Perplexity, Claude, and custom systems built on ACP, MCP, or AP2.
+            One API contract. Every agent. OpenAI, Perplexity, Claude, and custom systems on ACP, MCP, or AP2.
           </p>
 
           {/* Integration grid */}
