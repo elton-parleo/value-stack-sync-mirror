@@ -51,7 +51,7 @@ const HeroSection = () => {
         </svg>
       </FloatingIcon>
 
-      <div className="mx-auto flex w-full max-w-content flex-col px-6 pb-16 pt-8 md:flex-row md:items-center md:justify-between md:px-20 md:pb-20 md:pt-14">
+      <div className="mx-auto flex w-full max-w-content flex-col px-5 pb-12 pt-6 md:flex-row md:items-center md:justify-between md:px-20 md:pb-20 md:pt-14">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,10 +70,10 @@ const HeroSection = () => {
             <span className="text-[11px] font-medium text-parleo-muted">Honey for Agents — Live</span>
           </motion.div>
 
-          <h1 className="font-display text-[36px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
+          <h1 className="font-display text-[32px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
             The incentive layer<br />for AI commerce.
           </h1>
-          <p className="mt-5 max-w-[460px] text-[17px] leading-[1.7] text-foreground/50">
+          <p className="mt-4 max-w-[460px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
             AI agents see prices. They can't see your loyalty program, your card offers, or your real value. Parleo makes all of it readable in a single call.
           </p>
 
