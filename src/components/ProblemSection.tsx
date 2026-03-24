@@ -157,7 +157,7 @@ const ProblemSection = () => {
         </p>
 
         {/* ── Visual narrative flow ── */}
-        <div className="mt-12 flex flex-col items-stretch gap-0 md:flex-row md:items-center md:gap-0">
+        <div className="mt-8 flex flex-col items-stretch gap-0 md:mt-12 md:flex-row md:items-center md:gap-0">
           {/* Stage 1: User query */}
           <div className="flex-1">
             <p className="mb-2 font-label text-parleo-muted">1 · THE QUERY</p>
@@ -177,11 +177,11 @@ const ProblemSection = () => {
         </div>
 
         {/* Brand logos strip */}
-        <div className="mt-10 flex items-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center gap-2 md:mt-10 md:gap-4">
           <span className="text-[11px] text-parleo-muted">Merchants on Parleo</span>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-2 md:gap-3">
             {["Sephora", "Home Depot", "Nike"].map((name) => (
-              <span key={name} className="rounded border border-border bg-secondary/50 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-parleo-muted/60">
+              <span key={name} className="rounded border border-border bg-secondary/50 px-2 py-0.5 text-[9px] font-semibold tracking-wider text-parleo-muted/60 md:px-2.5 md:py-1 md:text-[10px]">
                 {name.toUpperCase()}
               </span>
             ))}
@@ -194,7 +194,7 @@ const ProblemSection = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-          className="mt-10"
+          className="mt-6 md:mt-10"
         >
           <p className="text-[13px] font-medium text-foreground/70">What agents see for merchants on Parleo.</p>
 
