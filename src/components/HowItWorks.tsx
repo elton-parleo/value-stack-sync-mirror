@@ -64,14 +64,14 @@ const HowItWorks = () => (
       </h2>
 
       {/* Flywheel diagram + assertions */}
-      <div className="mt-14 grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+      <div className="mt-10 grid items-center gap-8 md:mt-14 md:gap-12 md:grid-cols-[1fr_1fr]">
         {/* Flywheel */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative mx-auto flex aspect-square w-full max-w-[340px] items-center justify-center"
+          className="relative mx-auto flex aspect-square w-full max-w-[260px] items-center justify-center md:max-w-[340px]"
         >
           {/* Outer ring */}
           <div className="absolute inset-0 rounded-full border border-border" />
@@ -116,10 +116,10 @@ const HowItWorks = () => (
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.12 }}
-                  className={`absolute ${positions[i]} max-w-[140px] rounded-lg border border-border bg-card px-3 py-2 text-center`}
+                  className={`absolute ${positions[i]} max-w-[110px] rounded-lg border border-border bg-card px-2 py-1.5 text-center md:max-w-[140px] md:px-3 md:py-2`}
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
-                  <span className="text-[12px] font-medium text-foreground">{step.label}</span>
+                  <span className="text-[10px] font-medium text-foreground md:text-[12px]">{step.label}</span>
                 </motion.div>
               </div>
             );
