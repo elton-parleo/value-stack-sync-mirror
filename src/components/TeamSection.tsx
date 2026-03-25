@@ -77,8 +77,8 @@ const TeamSection = () => (
               <h3 className="text-[16px] font-bold text-foreground">{t.name}</h3>
               <div className="mt-0.5 flex items-center gap-2">
                 <p className="text-[12px] text-parleo-muted">{t.title}</p>
-                <a href={t.linkedin} target="_blank" rel="noopener noreferrer" className="text-parleo-muted/50 transition-colors hover:text-primary">
-                  <Linkedin size={14} />
+                <a href={t.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary/70 transition-colors hover:text-primary">
+                  <Linkedin size={16} />
                 </a>
               </div>
             </div>
