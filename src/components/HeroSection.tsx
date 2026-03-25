@@ -67,7 +67,7 @@ const HeroSection = () => {
             style={{ boxShadow: 'var(--shadow-sm)' }}>
             
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-            <span className="text-[11px] font-medium text-parleo-muted">Honey for Agents — Live</span>
+            <span className="text-[11px] font-medium text-parleo-muted">Honey for Agents · Live</span>
           </motion.div>
 
           <h1 className="font-display text-[32px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
@@ -88,12 +88,6 @@ const HeroSection = () => {
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <a
-              href="mailto:samar@parleo.io"
-              className="text-[14px] font-medium text-foreground/50 underline-offset-4 transition-colors hover:text-foreground hover:underline">
-              
-              samar@parleo.io
-            </a>
           </div>
 
           {/* Protocol badges */}

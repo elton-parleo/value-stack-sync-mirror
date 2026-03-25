@@ -49,7 +49,7 @@ const DashboardSection = () => {
   const ref = useRef(null);
 
   return (
-    <AnimatedSection id="dashboard" className="section-grid relative bg-background py-16 md:py-24" ref={ref}>
+    <AnimatedSection id="dashboard" className="section-grid relative bg-background py-12 md:py-20" ref={ref}>
       <div className="diffusion-glow pointer-events-none absolute right-[5%] top-[20%]" />
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="flex items-center gap-3">
@@ -67,8 +67,8 @@ const DashboardSection = () => {
           Margin floors. Liability targets. Inventory rules. Card offers. Loyalty incentives. All programmable per agent query. Live in two weeks.
         </p>
 
-        {/* Dashboard mockup with parallax */}
-        <div className="mt-12">
+        {/* Dashboard mockup */}
+        <div className="mt-10">
           <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="mx-auto overflow-hidden rounded-xl border border-border bg-card transition-shadow duration-500 hover:shadow-elevated" style={{ maxWidth: 960, boxShadow: 'var(--shadow-elevated)' }}>
             {/* Chrome bar */}
             <div className="flex h-10 items-center justify-between border-b border-border px-4" style={{ background: "#FAFAF9" }}>
@@ -82,7 +82,7 @@ const DashboardSection = () => {
               </div>
               <div className="flex items-center gap-1.5">
                 <PulsingDot />
-                <span className="text-[10px] font-medium text-foreground">Nike — Live</span>
+                <span className="text-[10px] font-medium text-foreground">Sephora · Live</span>
               </div>
             </div>
 
@@ -90,7 +90,7 @@ const DashboardSection = () => {
             <div className="flex flex-col md:flex-row" style={{ minHeight: 440 }}>
               {/* Sidebar */}
               <div className="hidden w-[180px] flex-col border-r border-border md:flex" style={{ background: "#FAFAF9" }}>
-                <div className="px-4 pb-3 pt-4 text-[12px] font-semibold text-foreground">Nike, Inc.</div>
+                <div className="px-4 pb-3 pt-4 text-[12px] font-semibold text-foreground">Sephora</div>
                 <div className="border-t border-border" />
                 <div className="flex-1 py-1.5">
                   {navItems.map((n) => (

@@ -5,7 +5,7 @@ import AnimatedSection from "./AnimatedSection";
 
 const FeedVisual = () => (
   <div className="mt-5 space-y-1.5">
-    {["nike_loyalty_program", "amex_plat_benefits", "target_circle_tiers"].map((id, i) => (
+    {["sephora_loyalty_tiers", "amex_plat_benefits", "target_circle_offers"].map((id, i) => (
       <motion.div
         key={id}
         initial={{ opacity: 0, x: -8 }}
@@ -93,7 +93,7 @@ const stages = [
     color: "text-parleo-muted",
     borderColor: "border-border",
     headline: "Your value, structured.",
-    description: "Public offers, published loyalty tiers, and card benefit directories. Taxonomized and optimized for agent consumption.",
+    description: "Public offers, loyalty tiers, and card benefit directories. Taxonomized and optimized for agent consumption.",
     visual: <FeedVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--parleo-muted))" strokeWidth="1.5">
@@ -106,7 +106,7 @@ const stages = [
     color: "text-foreground",
     borderColor: "border-primary/20",
     headline: "One place to check.",
-    description: "Agents form query habits. A single Parleo call returns comparative value across merchants. Repeat query behavior compounds daily.",
+    description: "Agents form query habits. A single Parleo call returns comparative value across merchants. Repeat queries compound daily.",
     visual: <HabitVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
@@ -120,7 +120,7 @@ const stages = [
     color: "text-primary",
     borderColor: "border-primary/30",
     headline: "Full control when you're ready.",
-    description: "Merchants upgrade from passive to active. Connect your own loyalty logic, set margin rules, get attribution. Agents already know the address.",
+    description: "Connect your own loyalty logic, set margin rules, get attribution. Agents already know the address.",
     visual: <DirectVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
@@ -132,7 +132,7 @@ const stages = [
 ];
 
 const FeedSection = () => (
-  <AnimatedSection id="feed" className="section-grid relative bg-background py-16 md:py-24">
+  <AnimatedSection id="feed" className="section-grid relative bg-background py-12 md:py-20">
     <div className="diffusion-glow pointer-events-none absolute left-[15%] top-[40%]" />
     <div className="decorative-line" />
 
@@ -154,8 +154,8 @@ const FeedSection = () => (
         Loyalty programs, card offers, and incentive logic from 38+ merchants. Structured into a single agent-optimized feed. Refreshed hourly.
       </p>
 
-      {/* Pipeline — 3 connected stages */}
-      <div className="relative mt-14">
+      {/* Pipeline */}
+      <div className="relative mt-12">
         <div className="pointer-events-none absolute left-0 right-0 top-[52px] hidden h-px md:block" style={{
           background: "linear-gradient(90deg, transparent 5%, hsl(var(--primary) / 0.12) 20%, hsl(var(--primary) / 0.2) 50%, hsl(var(--primary) / 0.12) 80%, transparent 95%)"
         }} />
