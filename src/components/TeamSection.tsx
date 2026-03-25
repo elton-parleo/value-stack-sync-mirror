@@ -70,14 +70,9 @@ const TeamSection = () => (
             className="group rounded-xl border border-border bg-card p-7 transition-all duration-300 hover:border-primary/20 hover:shadow-card-hover"
             style={{ boxShadow: 'var(--shadow-card)' }}
           >
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/[0.08] text-sm font-bold text-primary">
-                {t.initials}
-              </div>
-              <div>
-                <h3 className="text-[16px] font-bold text-foreground">{t.name}</h3>
-                <p className="mt-0.5 text-[12px] text-parleo-muted">{t.title}</p>
-              </div>
+            <div>
+              <h3 className="text-[16px] font-bold text-foreground">{t.name}</h3>
+              <p className="mt-0.5 text-[12px] text-parleo-muted">{t.title}</p>
             </div>
             <p className="mt-4 text-[15px] leading-[1.7] text-foreground/50">{t.bio}</p>
             <div className="mt-5 flex flex-wrap gap-2">
