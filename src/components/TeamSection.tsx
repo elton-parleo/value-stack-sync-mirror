@@ -60,7 +60,7 @@ const TeamSection = () => (
         <span className="font-label text-parleo-muted">THE TEAM</span>
       </div>
       <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[40px]" style={{ lineHeight: 1.1 }}>
-        Built by people who've<br />shipped this before.
+        Seasoned founders &amp; operators<br />who have shipped this before
       </h2>
       <div className="mt-10 grid gap-5 md:grid-cols-2">
         {team.map((t, i) => (
