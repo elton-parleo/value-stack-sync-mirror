@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const team = [
@@ -21,6 +22,7 @@ const team = [
       )},
     ],
     initials: "SB",
+    linkedin: "https://www.linkedin.com/in/samarbirwadker/",
   },
   {
     name: "Elton Cheung",
@@ -38,6 +40,7 @@ const team = [
       )},
     ],
     initials: "EC",
+    linkedin: "https://www.linkedin.com/in/eltoncheung/",
   },
 ];
 
@@ -72,7 +75,12 @@ const TeamSection = () => (
           >
             <div>
               <h3 className="text-[16px] font-bold text-foreground">{t.name}</h3>
-              <p className="mt-0.5 text-[12px] text-parleo-muted">{t.title}</p>
+              <div className="mt-0.5 flex items-center gap-2">
+                <p className="text-[12px] text-parleo-muted">{t.title}</p>
+                <a href={t.linkedin} target="_blank" rel="noopener noreferrer" className="text-parleo-muted/50 transition-colors hover:text-primary">
+                  <Linkedin size={14} />
+                </a>
+              </div>
             </div>
             <p className="mt-4 text-[15px] leading-[1.7] text-foreground/50">{t.bio}</p>
             <div className="mt-5 flex flex-wrap gap-2">
