@@ -4,7 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 const benefits = [
   {
     title: "Get discovered by AI agents",
-    body: "When customers ask AI for recommendations, Parleo makes sure your offers are part of the answer — not just your competitors'.",
+    body: "When customers ask AI for recommendations, Parleo ensures your offers are part of the answer.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" strokeLinecap="round" strokeLinejoin="round" />
@@ -14,7 +14,7 @@ const benefits = [
   },
   {
     title: "Showcase your full value",
-    body: "Loyalty tiers, card offers, member pricing — agents surface all of it so customers see why you're the best deal, not just the cheapest.",
+    body: "Loyalty tiers, card offers, member pricing. Agents surface all of it so customers see why you're the best deal.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
@@ -23,7 +23,7 @@ const benefits = [
   },
   {
     title: "Early movers win the default",
-    body: "AI agents form habits. The merchants who show up first in Parleo become the ones agents recommend by default — before your competitors join.",
+    body: "AI agents form habits. Merchants who show up first become the ones agents recommend by default.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" />
@@ -32,7 +32,7 @@ const benefits = [
   },
   {
     title: "Keep full control of your margins",
-    body: "Set floor prices, manage what incentives are visible, and track attribution — all from one dashboard. You decide the rules, not the agents.",
+    body: "Set floor prices, manage visible incentives, and track attribution. You decide the rules, not the agents.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
         <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -46,12 +46,12 @@ const benefits = [
 
 const timeline = [
   { step: "1", label: "Connect your offers", desc: "Upload loyalty, card, and incentive data" },
-  { step: "2", label: "Agents discover you", desc: "AI shopping queries start including your value" },
-  { step: "3", label: "Customers convert", desc: "Better deals → more recommendations → more sales" },
+  { step: "2", label: "Agents discover you", desc: "AI queries start including your value" },
+  { step: "3", label: "Customers convert", desc: "Better deals, more recommendations, more sales" },
 ];
 
 const HowItWorks = () => (
-  <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-16 md:py-24">
+  <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-12 md:py-20">
     <div className="diffusion-glow pointer-events-none absolute left-[10%] top-[50%] -translate-y-1/2" />
     <div className="decorative-line" />
 
@@ -68,12 +68,12 @@ const HowItWorks = () => (
       <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
         The early-mover advantage<br className="hidden md:block" /> is closing fast.
       </h2>
-      <p className="mt-4 max-w-[560px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
-        AI agents are already making purchase recommendations. Merchants on Parleo get featured with their full value proposition — loyalty, card offers, and more. Those who aren't? They compete on price alone.
+      <p className="mt-4 max-w-[540px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
+        AI agents are already making purchase recommendations. Merchants on Parleo get featured with their full value. Those who aren't compete on price alone.
       </p>
 
       {/* How it works timeline */}
-      <div className="mt-12 grid gap-4 md:grid-cols-3">
+      <div className="mt-10 grid gap-4 md:grid-cols-3">
         {timeline.map((t, i) => (
           <motion.div
             key={t.step}
@@ -96,7 +96,7 @@ const HowItWorks = () => (
       </div>
 
       {/* Benefits grid */}
-      <div className="mt-12 grid gap-5 md:grid-cols-2">
+      <div className="mt-10 grid gap-5 md:grid-cols-2">
         {benefits.map((b, i) => (
           <motion.div
             key={b.title}

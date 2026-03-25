@@ -2,60 +2,14 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 
-/* ── Chat-style UI ── */
+/* ── Chat bubble components ── */
 
-const chatMessages = [
-  {
-    role: "user" as const,
-    text: "Find me the best deal on Air Max 90s",
-  },
-  {
-    role: "agent" as const,
-    text: "Checking prices across retailers...",
-    isThinking: true,
-  },
-  {
-    role: "agent" as const,
-    text: "",
-    isParleoCall: true,
-  },
-  {
-    role: "agent" as const,
-    text: (
-      <>
-        Found it! <span className="font-semibold">Nike Air Max 90</span> — list price $140.
-        <br />
-        <br />
-        With your Nike membership and Amex Platinum card, Parleo found:
-        <div className="mt-3 space-y-1.5">
-          <div className="flex items-center justify-between rounded-md bg-primary/[0.05] px-3 py-1.5">
-            <span className="text-foreground/60">Member unlock</span>
-            <span className="font-medium text-primary">Active</span>
-          </div>
-          <div className="flex items-center justify-between rounded-md bg-primary/[0.05] px-3 py-1.5">
-            <span className="text-foreground/60">Amex Platinum</span>
-            <span className="font-medium text-primary">−$20</span>
-          </div>
-          <div className="flex items-center justify-between rounded-md bg-primary/[0.05] px-3 py-1.5">
-            <span className="text-foreground/60">Loyalty points</span>
-            <span className="font-medium text-primary">2x ($8 value)</span>
-          </div>
-          <div className="mt-2 flex items-center justify-between border-t border-border pt-2">
-            <span className="font-semibold text-foreground">Your price</span>
-            <span className="text-lg font-bold text-primary">$107</span>
-          </div>
-        </div>
-      </>
-    ),
-  },
-];
-
-const UserMessage = ({ text, delay }: { text: string; delay: number }) => (
+const UserBubble = ({ text, delay }: { text: string; delay: number }) => (
   <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 12, scale: 0.95 }}
+    whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.4, delay }}
+    transition={{ duration: 0.35, delay, ease: [0.22, 1, 0.36, 1] }}
     className="flex justify-end"
   >
     <div className="max-w-[85%] rounded-2xl rounded-br-md bg-primary px-4 py-2.5 text-[14px] leading-[1.6] text-primary-foreground">
@@ -64,22 +18,14 @@ const UserMessage = ({ text, delay }: { text: string; delay: number }) => (
   </motion.div>
 );
 
-const AgentMessage = ({
-  children,
-  delay,
-  isThinking,
-  isParleoCall,
-}: {
-  children?: React.ReactNode;
-  delay: number;
-  isThinking?: boolean;
-  isParleoCall?: boolean;
+const AgentBubble = ({ children, delay, isThinking, isParleoCall }: {
+  children?: React.ReactNode; delay: number; isThinking?: boolean; isParleoCall?: boolean;
 }) => (
   <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 12, scale: 0.95 }}
+    whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.4, delay }}
+    transition={{ duration: 0.35, delay, ease: [0.22, 1, 0.36, 1] }}
     className="flex items-start gap-2.5"
   >
     <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary">
@@ -94,9 +40,7 @@ const AgentMessage = ({
             <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(var(--primary))" />
             <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(var(--primary))" opacity="0.4" />
           </svg>
-          <span className="text-[12px] font-medium text-foreground/60">
-            Querying Parleo…
-          </span>
+          <span className="text-[12px] font-medium text-foreground/60">Querying Parleo...</span>
           <span className="text-[11px] text-primary">48ms</span>
         </div>
       ) : isThinking ? (
@@ -112,26 +56,118 @@ const AgentMessage = ({
   </motion.div>
 );
 
+/* ── Without Parleo Chat ── */
+
 const WithoutParleoChat = () => (
   <div className="space-y-3">
-    <div className="flex justify-end">
+    <motion.div initial={{ opacity: 0, y: 12, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0, ease: [0.22, 1, 0.36, 1] }} className="flex justify-end">
       <div className="max-w-[85%] rounded-2xl rounded-br-md bg-muted px-4 py-2.5 text-[14px] leading-[1.6] text-foreground/70">
-        Find me the best deal on Air Max 90s
+        What's the best rated blush right now?
       </div>
-    </div>
-    <div className="flex items-start gap-2.5">
+    </motion.div>
+
+    <motion.div initial={{ opacity: 0, y: 12, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.15, ease: [0.22, 1, 0.36, 1] }} className="flex items-start gap-2.5">
       <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.5">
           <path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4zM5 10h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2z" strokeLinecap="round" />
         </svg>
       </div>
       <div className="max-w-[85%] rounded-2xl rounded-tl-md border border-border bg-card px-4 py-3 text-[14px] leading-[1.6] text-foreground">
-        The Nike Air Max 90 is <span className="font-semibold">$140</span> at Nike.com.
-        <div className="mt-2 text-foreground/50 italic">
-          No loyalty, card offer, or incentive data available.
+        Here are some popular blushes:
+        <div className="mt-3 space-y-2">
+          <div className="flex items-center justify-between rounded-md bg-secondary/40 px-3 py-2">
+            <div>
+              <span className="font-medium">Rare Beauty Soft Pinch</span>
+              <span className="ml-2 text-foreground/50">Sephora</span>
+            </div>
+            <span className="font-semibold">$23</span>
+          </div>
+          <div className="flex items-center justify-between rounded-md bg-secondary/40 px-3 py-2">
+            <div>
+              <span className="font-medium">NARS Orgasm</span>
+              <span className="ml-2 text-foreground/50">Nordstrom</span>
+            </div>
+            <span className="font-semibold">$38</span>
+          </div>
+          <div className="flex items-center justify-between rounded-md bg-secondary/40 px-3 py-2">
+            <div>
+              <span className="font-medium">e.l.f. Putty Blush</span>
+              <span className="ml-2 text-foreground/50">Target</span>
+            </div>
+            <span className="text-foreground/40 italic text-[13px]">Price unavailable</span>
+          </div>
+          <div className="flex items-center justify-between rounded-md bg-secondary/40 px-3 py-2">
+            <div>
+              <span className="font-medium">Milani Baked Blush</span>
+              <span className="ml-2 text-foreground/50">Ulta</span>
+            </div>
+            <span className="text-foreground/40 italic text-[13px]">Check site</span>
+          </div>
+        </div>
+        <div className="mt-3 text-foreground/40 italic text-[13px]">
+          No loyalty data, card offers, or personalized pricing available.
         </div>
       </div>
-    </div>
+    </motion.div>
+  </div>
+);
+
+/* ── With Parleo Chat ── */
+
+const WithParleoChat = () => (
+  <div className="space-y-3">
+    <UserBubble text="What's the best rated blush right now?" delay={0} />
+    <AgentBubble delay={0.15} isThinking>Searching beauty retailers...</AgentBubble>
+    <AgentBubble delay={0.3} isParleoCall />
+    <AgentBubble delay={0.45}>
+      <>
+        The top-rated blush is <span className="font-semibold">Rare Beauty Soft Pinch Liquid Blush</span>. Here's where to get the best deal:
+
+        <div className="mt-3 space-y-2">
+          {/* Winner card */}
+          <div className="rounded-lg border-2 border-primary/30 bg-primary/[0.03] p-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">Best Deal</span>
+                <span className="font-semibold">Sephora</span>
+              </div>
+            </div>
+            <div className="mt-2.5 space-y-1">
+              <div className="flex items-center justify-between text-[13px]">
+                <span className="text-foreground/60">List price</span>
+                <span className="font-medium">$23.00</span>
+              </div>
+              <div className="flex items-center justify-between text-[13px]">
+                <span className="text-foreground/60">Rouge tier</span>
+                <span className="font-medium text-primary">-10%</span>
+              </div>
+              <div className="flex items-center justify-between text-[13px]">
+                <span className="text-foreground/60">Amex card offer</span>
+                <span className="font-medium text-primary">-$5.00</span>
+              </div>
+              <div className="flex items-center justify-between text-[13px]">
+                <span className="text-foreground/60">Beauty Insider</span>
+                <span className="font-medium text-primary">2x pts ($3 value)</span>
+              </div>
+              <div className="mt-1.5 flex items-center justify-between border-t border-border pt-1.5">
+                <span className="font-semibold text-foreground">Net effective</span>
+                <span className="text-[17px] font-bold text-primary">$16.40</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Other retailers */}
+          <div className="flex items-center justify-between rounded-md bg-secondary/40 px-3 py-2 text-[13px]">
+            <span className="font-medium">Ulta</span>
+            <span className="text-foreground/60">$23.00 (no offers found)</span>
+          </div>
+          <div className="flex items-center justify-between rounded-md bg-secondary/40 px-3 py-2 text-[13px]">
+            <span className="font-medium">Target</span>
+            <span className="text-foreground/60">$23.00 (no offers found)</span>
+          </div>
+        </div>
+      </>
+    </AgentBubble>
   </div>
 );
 
@@ -140,7 +176,7 @@ const ProblemSection = () => {
   const [showParleo, setShowParleo] = useState(true);
 
   return (
-    <AnimatedSection id="problem" className="section-grid relative bg-background py-16 md:py-24" ref={ref}>
+    <AnimatedSection id="problem" className="section-grid relative bg-background py-12 md:py-20" ref={ref}>
       <div className="diffusion-glow pointer-events-none absolute right-0 top-[30%]" />
 
       <div className="mx-auto max-w-content px-6 md:px-20">
@@ -160,11 +196,11 @@ const ProblemSection = () => {
         </h2>
 
         <p className="mt-4 max-w-[580px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
-          When a customer asks an AI agent for a recommendation, the agent only sees list prices — unless you're on Parleo.
+          When a customer asks an AI agent for a recommendation, the agent only sees list prices. Unless you're on Parleo.
         </p>
 
         {/* Toggle */}
-        <div className="mt-8 flex items-center gap-3 md:mt-10">
+        <div className="mt-6 flex items-center gap-3 md:mt-8">
           <button
             onClick={() => setShowParleo(false)}
             className={`rounded-lg px-4 py-2 text-[14px] font-medium transition-all ${
@@ -193,7 +229,7 @@ const ProblemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-6 mx-auto max-w-[600px] overflow-hidden rounded-2xl border border-border bg-card"
+          className="mt-5 mx-auto max-w-[600px] overflow-hidden rounded-2xl border border-border bg-card"
           style={{ boxShadow: "var(--shadow-elevated)" }}
         >
           {/* Chat header */}
@@ -209,28 +245,7 @@ const ProblemSection = () => {
 
           {/* Messages */}
           <div className="space-y-4 p-5">
-            {showParleo ? (
-              <>
-                {chatMessages.map((msg, i) => {
-                  const delay = i * 0.15;
-                  if (msg.role === "user") {
-                    return <UserMessage key={i} text={msg.text as string} delay={delay} />;
-                  }
-                  return (
-                    <AgentMessage
-                      key={i}
-                      delay={delay}
-                      isThinking={msg.isThinking}
-                      isParleoCall={msg.isParleoCall}
-                    >
-                      {msg.text}
-                    </AgentMessage>
-                  );
-                })}
-              </>
-            ) : (
-              <WithoutParleoChat />
-            )}
+            {showParleo ? <WithParleoChat /> : <WithoutParleoChat />}
           </div>
 
           {/* Footer */}

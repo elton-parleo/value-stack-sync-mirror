@@ -12,7 +12,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Parleo inquiry from ${form.name} — ${form.company}`);
+    const subject = encodeURIComponent(`Parleo inquiry from ${form.name} at ${form.company}`);
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\n\n${form.message}`
     );
@@ -119,7 +119,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                     Send message
                   </button>
                   <p className="text-center text-[11px] text-parleo-muted">
-                    Opens your default email client · samar@parleo.io
+                    Opens your default email client
                   </p>
                 </form>
               </>

@@ -73,9 +73,6 @@ const CTASection = () => {
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <span className="text-[14px] text-parleo-muted">
-              or <a href="mailto:samar@parleo.io" className="font-medium text-foreground underline-offset-4 hover:underline">samar@parleo.io</a>
-            </span>
           </div>
         </motion.div>
       </div>

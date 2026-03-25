@@ -21,7 +21,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -128,7 +127,6 @@ const Navbar = () => {
                 >
                   Get in touch
                 </button>
-                <p className="mt-3 text-center text-[11px] text-parleo-muted">samar@parleo.io</p>
               </div>
             </motion.div>
           </>
