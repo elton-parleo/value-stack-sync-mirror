@@ -74,7 +74,7 @@ const HeroSection = () => {
             The incentive layer<br />for AI commerce.
           </h1>
           <p className="mt-4 max-w-[460px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
-            AI agents see prices. They can't see your loyalty program, your card offers, or your real value. Parleo makes all of it readable in a single call.
+            AI agents see prices. They can't see your loyalty program, your card offers, or your real value. Parleo makes all of it readable and transactable in a single call.
           </p>
 
           <div className="mt-8 flex items-center gap-4">
