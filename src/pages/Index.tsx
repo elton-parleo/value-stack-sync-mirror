@@ -6,7 +6,6 @@ import FeedSection from "@/components/FeedSection";
 import DashboardSection from "@/components/DashboardSection";
 import IntegrationSection from "@/components/IntegrationSection";
 import TeamSection from "@/components/TeamSection";
-import ProtocolSection from "@/components/ProtocolSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -19,7 +18,6 @@ const Index = () => (
     <DashboardSection />
     <HowItWorks />
     <IntegrationSection />
-    <ProtocolSection />
     <TeamSection />
     <CTASection />
     <Footer />
