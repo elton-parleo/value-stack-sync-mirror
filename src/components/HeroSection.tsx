@@ -98,11 +98,19 @@ const HeroSection = () => {
 
           {/* Protocol badges */}
           <div className="mt-7 flex items-center gap-3">
-            <span className="text-[11px] text-parleo-muted">Works with</span>
-            <div className="flex gap-1.5">
-              {["MCP", "ACP", "OpenAPI"].map((p) =>
-              <span key={p} className="rounded border border-border bg-card px-2 py-0.5 text-[10px] font-medium text-foreground/60">{p}</span>
-              )}
+            <span className="text-[13px] text-parleo-muted">Works with</span>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { name: "MCP", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" strokeLinecap="round" /></svg> },
+                { name: "ACP", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></svg> },
+                { name: "OpenAPI", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 17l6-6-6-6M12 19h8" strokeLinecap="round" strokeLinejoin="round" /></svg> },
+                { name: "UCP", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" /></svg> },
+              ].map((p) => (
+                <span key={p.name} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-2.5 py-1 text-[13px] font-medium text-foreground/70">
+                  <span className="text-primary/60">{p.icon}</span>
+                  {p.name}
+                </span>
+              ))}
             </div>
           </div>
         </motion.div>
