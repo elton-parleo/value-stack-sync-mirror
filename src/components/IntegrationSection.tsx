@@ -30,6 +30,33 @@ const integrations = [
     ),
   },
   {
+    name: "AP2",
+    desc: "Agent Payments Protocol",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
+        <circle cx="12" cy="12" r="10" /><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 010 4H8M12 6v2m0 8v2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "UCP",
+    desc: "Google Unified Commerce",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "Visa TAP",
+    desc: "Token Auth Protocol",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
     name: "Shopify",
     desc: "Commerce platform",
     icon: (
@@ -39,20 +66,20 @@ const integrations = [
     ),
   },
   {
-    name: "Oracle",
-    desc: "Enterprise stack",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-      </svg>
-    ),
-  },
-  {
     name: "Stripe",
     desc: "Payments",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
         <rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" />
+      </svg>
+    ),
+  },
+  {
+    name: "Oracle",
+    desc: "Enterprise stack",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
+        <ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
       </svg>
     ),
   },
