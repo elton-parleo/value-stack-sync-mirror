@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { type Scenario } from "@/components/demo/scenarioData";
 import DemoHero from "@/components/demo/DemoHero";
 import LiveDemo from "@/components/demo/LiveDemo";
@@ -10,6 +11,14 @@ import ForDevelopers from "@/components/demo/ForDevelopers";
 import DemoFooterCTA from "@/components/demo/DemoFooterCTA";
 import Footer from "@/components/Footer";
 import ContactFormDialog from "@/components/ContactFormDialog";
+
+const scenarioLabels: Record<Scenario, string> = {
+  beauty: "Beauty",
+  outdoor: "Outdoor",
+  electronics: "Electronics",
+};
+
+const scenarioKeys: Scenario[] = ["beauty", "outdoor", "electronics"];
 
 const Demo = () => {
   const [scenario, setScenario] = useState<Scenario>("beauty");
@@ -52,11 +61,38 @@ const Demo = () => {
         </div>
       </nav>
 
-      {/* 1. Hero */}
-      <DemoHero scenario={scenario} />
+      {/* Sticky Scenario Picker */}
+      <div className="sticky top-12 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-12 max-w-content items-center gap-1 px-6 md:px-20">
+          {scenarioKeys.map((key) => (
+            <button
+              key={key}
+              onClick={() => setScenario(key)}
+              className="relative px-4 py-3 text-[14px] font-medium transition-colors"
+              style={{ color: key === scenario ? "hsl(213 99% 50%)" : undefined }}
+            >
+              <span className={key === scenario ? "text-primary" : "text-parleo-muted hover:text-foreground"}>
+                {scenarioLabels[key]}
+              </span>
+              {key === scenario && (
+                <motion.div
+                  layoutId="scenario-tab"
+                  className="absolute bottom-0 left-2 right-2 h-[2px] bg-primary"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
 
-      {/* 2. Live Demo — scenario picker is now inside here */}
-      <LiveDemo scenario={scenario} onScenarioChange={setScenario} />
+      {/* 1. Hero */}
+      <DemoHero scenario={scenario} onRequestAccess={() => setContactOpen(true)} />
+
+      {/* 2. Live Demo */}
+      <div id="live-demo">
+        <LiveDemo scenario={scenario} onScenarioChange={setScenario} />
+      </div>
 
       {/* 3. Try It Yourself — sandbox */}
       <DemoSandbox scenario={scenario} />

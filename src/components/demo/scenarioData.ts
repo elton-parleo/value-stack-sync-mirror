@@ -105,17 +105,23 @@ export const scenarios: Record<Scenario, ScenarioData> = {
   "best_merchant": "Sephora",
   "list_price": 23.00,
   "true_cost": 16.40,
-  "savings_pct": 29,
+  "total_savings": 6.60,
+  "savings_pct": 28.7,
+  "rank_without_deals": 1,
+  "rank_with_deals": 1,
   "deal_stack": [
-    { "type": "loyalty", "label": "Rouge −10%", "value": -2.30 },
-    { "type": "card", "label": "Amex Gold $5 off", "value": -5.00 },
-    { "type": "points", "label": "4x Beauty Insider", "value": -4.60 }
+    { "type": "loyalty", "label": "Rouge −10%", "value": -2.30, "expires_days": null },
+    { "type": "card", "label": "Amex Gold $5 off", "value": -5.00, "expires_days": 4 },
+    { "type": "points", "label": "4x Beauty Insider", "value": -4.60, "expires_days": null }
   ],
   "category_intelligence": {
     "type": "cream_blush",
-    "top_attributes": ["blendability", "longevity", "shade_range"]
+    "decisive_specs": ["finish_type", "longevity_hrs", "shade_range"],
+    "review_signal": "strong_positive",
+    "confidence": 0.91
   },
   "pii": false,
+  "response_ms": 47,
   "tokens_used": 1847
 }`,
   },
@@ -169,17 +175,23 @@ export const scenarios: Record<Scenario, ScenarioData> = {
   "best_merchant": "Nike.com",
   "list_price": 130.00,
   "true_cost": 76.00,
-  "savings_pct": 41,
+  "total_savings": 54.00,
+  "savings_pct": 41.5,
+  "rank_without_deals": 3,
+  "rank_with_deals": 1,
   "deal_stack": [
-    { "type": "promo", "label": "WILDHORSE20", "value": -26.00 },
-    { "type": "points", "label": "Nike Member pts", "value": -24.00 },
-    { "type": "card", "label": "Amex Platinum $15", "value": -15.00 }
+    { "type": "promo", "label": "WILDHORSE20", "value": -26.00, "expires_days": null },
+    { "type": "points", "label": "Nike Member pts", "value": -24.00, "expires_days": null },
+    { "type": "card", "label": "Amex Platinum $15", "value": -15.00, "expires_days": 6 }
   ],
   "category_intelligence": {
     "type": "trail_running",
-    "top_attributes": ["lug_depth", "stack_height", "grip_compound"]
+    "decisive_specs": ["lug_depth_mm", "stack_height_mm", "weight_g"],
+    "review_signal": "positive",
+    "confidence": 0.79
   },
   "pii": false,
+  "response_ms": 42,
   "tokens_used": 2103
 }`,
   },
@@ -231,16 +243,22 @@ export const scenarios: Record<Scenario, ScenarioData> = {
   "best_merchant": "Best Buy",
   "list_price": 279.99,
   "true_cost": 226.50,
-  "savings_pct": 19,
+  "total_savings": 53.49,
+  "savings_pct": 19.1,
+  "rank_without_deals": 1,
+  "rank_with_deals": 1,
   "deal_stack": [
-    { "type": "loyalty", "label": "Totaltech −$30", "value": -30.00 },
-    { "type": "card", "label": "Chase Sapphire 5%", "value": -13.49 }
+    { "type": "loyalty", "label": "Totaltech −$30", "value": -30.00, "expires_days": null },
+    { "type": "card", "label": "Chase Sapphire 5%", "value": -13.49, "expires_days": null }
   ],
   "category_intelligence": {
     "type": "true_wireless_anc",
-    "top_attributes": ["driver_size", "anc_depth", "call_mic_rating"]
+    "decisive_specs": ["driver_size_mm", "anc_depth_db", "call_mic_rating"],
+    "review_signal": "strong_positive",
+    "confidence": 0.92
   },
   "pii": false,
+  "response_ms": 38,
   "tokens_used": 1952
 }`,
   },

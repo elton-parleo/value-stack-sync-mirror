@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { type Scenario, scenarios } from "./scenarioData";
 
@@ -31,22 +31,33 @@ const SegmentedControl = ({ options, value, onChange }: { options: readonly stri
 
 const AnimatedNumber = ({ value, prefix = "$" }: { value: number; prefix?: string }) => {
   const [display, setDisplay] = useState(value);
-  const [shimmer, setShimmer] = useState(false);
+  const prevRef = useRef(value);
+  const rafRef = useRef<number>();
 
   useEffect(() => {
-    setShimmer(true);
-    const t = setTimeout(() => {
-      setDisplay(value);
-      setShimmer(false);
-    }, 300);
-    return () => clearTimeout(t);
+    const from = prevRef.current;
+    const to = value;
+    prevRef.current = value;
+    if (from === to) return;
+
+    const duration = 300;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      setDisplay(from + (to - from) * eased);
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [value]);
 
-  return (
-    <span className={`inline-block transition-opacity duration-300 ${shimmer ? "opacity-40" : "opacity-100"}`}>
-      {prefix}{display.toFixed(2)}
-    </span>
-  );
+  return <span>{prefix}{display.toFixed(2)}</span>;
 };
 
 const DemoSandbox = ({ scenario }: Props) => {
@@ -65,12 +76,14 @@ const DemoSandbox = ({ scenario }: Props) => {
 
     let cardDiscount = 0;
     if (card === "No card") cardDiscount = 0;
-    else if (card === "Generic Visa") cardDiscount = sb.listPrice * 0.01;
+    else if (card === "Generic Visa") cardDiscount = Math.round(sb.listPrice * 0.01 * 100) / 100;
     else if (card === "Premium Amex") cardDiscount = sb.cardFull;
-    else if (card === "Store card") cardDiscount = sb.listPrice * 0.05;
+    else if (card === "Store card") cardDiscount = Math.round(sb.listPrice * 0.05 * 100) / 100;
 
-    const net = sb.listPrice - loyalty - cardDiscount - points;
-    return { loyalty, cardDiscount, points, net: Math.max(net, 0) };
+    const net = Math.max(sb.listPrice - loyalty - cardDiscount - points, 0);
+    const totalSavings = sb.listPrice - net;
+    const savingsPct = sb.listPrice > 0 ? Math.round((totalSavings / sb.listPrice) * 100) : 0;
+    return { loyalty, cardDiscount, points, net, totalSavings, savingsPct };
   }, [tier, card, sb]);
 
   const [sortByCost, setSortByCost] = useState(true);
@@ -80,7 +93,7 @@ const DemoSandbox = ({ scenario }: Props) => {
   }, [data.merchants, sortByCost]);
 
   return (
-    <section className="py-10 md:py-16">
+    <section className="py-12 md:py-20">
       <div className="mx-auto max-w-content px-5 md:px-20">
         <div className="font-label mb-3 text-primary">Try It Yourself</div>
         <h2 className="font-heading mb-6 text-[28px] text-foreground md:text-[40px]">
@@ -143,11 +156,20 @@ const DemoSandbox = ({ scenario }: Props) => {
 
                 <div className="h-px bg-border" />
                 <div className="flex items-center justify-between">
-                  <span className="text-[15px] font-semibold text-foreground">True Cost</span>
+                  <span className="text-[15px] font-semibold text-foreground">Net Effective Price</span>
                   <span className="text-[22px] font-bold text-[hsl(var(--success))]">
                     <AnimatedNumber value={pricing.net} />
                   </span>
                 </div>
+
+                {/* Savings line */}
+                {pricing.totalSavings > 0 && (
+                  <div className="flex items-center justify-between text-[13px]">
+                    <span className="font-medium text-[hsl(var(--success))]">
+                      You save ${pricing.totalSavings.toFixed(2)} ({pricing.savingsPct}%)
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -175,23 +197,30 @@ const DemoSandbox = ({ scenario }: Props) => {
             </div>
           </div>
           <div className="grid gap-3 md:grid-cols-3">
-            {sortedMerchants.map((m, i) => (
-              <motion.div
-                key={m.domain}
-                layout
-                transition={{ duration: 0.3 }}
-                className="rounded-lg border border-border bg-card p-4"
-                style={{ boxShadow: "var(--shadow-card)" }}
-              >
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="text-[14px] font-semibold text-foreground">{m.name}</span>
-                  {i === 0 && sortByCost && <span className="rounded-full bg-[hsl(var(--success))]/10 px-2 py-0.5 text-[10px] font-bold text-[hsl(var(--success))]">BEST</span>}
-                </div>
-                <div className="text-[13px] text-parleo-muted">Headline: ${m.headlinePrice.toFixed(2)}</div>
-                <div className="text-[18px] font-bold text-foreground">True: ${m.trueCost.toFixed(2)}</div>
-                {m.note && <div className="mt-1 text-[12px] text-parleo-muted">{m.note}</div>}
-              </motion.div>
-            ))}
+            {sortedMerchants.map((m, i) => {
+              const isBest = i === 0 && sortByCost;
+              return (
+                <motion.div
+                  key={m.domain}
+                  layout
+                  transition={{ duration: 0.3 }}
+                  className={`rounded-lg border bg-card p-4 ${
+                    isBest ? "border-primary" : "border-border"
+                  }`}
+                  style={{ boxShadow: isBest ? "var(--shadow-card-hover)" : "var(--shadow-card)" }}
+                >
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="text-[14px] font-semibold text-foreground">{m.name}</span>
+                    {isBest && (
+                      <span className="rounded-full border border-primary/20 bg-[#EFF6FF] px-2 py-0.5 text-[10px] font-bold text-primary">BEST VALUE</span>
+                    )}
+                  </div>
+                  <div className="text-[13px] text-parleo-muted">Headline: ${m.headlinePrice.toFixed(2)}</div>
+                  <div className="text-[18px] font-bold text-foreground">True: ${m.trueCost.toFixed(2)}</div>
+                  {m.note && <div className="mt-1 text-[12px] text-parleo-muted">{m.note}</div>}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
