@@ -70,7 +70,7 @@ const HeroSection = () => {
             <span className="text-[11px] font-medium text-parleo-muted">Honey for Agents · Live</span>
           </motion.div>
 
-          <h1 className="font-display text-[32px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
+          <h1 className="font-display text-[40px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
             The incentive layer<br />for AI commerce.
           </h1>
           <p className="mt-4 max-w-[460px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
