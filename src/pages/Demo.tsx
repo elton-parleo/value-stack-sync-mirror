@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { type Scenario, scenarios } from "@/components/demo/scenarioData";
+import { type Scenario } from "@/components/demo/scenarioData";
 import DemoHero from "@/components/demo/DemoHero";
 import LiveDemo from "@/components/demo/LiveDemo";
 import DemoSandbox from "@/components/demo/DemoSandbox";
@@ -10,8 +10,6 @@ import ForDevelopers from "@/components/demo/ForDevelopers";
 import DemoFooterCTA from "@/components/demo/DemoFooterCTA";
 import Footer from "@/components/Footer";
 import ContactFormDialog from "@/components/ContactFormDialog";
-
-const scenarioKeys: Scenario[] = ["beauty", "outdoor", "electronics"];
 
 const Demo = () => {
   const [scenario, setScenario] = useState<Scenario>("beauty");
@@ -54,42 +52,19 @@ const Demo = () => {
         </div>
       </nav>
 
-      {/* Sticky scenario picker — slim, text only */}
-      <div className="sticky top-12 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-content items-center gap-0 px-6 md:px-20" style={{ height: 48 }}>
-          {scenarioKeys.map((key) => {
-            const active = key === scenario;
-            return (
-              <button
-                key={key}
-                onClick={() => setScenario(key)}
-                className={`relative px-4 py-3 text-[13px] font-medium transition-all ${
-                  active ? "text-primary" : "text-parleo-muted hover:text-foreground"
-                }`}
-              >
-                {scenarios[key].label}
-                {active && (
-                  <span className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-primary" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {/* 1. Hero */}
       <DemoHero scenario={scenario} />
 
-      {/* 2. Live Demo — immediately after hero */}
-      <LiveDemo scenario={scenario} />
+      {/* 2. Live Demo — scenario picker is now inside here */}
+      <LiveDemo scenario={scenario} onScenarioChange={setScenario} />
 
       {/* 3. Try It Yourself — sandbox */}
       <DemoSandbox scenario={scenario} />
 
-      {/* 4. How It Works — moved down from old position */}
+      {/* 4. How It Works */}
       <ShoppingIntelligence />
 
-      {/* 5. The Network — merchant grid */}
+      {/* 5. The Network */}
       <MerchantNetwork />
 
       {/* 6. For Developers */}
