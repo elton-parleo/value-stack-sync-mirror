@@ -127,6 +127,14 @@ const Navbar = () => {
                     {link.label}
                   </motion.a>
                 ))}
+                <Link
+                  to="/demo"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-primary transition-colors hover:bg-secondary"
+                >
+                  Demo
+                  <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary">New</span>
+                </Link>
               </div>
               <div className="mt-auto">
                 <button
