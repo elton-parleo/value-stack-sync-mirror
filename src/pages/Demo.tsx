@@ -42,7 +42,7 @@ const Demo = () => {
               </svg>
               PARLEO
             </Link>
-            <Link to="/" className="text-[13px] text-parleo-muted transition-colors hover:text-foreground">← Back to Home</Link>
+            <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
           </div>
           <button
             onClick={() => setContactOpen(true)}
@@ -54,33 +54,23 @@ const Demo = () => {
         </div>
       </nav>
 
-      {/* Signals Counter */}
       <SignalsCounter />
 
-      {/* 1. Hero */}
+      {/* Hero */}
       <DemoHero onRequestAccess={() => setContactOpen(true)} />
 
-      {/* 2. Live Demo */}
-      <div id="live-demo">
+      {/* Live Demo + Value Explorer */}
+      <div id="live-demo" className="mx-auto max-w-content px-5 md:px-20">
         <LiveDemo scenario={scenario} onScenarioChange={setScenario} />
+        <div className="pb-12 md:pb-16">
+          <DemoSandbox scenario={scenario} />
+        </div>
       </div>
 
-      {/* 3. Try It Yourself */}
-      <DemoSandbox scenario={scenario} />
-
-      {/* 4. How It Works */}
       <ShoppingIntelligence />
-
-      {/* 5. The Network */}
       <MerchantNetwork />
-
-      {/* 6. For Developers */}
       <ForDevelopers />
-
-      {/* Stats */}
       <DemoStats />
-
-      {/* 7. Footer CTA */}
       <DemoFooterCTA />
       <Footer />
 

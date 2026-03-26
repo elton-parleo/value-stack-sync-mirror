@@ -34,14 +34,13 @@ const LogoPill = ({ name, domain }: { name: string; domain: string }) => (
 );
 
 const MerchantNetwork = () => (
-  <AnimatedSection className="py-12 md:py-16">
+  <AnimatedSection className="py-10 md:py-14">
     <div className="mx-auto max-w-content px-5 md:px-20">
-      <div className="font-label mb-3 text-primary">The Network</div>
       <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
-        38+ merchants and growing.
+        Deep shopping intelligence across 38+ merchants.
       </h2>
-      <p className="mt-2 max-w-[520px] text-[15px] text-foreground/50">
-        Loyalty programs, card offers, and incentive logic. Indexed, normalized, and refreshed hourly.
+      <p className="mt-2 max-w-[560px] text-[16px] text-foreground/60">
+        Loyalty programs, card offers, promo codes, and incentive logic. Indexed, normalized, and refreshed hourly so agents always have the real picture.
       </p>
 
       {/* Merchant grid */}
@@ -53,7 +52,7 @@ const MerchantNetwork = () => (
 
       {/* Card partners */}
       <div className="mt-6 flex items-center gap-3">
-        <span className="text-[11px] font-medium uppercase tracking-widest text-parleo-muted">Card Partners</span>
+        <span className="text-[11px] font-medium uppercase tracking-widest text-foreground/45">Card Partners</span>
         <div className="flex gap-2">
           {cardPartners.map((c) => (
             <span key={c.name} className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-[13px] font-bold text-foreground/70">
@@ -70,7 +69,7 @@ const MerchantNetwork = () => (
         </div>
       </div>
 
-      <p className="mt-6 text-[13px] text-parleo-muted">
+      <p className="mt-6 text-[14px] text-foreground/50">
         + expanding to 100+ merchants across beauty, outdoor, electronics, home, and fashion
       </p>
     </div>

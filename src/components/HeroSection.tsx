@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import LiveDataWidget from "./LiveDataWidget";
 import ContactFormDialog from "./ContactFormDialog";
 
@@ -11,11 +12,9 @@ const FloatingIcon = ({ children, className, delay = 0 }: {children: React.React
   className={`absolute hidden md:flex items-center justify-center rounded-xl border border-border bg-card ${className}`}
   style={{ boxShadow: 'var(--shadow-md)' }}
   whileHover={{ scale: 1.1 }}>
-  
     <motion.div
     animate={{ y: [0, -5, 0] }}
     transition={{ duration: 3 + delay, repeat: Infinity, ease: "easeInOut" }}>
-    
       {children}
     </motion.div>
   </motion.div>;
@@ -26,15 +25,11 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="section-grid relative overflow-hidden bg-background">
-      {/* Gradient orbs */}
       <div className="pointer-events-none absolute -right-[300px] -top-[100px] h-[700px] w-[700px] rounded-full opacity-[0.04]" style={{
         background: 'radial-gradient(circle, hsl(213 99% 50%) 0%, transparent 70%)'
       }} />
-
-      {/* Subtle diffusion glow */}
       <div className="diffusion-glow pointer-events-none absolute left-1/2 top-[40%] -translate-x-1/2" />
 
-      {/* Decorative floating elements - desktop only */}
       <FloatingIcon className="left-[8%] top-[18%] h-10 w-10" delay={0.4}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,42 +52,50 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-[560px]">
-          
-          {/* Status badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5"
-            style={{ boxShadow: 'var(--shadow-sm)' }}>
-            
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-            <span className="text-[11px] font-medium text-parleo-muted">Honey for Agents · Live</span>
-          </motion.div>
+
+          {/* Status badge — linked to demo */}
+          <Link to="/demo">
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 transition-colors hover:border-primary/30 hover:bg-primary/[0.03] cursor-pointer"
+              style={{ boxShadow: 'var(--shadow-sm)' }}>
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
+              <span className="text-[11px] font-medium text-foreground/60">Honey for Agents · Live</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </motion.div>
+          </Link>
 
           <h1 className="font-display text-[44px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
             The incentive layer<br />for AI commerce.
           </h1>
-          <p className="mt-4 max-w-[460px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
+          <p className="mt-4 max-w-[460px] text-[16px] leading-[1.7] text-foreground/60 md:text-[17px]">
             AI agents see prices. They can't see your loyalty program, your card offers, or your real value. Parleo makes all of it readable and transactable in a single call.
           </p>
 
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setContactOpen(true)}
               className="group inline-flex h-11 items-center gap-2 rounded-[4px] bg-primary px-6 text-[15px] font-medium text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"
               style={{ boxShadow: '0 2px 12px -3px hsl(213 99% 50% / 0.35)' }}>
-              
               Request Demo
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
+            <Link
+              to="/demo"
+              className="group inline-flex h-11 items-center gap-2 rounded-[4px] border border-border bg-card px-6 text-[15px] font-medium text-foreground transition-all hover:border-primary/30 hover:bg-primary/[0.03] active:scale-[0.97]"
+            >
+              See it Live
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
+            </Link>
           </div>
 
           {/* Protocol badges */}
           <div className="mt-7 flex items-center gap-3">
-            <span className="text-[13px] text-parleo-muted">Works with</span>
+            <span className="text-[13px] text-foreground/50">Works with</span>
             <div className="flex flex-wrap gap-2">
               {[
                 { name: "MCP", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" strokeLinecap="round" /></svg> },
@@ -115,17 +118,13 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 md:mt-0 md:block">
-          
           <LiveDataWidget />
         </motion.div>
       </div>
 
-      {/* Bottom edge decoration */}
       <div className="decorative-line" />
-
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </section>);
-
 };
 
 export default HeroSection;

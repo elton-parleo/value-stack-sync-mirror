@@ -51,17 +51,17 @@ const Navbar = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-[13px] font-medium text-parleo-muted transition-colors hover:text-foreground after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+                className="relative text-[13px] font-medium text-foreground/55 transition-colors hover:text-foreground after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
               >
                 {link.label}
               </a>
             ))}
             <Link
               to="/demo"
-              className="relative flex items-center gap-1.5 text-[13px] font-medium text-parleo-muted transition-colors hover:text-foreground"
+              className="relative flex items-center gap-1.5 text-[13px] font-medium text-primary transition-colors hover:text-primary/80"
             >
-              Demo
-              <span className="rounded-full bg-primary px-1.5 py-px text-[9px] font-bold text-primary-foreground">NEW</span>
+              See it Live
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
             </Link>
             <button
               onClick={() => setContactOpen(true)}
@@ -127,6 +127,14 @@ const Navbar = () => {
                     {link.label}
                   </motion.a>
                 ))}
+                <Link
+                  to="/demo"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-primary transition-colors hover:bg-secondary"
+                >
+                  See it Live
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
+                </Link>
               </div>
               <div className="mt-auto">
                 <button

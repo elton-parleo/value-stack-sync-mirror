@@ -23,14 +23,16 @@ const cards = [
 ];
 
 const ShoppingIntelligence = () => (
-  <AnimatedSection className="py-12 md:py-16">
+  <AnimatedSection className="py-10 md:py-14">
     <div className="mx-auto max-w-content px-5 md:px-20">
-      <div className="font-label mb-3 text-primary">How It Works</div>
       <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
         Three layers of intelligence. One API call.
       </h2>
+      <p className="mt-2 mb-8 text-[16px] text-foreground/60">
+        Everything an agent needs to make the right recommendation, pre-computed and ready.
+      </p>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3">
         {cards.map((c, i) => (
           <motion.div
             key={c.title}
@@ -38,24 +40,17 @@ const ShoppingIntelligence = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="group rounded-lg border border-border bg-card p-5 transition-all hover:border-primary/20 hover:shadow-card-hover"
+            className="group rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/20 hover:shadow-card-hover"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
             <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/[0.08]">
               <span className="text-[13px] font-bold text-primary">{c.num}</span>
             </div>
             <h3 className="mb-1.5 text-[16px] font-semibold text-foreground">{c.title}</h3>
-            <p className="text-[13px] leading-relaxed text-foreground/50">{c.body}</p>
+            <p className="text-[14px] leading-relaxed text-foreground/55">{c.body}</p>
             <div className="mt-3 rounded-md bg-secondary px-3 py-2 text-[13px] font-mono font-semibold text-primary">{c.visual}</div>
           </motion.div>
         ))}
-      </div>
-
-      {/* Token stat */}
-      <div className="mt-8 rounded-lg border border-primary/10 bg-primary/[0.03] px-5 py-3 text-center">
-        <span className="text-[15px] font-medium text-foreground">~2,000 tokens per query</span>
-        <span className="text-foreground/40"> vs ~40,000 without Parleo. </span>
-        <span className="font-semibold text-primary">20x reduction.</span>
       </div>
     </div>
   </AnimatedSection>

@@ -5,16 +5,16 @@ const DemoFooterCTA = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <section className="relative overflow-hidden py-14 md:py-20">
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
         background: "radial-gradient(ellipse at center, hsl(213 99% 50%), transparent 70%)"
       }} />
 
       <div className="mx-auto max-w-[560px] px-6 text-center">
         <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
-          38 merchants. 3 protocols. One call.
+          The true cost layer your agents are missing.
         </h2>
-        <p className="mt-4 text-[17px] text-foreground/50" style={{ lineHeight: 1.7 }}>
+        <p className="mt-4 text-[17px] text-foreground/60" style={{ lineHeight: 1.7 }}>
           Ship agent-native commerce without building the data layer.
         </p>
 

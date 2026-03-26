@@ -12,14 +12,12 @@ results by best effective price.`;
 const ForDevelopers = () => {
   const [tab, setTab] = useState<"js" | "python">("js");
   const [copiedKey, setCopiedKey] = useState(false);
-  const [copiedPrompt, setCopiedPrompt] = useState(false);
 
   return (
-    <section className="py-12 md:py-20">
+    <section className="py-10 md:py-16">
       <div className="mx-auto max-w-content px-5 md:px-20">
         <div className="overflow-hidden rounded-xl bg-code-bg" style={{ boxShadow: "var(--shadow-elevated)" }}>
           <div className="p-6 md:p-10">
-            <div className="font-label mb-3 text-white/40">For Developers</div>
             <h2 className="font-heading mb-8 text-[28px] text-white md:text-[40px]">
               One call. Full value stack.
             </h2>
@@ -54,12 +52,6 @@ const ForDevelopers = () => {
                   </pre>
                   <div className="h-px bg-white/10" />
                   <div className="mt-4 flex flex-col gap-2">
-                    <button
-                      onClick={() => { navigator.clipboard.writeText(agentPrompt); setCopiedPrompt(true); setTimeout(() => setCopiedPrompt(false), 2000); }}
-                      className="w-full rounded-md border border-white/10 px-3 py-2 text-left text-[13px] font-medium text-white/60 transition-colors hover:bg-white/5"
-                    >
-                      {copiedPrompt ? "✓ Copied Prompt" : "Copy Prompt"}
-                    </button>
                     <button
                       onClick={() => { navigator.clipboard.writeText("pk_demo_parleo_key"); setCopiedKey(true); setTimeout(() => setCopiedKey(false), 2000); }}
                       className="w-full rounded-md border border-white/10 px-3 py-2 text-left text-[13px] font-medium text-white/60 transition-colors hover:bg-white/5"
