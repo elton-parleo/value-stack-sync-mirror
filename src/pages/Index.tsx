@@ -1,4 +1,3 @@
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
@@ -11,8 +10,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="min-h-screen bg-background grain-overlay overflow-x-hidden">
-    <AnnouncementBanner />
+  <div className="min-h-screen bg-background grain-overlay">
     <Navbar />
     <HeroSection />
     <ProblemSection />

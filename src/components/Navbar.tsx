@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
@@ -56,13 +55,6 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Link
-              to="/demo"
-              className="relative text-[13px] font-medium text-primary transition-colors hover:text-primary/80 flex items-center gap-1.5"
-            >
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-              Demo
-            </Link>
             <button
               onClick={() => setContactOpen(true)}
               className="ml-2 inline-flex items-center rounded-[4px] bg-foreground px-4 text-[13px] font-medium text-background transition-all hover:bg-foreground/90 active:scale-[0.97]"
@@ -127,14 +119,6 @@ const Navbar = () => {
                     {link.label}
                   </motion.a>
                 ))}
-                <Link
-                  to="/demo"
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-md px-3 py-3 text-[15px] font-medium text-primary transition-colors hover:bg-secondary flex items-center gap-2"
-                >
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-                  Demo
-                </Link>
               </div>
               <div className="mt-auto">
                 <button
