@@ -6,16 +6,6 @@ interface Props {
   scenario: Scenario;
 }
 
-const BrandLogo = ({ domain, size = 16 }: { domain: string; size?: number }) => (
-  <img
-    src={`https://logo.clearbit.com/${domain}`}
-    alt=""
-    style={{ height: size, width: "auto" }}
-    className="inline rounded-sm"
-    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-  />
-);
-
 const LiveDemo = ({ scenario }: Props) => {
   const data = scenarios[scenario];
   const [running, setRunning] = useState(false);
@@ -47,7 +37,6 @@ const LiveDemo = ({ scenario }: Props) => {
 
     const totalLines = data.reasoning.length;
     const t1 = window.setTimeout(() => {
-      // Start revealing lines
       for (let i = 0; i < totalLines; i++) {
         const t = window.setTimeout(() => {
           setVisibleLines(i + 1);
@@ -67,33 +56,42 @@ const LiveDemo = ({ scenario }: Props) => {
   const results = withParleo ? data.resultsWithParleo : data.resultsWithout;
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-8 md:py-12">
       <div className="mx-auto max-w-content px-5 md:px-20">
         <div className="font-label mb-3 text-primary">Live Demo</div>
-        <h2 className="font-heading mb-10 text-[28px] text-foreground md:text-[40px]">
+        <h2 className="font-heading mb-6 text-[28px] text-foreground md:text-[40px]">
           Watch Parleo intercept an agent's research.
         </h2>
 
-        {/* Demo container */}
-        <div className="overflow-hidden rounded-xl border border-border bg-card" style={{ boxShadow: "var(--shadow-elevated)" }}>
+        {/* Visually distinct demo container */}
+        <div
+          className="overflow-hidden rounded-2xl border border-border"
+          style={{
+            background: "hsl(30 8% 91%)",
+            borderTop: "2px solid hsl(213 99% 50%)",
+            boxShadow: "var(--shadow-elevated)",
+          }}
+        >
 
           {/* Step 1: Query + Context */}
-          <div className="border-b border-border p-6 md:p-8">
-            <div className="flex flex-col gap-6 md:flex-row">
+          <div className="border-b border-border/60 p-5 md:p-7">
+            <div className="flex flex-col gap-5 md:flex-row">
               {/* Chat bubble */}
               <div className="flex-1">
-                <div className="font-label mb-3 text-parleo-muted">User Message</div>
+                <div className="font-label mb-2 text-parleo-muted">User Message</div>
                 <div className="inline-block rounded-2xl rounded-bl-sm bg-primary px-5 py-3 text-[15px] text-primary-foreground">
                   {data.query}
                 </div>
               </div>
               {/* Context */}
               <div className="w-full md:w-[280px]">
-                <div className="font-label mb-3 text-parleo-muted">Agent Context</div>
+                <div className="font-label mb-2 text-parleo-muted">Agent Context</div>
                 <div className="flex flex-col gap-2">
                   {data.memberships.map((m) => (
-                    <div key={m.domain} className="flex items-center gap-2 text-[13px]">
-                      <BrandLogo domain={m.domain} />
+                    <div key={m.name} className="flex items-center gap-2 text-[13px]">
+                      <span className="inline-flex items-center rounded-md border border-border bg-card px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase text-foreground/60">
+                        {m.name.split(" ")[0]}
+                      </span>
                       <span className="font-medium text-foreground">{m.name}</span>
                       <span className="ml-auto text-parleo-muted">{m.detail}</span>
                     </div>
@@ -102,8 +100,8 @@ const LiveDemo = ({ scenario }: Props) => {
               </div>
             </div>
 
-            {/* Run button */}
-            <div className="mt-6">
+            {/* Run button — tighter to content */}
+            <div className="mt-4">
               <button
                 onClick={runDemo}
                 disabled={running}
@@ -132,10 +130,10 @@ const LiveDemo = ({ scenario }: Props) => {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 transition={{ duration: 0.4 }}
-                className="border-b border-border"
+                className="border-b border-border/60"
               >
-                <div className="bg-code-bg p-6 md:p-8">
-                  <div className="mb-4 flex items-center gap-2">
+                <div className="bg-code-bg p-5 md:p-7">
+                  <div className="mb-3 flex items-center gap-2">
                     <div className="font-label text-white/60">Agent Reasoning</div>
                     {!traceComplete ? (
                       <span className="flex items-center gap-1.5 text-[12px] text-white/40">
@@ -177,9 +175,9 @@ const LiveDemo = ({ scenario }: Props) => {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 transition={{ duration: 0.4 }}
-                className="border-b border-border"
+                className="border-b border-border/60"
               >
-                <div className="p-6 md:p-8">
+                <div className="p-5 md:p-7" style={{ background: "hsl(30 8% 93%)" }}>
                   <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <div className="font-label text-parleo-muted">Shortlist</div>
@@ -188,7 +186,7 @@ const LiveDemo = ({ scenario }: Props) => {
                       </span>
                     </div>
                     {/* Toggle */}
-                    <div className="inline-flex rounded-lg border border-border bg-secondary p-0.5">
+                    <div className="inline-flex rounded-lg border border-border bg-card p-0.5">
                       {["Without Parleo", "With Parleo"].map((label) => {
                         const active = label === "With Parleo" ? withParleo : !withParleo;
                         return (
@@ -212,7 +210,9 @@ const LiveDemo = ({ scenario }: Props) => {
                         key={r.name}
                         layout
                         transition={{ duration: 0.4 }}
-                        className="flex flex-col gap-2 rounded-lg border border-border bg-card p-4 sm:flex-row sm:items-center sm:gap-4"
+                        className={`flex flex-col gap-2 rounded-lg border bg-card p-4 sm:flex-row sm:items-center sm:gap-4 ${
+                          r.bestDeal ? "border-l-4 border-l-[hsl(var(--success))] border-t-border border-r-border border-b-border" : "border-border"
+                        }`}
                         style={{ boxShadow: "var(--shadow-sm)" }}
                       >
                         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-secondary text-[16px] font-bold text-foreground">
@@ -228,7 +228,7 @@ const LiveDemo = ({ scenario }: Props) => {
                           {r.deals && (
                             <div className="mt-1 flex flex-wrap gap-1.5">
                               {r.deals.map((d) => (
-                                <span key={d} className="rounded-full border border-primary/20 px-2 py-0.5 text-[11px] font-medium text-primary">{d}</span>
+                                <span key={d} className="rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[11px] font-medium text-primary">{d}</span>
                               ))}
                             </div>
                           )}
@@ -260,7 +260,7 @@ const LiveDemo = ({ scenario }: Props) => {
                 animate={{ height: "auto", opacity: 1 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="relative bg-code-bg p-6 md:p-8">
+                <div className="relative bg-code-bg p-5 md:p-7">
                   <div className="mb-3 flex items-center justify-between">
                     <div className="font-label text-white/60">API Response</div>
                     <button

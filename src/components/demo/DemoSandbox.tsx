@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { type Scenario, scenarios } from "./scenarioData";
 
 interface Props {
@@ -80,18 +80,18 @@ const DemoSandbox = ({ scenario }: Props) => {
   }, [data.merchants, sortByCost]);
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-10 md:py-16">
       <div className="mx-auto max-w-content px-5 md:px-20">
         <div className="font-label mb-3 text-primary">Try It Yourself</div>
-        <h2 className="font-heading mb-10 text-[28px] text-foreground md:text-[40px]">
+        <h2 className="font-heading mb-6 text-[28px] text-foreground md:text-[40px]">
           Change the inputs. Watch the price change.
         </h2>
 
-        <div className="flex flex-col gap-8 md:flex-row">
+        <div className="flex flex-col gap-6 md:flex-row">
           {/* Controls */}
           <div className="w-full md:w-[40%]">
-            <div className="rounded-lg border border-border bg-card p-6" style={{ boxShadow: "var(--shadow-card)" }}>
-              <div className="mb-5">
+            <div className="rounded-lg border border-border bg-card p-5" style={{ boxShadow: "var(--shadow-card)" }}>
+              <div className="mb-4">
                 <div className="mb-2 text-[13px] font-semibold text-foreground">Membership Tier</div>
                 <SegmentedControl options={tierOptions} value={tier} onChange={(v) => setTier(v as Tier)} />
               </div>
@@ -104,10 +104,10 @@ const DemoSandbox = ({ scenario }: Props) => {
 
           {/* Price waterfall */}
           <div className="w-full md:w-[60%]">
-            <div className="rounded-lg border border-border bg-card p-6" style={{ boxShadow: "var(--shadow-card)" }}>
-              <div className="mb-4 text-[15px] font-semibold text-foreground">{data.product}</div>
+            <div className="rounded-lg border border-border bg-card p-5" style={{ boxShadow: "var(--shadow-card)" }}>
+              <div className="mb-3 text-[15px] font-semibold text-foreground">{data.product}</div>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2.5">
                 <div className="flex items-center justify-between text-[14px]">
                   <span className="text-foreground">List Price</span>
                   <span className="font-semibold text-foreground">${sb.listPrice.toFixed(2)}</span>
@@ -154,8 +154,8 @@ const DemoSandbox = ({ scenario }: Props) => {
         </div>
 
         {/* Merchant compare */}
-        <div className="mt-12">
-          <div className="mb-4 flex items-center justify-between">
+        <div className="mt-8">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-[15px] font-semibold text-foreground">Multi-Merchant Compare</div>
             <div className="inline-flex rounded-lg border border-border bg-secondary p-0.5">
               {["Headline Price", "True Cost"].map((label) => {
@@ -174,22 +174,16 @@ const DemoSandbox = ({ scenario }: Props) => {
               })}
             </div>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-3">
             {sortedMerchants.map((m, i) => (
               <motion.div
                 key={m.domain}
                 layout
                 transition={{ duration: 0.3 }}
-                className="rounded-lg border border-border bg-card p-5"
+                className="rounded-lg border border-border bg-card p-4"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
-                <div className="mb-3 flex items-center gap-2">
-                  <img
-                    src={`https://logo.clearbit.com/${m.domain}`}
-                    alt={m.name}
-                    className="h-5 rounded-sm"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                  />
+                <div className="mb-2 flex items-center gap-2">
                   <span className="text-[14px] font-semibold text-foreground">{m.name}</span>
                   {i === 0 && sortByCost && <span className="rounded-full bg-[hsl(var(--success))]/10 px-2 py-0.5 text-[10px] font-bold text-[hsl(var(--success))]">BEST</span>}
                 </div>
