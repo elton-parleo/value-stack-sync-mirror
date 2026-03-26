@@ -34,8 +34,8 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "h-12 border-b border-border bg-background/90 backdrop-blur-xl"
-            : "h-14 bg-background/60 backdrop-blur-md"
+            ? "h-12 border-b border-border/60 bg-background/95 backdrop-blur-xl"
+            : "h-14 bg-background/80 backdrop-blur-md"
         }`}
       >
         <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-20">

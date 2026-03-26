@@ -287,7 +287,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                 {results.length} products · {data.resultsWithParleo.filter(r => r.deals?.length).reduce((a, r) => a + (r.deals?.length || 0), 0)} deal stacks
                               </span>
                             </div>
-                            <div className="inline-flex rounded-lg border border-border bg-secondary/50 p-0.5">
+                            <div className="inline-flex rounded-lg border border-accent-warm/30 bg-secondary/50 p-0.5">
                               {["Without Parleo", "With Parleo"].map((label) => {
                                 const active = label === "With Parleo" ? withParleo : !withParleo;
                                 return (
@@ -295,7 +295,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                     key={label}
                                     onClick={() => setWithParleo(label === "With Parleo")}
                                     className={`rounded-md px-2.5 py-1 text-[11px] font-medium transition-all ${
-                                      active ? "bg-card text-foreground shadow-sm" : "text-parleo-muted"
+                                      active ? "bg-accent-warm text-white shadow-sm" : "text-foreground/50 hover:text-foreground"
                                     }`}
                                   >
                                     {label}
