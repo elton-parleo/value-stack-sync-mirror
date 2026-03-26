@@ -23,7 +23,8 @@ const DemoHero = ({ selected, onSelect }: DemoHeroProps) => (
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <span className="font-label text-primary">HONEY FOR AGENTS · LIVE DEMO</span>
         <h1 className="mt-3 font-display text-[36px] text-foreground md:text-[56px]" style={{ lineHeight: 1.05 }}>
-          See what agents miss —<br />and what Parleo finds.
+          See what agents miss
+          <br />and what Parleo finds.
         </h1>
         <p className="mt-4 max-w-[600px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
           AI agents compare prices. They can't see loyalty programs, card offers, or member pricing. Pick a scenario below and watch Parleo recalculate true cost in real time.
