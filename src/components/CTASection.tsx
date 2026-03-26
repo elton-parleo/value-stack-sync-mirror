@@ -8,18 +8,15 @@ const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <AnimatedSection id="cta" className="relative overflow-hidden py-16 md:py-24">
-      {/* Background gradient */}
+    <AnimatedSection id="cta" className="relative overflow-hidden py-10 md:py-16">
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
         background: 'radial-gradient(ellipse at center, hsl(213 99% 50%), transparent 70%)'
       }} />
 
-      {/* Wave pattern decoration */}
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 opacity-[0.12]">
         <img src={wavePattern} alt="" className="w-full" loading="lazy" />
       </div>
 
-      {/* Decorative floating elements - desktop only */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -50,7 +47,7 @@ const CTASection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/[0.08]">
+          <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/[0.08]">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -59,10 +56,10 @@ const CTASection = () => {
           <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
             Be visible to every agent.
           </h2>
-          <p className="mt-4 text-[17px] text-foreground/50" style={{ lineHeight: 1.7 }}>
+          <p className="mt-3 text-[17px] text-foreground/55" style={{ lineHeight: 1.7 }}>
             Working with merchants getting ahead of the agentic shift.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <button
               onClick={() => setContactOpen(true)}
               className="group inline-flex h-12 items-center gap-2 rounded-[4px] bg-primary px-7 text-[15px] font-medium text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"

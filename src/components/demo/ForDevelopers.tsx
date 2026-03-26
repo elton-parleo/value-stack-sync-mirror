@@ -14,18 +14,18 @@ const ForDevelopers = () => {
   const [copiedKey, setCopiedKey] = useState(false);
 
   return (
-    <section className="py-10 md:py-16">
+    <section className="py-8 md:py-12">
       <div className="mx-auto max-w-content px-5 md:px-20">
         <div className="overflow-hidden rounded-xl bg-code-bg" style={{ boxShadow: "var(--shadow-elevated)" }}>
-          <div className="p-6 md:p-10">
-            <h2 className="font-heading mb-8 text-[28px] text-white md:text-[40px]">
+          <div className="p-5 md:p-8">
+            <h2 className="font-heading mb-6 text-[26px] text-white md:text-[36px]">
               One call. Full value stack.
             </h2>
 
-            <div className="flex flex-col gap-8 md:flex-row">
+            <div className="flex flex-col gap-6 md:flex-row">
               {/* Code snippet */}
               <div className="flex-1">
-                <div className="mb-3 flex gap-1">
+                <div className="mb-2 flex gap-1">
                   {(["js", "python"] as const).map((t) => (
                     <button
                       key={t}
@@ -38,35 +38,35 @@ const ForDevelopers = () => {
                     </button>
                   ))}
                 </div>
-                <pre className="overflow-x-auto rounded-lg bg-white/[0.04] p-5 font-mono text-[13px] leading-relaxed text-white/70">
+                <pre className="overflow-x-auto rounded-lg bg-white/[0.04] p-4 font-mono text-[12px] leading-relaxed text-white/70">
                   {codeSnippets[tab]}
                 </pre>
               </div>
 
               {/* Agent prompt card */}
-              <div className="w-full md:w-[320px]">
-                <div className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
-                  <div className="mb-3 text-[13px] font-semibold text-white/80">Agent Prompt Template</div>
-                  <pre className="mb-4 whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-white/50">
+              <div className="w-full md:w-[300px]">
+                <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+                  <div className="mb-2 text-[12px] font-semibold text-white/80">Agent Prompt Template</div>
+                  <pre className="mb-3 whitespace-pre-wrap font-mono text-[11px] leading-relaxed text-white/50">
                     {agentPrompt}
                   </pre>
                   <div className="h-px bg-white/10" />
-                  <div className="mt-4 flex flex-col gap-2">
+                  <div className="mt-3 flex flex-col gap-2">
                     <button
                       onClick={() => { navigator.clipboard.writeText("pk_demo_parleo_key"); setCopiedKey(true); setTimeout(() => setCopiedKey(false), 2000); }}
-                      className="w-full rounded-md border border-white/10 px-3 py-2 text-left text-[13px] font-medium text-white/60 transition-colors hover:bg-white/5"
+                      className="w-full rounded-md border border-white/10 px-3 py-2 text-left text-[12px] font-medium text-white/60 transition-colors hover:bg-white/5"
                     >
                       {copiedKey ? "✓ Copied" : "Copy API Key"}
                     </button>
-                    <a href="#" className="text-[13px] font-medium text-primary transition-opacity hover:opacity-80">
+                    <a href="#" className="text-[12px] font-medium text-primary transition-opacity hover:opacity-80">
                       View OpenAPI Spec →
                     </a>
-                    <a href="#" className="text-[13px] font-medium text-primary transition-opacity hover:opacity-80">
+                    <a href="#" className="text-[12px] font-medium text-primary transition-opacity hover:opacity-80">
                       GitHub: Starter SDK →
                     </a>
                   </div>
-                  <div className="mt-4 h-px bg-white/10" />
-                  <div className="mt-3 text-[11px] text-white/30">
+                  <div className="mt-3 h-px bg-white/10" />
+                  <div className="mt-2 text-[10px] text-white/30">
                     Works with ChatGPT, Claude, Perplexity, and any MCP-compatible agent.
                   </div>
                 </div>

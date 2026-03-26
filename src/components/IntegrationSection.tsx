@@ -86,11 +86,10 @@ const integrations = [
 ];
 
 const IntegrationSection = () => (
-  <AnimatedSection id="integration" className="section-grid relative bg-background py-16 md:py-24">
+  <AnimatedSection id="integration" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[20%] top-[40%]" />
     <div className="decorative-line" />
 
-    {/* Subtle decorative dots */}
     <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
       <svg width="60" height="60" viewBox="0 0 60 60" className="opacity-[0.06]">
         {[0, 20, 40].map(x => [0, 20, 40].map(y => (
@@ -99,8 +98,8 @@ const IntegrationSection = () => (
       </svg>
     </div>
 
-    <div className="mx-auto max-w-content px-6 pt-8 md:px-20">
-      <div className="grid gap-12 md:grid-cols-[1fr_1fr]">
+    <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
+      <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
           <div className="flex items-center gap-3">
@@ -115,12 +114,11 @@ const IntegrationSection = () => (
           <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
             Ships on every protocol<br />that matters.
           </h2>
-          <p className="mt-4 max-w-[420px] text-[17px] leading-[1.7] text-foreground/50">
+          <p className="mt-3 max-w-[420px] text-[17px] leading-[1.7] text-foreground/55">
             One API contract. Every agent. OpenAI, Perplexity, Claude, and custom systems on ACP, MCP, or AP2.
           </p>
 
-          {/* Integration grid */}
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {integrations.map((t, i) => (
               <motion.div
                 key={t.name}
@@ -141,7 +139,7 @@ const IntegrationSection = () => (
             ))}
           </div>
 
-          <div className="mt-6 flex items-center gap-2">
+          <div className="mt-5 flex items-center gap-2">
             <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-primary/10">
               <svg width="8" height="8" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="hsl(213,99%,50%)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
@@ -158,7 +156,6 @@ const IntegrationSection = () => (
           className="overflow-hidden rounded-xl bg-code-bg transition-shadow duration-300 hover:shadow-elevated"
           style={{ boxShadow: 'var(--shadow-lg)' }}
         >
-          {/* Code header */}
           <div className="flex items-center gap-2 border-b px-5 py-3" style={{ borderColor: 'hsl(260 11% 18%)' }}>
             <span className="h-2 w-2 rounded-full" style={{ background: "#3a3a3a" }} />
             <span className="h-2 w-2 rounded-full" style={{ background: "#3a3a3a" }} />

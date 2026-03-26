@@ -4,7 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 /* ── Tiny illustrative visuals for each state ── */
 
 const FeedVisual = () => (
-  <div className="mt-5 space-y-1.5">
+  <div className="mt-4 space-y-1.5">
     {["sephora_loyalty_tiers", "amex_plat_benefits", "target_circle_offers"].map((id, i) => (
       <motion.div
         key={id}
@@ -27,7 +27,7 @@ const FeedVisual = () => (
 );
 
 const HabitVisual = () => (
-  <div className="mt-5 rounded-lg border border-primary/10 bg-primary/[0.02] p-3">
+  <div className="mt-4 rounded-lg border border-primary/10 bg-primary/[0.02] p-3">
     <div className="flex items-end gap-[3px]">
       {[18, 24, 20, 32, 28, 38, 42, 36, 44, 48, 40, 52].map((h, i) => (
         <motion.div
@@ -41,7 +41,7 @@ const HabitVisual = () => (
         />
       ))}
     </div>
-    <div className="mt-2.5 flex items-center justify-between">
+    <div className="mt-2 flex items-center justify-between">
       <span className="text-[9px] font-medium text-parleo-muted/60">4 weeks ago</span>
       <div className="flex items-center gap-1">
         <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
@@ -54,7 +54,7 @@ const HabitVisual = () => (
 );
 
 const DirectVisual = () => (
-  <div className="mt-5 space-y-2">
+  <div className="mt-4 space-y-2">
     {[
       { rule: "Margin floor", value: "25%", status: "enforced" },
       { rule: "VIP unlock", value: "Active", status: "live" },
@@ -132,11 +132,11 @@ const stages = [
 ];
 
 const FeedSection = () => (
-  <AnimatedSection id="feed" className="section-grid relative bg-background py-12 md:py-20">
+  <AnimatedSection id="feed" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[15%] top-[40%]" />
     <div className="decorative-line" />
 
-    <div className="mx-auto max-w-content px-6 pt-8 md:px-20">
+    <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
       <div className="flex items-center gap-3">
         <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
@@ -150,12 +150,12 @@ const FeedSection = () => (
         The directory agents check first.
       </h2>
 
-      <p className="mt-4 max-w-[580px] text-[17px] leading-[1.7] text-foreground/50">
+      <p className="mt-3 max-w-[580px] text-[17px] leading-[1.7] text-foreground/55">
         Loyalty programs, card offers, and incentive logic from 38+ merchants. Structured into a single agent-optimized feed. Refreshed hourly.
       </p>
 
       {/* Pipeline */}
-      <div className="relative mt-12">
+      <div className="relative mt-8">
         <div className="pointer-events-none absolute left-0 right-0 top-[52px] hidden h-px md:block" style={{
           background: "linear-gradient(90deg, transparent 5%, hsl(var(--primary) / 0.12) 20%, hsl(var(--primary) / 0.2) 50%, hsl(var(--primary) / 0.12) 80%, transparent 95%)"
         }} />
@@ -168,7 +168,7 @@ const FeedSection = () => (
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className={`group relative rounded-xl border ${s.borderColor} bg-card p-6 transition-all duration-300 hover:border-primary/20 hover:shadow-card-hover`}
+              className={`group relative rounded-xl border ${s.borderColor} bg-card p-5 transition-all duration-300 hover:border-primary/20 hover:shadow-card-hover`}
               style={{ boxShadow: "var(--shadow-card)" }}
             >
               <div className="pointer-events-none absolute -top-[5px] left-1/2 hidden h-[10px] w-[10px] -translate-x-1/2 rounded-full border-2 border-card md:block" style={{
@@ -184,9 +184,9 @@ const FeedSection = () => (
                 </span>
               </div>
 
-              <span className={`mt-4 block font-label ${s.color}`}>{s.label}</span>
+              <span className={`mt-3 block font-label ${s.color}`}>{s.label}</span>
               <h3 className="mt-1.5 text-[16px] font-semibold text-foreground">{s.headline}</h3>
-              <p className="mt-2 text-[14px] leading-[1.6] text-foreground/50">{s.description}</p>
+              <p className="mt-1.5 text-[14px] leading-[1.6] text-foreground/55">{s.description}</p>
 
               {s.visual}
 
@@ -197,7 +197,7 @@ const FeedSection = () => (
       </div>
 
       {/* Metrics strip */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12px] text-parleo-muted">
+      <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12px] text-parleo-muted">
         <span>60% fewer tokens than direct crawling</span>
         <span className="hidden sm:inline">·</span>
         <span>Hourly refresh</span>

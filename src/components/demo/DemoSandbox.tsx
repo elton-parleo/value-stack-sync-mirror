@@ -14,14 +14,18 @@ type Card = typeof cardOptions[number];
 const tierMultiplier: Record<Tier, number> = { "Non-member": 0, "Base": 0.25, "Mid-tier": 0.5, "Top-tier": 1 };
 
 const SegmentedControl = ({ options, value, onChange, label }: { options: readonly string[]; value: string; onChange: (v: string) => void; label: string }) => (
-  <div>
-    <div className="mb-2 text-[13px] font-semibold text-foreground">{label}</div>
+  <motion.div
+    initial={{ opacity: 0, y: 8 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3, delay: 0.1 }}
+  >
+    <div className="mb-1.5 text-[12px] font-semibold text-foreground">{label}</div>
     <div className="inline-flex flex-wrap rounded-lg border border-border bg-secondary p-0.5">
       {options.map((opt) => (
         <button
           key={opt}
           onClick={() => onChange(opt)}
-          className={`rounded-md px-3 py-1.5 text-[12px] font-medium transition-all ${
+          className={`rounded-md px-2.5 py-1.5 text-[11px] font-medium transition-all ${
             value === opt ? "bg-card text-foreground shadow-sm" : "text-foreground/50 hover:text-foreground"
           }`}
         >
@@ -29,7 +33,7 @@ const SegmentedControl = ({ options, value, onChange, label }: { options: readon
         </button>
       ))}
     </div>
-  </div>
+  </motion.div>
 );
 
 const AnimatedNumber = ({ value, prefix = "$" }: { value: number; prefix?: string }) => {
@@ -96,19 +100,19 @@ const DemoSandbox = ({ scenario }: Props) => {
   }, [data.merchants, sortByCost]);
 
   return (
-    <div className="mt-8">
-      <h3 className="font-heading text-[22px] text-foreground md:text-[28px]">
+    <div className="mt-6">
+      <h3 className="font-heading text-[20px] text-foreground md:text-[26px]">
         Adjust the inputs. Watch rankings shift.
       </h3>
-      <p className="mt-1 mb-6 text-[15px] text-foreground/60">
+      <p className="mt-1 mb-4 text-[14px] text-foreground/60">
         See how membership tiers and card offers change the true cost and ranking of {data.product}.
       </p>
 
-      <div className="flex flex-col gap-6 md:flex-row">
+      <div className="flex flex-col gap-4 md:flex-row">
         {/* Controls */}
-        <div className="w-full md:w-[40%]">
-          <div className="rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--shadow-card)" }}>
-            <div className="flex flex-col gap-4">
+        <div className="w-full md:w-[38%]">
+          <div className="rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--shadow-card)" }}>
+            <div className="flex flex-col gap-3">
               <SegmentedControl options={tierOptions} value={tier} onChange={(v) => setTier(v as Tier)} label="Membership Tier" />
               <SegmentedControl options={cardOptions} value={card} onChange={(v) => setCard(v as Card)} label="Card Type" />
             </div>
@@ -116,18 +120,18 @@ const DemoSandbox = ({ scenario }: Props) => {
         </div>
 
         {/* Price waterfall */}
-        <div className="w-full md:w-[60%]">
-          <div className="rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--shadow-card)" }}>
-            <div className="mb-3 text-[15px] font-semibold text-foreground">{data.product}</div>
+        <div className="w-full md:w-[62%]">
+          <div className="rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--shadow-card)" }}>
+            <div className="mb-2 text-[14px] font-semibold text-foreground">{data.product}</div>
 
-            <div className="flex flex-col gap-2.5">
-              <div className="flex items-center justify-between text-[14px]">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between text-[13px]">
                 <span className="text-foreground">List Price</span>
                 <span className="font-semibold text-foreground">${sb.listPrice.toFixed(2)}</span>
               </div>
               <div className="h-px bg-border" />
 
-              <div className="flex items-center justify-between text-[14px]">
+              <div className="flex items-center justify-between text-[13px]">
                 <span className={pricing.loyalty === 0 ? "text-foreground/40" : "text-foreground"}>
                   {pricing.loyalty === 0 ? "No loyalty program" : sb.loyaltyLabel}
                 </span>
@@ -136,7 +140,7 @@ const DemoSandbox = ({ scenario }: Props) => {
                 </span>
               </div>
 
-              <div className="flex items-center justify-between text-[14px]">
+              <div className="flex items-center justify-between text-[13px]">
                 <span className={pricing.cardDiscount === 0 ? "text-foreground/40" : "text-foreground"}>
                   {card === "No card" ? "No card offers" : card === "Generic Visa" ? "1% Visa cashback" : card === "Store card" ? "5% store discount" : sb.cardLabel}
                 </span>
@@ -145,7 +149,7 @@ const DemoSandbox = ({ scenario }: Props) => {
                 </span>
               </div>
 
-              <div className="flex items-center justify-between text-[14px]">
+              <div className="flex items-center justify-between text-[13px]">
                 <span className={pricing.points === 0 ? "text-foreground/40" : "text-foreground"}>
                   {pricing.points === 0 ? "No points value" : sb.pointsLabel}
                 </span>
@@ -156,14 +160,14 @@ const DemoSandbox = ({ scenario }: Props) => {
 
               <div className="h-px bg-border" />
               <div className="flex items-center justify-between">
-                <span className="text-[15px] font-semibold text-foreground">Net Effective Price</span>
-                <span className="text-[22px] font-bold text-[hsl(var(--success))]">
+                <span className="text-[14px] font-semibold text-foreground">Net Effective Price</span>
+                <span className="text-[20px] font-bold text-[hsl(var(--success))]">
                   <AnimatedNumber value={pricing.net} />
                 </span>
               </div>
 
               {pricing.totalSavings > 0 && (
-                <div className="flex items-center justify-between text-[13px]">
+                <div className="flex items-center justify-between text-[12px]">
                   <span className="font-medium text-[hsl(var(--success))]">
                     You save ${pricing.totalSavings.toFixed(2)} ({pricing.savingsPct}%)
                   </span>
@@ -175,9 +179,9 @@ const DemoSandbox = ({ scenario }: Props) => {
       </div>
 
       {/* Merchant compare */}
-      <div className="mt-6">
-        <div className="mb-3 flex items-center justify-between">
-          <div className="text-[15px] font-semibold text-foreground">Multi-Merchant Compare</div>
+      <div className="mt-5">
+        <div className="mb-2 flex items-center justify-between">
+          <div className="text-[14px] font-semibold text-foreground">Multi-Merchant Compare</div>
           <div className="inline-flex rounded-lg border border-border bg-secondary p-0.5">
             {["Headline Price", "True Cost"].map((label) => {
               const active = label === "True Cost" ? sortByCost : !sortByCost;
@@ -185,7 +189,7 @@ const DemoSandbox = ({ scenario }: Props) => {
                 <button
                   key={label}
                   onClick={() => setSortByCost(label === "True Cost")}
-                  className={`rounded-md px-3 py-1.5 text-[12px] font-medium transition-all ${
+                  className={`rounded-md px-2.5 py-1 text-[11px] font-medium transition-all ${
                     active ? "bg-card text-foreground shadow-sm" : "text-foreground/50"
                   }`}
                 >
@@ -195,7 +199,7 @@ const DemoSandbox = ({ scenario }: Props) => {
             })}
           </div>
         </div>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-2.5 md:grid-cols-3">
           {sortedMerchants.map((m, i) => {
             const isBest = i === 0 && sortByCost;
             return (
@@ -203,20 +207,20 @@ const DemoSandbox = ({ scenario }: Props) => {
                 key={m.domain}
                 layout
                 transition={{ duration: 0.3 }}
-                className={`rounded-xl border bg-card p-4 ${
+                className={`rounded-xl border bg-card p-3.5 ${
                   isBest ? "border-primary" : "border-border"
                 }`}
                 style={{ boxShadow: isBest ? "var(--shadow-card-hover)" : "var(--shadow-card)" }}
               >
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="text-[14px] font-semibold text-foreground">{m.name}</span>
+                <div className="mb-1.5 flex items-center gap-2">
+                  <span className="text-[13px] font-semibold text-foreground">{m.name}</span>
                   {isBest && (
-                    <span className="rounded-full border border-primary/20 bg-[#EFF6FF] px-2 py-0.5 text-[10px] font-bold text-primary">BEST VALUE</span>
+                    <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-1.5 py-0.5 text-[9px] font-bold text-primary">BEST VALUE</span>
                   )}
                 </div>
-                <div className="text-[13px] text-foreground/50">Headline: ${m.headlinePrice.toFixed(2)}</div>
-                <div className="text-[18px] font-bold text-foreground">True: ${m.trueCost.toFixed(2)}</div>
-                {m.note && <div className="mt-1 text-[12px] text-foreground/50">{m.note}</div>}
+                <div className="text-[12px] text-foreground/50">Headline: ${m.headlinePrice.toFixed(2)}</div>
+                <div className="text-[16px] font-bold text-foreground">True: ${m.trueCost.toFixed(2)}</div>
+                {m.note && <div className="mt-0.5 text-[11px] text-foreground/50">{m.note}</div>}
               </motion.div>
             );
           })}
