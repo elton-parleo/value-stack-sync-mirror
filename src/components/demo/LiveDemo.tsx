@@ -105,8 +105,8 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const results = withParleo ? data.resultsWithParleo : data.resultsWithout;
 
   return (
-    <section className="py-10 md:py-16">
-      <div className="mx-auto max-w-content px-5 md:px-20">
+    <section className="pt-10 md:pt-16">
+      <div>
         <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
           Watch Parleo intercept an agent's research.
         </h2>
