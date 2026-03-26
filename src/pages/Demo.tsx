@@ -44,7 +44,7 @@ const Demo = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background grain-overlay">
+    <div className="min-h-screen bg-background grain-overlay overflow-x-hidden">
       <DemoHero selected={selected} onSelect={handleScenarioChange} />
 
       {/* Guided Demo Container */}
