@@ -18,6 +18,8 @@
     --muted-foreground: 243 6% 63%;
     --accent: 213 99% 50%;
     --accent-foreground: 0 0% 100%;
+    --accent-warm: 32 95% 52%;
+    --accent-warm-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 30 6% 83%;
@@ -101,7 +103,6 @@
     box-shadow: var(--shadow-elevated);
   }
 
-  /* Subtle background grid pattern — applied as background-image to avoid z-index issues */
   .section-grid {
     background-image:
       linear-gradient(hsl(var(--primary) / 0.035) 1px, transparent 1px),
@@ -109,7 +110,6 @@
     background-size: 64px 64px;
   }
 
-  /* Soft diffusion / lighting glow */
   .diffusion-glow {
     width: 700px;
     height: 500px;
@@ -189,13 +189,11 @@
   animation: ticker 20s linear infinite;
 }
 
-/* Parallax scroll container */
 .parallax-container {
   perspective: 1000px;
   overflow-x: hidden;
 }
 
-/* Grain overlay for premium texture */
 .grain-overlay::after {
   content: '';
   position: fixed;
@@ -209,7 +207,6 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Smooth number counter */
 @keyframes count-up {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -219,13 +216,21 @@
   animation: count-up 0.6s ease-out forwards;
 }
 
-/* Decorative line */
 .decorative-line {
   height: 1px;
   background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
 }
 
-/* Scrollbar styling */
+/* See it Live button glow */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px 0 hsl(var(--accent-warm) / 0.3), 0 0 0 0 hsl(var(--accent-warm) / 0); }
+  50% { box-shadow: 0 0 16px 4px hsl(var(--accent-warm) / 0.25), 0 0 30px 8px hsl(var(--accent-warm) / 0.08); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

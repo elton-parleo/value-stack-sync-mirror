@@ -23,16 +23,16 @@ const cards = [
 ];
 
 const ShoppingIntelligence = () => (
-  <AnimatedSection className="py-10 md:py-14">
+  <AnimatedSection className="py-8 md:py-12">
     <div className="mx-auto max-w-content px-5 md:px-20">
       <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
         Three layers of intelligence. One API call.
       </h2>
-      <p className="mt-2 mb-8 text-[16px] text-foreground/60">
+      <p className="mt-2 mb-6 text-[15px] text-foreground/60">
         Everything an agent needs to make the right recommendation, pre-computed and ready.
       </p>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-3 md:grid-cols-3">
         {cards.map((c, i) => (
           <motion.div
             key={c.title}
@@ -43,12 +43,12 @@ const ShoppingIntelligence = () => (
             className="group rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/20 hover:shadow-card-hover"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
-            <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/[0.08]">
-              <span className="text-[13px] font-bold text-primary">{c.num}</span>
+            <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/[0.08]">
+              <span className="text-[12px] font-bold text-primary">{c.num}</span>
             </div>
-            <h3 className="mb-1.5 text-[16px] font-semibold text-foreground">{c.title}</h3>
-            <p className="text-[14px] leading-relaxed text-foreground/55">{c.body}</p>
-            <div className="mt-3 rounded-md bg-secondary px-3 py-2 text-[13px] font-mono font-semibold text-primary">{c.visual}</div>
+            <h3 className="mb-1 text-[15px] font-semibold text-foreground">{c.title}</h3>
+            <p className="text-[13px] leading-relaxed text-foreground/55">{c.body}</p>
+            <div className="mt-2.5 rounded-md bg-secondary px-3 py-1.5 text-[12px] font-mono font-semibold text-primary">{c.visual}</div>
           </motion.div>
         ))}
       </div>

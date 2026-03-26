@@ -17,9 +17,9 @@ const stats = [
 ];
 
 const DemoStats = () => (
-  <AnimatedSection className="py-10 md:py-16">
+  <AnimatedSection className="py-8 md:py-12">
     <div className="mx-auto max-w-content px-6 md:px-20">
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-3 md:grid-cols-3">
         {stats.map((s, i) => (
           <motion.div
             key={s.value}
@@ -27,12 +27,12 @@ const DemoStats = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.12, duration: 0.5 }}
-            className="rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-[var(--shadow-md)]"
+            className="rounded-xl border border-border bg-card p-5 transition-shadow hover:shadow-[var(--shadow-md)]"
           >
-            <span className="block text-[40px] font-extrabold leading-none tracking-tight text-primary md:text-[48px]" style={{ letterSpacing: '-0.03em' }}>
+            <span className="block font-heading text-[36px] leading-none tracking-tight text-primary md:text-[44px]">
               {s.value}
             </span>
-            <p className="mt-3 text-[14px] leading-relaxed text-foreground/55">
+            <p className="mt-2 text-[14px] leading-relaxed text-foreground/55">
               {s.description}
             </p>
           </motion.div>

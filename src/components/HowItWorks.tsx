@@ -51,11 +51,11 @@ const timeline = [
 ];
 
 const HowItWorks = () => (
-  <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-12 md:py-20">
+  <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[10%] top-[50%] -translate-y-1/2" />
     <div className="decorative-line" />
 
-    <div className="mx-auto max-w-content px-6 pt-8 md:px-20">
+    <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
       <div className="flex items-center gap-3">
         <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
@@ -68,12 +68,11 @@ const HowItWorks = () => (
       <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
         The early-mover advantage<br className="hidden md:block" /> is closing fast.
       </h2>
-      <p className="mt-4 max-w-[540px] text-[15px] leading-[1.7] text-foreground/50 md:text-[17px]">
+      <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
         AI agents are already making purchase recommendations. Merchants on Parleo get featured with their full value. Those who aren't compete on price alone.
       </p>
 
-      {/* How it works timeline */}
-      <div className="mt-10 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
         {timeline.map((t, i) => (
           <motion.div
             key={t.step}
@@ -89,14 +88,13 @@ const HowItWorks = () => (
             </div>
             <div>
               <h3 className="text-[15px] font-bold text-foreground">{t.label}</h3>
-              <p className="mt-1 text-[14px] text-foreground/50">{t.desc}</p>
+              <p className="mt-1 text-[14px] text-foreground/55">{t.desc}</p>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Benefits grid */}
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
+      <div className="mt-8 grid gap-5 md:grid-cols-2">
         {benefits.map((b, i) => (
           <motion.div
             key={b.title}
@@ -111,7 +109,7 @@ const HowItWorks = () => (
             </div>
             <div>
               <h3 className="text-[15px] font-bold text-foreground">{b.title}</h3>
-              <p className="mt-1 text-[14px] leading-[1.6] text-foreground/50">{b.body}</p>
+              <p className="mt-1 text-[14px] leading-[1.6] text-foreground/55">{b.body}</p>
             </div>
           </motion.div>
         ))}

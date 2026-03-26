@@ -7,13 +7,12 @@ interface Props {
   onScenarioChange: (s: Scenario) => void;
 }
 
-/* ── Scenario picker metadata ── */
 const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = [
   {
     key: "beauty",
     label: "Beauty",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><circle cx="9" cy="9" r="1" fill="currentColor" /><circle cx="15" cy="9" r="1" fill="currentColor" />
       </svg>
     ),
@@ -22,7 +21,7 @@ const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = 
     key: "outdoor",
     label: "Outdoor",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
       </svg>
     ),
@@ -31,14 +30,13 @@ const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = 
     key: "electronics",
     label: "Electronics",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="4" width="16" height="12" rx="2" /><path d="M8 20h8" /><path d="M12 16v4" />
       </svg>
     ),
   },
 ];
 
-/* ── Brand logo helper (Clearbit) ── */
 const BrandLogo = ({ domain, size = 16 }: { domain: string; size?: number }) => (
   <img
     src={`https://logo.clearbit.com/${domain}`}
@@ -105,100 +103,111 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const results = withParleo ? data.resultsWithParleo : data.resultsWithout;
 
   return (
-    <section className="pt-10 md:pt-16">
+    <section className="pt-8 md:pt-12">
       <div>
         <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
           Watch Parleo intercept an agent's research.
         </h2>
-        <p className="mt-2 text-[16px] text-foreground/65 md:text-[17px]">
+        <p className="mt-2 text-[15px] text-foreground/60 md:text-[16px]">
           <span className="font-medium text-foreground">~2,000 tokens per query</span>
           {" "}vs ~40,000 without Parleo.{" "}
           <span className="font-semibold text-primary">20× reduction.</span>
         </p>
 
-        {/* ── Horizontal Category Toggles ── */}
-        <div className="mt-6 mb-6 flex gap-2">
-          {scenarioMeta.map((s) => {
+        {/* ── Horizontal Category Toggles with entrance animation ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mt-5 mb-4 flex gap-2"
+        >
+          {scenarioMeta.map((s, i) => {
             const active = s.key === scenario;
             return (
-              <button
+              <motion.button
                 key={s.key}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.15 + i * 0.06 }}
                 onClick={() => onScenarioChange(s.key)}
-                className={`relative flex items-center gap-2 rounded-lg border px-4 py-2.5 text-[14px] font-medium transition-all ${
+                className={`relative flex items-center gap-2 rounded-lg border px-4 py-2 text-[13px] font-medium transition-all ${
                   active
-                    ? "border-primary bg-primary/[0.06] text-primary shadow-sm"
-                    : "border-border bg-card text-foreground/60 hover:border-primary/30 hover:text-foreground"
+                    ? "border-accent-warm/50 bg-accent-warm/[0.08] text-foreground shadow-sm"
+                    : "border-border bg-card text-foreground/60 hover:border-accent-warm/30 hover:text-foreground"
                 }`}
               >
-                <span className={active ? "text-primary" : "text-foreground/40"}>{s.icon}</span>
+                <span className={active ? "text-accent-warm" : "text-foreground/40"}>{s.icon}</span>
                 {s.label}
                 {active && (
                   <motion.div
                     layoutId="cat-underline"
-                    className="absolute -bottom-px left-2 right-2 h-[2px] rounded-full bg-primary"
+                    className="absolute -bottom-px left-2 right-2 h-[2px] rounded-full bg-accent-warm"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* ── Chat Window Container ── */}
         <div
-          className="overflow-hidden rounded-2xl border border-border/80"
+          className="overflow-hidden rounded-2xl border border-border/80 bg-card"
           style={{ boxShadow: "var(--shadow-elevated)" }}
         >
-          {/* Title bar */}
-          <div className="flex items-center gap-3 border-b border-border/60 bg-card px-5 py-3">
+          {/* Title bar — macOS style */}
+          <div className="flex items-center gap-3 border-b border-border/60 px-5 py-3" style={{ background: "linear-gradient(180deg, hsl(0 0% 98%), hsl(0 0% 96%))" }}>
             <div className="flex gap-1.5">
               <span className="h-3 w-3 rounded-full bg-[hsl(0,70%,65%)]" />
               <span className="h-3 w-3 rounded-full bg-[hsl(40,80%,60%)]" />
               <span className="h-3 w-3 rounded-full bg-[hsl(130,50%,55%)]" />
             </div>
-            <div className="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
-                <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
-              </svg>
-              <span className="text-[13px] font-semibold text-foreground">Parleo Agent</span>
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))]" />
+            <div className="flex-1 flex items-center justify-center">
+              <div className="flex items-center gap-2 rounded-md bg-background/80 px-3 py-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--parleo-muted))" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" /></svg>
+                <span className="text-[11px] text-parleo-muted">parleo.ai/agent</span>
+              </div>
             </div>
-            <span className="ml-auto text-[11px] text-parleo-muted">parleo.ai/agent</span>
+            <div className="flex items-center gap-2">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
+              <span className="text-[11px] font-medium text-foreground/60">Connected</span>
+            </div>
           </div>
 
           {/* Chat body */}
-          <div className="bg-[hsl(30_8%_95%)] p-5 md:p-7" style={{ minHeight: 260 }}>
+          <div className="bg-background/50 p-4 md:p-6" style={{ minHeight: 220 }}>
             {/* User message bubble */}
-            <div className="mb-4 flex justify-end">
-              <div className="max-w-[480px] rounded-2xl rounded-br-md bg-primary/90 px-5 py-3 text-[14px] leading-relaxed text-primary-foreground">
+            <div className="mb-3 flex justify-end">
+              <div className="max-w-[480px] rounded-2xl rounded-br-md bg-primary px-4 py-2.5 text-[13px] leading-relaxed text-primary-foreground shadow-sm">
                 {data.query}
               </div>
             </div>
 
             {/* Agent context pills */}
-            <div className="mb-4 flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-medium uppercase tracking-wider text-foreground/40">Context loaded:</span>
+            <div className="mb-3 flex flex-wrap items-center gap-1.5">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-foreground/40">Context:</span>
               {data.memberships.map((m) => (
-                <span key={m.name} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1 text-[12px] text-foreground/70">
-                  <BrandLogo domain={m.domain} size={14} />
+                <span key={m.name} className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] text-foreground/70">
+                  <BrandLogo domain={m.domain} size={12} />
                   {m.name}
-                  <span className="text-foreground/40">· {m.detail}</span>
+                  <span className="text-foreground/35">· {m.detail}</span>
                 </span>
               ))}
             </div>
 
             {/* Run button */}
             {!running && (
-              <div className="flex justify-center py-6">
-                <button
+              <div className="flex justify-center py-4">
+                <motion.button
                   onClick={runDemo}
-                  className="group inline-flex h-12 items-center gap-3 rounded-xl bg-foreground px-8 text-[15px] font-semibold text-background transition-all hover:bg-foreground/90 active:scale-[0.97]"
-                  style={{ boxShadow: "0 4px 20px -4px hsl(var(--foreground) / 0.3)" }}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="group inline-flex h-11 items-center gap-2.5 rounded-xl border-2 border-accent-warm/40 bg-gradient-to-r from-accent-warm/[0.08] to-accent-warm/[0.03] px-7 text-[14px] font-semibold text-foreground transition-all hover:border-accent-warm/60 hover:from-accent-warm/[0.12] hover:to-accent-warm/[0.06]"
+                  style={{ boxShadow: "0 2px 16px -4px hsl(var(--accent-warm) / 0.2)" }}
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21" /></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="hsl(var(--accent-warm))" className="transition-transform group-hover:scale-110"><polygon points="6,3 20,12 6,21" /></svg>
                   Run Agent
-                </button>
+                </motion.button>
               </div>
             )}
 
@@ -209,11 +218,11 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="flex gap-3"
+                  className="flex gap-2.5"
                 >
                   {/* Agent avatar */}
-                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                       <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
                       <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
                     </svg>
@@ -222,20 +231,20 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                   {/* Response content */}
                   <div className="min-w-0 flex-1">
                     {/* Reasoning trace */}
-                    <div className="rounded-xl bg-card border border-border/60 p-4" style={{ boxShadow: "var(--shadow-sm)" }}>
-                      <div className="mb-3 flex items-center gap-2">
-                        <span className="text-[12px] font-semibold uppercase tracking-wider text-foreground/40">Reasoning</span>
+                    <div className="rounded-xl bg-card border border-border/60 p-3.5" style={{ boxShadow: "var(--shadow-sm)" }}>
+                      <div className="mb-2 flex items-center gap-2">
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/40">Reasoning</span>
                         {!traceComplete ? (
-                          <span className="flex items-center gap-1.5 text-[11px] text-foreground/30">
+                          <span className="flex items-center gap-1.5 text-[10px] text-foreground/30">
                             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
                             Thinking...
                           </span>
                         ) : (
-                          <span className="text-[11px] font-medium text-[hsl(var(--success))]">✓ Done</span>
+                          <span className="text-[10px] font-medium text-[hsl(var(--success))]">✓ Done</span>
                         )}
                       </div>
 
-                      <div className="font-mono text-[12px] leading-[1.8]">
+                      <div className="font-mono text-[11px] leading-[1.7]">
                         {data.reasoning.slice(0, visibleLines).map((line, i) => {
                           const isCheckmark = line.text.startsWith("✓");
                           return (
@@ -250,8 +259,8 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                   : line.phase === 2
                                   ? "text-foreground/55"
                                   : isCheckmark
-                                  ? "mt-1 rounded-md border-l-[4px] border-[hsl(var(--success))] bg-[hsl(var(--success))]/8 pl-3 font-semibold text-[hsl(var(--success))]"
-                                  : "rounded-md border-l-[4px] border-primary bg-primary/[0.06] pl-3 text-primary"
+                                  ? "mt-0.5 rounded-md border-l-[3px] border-[hsl(var(--success))] bg-[hsl(var(--success))]/8 pl-2.5 font-semibold text-[hsl(var(--success))]"
+                                  : "rounded-md border-l-[3px] border-primary bg-primary/[0.06] pl-2.5 text-primary"
                               }`}
                             >
                               {line.text}
@@ -268,13 +277,13 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.4 }}
-                          className="mt-3 rounded-xl bg-card border border-border/60 p-4"
+                          className="mt-2.5 rounded-xl bg-card border border-border/60 p-3.5"
                           style={{ boxShadow: "var(--shadow-sm)" }}
                         >
-                          <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                          <div className="mb-2.5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center gap-2">
-                              <span className="text-[12px] font-semibold uppercase tracking-wider text-foreground/40">Shortlist</span>
-                              <span className="text-[11px] text-foreground/30">
+                              <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/40">Shortlist</span>
+                              <span className="text-[10px] text-foreground/30">
                                 {results.length} products · {data.resultsWithParleo.filter(r => r.deals?.length).reduce((a, r) => a + (r.deals?.length || 0), 0)} deal stacks
                               </span>
                             </div>
@@ -285,7 +294,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                   <button
                                     key={label}
                                     onClick={() => setWithParleo(label === "With Parleo")}
-                                    className={`rounded-md px-3 py-1 text-[12px] font-medium transition-all ${
+                                    className={`rounded-md px-2.5 py-1 text-[11px] font-medium transition-all ${
                                       active ? "bg-card text-foreground shadow-sm" : "text-parleo-muted"
                                     }`}
                                   >
@@ -296,42 +305,42 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                             </div>
                           </div>
 
-                          <div className="flex flex-col gap-2">
+                          <div className="flex flex-col gap-1.5">
                             {results.map((r) => (
                               <motion.div
                                 key={`${r.name}-${withParleo}`}
                                 layout
                                 transition={{ duration: 0.3 }}
-                                className={`flex flex-col gap-2 rounded-lg border p-3 sm:flex-row sm:items-center sm:gap-3 ${
+                                className={`flex flex-col gap-1.5 rounded-lg border p-2.5 sm:flex-row sm:items-center sm:gap-3 ${
                                   r.bestDeal
                                     ? "border-primary/40 bg-primary/[0.03]"
                                     : "border-border bg-card"
                                 }`}
                               >
-                                <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-[14px] font-bold ${
+                                <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[13px] font-bold ${
                                   r.bestDeal ? "bg-primary/10 text-primary" : "bg-secondary text-foreground/60"
                                 }`}>
                                   {r.rank}
                                 </div>
                                 <div className="min-w-0 flex-1">
-                                  <div className="flex flex-wrap items-center gap-2">
-                                    <span className="text-[14px] font-semibold text-foreground">{r.name}</span>
+                                  <div className="flex flex-wrap items-center gap-1.5">
+                                    <span className="text-[13px] font-semibold text-foreground">{r.name}</span>
                                     {r.bestDeal && (
-                                      <span className="rounded-full border border-[hsl(var(--success))]/20 bg-[hsl(var(--success))]/10 px-2 py-0.5 text-[10px] font-bold text-[hsl(var(--success))]">
+                                      <span className="rounded-full border border-[hsl(var(--success))]/20 bg-[hsl(var(--success))]/10 px-1.5 py-0.5 text-[9px] font-bold text-[hsl(var(--success))]">
                                         BEST DEAL
                                       </span>
                                     )}
                                     {r.rankChange && (
-                                      <span className="rounded-full bg-amber-100 border border-amber-200 px-2 py-0.5 text-[10px] font-medium text-amber-700">
+                                      <span className="rounded-full bg-accent-warm/10 border border-accent-warm/20 px-1.5 py-0.5 text-[9px] font-medium text-accent-warm">
                                         {r.rankChange}
                                       </span>
                                     )}
                                   </div>
-                                  <div className="text-[11px] text-foreground/45">{r.specs}</div>
+                                  <div className="text-[10px] text-foreground/45">{r.specs}</div>
                                   {r.deals && (
-                                    <div className="mt-1 flex flex-wrap gap-1">
+                                    <div className="mt-0.5 flex flex-wrap gap-1">
                                       {r.deals.map((d) => (
-                                        <span key={d} className="rounded-full border border-[#0166FF]/20 bg-[#EFF6FF] px-2 py-0.5 text-[10px] font-medium text-[#0166FF]">
+                                        <span key={d} className="rounded-full border border-primary/20 bg-primary/[0.06] px-1.5 py-0.5 text-[9px] font-medium text-primary">
                                           {d}
                                         </span>
                                       ))}
@@ -341,12 +350,12 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                 <div className="text-right">
                                   {r.truePrice ? (
                                     <>
-                                      <div className="text-[12px] text-foreground/40 line-through">${r.listPrice.toFixed(2)}</div>
-                                      <div className="text-[17px] font-bold text-[hsl(var(--success))]">${r.truePrice.toFixed(2)}</div>
-                                      {r.savings && <div className="text-[11px] font-medium text-[hsl(var(--success))]">save {r.savings}%</div>}
+                                      <div className="text-[11px] text-foreground/40 line-through">${r.listPrice.toFixed(2)}</div>
+                                      <div className="text-[15px] font-bold text-[hsl(var(--success))]">${r.truePrice.toFixed(2)}</div>
+                                      {r.savings && <div className="text-[10px] font-medium text-[hsl(var(--success))]">save {r.savings}%</div>}
                                     </>
                                   ) : (
-                                    <div className="text-[17px] font-bold text-foreground">${r.listPrice.toFixed(2)}</div>
+                                    <div className="text-[15px] font-bold text-foreground">${r.listPrice.toFixed(2)}</div>
                                   )}
                                 </div>
                               </motion.div>
@@ -363,18 +372,18 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.4 }}
-                          className="mt-3 overflow-hidden rounded-xl border border-border/40 bg-code-bg"
+                          className="mt-2.5 overflow-hidden rounded-xl border border-border/40 bg-code-bg"
                         >
                           <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
-                            <span className="text-[11px] font-medium text-white/40">API Response</span>
+                            <span className="text-[10px] font-medium text-white/40">API Response</span>
                             <button
                               onClick={() => { navigator.clipboard.writeText(data.apiJson); setCopied(true); setTimeout(() => setCopied(false), 2000); }}
-                              className="rounded-md border border-white/10 px-2.5 py-0.5 text-[11px] text-white/40 transition-colors hover:bg-white/5"
+                              className="rounded-md border border-white/10 px-2 py-0.5 text-[10px] text-white/40 transition-colors hover:bg-white/5"
                             >
                               {copied ? "Copied!" : "Copy"}
                             </button>
                           </div>
-                          <pre className="overflow-x-auto p-4 font-mono text-[12px] leading-relaxed text-white/60">
+                          <pre className="overflow-x-auto p-3 font-mono text-[11px] leading-relaxed text-white/60">
                             {data.apiJson}
                           </pre>
                         </motion.div>

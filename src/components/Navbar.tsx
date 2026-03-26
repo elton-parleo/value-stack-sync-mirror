@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
@@ -15,6 +15,8 @@ const Navbar = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -30,24 +32,34 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "h-12 border-b border-border bg-background/90 backdrop-blur-xl"
             : "h-14 bg-background/60 backdrop-blur-md"
         }`}
       >
         <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-20">
-          <a href="#hero" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
-              <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
-            </svg>
-            PARLEO
-          </a>
+          {isHome ? (
+            <a href="#hero" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
+                <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
+              </svg>
+              PARLEO
+            </a>
+          ) : (
+            <Link to="/" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
+                <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
+              </svg>
+              PARLEO
+            </Link>
+          )}
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-7 md:flex">
-            {navLinks.map((link) => (
+            {isHome && navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -56,16 +68,19 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            {!isHome && (
+              <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
+            )}
             <Link
               to="/demo"
-              className="relative flex items-center gap-1.5 text-[13px] font-medium text-primary transition-colors hover:text-primary/80"
+              className="relative flex items-center gap-1.5 rounded-[4px] border border-accent-warm/30 bg-accent-warm/[0.06] px-3 py-1.5 text-[13px] font-medium text-foreground transition-all hover:border-accent-warm/50 hover:bg-accent-warm/[0.1]"
             >
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
               See it Live
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
             </Link>
             <button
               onClick={() => setContactOpen(true)}
-              className="ml-2 inline-flex items-center rounded-[4px] bg-foreground px-4 text-[13px] font-medium text-background transition-all hover:bg-foreground/90 active:scale-[0.97]"
+              className="ml-1 inline-flex items-center rounded-[4px] bg-foreground px-4 text-[13px] font-medium text-background transition-all hover:bg-foreground/90 active:scale-[0.97]"
               style={{ height: 34 }}
             >
               Get in touch
@@ -94,6 +109,9 @@ const Navbar = () => {
         </div>
       </nav>
 
+      {/* Spacer to offset fixed nav */}
+      <div className="h-14" />
+
       {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
@@ -114,7 +132,7 @@ const Navbar = () => {
               style={{ boxShadow: "var(--shadow-elevated)" }}
             >
               <div className="flex flex-col gap-1">
-                {navLinks.map((link, i) => (
+                {isHome && navLinks.map((link, i) => (
                   <motion.a
                     key={link.href}
                     href={link.href}
@@ -130,10 +148,10 @@ const Navbar = () => {
                 <Link
                   to="/demo"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-primary transition-colors hover:bg-secondary"
+                  className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
                 >
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
                   See it Live
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
                 </Link>
               </div>
               <div className="mt-auto">

@@ -46,7 +46,7 @@ const HeroSection = () => {
         </svg>
       </FloatingIcon>
 
-      <div className="mx-auto flex w-full max-w-content flex-col px-5 pb-12 pt-6 md:flex-row md:items-center md:justify-between md:px-20 md:pb-20 md:pt-14">
+      <div className="mx-auto flex w-full max-w-content flex-col px-5 pb-10 pt-6 md:flex-row md:items-center md:justify-between md:px-20 md:pb-16 md:pt-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ const HeroSection = () => {
           <h1 className="font-display text-[44px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
             The incentive layer<br />for AI commerce.
           </h1>
-          <p className="mt-4 max-w-[460px] text-[16px] leading-[1.7] text-foreground/60 md:text-[17px]">
+          <p className="mt-4 max-w-[460px] text-[16px] leading-[1.7] text-foreground/65 md:text-[17px]">
             AI agents see prices. They can't see your loyalty program, your card offers, or your real value. Parleo makes all of it readable and transactable in a single call.
           </p>
 
@@ -86,10 +86,10 @@ const HeroSection = () => {
             </button>
             <Link
               to="/demo"
-              className="group inline-flex h-11 items-center gap-2 rounded-[4px] border border-border bg-card px-6 text-[15px] font-medium text-foreground transition-all hover:border-primary/30 hover:bg-primary/[0.03] active:scale-[0.97]"
+              className="group relative inline-flex h-11 items-center gap-2 rounded-[4px] border border-accent-warm/40 bg-accent-warm/[0.06] px-6 text-[15px] font-medium text-foreground transition-all hover:border-accent-warm/60 hover:bg-accent-warm/[0.1] active:scale-[0.97] animate-glow-pulse"
             >
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
               See it Live
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse-dot" />
             </Link>
           </div>
 
