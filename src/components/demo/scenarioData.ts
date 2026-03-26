@@ -23,6 +23,17 @@ export interface ProductResult {
   rankChange?: string;
 }
 
+export type CardType = 'no-card' | 'visa' | 'amex' | 'store';
+
+export interface SandboxMerchant {
+  name: string;
+  listPrice: number;
+  topLoyalty: number;
+  loyaltyLabel: string;
+  cardDiscounts: Record<CardType, number>;
+  cardLabels: Record<Exclude<CardType, 'no-card'>, string>;
+}
+
 export interface SandboxBase {
   listPrice: number;
   loyaltyFull: number;
@@ -52,6 +63,7 @@ export interface ScenarioData {
   resultsWithParleo: ProductResult[];
   resultsWithout: ProductResult[];
   sandbox: SandboxBase;
+  sandboxMerchants: SandboxMerchant[];
   merchants: MerchantCompare[];
   apiJson: string;
 }
