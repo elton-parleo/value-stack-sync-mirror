@@ -8,39 +8,33 @@ interface Props {
 }
 
 /* ── Scenario picker metadata ── */
-const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode; products: string; brands: string[] }[] = [
+const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = [
   {
     key: "beauty",
     label: "Beauty",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><circle cx="9" cy="9" r="1" fill="currentColor" /><circle cx="15" cy="9" r="1" fill="currentColor" />
       </svg>
     ),
-    products: "Blush, skincare, fragrance",
-    brands: ["Sephora", "Ulta", "Target"],
   },
   {
     key: "outdoor",
     label: "Outdoor",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m8 3 4 8 5-5 5 15H2L8 3z" /><path d="m4.14 15.08 2.86-2.58 3 2.5 3-4.5 3 2.5 2.86 2.08" />
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
       </svg>
     ),
-    products: "Trail shoes, gear, apparel",
-    brands: ["Nike", "REI", "Backcountry"],
   },
   {
     key: "electronics",
     label: "Electronics",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="4" width="16" height="12" rx="2" /><path d="M8 20h8" /><path d="M12 16v4" />
       </svg>
     ),
-    products: "Earbuds, laptops, audio",
-    brands: ["Best Buy", "Amazon", "Sony"],
   },
 ];
 
@@ -56,18 +50,6 @@ const BrandLogo = ({ domain, size = 16 }: { domain: string; size?: number }) => 
     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
   />
 );
-
-const domainMap: Record<string, string> = {
-  Sephora: "sephora.com",
-  Ulta: "ulta.com",
-  Target: "target.com",
-  Nike: "nike.com",
-  REI: "rei.com",
-  Backcountry: "backcountry.com",
-  "Best Buy": "bestbuy.com",
-  Amazon: "amazon.com",
-  Sony: "sony.com",
-};
 
 const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const data = scenarios[scenario];
@@ -95,7 +77,6 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
 
   useEffect(() => { reset(); }, [scenario, reset]);
 
-  // Auto-scroll chat as content appears
   useEffect(() => {
     if (running) chatEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [visibleLines, showResults, showJson, running]);
@@ -124,52 +105,37 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const results = withParleo ? data.resultsWithParleo : data.resultsWithout;
 
   return (
-    <section className="py-12 md:py-20">
+    <section className="py-10 md:py-16">
       <div className="mx-auto max-w-content px-5 md:px-20">
-        <div className="font-label mb-3 text-primary">Live Demo</div>
-        <h2 className="font-heading mb-3 text-[28px] text-foreground md:text-[40px]">
+        <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
           Watch Parleo intercept an agent's research.
         </h2>
-        <p className="mb-8 max-w-[520px] text-[15px] text-foreground/50">
-          Pick a category, then hit Run to see how Parleo enriches the agent's reasoning with loyalty, card, and points data in real time.
+        <p className="mt-2 text-[16px] text-foreground/65 md:text-[17px]">
+          <span className="font-medium text-foreground">~2,000 tokens per query</span>
+          {" "}vs ~40,000 without Parleo.{" "}
+          <span className="font-semibold text-primary">20× reduction.</span>
         </p>
 
-        {/* ── Scenario Picker Cards ── */}
-        <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {/* ── Horizontal Category Toggles ── */}
+        <div className="mt-6 mb-6 flex gap-2">
           {scenarioMeta.map((s) => {
             const active = s.key === scenario;
             return (
               <button
                 key={s.key}
-                onClick={() => { onScenarioChange(s.key); }}
-                className={`relative flex items-start gap-4 rounded-xl border p-4 text-left transition-all ${
+                onClick={() => onScenarioChange(s.key)}
+                className={`relative flex items-center gap-2 rounded-lg border px-4 py-2.5 text-[14px] font-medium transition-all ${
                   active
-                    ? "border-primary bg-primary/[0.05] shadow-md"
-                    : "border-border bg-card hover:border-primary/30 hover:shadow-sm"
+                    ? "border-primary bg-primary/[0.06] text-primary shadow-sm"
+                    : "border-border bg-card text-foreground/60 hover:border-primary/30 hover:text-foreground"
                 }`}
               >
-                {/* Icon */}
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${active ? "bg-primary/10 text-primary" : "bg-secondary text-foreground/50"}`}>
-                  {s.icon}
-                </div>
-                {/* Text */}
-                <div className="min-w-0 flex-1">
-                  <div className="text-[15px] font-semibold text-foreground">{s.label}</div>
-                  <div className="mt-0.5 text-[12px] text-parleo-muted">{s.products}</div>
-                  <div className="mt-2 flex items-center gap-2">
-                    {s.brands.map((b) => (
-                      <span key={b} className="flex items-center gap-1">
-                        <BrandLogo domain={domainMap[b]} size={14} />
-                        <span className="text-[11px] text-foreground/50">{b}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {/* Active indicator */}
+                <span className={active ? "text-primary" : "text-foreground/40"}>{s.icon}</span>
+                {s.label}
                 {active && (
                   <motion.div
-                    layoutId="scenario-active"
-                    className="absolute -bottom-px left-4 right-4 h-[3px] rounded-t-full bg-primary"
+                    layoutId="cat-underline"
+                    className="absolute -bottom-px left-2 right-2 h-[2px] rounded-full bg-primary"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -202,35 +168,35 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
           </div>
 
           {/* Chat body */}
-          <div className="bg-[hsl(30_8%_95%)] p-5 md:p-7" style={{ minHeight: 280 }}>
+          <div className="bg-[hsl(30_8%_95%)] p-5 md:p-7" style={{ minHeight: 260 }}>
             {/* User message bubble */}
             <div className="mb-4 flex justify-end">
-              <div className="max-w-[480px] rounded-2xl rounded-br-md bg-primary px-5 py-3 text-[14px] leading-relaxed text-primary-foreground">
+              <div className="max-w-[480px] rounded-2xl rounded-br-md bg-primary/90 px-5 py-3 text-[14px] leading-relaxed text-primary-foreground">
                 {data.query}
               </div>
             </div>
 
             {/* Agent context pills */}
             <div className="mb-4 flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-medium uppercase tracking-wider text-parleo-muted">Context loaded:</span>
+              <span className="text-[11px] font-medium uppercase tracking-wider text-foreground/40">Context loaded:</span>
               {data.memberships.map((m) => (
                 <span key={m.name} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1 text-[12px] text-foreground/70">
                   <BrandLogo domain={m.domain} size={14} />
                   {m.name}
-                  <span className="text-parleo-muted">· {m.detail}</span>
+                  <span className="text-foreground/40">· {m.detail}</span>
                 </span>
               ))}
             </div>
 
-            {/* Run button (before agent starts) */}
+            {/* Run button */}
             {!running && (
               <div className="flex justify-center py-6">
                 <button
                   onClick={runDemo}
-                  className="group inline-flex h-12 items-center gap-3 rounded-xl bg-primary px-8 text-[15px] font-semibold text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"
-                  style={{ boxShadow: "0 4px 20px -4px hsl(213 99% 50% / 0.4)" }}
+                  className="group inline-flex h-12 items-center gap-3 rounded-xl bg-foreground px-8 text-[15px] font-semibold text-background transition-all hover:bg-foreground/90 active:scale-[0.97]"
+                  style={{ boxShadow: "0 4px 20px -4px hsl(var(--foreground) / 0.3)" }}
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21" /></svg>
                   Run Agent
                 </button>
               </div>
@@ -361,7 +327,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                       </span>
                                     )}
                                   </div>
-                                  <div className="text-[11px] text-parleo-muted">{r.specs}</div>
+                                  <div className="text-[11px] text-foreground/45">{r.specs}</div>
                                   {r.deals && (
                                     <div className="mt-1 flex flex-wrap gap-1">
                                       {r.deals.map((d) => (
@@ -375,7 +341,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                 <div className="text-right">
                                   {r.truePrice ? (
                                     <>
-                                      <div className="text-[12px] text-parleo-muted line-through">${r.listPrice.toFixed(2)}</div>
+                                      <div className="text-[12px] text-foreground/40 line-through">${r.listPrice.toFixed(2)}</div>
                                       <div className="text-[17px] font-bold text-[hsl(var(--success))]">${r.truePrice.toFixed(2)}</div>
                                       {r.savings && <div className="text-[11px] font-medium text-[hsl(var(--success))]">save {r.savings}%</div>}
                                     </>
