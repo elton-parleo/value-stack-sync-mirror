@@ -7,41 +7,6 @@ interface Props {
   onScenarioChange: (s: Scenario) => void;
 }
 
-const scenarioMeta: Record<Scenario, { icon: JSX.Element; desc: string }> = {
-  beauty: {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-        <circle cx="9" cy="10" r="1" fill="currentColor" />
-        <circle cx="15" cy="10" r="1" fill="currentColor" />
-      </svg>
-    ),
-    desc: "Sephora, Ulta, Target",
-  },
-  outdoor: {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2L2 22h20L12 2z" />
-        <path d="M8 16l4-6 4 6" />
-      </svg>
-    ),
-    desc: "Nike, REI, Backcountry",
-  },
-  electronics: {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="16" height="12" rx="2" />
-        <path d="M8 20h8" />
-        <path d="M12 16v4" />
-      </svg>
-    ),
-    desc: "Best Buy, Amazon, Sony",
-  },
-};
-
-const scenarioKeys: Scenario[] = ["beauty", "outdoor", "electronics"];
-
 const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const data = scenarios[scenario];
   const [running, setRunning] = useState(false);
@@ -92,51 +57,15 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const results = withParleo ? data.resultsWithParleo : data.resultsWithout;
 
   return (
-    <section className="py-8 md:py-12">
+    <section className="py-12 md:py-20">
       <div className="mx-auto max-w-content px-5 md:px-20">
         <div className="font-label mb-3 text-primary">Live Demo</div>
         <h2 className="font-heading mb-4 text-[28px] text-foreground md:text-[40px]">
           Watch Parleo intercept an agent's research.
         </h2>
-        <p className="mb-6 max-w-[520px] text-[15px] text-foreground/50">
-          Pick a category, then hit Run Agent to see how Parleo enriches the agent's reasoning with loyalty, card, and points data in real time.
+        <p className="mb-8 max-w-[520px] text-[15px] text-foreground/50">
+          Pick a category above, then hit Run Agent to see how Parleo enriches the agent's reasoning with loyalty, card, and points data in real time.
         </p>
-
-        {/* ── Scenario Picker ── */}
-        <div className="mb-6 grid grid-cols-3 gap-3">
-          {scenarioKeys.map((key) => {
-            const s = scenarios[key];
-            const meta = scenarioMeta[key];
-            const active = key === scenario;
-            return (
-              <button
-                key={key}
-                onClick={() => onScenarioChange(key)}
-                className={`group relative flex flex-col items-center gap-2 rounded-xl border-2 px-4 py-5 text-center transition-all ${
-                  active
-                    ? "border-primary bg-primary/[0.06] shadow-card-hover"
-                    : "border-border bg-card hover:border-primary/30 hover:shadow-card-hover"
-                }`}
-              >
-                <div className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
-                  active ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/60 group-hover:bg-primary/10 group-hover:text-primary"
-                }`}>
-                  {meta.icon}
-                </div>
-                <div className="text-[15px] font-semibold text-foreground">{s.label}</div>
-                <div className="text-[12px] text-parleo-muted">{s.product}</div>
-                <div className="text-[11px] text-foreground/40">{meta.desc}</div>
-                {active && (
-                  <motion.div
-                    layoutId="scenario-indicator"
-                    className="absolute -bottom-px left-6 right-6 h-[3px] rounded-full bg-primary"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </button>
-            );
-          })}
-        </div>
 
         {/* Demo container */}
         <div
@@ -216,23 +145,28 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                     )}
                   </div>
                   <div className="font-mono text-[13px] leading-relaxed">
-                    {data.reasoning.slice(0, visibleLines).map((line, i) => (
-                      <motion.div
-                        key={`${scenario}-${i}`}
-                        initial={{ opacity: 0, x: -8 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className={`py-0.5 ${
-                          line.phase === 1
-                            ? "text-white/40"
-                            : line.phase === 2
-                            ? "text-white/70"
-                            : "rounded-sm border-l-[3px] border-primary bg-primary/10 pl-3 text-primary-foreground"
-                        }`}
-                      >
-                        {line.text}
-                      </motion.div>
-                    ))}
+                    {data.reasoning.slice(0, visibleLines).map((line, i) => {
+                      const isCheckmark = line.text.startsWith("✓");
+                      return (
+                        <motion.div
+                          key={`${scenario}-${i}`}
+                          initial={{ opacity: 0, x: -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className={`py-0.5 ${
+                            line.phase === 1
+                              ? "text-white/40"
+                              : line.phase === 2
+                              ? "text-white/70"
+                              : isCheckmark
+                              ? "rounded-sm border-l-[4px] border-[hsl(var(--success))] bg-[hsl(var(--success))]/10 pl-3 font-semibold text-[hsl(var(--success))]"
+                              : "rounded-sm border-l-[4px] border-primary bg-primary/10 pl-3 text-primary-foreground"
+                          }`}
+                        >
+                          {line.text}
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </div>
               </motion.div>
@@ -281,7 +215,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                         layout
                         transition={{ duration: 0.4 }}
                         className={`flex flex-col gap-2 rounded-lg border bg-card p-4 sm:flex-row sm:items-center sm:gap-4 ${
-                          r.bestDeal ? "border-l-4 border-l-[hsl(var(--success))] border-t-border border-r-border border-b-border" : "border-border"
+                          r.bestDeal ? "border-l-4 border-l-primary border-t-border border-r-border border-b-border" : "border-border"
                         }`}
                         style={{ boxShadow: "var(--shadow-sm)" }}
                       >
@@ -291,14 +225,14 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
                             <span className="text-[15px] font-semibold text-foreground">{r.name}</span>
-                            {r.bestDeal && <span className="rounded-full bg-[hsl(var(--success))]/10 px-2 py-0.5 text-[11px] font-semibold text-[hsl(var(--success))]">BEST DEAL</span>}
-                            {r.rankChange && <span className="text-[11px] font-medium text-primary">{r.rankChange}</span>}
+                            {r.bestDeal && <span className="rounded-full border border-primary/20 bg-[#EFF6FF] px-2 py-0.5 text-[11px] font-semibold text-primary">BEST DEAL</span>}
+                            {r.rankChange && <span className="rounded-full bg-amber-100 border border-amber-200 px-2 py-0.5 text-[11px] font-medium text-amber-700">{r.rankChange}</span>}
                           </div>
                           <div className="text-[12px] text-parleo-muted">{r.specs}</div>
                           {r.deals && (
                             <div className="mt-1 flex flex-wrap gap-1.5">
                               {r.deals.map((d) => (
-                                <span key={d} className="rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[11px] font-medium text-primary">{d}</span>
+                                <span key={d} className="rounded-full border border-[hsl(213,99%,50%,0.2)] bg-[#EFF6FF] px-2 py-0.5 text-[11px] font-medium text-[#0166FF]">{d}</span>
                               ))}
                             </div>
                           )}
