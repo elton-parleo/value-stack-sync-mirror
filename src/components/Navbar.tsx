@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
