@@ -11,7 +11,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="min-h-screen bg-background grain-overlay">
+  <div className="min-h-screen bg-background grain-overlay overflow-x-hidden">
     <AnnouncementBanner />
     <Navbar />
     <HeroSection />
