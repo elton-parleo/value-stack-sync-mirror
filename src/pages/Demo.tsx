@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { type Scenario } from "@/components/demo/scenarioData";
 import DemoHero from "@/components/demo/DemoHero";
+import SignalsCounter from "@/components/demo/SignalsCounter";
 import LiveDemo from "@/components/demo/LiveDemo";
 import DemoSandbox from "@/components/demo/DemoSandbox";
 import ShoppingIntelligence from "@/components/demo/ShoppingIntelligence";
 import MerchantNetwork from "@/components/demo/MerchantNetwork";
 import ForDevelopers from "@/components/demo/ForDevelopers";
+import DemoStats from "@/components/demo/DemoStats";
 import DemoFooterCTA from "@/components/demo/DemoFooterCTA";
 import Footer from "@/components/Footer";
 import ContactFormDialog from "@/components/ContactFormDialog";
@@ -52,6 +54,9 @@ const Demo = () => {
         </div>
       </nav>
 
+      {/* Signals Counter */}
+      <SignalsCounter />
+
       {/* 1. Hero */}
       <DemoHero onRequestAccess={() => setContactOpen(true)} />
 
@@ -71,6 +76,9 @@ const Demo = () => {
 
       {/* 6. For Developers */}
       <ForDevelopers />
+
+      {/* Stats */}
+      <DemoStats />
 
       {/* 7. Footer CTA */}
       <DemoFooterCTA />
