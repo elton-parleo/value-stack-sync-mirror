@@ -41,7 +41,7 @@ const SegmentedControl = ({
   return (
     <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
       <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-foreground/50">{label}</div>
-      <div ref={containerRef} className="relative inline-flex flex-wrap rounded-lg border border-border bg-secondary/60 p-[3px]">
+      <div ref={containerRef} className="relative inline-flex rounded-lg border border-border bg-secondary/60 p-[3px]" style={{ flexWrap: "nowrap" }}>
         <motion.div
           className="absolute top-[3px] rounded-md bg-primary"
           style={{ height: "calc(100% - 6px)" }}
