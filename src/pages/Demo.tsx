@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { type Scenario, scenarios } from "@/components/demo/scenarioData";
 import DemoHero from "@/components/demo/DemoHero";
-import ShoppingIntelligence from "@/components/demo/ShoppingIntelligence";
 import LiveDemo from "@/components/demo/LiveDemo";
 import DemoSandbox from "@/components/demo/DemoSandbox";
+import ShoppingIntelligence from "@/components/demo/ShoppingIntelligence";
+import MerchantNetwork from "@/components/demo/MerchantNetwork";
 import ForDevelopers from "@/components/demo/ForDevelopers";
 import DemoFooterCTA from "@/components/demo/DemoFooterCTA";
 import Footer from "@/components/Footer";
@@ -53,33 +54,48 @@ const Demo = () => {
         </div>
       </nav>
 
-      {/* Sticky scenario picker */}
+      {/* Sticky scenario picker — slim, text only */}
       <div className="sticky top-12 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-content items-center gap-1 px-6 py-2 md:px-20">
+        <div className="mx-auto flex max-w-content items-center gap-0 px-6 md:px-20" style={{ height: 48 }}>
           {scenarioKeys.map((key) => {
-            const s = scenarios[key];
             const active = key === scenario;
             return (
               <button
                 key={key}
                 onClick={() => setScenario(key)}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-[13px] font-medium transition-all ${
-                  active ? "bg-primary/[0.08] text-primary" : "text-parleo-muted hover:text-foreground"
+                className={`relative px-4 py-3 text-[13px] font-medium transition-all ${
+                  active ? "text-primary" : "text-parleo-muted hover:text-foreground"
                 }`}
               >
-                <span className="h-2 w-2 rounded-full" style={{ background: s.color }} />
-                {s.label}
+                {scenarios[key].label}
+                {active && (
+                  <span className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-primary" />
+                )}
               </button>
             );
           })}
         </div>
       </div>
 
-      <DemoHero scenario={scenario} onScenarioChange={setScenario} />
-      <ShoppingIntelligence />
+      {/* 1. Hero */}
+      <DemoHero scenario={scenario} />
+
+      {/* 2. Live Demo — immediately after hero */}
       <LiveDemo scenario={scenario} />
+
+      {/* 3. Try It Yourself — sandbox */}
       <DemoSandbox scenario={scenario} />
+
+      {/* 4. How It Works — moved down from old position */}
+      <ShoppingIntelligence />
+
+      {/* 5. The Network — merchant grid */}
+      <MerchantNetwork />
+
+      {/* 6. For Developers */}
       <ForDevelopers />
+
+      {/* 7. Footer CTA */}
       <DemoFooterCTA />
       <Footer />
 
