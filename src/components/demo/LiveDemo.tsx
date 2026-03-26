@@ -4,9 +4,45 @@ import { type Scenario, scenarios } from "./scenarioData";
 
 interface Props {
   scenario: Scenario;
+  onScenarioChange: (s: Scenario) => void;
 }
 
-const LiveDemo = ({ scenario }: Props) => {
+const scenarioMeta: Record<Scenario, { icon: JSX.Element; desc: string }> = {
+  beauty: {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
+        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+        <circle cx="9" cy="10" r="1" fill="currentColor" />
+        <circle cx="15" cy="10" r="1" fill="currentColor" />
+      </svg>
+    ),
+    desc: "Sephora, Ulta, Target",
+  },
+  outdoor: {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 22h20L12 2z" />
+        <path d="M8 16l4-6 4 6" />
+      </svg>
+    ),
+    desc: "Nike, REI, Backcountry",
+  },
+  electronics: {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="4" width="16" height="12" rx="2" />
+        <path d="M8 20h8" />
+        <path d="M12 16v4" />
+      </svg>
+    ),
+    desc: "Best Buy, Amazon, Sony",
+  },
+};
+
+const scenarioKeys: Scenario[] = ["beauty", "outdoor", "electronics"];
+
+const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const data = scenarios[scenario];
   const [running, setRunning] = useState(false);
   const [visibleLines, setVisibleLines] = useState(0);
@@ -59,11 +95,50 @@ const LiveDemo = ({ scenario }: Props) => {
     <section className="py-8 md:py-12">
       <div className="mx-auto max-w-content px-5 md:px-20">
         <div className="font-label mb-3 text-primary">Live Demo</div>
-        <h2 className="font-heading mb-6 text-[28px] text-foreground md:text-[40px]">
+        <h2 className="font-heading mb-4 text-[28px] text-foreground md:text-[40px]">
           Watch Parleo intercept an agent's research.
         </h2>
+        <p className="mb-6 max-w-[520px] text-[15px] text-foreground/50">
+          Pick a category, then hit Run Agent to see how Parleo enriches the agent's reasoning with loyalty, card, and points data in real time.
+        </p>
 
-        {/* Visually distinct demo container */}
+        {/* ── Scenario Picker ── */}
+        <div className="mb-6 grid grid-cols-3 gap-3">
+          {scenarioKeys.map((key) => {
+            const s = scenarios[key];
+            const meta = scenarioMeta[key];
+            const active = key === scenario;
+            return (
+              <button
+                key={key}
+                onClick={() => onScenarioChange(key)}
+                className={`group relative flex flex-col items-center gap-2 rounded-xl border-2 px-4 py-5 text-center transition-all ${
+                  active
+                    ? "border-primary bg-primary/[0.06] shadow-card-hover"
+                    : "border-border bg-card hover:border-primary/30 hover:shadow-card-hover"
+                }`}
+              >
+                <div className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
+                  active ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/60 group-hover:bg-primary/10 group-hover:text-primary"
+                }`}>
+                  {meta.icon}
+                </div>
+                <div className="text-[15px] font-semibold text-foreground">{s.label}</div>
+                <div className="text-[12px] text-parleo-muted">{s.product}</div>
+                <div className="text-[11px] text-foreground/40">{meta.desc}</div>
+                {active && (
+                  <motion.div
+                    layoutId="scenario-indicator"
+                    className="absolute -bottom-px left-6 right-6 h-[3px] rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Demo container */}
         <div
           className="overflow-hidden rounded-2xl border border-border"
           style={{
@@ -72,18 +147,15 @@ const LiveDemo = ({ scenario }: Props) => {
             boxShadow: "var(--shadow-elevated)",
           }}
         >
-
           {/* Step 1: Query + Context */}
           <div className="border-b border-border/60 p-5 md:p-7">
             <div className="flex flex-col gap-5 md:flex-row">
-              {/* Chat bubble */}
               <div className="flex-1">
                 <div className="font-label mb-2 text-parleo-muted">User Message</div>
                 <div className="inline-block rounded-2xl rounded-bl-sm bg-primary px-5 py-3 text-[15px] text-primary-foreground">
                   {data.query}
                 </div>
               </div>
-              {/* Context */}
               <div className="w-full md:w-[280px]">
                 <div className="font-label mb-2 text-parleo-muted">Agent Context</div>
                 <div className="flex flex-col gap-2">
@@ -100,7 +172,6 @@ const LiveDemo = ({ scenario }: Props) => {
               </div>
             </div>
 
-            {/* Run button — tighter to content */}
             <div className="mt-4">
               <button
                 onClick={runDemo}
@@ -185,7 +256,6 @@ const LiveDemo = ({ scenario }: Props) => {
                         4 products · {data.resultsWithParleo.filter(r => r.deals?.length).reduce((a, r) => a + (r.deals?.length || 0), 0)} deal stacks · computed just now
                       </span>
                     </div>
-                    {/* Toggle */}
                     <div className="inline-flex rounded-lg border border-border bg-card p-0.5">
                       {["Without Parleo", "With Parleo"].map((label) => {
                         const active = label === "With Parleo" ? withParleo : !withParleo;
