@@ -107,10 +107,15 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { rank: 4, name: "Tower 28 BeachPlease", specs: "Cream blush · Clean beauty", listPrice: 20 },
     ],
     sandbox: { listPrice: 23, loyaltyFull: 2.30, loyaltyLabel: "Rouge −10%", cardFull: 5.00, cardLabel: "Amex offer", pointsFull: 4.60, pointsLabel: "4x Beauty Insider" },
+    sandboxMerchants: [
+      { name: "Sephora", listPrice: 23.00, topLoyalty: 6.90, loyaltyLabel: "Rouge 10% + 4x Beauty Insider", cardDiscounts: { 'no-card': 0, visa: 0.23, amex: 5.00, store: 1.15 }, cardLabels: { visa: '1% Visa cashback', amex: 'Amex Sephora offer −$5', store: 'Sephora Visa 5%' } },
+      { name: "Ulta", listPrice: 23.00, topLoyalty: 3.45, loyaltyLabel: "Diamond 5% + Ultamate points", cardDiscounts: { 'no-card': 0, visa: 0.23, amex: 0, store: 4.60 }, cardLabels: { visa: '1% Visa cashback', amex: 'No Amex offer', store: 'Ulta Mastercard 20%' } },
+      { name: "Target", listPrice: 22.00, topLoyalty: 1.10, loyaltyLabel: "Circle 5%", cardDiscounts: { 'no-card': 0, visa: 0.22, amex: 2.00, store: 3.30 }, cardLabels: { visa: '1% Visa cashback', amex: 'General Amex offer −$2', store: 'RedCard 15%' } },
+    ],
     merchants: [
       { name: "Sephora", domain: "sephora.com", headlinePrice: 23, trueCost: 16.40, note: "Best with Rouge + Amex" },
       { name: "Ulta", domain: "ulta.com", headlinePrice: 23, trueCost: 23 },
-      { name: "Target", domain: "target.com", headlinePrice: 23, trueCost: 23 },
+      { name: "Target", domain: "target.com", headlinePrice: 22, trueCost: 22 },
     ],
     apiJson: `{
   "product": "Rare Beauty Soft Pinch Liquid Blush",
@@ -177,10 +182,15 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { rank: 4, name: "Brooks Cascadia 17", specs: "Trail · BioMoGo DNA · 8mm drop", listPrice: 140 },
     ],
     sandbox: { listPrice: 130, loyaltyFull: 26, loyaltyLabel: "WILDHORSE20 −20%", cardFull: 15, cardLabel: "Amex Platinum $15", pointsFull: 24, pointsLabel: "Nike pts → $24" },
+    sandboxMerchants: [
+      { name: "Nike", listPrice: 130.00, topLoyalty: 30.00, loyaltyLabel: "Member code $20 + 2,400 pts $10", cardDiscounts: { 'no-card': 0, visa: 1.30, amex: 15.00, store: 3.90 }, cardLabels: { visa: '1% Visa cashback', amex: 'Amex Nike offer −$15', store: 'Nike card 3%' } },
+      { name: "REI", listPrice: 134.00, topLoyalty: 12.00, loyaltyLabel: "Co-op member $8 + dividend $4", cardDiscounts: { 'no-card': 0, visa: 1.34, amex: 5.00, store: 26.80 }, cardLabels: { visa: '1% Visa cashback', amex: 'Amex REI offer −$5', store: 'REI Mastercard 20%' } },
+      { name: "Backcountry", listPrice: 119.00, topLoyalty: 6.00, loyaltyLabel: "Loyalty credit $6", cardDiscounts: { 'no-card': 0, visa: 1.19, amex: 0, store: 5.95 }, cardLabels: { visa: '1% Visa cashback', amex: 'No Amex offer', store: 'BC card 5%' } },
+    ],
     merchants: [
       { name: "Nike", domain: "nike.com", headlinePrice: 130, trueCost: 76, note: "Best with Member + Amex" },
-      { name: "REI", domain: "rei.com", headlinePrice: 130, trueCost: 130 },
-      { name: "Backcountry", domain: "backcountry.com", headlinePrice: 130, trueCost: 130 },
+      { name: "REI", domain: "rei.com", headlinePrice: 134, trueCost: 134 },
+      { name: "Backcountry", domain: "backcountry.com", headlinePrice: 119, trueCost: 119 },
     ],
     apiJson: `{
   "product": "Nike Wildhorse 8",
@@ -245,10 +255,15 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { rank: 4, name: "Sennheiser Momentum TW4", specs: "ANC · 7mm driver · aptX Adaptive", listPrice: 299.99 },
     ],
     sandbox: { listPrice: 279.99, loyaltyFull: 30, loyaltyLabel: "Totaltech −$30", cardFull: 13.49, cardLabel: "Chase 5%", pointsFull: 0, pointsLabel: "No points" },
+    sandboxMerchants: [
+      { name: "Best Buy", listPrice: 279.99, topLoyalty: 30.00, loyaltyLabel: "Totaltech member price −$30", cardDiscounts: { 'no-card': 0, visa: 2.80, amex: 14.00, store: 14.00 }, cardLabels: { visa: '1% Visa cashback', amex: 'Chase/Amex 5%', store: 'BB card 5%' } },
+      { name: "Amazon", listPrice: 269.99, topLoyalty: 0, loyaltyLabel: "Prime (shipping only)", cardDiscounts: { 'no-card': 0, visa: 2.70, amex: 8.10, store: 13.50 }, cardLabels: { visa: '1% Visa cashback', amex: '3% cashback', store: 'Amazon card 5%' } },
+      { name: "Sony Direct", listPrice: 279.99, topLoyalty: 20.00, loyaltyLabel: "Sony member discount −$20", cardDiscounts: { 'no-card': 0, visa: 2.80, amex: 5.00, store: 28.00 }, cardLabels: { visa: '1% Visa cashback', amex: 'General Amex offer −$5', store: 'Sony card 10%' } },
+    ],
     merchants: [
       { name: "Best Buy", domain: "bestbuy.com", headlinePrice: 279.99, trueCost: 226.50, note: "Best with Totaltech + Chase" },
       { name: "Amazon", domain: "amazon.com", headlinePrice: 269.99, trueCost: 269.99 },
-      { name: "Sony Store", domain: "sony.com", headlinePrice: 279.99, trueCost: 279.99 },
+      { name: "Sony Direct", domain: "sony.com", headlinePrice: 279.99, trueCost: 279.99 },
     ],
     apiJson: `{
   "product": "Sony WF-1000XM5",
