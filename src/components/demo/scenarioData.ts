@@ -201,6 +201,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
     label: "Outdoor",
     product: "Nike Wildhorse 8",
     color: "hsl(152, 69%, 40%)",
+    queryType: "product_search",
     merchantDomains: ["nike.com", "rei.com", "backcountry.com"],
     query: "Find me the best trail running shoe under $160. Cushioning and grip are priorities.",
     memberships: [
