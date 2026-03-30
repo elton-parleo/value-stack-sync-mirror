@@ -21,7 +21,10 @@ export interface ProductResult {
   deals?: string[];
   bestDeal?: boolean;
   rankChange?: string;
+  noDeals?: boolean;
 }
+
+export type QueryType = "where_to_buy" | "product_search";
 
 export type CardType = 'no-card' | 'visa' | 'amex' | 'store';
 
