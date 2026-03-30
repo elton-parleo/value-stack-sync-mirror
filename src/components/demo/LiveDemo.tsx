@@ -281,11 +281,15 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                           style={{ boxShadow: "var(--shadow-sm)" }}
                         >
                           <div className="mb-2.5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                            <div className="flex items-center gap-2">
-                              <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/40">Shortlist</span>
-                              <span className="text-[10px] text-foreground/30">
-                                {results.length} products · {data.resultsWithParleo.filter(r => r.deals?.length).reduce((a, r) => a + (r.deals?.length || 0), 0)} deal stacks
-                              </span>
+                            <div className="flex flex-col gap-0.5">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/40">
+                                  {data.resultsHeader || "Shortlist"}
+                                </span>
+                                <span className="text-[10px] text-foreground/30">
+                                  {data.resultsSubline || `${results.length} products · ${data.resultsWithParleo.filter(r => r.deals?.length).reduce((a, r) => a + (r.deals?.length || 0), 0)} deal stacks`}
+                                </span>
+                              </div>
                             </div>
                             <div className="inline-flex rounded-lg border border-accent-warm/30 bg-secondary/50 p-0.5">
                               {["Without Parleo", "With Parleo"].map((label) => {
@@ -313,12 +317,14 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                 transition={{ duration: 0.3 }}
                                 className={`flex flex-col gap-1.5 rounded-lg border p-2.5 sm:flex-row sm:items-center sm:gap-3 ${
                                   r.bestDeal
-                                    ? "border-primary/40 bg-primary/[0.03]"
+                                    ? "border-[hsl(var(--success))]/40 bg-[hsl(var(--success))]/[0.03] border-l-[4px]"
+                                    : r.noDeals
+                                    ? "border-border bg-card opacity-60"
                                     : "border-border bg-card"
                                 }`}
                               >
                                 <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[13px] font-bold ${
-                                  r.bestDeal ? "bg-primary/10 text-primary" : "bg-secondary text-foreground/60"
+                                  r.bestDeal ? "bg-[hsl(var(--success))]/10 text-[hsl(var(--success))]" : "bg-secondary text-foreground/60"
                                 }`}>
                                   {r.rank}
                                 </div>
@@ -345,6 +351,9 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                         </span>
                                       ))}
                                     </div>
+                                  )}
+                                  {r.noDeals && (
+                                    <div className="mt-0.5 text-[10px] text-foreground/35 italic">No loyalty or card offers available</div>
                                   )}
                                 </div>
                                 <div className="text-right">
