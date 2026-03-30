@@ -317,12 +317,14 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                 transition={{ duration: 0.3 }}
                                 className={`flex flex-col gap-1.5 rounded-lg border p-2.5 sm:flex-row sm:items-center sm:gap-3 ${
                                   r.bestDeal
-                                    ? "border-primary/40 bg-primary/[0.03]"
+                                    ? "border-[hsl(var(--success))]/40 bg-[hsl(var(--success))]/[0.03] border-l-[4px]"
+                                    : r.noDeals
+                                    ? "border-border bg-card opacity-60"
                                     : "border-border bg-card"
                                 }`}
                               >
                                 <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[13px] font-bold ${
-                                  r.bestDeal ? "bg-primary/10 text-primary" : "bg-secondary text-foreground/60"
+                                  r.bestDeal ? "bg-[hsl(var(--success))]/10 text-[hsl(var(--success))]" : "bg-secondary text-foreground/60"
                                 }`}>
                                   {r.rank}
                                 </div>
@@ -349,6 +351,9 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                         </span>
                                       ))}
                                     </div>
+                                  )}
+                                  {r.noDeals && (
+                                    <div className="mt-0.5 text-[10px] text-foreground/35 italic">No loyalty or card offers available</div>
                                   )}
                                 </div>
                                 <div className="text-right">
