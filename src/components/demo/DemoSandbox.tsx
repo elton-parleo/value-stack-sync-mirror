@@ -232,7 +232,7 @@ const DemoSandbox = ({ scenario }: Props) => {
           </div>
         </div>
 
-        <div className="grid gap-2.5 md:grid-cols-3">
+        <div className={`grid gap-2.5 ${sorted.length === 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'}`}>
           <AnimatePresence mode="popLayout">
             {sorted.map((m, i) => {
               const isBest = i === 0;
