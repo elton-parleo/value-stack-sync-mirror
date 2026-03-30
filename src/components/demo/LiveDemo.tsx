@@ -281,11 +281,15 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                           style={{ boxShadow: "var(--shadow-sm)" }}
                         >
                           <div className="mb-2.5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                            <div className="flex items-center gap-2">
-                              <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/40">Shortlist</span>
-                              <span className="text-[10px] text-foreground/30">
-                                {results.length} products · {data.resultsWithParleo.filter(r => r.deals?.length).reduce((a, r) => a + (r.deals?.length || 0), 0)} deal stacks
-                              </span>
+                            <div className="flex flex-col gap-0.5">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/40">
+                                  {data.resultsHeader || "Shortlist"}
+                                </span>
+                                <span className="text-[10px] text-foreground/30">
+                                  {data.resultsSubline || `${results.length} products · ${data.resultsWithParleo.filter(r => r.deals?.length).reduce((a, r) => a + (r.deals?.length || 0), 0)} deal stacks`}
+                                </span>
+                              </div>
                             </div>
                             <div className="inline-flex rounded-lg border border-accent-warm/30 bg-secondary/50 p-0.5">
                               {["Without Parleo", "With Parleo"].map((label) => {
