@@ -59,6 +59,9 @@ export interface ScenarioData {
   label: string;
   product: string;
   color: string;
+  queryType: QueryType;
+  resultsHeader?: string;
+  resultsSubline?: string;
   merchantDomains: string[];
   query: string;
   memberships: MembershipLine[];
