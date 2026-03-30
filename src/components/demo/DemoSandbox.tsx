@@ -160,8 +160,11 @@ const DemoSandbox = ({ scenario }: Props) => {
         {/* Right: Price breakdown for best merchant */}
         <div className="w-full lg:w-[66%]">
           <div className="rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--shadow-card)" }}>
-            <div className="mb-2 text-[14px] font-semibold text-foreground">
-              {data.product} <span className="text-foreground/40">·</span> <span className="text-primary">at {best.name}</span>
+            <div className="mb-1 text-[14px] font-semibold text-foreground">
+              {data.product}
+            </div>
+            <div className="mb-2 text-[12px] text-foreground/50">
+              Best at: <span className="font-semibold text-primary">{best.name}</span>
             </div>
 
             <div className="flex flex-col gap-2">
