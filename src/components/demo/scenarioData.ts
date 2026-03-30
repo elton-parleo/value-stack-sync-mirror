@@ -277,6 +277,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
     label: "Electronics",
     product: "Sony WF-1000XM5",
     color: "hsl(215, 20%, 50%)",
+    queryType: "product_search",
     merchantDomains: ["bestbuy.com", "amazon.com", "sony.com"],
     query: "Best noise-cancelling earbuds under $300? Sound quality and call clarity matter most.",
     memberships: [
