@@ -352,7 +352,7 @@ export const merchantLogoDomains = [
   "sephora.com", "nike.com", "rei.com", "backcountry.com", "bestbuy.com",
   "amazon.com", "target.com", "ulta.com", "nordstrom.com", "macys.com",
   "lululemon.com", "apple.com", "sony.com", "dyson.com", "patagonia.com",
-  "adidas.com", "homedepot.com",
+  "adidas.com", "homedepot.com", "kohls.com",
 ];
 
 export const cardPartnerDomains = [
