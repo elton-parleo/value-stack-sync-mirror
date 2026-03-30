@@ -77,75 +77,124 @@ export interface ScenarioData {
 export const scenarios: Record<Scenario, ScenarioData> = {
   beauty: {
     label: "Beauty",
-    product: "Rare Beauty Soft Pinch Blush",
+    product: "Rare Beauty Soft Pinch Liquid Blush",
     color: "hsl(350, 80%, 60%)",
-    merchantDomains: ["sephora.com", "ulta.com", "target.com"],
-    query: "What's the best rated blush right now? I want the best deal.",
+    queryType: "where_to_buy",
+    resultsHeader: "WHERE TO BUY",
+    resultsSubline: "Rare Beauty Soft Pinch Liquid Blush · Joy · 4 retailers compared",
+    merchantDomains: ["sephora.com", "ulta.com", "target.com", "kohls.com"],
+    query: "I want to buy the Rare Beauty Soft Pinch Liquid Blush in Joy. Where should I buy it to get the best deal?",
     memberships: [
       { domain: "sephora.com", name: "Sephora Rouge", detail: "Active" },
       { domain: "americanexpress.com", name: "Amex Gold", detail: "$5 on $20+" },
+      { domain: "target.com", name: "Target Circle", detail: "Member" },
+      { domain: "ulta.com", name: "Ulta Diamond", detail: "Active" },
     ],
     reasoning: [
-      { phase: 1, text: "→ Enriching query: best rated blush, best deal" },
-      { phase: 1, text: "→ Fetching product specs from 12 merchant feeds — normalizing across 24 attributes" },
-      { phase: 1, text: "→ Scoring shortlist: Rare Beauty Soft Pinch #1 (0.91) · NARS Orgasm #2 (0.86) · Clinique Cheek Pop #3 (0.82) · Tower 28 BeachPlease #4 (0.78)" },
-      { phase: 2, text: "◈ Category intelligence: Blush (cream/liquid vs powder)" },
-      { phase: 2, text: "◈ Key specs: finish type, longevity (hrs), shade range, skin-type compatibility" },
-      { phase: 2, text: "◈ Review digest: Rare Beauty strong on blendability + longevity, mixed on shade matching for deep tones" },
-      { phase: 2, text: '◈ Intent-to-spec: "best deal" + "best rated" → optimize for value-adjusted quality score' },
-      { phase: 3, text: "◈ Parleo intercepting — loading loyalty balances for Sarah Chen" },
-      { phase: 3, text: "◈ Sephora Rouge: active tier → −10% on all makeup" },
-      { phase: 3, text: "◈ Amex Gold card offer: −$5 on Sephora $20+ · expires 4 days" },
-      { phase: 3, text: "◈ Beauty Insider: 4x points this week on blush ($4.60 value)" },
-      { phase: 3, text: "◈ Recalculating: Rare Beauty $23 → $16.40 at Sephora · $23 at Ulta · $23 at Target" },
-      { phase: 3, text: "✓ Rank confirmed: Rare Beauty #1. Sephora is best-value destination (29% below list)." },
+      { phase: 1, text: "→ Product identified: Rare Beauty Soft Pinch Liquid Blush — shade Joy" },
+      { phase: 1, text: "→ Checking availability across merchant network" },
+      { phase: 1, text: "→ Found at 4 retailers: Sephora ($23.00) · Ulta ($23.00) · Target ($22.49) · Kohl's ($23.00)" },
+      { phase: 1, text: "→ All listings verified in-stock · prices confirmed as of today" },
+      { phase: 2, text: "◈ Category intelligence: Prestige Blush (cream/liquid)" },
+      { phase: 2, text: "◈ Product is identical across all retailers — same SKU, same formulation" },
+      { phase: 2, text: "◈ Price variation is minimal ($0.51 range) — loyalty and card stacking will determine true winner" },
+      { phase: 2, text: "◈ Checking retailer-specific promotions, loyalty multipliers, and card-linked offers" },
+      { phase: 3, text: "◈ Parleo intercepting — loading Sarah Chen's value profile across 4 retailers" },
+      { phase: 3, text: "◈ Sephora: Rouge tier active → −10% ($2.30) · Amex Gold offer → −$5.00 · Beauty Insider 4x pts this week ($4.60 value)" },
+      { phase: 3, text: "◈ Ulta: Diamond tier active → −$2.00 coupon · Ulta Mastercard → 5% back ($1.15) · 3x Ultamate points ($1.73 value)" },
+      { phase: 3, text: "◈ Target: Circle member → 5% off ($1.12) · RedCard holder → additional 5% ($1.07)" },
+      { phase: 3, text: "◈ Kohl's: No loyalty status · No card offers · No active promotions" },
+      { phase: 3, text: "◈ Recalculating true costs across all 4 retailers:" },
+      { phase: 3, text: "◈   Sephora: $23.00 → $11.10 (save $11.90 / 52%)" },
+      { phase: 3, text: "◈   Ulta: $23.00 → $18.12 (save $4.88 / 21%)" },
+      { phase: 3, text: "◈   Target: $22.49 → $20.30 (save $2.19 / 10%)" },
+      { phase: 3, text: "◈   Kohl's: $23.00 → $23.00 (no savings)" },
+      { phase: 3, text: "✓ Sephora wins by $7.02 over next best option. Best-value destination for this product." },
     ],
     resultsWithParleo: [
-      { rank: 1, name: "Rare Beauty Soft Pinch", specs: "Cream blush · 12 shades · 8hr wear", listPrice: 23, truePrice: 16.40, savings: 29, deals: ["Rouge −10%", "$5 Amex", "4x pts"], bestDeal: true },
-      { rank: 2, name: "NARS Orgasm", specs: "Powder blush · Shimmer finish", listPrice: 38 },
-      { rank: 3, name: "Clinique Cheek Pop", specs: "Powder blush · Buildable", listPrice: 27 },
-      { rank: 4, name: "Tower 28 BeachPlease", specs: "Cream blush · Clean beauty", listPrice: 20 },
+      { rank: 1, name: "Sephora", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 23.00, truePrice: 11.10, savings: 52, deals: ["Rouge −10%", "Amex −$5", "4x pts ($4.60)"], bestDeal: true },
+      { rank: 2, name: "Ulta", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 23.00, truePrice: 18.12, savings: 21, deals: ["Diamond −$2", "Mastercard 5%", "3x pts ($1.73)"] },
+      { rank: 3, name: "Target", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 22.49, truePrice: 20.30, savings: 10, deals: ["Circle 5%", "RedCard 5%"] },
+      { rank: 4, name: "Kohl's", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 23.00, noDeals: true },
     ],
     resultsWithout: [
-      { rank: 1, name: "Rare Beauty Soft Pinch", specs: "Cream blush · 12 shades · 8hr wear", listPrice: 23 },
-      { rank: 2, name: "NARS Orgasm", specs: "Powder blush · Shimmer finish", listPrice: 38 },
-      { rank: 3, name: "Clinique Cheek Pop", specs: "Powder blush · Buildable", listPrice: 27 },
-      { rank: 4, name: "Tower 28 BeachPlease", specs: "Cream blush · Clean beauty", listPrice: 20 },
+      { rank: 1, name: "Target", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 22.49 },
+      { rank: 2, name: "Sephora", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 23.00 },
+      { rank: 3, name: "Ulta", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 23.00 },
+      { rank: 4, name: "Kohl's", specs: "Rare Beauty Soft Pinch Liquid Blush", listPrice: 23.00 },
     ],
     sandbox: { listPrice: 23, loyaltyFull: 2.30, loyaltyLabel: "Rouge −10%", cardFull: 5.00, cardLabel: "Amex offer", pointsFull: 4.60, pointsLabel: "4x Beauty Insider" },
     sandboxMerchants: [
       { name: "Sephora", listPrice: 23.00, topLoyalty: 6.90, loyaltyLabel: "Rouge 10% + 4x Beauty Insider", cardDiscounts: { 'no-card': 0, visa: 0.23, amex: 5.00, store: 1.15 }, cardLabels: { visa: '1% Visa cashback', amex: 'Amex Sephora offer −$5', store: 'Sephora Visa 5%' } },
-      { name: "Ulta", listPrice: 23.00, topLoyalty: 3.45, loyaltyLabel: "Diamond 5% + Ultamate points", cardDiscounts: { 'no-card': 0, visa: 0.23, amex: 0, store: 4.60 }, cardLabels: { visa: '1% Visa cashback', amex: 'No Amex offer', store: 'Ulta Mastercard 20%' } },
-      { name: "Target", listPrice: 22.00, topLoyalty: 1.10, loyaltyLabel: "Circle 5%", cardDiscounts: { 'no-card': 0, visa: 0.22, amex: 2.00, store: 3.30 }, cardLabels: { visa: '1% Visa cashback', amex: 'General Amex offer −$2', store: 'RedCard 15%' } },
+      { name: "Ulta", listPrice: 23.00, topLoyalty: 4.88, loyaltyLabel: "Diamond −$2 + 3x Ultamate pts", cardDiscounts: { 'no-card': 0, visa: 0.23, amex: 0, store: 1.15 }, cardLabels: { visa: '1% Visa cashback', amex: 'No Amex offer', store: 'Ulta Mastercard 5%' } },
+      { name: "Target", listPrice: 22.49, topLoyalty: 1.12, loyaltyLabel: "Circle 5%", cardDiscounts: { 'no-card': 0, visa: 0.22, amex: 2.00, store: 1.07 }, cardLabels: { visa: '1% Visa cashback', amex: 'General Amex offer −$2', store: 'RedCard 5%' } },
+      { name: "Kohl's", listPrice: 23.00, topLoyalty: 0, loyaltyLabel: "No loyalty program", cardDiscounts: { 'no-card': 0, visa: 0.23, amex: 0, store: 0 }, cardLabels: { visa: '1% Visa cashback', amex: 'No Amex offer', store: 'No store card' } },
     ],
     merchants: [
-      { name: "Sephora", domain: "sephora.com", headlinePrice: 23, trueCost: 16.40, note: "Best with Rouge + Amex" },
-      { name: "Ulta", domain: "ulta.com", headlinePrice: 23, trueCost: 23 },
-      { name: "Target", domain: "target.com", headlinePrice: 22, trueCost: 22 },
+      { name: "Sephora", domain: "sephora.com", headlinePrice: 23, trueCost: 11.10, note: "Best with Rouge + Amex" },
+      { name: "Ulta", domain: "ulta.com", headlinePrice: 23, trueCost: 18.12 },
+      { name: "Target", domain: "target.com", headlinePrice: 22.49, trueCost: 20.30 },
+      { name: "Kohl's", domain: "kohls.com", headlinePrice: 23, trueCost: 23 },
     ],
     apiJson: `{
-  "product": "Rare Beauty Soft Pinch Liquid Blush",
-  "best_merchant": "Sephora",
-  "list_price": 23.00,
-  "true_cost": 16.40,
-  "total_savings": 6.60,
-  "savings_pct": 28.7,
-  "rank_without_deals": 1,
-  "rank_with_deals": 1,
-  "deal_stack": [
-    { "type": "loyalty", "label": "Rouge −10%", "value": -2.30, "expires_days": null },
-    { "type": "card", "label": "Amex Gold $5 off", "value": -5.00, "expires_days": 4 },
-    { "type": "points", "label": "4x Beauty Insider", "value": -4.60, "expires_days": null }
-  ],
-  "category_intelligence": {
-    "type": "cream_blush",
-    "decisive_specs": ["finish_type", "longevity_hrs", "shade_range"],
-    "review_signal": "strong_positive",
-    "confidence": 0.91
+  "query": "Rare Beauty Soft Pinch Liquid Blush — Joy",
+  "query_type": "where_to_buy",
+  "product_match": {
+    "name": "Rare Beauty Soft Pinch Liquid Blush",
+    "shade": "Joy",
+    "category": "prestige_blush",
+    "sku_match_confidence": 0.98
   },
+  "retailers_compared": 4,
+  "best_retailer": "sephora_us",
+  "results": [
+    {
+      "retailer": "sephora_us",
+      "list_price": 23.00,
+      "true_cost": 11.10,
+      "deal_stack": [
+        { "type": "loyalty_tier", "program": "Rouge", "discount_pct": 10, "value": 2.30 },
+        { "type": "card_offer", "provider": "Amex Gold", "value": 5.00, "expires_days": 4 },
+        { "type": "points_earning", "program": "Beauty Insider", "rate": "4x", "value": 4.60 }
+      ],
+      "total_savings": 11.90,
+      "savings_pct": 51.7
+    },
+    {
+      "retailer": "ulta_us",
+      "list_price": 23.00,
+      "true_cost": 18.12,
+      "deal_stack": [
+        { "type": "loyalty_coupon", "program": "Diamond", "value": 2.00 },
+        { "type": "store_card", "provider": "Ulta Mastercard", "rate": "5%", "value": 1.15 },
+        { "type": "points_earning", "program": "Ultamate", "rate": "3x", "value": 1.73 }
+      ],
+      "total_savings": 4.88,
+      "savings_pct": 21.2
+    },
+    {
+      "retailer": "target_us",
+      "list_price": 22.49,
+      "true_cost": 20.30,
+      "deal_stack": [
+        { "type": "loyalty_discount", "program": "Circle", "rate": "5%", "value": 1.12 },
+        { "type": "store_card", "program": "RedCard", "rate": "5%", "value": 1.07 }
+      ],
+      "total_savings": 2.19,
+      "savings_pct": 9.7
+    },
+    {
+      "retailer": "kohls_us",
+      "list_price": 23.00,
+      "true_cost": 23.00,
+      "deal_stack": [],
+      "total_savings": 0,
+      "savings_pct": 0
+    }
+  ],
+  "insight": "Without loyalty data, an agent recommends Target ($22.49 list). With Parleo, Sephora saves $9.20 more than Target after Rouge + Amex + Beauty Insider stacking.",
   "pii": false,
-  "response_ms": 47,
-  "tokens_used": 1847
+  "response_ms": 47
 }`,
   },
   outdoor: {
