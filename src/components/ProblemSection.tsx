@@ -114,7 +114,7 @@ const WithParleoChat = () => (
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary">Best Deal</span>
-                <span className="font-semibold text-[13px]">Sephora</span>
+                <span className="inline-flex items-center gap-1.5 font-semibold text-[13px]"><BrandLogo name="Sephora" size={14} />Sephora</span>
               </div>
             </div>
             <div className="mt-2 space-y-0.5">
