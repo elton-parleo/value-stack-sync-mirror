@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import PulsingDot from "./PulsingDot";
+import BrandLogo from "./BrandLogo";
 
 const navItems = [
   { icon: "☰", label: "Overview", active: false },
