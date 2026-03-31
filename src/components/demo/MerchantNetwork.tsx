@@ -32,7 +32,7 @@ const MerchantNetwork = () => (
 
       <div className="mt-6 flex flex-wrap gap-2.5">
         {merchants.map((m) => (
-          <LogoPill key={m} name={m} domain={merchantDomains[m]} />
+          <LogoPill key={m} name={m} />
         ))}
       </div>
 
