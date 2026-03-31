@@ -83,7 +83,7 @@ const DashboardSection = () => {
               </div>
               <div className="flex items-center gap-1.5">
                 <PulsingDot />
-                <span className="text-[10px] font-medium text-foreground">Sephora · Live</span>
+                <span className="inline-flex items-center gap-1 text-[10px] font-medium text-foreground"><BrandLogo name="Sephora" size={12} />Sephora · Live</span>
               </div>
             </div>
 
