@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import BrandLogo from "./BrandLogo";
 
 /* ── Chat bubble components ── */
 
