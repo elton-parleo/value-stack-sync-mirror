@@ -319,6 +319,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                                 </div>
                                 <div className="min-w-0 flex-1">
                                   <div className="flex flex-wrap items-center gap-1.5">
+                                    <BrandLogo name={r.name} size={14} />
                                     <span className="text-[13px] font-semibold text-foreground">{r.name}</span>
                                     {r.bestDeal && (
                                       <span className="rounded-full border border-[hsl(var(--success))]/20 bg-[hsl(var(--success))]/10 px-1.5 py-0.5 text-[9px] font-bold text-[hsl(var(--success))]">
