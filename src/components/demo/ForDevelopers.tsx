@@ -67,8 +67,18 @@ const ForDevelopers = () => {
                     </a>
                   </div>
                   <div className="mt-3 h-px bg-white/10" />
-                  <div className="mt-2 text-[10px] text-white/30">
-                    Works with ChatGPT, Claude, Perplexity, and any MCP-compatible agent.
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-[10px] text-white/30">
+                    <span>Works with</span>
+                    {[
+                      { name: "ChatGPT", logo: "OpenAI" },
+                      { name: "Claude", logo: "Anthropic" },
+                      { name: "Perplexity", logo: "Perplexity" },
+                    ].map((a) => (
+                      <span key={a.name} className="inline-flex items-center gap-1 rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 text-white/50">
+                        <BrandLogo name={a.logo} size={10} />
+                        {a.name}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>

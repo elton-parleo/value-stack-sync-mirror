@@ -144,11 +144,15 @@ const DashboardSection = () => {
               <div className="hidden w-[200px] border-l border-border p-4 md:block" style={{ background: "#FAFAF9" }}>
                 <h4 className="text-[12px] font-semibold text-foreground">Active Incentives</h4>
                 <div className="mt-3 space-y-2.5">
-                  {["Loyalty Points", "Amex Offers", "VIP Tiers"].map((inc) => (
-                    <div key={inc} className="flex items-center justify-between">
+                  {[
+                    { label: "Loyalty Points", brand: "Sephora" },
+                    { label: "Amex Offers", brand: "Amex" },
+                    { label: "VIP Tiers", brand: "Visa" },
+                  ].map((inc) => (
+                    <div key={inc.label} className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                        <span className="text-[12px] text-foreground">{inc}</span>
+                        <BrandLogo name={inc.brand} size={12} />
+                        <span className="text-[12px] text-foreground">{inc.label}</span>
                       </div>
                       <span className="rounded px-1.5 py-0.5 text-[9px] font-semibold uppercase text-primary" style={{ background: "hsl(213 99% 50% / 0.06)" }}>
                         Live

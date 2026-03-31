@@ -57,8 +57,8 @@ const IntegrationSection = () => (
                 viewport={{ once: true }}
                 className="group flex items-center gap-2.5 rounded-lg border border-border bg-card px-3.5 py-3 transition-all duration-200 hover:border-primary/20 hover:shadow-sm"
               >
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/[0.06] transition-colors group-hover:bg-primary/[0.12]">
-                  {t.icon}
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/[0.06] transition-colors group-hover:bg-primary/[0.12]">
+                  <BrandLogo name={t.logo} size={16} />
                 </div>
                 <div>
                   <span className="text-[13px] font-medium text-foreground">{t.name}</span>
