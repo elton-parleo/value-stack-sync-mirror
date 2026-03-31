@@ -85,7 +85,7 @@ const WithoutParleoChat = () => (
             <span className="font-semibold">$38</span>
           </div>
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <div><span className="font-medium">e.l.f. Putty Blush</span><span className="ml-1.5 text-foreground/50">Target</span></div>
+            <div className="flex items-center gap-1"><span className="font-medium">e.l.f. Putty Blush</span><span className="ml-1.5 inline-flex items-center gap-1 text-foreground/50"><BrandLogo name="Target" size={12} />Target</span></div>
             <span className="text-foreground/40 italic text-[11px]">Price unavailable</span>
           </div>
         </div>
