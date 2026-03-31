@@ -1,88 +1,17 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import BrandLogo from "./BrandLogo";
 
 const integrations = [
-  {
-    name: "MCP",
-    desc: "Model Context Protocol",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "OpenAPI",
-    desc: "REST standard",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <path d="M4 17l6-6-6-6M12 19h8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "ACP",
-    desc: "Agent Commerce Protocol",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "AP2",
-    desc: "Agent Payments Protocol",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="10" /><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 010 4H8M12 6v2m0 8v2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "UCP",
-    desc: "Google Unified Commerce",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "Visa TAP",
-    desc: "Token Auth Protocol",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "Shopify",
-    desc: "Commerce platform",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "Stripe",
-    desc: "Payments",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" />
-      </svg>
-    ),
-  },
-  {
-    name: "Oracle",
-    desc: "Enterprise stack",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-        <ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-      </svg>
-    ),
-  },
+  { name: "MCP", desc: "Model Context Protocol", logo: "Anthropic" },
+  { name: "OpenAPI", desc: "REST standard", logo: "OpenAI" },
+  { name: "ACP", desc: "Agent Commerce Protocol", logo: "Stripe" },
+  { name: "AP2", desc: "Agent Payments Protocol", logo: "Google" },
+  { name: "UCP", desc: "Google Unified Commerce", logo: "Google" },
+  { name: "Visa TAP", desc: "Token Auth Protocol", logo: "Visa" },
+  { name: "Shopify", desc: "Commerce platform", logo: "Shopify" },
+  { name: "Stripe", desc: "Payments", logo: "Stripe" },
+  { name: "Oracle", desc: "Enterprise stack", logo: "Oracle" },
 ];
 
 const IntegrationSection = () => (
@@ -128,8 +57,8 @@ const IntegrationSection = () => (
                 viewport={{ once: true }}
                 className="group flex items-center gap-2.5 rounded-lg border border-border bg-card px-3.5 py-3 transition-all duration-200 hover:border-primary/20 hover:shadow-sm"
               >
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/[0.06] transition-colors group-hover:bg-primary/[0.12]">
-                  {t.icon}
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/[0.06] transition-colors group-hover:bg-primary/[0.12]">
+                  <BrandLogo name={t.logo} size={16} />
                 </div>
                 <div>
                   <span className="text-[13px] font-medium text-foreground">{t.name}</span>

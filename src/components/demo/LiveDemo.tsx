@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { type Scenario, scenarios } from "./scenarioData";
+import BrandLogo from "../BrandLogo";
 
 interface Props {
   scenario: Scenario;
@@ -36,18 +37,6 @@ const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = 
     ),
   },
 ];
-
-const BrandLogo = ({ domain, size = 16 }: { domain: string; size?: number }) => (
-  <img
-    src={`https://logo.clearbit.com/${domain}`}
-    alt=""
-    width={size}
-    height={size}
-    className="rounded-sm"
-    loading="lazy"
-    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-  />
-);
 
 const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
   const data = scenarios[scenario];
@@ -188,7 +177,7 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
               <span className="text-[10px] font-medium uppercase tracking-wider text-foreground/40">Context:</span>
               {data.memberships.map((m) => (
                 <span key={m.name} className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] text-foreground/70">
-                  <BrandLogo domain={m.domain} size={12} />
+                  <BrandLogo name={m.name} domain={m.domain} size={12} />
                   {m.name}
                   <span className="text-foreground/35">· {m.detail}</span>
                 </span>

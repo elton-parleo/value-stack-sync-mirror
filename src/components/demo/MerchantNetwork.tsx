@@ -1,4 +1,5 @@
 import AnimatedSection from "../AnimatedSection";
+import BrandLogo from "../BrandLogo";
 
 const merchants = [
   "Sephora", "Nike", "REI", "Backcountry", "Best Buy", "Amazon", "Target",
@@ -6,29 +7,15 @@ const merchants = [
   "Dyson", "Patagonia", "Adidas",
 ];
 
-const merchantDomains: Record<string, string> = {
-  "Sephora": "sephora.com", "Nike": "nike.com", "REI": "rei.com", "Backcountry": "backcountry.com",
-  "Best Buy": "bestbuy.com", "Amazon": "amazon.com", "Target": "target.com", "Ulta": "ulta.com",
-  "Home Depot": "homedepot.com", "Nordstrom": "nordstrom.com", "Macy's": "macys.com",
-  "Lululemon": "lululemon.com", "Apple": "apple.com", "Sony": "sony.com", "Dyson": "dyson.com",
-  "Patagonia": "patagonia.com", "Adidas": "adidas.com",
-};
-
 const cardPartners = [
-  { name: "Amex", domain: "americanexpress.com" },
-  { name: "Visa", domain: "visa.com" },
-  { name: "Chase", domain: "chase.com" },
+  { name: "Amex" },
+  { name: "Visa" },
+  { name: "Chase" },
 ];
 
-const LogoPill = ({ name, domain }: { name: string; domain: string }) => (
+const LogoPill = ({ name }: { name: string }) => (
   <span className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-[13px] font-bold text-foreground/80">
-    <img
-      src={`https://img.logo.dev/${domain}?token=pk_anonymous&size=60&format=png`}
-      alt={name}
-      className="h-4 opacity-70"
-      style={{ filter: "grayscale(30%)" }}
-      onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-    />
+    <BrandLogo name={name} size={16} grayscale />
     {name}
   </span>
 );
@@ -45,7 +32,7 @@ const MerchantNetwork = () => (
 
       <div className="mt-6 flex flex-wrap gap-2.5">
         {merchants.map((m) => (
-          <LogoPill key={m} name={m} domain={merchantDomains[m]} />
+          <LogoPill key={m} name={m} />
         ))}
       </div>
 
@@ -54,13 +41,7 @@ const MerchantNetwork = () => (
         <div className="flex gap-2">
           {cardPartners.map((c) => (
             <span key={c.name} className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-[13px] font-bold text-foreground/70">
-              <img
-                src={`https://img.logo.dev/${c.domain}?token=pk_anonymous&size=60&format=png`}
-                alt={c.name}
-                className="h-4 opacity-60"
-                style={{ filter: "grayscale(30%)" }}
-                onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-              />
+              <BrandLogo name={c.name} size={16} grayscale />
               {c.name}
             </span>
           ))}

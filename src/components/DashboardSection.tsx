@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import PulsingDot from "./PulsingDot";
+import BrandLogo from "./BrandLogo";
 
 const navItems = [
   { icon: "☰", label: "Overview", active: false },
@@ -82,7 +83,7 @@ const DashboardSection = () => {
               </div>
               <div className="flex items-center gap-1.5">
                 <PulsingDot />
-                <span className="text-[10px] font-medium text-foreground">Sephora · Live</span>
+                <span className="inline-flex items-center gap-1 text-[10px] font-medium text-foreground"><BrandLogo name="Sephora" size={12} />Sephora · Live</span>
               </div>
             </div>
 
@@ -90,7 +91,7 @@ const DashboardSection = () => {
             <div className="flex flex-col md:flex-row" style={{ minHeight: 400 }}>
               {/* Sidebar */}
               <div className="hidden w-[180px] flex-col border-r border-border md:flex" style={{ background: "#FAFAF9" }}>
-                <div className="px-4 pb-3 pt-4 text-[12px] font-semibold text-foreground">Sephora</div>
+                <div className="flex items-center gap-1.5 px-4 pb-3 pt-4 text-[12px] font-semibold text-foreground"><BrandLogo name="Sephora" size={14} />Sephora</div>
                 <div className="border-t border-border" />
                 <div className="flex-1 py-1.5">
                   {navItems.map((n) => (
@@ -143,11 +144,15 @@ const DashboardSection = () => {
               <div className="hidden w-[200px] border-l border-border p-4 md:block" style={{ background: "#FAFAF9" }}>
                 <h4 className="text-[12px] font-semibold text-foreground">Active Incentives</h4>
                 <div className="mt-3 space-y-2.5">
-                  {["Loyalty Points", "Amex Offers", "VIP Tiers"].map((inc) => (
-                    <div key={inc} className="flex items-center justify-between">
+                  {[
+                    { label: "Loyalty Points", brand: "Sephora" },
+                    { label: "Amex Offers", brand: "Amex" },
+                    { label: "VIP Tiers", brand: "Visa" },
+                  ].map((inc) => (
+                    <div key={inc.label} className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                        <span className="text-[12px] text-foreground">{inc}</span>
+                        <BrandLogo name={inc.brand} size={12} />
+                        <span className="text-[12px] text-foreground">{inc.label}</span>
                       </div>
                       <span className="rounded px-1.5 py-0.5 text-[9px] font-semibold uppercase text-primary" style={{ background: "hsl(213 99% 50% / 0.06)" }}>
                         Live

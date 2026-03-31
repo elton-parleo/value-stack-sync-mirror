@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import BrandLogo from "./BrandLogo";
 
 /* ── Chat bubble components ── */
 
@@ -76,15 +77,15 @@ const WithoutParleoChat = () => (
         Here are some popular blushes:
         <div className="mt-2 space-y-1.5">
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <div><span className="font-medium">Rare Beauty Soft Pinch</span><span className="ml-1.5 text-foreground/50">Sephora</span></div>
+            <div className="flex items-center gap-1"><span className="font-medium">Rare Beauty Soft Pinch</span><span className="ml-1.5 inline-flex items-center gap-1 text-foreground/50"><BrandLogo name="Sephora" size={12} />Sephora</span></div>
             <span className="font-semibold">$23</span>
           </div>
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <div><span className="font-medium">NARS Orgasm</span><span className="ml-1.5 text-foreground/50">Nordstrom</span></div>
+            <div className="flex items-center gap-1"><span className="font-medium">NARS Orgasm</span><span className="ml-1.5 inline-flex items-center gap-1 text-foreground/50"><BrandLogo name="Nordstrom" size={12} />Nordstrom</span></div>
             <span className="font-semibold">$38</span>
           </div>
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <div><span className="font-medium">e.l.f. Putty Blush</span><span className="ml-1.5 text-foreground/50">Target</span></div>
+            <div className="flex items-center gap-1"><span className="font-medium">e.l.f. Putty Blush</span><span className="ml-1.5 inline-flex items-center gap-1 text-foreground/50"><BrandLogo name="Target" size={12} />Target</span></div>
             <span className="text-foreground/40 italic text-[11px]">Price unavailable</span>
           </div>
         </div>
@@ -113,7 +114,7 @@ const WithParleoChat = () => (
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary">Best Deal</span>
-                <span className="font-semibold text-[13px]">Sephora</span>
+                <span className="inline-flex items-center gap-1.5 font-semibold text-[13px]"><BrandLogo name="Sephora" size={14} />Sephora</span>
               </div>
             </div>
             <div className="mt-2 space-y-0.5">
@@ -142,11 +143,11 @@ const WithParleoChat = () => (
 
           {/* Other retailers */}
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <span className="font-medium">Ulta</span>
+            <span className="inline-flex items-center gap-1 font-medium"><BrandLogo name="Ulta" size={12} />Ulta</span>
             <span className="text-foreground/60">$23.00 (no offers found)</span>
           </div>
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <span className="font-medium">Target</span>
+            <span className="inline-flex items-center gap-1 font-medium"><BrandLogo name="Target" size={12} />Target</span>
             <span className="text-foreground/60">$23.00 (no offers found)</span>
           </div>
         </div>

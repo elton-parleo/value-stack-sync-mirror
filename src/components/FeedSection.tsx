@@ -1,23 +1,26 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import BrandLogo from "./BrandLogo";
 
 /* ── Tiny illustrative visuals for each state ── */
 
 const FeedVisual = () => (
   <div className="mt-4 space-y-1.5">
-    {["sephora_loyalty_tiers", "amex_plat_benefits", "target_circle_offers"].map((id, i) => (
+    {[
+      { id: "sephora_loyalty_tiers", brand: "Sephora" },
+      { id: "amex_plat_benefits", brand: "Amex" },
+      { id: "target_circle_offers", brand: "Target" },
+    ].map((item, i) => (
       <motion.div
-        key={id}
+        key={item.id}
         initial={{ opacity: 0, x: -8 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.4 + i * 0.08 }}
         viewport={{ once: true }}
         className="flex items-center gap-2 rounded-md bg-secondary/60 px-3 py-2"
       >
-        <svg width="10" height="10" viewBox="0 0 10 10" className="shrink-0">
-          <rect x="1" y="1" width="8" height="8" rx="2" stroke="hsl(var(--parleo-muted))" strokeWidth="1" fill="none" opacity="0.5" />
-        </svg>
-        <span className="font-mono text-[10px] text-parleo-muted">{id}</span>
+        <BrandLogo name={item.brand} size={12} />
+        <span className="font-mono text-[10px] text-parleo-muted">{item.id}</span>
         <span className="ml-auto rounded bg-secondary px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider text-parleo-muted/60">
           {["offers", "cards", "loyalty"][i]}
         </span>
