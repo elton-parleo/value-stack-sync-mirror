@@ -53,11 +53,11 @@ const BrandLogo = ({ name, domain, size = 16, className = "", grayscale = false 
   if (!d) return null;
   return (
     <img
-      src={`https://img.logo.dev/${d}?token=pk_anonymous&size=60&format=png`}
+      src={`https://www.google.com/s2/favicons?domain=${d}&sz=${size > 20 ? 64 : 32}`}
       alt={name}
       width={size}
       height={size}
-      className={`shrink-0 ${grayscale ? "opacity-70" : ""} ${className}`}
+      className={`shrink-0 rounded-sm ${grayscale ? "opacity-70" : ""} ${className}`}
       style={grayscale ? { filter: "grayscale(30%)" } : undefined}
       loading="lazy"
       onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}

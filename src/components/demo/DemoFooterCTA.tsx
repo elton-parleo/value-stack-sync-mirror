@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ContactFormDialog from "../ContactFormDialog";
+import BrandLogo from "../BrandLogo";
 
 const DemoFooterCTA = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -40,9 +41,14 @@ const DemoFooterCTA = () => {
         </div>
 
         <div className="mt-5 flex items-center justify-center gap-2">
-          {["MCP", "ACP", "OpenAPI"].map((p) => (
-            <span key={p} className="rounded-md border border-border bg-card px-2.5 py-1 text-[12px] font-medium text-foreground/70">
-              {p}
+          {[
+            { name: "MCP", logo: "Anthropic" },
+            { name: "ACP", logo: "Stripe" },
+            { name: "OpenAPI", logo: "OpenAI" },
+          ].map((p) => (
+            <span key={p.name} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-2.5 py-1 text-[12px] font-medium text-foreground/70">
+              <BrandLogo name={p.logo} size={12} />
+              {p.name}
             </span>
           ))}
         </div>
