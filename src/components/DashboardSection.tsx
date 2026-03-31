@@ -91,7 +91,7 @@ const DashboardSection = () => {
             <div className="flex flex-col md:flex-row" style={{ minHeight: 400 }}>
               {/* Sidebar */}
               <div className="hidden w-[180px] flex-col border-r border-border md:flex" style={{ background: "#FAFAF9" }}>
-                <div className="px-4 pb-3 pt-4 text-[12px] font-semibold text-foreground">Sephora</div>
+                <div className="flex items-center gap-1.5 px-4 pb-3 pt-4 text-[12px] font-semibold text-foreground"><BrandLogo name="Sephora" size={14} />Sephora</div>
                 <div className="border-t border-border" />
                 <div className="flex-1 py-1.5">
                   {navItems.map((n) => (
