@@ -143,7 +143,7 @@ const WithParleoChat = () => (
 
           {/* Other retailers */}
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <span className="font-medium">Ulta</span>
+            <span className="inline-flex items-center gap-1 font-medium"><BrandLogo name="Ulta" size={12} />Ulta</span>
             <span className="text-foreground/60">$23.00 (no offers found)</span>
           </div>
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
