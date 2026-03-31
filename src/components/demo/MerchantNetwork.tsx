@@ -41,13 +41,7 @@ const MerchantNetwork = () => (
         <div className="flex gap-2">
           {cardPartners.map((c) => (
             <span key={c.name} className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-[13px] font-bold text-foreground/70">
-              <img
-                src={`https://img.logo.dev/${c.domain}?token=pk_anonymous&size=60&format=png`}
-                alt={c.name}
-                className="h-4 opacity-60"
-                style={{ filter: "grayscale(30%)" }}
-                onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-              />
+              <BrandLogo name={c.name} size={16} grayscale />
               {c.name}
             </span>
           ))}
