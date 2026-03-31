@@ -251,6 +251,7 @@ const DemoSandbox = ({ scenario }: Props) => {
                   style={{ boxShadow: isBest ? "var(--shadow-card-hover)" : "var(--shadow-card)" }}
                 >
                   <div className="mb-1.5 flex items-center gap-2">
+                    <BrandLogo name={m.name} size={16} />
                     <span className="text-[13px] font-semibold text-foreground">{m.name}</span>
                     {isBest && (
                       <span className="rounded-full border border-primary/20 bg-primary/[0.08] px-1.5 py-0.5 text-[9px] font-bold text-primary">
