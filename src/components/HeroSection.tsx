@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import LiveDataWidget from "./LiveDataWidget";
 import ContactFormDialog from "./ContactFormDialog";
+import BrandLogo from "./BrandLogo";
 
 const FloatingIcon = ({ children, className, delay = 0 }: {children: React.ReactNode;className?: string;delay?: number;}) =>
 <motion.div
