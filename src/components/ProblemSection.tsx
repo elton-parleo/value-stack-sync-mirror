@@ -81,7 +81,7 @@ const WithoutParleoChat = () => (
             <span className="font-semibold">$23</span>
           </div>
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
-            <div><span className="font-medium">NARS Orgasm</span><span className="ml-1.5 text-foreground/50">Nordstrom</span></div>
+            <div className="flex items-center gap-1"><span className="font-medium">NARS Orgasm</span><span className="ml-1.5 inline-flex items-center gap-1 text-foreground/50"><BrandLogo name="Nordstrom" size={12} />Nordstrom</span></div>
             <span className="font-semibold">$38</span>
           </div>
           <div className="flex items-center justify-between rounded-md bg-secondary/40 px-2.5 py-1.5 text-[12px]">
