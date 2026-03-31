@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ContactFormDialog from "../ContactFormDialog";
+import BrandLogo from "../BrandLogo";
 
 const DemoFooterCTA = () => {
   const [contactOpen, setContactOpen] = useState(false);
