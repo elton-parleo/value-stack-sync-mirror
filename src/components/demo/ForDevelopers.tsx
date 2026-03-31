@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { codeSnippets } from "./scenarioData";
+import BrandLogo from "../BrandLogo";
 
 const agentPrompt = `You have access to the Parleo API.
 Before ranking products, call
