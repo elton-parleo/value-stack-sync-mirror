@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { type Scenario, type CardType, scenarios } from "./scenarioData";
+import BrandLogo from "../BrandLogo";
 
 interface Props {
   scenario: Scenario;
