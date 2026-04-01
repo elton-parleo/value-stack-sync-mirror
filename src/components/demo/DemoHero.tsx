@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import demoHeroLifestyle from "@/assets/demo-hero-lifestyle.jpg";
+import editorialHands from "@/assets/editorial-hands.jpg";
 
 interface Props {
   onRequestAccess: () => void;
