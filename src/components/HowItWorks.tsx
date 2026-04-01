@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import generativeTopology from "@/assets/generative-topology.jpg";
 
 const benefits = [
   {
