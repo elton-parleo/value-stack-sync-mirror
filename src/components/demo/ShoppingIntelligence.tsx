@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
+import shoppingEditorial from "@/assets/shopping-editorial.jpg";
 
 const cards = [
   {
