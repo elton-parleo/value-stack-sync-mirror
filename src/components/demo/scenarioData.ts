@@ -91,7 +91,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { domain: "ulta.com", name: "Ulta Diamond", detail: "Active" },
     ],
     reasoning: [
-      { phase: 1, text: "→ Product identified: Rare Beauty Soft Pinch Liquid Blush — shade Joy" },
+      { phase: 1, text: "→ Product identified: Rare Beauty Soft Pinch Liquid Blush, shade Joy" },
       { phase: 1, text: "→ Checking availability across merchant network" },
       { phase: 1, text: "→ Found at 4 retailers: Sephora ($23.00) · Ulta ($23.00) · Target ($22.49) · Kohl's ($23.00)" },
       { phase: 1, text: "→ All listings verified in-stock · prices confirmed as of today" },
