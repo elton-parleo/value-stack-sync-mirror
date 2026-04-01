@@ -76,13 +76,13 @@ const TeamSection = () => (
               </div>
             </div>
             <p className="mt-3 text-[15px] leading-[1.7] text-foreground/55">{t.bio}</p>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
+            <div className="mt-4 flex flex-wrap items-center gap-5">
               {t.logos.map((l) => (
                 <img
                   key={l.name}
                   src={l.src}
                   alt={l.name}
-                  className="h-8 w-auto object-contain opacity-50 grayscale transition-all group-hover:opacity-70"
+                  className="h-14 w-auto object-contain opacity-50 grayscale transition-all group-hover:opacity-70"
                   loading="lazy"
                 />
               ))}
