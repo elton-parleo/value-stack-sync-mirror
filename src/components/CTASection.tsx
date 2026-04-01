@@ -85,8 +85,8 @@ const CTASection = () => {
             className="hidden overflow-hidden rounded-2xl md:block"
           >
             <img
-              src={lifestyleFragrance}
-              alt="Premium fragrances"
+              src={lifestyleRetail}
+              alt="Luxury retail moment"
               className="h-[280px] w-[220px] object-cover"
               loading="lazy"
               width={1024}

@@ -17,12 +17,12 @@ const DemoFooterCTA = () => {
           {/* Editorial image */}
           <div className="hidden overflow-hidden rounded-2xl md:block">
             <img
-              src={lifestyleBeauty}
-              alt="Beauty products editorial"
+              src={lifestylePortrait}
+              alt="Editorial fashion portrait"
               className="h-[260px] w-[200px] object-cover"
               loading="lazy"
-              width={1024}
-              height={800}
+              width={800}
+              height={1024}
             />
           </div>
 

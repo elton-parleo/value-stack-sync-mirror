@@ -45,8 +45,8 @@ const ShoppingIntelligence = () => (
           className="hidden overflow-hidden rounded-xl md:block"
         >
           <img
-            src={lifestyleSkincare}
-            alt="Luxury skincare products"
+            src={lifestyleFashion}
+            alt="Editorial fashion"
             className="h-[160px] w-[200px] object-cover"
             loading="lazy"
             width={800}
