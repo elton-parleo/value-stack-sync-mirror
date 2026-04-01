@@ -29,7 +29,7 @@ const ShoppingIntelligence = () => (
         Three layers of intelligence. One API call.
       </h2>
       <p className="mt-2 mb-6 text-[15px] text-foreground/60">
-        Everything an agent needs to make the right recommendation, pre-computed and ready.
+        Everything an agent needs pre-computed: product identity, true-cost deal signals, and semantic content.
       </p>
 
       <div className="grid gap-3 md:grid-cols-3">
