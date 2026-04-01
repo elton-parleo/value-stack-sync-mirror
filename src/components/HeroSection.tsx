@@ -114,12 +114,15 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Right side: Live widget */}
+        {/* Right side: Live widget + lifestyle image */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 md:mt-0 md:block">
+          className="relative mt-10 md:mt-0 md:block">
+          <div className="pointer-events-none absolute -bottom-8 -right-8 hidden h-[280px] w-[320px] overflow-hidden rounded-2xl opacity-[0.12] md:block">
+            <img src={heroLifestyle} alt="" className="h-full w-full object-cover" loading="lazy" />
+          </div>
           <LiveDataWidget />
         </motion.div>
       </div>

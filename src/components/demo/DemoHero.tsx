@@ -45,6 +45,17 @@ const DemoHero = ({ onRequestAccess }: Props) => {
             </button>
           </div>
         </motion.div>
+
+        {/* Hero lifestyle image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-8 hidden overflow-hidden rounded-2xl md:mt-0 md:block md:w-[360px] md:shrink-0"
+          style={{ boxShadow: "var(--shadow-elevated)" }}
+        >
+          <img src={demoHeroLifestyle} alt="Aspirational shopping experience" className="h-[320px] w-full object-cover" />
+        </motion.div>
       </div>
 
       <div className="decorative-line mt-4" />
