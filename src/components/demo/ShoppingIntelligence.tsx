@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
-import generativeTopology from "@/assets/generative-topology.jpg";
+import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
 
 const cards = [
   {
@@ -12,7 +12,7 @@ const cards = [
   {
     num: "02",
     title: "Deal Signals + True Cost",
-    body: "Promo codes, loyalty multipliers, card cashback, price history — collapsed into a deal score and true out-of-pocket cost per merchant.",
+    body: "Promo codes, loyalty multipliers, card cashback, price history collapsed into a deal score and true out-of-pocket cost per merchant.",
     visual: "$279 → $218",
   },
   {
@@ -25,17 +25,35 @@ const cards = [
 
 const ShoppingIntelligence = () => (
   <AnimatedSection className="py-8 md:py-12 relative overflow-hidden">
-    {/* Subtle editorial background strip */}
-    <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-      <img src={generativeTopology} alt="" className="h-full w-full object-cover" loading="lazy" />
-    </div>
     <div className="relative mx-auto max-w-content px-5 md:px-20">
-      <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
-        Three layers of intelligence. One API call.
-      </h2>
-      <p className="mt-2 mb-6 text-[15px] text-foreground/60">
-        Everything an agent needs pre-computed: product identity, true-cost deal signals, and semantic content.
-      </p>
+      <div className="grid gap-8 md:grid-cols-[1fr_auto] items-start">
+        <div>
+          <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
+            Three layers of intelligence. One API call.
+          </h2>
+          <p className="mt-2 mb-6 text-[15px] text-foreground/60">
+            Everything an agent needs pre-computed: product identity, true-cost deal signals, and semantic content.
+          </p>
+        </div>
+
+        {/* Editorial accent image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="hidden overflow-hidden rounded-xl md:block"
+        >
+          <img
+            src={lifestyleSkincare}
+            alt="Luxury skincare products"
+            className="h-[160px] w-[200px] object-cover"
+            loading="lazy"
+            width={800}
+            height={1024}
+          />
+        </motion.div>
+      </div>
 
       <div className="grid gap-3 md:grid-cols-3">
         {cards.map((c, i) => (

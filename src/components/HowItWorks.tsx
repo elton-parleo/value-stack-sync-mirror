@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
-import generativeTopology from "@/assets/generative-topology.jpg";
+import lifestyleVanity from "@/assets/lifestyle-vanity.jpg";
+import lifestyleUnboxing from "@/assets/lifestyle-unboxing.jpg";
 
 const benefits = [
   {
@@ -54,27 +55,51 @@ const timeline = [
 const HowItWorks = () => (
   <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[10%] top-[50%] -translate-y-1/2" />
-    <div className="pointer-events-none absolute left-0 bottom-0 hidden h-[300px] w-[300px] overflow-hidden opacity-[0.05] md:block" style={{ borderRadius: "0 100% 0 0" }}>
-      <img src={generativeTopology} alt="" className="h-full w-full object-cover" loading="lazy" />
-    </div>
     <div className="decorative-line" />
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
-      <div className="flex items-center gap-3">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 6v6l4 2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+      {/* Section header with editorial image pair */}
+      <div className="grid gap-8 md:grid-cols-[1fr_auto]">
+        <div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <span className="font-label text-parleo-muted">THE WINDOW</span>
+          </div>
+          <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
+            The early-mover advantage<br className="hidden md:block" /> is closing fast.
+          </h2>
+          <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
+            Make loyalty, promos, and card-linked offers visible to agents, so your best customers don't see you as 'just another price' in Gemini, ChatGPT, or Perplexity.
+          </p>
         </div>
-        <span className="font-label text-parleo-muted">THE WINDOW</span>
+
+        {/* Editorial image pair */}
+        <div className="hidden gap-3 md:flex">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-[160px] overflow-hidden rounded-xl"
+          >
+            <img src={lifestyleVanity} alt="Luxury beauty vanity" className="h-[200px] w-full object-cover" loading="lazy" width={1024} height={800} />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="w-[140px] overflow-hidden rounded-xl mt-6"
+          >
+            <img src={lifestyleUnboxing} alt="Luxury unboxing moment" className="h-[180px] w-full object-cover" loading="lazy" width={800} height={1024} />
+          </motion.div>
+        </div>
       </div>
-      <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-        The early-mover advantage<br className="hidden md:block" /> is closing fast.
-      </h2>
-      <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
-        Make loyalty, promos, and card-linked offers visible to agents, so your best customers don't see you as 'just another price' in Gemini, ChatGPT, or Perplexity.
-      </p>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {timeline.map((t, i) => (
