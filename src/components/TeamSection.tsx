@@ -13,7 +13,7 @@ const team = [
   {
     name: "Samar Birwadker",
     title: "Co-Founder · Commercial Strategy",
-    bio: "3x Founder, built Good&Co (acq. Axel Springer, 25M ARR). VP Marketing at MetaMap (Fintech). Brand & growth at WPP/AKQA for Nike, Xbox, Google.",
+    bio: "Founded Good&Co (acq. Axel Springer, 25M ARR). VP Marketing at MetaMap. Brand & growth at WPP/AKQA for Nike, Xbox, Google.",
     logos: [
       { name: "AXEL SPRINGER", src: axelSpringerLogo },
       { name: "WPP", src: wppLogo },
@@ -26,7 +26,7 @@ const team = [
   {
     name: "Elton Cheung",
     title: "Co-Founder · Protocol Architecture",
-    bio: "15 years experience in E-commerce. Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
+    bio: "Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
     logos: [
       { name: "RAKUTEN", src: rakutenLogo },
       { name: "GROUPON", src: grouponLogo },
