@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import ContactFormDialog from "./ContactFormDialog";
 import wavePattern from "@/assets/wave-pattern.png";
-import fabricFlow from "@/assets/fabric-flow.jpg";
+import lifestyleFragrance from "@/assets/lifestyle-fragrance.jpg";
 
 const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -13,10 +13,6 @@ const CTASection = () => {
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
         background: 'radial-gradient(ellipse at center, hsl(213 99% 50%), transparent 70%)'
       }} />
-
-      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-        <img src={fabricFlow} alt="" className="h-full w-full object-cover" loading="lazy" />
-      </div>
 
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 opacity-[0.12]">
         <img src={wavePattern} alt="" className="w-full" loading="lazy" />
@@ -45,38 +41,59 @@ const CTASection = () => {
         </div>
       </motion.div>
 
-      <div className="mx-auto max-w-[560px] px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/[0.08]">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
-            Be visible to every agent.
-          </h2>
-          <p className="mt-3 text-[17px] text-foreground/55" style={{ lineHeight: 1.7 }}>
-            The result: Parleo changes which merchant wins the recommendation, not just the price shown.
-          </p>
-          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <button
-              onClick={() => setContactOpen(true)}
-              className="group inline-flex h-12 items-center gap-2 rounded-[4px] bg-primary px-7 text-[15px] font-medium text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"
-              style={{ boxShadow: '0 4px 16px -4px hsl(213 99% 50% / 0.3)' }}
-            >
-              Request Demo
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+      <div className="mx-auto max-w-content px-6 md:px-20">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[560px]"
+          >
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/[0.08]">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </button>
-          </div>
-        </motion.div>
+            </div>
+            <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
+              Be visible to every agent.
+            </h2>
+            <p className="mt-3 text-[17px] text-foreground/55" style={{ lineHeight: 1.7 }}>
+              The result: Parleo changes which merchant wins the recommendation, not just the price shown.
+            </p>
+            <div className="mt-6">
+              <button
+                onClick={() => setContactOpen(true)}
+                className="group inline-flex h-12 items-center gap-2 rounded-[4px] bg-primary px-7 text-[15px] font-medium text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"
+                style={{ boxShadow: '0 4px 16px -4px hsl(213 99% 50% / 0.3)' }}
+              >
+                Request Demo
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Editorial accent image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="hidden overflow-hidden rounded-2xl md:block"
+          >
+            <img
+              src={lifestyleFragrance}
+              alt="Premium fragrances"
+              className="h-[280px] w-[220px] object-cover"
+              loading="lazy"
+              width={1024}
+              height={800}
+            />
+          </motion.div>
+        </div>
       </div>
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </AnimatedSection>

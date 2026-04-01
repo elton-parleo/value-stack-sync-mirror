@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import editorialHands from "@/assets/editorial-hands.jpg";
+import lifestyleHandsProduct from "@/assets/lifestyle-hands-product.jpg";
 
 interface Props {
   onRequestAccess: () => void;
@@ -26,7 +26,7 @@ const DemoHero = ({ onRequestAccess }: Props) => {
             Agents that shop with your advantages.
           </h1>
           <p className="mt-3 max-w-[520px] text-[15px] leading-[1.7] text-foreground/60 md:text-[16px]">
-            See how agents use Parleo to compute true cost across merchants in one step. Without Parleo, agents rank by headline price — missing loyalty, promos, and card-linked value.
+            See how agents use Parleo to compute true cost across merchants in one step. Without Parleo, agents rank by headline price, missing loyalty, promos, and card-linked value.
           </p>
 
           <div className="mt-5 flex items-center gap-3">
@@ -54,7 +54,7 @@ const DemoHero = ({ onRequestAccess }: Props) => {
           className="mt-8 hidden overflow-hidden rounded-2xl md:mt-0 md:block md:w-[360px] md:shrink-0"
           style={{ boxShadow: "var(--shadow-elevated)" }}
         >
-          <img src={editorialHands} alt="Abstract geometric forms" className="h-[320px] w-full object-cover" />
+          <img src={lifestyleHandsProduct} alt="Luxury beauty shopping experience" className="h-[320px] w-full object-cover" width={800} height={1024} />
         </motion.div>
       </div>
 

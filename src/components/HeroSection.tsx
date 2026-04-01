@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import LiveDataWidget from "./LiveDataWidget";
 import ContactFormDialog from "./ContactFormDialog";
 import BrandLogo from "./BrandLogo";
-import heroAbstract from "@/assets/hero-abstract.jpg";
+import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
+import lifestyleBeauty from "@/assets/lifestyle-beauty-flatlay.jpg";
+import lifestyleFashion from "@/assets/lifestyle-fashion.jpg";
+import lifestyleFragrance from "@/assets/lifestyle-fragrance.jpg";
+import lifestyleTech from "@/assets/lifestyle-tech.jpg";
 
 const FloatingIcon = ({ children, className, delay = 0 }: {children: React.ReactNode;className?: string;delay?: number;}) =>
 <motion.div
@@ -21,6 +25,13 @@ const FloatingIcon = ({ children, className, delay = 0 }: {children: React.React
     </motion.div>
   </motion.div>;
 
+const productImages = [
+  { src: lifestyleSkincare, alt: "Luxury skincare products", label: "Skincare" },
+  { src: lifestyleBeauty, alt: "Beauty cosmetics flat lay", label: "Beauty" },
+  { src: lifestyleFashion, alt: "Designer fashion accessories", label: "Fashion" },
+  { src: lifestyleFragrance, alt: "Premium fragrances", label: "Fragrance" },
+  { src: lifestyleTech, alt: "Premium tech accessories", label: "Tech" },
+];
 
 const HeroSection = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -48,7 +59,7 @@ const HeroSection = () => {
         </svg>
       </FloatingIcon>
 
-      <div className="mx-auto flex w-full max-w-content flex-col px-5 pb-10 pt-6 md:flex-row md:items-center md:justify-between md:px-20 md:pb-16 md:pt-12">
+      <div className="mx-auto flex w-full max-w-content flex-col px-5 pb-6 pt-6 md:flex-row md:items-center md:justify-between md:px-20 md:pb-10 md:pt-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,16 +125,52 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Right side: Live widget + lifestyle image */}
+        {/* Right side: Live widget */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative mt-10 md:mt-0 md:block">
-          <div className="pointer-events-none absolute -bottom-12 -right-12 hidden h-[340px] w-[380px] overflow-hidden rounded-2xl opacity-[0.08] md:block">
-            <img src={heroAbstract} alt="" className="h-full w-full object-cover" />
-          </div>
           <LiveDataWidget />
+        </motion.div>
+      </div>
+
+      {/* Editorial product image strip — inspired by New Gen */}
+      <div className="mx-auto w-full max-w-content px-5 pb-10 md:px-20 md:pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="flex gap-3 overflow-x-auto pb-2 scrollbar-none"
+        >
+          {productImages.map((img, i) => (
+            <motion.div
+              key={img.label}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
+              className="group relative shrink-0 overflow-hidden rounded-xl"
+              style={{ 
+                width: i === 2 ? '220px' : i === 4 ? '260px' : '180px',
+                height: '240px',
+              }}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                width={800}
+                height={1024}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="rounded-md bg-card/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
+                  {img.label}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
 
