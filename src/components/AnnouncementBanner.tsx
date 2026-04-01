@@ -11,7 +11,7 @@ const AnnouncementBanner = () => {
   return (
     <div className="relative flex items-center justify-center bg-primary px-4 py-2">
       <Link to="/demo" className="text-[13px] font-medium uppercase tracking-widest text-primary-foreground transition-opacity hover:opacity-80">
-        Honey for Agents — Try the Live Demo →
+        Honey for Agents · Try the Live Demo →
       </Link>
       <button
         onClick={(e) => { e.stopPropagation(); sessionStorage.setItem(DISMISSED_KEY, "1"); setDismissed(true); }}

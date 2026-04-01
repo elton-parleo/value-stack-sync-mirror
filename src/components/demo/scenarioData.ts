@@ -292,7 +292,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { phase: 2, text: "◈ Key specs: driver size, ANC depth, codec support, call mic rating, battery life" },
       { phase: 2, text: "◈ Review digest: Sony dominant on sound quality + battery. Bose stronger on ANC comfort" },
       { phase: 2, text: "◈ Intent-to-spec: sound + call clarity → driver ≥8.4mm, call mic ≥4/5, ANC ≥35dB" },
-      { phase: 3, text: "◈ Parleo intercepting — loading loyalty balances for Sarah Chen" },
+      { phase: 3, text: "◈ Parleo intercepting: loading loyalty balances for Sarah Chen" },
       { phase: 3, text: "◈ Best Buy Totaltech: −$30 exclusive member price on Sony" },
       { phase: 3, text: "◈ Chase Sapphire: 5% back on electronics → −$13.49" },
       { phase: 3, text: "◈ Amazon Prime: free same-day (no price discount on this SKU)" },

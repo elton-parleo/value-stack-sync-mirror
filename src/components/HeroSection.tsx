@@ -73,7 +73,7 @@ const HeroSection = () => {
             The incentive layer<br />for AI commerce.
           </h1>
           <p className="mt-4 max-w-[460px] text-[16px] leading-[1.7] text-foreground/65 md:text-[17px]">
-            Parleo gives agents a pre-computed true-cost and product-intelligence layer in a single API call. Your loyalty programs, card offers, and real value — readable and transactable.
+            Parleo gives agents a pre-computed true-cost and product-intelligence layer in a single API call. Your loyalty programs, card offers, and real value: readable and transactable.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">

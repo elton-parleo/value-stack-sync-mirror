@@ -18,7 +18,7 @@ const Demo = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Parleo — Honey for Agents Demo";
+    document.title = "Parleo · Honey for Agents Demo";
     return () => { document.title = "Parleo"; };
   }, []);
 
