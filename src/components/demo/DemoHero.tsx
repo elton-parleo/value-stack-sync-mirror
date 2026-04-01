@@ -10,7 +10,7 @@ const DemoHero = ({ onRequestAccess }: Props) => {
     <section className="relative overflow-hidden bg-background pb-2 pt-6 md:pt-10">
       <div className="diffusion-glow pointer-events-none absolute left-1/2 top-[30%] -translate-x-1/2" />
 
-      <div className="mx-auto max-w-content px-5 md:px-20">
+      <div className="mx-auto max-w-content px-5 md:px-20 md:flex md:items-center md:justify-between md:gap-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
