@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import architecturePlanes from "@/assets/architecture-planes.jpg";
 
 const integrations = [
   { name: "MCP", desc: "Model Context Protocol", logo: "Anthropic" },
