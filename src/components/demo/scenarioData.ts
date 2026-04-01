@@ -286,7 +286,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
     ],
     reasoning: [
       { phase: 1, text: "→ Enriching query: noise-cancelling earbuds under $300, sound quality + call clarity" },
-      { phase: 1, text: "→ Fetching product specs from 11 merchant feeds — normalizing across 42 attributes" },
+      { phase: 1, text: "→ Fetching product specs from 11 merchant feeds, normalizing across 42 attributes" },
       { phase: 1, text: "→ Scoring shortlist: Sony WF-1000XM5 #1 (0.92) · Bose QC Ultra #2 (0.88) · AirPods Pro 2 #3 (0.85) · Sennheiser MTW4 #4 (0.81)" },
       { phase: 2, text: "◈ Category intelligence: True Wireless Earbuds (ANC)" },
       { phase: 2, text: "◈ Key specs: driver size, ANC depth, codec support, call mic rating, battery life" },
