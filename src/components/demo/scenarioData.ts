@@ -212,7 +212,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
     reasoning: [
       { phase: 1, text: "→ Enriching query: trail running shoe under $160, cushioning + grip" },
       { phase: 1, text: "→ Inferring constraints: road-to-trail transition, heel striker, half-marathon training" },
-      { phase: 1, text: "→ Fetching product specs from 14 merchant feeds — normalizing across 38 attributes" },
+      { phase: 1, text: "→ Fetching product specs from 14 merchant feeds, normalizing across 38 attributes" },
       { phase: 1, text: "→ Scoring shortlist: Salomon Speedcross 6 #1 (0.87) · Hoka Speedgoat 5 #2 (0.84) · Nike Wildhorse 8 #3 (0.79) · Brooks Cascadia 17 #4 (0.76)" },
       { phase: 2, text: "◈ Category intelligence: Trail Running Shoes" },
       { phase: 2, text: "◈ Key specs: outsole lug depth, stack height, heel drop, weight, rock plate" },
