@@ -60,7 +60,7 @@ const CTASection = () => {
               Be visible to every agent.
             </h2>
             <p className="mt-3 text-[17px] text-foreground/55" style={{ lineHeight: 1.7 }}>
-              The result: Parleo changes which merchant wins the recommendation, not just the price shown.
+              Working with merchants getting ahead of the agentic shift.
             </p>
             <div className="mt-6">
               <button
