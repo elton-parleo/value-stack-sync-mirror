@@ -11,6 +11,9 @@ const DemoFooterCTA = () => {
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
         background: "radial-gradient(ellipse at center, hsl(213 99% 50%), transparent 70%)"
       }} />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+        <img src={signalPath} alt="" className="h-full w-full object-cover" loading="lazy" />
+      </div>
 
       <div className="mx-auto max-w-[560px] px-6 text-center">
         <h2 className="font-display text-[32px] text-foreground md:text-[48px]">

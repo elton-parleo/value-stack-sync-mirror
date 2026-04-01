@@ -18,6 +18,9 @@ const integrations = [
 const IntegrationSection = () => (
   <AnimatedSection id="integration" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[20%] top-[40%]" />
+    <div className="pointer-events-none absolute left-0 top-0 hidden h-[320px] w-[320px] overflow-hidden opacity-[0.05] md:block" style={{ borderRadius: "0 0 100% 0" }}>
+      <img src={architecturePlanes} alt="" className="h-full w-full object-cover" loading="lazy" />
+    </div>
     <div className="decorative-line" />
 
     <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
