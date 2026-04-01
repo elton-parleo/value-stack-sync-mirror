@@ -218,7 +218,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { phase: 2, text: "◈ Key specs: outsole lug depth, stack height, heel drop, weight, rock plate" },
       { phase: 2, text: "◈ Review digest: Salomon strong on grip, narrow fit flagged. Nike strong on versatility" },
       { phase: 2, text: "◈ Intent-to-spec: cushioning + grip + $160 budget → lug ≥4mm, stack ≥28mm" },
-      { phase: 3, text: "◈ Parleo intercepting — loading loyalty balances for Sarah Chen" },
+      { phase: 3, text: "◈ Parleo intercepting: loading loyalty balances for Sarah Chen" },
       { phase: 3, text: "◈ Nike Member: WILDHORSE20 active → −$26.00 · 2,400 pts redeemable → −$24.00" },
       { phase: 3, text: "◈ Amex Platinum: $15 back on Nike $75+ · expires 6 days" },
       { phase: 3, text: "◈ REI Co-op dividend: $18.50 applicable to Hoka Speedgoat 5" },
