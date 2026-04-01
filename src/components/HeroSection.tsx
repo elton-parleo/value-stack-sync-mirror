@@ -151,8 +151,8 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
               className="group relative shrink-0 overflow-hidden rounded-xl"
               style={{ 
-                width: i === 2 ? '220px' : i === 4 ? '260px' : '180px',
-                height: '240px',
+                width: i === 2 ? 'clamp(160px, 20vw, 220px)' : i === 4 ? 'clamp(180px, 24vw, 260px)' : 'clamp(130px, 16vw, 180px)',
+                height: 'clamp(180px, 22vw, 240px)',
               }}
             >
               <img
