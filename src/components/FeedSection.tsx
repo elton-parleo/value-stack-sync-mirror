@@ -154,7 +154,7 @@ const FeedSection = () => (
       </h2>
 
       <p className="mt-3 max-w-[580px] text-[17px] leading-[1.7] text-foreground/55">
-        One API call instead of 8–12 tools: Parleo pre-computes product identity, true-cost deal signals, and semantic content so your agent can skip web search and focus tokens on last-mile personalization.
+        One API call instead of 8 to 12 tools: Parleo pre-computes product identity, true-cost deal signals, and semantic content so your agent can skip web search and focus tokens on last-mile personalization.
       </p>
 
       {/* Pipeline */}
