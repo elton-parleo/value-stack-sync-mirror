@@ -76,18 +76,18 @@ const CTASection = () => {
             </div>
           </motion.div>
 
-          {/* Editorial accent image */}
+          {/* Editorial accent image — full-width banner on mobile, side accent on desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="hidden overflow-hidden rounded-2xl md:block"
+            className="overflow-hidden rounded-2xl"
           >
             <img
               src={lifestyleRetail}
               alt="Luxury retail moment"
-              className="h-[280px] w-[220px] object-cover"
+              className="h-[180px] w-full object-cover md:h-[280px] md:w-[220px]"
               loading="lazy"
               width={1024}
               height={800}
