@@ -141,34 +141,25 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="flex gap-3 overflow-x-auto pb-2 scrollbar-none"
+          className="flex items-end gap-2 overflow-x-auto pb-2 scrollbar-none"
         >
           {productImages.map((img, i) => (
             <motion.div
-              key={img.label}
-              initial={{ opacity: 0, y: 16 }}
+              key={img.alt}
+              initial={{ opacity: 0, y: 12 + i * 4 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
-              className="group relative shrink-0 overflow-hidden rounded-xl"
-              style={{ 
-                width: i === 2 ? 'clamp(160px, 20vw, 220px)' : i === 4 ? 'clamp(180px, 24vw, 260px)' : 'clamp(130px, 16vw, 180px)',
-                height: 'clamp(180px, 22vw, 240px)',
-              }}
+              transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+              className="relative shrink-0 overflow-hidden rounded-sm"
+              style={{ width: img.w, height: img.h }}
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover"
                 loading="lazy"
                 width={800}
                 height={1024}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3">
-                <span className="rounded-md bg-card/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
-                  {img.label}
-                </span>
-              </div>
             </motion.div>
           ))}
         </motion.div>
