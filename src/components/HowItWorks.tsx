@@ -32,7 +32,7 @@ const benefits = [
   },
   {
     title: "Keep full control of your margins",
-    body: "Set floor prices, manage visible incentives, and track attribution. You decide the rules, not the agents.",
+    body: "See which incentives move the needle: the Command Center shows which programs and offers actually shift agent recommendations and conversions.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
         <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -69,7 +69,7 @@ const HowItWorks = () => (
         The early-mover advantage<br className="hidden md:block" /> is closing fast.
       </h2>
       <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
-        AI agents are already making purchase recommendations. Merchants on Parleo get featured with their full value. Those who aren't compete on price alone.
+        Make loyalty, promos, and card-linked offers visible to agents, so your best customers don't see you as 'just another price' in Gemini, ChatGPT, or Perplexity.
       </p>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">

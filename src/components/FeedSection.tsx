@@ -96,7 +96,7 @@ const stages = [
     color: "text-parleo-muted",
     borderColor: "border-border",
     headline: "Your value, structured.",
-    description: "Public offers, loyalty tiers, and card benefit directories. Taxonomized and optimized for agent consumption.",
+    description: "Unified product graph: our taxonomy normalizes SKUs across merchants into canonical objects your tools/skills layer can reuse across many agents and query patterns.",
     visual: <FeedVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--parleo-muted))" strokeWidth="1.5">
@@ -122,8 +122,8 @@ const stages = [
     label: "DIRECT CONNECTION",
     color: "text-primary",
     borderColor: "border-primary/30",
-    headline: "Full control when you're ready.",
-    description: "Connect your own loyalty logic, set margin rules, get attribution. Agents already know the address.",
+    headline: "Shopping-specific semantics.",
+    description: "Cached briefs, review digests, ranked shortlists, and clarifying questions help your agent ask smarter questions and give clearer answers.",
     visual: <DirectVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
@@ -154,7 +154,7 @@ const FeedSection = () => (
       </h2>
 
       <p className="mt-3 max-w-[580px] text-[17px] leading-[1.7] text-foreground/55">
-        Loyalty programs, card offers, and incentive logic from 38+ merchants. Structured into a single agent-optimized feed. Refreshed hourly.
+        One API call instead of 8–12 tools: Parleo pre-computes product identity, true-cost deal signals, and semantic content so your agent can skip web search and focus tokens on last-mile personalization.
       </p>
 
       {/* Pipeline */}

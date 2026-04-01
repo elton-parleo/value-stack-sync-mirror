@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import ContactFormDialog from "./ContactFormDialog";
 import wavePattern from "@/assets/wave-pattern.png";
+import ctaTexture from "@/assets/cta-texture.jpg";
 
 const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -12,6 +13,10 @@ const CTASection = () => {
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
         background: 'radial-gradient(ellipse at center, hsl(213 99% 50%), transparent 70%)'
       }} />
+
+      <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
+        <img src={ctaTexture} alt="" className="h-full w-full object-cover" loading="lazy" />
+      </div>
 
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 opacity-[0.12]">
         <img src={wavePattern} alt="" className="w-full" loading="lazy" />
@@ -57,7 +62,7 @@ const CTASection = () => {
             Be visible to every agent.
           </h2>
           <p className="mt-3 text-[17px] text-foreground/55" style={{ lineHeight: 1.7 }}>
-            Working with merchants getting ahead of the agentic shift.
+            The result: Parleo changes which merchant wins the recommendation, not just the price shown.
           </p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <button

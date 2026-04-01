@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import demoHeroLifestyle from "@/assets/demo-hero-lifestyle.jpg";
 
 interface Props {
   onRequestAccess: () => void;
@@ -9,7 +10,7 @@ const DemoHero = ({ onRequestAccess }: Props) => {
     <section className="relative overflow-hidden bg-background pb-2 pt-6 md:pt-10">
       <div className="diffusion-glow pointer-events-none absolute left-1/2 top-[30%] -translate-x-1/2" />
 
-      <div className="mx-auto max-w-content px-5 md:px-20">
+      <div className="mx-auto max-w-content px-5 md:px-20 md:flex md:items-center md:justify-between md:gap-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -25,7 +26,7 @@ const DemoHero = ({ onRequestAccess }: Props) => {
             Agents that shop with your advantages.
           </h1>
           <p className="mt-3 max-w-[520px] text-[15px] leading-[1.7] text-foreground/60 md:text-[16px]">
-            AI agents research products across dozens of merchant sites. They see listed prices but miss loyalty programs, card-linked offers, and member pricing. Parleo intercepts and injects true cost before rankings form.
+            See how agents use Parleo to compute true cost across merchants in one step. Without Parleo, agents rank by headline price — missing loyalty, promos, and card-linked value.
           </p>
 
           <div className="mt-5 flex items-center gap-3">
@@ -43,6 +44,17 @@ const DemoHero = ({ onRequestAccess }: Props) => {
               Request Access
             </button>
           </div>
+        </motion.div>
+
+        {/* Hero lifestyle image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-8 hidden overflow-hidden rounded-2xl md:mt-0 md:block md:w-[360px] md:shrink-0"
+          style={{ boxShadow: "var(--shadow-elevated)" }}
+        >
+          <img src={demoHeroLifestyle} alt="Aspirational shopping experience" className="h-[320px] w-full object-cover" />
         </motion.div>
       </div>
 
