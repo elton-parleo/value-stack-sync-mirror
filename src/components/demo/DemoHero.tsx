@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import demoHeroLifestyle from "@/assets/demo-hero-lifestyle.jpg";
+import editorialHands from "@/assets/editorial-hands.jpg";
 
 interface Props {
   onRequestAccess: () => void;
@@ -54,7 +54,7 @@ const DemoHero = ({ onRequestAccess }: Props) => {
           className="mt-8 hidden overflow-hidden rounded-2xl md:mt-0 md:block md:w-[360px] md:shrink-0"
           style={{ boxShadow: "var(--shadow-elevated)" }}
         >
-          <img src={demoHeroLifestyle} alt="Aspirational shopping experience" className="h-[320px] w-full object-cover" />
+          <img src={editorialHands} alt="Abstract geometric forms" className="h-[320px] w-full object-cover" />
         </motion.div>
       </div>
 

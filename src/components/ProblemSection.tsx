@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import lightRefraction from "@/assets/light-refraction.jpg";
 
 /* ── Chat bubble components ── */
 
@@ -163,6 +164,9 @@ const ProblemSection = () => {
   return (
     <AnimatedSection id="problem" className="section-grid relative bg-background py-10 md:py-14" ref={ref}>
       <div className="diffusion-glow pointer-events-none absolute right-0 top-[30%]" />
+      <div className="pointer-events-none absolute right-0 top-0 hidden h-[400px] w-[400px] overflow-hidden opacity-[0.06] md:block" style={{ borderRadius: "0 0 0 100%" }}>
+        <img src={lightRefraction} alt="" className="h-full w-full object-cover" loading="lazy" />
+      </div>
 
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="flex items-center gap-3">
@@ -181,7 +185,7 @@ const ProblemSection = () => {
         </h2>
 
         <p className="mt-3 max-w-[580px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
-          Without Parleo, agents rank products by headline price and sparse specs — missing loyalty, promos, and card-linked value that actually determines the best deal.
+          Without Parleo, agents rank products by headline price and sparse specs, missing loyalty, promos, and card-linked value that actually determines the best deal.
         </p>
 
         {/* Toggle */}

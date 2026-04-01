@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import LiveDataWidget from "./LiveDataWidget";
 import ContactFormDialog from "./ContactFormDialog";
 import BrandLogo from "./BrandLogo";
-import heroLifestyle from "@/assets/hero-lifestyle.jpg";
+import heroAbstract from "@/assets/hero-abstract.jpg";
 
 const FloatingIcon = ({ children, className, delay = 0 }: {children: React.ReactNode;className?: string;delay?: number;}) =>
 <motion.div
@@ -73,7 +73,7 @@ const HeroSection = () => {
             The incentive layer<br />for AI commerce.
           </h1>
           <p className="mt-4 max-w-[460px] text-[16px] leading-[1.7] text-foreground/65 md:text-[17px]">
-            Parleo gives agents a pre-computed true-cost and product-intelligence layer in a single API call. Your loyalty programs, card offers, and real value — readable and transactable.
+            Parleo gives agents a pre-computed true-cost and product-intelligence layer in a single API call. Your loyalty programs, card offers, and real value: readable and transactable.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -120,8 +120,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative mt-10 md:mt-0 md:block">
-          <div className="pointer-events-none absolute -bottom-8 -right-8 hidden h-[280px] w-[320px] overflow-hidden rounded-2xl opacity-[0.12] md:block">
-            <img src={heroLifestyle} alt="" className="h-full w-full object-cover" loading="lazy" />
+          <div className="pointer-events-none absolute -bottom-12 -right-12 hidden h-[340px] w-[380px] overflow-hidden rounded-2xl opacity-[0.08] md:block">
+            <img src={heroAbstract} alt="" className="h-full w-full object-cover" />
           </div>
           <LiveDataWidget />
         </motion.div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import signalPath from "@/assets/signal-path.jpg";
 
 /* ── Tiny illustrative visuals for each state ── */
 
@@ -96,7 +97,7 @@ const stages = [
     color: "text-parleo-muted",
     borderColor: "border-border",
     headline: "Your value, structured.",
-    description: "Unified product graph: our taxonomy normalizes SKUs across merchants into canonical objects your tools/skills layer can reuse across many agents and query patterns.",
+    description: "Normalizes SKUs across merchants into canonical objects your agent can reuse across query patterns.",
     visual: <FeedVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--parleo-muted))" strokeWidth="1.5">
@@ -123,7 +124,7 @@ const stages = [
     color: "text-primary",
     borderColor: "border-primary/30",
     headline: "Shopping-specific semantics.",
-    description: "Cached briefs, review digests, ranked shortlists, and clarifying questions help your agent ask smarter questions and give clearer answers.",
+    description: "Cached briefs, review digests, and ranked shortlists so your agent asks smarter questions and gives clearer answers.",
     visual: <DirectVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
@@ -137,6 +138,9 @@ const stages = [
 const FeedSection = () => (
   <AnimatedSection id="feed" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[15%] top-[40%]" />
+    <div className="pointer-events-none absolute right-0 bottom-0 hidden h-[250px] w-full overflow-hidden opacity-[0.03] md:block">
+      <img src={signalPath} alt="" className="h-full w-full object-cover" loading="lazy" />
+    </div>
     <div className="decorative-line" />
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
@@ -154,7 +158,7 @@ const FeedSection = () => (
       </h2>
 
       <p className="mt-3 max-w-[580px] text-[17px] leading-[1.7] text-foreground/55">
-        One API call instead of 8–12 tools: Parleo pre-computes product identity, true-cost deal signals, and semantic content so your agent can skip web search and focus tokens on last-mile personalization.
+        One API call instead of 8 to 12 tools: Parleo pre-computes product identity, true-cost deal signals, and semantic content so your agent can skip web search and focus tokens on last-mile personalization.
       </p>
 
       {/* Pipeline */}
