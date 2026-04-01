@@ -26,11 +26,11 @@ const FloatingIcon = ({ children, className, delay = 0 }: {children: React.React
   </motion.div>;
 
 const productImages = [
-  { src: lifestyleSkincare, alt: "Luxury skincare products", label: "Skincare" },
-  { src: lifestyleBeauty, alt: "Beauty cosmetics flat lay", label: "Beauty" },
-  { src: lifestyleFashion, alt: "Designer fashion accessories", label: "Fashion" },
-  { src: lifestyleFragrance, alt: "Premium fragrances", label: "Fragrance" },
-  { src: lifestyleTech, alt: "Premium tech accessories", label: "Tech" },
+  { src: lifestyleSkincare, alt: "Sculptural skincare texture", w: 'clamp(120px, 14vw, 160px)', h: 'clamp(200px, 26vw, 280px)' },
+  { src: lifestyleBeauty, alt: "Editorial beauty composition", w: 'clamp(200px, 24vw, 280px)', h: 'clamp(140px, 16vw, 180px)' },
+  { src: lifestyleFashion, alt: "Fashion editorial", w: 'clamp(160px, 18vw, 210px)', h: 'clamp(240px, 30vw, 320px)' },
+  { src: lifestyleFragrance, alt: "Architectural fragrance", w: 'clamp(130px, 14vw, 160px)', h: 'clamp(130px, 14vw, 160px)' },
+  { src: lifestyleTech, alt: "Premium tech", w: 'clamp(200px, 22vw, 260px)', h: 'clamp(160px, 18vw, 200px)' },
 ];
 
 const HeroSection = () => {
