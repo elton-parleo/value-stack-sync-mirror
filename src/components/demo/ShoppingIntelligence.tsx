@@ -26,8 +26,8 @@ const cards = [
 const ShoppingIntelligence = () => (
   <AnimatedSection className="py-8 md:py-12 relative overflow-hidden">
     {/* Subtle editorial background strip */}
-    <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
-      <img src={shoppingEditorial} alt="" className="h-full w-full object-cover" loading="lazy" />
+    <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+      <img src={generativeTopology} alt="" className="h-full w-full object-cover" loading="lazy" />
     </div>
     <div className="relative mx-auto max-w-content px-5 md:px-20">
       <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">

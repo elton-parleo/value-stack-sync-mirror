@@ -54,6 +54,9 @@ const timeline = [
 const HowItWorks = () => (
   <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[10%] top-[50%] -translate-y-1/2" />
+    <div className="pointer-events-none absolute left-0 bottom-0 hidden h-[300px] w-[300px] overflow-hidden opacity-[0.05] md:block" style={{ borderRadius: "0 100% 0 0" }}>
+      <img src={generativeTopology} alt="" className="h-full w-full object-cover" loading="lazy" />
+    </div>
     <div className="decorative-line" />
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">

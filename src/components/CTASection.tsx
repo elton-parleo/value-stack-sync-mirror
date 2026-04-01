@@ -14,8 +14,8 @@ const CTASection = () => {
         background: 'radial-gradient(ellipse at center, hsl(213 99% 50%), transparent 70%)'
       }} />
 
-      <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
-        <img src={ctaTexture} alt="" className="h-full w-full object-cover" loading="lazy" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+        <img src={fabricFlow} alt="" className="h-full w-full object-cover" loading="lazy" />
       </div>
 
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 opacity-[0.12]">

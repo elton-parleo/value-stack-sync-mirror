@@ -53,6 +53,9 @@ const DashboardSection = () => {
   return (
     <AnimatedSection id="dashboard" className="section-grid relative bg-background py-10 md:py-14" ref={ref}>
       <div className="diffusion-glow pointer-events-none absolute right-[5%] top-[20%]" />
+      <div className="pointer-events-none absolute right-0 bottom-0 hidden h-[280px] w-[280px] overflow-hidden opacity-[0.05] md:block" style={{ borderRadius: "100% 0 0 0" }}>
+        <img src={macroDroplets} alt="" className="h-full w-full object-cover" loading="lazy" />
+      </div>
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="flex items-center gap-3">
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
