@@ -137,7 +137,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { name: "Kohl's", domain: "kohls.com", headlinePrice: 23, trueCost: 23 },
     ],
     apiJson: `{
-  "query": "Rare Beauty Soft Pinch Liquid Blush — Joy",
+  "query": "Rare Beauty Soft Pinch Liquid Blush, Joy",
   "query_type": "where_to_buy",
   "product_match": {
     "name": "Rare Beauty Soft Pinch Liquid Blush",
