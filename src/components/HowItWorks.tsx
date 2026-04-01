@@ -69,7 +69,7 @@ const HowItWorks = () => (
         The early-mover advantage<br className="hidden md:block" /> is closing fast.
       </h2>
       <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
-        AI agents are already making purchase recommendations. Merchants on Parleo get featured with their full value. Those who aren't compete on price alone.
+        Make loyalty, promos, and card-linked offers visible to agents, so your best customers don't see you as 'just another price' in Gemini, ChatGPT, or Perplexity.
       </p>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
