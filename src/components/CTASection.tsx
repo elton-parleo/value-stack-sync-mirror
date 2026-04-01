@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import ContactFormDialog from "./ContactFormDialog";
 import wavePattern from "@/assets/wave-pattern.png";
-import lifestyleFragrance from "@/assets/lifestyle-fragrance.jpg";
+import lifestyleRetail from "@/assets/lifestyle-retail-moment.jpg";
 
 const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
