@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import LiveDataWidget from "./LiveDataWidget";
 import ContactFormDialog from "./ContactFormDialog";
 import BrandLogo from "./BrandLogo";
-import heroLifestyle from "@/assets/hero-lifestyle.jpg";
+import heroAbstract from "@/assets/hero-abstract.jpg";
 
 const FloatingIcon = ({ children, className, delay = 0 }: {children: React.ReactNode;className?: string;delay?: number;}) =>
 <motion.div
