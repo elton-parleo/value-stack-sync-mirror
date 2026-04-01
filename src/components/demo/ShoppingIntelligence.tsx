@@ -11,7 +11,7 @@ const cards = [
   {
     num: "02",
     title: "Deal Signals + True Cost",
-    body: "Promo codes, loyalty multipliers, card cashback, price history. Collapsed into a deal score and true out-of-pocket cost.",
+    body: "Promo codes, loyalty multipliers, card cashback, price history — collapsed into a deal score and true out-of-pocket cost per merchant.",
     visual: "$279 → $218",
   },
   {
