@@ -26,11 +26,11 @@ const FloatingIcon = ({ children, className, delay = 0 }: {children: React.React
   </motion.div>;
 
 const productImages = [
-  { src: lifestyleSkincare, alt: "Luxury skincare products", label: "Skincare" },
-  { src: lifestyleBeauty, alt: "Beauty cosmetics flat lay", label: "Beauty" },
-  { src: lifestyleFashion, alt: "Designer fashion accessories", label: "Fashion" },
-  { src: lifestyleFragrance, alt: "Premium fragrances", label: "Fragrance" },
-  { src: lifestyleTech, alt: "Premium tech accessories", label: "Tech" },
+  { src: lifestyleSkincare, alt: "Sculptural skincare texture", w: 'clamp(120px, 14vw, 160px)', h: 'clamp(200px, 26vw, 280px)' },
+  { src: lifestyleBeauty, alt: "Editorial beauty composition", w: 'clamp(200px, 24vw, 280px)', h: 'clamp(140px, 16vw, 180px)' },
+  { src: lifestyleFashion, alt: "Fashion editorial", w: 'clamp(160px, 18vw, 210px)', h: 'clamp(240px, 30vw, 320px)' },
+  { src: lifestyleFragrance, alt: "Architectural fragrance", w: 'clamp(130px, 14vw, 160px)', h: 'clamp(130px, 14vw, 160px)' },
+  { src: lifestyleTech, alt: "Premium tech", w: 'clamp(200px, 22vw, 260px)', h: 'clamp(160px, 18vw, 200px)' },
 ];
 
 const HeroSection = () => {
@@ -141,34 +141,25 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="flex gap-3 overflow-x-auto pb-2 scrollbar-none"
+          className="flex items-end gap-2 overflow-x-auto pb-2 scrollbar-none"
         >
           {productImages.map((img, i) => (
             <motion.div
-              key={img.label}
-              initial={{ opacity: 0, y: 16 }}
+              key={img.alt}
+              initial={{ opacity: 0, y: 12 + i * 4 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
-              className="group relative shrink-0 overflow-hidden rounded-xl"
-              style={{ 
-                width: i === 2 ? 'clamp(160px, 20vw, 220px)' : i === 4 ? 'clamp(180px, 24vw, 260px)' : 'clamp(130px, 16vw, 180px)',
-                height: 'clamp(180px, 22vw, 240px)',
-              }}
+              transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+              className="relative shrink-0 overflow-hidden rounded-sm"
+              style={{ width: img.w, height: img.h }}
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover"
                 loading="lazy"
                 width={800}
                 height={1024}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3">
-                <span className="rounded-md bg-card/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
-                  {img.label}
-                </span>
-              </div>
             </motion.div>
           ))}
         </motion.div>
