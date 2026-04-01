@@ -99,7 +99,7 @@ export const scenarios: Record<Scenario, ScenarioData> = {
       { phase: 2, text: "◈ Product is identical across all retailers: same SKU, same formulation" },
       { phase: 2, text: "◈ Price variation is minimal ($0.51 range). Loyalty and card stacking will determine true winner" },
       { phase: 2, text: "◈ Checking retailer-specific promotions, loyalty multipliers, and card-linked offers" },
-      { phase: 3, text: "◈ Parleo intercepting — loading Sarah Chen's value profile across 4 retailers" },
+      { phase: 3, text: "◈ Parleo intercepting: loading Sarah Chen's value profile across 4 retailers" },
       { phase: 3, text: "◈ Sephora: Rouge tier active → −10% ($2.30) · Amex Gold offer → −$5.00 · Beauty Insider 4x pts this week ($4.60 value)" },
       { phase: 3, text: "◈ Ulta: Diamond tier active → −$2.00 coupon · Ulta Mastercard → 5% back ($1.15) · 3x Ultamate points ($1.73 value)" },
       { phase: 3, text: "◈ Target: Circle member → 5% off ($1.12) · RedCard holder → additional 5% ($1.07)" },
