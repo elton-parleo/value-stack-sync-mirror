@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ContactFormDialog from "../ContactFormDialog";
 import BrandLogo from "../BrandLogo";
-import lifestyleBeauty from "@/assets/lifestyle-beauty-flatlay.jpg";
+import lifestylePortrait from "@/assets/lifestyle-editorial-portrait.jpg";
 
 const DemoFooterCTA = () => {
   const [contactOpen, setContactOpen] = useState(false);
