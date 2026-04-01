@@ -35,39 +35,41 @@ const TeamSection = () => (
     <div className="diffusion-glow pointer-events-none absolute right-[10%] top-[30%]" />
     <div className="decorative-line" />
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
-      <div className="flex items-center gap-3">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
-            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+      <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+        <div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <span className="font-label text-parleo-muted">THE TEAM</span>
+          </div>
+          <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[40px]" style={{ lineHeight: 1.1 }}>
+            Seasoned founders &amp; operators<br />who have shipped this before
+          </h2>
         </div>
-        <span className="font-label text-parleo-muted">THE TEAM</span>
-      </div>
-      <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[40px]" style={{ lineHeight: 1.1 }}>
-        Seasoned founders &amp; operators<br />who have shipped this before
-      </h2>
 
-      {/* Founders editorial photo */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mt-8 overflow-hidden rounded-xl"
-        style={{ maxWidth: 520 }}
-      >
-        <img
-          src={foundersEditorial}
-          alt="Elton Cheung and Samar Birwadker, Co-Founders of Parleo"
-          className="w-full object-cover"
-          loading="lazy"
-          width={1400}
-          height={788}
-          style={{ maxHeight: 280 }}
-        />
-      </motion.div>
+        {/* Subtle founders photo accent */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="hidden overflow-hidden rounded-xl md:block"
+        >
+          <img
+            src={foundersEditorial}
+            alt="Elton Cheung and Samar Birwadker, Co-Founders of Parleo"
+            className="h-[140px] w-[200px] object-cover object-top"
+            loading="lazy"
+            width={1400}
+            height={788}
+          />
+        </motion.div>
+      </div>
 
       <div className="mt-6 grid gap-5 md:grid-cols-2">
         {team.map((t, i) => (
