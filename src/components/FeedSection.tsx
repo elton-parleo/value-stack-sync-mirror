@@ -96,7 +96,7 @@ const stages = [
     color: "text-parleo-muted",
     borderColor: "border-border",
     headline: "Your value, structured.",
-    description: "Public offers, loyalty tiers, and card benefit directories. Taxonomized and optimized for agent consumption.",
+    description: "Unified product graph: our taxonomy normalizes SKUs across merchants into canonical objects your tools/skills layer can reuse across many agents and query patterns.",
     visual: <FeedVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--parleo-muted))" strokeWidth="1.5">
