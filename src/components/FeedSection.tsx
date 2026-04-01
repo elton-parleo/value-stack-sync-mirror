@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import signalPath from "@/assets/signal-path.jpg";
 
 /* ── Tiny illustrative visuals for each state ── */
 
