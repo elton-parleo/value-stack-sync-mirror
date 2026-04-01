@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import lifestylePortrait from "@/assets/lifestyle-editorial-portrait.jpg";
 
 /* ── Tiny illustrative visuals for each state ── */
 
@@ -137,6 +138,10 @@ const stages = [
 const FeedSection = () => (
   <AnimatedSection id="feed" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[15%] top-[40%]" />
+    {/* Subtle editorial background accent */}
+    <div className="pointer-events-none absolute right-0 top-[10%] hidden h-[500px] w-[300px] overflow-hidden opacity-[0.06] blur-[2px] md:block">
+      <img src={lifestylePortrait} alt="" className="h-full w-full object-cover" />
+    </div>
     <div className="decorative-line" />
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
-import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
+import lifestyleFashion from "@/assets/lifestyle-fashion.jpg";
 
 const cards = [
   {
@@ -45,8 +45,8 @@ const ShoppingIntelligence = () => (
           className="hidden overflow-hidden rounded-xl md:block"
         >
           <img
-            src={lifestyleSkincare}
-            alt="Luxury skincare products"
+            src={lifestyleFashion}
+            alt="Editorial fashion"
             className="h-[160px] w-[200px] object-cover"
             loading="lazy"
             width={800}

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import ContactFormDialog from "./ContactFormDialog";
 import wavePattern from "@/assets/wave-pattern.png";
-import lifestyleFragrance from "@/assets/lifestyle-fragrance.jpg";
+import lifestyleRetail from "@/assets/lifestyle-retail-moment.jpg";
 
 const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -85,8 +85,8 @@ const CTASection = () => {
             className="hidden overflow-hidden rounded-2xl md:block"
           >
             <img
-              src={lifestyleFragrance}
-              alt="Premium fragrances"
+              src={lifestyleRetail}
+              alt="Luxury retail moment"
               className="h-[280px] w-[220px] object-cover"
               loading="lazy"
               width={1024}

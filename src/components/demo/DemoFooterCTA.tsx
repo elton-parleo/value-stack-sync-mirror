@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ContactFormDialog from "../ContactFormDialog";
 import BrandLogo from "../BrandLogo";
-import lifestyleBeauty from "@/assets/lifestyle-beauty-flatlay.jpg";
+import lifestylePortrait from "@/assets/lifestyle-editorial-portrait.jpg";
 
 const DemoFooterCTA = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -17,12 +17,12 @@ const DemoFooterCTA = () => {
           {/* Editorial image */}
           <div className="hidden overflow-hidden rounded-2xl md:block">
             <img
-              src={lifestyleBeauty}
-              alt="Beauty products editorial"
+              src={lifestylePortrait}
+              alt="Editorial fashion portrait"
               className="h-[260px] w-[200px] object-cover"
               loading="lazy"
-              width={1024}
-              height={800}
+              width={800}
+              height={1024}
             />
           </div>
 
