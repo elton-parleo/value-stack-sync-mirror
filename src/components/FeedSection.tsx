@@ -122,8 +122,8 @@ const stages = [
     label: "DIRECT CONNECTION",
     color: "text-primary",
     borderColor: "border-primary/30",
-    headline: "Full control when you're ready.",
-    description: "Connect your own loyalty logic, set margin rules, get attribution. Agents already know the address.",
+    headline: "Shopping-specific semantics.",
+    description: "Cached briefs, review digests, ranked shortlists, and clarifying questions help your agent ask smarter questions and give clearer answers.",
     visual: <DirectVisual />,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">

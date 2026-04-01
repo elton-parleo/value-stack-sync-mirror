@@ -65,7 +65,7 @@ const DashboardSection = () => {
           One console for your<br />agentic channel.
         </h2>
         <p className="mt-3 max-w-[520px] text-[17px] text-foreground/55" style={{ lineHeight: 1.7 }}>
-          Margin floors. Liability targets. Inventory rules. Card offers. Loyalty incentives. All programmable per agent query. Live in two weeks.
+          Control economics in agent channels: set guardrails on margin, liability burn, and offer exposure instead of leaving decisions to opaque ranking logic.
         </p>
 
         {/* Dashboard mockup */}

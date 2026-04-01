@@ -16,7 +16,7 @@ const DemoFooterCTA = () => {
           The true cost layer your agents are missing.
         </h2>
         <p className="mt-3 text-[16px] text-foreground/60" style={{ lineHeight: 1.7 }}>
-          Ship agent-native commerce without building the data layer.
+          With Parleo, agents call a single /true-cost endpoint that returns normalized products, effective price, and ready-to-use rationales.
         </p>
 
         <div className="mt-5 flex flex-wrap items-center justify-center gap-2">

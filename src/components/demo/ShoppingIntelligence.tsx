@@ -17,7 +17,7 @@ const cards = [
   {
     num: "03",
     title: "Semantic Intelligence",
-    body: "Category briefings, review digests, intent-to-spec maps. Agents spend tokens on decisions, not research.",
+    body: "Cached briefs, review digests, ranked shortlists. Agents spend tokens on decisions, not research.",
     visual: "★ 4.7 · 2.4k reviews",
   },
 ];

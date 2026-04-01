@@ -25,7 +25,7 @@ const DemoHero = ({ onRequestAccess }: Props) => {
             Agents that shop with your advantages.
           </h1>
           <p className="mt-3 max-w-[520px] text-[15px] leading-[1.7] text-foreground/60 md:text-[16px]">
-            AI agents research products across dozens of merchant sites. They see listed prices but miss loyalty programs, card-linked offers, and member pricing. Parleo intercepts and injects true cost before rankings form.
+            See how agents use Parleo to compute true cost across merchants in one step. Without Parleo, agents rank by headline price — missing loyalty, promos, and card-linked value.
           </p>
 
           <div className="mt-5 flex items-center gap-3">

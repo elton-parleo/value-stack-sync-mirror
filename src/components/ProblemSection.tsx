@@ -181,7 +181,7 @@ const ProblemSection = () => {
         </h2>
 
         <p className="mt-3 max-w-[580px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
-          When a customer asks an AI agent for a recommendation, the agent only sees list prices. Unless you're on Parleo.
+          Without Parleo, agents rank products by headline price and sparse specs — missing loyalty, promos, and card-linked value that actually determines the best deal.
         </p>
 
         {/* Toggle */}

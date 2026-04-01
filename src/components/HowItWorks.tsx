@@ -32,7 +32,7 @@ const benefits = [
   },
   {
     title: "Keep full control of your margins",
-    body: "Set floor prices, manage visible incentives, and track attribution. You decide the rules, not the agents.",
+    body: "See which incentives move the needle: the Command Center shows which programs and offers actually shift agent recommendations and conversions.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
         <rect x="3" y="3" width="7" height="7" rx="1" />
