@@ -82,7 +82,7 @@ const TeamSection = () => (
                   key={l.name}
                   src={l.src}
                   alt={l.name}
-                  className="h-5 w-auto object-contain opacity-40 grayscale transition-all group-hover:opacity-60"
+                  className="h-8 w-auto object-contain opacity-50 grayscale transition-all group-hover:opacity-70"
                   loading="lazy"
                 />
               ))}
