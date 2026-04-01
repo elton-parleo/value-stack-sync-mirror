@@ -5,7 +5,7 @@ const cards = [
   {
     num: "01",
     title: "Unified Product Taxonomy",
-    body: "One canonical record per product. Normalized specs across every retailer that carries it.",
+    body: "Our taxonomy normalizes SKUs across merchants into canonical objects your agent can reuse across query patterns.",
     visual: "Amazon → Target → Mfr → Parleo",
   },
   {
