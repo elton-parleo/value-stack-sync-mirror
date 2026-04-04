@@ -41,8 +41,13 @@ const CTASection = () => {
         </div>
       </motion.div>
 
+      {/* Subtle background texture */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <img src={lifestyleRetail} alt="" className="h-full w-full object-cover opacity-[0.06]" />
+      </div>
+
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <div className="grid gap-8 md:grid-cols-[1fr_auto] items-center">
+        <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -76,23 +81,7 @@ const CTASection = () => {
             </div>
           </motion.div>
 
-          {/* Editorial accent image — full-width banner on mobile, side accent on desktop */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="overflow-hidden rounded-2xl"
-          >
-            <img
-              src={lifestyleRetail}
-              alt="Luxury retail moment"
-              className="h-[180px] w-full object-cover md:h-[280px] md:w-[220px]"
-              loading="lazy"
-              width={1024}
-              height={800}
-            />
-          </motion.div>
+          
         </div>
       </div>
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
