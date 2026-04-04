@@ -15,11 +15,12 @@ const DemoFooterCTA = () => {
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="grid gap-8 md:grid-cols-[auto_1fr] items-center">
           {/* Editorial image */}
-          <div className="hidden overflow-hidden rounded-2xl md:block">
+          <div className="hidden overflow-hidden rounded-lg md:block">
             <img
               src={lifestylePortrait}
               alt="Editorial fashion portrait"
               className="h-[260px] w-[200px] object-cover"
+              style={{ filter: 'grayscale(30%) contrast(1.05)', mixBlendMode: 'multiply' }}
               loading="lazy"
               width={800}
               height={1024}
