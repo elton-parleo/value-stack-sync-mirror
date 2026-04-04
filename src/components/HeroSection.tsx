@@ -7,7 +7,6 @@ import BrandLogo from "./BrandLogo";
 import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
 import lifestyleBeauty from "@/assets/lifestyle-beauty-flatlay.jpg";
 import lifestyleFashion from "@/assets/lifestyle-fashion.jpg";
-import lifestyleFragrance from "@/assets/lifestyle-fragrance.jpg";
 import lifestyleTech from "@/assets/lifestyle-tech.jpg";
 
 const FloatingIcon = ({ children, className, delay = 0 }: {children: React.ReactNode;className?: string;delay?: number;}) =>
@@ -26,11 +25,10 @@ const FloatingIcon = ({ children, className, delay = 0 }: {children: React.React
   </motion.div>;
 
 const productImages = [
-  { src: lifestyleSkincare, alt: "Luxury skincare products", label: "Skincare" },
+  { src: lifestyleSkincare, alt: "Luxury skincare textures", label: "Skincare" },
   { src: lifestyleBeauty, alt: "Beauty cosmetics flat lay", label: "Beauty" },
-  { src: lifestyleFashion, alt: "Designer fashion accessories", label: "Fashion" },
-  { src: lifestyleFragrance, alt: "Premium fragrances", label: "Fragrance" },
-  { src: lifestyleTech, alt: "Premium tech accessories", label: "Tech" },
+  { src: lifestyleFashion, alt: "Designer fashion", label: "Fashion" },
+  { src: lifestyleTech, alt: "Premium tech", label: "Tech" },
 ];
 
 const HeroSection = () => {
@@ -102,7 +100,7 @@ const HeroSection = () => {
               className="group relative inline-flex h-11 items-center gap-2 rounded-[4px] border border-accent-warm/40 bg-accent-warm/[0.06] px-6 text-[15px] font-medium text-foreground transition-all hover:border-accent-warm/60 hover:bg-accent-warm/[0.1] active:scale-[0.97] animate-glow-pulse"
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
-              See it Live
+              Live Demo
             </Link>
           </div>
 
@@ -146,11 +144,10 @@ const HeroSection = () => {
           {productImages.map((img, i) => {
             // Deliberately varied widths: one wide, two narrow, two medium — contact sheet rhythm
             const widths = [
-              'clamp(120px, 14vw, 160px)',   // narrow
               'clamp(140px, 18vw, 200px)',   // medium
-              'clamp(180px, 24vw, 280px)',   // wide — fashion hero
-              'clamp(110px, 12vw, 140px)',   // narrow
-              'clamp(150px, 20vw, 220px)',   // medium
+              'clamp(160px, 22vw, 260px)',   // wide
+              'clamp(200px, 28vw, 320px)',   // widest — fashion hero
+              'clamp(160px, 22vw, 240px)',   // wide
             ];
             return (
               <motion.div

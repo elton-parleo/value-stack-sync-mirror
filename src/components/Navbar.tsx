@@ -34,9 +34,14 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "h-12 border-b border-border/60 bg-background/95 backdrop-blur-xl"
-            : "h-14 bg-background/80 backdrop-blur-md"
+            ? "h-12 border-b border-primary/10 bg-primary/[0.03] backdrop-blur-xl"
+            : "h-14 bg-primary/[0.02] backdrop-blur-md"
         }`}
+        style={{
+          background: scrolled
+            ? 'linear-gradient(180deg, hsl(213 99% 50% / 0.04) 0%, hsl(213 99% 50% / 0.02) 100%)'
+            : 'linear-gradient(180deg, hsl(213 99% 50% / 0.03) 0%, transparent 100%)',
+        }}
       >
         <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-20">
           {isHome ? (
@@ -76,7 +81,7 @@ const Navbar = () => {
               className="relative flex items-center gap-1.5 rounded-[4px] border border-accent-warm/30 bg-accent-warm/[0.06] px-3 py-1.5 text-[13px] font-medium text-foreground transition-all hover:border-accent-warm/50 hover:bg-accent-warm/[0.1]"
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
-              See it Live
+              Live Demo
             </Link>
             <button
               onClick={() => setContactOpen(true)}
@@ -151,7 +156,7 @@ const Navbar = () => {
                   className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
                 >
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
-                  See it Live
+                  Live Demo
                 </Link>
               </div>
               <div className="mt-auto">
