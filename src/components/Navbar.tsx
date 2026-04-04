@@ -151,7 +151,7 @@ const Navbar = () => {
                   className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
                 >
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
-                  See it Live
+                  Live Demo
                 </Link>
               </div>
               <div className="mt-auto">
