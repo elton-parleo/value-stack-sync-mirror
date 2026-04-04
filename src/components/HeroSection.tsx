@@ -7,7 +7,6 @@ import BrandLogo from "./BrandLogo";
 import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
 import lifestyleBeauty from "@/assets/lifestyle-beauty-flatlay.jpg";
 import lifestyleFashion from "@/assets/lifestyle-fashion.jpg";
-import lifestyleFragrance from "@/assets/lifestyle-fragrance.jpg";
 import lifestyleTech from "@/assets/lifestyle-tech.jpg";
 
 const FloatingIcon = ({ children, className, delay = 0 }: {children: React.ReactNode;className?: string;delay?: number;}) =>
