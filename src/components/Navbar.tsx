@@ -76,7 +76,7 @@ const Navbar = () => {
               className="relative flex items-center gap-1.5 rounded-[4px] border border-accent-warm/30 bg-accent-warm/[0.06] px-3 py-1.5 text-[13px] font-medium text-foreground transition-all hover:border-accent-warm/50 hover:bg-accent-warm/[0.1]"
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
-              See it Live
+              Live Demo
             </Link>
             <button
               onClick={() => setContactOpen(true)}
