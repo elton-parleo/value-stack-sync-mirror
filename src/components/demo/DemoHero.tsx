@@ -51,10 +51,10 @@ const DemoHero = ({ onRequestAccess }: Props) => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-8 hidden overflow-hidden rounded-2xl border border-border md:mt-0 md:block md:w-[360px] md:shrink-0"
-          style={{ boxShadow: "var(--shadow-md)" }}
+          className="mt-8 hidden overflow-hidden rounded-2xl md:mt-0 md:block md:w-[360px] md:shrink-0"
+          style={{ boxShadow: "var(--shadow-elevated)" }}
         >
-          <img src={lifestyleHandsProduct} alt="Minimal product on stone surface" className="h-[320px] w-full object-cover opacity-[0.85]" width={800} height={1024} />
+          <img src={lifestyleHandsProduct} alt="Luxury beauty shopping experience" className="h-[320px] w-full object-cover" width={800} height={1024} />
         </motion.div>
       </div>
 

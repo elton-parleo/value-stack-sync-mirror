@@ -85,18 +85,18 @@ const HowItWorks = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-[140px] shrink-0 overflow-hidden rounded-2xl border border-border md:w-[160px]"
+            className="w-[140px] shrink-0 overflow-hidden rounded-xl md:w-[160px]"
           >
-            <img src={lifestyleVanity} alt="Premium retail counter" className="h-[160px] w-full object-cover opacity-[0.85] md:h-[200px]" loading="lazy" width={1024} height={1024} />
+            <img src={lifestyleVanity} alt="Luxury beauty vanity" className="h-[160px] w-full object-cover md:h-[200px]" loading="lazy" width={1024} height={800} />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="w-[120px] shrink-0 overflow-hidden rounded-2xl border border-border md:mt-6 md:w-[140px]"
+            className="w-[120px] shrink-0 overflow-hidden rounded-xl md:mt-6 md:w-[140px]"
           >
-            <img src={lifestyleUnboxing} alt="Hand on stone surface with phone" className="h-[140px] w-full object-cover opacity-[0.85] md:h-[180px]" loading="lazy" width={800} height={1024} />
+            <img src={lifestyleUnboxing} alt="Luxury unboxing moment" className="h-[140px] w-full object-cover md:h-[180px]" loading="lazy" width={800} height={1024} />
           </motion.div>
         </div>
       </div>
