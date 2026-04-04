@@ -34,9 +34,14 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "h-12 border-b border-border/60 bg-background/95 backdrop-blur-xl"
-            : "h-14 bg-background/80 backdrop-blur-md"
+            ? "h-12 border-b border-primary/10 bg-primary/[0.03] backdrop-blur-xl"
+            : "h-14 bg-primary/[0.02] backdrop-blur-md"
         }`}
+        style={{
+          background: scrolled
+            ? 'linear-gradient(180deg, hsl(213 99% 50% / 0.04) 0%, hsl(213 99% 50% / 0.02) 100%)'
+            : 'linear-gradient(180deg, hsl(213 99% 50% / 0.03) 0%, transparent 100%)',
+        }}
       >
         <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-20">
           {isHome ? (

@@ -100,7 +100,7 @@ const HeroSection = () => {
               className="group relative inline-flex h-11 items-center gap-2 rounded-[4px] border border-accent-warm/40 bg-accent-warm/[0.06] px-6 text-[15px] font-medium text-foreground transition-all hover:border-accent-warm/60 hover:bg-accent-warm/[0.1] active:scale-[0.97] animate-glow-pulse"
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
-              See it Live
+              Live Demo
             </Link>
           </div>
 

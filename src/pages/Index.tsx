@@ -11,7 +11,6 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
-    <AnnouncementBanner />
     <Navbar />
     <HeroSection />
     <ProblemSection />
