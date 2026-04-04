@@ -81,7 +81,7 @@ const CTASection = () => {
             </div>
           </motion.div>
 
-          {/* Subtle texture accent — sits behind text as ambient warmth */}
+          
         </div>
       </div>
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
