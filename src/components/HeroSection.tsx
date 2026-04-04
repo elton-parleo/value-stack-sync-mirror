@@ -144,11 +144,10 @@ const HeroSection = () => {
           {productImages.map((img, i) => {
             // Deliberately varied widths: one wide, two narrow, two medium — contact sheet rhythm
             const widths = [
-              'clamp(120px, 14vw, 160px)',   // narrow
               'clamp(140px, 18vw, 200px)',   // medium
-              'clamp(180px, 24vw, 280px)',   // wide — fashion hero
-              'clamp(110px, 12vw, 140px)',   // narrow
-              'clamp(150px, 20vw, 220px)',   // medium
+              'clamp(160px, 22vw, 260px)',   // wide
+              'clamp(200px, 28vw, 320px)',   // widest — fashion hero
+              'clamp(160px, 22vw, 240px)',   // wide
             ];
             return (
               <motion.div
