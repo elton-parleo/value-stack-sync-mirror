@@ -25,11 +25,10 @@ const FloatingIcon = ({ children, className, delay = 0 }: {children: React.React
   </motion.div>;
 
 const productImages = [
-  { src: lifestyleSkincare, alt: "Luxury skincare products", label: "Skincare" },
+  { src: lifestyleSkincare, alt: "Luxury skincare textures", label: "Skincare" },
   { src: lifestyleBeauty, alt: "Beauty cosmetics flat lay", label: "Beauty" },
-  { src: lifestyleFashion, alt: "Designer fashion accessories", label: "Fashion" },
-  { src: lifestyleFragrance, alt: "Premium fragrances", label: "Fragrance" },
-  { src: lifestyleTech, alt: "Premium tech accessories", label: "Tech" },
+  { src: lifestyleFashion, alt: "Designer fashion", label: "Fashion" },
+  { src: lifestyleTech, alt: "Premium tech", label: "Tech" },
 ];
 
 const HeroSection = () => {
