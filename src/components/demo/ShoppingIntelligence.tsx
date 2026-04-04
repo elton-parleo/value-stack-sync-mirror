@@ -42,12 +42,13 @@ const ShoppingIntelligence = () => (
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="hidden overflow-hidden rounded-xl md:block"
+          className="hidden overflow-hidden rounded-lg md:block"
         >
           <img
             src={lifestyleFashion}
             alt="Editorial fashion"
             className="h-[160px] w-[200px] object-cover"
+            style={{ filter: 'grayscale(25%) contrast(1.05)', mixBlendMode: 'multiply' }}
             loading="lazy"
             width={800}
             height={1024}

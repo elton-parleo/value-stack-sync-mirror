@@ -143,34 +143,45 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="flex gap-3 overflow-x-auto pb-2 scrollbar-none"
         >
-          {productImages.map((img, i) => (
-            <motion.div
-              key={img.label}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
-              className="group relative shrink-0 overflow-hidden rounded-xl"
-              style={{ 
-                width: i === 2 ? 'clamp(160px, 20vw, 220px)' : i === 4 ? 'clamp(180px, 24vw, 260px)' : 'clamp(130px, 16vw, 180px)',
-                height: 'clamp(180px, 22vw, 240px)',
-              }}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-                width={800}
-                height={1024}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3">
-                <span className="rounded-md bg-card/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
-                  {img.label}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+          {productImages.map((img, i) => {
+            // Deliberately varied widths: one wide, two narrow, two medium — contact sheet rhythm
+            const widths = [
+              'clamp(120px, 14vw, 160px)',   // narrow
+              'clamp(140px, 18vw, 200px)',   // medium
+              'clamp(180px, 24vw, 280px)',   // wide — fashion hero
+              'clamp(110px, 12vw, 140px)',   // narrow
+              'clamp(150px, 20vw, 220px)',   // medium
+            ];
+            return (
+              <motion.div
+                key={img.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
+                className="group relative shrink-0 overflow-hidden rounded-lg"
+                style={{ 
+                  width: widths[i],
+                  height: 'clamp(180px, 22vw, 240px)',
+                }}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  style={{ filter: 'grayscale(20%) contrast(1.05)', mixBlendMode: 'multiply' }}
+                  loading="lazy"
+                  width={800}
+                  height={1024}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <span className="rounded-md bg-card/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
+                    {img.label}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
 

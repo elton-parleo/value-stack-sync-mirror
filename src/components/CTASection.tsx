@@ -88,6 +88,7 @@ const CTASection = () => {
               src={lifestyleRetail}
               alt="Luxury retail moment"
               className="h-[180px] w-full object-cover md:h-[280px] md:w-[220px]"
+              style={{ filter: 'grayscale(30%) contrast(1.05)', mixBlendMode: 'multiply' }}
               loading="lazy"
               width={1024}
               height={800}

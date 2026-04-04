@@ -78,27 +78,45 @@ const HowItWorks = () => (
           </p>
         </div>
 
-        {/* Editorial image pair — horizontal scroll on mobile, staggered on desktop */}
-        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-none md:overflow-visible md:pb-0">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-[140px] shrink-0 overflow-hidden rounded-xl md:w-[160px]"
+        {/* Graphic diptych — two images through slit-like clip paths */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex gap-1 overflow-x-auto pb-2 scrollbar-none md:overflow-visible md:pb-0"
+        >
+          {/* Tall narrow slit */}
+          <div
+            className="w-[80px] shrink-0 overflow-hidden md:w-[100px]"
+            style={{ clipPath: 'inset(0 0 0 0 round 4px)', height: 'clamp(160px, 20vw, 220px)' }}
           >
-            <img src={lifestyleVanity} alt="Luxury beauty vanity" className="h-[160px] w-full object-cover md:h-[200px]" loading="lazy" width={1024} height={800} />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="w-[120px] shrink-0 overflow-hidden rounded-xl md:mt-6 md:w-[140px]"
+            <img
+              src={lifestyleVanity}
+              alt="Architectural retail interior"
+              className="h-full w-full object-cover"
+              style={{ filter: 'grayscale(25%) contrast(1.05)', mixBlendMode: 'multiply' }}
+              loading="lazy"
+              width={1024}
+              height={800}
+            />
+          </div>
+          {/* Wider shorter slit */}
+          <div
+            className="w-[140px] shrink-0 overflow-hidden md:w-[160px]"
+            style={{ clipPath: 'inset(0 0 0 0 round 4px)', height: 'clamp(120px, 14vw, 160px)', marginTop: 'auto' }}
           >
-            <img src={lifestyleUnboxing} alt="Luxury unboxing moment" className="h-[140px] w-full object-cover md:h-[180px]" loading="lazy" width={800} height={1024} />
-          </motion.div>
-        </div>
+            <img
+              src={lifestyleUnboxing}
+              alt="Luxury unboxing"
+              className="h-full w-full object-cover"
+              style={{ filter: 'grayscale(25%) contrast(1.05)', mixBlendMode: 'multiply' }}
+              loading="lazy"
+              width={800}
+              height={1024}
+            />
+          </div>
+        </motion.div>
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
