@@ -163,7 +163,7 @@ const HeroSection = () => {
                 width={800}
                 height={1024}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              
               <div className="absolute bottom-3 left-3">
                 <span className="rounded-md bg-card/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
                   {img.label}
