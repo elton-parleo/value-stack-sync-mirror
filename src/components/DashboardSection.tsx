@@ -52,10 +52,6 @@ const DashboardSection = () => {
   return (
     <AnimatedSection id="dashboard" className="section-grid relative bg-background py-10 md:py-14" ref={ref}>
       <div className="diffusion-glow pointer-events-none absolute right-[5%] top-[20%]" />
-      {/* Subtle lifestyle background accent */}
-      <div className="pointer-events-none absolute left-0 bottom-[5%] h-[250px] w-[160px] overflow-hidden opacity-[0.03] blur-[3px] md:h-[400px] md:w-[280px] md:opacity-[0.04]">
-        <img src={lifestyleRetail} alt="" className="h-full w-full object-cover" />
-      </div>
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="flex items-center gap-3">
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">

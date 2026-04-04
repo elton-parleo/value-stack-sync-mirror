@@ -137,10 +137,6 @@ const stages = [
 const FeedSection = () => (
   <AnimatedSection id="feed" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[15%] top-[40%]" />
-    {/* Subtle editorial background accent */}
-    <div className="pointer-events-none absolute right-0 top-[10%] h-[300px] w-[180px] overflow-hidden opacity-[0.04] blur-[2px] md:h-[500px] md:w-[300px] md:opacity-[0.06]">
-      <img src={lifestylePortrait} alt="" className="h-full w-full object-cover" />
-    </div>
     <div className="decorative-line" />
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">

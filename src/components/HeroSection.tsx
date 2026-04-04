@@ -149,7 +149,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
-              className="group relative shrink-0 overflow-hidden rounded-xl"
+              className="group relative shrink-0 overflow-hidden rounded-2xl border border-border"
               style={{ 
                 width: i === 2 ? 'clamp(160px, 20vw, 220px)' : i === 4 ? 'clamp(180px, 24vw, 260px)' : 'clamp(130px, 16vw, 180px)',
                 height: 'clamp(180px, 22vw, 240px)',

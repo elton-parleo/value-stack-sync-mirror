@@ -14,12 +14,12 @@ const DemoFooterCTA = () => {
 
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="grid gap-8 md:grid-cols-[auto_1fr] items-center">
-          {/* Editorial image */}
-          <div className="hidden overflow-hidden rounded-2xl md:block">
+          {/* Subtle texture accent */}
+          <div className="hidden overflow-hidden rounded-2xl border border-border md:block">
             <img
               src={lifestylePortrait}
-              alt="Editorial fashion portrait"
-              className="h-[260px] w-[200px] object-cover"
+              alt="Abstract light and surface texture"
+              className="h-[260px] w-[200px] object-cover opacity-[0.7]"
               loading="lazy"
               width={800}
               height={1024}
