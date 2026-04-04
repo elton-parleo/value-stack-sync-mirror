@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
-import lifestylePortrait from "@/assets/lifestyle-editorial-portrait.jpg";
 
 /* ── Tiny illustrative visuals for each state ── */
 
