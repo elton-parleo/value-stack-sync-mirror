@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import PulsingDot from "./PulsingDot";
 import BrandLogo from "./BrandLogo";
-import lifestyleRetail from "@/assets/lifestyle-retail-moment.jpg";
 
 const navItems = [
   { icon: "☰", label: "Overview", active: false },
