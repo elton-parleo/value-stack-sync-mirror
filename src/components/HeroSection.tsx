@@ -133,49 +133,35 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Editorial product image strip — inspired by New Gen */}
+      {/* Editorial product image strip */}
       <div className="mx-auto w-full max-w-content px-5 pb-10 md:px-20 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="flex gap-3 overflow-x-auto pb-2 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="flex gap-2 md:gap-3"
+          style={{ height: 'clamp(160px, 18vw, 220px)' }}
         >
           {productImages.map((img, i) => {
-            // Deliberately varied widths: one wide, two narrow, two medium — contact sheet rhythm
-            const widths = [
-              'clamp(140px, 18vw, 200px)',   // medium
-              'clamp(160px, 22vw, 260px)',   // wide
-              'clamp(200px, 28vw, 320px)',   // widest — fashion hero
-              'clamp(160px, 22vw, 240px)',   // wide
-            ];
+            const flexValues = ['1.2', '1.8', '1.5', '1'];
             return (
               <motion.div
-                key={img.label}
+                key={img.alt}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
-                className="group relative shrink-0 overflow-hidden rounded-lg"
-                style={{ 
-                  width: widths[i],
-                  height: 'clamp(180px, 22vw, 240px)',
-                }}
+                className="group relative overflow-hidden rounded-lg"
+                style={{ flex: flexValues[i] }}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  style={{ filter: 'grayscale(20%) contrast(1.05)', mixBlendMode: 'multiply' }}
+                  style={{ filter: 'grayscale(15%) contrast(1.05)', mixBlendMode: 'multiply' }}
                   loading="lazy"
                   width={800}
                   height={1024}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3">
-                  <span className="rounded-md bg-card/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
-                    {img.label}
-                  </span>
-                </div>
               </motion.div>
             );
           })}
