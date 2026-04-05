@@ -139,7 +139,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="flex gap-3 overflow-x-auto pb-2 scrollbar-none"
+          className="flex gap-3 overflow-x-auto pb-2 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {productImages.map((img, i) => {
             // Deliberately varied widths: one wide, two narrow, two medium — contact sheet rhythm
