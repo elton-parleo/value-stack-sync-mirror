@@ -143,24 +143,32 @@ const HeroSection = () => {
           style={{ height: 'clamp(160px, 18vw, 220px)' }}
         >
           {productImages.map((img, i) => {
-            const flexValues = ['1.2', '1.8', '1.5', '1'];
+            const flexValues = ['1', '2.2', '1.4', '0.8'];
             return (
               <motion.div
                 key={img.alt}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
-                className="group relative overflow-hidden rounded-lg"
-                style={{ flex: flexValues[i] }}
+                initial={{ opacity: 0, y: 16, flex: Number(flexValues[i]) }}
+                animate={{ opacity: 1, y: 0, flex: Number(flexValues[i]) }}
+                whileHover={{ flex: Number(flexValues[i]) * 1.6 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="relative overflow-hidden rounded-lg cursor-pointer"
               >
-                <img
+                <motion.img
                   src={img.src}
                   alt={img.alt}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  style={{ filter: 'grayscale(15%) contrast(1.05)', mixBlendMode: 'multiply' }}
+                  className="h-full w-full object-cover"
+                  style={{ filter: 'grayscale(15%) contrast(1.05)', mixBlendMode: 'multiply', objectPosition: i === 0 ? 'center center' : undefined }}
                   loading="lazy"
                   width={800}
                   height={1024}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                />
+                {/* Subtle overlay on hover */}
+                <motion.div
+                  className="pointer-events-none absolute inset-0 rounded-lg border border-primary/0"
+                  whileHover={{ borderColor: 'hsl(213 99% 50% / 0.15)' }}
+                  transition={{ duration: 0.4 }}
                 />
               </motion.div>
             );
