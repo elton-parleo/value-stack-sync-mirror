@@ -36,7 +36,7 @@ const DemoFooterCTA = () => {
             </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-2">
-              {["38+ merchants", "<50ms", "60% token savings", "Zero PII"].map((s) => (
+              {["200+ merchants", "<50ms", "60% token savings", "Zero PII"].map((s) => (
                 <span key={s} className="rounded-full border border-border bg-card px-3 py-1 text-[12px] font-medium text-foreground/70" style={{ boxShadow: "var(--shadow-sm)" }}>
                   {s}
                 </span>
