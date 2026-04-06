@@ -91,7 +91,7 @@ const LiveDataWidget = () => (
           </div>
         ))}
       </div>
-      <span className="text-[10px] text-parleo-muted">38 merchants connected</span>
+      <span className="text-[10px] text-parleo-muted">200+ merchants connected</span>
     </div>
   </motion.div>
 );

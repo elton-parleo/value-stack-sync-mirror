@@ -112,7 +112,7 @@ const DashboardSection = () => {
                   ))}
                 </div>
                 <div className="border-t border-border px-4 py-3 text-[10px] text-parleo-muted">
-                  38 merchants
+                  200+ merchants
                 </div>
               </div>
 

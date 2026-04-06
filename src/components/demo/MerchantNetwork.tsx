@@ -24,7 +24,7 @@ const MerchantNetwork = () => (
   <AnimatedSection className="py-8 md:py-12">
     <div className="mx-auto max-w-content px-5 md:px-20">
       <h2 className="font-heading text-[28px] text-foreground md:text-[40px]">
-        Deep shopping intelligence across 38+ merchants.
+        Deep shopping intelligence across 200+ merchants.
       </h2>
       <p className="mt-2 max-w-[560px] text-[15px] text-foreground/60">
         Loyalty programs, card offers, promo codes, and incentive logic. Indexed, normalized, and refreshed hourly so agents always have the real picture.
@@ -49,7 +49,7 @@ const MerchantNetwork = () => (
       </div>
 
       <p className="mt-4 text-[13px] text-foreground/50">
-        + expanding to 100+ merchants across beauty, outdoor, electronics, home, and fashion
+        + expanding across beauty, outdoor, electronics, home, and fashion
       </p>
     </div>
   </AnimatedSection>
