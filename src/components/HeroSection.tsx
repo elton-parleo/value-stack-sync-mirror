@@ -36,7 +36,7 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="section-grid relative overflow-hidden bg-background">
-      <div className="pointer-events-none absolute -right-[300px] -top-[100px] h-[700px] w-[700px] rounded-full opacity-[0.04]" style={{
+      <div className="pointer-events-none absolute -right-[300px] -top-[100px] h-[700px] w-[700px] rounded-full opacity-[0.07]" style={{
         background: 'radial-gradient(circle, hsl(213 99% 50%) 0%, transparent 70%)'
       }} />
       <div className="diffusion-glow pointer-events-none absolute left-1/2 top-[40%] -translate-x-1/2" />
