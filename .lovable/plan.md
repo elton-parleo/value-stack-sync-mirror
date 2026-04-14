@@ -1,43 +1,83 @@
 
 
-# Plan: Complete Image System Regeneration
+# Move Stats to "The New Channel" + Boost CTA Button Visibility
 
-## Problem
-The current lifestyle images feel generic and AI-generated despite multiple iterations. They lack the authored, editorial quality described in your design preferences: compositions feel algorithmic rather than directed, color palettes default to warm cinematic tones, and subjects are treated literally rather than graphically. The images don't contribute to the site's aura or feel like they came from the same intentional editorial system.
+## What this changes
 
-## Approach
+**1. Move sourced stats into ProblemSection ("The New Channel")**
+The stats strip (58% Stripe, 4,700% Adobe, $5T McKinsey) currently sits in its own `SocialProofSection` between the hero and ProblemSection. It will be relocated into the ProblemSection, placed between the section heading ("Agents are already shopping for your customers") and the body text. The standalone `SocialProofSection` will be simplified to keep only the scrolling logo marquee.
 
-Regenerate all 10 images using prompts that lean hard into your preferences document, specifically: **graphic integration** (photos as design elements, not illustrations), **composed editorial** framing, **abstraction over literalism**, and **visible process** (grain, texture, materiality). Every image will be prompted to feel like a crop from a Pentagram annual report or Apartamento magazine spread, not a product shot.
+**2. Make "How it Works" and "Run Agent" buttons dramatically more clickable**
+Current issues: the "How it Works" button blends with background, the pulsing dot is too subtle, and "Run Agent" looks like a secondary element. The fix applies a high-contrast visual treatment that stays within the design system.
 
-## Image Regeneration Plan
+---
 
-The key shift: treat each image as an **abstract color field or textural composition** that evokes its category through materiality and form, not through literal product depiction. No bottles, no brushes, no phones as hero subjects.
+## Implementation Details
 
-| # | File | Current Problem | New Direction |
-|---|------|----------------|---------------|
-| 1 | `lifestyle-skincare.jpg` | Looks like a perfume ad, not skincare | **Abstract texture study**: extreme macro of cream being dragged across raw travertine stone. Just texture, edge, negative space. Muted ivory and warm clay tones. Tight crop where the cream edge bisects the frame asymmetrically. |
-| 2 | `lifestyle-beauty-flatlay.jpg` | Repetitive grid pattern, artificial | **Deconstructed still life**: single compact mirror and a powder brush on poured concrete, shot from above at a slight angle. Deliberate shadow as compositional element. Objects pushed to lower-right corner, 60% negative space. Desaturated warm tones. |
-| 3 | `lifestyle-fashion.jpg` | Orange sweater feels stock-y | **Architectural fabric**: extreme close-up of woven textile fibers, almost abstract. The weave pattern becomes geometric. Monochrome warm gray with one thread of electric blue visible. Flat, orthographic, no depth of field. |
-| 4 | `lifestyle-tech.jpg` | Phone on terrazzo, generic | **Device as geometry**: overhead shot of a dark device edge cutting diagonally across a light concrete surface. Only a sliver of the device visible. Hard shadow creates a second geometric line. Mineral gray palette. |
-| 5 | `lifestyle-vanity.jpg` | Too much blank white space | **Retail as negative space**: minimalist shelf with a single object, shot through a doorframe or architectural opening that masks 40% of the image. Warm stone tones, flat perspective, the architecture dominates over the product. |
-| 6 | `lifestyle-unboxing.jpg` | Packaging looks generic | **Paper as material**: tight crop of tissue paper edge being folded, showing paper grain and fiber. Hands cropped to just fingertips at frame edge. Warm off-white palette, the paper texture IS the subject. |
-| 7 | `lifestyle-hands-product.jpg` | Browsing gesture not compelling | **Gesture as abstraction**: hands holding a card or thin object, cropped so tight only two fingers and the object edge are visible. Shot against a raw plaster wall. Flat light, visible grain, almost monochrome. |
-| 8 | `lifestyle-editorial-portrait.jpg` | Person/silhouette not working | **Figure as form**: back of a head/shoulders, heavily cropped, pushed to bottom-right corner. Textured fabric (linen or raw cotton) visible. 65% of frame is warm empty wall. Grain overlay. No face visible at all. |
-| 9 | `lifestyle-retail-moment.jpg` | Blurry store interior, unclear | **Color field**: an out-of-focus interior shot where architecture becomes pure warm color blocks. A vertical line (doorframe or column) divides the composition. Almost abstract expressionist. Warm amber and stone tones. |
-| 10 | `lifestyle-fragrance.jpg` | Not currently in hero strip but used elsewhere | **Shadow study**: a single glass object casting a long diagonal shadow on a flat matte surface. The shadow is the subject, not the object. High contrast, mineral palette, orthographic overhead angle. |
+### A. Stats relocation (3 files)
 
-## Prompt Engineering Strategy
+**`ProblemSection.tsx`** — Insert a 3-column stats grid between the `<h2>` and the `<p>` body text:
+- Same data: 58% / Stripe, 4,700% / Adobe, $5T / McKinsey
+- Slightly smaller type than standalone (28px mobile / 36px desktop) to fit as supporting evidence rather than standalone section
+- Maintains the source attribution below each stat
 
-Every prompt will include this base directive to enforce consistency:
-- "Editorial photography, not product photography. Shot by a design-focused photographer for an architecture or design magazine. Orthographic or flat perspective. Asymmetric composition with deliberate negative space. Muted mineral and stone color palette with warm off-white tones. Visible film grain and paper-like texture. No cinematic lighting, no depth of field blur, no centered subjects, no symmetrical framing. The image should feel like a considered crop from a larger composition. Must not look AI-generated."
+**`SocialProofSection.tsx`** — Remove the stats grid, keep only the "Connects with" label and the scrolling marquee rows. This keeps the logo credibility strip without the redundant stats.
 
-Model: `google/gemini-3-pro-image-preview` for maximum quality.
+**`Index.tsx`** — Keep SocialProofSection in the page (for the marquee), no reordering needed.
 
-## Component Updates
+### B. Button visibility overhaul (4 files)
 
-No structural changes to components. The existing CSS treatments (`grayscale(15%) contrast(1.05)`, `mix-blend-multiply`) will unify the new images with the warm `#F2F0EF` background even better since the new images are already in a mineral/stone palette rather than fighting against it with saturated colors.
+**"How it Works" button in `HeroSection.tsx`:**
+- Switch from faint warm-border outline to solid `accent-warm` fill with white text
+- Add a persistent animated shimmer sweep across the button surface (a diagonal light band that moves left-to-right every 3s)
+- Add a right-pointing arrow icon that animates on hover
+- Increase size slightly (h-12, px-7)
+- Remove the tiny pulsing dot (too subtle, adds clutter)
 
-## Files Changed
-- 10 image files regenerated in `src/assets/`
-- No component code changes needed
+**"How it Works" in `Navbar.tsx`:**
+- Switch from ghost outline to a solid accent-warm/90 background with white text
+- Keep compact size but add the shimmer animation
+- Remove the pulsing dot
+
+**"Run Agent" button in `LiveDemo.tsx`:**
+- Switch from faint gradient outline to solid accent-warm fill with white text
+- Increase to h-12 with larger padding
+- Add the shimmer sweep animation
+- Add a bouncing arrow-down or play icon
+- Add helper text below: "Takes 8 seconds" to set expectations
+
+**`index.css`** — Add a new `@keyframes btn-shimmer` animation:
+```css
+@keyframes btn-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-btn-shimmer {
+  background-image: linear-gradient(
+    110deg,
+    transparent 25%,
+    hsla(0, 0%, 100%, 0.15) 50%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+  animation: btn-shimmer 3s ease-in-out infinite;
+}
+```
+
+### Visual before/after
+
+```text
+BEFORE:                              AFTER:
+┌──────────────────┐                ┌────────────────────────┐
+│ ○ How it Works   │  (faint)       │ ▶ How it Works  →      │  (solid warm fill,
+│ warm outline     │                │ shimmer sweep          │   white text, shimmer)
+└──────────────────┘                └────────────────────────┘
+
+┌─────────────────────┐             ┌────────────────────────┐
+│  ▷ Run Agent        │  (faint)    │  ▶ Run Agent  ↓        │  (solid warm fill,
+│  warm gradient bdr  │             │  shimmer · "8 seconds" │   white text, helper)
+└─────────────────────┘             └────────────────────────┘
+```
+
+The key principle: these are the highest-value interactive elements on the site. They should be the most visually prominent elements after the primary "Request Demo" CTA. Solid fills with shimmer animation create urgency and unmistakable clickability without breaking the design system.
 
