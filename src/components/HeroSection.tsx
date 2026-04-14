@@ -97,10 +97,13 @@ const HeroSection = () => {
             </button>
             <Link
               to="/demo"
-              className="group relative inline-flex h-11 items-center gap-2 rounded-[4px] border border-accent-warm/40 bg-accent-warm/[0.06] px-6 text-[15px] font-medium text-foreground transition-all hover:border-accent-warm/60 hover:bg-accent-warm/[0.1] active:scale-[0.97] animate-glow-pulse"
+              className="animate-btn-shimmer group relative inline-flex h-12 items-center gap-2.5 rounded-[4px] bg-accent-warm px-7 text-[15px] font-semibold text-white transition-all hover:opacity-90 active:scale-[0.97]"
+              style={{ boxShadow: '0 2px 16px -3px hsl(var(--accent-warm) / 0.4)' }}
             >
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
               How it Works
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5">
+                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
 
