@@ -225,9 +225,9 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                   onClick={runDemo}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-6 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85"
+                  className="animate-border-pulse group inline-flex h-11 items-center gap-2.5 rounded-full border border-primary/30 bg-primary/[0.05] px-7 text-[14px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.08]"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="opacity-60"><polygon points="6,3 20,12 6,21" /></svg>
+                  <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse-dot" />
                   Run Agent
                 </motion.button>
                 <span className="text-[11px] text-foreground/35">Takes about 8 seconds</span>

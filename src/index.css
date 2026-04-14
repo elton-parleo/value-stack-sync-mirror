@@ -221,29 +221,14 @@
   background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
 }
 
-/* CTA button shimmer sweep */
-@keyframes btn-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* Attention-drawing border pulse for secondary CTAs */
+@keyframes border-pulse {
+  0%, 100% { border-color: hsl(213 99% 50% / 0.25); background-color: hsl(213 99% 50% / 0.03); }
+  50% { border-color: hsl(213 99% 50% / 0.5); background-color: hsl(213 99% 50% / 0.07); }
 }
 
-.animate-btn-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-.animate-btn-shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    110deg,
-    transparent 25%,
-    hsla(0, 0%, 100%, 0.18) 50%,
-    transparent 75%
-  );
-  background-size: 200% 100%;
-  animation: btn-shimmer 3s ease-in-out infinite;
-  pointer-events: none;
+.animate-border-pulse {
+  animation: border-pulse 2.5s ease-in-out infinite;
 }
 
 ::-webkit-scrollbar {

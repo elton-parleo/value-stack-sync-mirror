@@ -85,7 +85,7 @@ const HeroSection = () => {
             Parleo gives agents a pre-computed true-cost and product-intelligence layer in a single API call. Your loyalty programs, card offers, and real value: readable and transactable.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setContactOpen(true)}
               className="group inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85 active:scale-[0.98]"
@@ -95,10 +95,10 @@ const HeroSection = () => {
             </button>
             <Link
               to="/demo"
-              className="group inline-flex h-10 items-center gap-2 text-[14px] font-medium text-foreground/70 transition-colors hover:text-foreground"
+              className="animate-border-pulse group inline-flex h-10 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07] active:scale-[0.98]"
             >
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
               How it Works
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-40 transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
           </div>
 
