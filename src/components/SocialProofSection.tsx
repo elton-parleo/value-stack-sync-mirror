@@ -37,17 +37,7 @@ const MarqueeRow = ({ logos, speed = 30, reverse = false }: { logos: string[]; s
 };
 
 const SocialProofSection = () => (
-  <section className="relative overflow-hidden border-t border-border bg-background py-8 md:py-10">
-    <div className="mx-auto max-w-content px-6 md:px-20">
-      {/* Divider + label */}
-      <div className="mb-5 flex items-center gap-3">
-        <div className="h-px flex-1 bg-border" />
-        <span className="text-[11px] font-medium uppercase tracking-widest text-foreground/35">
-          Connects with
-        </span>
-        <div className="h-px flex-1 bg-border" />
-      </div>
-    </div>
+  <section className="relative overflow-hidden bg-background py-8 md:py-10">
 
     {/* Full-bleed scrolling marquee */}
     <div className="space-y-3">

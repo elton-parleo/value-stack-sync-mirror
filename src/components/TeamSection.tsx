@@ -40,7 +40,7 @@ const team = [
 const TeamSection = () => (
   <AnimatedSection id="team" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute right-[10%] top-[30%]" />
-    <div className="decorative-line" />
+    
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
       <div className="flex items-center gap-3">
         <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">

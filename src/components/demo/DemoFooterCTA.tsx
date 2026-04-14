@@ -31,7 +31,7 @@ const DemoFooterCTA = () => {
             <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
               The true cost layer your agents are missing.
             </h2>
-            <p className="mt-3 max-w-[560px] text-[16px] text-foreground/60 md:mx-0 mx-auto" style={{ lineHeight: 1.7 }}>
+            <p className="mt-3 max-w-[560px] text-[15px] text-foreground/60 md:text-[17px] md:mx-0 mx-auto" style={{ lineHeight: 1.7 }}>
               With Parleo, agents call a single /true-cost endpoint that returns normalized products, effective price, and ready-to-use rationales.
             </p>
 
@@ -46,11 +46,10 @@ const DemoFooterCTA = () => {
             <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
               <button
                 onClick={() => setContactOpen(true)}
-                className="group inline-flex h-12 items-center gap-2 rounded-[4px] bg-primary px-7 text-[15px] font-medium text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"
-                style={{ boxShadow: "0 4px 16px -4px hsl(213 99% 50% / 0.3)" }}
+                className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85 active:scale-[0.98]"
               >
                 Request Demo
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50 transition-transform group-hover:translate-x-0.5">
                   <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
