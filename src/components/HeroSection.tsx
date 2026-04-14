@@ -85,25 +85,20 @@ const HeroSection = () => {
             Parleo gives agents a pre-computed true-cost and product-intelligence layer in a single API call. Your loyalty programs, card offers, and real value: readable and transactable.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <button
               onClick={() => setContactOpen(true)}
-              className="group inline-flex h-11 items-center gap-2 rounded-[4px] bg-primary px-6 text-[15px] font-medium text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"
-              style={{ boxShadow: '0 2px 12px -3px hsl(213 99% 50% / 0.35)' }}>
+              className="group inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85 active:scale-[0.98]"
+            >
               Request Demo
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50 transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
             <Link
               to="/demo"
-              className="animate-btn-shimmer group relative inline-flex h-11 items-center gap-2 rounded-[4px] bg-foreground px-6 text-[15px] font-medium text-background transition-all hover:bg-foreground/90 active:scale-[0.97]"
-              style={{ boxShadow: '0 2px 12px -3px hsl(var(--foreground) / 0.25)' }}
+              className="group inline-flex h-10 items-center gap-2 text-[14px] font-medium text-foreground/70 transition-colors hover:text-foreground"
             >
               How it Works
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-40 transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
           </div>
 

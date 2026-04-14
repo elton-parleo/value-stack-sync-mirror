@@ -223,12 +223,11 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
               <div className="flex flex-col items-center gap-2 py-5">
                 <motion.button
                   onClick={runDemo}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="animate-btn-shimmer group relative inline-flex h-12 items-center gap-2.5 rounded-xl bg-primary px-8 text-[15px] font-bold text-primary-foreground transition-all hover:opacity-90"
-                  style={{ boxShadow: "0 3px 20px -4px hsl(var(--primary) / 0.4)" }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-6 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110"><polygon points="6,3 20,12 6,21" /></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="opacity-60"><polygon points="6,3 20,12 6,21" /></svg>
                   Run Agent
                 </motion.button>
                 <span className="text-[11px] text-foreground/35">Takes about 8 seconds</span>
