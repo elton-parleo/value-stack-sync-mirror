@@ -64,19 +64,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-[560px]">
 
-          {/* Status badge — linked to demo */}
-          <Link to="/demo">
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 transition-colors hover:border-primary/30 hover:bg-primary/[0.03] cursor-pointer"
-              style={{ boxShadow: 'var(--shadow-sm)' }}>
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-              <span className="text-[11px] font-medium text-foreground/60">Honey for Agents · Live</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </motion.div>
-          </Link>
+
 
           <h1 className="font-display text-[44px] text-foreground md:text-[64px]" style={{ lineHeight: 1.05 }}>
             The incentive layer<br />for AI commerce.
