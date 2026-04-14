@@ -142,7 +142,7 @@ const FeedSection = () => (
     <div className="pointer-events-none absolute right-0 top-[10%] h-[300px] w-[180px] overflow-hidden opacity-[0.04] blur-[4px] md:h-[500px] md:w-[300px] md:opacity-[0.05]">
       <img src={lifestylePortrait} alt="" className="h-full w-full object-cover" style={{ filter: 'grayscale(60%)', mixBlendMode: 'multiply' }} />
     </div>
-    <div className="decorative-line" />
+    
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
       <div className="flex items-center gap-3">

@@ -158,7 +158,7 @@ const AgentFlowDiagram = () => (
 const HowItWorks = () => (
   <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[10%] top-[50%] -translate-y-1/2" />
-    <div className="decorative-line" />
+    
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
       {/* Section header with editorial image pair */}

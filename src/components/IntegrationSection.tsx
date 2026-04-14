@@ -17,7 +17,7 @@ const integrations = [
 const IntegrationSection = () => (
   <AnimatedSection id="integration" className="section-grid relative bg-background py-10 md:py-14">
     <div className="diffusion-glow pointer-events-none absolute left-[20%] top-[40%]" />
-    <div className="decorative-line" />
+    
 
     <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
       <svg width="60" height="60" viewBox="0 0 60 60" className="opacity-[0.06]">
