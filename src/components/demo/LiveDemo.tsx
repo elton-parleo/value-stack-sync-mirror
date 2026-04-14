@@ -225,8 +225,8 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
                   onClick={runDemo}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="animate-btn-shimmer group relative inline-flex h-12 items-center gap-2.5 rounded-xl bg-accent-warm px-8 text-[15px] font-bold text-white transition-all hover:opacity-90"
-                  style={{ boxShadow: "0 3px 20px -4px hsl(var(--accent-warm) / 0.45)" }}
+                  className="animate-btn-shimmer group relative inline-flex h-12 items-center gap-2.5 rounded-xl bg-primary px-8 text-[15px] font-bold text-primary-foreground transition-all hover:opacity-90"
+                  style={{ boxShadow: "0 3px 20px -4px hsl(var(--primary) / 0.4)" }}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110"><polygon points="6,3 20,12 6,21" /></svg>
                   Run Agent

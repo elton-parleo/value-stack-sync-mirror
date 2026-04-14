@@ -78,8 +78,8 @@ const Navbar = () => {
             )}
             <Link
               to="/demo"
-              className="animate-btn-shimmer relative flex items-center gap-1.5 rounded-[4px] bg-accent-warm px-3.5 py-1.5 text-[13px] font-semibold text-white transition-all hover:opacity-90"
-              style={{ boxShadow: '0 1px 8px -2px hsl(var(--accent-warm) / 0.35)' }}
+              className="animate-btn-shimmer relative flex items-center gap-1.5 rounded-[4px] bg-primary px-3.5 py-1.5 text-[13px] font-semibold text-primary-foreground transition-all hover:opacity-90"
+              style={{ boxShadow: '0 1px 8px -2px hsl(var(--primary) / 0.35)' }}
             >
               How it Works
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
