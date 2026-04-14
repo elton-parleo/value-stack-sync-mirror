@@ -1,20 +1,52 @@
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useForm, ValidationError } from "@formspree/react";
 
 interface ContactFormDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
+const FORMSPREE_URL = "https://formspree.io/f/xyklyajq";
+
 const inputClass =
   "h-10 w-full rounded-md border border-border bg-background px-3 text-[14px] text-foreground outline-none transition-shadow focus:shadow-[0_0_0_2px_hsl(213,99%,50%,0.15)] focus:border-primary";
 
 const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
-  const [state, handleSubmit, reset] = useForm("xyklyajq");
+  const [submitting, setSubmitting] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleClose = () => {
-    if (state.succeeded) reset();
+    if (succeeded) setSucceeded(false);
+    setError(null);
     onOpenChange(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setSucceeded(true);
+      } else {
+        const data = await res.json().catch(() => null);
+        setError(data?.errors?.[0]?.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -46,7 +78,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
               </svg>
             </button>
 
-            {state.succeeded ? (
+            {succeeded ? (
               <div className="py-8 text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -54,9 +86,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                   </svg>
                 </div>
                 <p className="text-lg font-semibold text-foreground">Message sent</p>
-                <p className="mt-2 text-[14px] text-foreground/60">
-                  We'll get back to you shortly.
-                </p>
+                <p className="mt-2 text-[14px] text-foreground/60">We'll get back to you shortly.</p>
               </div>
             ) : (
               <>
@@ -69,31 +99,20 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                 <form onSubmit={handleSubmit} className="space-y-3.5">
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="fs-name" className="mb-1.5 block text-[12px] font-medium text-foreground/60">
-                        Name *
-                      </label>
+                      <label htmlFor="fs-name" className="mb-1.5 block text-[12px] font-medium text-foreground/60">Name *</label>
                       <input id="fs-name" name="name" required className={inputClass} placeholder="Jane Smith" />
-                      <ValidationError prefix="Name" field="name" errors={state.errors} className="mt-1 text-[12px] text-destructive" />
                     </div>
                     <div>
-                      <label htmlFor="fs-email" className="mb-1.5 block text-[12px] font-medium text-foreground/60">
-                        Email *
-                      </label>
+                      <label htmlFor="fs-email" className="mb-1.5 block text-[12px] font-medium text-foreground/60">Email *</label>
                       <input id="fs-email" name="email" type="email" required className={inputClass} placeholder="jane@company.com" />
-                      <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-[12px] text-destructive" />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="fs-company" className="mb-1.5 block text-[12px] font-medium text-foreground/60">
-                      Company *
-                    </label>
+                    <label htmlFor="fs-company" className="mb-1.5 block text-[12px] font-medium text-foreground/60">Company *</label>
                     <input id="fs-company" name="company" required className={inputClass} placeholder="Acme Corp" />
-                    <ValidationError prefix="Company" field="company" errors={state.errors} className="mt-1 text-[12px] text-destructive" />
                   </div>
                   <div>
-                    <label htmlFor="fs-message" className="mb-1.5 block text-[12px] font-medium text-foreground/60">
-                      Message
-                    </label>
+                    <label htmlFor="fs-message" className="mb-1.5 block text-[12px] font-medium text-foreground/60">Message</label>
                     <textarea
                       id="fs-message"
                       name="message"
@@ -101,14 +120,16 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                       className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-[14px] text-foreground outline-none transition-shadow focus:shadow-[0_0_0_2px_hsl(213,99%,50%,0.15)] focus:border-primary resize-none"
                       placeholder="Tell us about your use case..."
                     />
-                    <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-[12px] text-destructive" />
                   </div>
+                  {error && (
+                    <p className="text-[13px] text-destructive">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    disabled={state.submitting}
+                    disabled={submitting}
                     className="h-11 w-full rounded-full bg-foreground text-[15px] font-medium text-background transition-all hover:bg-foreground/85 active:scale-[0.98] disabled:opacity-60"
                   >
-                    {state.submitting ? "Sending..." : "Send message"}
+                    {submitting ? "Sending..." : "Send message"}
                   </button>
                 </form>
               </>
