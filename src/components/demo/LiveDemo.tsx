@@ -2,16 +2,21 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { type Scenario, scenarios } from "./scenarioData";
 import BrandLogo from "../BrandLogo";
+import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
+import lifestyleFashion from "@/assets/lifestyle-fashion.jpg";
+import lifestyleTech from "@/assets/lifestyle-tech.jpg";
 
 interface Props {
   scenario: Scenario;
   onScenarioChange: (s: Scenario) => void;
 }
 
-const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = [
+const scenarioMeta: { key: Scenario; label: string; image: string; icon: React.ReactNode; merchants: string[] }[] = [
   {
     key: "beauty",
     label: "Beauty",
+    image: lifestyleSkincare,
+    merchants: ["Sephora", "Ulta", "Target"],
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><circle cx="9" cy="9" r="1" fill="currentColor" /><circle cx="15" cy="9" r="1" fill="currentColor" />
@@ -21,6 +26,8 @@ const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = 
   {
     key: "outdoor",
     label: "Outdoor",
+    image: lifestyleFashion,
+    merchants: ["Nike", "REI", "Backcountry"],
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
@@ -30,6 +37,8 @@ const scenarioMeta: { key: Scenario; label: string; icon: React.ReactNode }[] = 
   {
     key: "electronics",
     label: "Electronics",
+    image: lifestyleTech,
+    merchants: ["Best Buy", "Amazon", "Sony"],
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="4" width="16" height="12" rx="2" /><path d="M8 20h8" /><path d="M12 16v4" />
@@ -103,34 +112,59 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
           <span className="font-semibold text-primary">20× reduction.</span>
         </p>
 
-        {/* ── Horizontal Category Toggles with entrance animation ── */}
+        {/* ── D12: Category Tabs with Lifestyle Imagery ── */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="mt-5 mb-4 flex gap-2"
+          className="mt-5 mb-4 grid grid-cols-3 gap-2"
         >
           {scenarioMeta.map((s, i) => {
             const active = s.key === scenario;
             return (
               <motion.button
                 key={s.key}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.15 + i * 0.06 }}
                 onClick={() => onScenarioChange(s.key)}
-                className={`relative flex items-center gap-2 rounded-lg border px-4 py-2 text-[13px] font-medium transition-all ${
+                className={`group relative overflow-hidden rounded-xl border text-left transition-all ${
                   active
-                    ? "border-accent-warm/50 bg-accent-warm/[0.08] text-foreground shadow-sm"
-                    : "border-border bg-card text-foreground/60 hover:border-accent-warm/30 hover:text-foreground"
+                    ? "border-accent-warm/50 shadow-sm ring-1 ring-accent-warm/20"
+                    : "border-border hover:border-accent-warm/30"
                 }`}
               >
-                <span className={active ? "text-accent-warm" : "text-foreground/40"}>{s.icon}</span>
-                {s.label}
+                {/* Category image background */}
+                <div className="relative h-[60px] overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.label}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    style={{ filter: active ? 'grayscale(0%) contrast(1.05)' : 'grayscale(40%) contrast(0.95)', opacity: active ? 0.85 : 0.5 }}
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0" style={{ background: active ? 'linear-gradient(180deg, transparent 30%, hsl(var(--accent-warm) / 0.15) 100%)' : 'linear-gradient(180deg, transparent 40%, hsl(0 0% 0% / 0.3) 100%)' }} />
+                </div>
+                
+                {/* Label + merchants */}
+                <div className="px-3 py-2.5 bg-card">
+                  <div className="flex items-center gap-1.5">
+                    <span className={`${active ? "text-accent-warm" : "text-foreground/40"}`}>{s.icon}</span>
+                    <span className={`text-[13px] font-semibold ${active ? "text-foreground" : "text-foreground/60"}`}>{s.label}</span>
+                  </div>
+                  <div className="mt-1 flex gap-1">
+                    {s.merchants.map(m => (
+                      <BrandLogo key={m} name={m} size={12} />
+                    ))}
+                    <span className="text-[10px] text-foreground/35 ml-0.5">+more</span>
+                  </div>
+                </div>
+
+                {/* Active indicator */}
                 {active && (
                   <motion.div
-                    layoutId="cat-underline"
-                    className="absolute -bottom-px left-2 right-2 h-[2px] rounded-full bg-accent-warm"
+                    layoutId="cat-active-indicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-warm"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
