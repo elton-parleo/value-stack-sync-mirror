@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 const valueLayers = [
   { label: "Rouge tier", value: "−10%", isGreen: true },
@@ -17,21 +17,15 @@ const ValueRevealSection = () => {
     offset: ["start end", "end start"],
   });
 
-  // Label crossfade: switch around 30%
+  // Label crossfade
   const labelOpacity1 = useTransform(scrollYProgress, [0.2, 0.35], [1, 0]);
   const labelOpacity2 = useTransform(scrollYProgress, [0.3, 0.45], [0, 1]);
 
-  // Price strikethrough + true cost appear around 25-35%
+  // Price reveal
   const priceReveal = useTransform(scrollYProgress, [0.2, 0.35], [0, 1]);
+  const originalPriceOpacity = useTransform(priceReveal, (v) => (v > 0.5 ? 0.35 : 1));
 
-  // Each value layer fades in staggered from 30% to 55%
-  const layerProgress = valueLayers.map((_, i) => {
-    const start = 0.28 + i * 0.05;
-    const end = start + 0.06;
-    return { start, end };
-  });
-
-  // Closing copy fades in at ~55-65%
+  // Closing copy
   const closingOpacity = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
   const closingY = useTransform(scrollYProgress, [0.55, 0.65], [12, 0]);
 
@@ -41,10 +35,13 @@ const ValueRevealSection = () => {
       className="relative bg-background"
       style={{ height: "60vh", minHeight: 500 }}
     >
-      <div className="sticky top-0 flex h-screen items-center justify-center" style={{ height: "60vh", minHeight: 500 }}>
+      <div
+        className="sticky top-0 flex items-center justify-center"
+        style={{ height: "60vh", minHeight: 500 }}
+      >
         <div className="flex flex-col items-center px-5">
           {/* Label */}
-          <div className="relative mb-4 h-5">
+          <div className="relative mb-4 h-5 w-[200px]">
             <motion.span
               className="absolute inset-0 text-center text-[12px] font-medium uppercase tracking-widest text-foreground/35"
               style={{ opacity: labelOpacity1 }}
@@ -71,44 +68,27 @@ const ValueRevealSection = () => {
 
             {/* Price row */}
             <div className="mt-2 flex items-baseline gap-2.5">
-              <motion.span
-                className="text-[24px] font-bold text-foreground"
-                style={{
-                  textDecoration: useTransform(priceReveal, (v) =>
-                    v > 0.5 ? "line-through" : "none"
-                  ),
-                  opacity: useTransform(priceReveal, (v) =>
-                    v > 0.5 ? 0.35 : 1
-                  ),
-                }}
-              >
-                $23.00
-              </motion.span>
-              <motion.span
-                className="text-[11px] text-foreground/40"
-                style={{ opacity: priceReveal }}
-              >
-                →
-              </motion.span>
-              <motion.span
-                className="text-[28px] font-bold text-primary"
-                style={{ opacity: priceReveal }}
-              >
-                $11.10
-              </motion.span>
+              <PriceDisplay
+                priceReveal={priceReveal}
+                originalPriceOpacity={originalPriceOpacity}
+              />
             </div>
 
             {/* Value layers */}
             <div className="mt-4 space-y-1.5">
-              {valueLayers.map((layer, i) => (
-                <ValueLayer
-                  key={layer.label}
-                  layer={layer}
-                  scrollYProgress={scrollYProgress}
-                  start={layerProgress[i].start}
-                  end={layerProgress[i].end}
-                />
-              ))}
+              {valueLayers.map((layer, i) => {
+                const start = 0.28 + i * 0.05;
+                const end = start + 0.06;
+                return (
+                  <ValueLayer
+                    key={layer.label}
+                    layer={layer}
+                    scrollYProgress={scrollYProgress}
+                    start={start}
+                    end={end}
+                  />
+                );
+              })}
             </div>
           </div>
 
@@ -125,7 +105,38 @@ const ValueRevealSection = () => {
   );
 };
 
-/* ── Individual value layer with scroll-driven fade ── */
+/* ── Price with strikethrough transition ── */
+
+const PriceDisplay = ({
+  priceReveal,
+  originalPriceOpacity,
+}: {
+  priceReveal: MotionValue<number>;
+  originalPriceOpacity: MotionValue<number>;
+}) => (
+  <>
+    <motion.span
+      className="text-[24px] font-bold text-foreground line-through decoration-foreground/30"
+      style={{ opacity: originalPriceOpacity }}
+    >
+      $23.00
+    </motion.span>
+    <motion.span
+      className="text-[11px] text-foreground/40"
+      style={{ opacity: priceReveal }}
+    >
+      →
+    </motion.span>
+    <motion.span
+      className="text-[28px] font-bold text-primary"
+      style={{ opacity: priceReveal }}
+    >
+      $11.10
+    </motion.span>
+  </>
+);
+
+/* ── Individual value layer ── */
 
 const ValueLayer = ({
   layer,
@@ -134,7 +145,7 @@ const ValueLayer = ({
   end,
 }: {
   layer: { label: string; value: string; isGreen: boolean };
-  scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
+  scrollYProgress: MotionValue<number>;
   start: number;
   end: number;
 }) => {
@@ -150,7 +161,9 @@ const ValueLayer = ({
       {layer.value && (
         <span
           className={`text-[13px] font-semibold ${
-            layer.isGreen ? "text-[hsl(var(--success))]" : "text-foreground/50"
+            layer.isGreen
+              ? "text-[hsl(var(--success))]"
+              : "text-foreground/50"
           }`}
         >
           {layer.value}
