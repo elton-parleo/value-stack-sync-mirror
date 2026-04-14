@@ -78,16 +78,14 @@ const Navbar = () => {
             )}
             <Link
               to="/demo"
-              className="animate-btn-shimmer relative flex items-center gap-1.5 rounded-[4px] bg-primary px-3.5 py-1.5 text-[13px] font-semibold text-primary-foreground transition-all hover:opacity-90"
-              style={{ boxShadow: '0 1px 8px -2px hsl(var(--primary) / 0.35)' }}
+              className="text-[13px] font-medium text-foreground/55 transition-colors hover:text-foreground"
             >
               How it Works
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
             <button
               onClick={() => setContactOpen(true)}
-              className="ml-1 inline-flex items-center rounded-[4px] bg-foreground px-4 text-[13px] font-medium text-background transition-all hover:bg-foreground/90 active:scale-[0.97]"
-              style={{ height: 34 }}
+              className="inline-flex items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+              style={{ height: 32 }}
             >
               Get in touch
             </button>
