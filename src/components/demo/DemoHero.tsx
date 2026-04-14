@@ -32,16 +32,17 @@ const DemoHero = ({ onRequestAccess }: Props) => {
           <div className="mt-5 flex items-center gap-3">
             <a
               href="#live-demo"
-              className="inline-flex h-10 items-center gap-2 rounded-[4px] bg-primary px-5 text-[14px] font-medium text-primary-foreground transition-all hover:opacity-[0.88] active:scale-[0.97]"
-              style={{ boxShadow: "0 2px 12px -3px hsl(213 99% 50% / 0.35)" }}
+              className="animate-border-pulse group inline-flex h-10 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07] active:scale-[0.98]"
             >
-              Try the Demo ↓
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
+              Try the Demo
             </a>
             <button
               onClick={onRequestAccess}
-              className="inline-flex h-10 items-center rounded-[4px] border border-border bg-card px-5 text-[14px] font-medium text-foreground transition-all hover:bg-secondary active:scale-[0.97]"
+              className="group inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85 active:scale-[0.98]"
             >
               Request Access
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50 transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
           </div>
         </motion.div>
@@ -55,7 +56,6 @@ const DemoHero = ({ onRequestAccess }: Props) => {
           style={{ boxShadow: "var(--shadow-elevated)" }}
         >
           <img src={lifestyleHandsProduct} alt="Luxury beauty shopping experience" className="h-[320px] w-full object-cover" style={{ filter: 'grayscale(20%) contrast(1.05)', mixBlendMode: 'multiply' }} width={800} height={1024} />
-          {/* Grain overlay */}
           <div className="pointer-events-none absolute inset-0" style={{ background: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.08\'/%3E%3C/svg%3E")', opacity: 0.3 }} />
         </motion.div>
       </div>
