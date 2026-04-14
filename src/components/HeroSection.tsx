@@ -179,7 +179,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      <div className="decorative-line" />
+      
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </section>);
 };
