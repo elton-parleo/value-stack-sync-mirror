@@ -1,9 +1,11 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import SocialProofSection from "@/components/SocialProofSection";
 import ProblemSection from "@/components/ProblemSection";
-import HowItWorks from "@/components/HowItWorks";
+import PlatformContextSection from "@/components/PlatformContextSection";
 import FeedSection from "@/components/FeedSection";
 import DashboardSection from "@/components/DashboardSection";
+import HowItWorks from "@/components/HowItWorks";
 import IntegrationSection from "@/components/IntegrationSection";
 import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
@@ -13,7 +15,9 @@ const Index = () => (
   <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
     <Navbar />
     <HeroSection />
+    <SocialProofSection />
     <ProblemSection />
+    <PlatformContextSection />
     <FeedSection />
     <DashboardSection />
     <HowItWorks />
