@@ -221,14 +221,29 @@
   background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
 }
 
-/* See it Live button glow */
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px 0 hsl(var(--accent-warm) / 0.3), 0 0 0 0 hsl(var(--accent-warm) / 0); }
-  50% { box-shadow: 0 0 16px 4px hsl(var(--accent-warm) / 0.25), 0 0 30px 8px hsl(var(--accent-warm) / 0.08); }
+/* CTA button shimmer sweep */
+@keyframes btn-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-.animate-glow-pulse {
-  animation: glow-pulse 2.5s ease-in-out infinite;
+.animate-btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.animate-btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    hsla(0, 0%, 100%, 0.18) 50%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+  animation: btn-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
 }
 
 ::-webkit-scrollbar {
