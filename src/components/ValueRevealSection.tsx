@@ -113,28 +113,38 @@ const PriceDisplay = ({
 }: {
   priceReveal: MotionValue<number>;
   originalPriceOpacity: MotionValue<number>;
-}) => (
-  <>
-    <motion.span
-      className="text-[24px] font-bold text-foreground line-through decoration-foreground/30"
-      style={{ opacity: originalPriceOpacity }}
-    >
-      $23.00
-    </motion.span>
-    <motion.span
-      className="text-[11px] text-foreground/40"
-      style={{ opacity: priceReveal }}
-    >
-      →
-    </motion.span>
-    <motion.span
-      className="text-[28px] font-bold text-primary"
-      style={{ opacity: priceReveal }}
-    >
-      $11.10
-    </motion.span>
-  </>
-);
+}) => {
+  const strikethroughWidth = useTransform(priceReveal, [0.4, 0.7], ["0%", "100%"]);
+
+  return (
+    <>
+      <span className="relative">
+        <motion.span
+          className="text-[24px] font-bold text-foreground"
+          style={{ opacity: originalPriceOpacity }}
+        >
+          $23.00
+        </motion.span>
+        <motion.span
+          className="absolute left-0 top-1/2 h-[2px] bg-foreground/40"
+          style={{ width: strikethroughWidth }}
+        />
+      </span>
+      <motion.span
+        className="text-[11px] text-foreground/40"
+        style={{ opacity: priceReveal }}
+      >
+        →
+      </motion.span>
+      <motion.span
+        className="text-[28px] font-bold text-primary"
+        style={{ opacity: priceReveal }}
+      >
+        $11.10
+      </motion.span>
+    </>
+  );
+};
 
 /* ── Individual value layer ── */
 
