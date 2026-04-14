@@ -220,17 +220,18 @@ const LiveDemo = ({ scenario, onScenarioChange }: Props) => {
 
             {/* Run button */}
             {!running && (
-              <div className="flex justify-center py-4">
+              <div className="flex flex-col items-center gap-2 py-5">
                 <motion.button
                   onClick={runDemo}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="group inline-flex h-11 items-center gap-2.5 rounded-xl border-2 border-accent-warm/40 bg-gradient-to-r from-accent-warm/[0.08] to-accent-warm/[0.03] px-7 text-[14px] font-semibold text-foreground transition-all hover:border-accent-warm/60 hover:from-accent-warm/[0.12] hover:to-accent-warm/[0.06]"
-                  style={{ boxShadow: "0 2px 16px -4px hsl(var(--accent-warm) / 0.2)" }}
+                  className="animate-btn-shimmer group relative inline-flex h-12 items-center gap-2.5 rounded-xl bg-accent-warm px-8 text-[15px] font-bold text-white transition-all hover:opacity-90"
+                  style={{ boxShadow: "0 3px 20px -4px hsl(var(--accent-warm) / 0.45)" }}
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="hsl(var(--accent-warm))" className="transition-transform group-hover:scale-110"><polygon points="6,3 20,12 6,21" /></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110"><polygon points="6,3 20,12 6,21" /></svg>
                   Run Agent
                 </motion.button>
+                <span className="text-[11px] text-foreground/35">Takes about 8 seconds</span>
               </div>
             )}
 

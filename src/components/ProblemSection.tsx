@@ -180,7 +180,28 @@ const ProblemSection = () => {
           for your customers.
         </h2>
 
-        <p className="mt-3 max-w-[580px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
+        {/* Inline sourced stats */}
+        <div className="mt-6 grid grid-cols-3 gap-4 md:gap-8">
+          {[
+            { value: "58%", label: "of consumers have used AI to shop", source: "Stripe" },
+            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe" },
+            { value: "$5T", label: "projected agentic commerce revenue by 2030", source: "McKinsey" },
+          ].map((s) => (
+            <div key={s.value}>
+              <span className="text-[26px] font-bold text-foreground md:text-[36px]" style={{ lineHeight: 1.1 }}>
+                {s.value}
+              </span>
+              <p className="mt-0.5 text-[11px] leading-[1.4] text-foreground/50 md:text-[13px]">
+                {s.label}
+              </p>
+              <span className="mt-0.5 inline-block text-[10px] font-medium text-foreground/30">
+                {s.source}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-6 max-w-[580px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
           Without Parleo, agents rank products by headline price and sparse specs, missing loyalty, promos, and card-linked value that actually determines the best deal.
         </p>
 

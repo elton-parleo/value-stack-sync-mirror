@@ -78,10 +78,11 @@ const Navbar = () => {
             )}
             <Link
               to="/demo"
-              className="relative flex items-center gap-1.5 rounded-[4px] border border-accent-warm/30 bg-accent-warm/[0.06] px-3 py-1.5 text-[13px] font-medium text-foreground transition-all hover:border-accent-warm/50 hover:bg-accent-warm/[0.1]"
+              className="animate-btn-shimmer relative flex items-center gap-1.5 rounded-[4px] bg-accent-warm px-3.5 py-1.5 text-[13px] font-semibold text-white transition-all hover:opacity-90"
+              style={{ boxShadow: '0 1px 8px -2px hsl(var(--accent-warm) / 0.35)' }}
             >
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
               How it Works
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
             <button
               onClick={() => setContactOpen(true)}
