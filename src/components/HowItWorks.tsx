@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import BrandLogo from "./BrandLogo";
 import lifestyleVanity from "@/assets/lifestyle-vanity.jpg";
 import lifestyleUnboxing from "@/assets/lifestyle-unboxing.jpg";
 
@@ -47,10 +48,112 @@ const benefits = [
 ];
 
 const timeline = [
-  { step: "1", label: "Connect your offers", desc: "Upload loyalty, card, and incentive data" },
-  { step: "2", label: "Agents discover you", desc: "AI queries start including your value" },
-  { step: "3", label: "Customers convert", desc: "Better deals, more recommendations, more sales" },
+  { step: "1", label: "Connect your offers", desc: "Upload loyalty, card, and incentive data", icon: "upload" },
+  { step: "2", label: "Agents discover you", desc: "AI queries start including your value", icon: "search" },
+  { step: "3", label: "Customers convert", desc: "Better deals, more recommendations, more sales", icon: "check" },
 ];
+
+/* ── C9: Visual agent → Parleo → merchant flow ── */
+const AgentFlowDiagram = () => (
+  <motion.div
+    initial={{ opacity: 0, y: 16 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, delay: 0.2 }}
+    className="mt-8 rounded-xl border border-border bg-card p-5 md:p-6"
+    style={{ boxShadow: "var(--shadow-card)" }}
+  >
+    <div className="flex flex-col items-center gap-3 md:flex-row md:gap-0 md:justify-between">
+      {/* Agent node */}
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-secondary">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6">
+            <path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4zM5 10h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2z" strokeLinecap="round" />
+          </svg>
+        </div>
+        <span className="text-[11px] font-semibold text-foreground/60">AI Agent</span>
+        <div className="flex gap-1">
+          {["ChatGPT", "Claude", "Perplexity"].map(p => (
+            <BrandLogo key={p} name={p} size={12} />
+          ))}
+        </div>
+      </div>
+
+      {/* Arrow 1 */}
+      <div className="flex flex-col items-center gap-1 md:flex-1 md:px-3">
+        <div className="hidden h-px w-full bg-primary/20 md:block" />
+        <div className="h-6 w-px bg-primary/20 md:hidden" />
+        <span className="rounded-full bg-primary/[0.06] px-2 py-0.5 text-[9px] font-medium text-primary">
+          /true-cost query
+        </span>
+        <div className="hidden h-px w-full bg-primary/20 md:block" />
+        <div className="h-6 w-px bg-primary/20 md:hidden" />
+      </div>
+
+      {/* Parleo node */}
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex h-14 w-14 items-center justify-center rounded-xl border-2 border-primary/30 bg-primary/[0.06]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
+            <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
+          </svg>
+        </div>
+        <span className="text-[11px] font-bold text-primary">Parleo</span>
+        <span className="text-[9px] text-foreground/40">47ms · Zero PII</span>
+      </div>
+
+      {/* Arrow 2 */}
+      <div className="flex flex-col items-center gap-1 md:flex-1 md:px-3">
+        <div className="hidden h-px w-full bg-primary/20 md:block" />
+        <div className="h-6 w-px bg-primary/20 md:hidden" />
+        <span className="rounded-full bg-primary/[0.06] px-2 py-0.5 text-[9px] font-medium text-primary">
+          structured response
+        </span>
+        <div className="hidden h-px w-full bg-primary/20 md:block" />
+        <div className="h-6 w-px bg-primary/20 md:hidden" />
+      </div>
+
+      {/* Merchant node */}
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-secondary">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M9 22V12h6v10" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <span className="text-[11px] font-semibold text-foreground/60">Your Store</span>
+        <div className="flex gap-1">
+          {["Sephora", "Nike", "Best Buy"].map(p => (
+            <BrandLogo key={p} name={p} size={12} />
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* What flows through */}
+    <div className="mt-5 grid gap-2 md:grid-cols-3">
+      {[
+        { label: "Agent sends", items: ["Product query", "Card signals", "Segment hints"] },
+        { label: "Parleo computes", items: ["True cost", "Deal stacking", "Semantic context"] },
+        { label: "Customer sees", items: ["Best deal ranked", "Savings breakdown", "Buy rationale"] },
+      ].map((col) => (
+        <div key={col.label} className="rounded-lg border border-border/60 bg-secondary/30 p-3">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-foreground/40">{col.label}</span>
+          <div className="mt-1.5 space-y-1">
+            {col.items.map((item) => (
+              <div key={item} className="flex items-center gap-1.5 text-[12px] text-foreground/65">
+                <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-primary/10">
+                  <svg width="6" height="6" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="hsl(213,99%,50%)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </span>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </motion.div>
+);
 
 const HowItWorks = () => (
   <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-10 md:py-14">
@@ -140,6 +243,9 @@ const HowItWorks = () => (
           </motion.div>
         ))}
       </div>
+
+      {/* Agent flow diagram — C9 */}
+      <AgentFlowDiagram />
 
       <div className="mt-8 grid gap-5 md:grid-cols-2">
         {benefits.map((b, i) => (
