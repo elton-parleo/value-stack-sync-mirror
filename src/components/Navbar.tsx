@@ -156,16 +156,16 @@ const Navbar = () => {
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
                 >
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-warm animate-pulse-dot" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
                   How it Works
                 </Link>
               </div>
               <div className="mt-auto">
                 <button
                   onClick={() => { setMobileOpen(false); setContactOpen(true); }}
-                  className="h-12 w-full rounded-[4px] bg-primary text-[15px] font-medium text-primary-foreground transition-all hover:opacity-90 active:scale-[0.98]"
+                  className="h-12 w-full rounded-full bg-foreground text-[15px] font-medium text-background transition-all hover:bg-foreground/85 active:scale-[0.98]"
                 >
-                  Get in touch
+                  Request Demo
                 </button>
               </div>
             </motion.div>
