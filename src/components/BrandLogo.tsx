@@ -54,7 +54,7 @@ const BrandLogo = ({ name, domain, size = 16, className = "", grayscale = false 
   return (
     <img
       src={`https://www.google.com/s2/favicons?domain=${d}&sz=${size > 20 ? 64 : 32}`}
-      alt={name}
+      alt={`${name} logo`}
       width={size}
       height={size}
       className={`shrink-0 rounded-sm ${grayscale ? "opacity-70" : ""} ${className}`}
