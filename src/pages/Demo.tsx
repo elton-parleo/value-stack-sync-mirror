@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { type Scenario } from "@/components/demo/scenarioData";
 import Navbar from "@/components/Navbar";
 import SignalsCounter from "@/components/demo/SignalsCounter";
@@ -19,13 +20,16 @@ const Demo = () => {
   const [scenario, setScenario] = useState<Scenario>("beauty");
   const [contactOpen, setContactOpen] = useState(false);
 
-  useEffect(() => {
-    document.title = "Parleo · Honey for Agents Demo";
-    return () => { document.title = "Parleo"; };
-  }, []);
-
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background grain-overlay">
+      <Helmet>
+        <title>Parleo Demo — Honey for Agents live sandbox</title>
+        <meta name="description" content="Try Parleo's live agentic commerce demo. See real-time loyalty, card offers, and true-cost enrichment across beauty, fashion, and tech scenarios with a developer-ready API reference." />
+        <link rel="canonical" href="https://parleo.io/demo" />
+        <meta property="og:title" content="Parleo Demo — Honey for Agents live sandbox" />
+        <meta property="og:description" content="Try Parleo's live agentic commerce demo. See real-time loyalty, card offers, and true-cost enrichment across beauty, fashion, and tech scenarios." />
+        <meta property="og:url" content="https://parleo.io/demo" />
+      </Helmet>
       {/* Ambient background accents — matching homepage editorial warmth */}
       <div className="pointer-events-none absolute left-0 top-[15%] h-[400px] w-[250px] overflow-hidden opacity-[0.03] blur-[6px] md:h-[600px] md:w-[350px] md:opacity-[0.04]">
         <img src={lifestylePortrait} alt="" className="h-full w-full object-cover" style={{ filter: 'grayscale(60%)', mixBlendMode: 'multiply' }} />
@@ -44,22 +48,24 @@ const Demo = () => {
       <Navbar />
       <SignalsCounter />
 
-      {/* Hero */}
-      <DemoHero onRequestAccess={() => setContactOpen(true)} />
+      <main>
+        {/* Hero */}
+        <DemoHero onRequestAccess={() => setContactOpen(true)} />
 
-      {/* Live Demo + Value Explorer */}
-      <div id="live-demo" className="relative mx-auto max-w-content px-5 md:px-20">
-        <LiveDemo scenario={scenario} onScenarioChange={setScenario} />
-        <div className="pb-8 md:pb-12">
-          <DemoSandbox scenario={scenario} />
+        {/* Live Demo + Value Explorer */}
+        <div id="live-demo" className="relative mx-auto max-w-content px-5 md:px-20">
+          <LiveDemo scenario={scenario} onScenarioChange={setScenario} />
+          <div className="pb-8 md:pb-12">
+            <DemoSandbox scenario={scenario} />
+          </div>
         </div>
-      </div>
 
-      <ShoppingIntelligence />
-      <MerchantNetwork />
-      <ForDevelopers />
-      <DemoStats />
-      <DemoFooterCTA />
+        <ShoppingIntelligence />
+        <MerchantNetwork />
+        <ForDevelopers />
+        <DemoStats />
+        <DemoFooterCTA />
+      </main>
       <Footer />
 
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
@@ -68,3 +74,4 @@ const Demo = () => {
 };
 
 export default Demo;
+

@@ -1,0 +1,10 @@
+# Parleo
+
+> Parleo is the incentive intelligence layer for agentic commerce: a structured API and directory that lets AI agents access merchant loyalty, rewards, and true-cost data in a single sub-50ms call.
+
+Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-linked offers, points multipliers, and true cost — so the agent can rank products by real value, not headline price. Built for beauty, fashion, luxury, and consumer electronics brands.
+
+## Pages
+
+- [Home](/): Product overview, how Parleo works, integration paths, and team.
+- [Demo](/demo): Interactive Honey for Agents demo — see live enrichment across scenarios with merchant network and developer reference.
