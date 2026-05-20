@@ -81,7 +81,7 @@ const TeamSection = () => (
                 <img
                   key={l.name}
                   src={l.src}
-                  alt={l.name}
+                  alt={`${l.name} logo`}
                   className="h-14 w-auto object-contain opacity-50 grayscale transition-all group-hover:opacity-70"
                   loading="lazy"
                 />
