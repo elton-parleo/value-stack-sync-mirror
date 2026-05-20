@@ -23,11 +23,11 @@ const Demo = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background grain-overlay">
       <Helmet>
-        <title>Parleo Demo — Honey for Agents live sandbox</title>
-        <meta name="description" content="Try Parleo's live agentic commerce demo. See real-time loyalty, card offers, and true-cost enrichment across beauty, fashion, and tech scenarios with a developer-ready API reference." />
+        <title>Parleo Demo: Honey for Agents live sandbox</title>
+        <meta name="description" content="Try Parleo's live agentic commerce demo. Real-time loyalty, card offers, and true-cost enrichment across beauty, fashion, and tech." />
         <link rel="canonical" href="https://parleo.io/demo" />
-        <meta property="og:title" content="Parleo Demo — Honey for Agents live sandbox" />
-        <meta property="og:description" content="Try Parleo's live agentic commerce demo. See real-time loyalty, card offers, and true-cost enrichment across beauty, fashion, and tech scenarios." />
+        <meta property="og:title" content="Parleo Demo: Honey for Agents live sandbox" />
+        <meta property="og:description" content="Live agentic commerce sandbox. Real-time loyalty, card offers, and true-cost enrichment across beauty, fashion, and tech." />
         <meta property="og:url" content="https://parleo.io/demo" />
       </Helmet>
       {/* Ambient background accents — matching homepage editorial warmth */}
