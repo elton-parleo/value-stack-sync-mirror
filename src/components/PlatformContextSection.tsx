@@ -117,7 +117,7 @@ const PlatformContextSection = () => (
         Same product. Different price.<br className="hidden md:block" />
         Only one agent knows.
       </h2>
-      <p className="mt-3 max-w-[600px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
+      <p className="mt-3 max-w-[600px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
         A customer asks two AI assistants the same question. The one connected to Parleo sees loyalty tiers, card offers, and point multipliers. The other sees sticker price and guesses.
       </p>
 
@@ -197,7 +197,7 @@ const PlatformContextSection = () => (
         </div>
         <div>
           <p className="text-[14px] font-semibold text-foreground">Without Parleo, agents rank by headline price.</p>
-          <p className="mt-1 text-[13px] leading-[1.6] text-foreground/55">
+          <p className="mt-1 text-[13px] leading-[1.6] text-foreground/70">
             With Parleo, Sephora moves from #2 to #1 because the agent sees Rouge tier, Amex offer, and Beauty Insider multipliers. That's $11.90 in value your customer almost missed.
           </p>
         </div>

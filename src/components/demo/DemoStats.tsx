@@ -32,7 +32,7 @@ const DemoStats = () => (
             <span className="block font-heading text-[36px] leading-none tracking-tight text-primary md:text-[44px]">
               {s.value}
             </span>
-            <p className="mt-2 text-[14px] leading-relaxed text-foreground/55">
+            <p className="mt-2 text-[14px] leading-relaxed text-foreground/70">
               {s.description}
             </p>
           </motion.div>

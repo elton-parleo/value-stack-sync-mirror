@@ -71,7 +71,7 @@ const ShoppingIntelligence = () => (
               <span className="text-[12px] font-bold text-primary">{c.num}</span>
             </div>
             <h3 className="mb-1 text-[15px] font-semibold text-foreground">{c.title}</h3>
-            <p className="text-[13px] leading-relaxed text-foreground/55">{c.body}</p>
+            <p className="text-[13px] leading-relaxed text-foreground/70">{c.body}</p>
             <div className="mt-2.5 rounded-md bg-secondary px-3 py-1.5 text-[12px] font-mono font-semibold text-primary">{c.visual}</div>
           </motion.div>
         ))}

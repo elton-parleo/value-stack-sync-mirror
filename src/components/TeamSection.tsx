@@ -75,7 +75,7 @@ const TeamSection = () => (
                 </a>
               </div>
             </div>
-            <p className="mt-3 text-[15px] leading-[1.7] text-foreground/55">{t.bio}</p>
+            <p className="mt-3 text-[15px] leading-[1.7] text-foreground/70">{t.bio}</p>
             <div className="mt-4 flex flex-wrap items-center gap-5">
               {t.logos.map((l) => (
                 <img
