@@ -158,7 +158,7 @@ const FeedSection = () => (
         The directory agents check first.
       </h2>
 
-      <p className="mt-3 max-w-[580px] text-[17px] leading-[1.7] text-foreground/55">
+      <p className="mt-3 max-w-[580px] text-[17px] leading-[1.7] text-foreground/70">
         One API call instead of 8 to 12 tools: Parleo pre-computes product identity, true-cost deal signals, and semantic content so your agent can skip web search and focus tokens on last-mile personalization.
       </p>
 
@@ -194,7 +194,7 @@ const FeedSection = () => (
 
               <span className={`mt-3 block font-label ${s.color}`}>{s.label}</span>
               <h3 className="mt-1.5 text-[16px] font-semibold text-foreground">{s.headline}</h3>
-              <p className="mt-1.5 text-[14px] leading-[1.6] text-foreground/55">{s.description}</p>
+              <p className="mt-1.5 text-[14px] leading-[1.6] text-foreground/70">{s.description}</p>
 
               {s.visual}
 

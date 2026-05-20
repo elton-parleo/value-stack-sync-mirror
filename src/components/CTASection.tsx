@@ -31,7 +31,7 @@ const CTASection = () => {
             <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
               Be visible to every agent.
             </h2>
-            <p className="mt-3 text-[15px] text-foreground/55 md:text-[17px]" style={{ lineHeight: 1.7 }}>
+            <p className="mt-3 text-[15px] text-foreground/70 md:text-[17px]" style={{ lineHeight: 1.7 }}>
               Working with merchants getting ahead of the agentic shift.
             </p>
             <div className="mt-6">

@@ -176,7 +176,7 @@ const HowItWorks = () => (
           <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
             The early-mover advantage<br className="hidden md:block" /> is closing fast.
           </h2>
-          <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
+          <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
             Make loyalty, promos, and card-linked offers visible to agents, so your best customers don't see you as 'just another price' in Gemini, ChatGPT, or Perplexity.
           </p>
         </div>
@@ -238,7 +238,7 @@ const HowItWorks = () => (
             </div>
             <div>
               <h3 className="text-[15px] font-bold text-foreground">{t.label}</h3>
-              <p className="mt-1 text-[14px] text-foreground/55">{t.desc}</p>
+              <p className="mt-1 text-[14px] text-foreground/70">{t.desc}</p>
             </div>
           </motion.div>
         ))}
@@ -262,7 +262,7 @@ const HowItWorks = () => (
             </div>
             <div>
               <h3 className="text-[15px] font-bold text-foreground">{b.title}</h3>
-              <p className="mt-1 text-[14px] leading-[1.6] text-foreground/55">{b.body}</p>
+              <p className="mt-1 text-[14px] leading-[1.6] text-foreground/70">{b.body}</p>
             </div>
           </motion.div>
         ))}

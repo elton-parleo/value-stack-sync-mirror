@@ -191,7 +191,7 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        <p className="mt-6 max-w-[580px] text-[15px] leading-[1.7] text-foreground/55 md:text-[17px]">
+        <p className="mt-6 max-w-[580px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
           Without Parleo, agents rank products by headline price and sparse specs, missing loyalty, promos, and card-linked value that actually determines the best deal.
         </p>
 

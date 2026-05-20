@@ -69,7 +69,7 @@ const DashboardSection = () => {
         <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
           One console for your<br />agentic channel.
         </h2>
-        <p className="mt-3 max-w-[520px] text-[17px] text-foreground/55" style={{ lineHeight: 1.7 }}>
+        <p className="mt-3 max-w-[520px] text-[17px] text-foreground/70" style={{ lineHeight: 1.7 }}>
           Control economics in agent channels: set guardrails on margin, liability burn, and offer exposure instead of leaving decisions to opaque ranking logic.
         </p>
 
