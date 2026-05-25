@@ -83,17 +83,17 @@ const AssistantAvatar = () => (
 /* ── Without state ── */
 const WithoutAnswer = () => (
   <motion.div
-    initial={{ opacity: 0, y: 8 }}
+    initial={{ opacity: 0, y: 6 }}
     animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -8 }}
-    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
     className="space-y-3"
   >
-    <p className="text-[14px] leading-relaxed text-foreground/75">
+    <p className="text-[13.5px] leading-relaxed text-foreground/75 md:text-[14px]">
       Based on the listed price, here's what I can see:
     </p>
 
-    <div className="rounded-2xl border border-border bg-secondary/30 p-5">
+    <div className="rounded-2xl border border-border bg-secondary/30 p-4 md:p-5">
       <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-foreground/30">
         <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground/25" />
         Standard agent
