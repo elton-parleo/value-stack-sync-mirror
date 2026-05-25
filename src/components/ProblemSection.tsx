@@ -282,22 +282,27 @@ const ProblemSection = () => {
           for your customers.
         </h2>
 
-        <div className="mt-6 grid grid-cols-3 gap-4 md:gap-8">
+        <div className="mt-10 grid grid-cols-1 divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {[
-            { value: "58%", label: "of consumers have used AI to shop", source: "Stripe" },
-            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe" },
-            { value: "$5T", label: "projected agentic commerce revenue by 2030", source: "McKinsey" },
+            { value: "58%", label: "of consumers have used AI to shop", source: "Stripe, 2024" },
+            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe, 2024" },
+            { value: "$5T", label: "projected agentic commerce revenue by 2030", source: "McKinsey, 2024" },
           ].map((s) => (
-            <div key={s.value}>
-              <span className="text-[26px] font-bold text-foreground md:text-[36px]" style={{ lineHeight: 1.1 }}>
-                {s.value}
-              </span>
-              <p className="mt-0.5 text-[11px] leading-[1.4] text-foreground/50 md:text-[13px]">
+            <div key={s.value} className="py-5 sm:px-6 sm:py-6 sm:first:pl-0 sm:last:pr-0">
+              <div className="flex items-baseline gap-2">
+                <span className="text-[32px] font-bold tracking-tight text-foreground md:text-[40px]" style={{ lineHeight: 1 }}>
+                  {s.value}
+                </span>
+              </div>
+              <p className="mt-2 text-[13px] leading-snug text-foreground/65 md:text-[14px]">
                 {s.label}
               </p>
-              <span className="mt-0.5 inline-block text-[10px] font-medium text-foreground/30">
-                {s.source}
-              </span>
+              <div className="mt-3 flex items-center gap-1.5">
+                <span className="h-px w-4 bg-foreground/20" />
+                <span className="text-[10.5px] font-medium uppercase tracking-wider text-foreground/40">
+                  {s.source}
+                </span>
+              </div>
             </div>
           ))}
         </div>
