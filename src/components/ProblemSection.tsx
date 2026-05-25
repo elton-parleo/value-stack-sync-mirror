@@ -137,21 +137,18 @@ const WithAnswer = () => {
   ];
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="space-y-3"
     >
-      <p className="text-[14px] leading-relaxed text-foreground/75">
+      <p className="text-[13.5px] leading-relaxed text-foreground/75 md:text-[14px]">
         Sephora is your best option. After your Rouge tier, an active Amex offer, and 4x Beauty Insider points, your true cost drops to <span className="font-semibold text-primary">$11.10</span>.
       </p>
 
-      <motion.div
-        initial={{ scale: 0.98 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="rounded-2xl border-2 border-primary/20 bg-card p-5"
+      <div
+        className="rounded-2xl border-2 border-primary/20 bg-card p-4 md:p-5"
         style={{ boxShadow: "0 0 0 1px hsl(213 99% 50% / 0.06), var(--shadow-md)" }}
       >
         <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-primary/70">
@@ -160,56 +157,43 @@ const WithAnswer = () => {
         </div>
 
         <div className="mt-4 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary">
-            <BrandLogo name="Sephora" size={22} />
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-secondary md:h-10 md:w-10">
+            <BrandLogo name="Sephora" size={20} />
           </div>
-          <div>
-            <p className="text-[13px] font-semibold text-foreground">Rare Beauty Soft Pinch Blush</p>
+          <div className="min-w-0">
+            <p className="truncate text-[13px] font-semibold text-foreground">Rare Beauty Soft Pinch Blush</p>
             <p className="text-[11px] text-foreground/45">Best deal via Sephora</p>
           </div>
         </div>
 
-        <div className="mt-4 space-y-0">
-          {rows.map((row, i) => (
-            <motion.div
+        <div className="mt-4">
+          {rows.map((row) => (
+            <div
               key={row.label}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.25 + i * 0.08, duration: 0.3 }}
               className="flex items-center justify-between border-b border-border/40 py-2 text-[12.5px]"
             >
               <span className="text-foreground/60">{row.label}</span>
               <span className={row.accent ? "font-semibold text-[hsl(var(--success))]" : "font-medium text-foreground"}>
                 {row.value}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65, duration: 0.4 }}
-          className="mt-3 flex items-baseline justify-between"
-        >
+        <div className="mt-3 flex items-baseline justify-between">
           <span className="text-[13px] font-semibold text-foreground">True cost</span>
-          <span className="text-[30px] font-bold tracking-tight text-primary" style={{ lineHeight: 1 }}>
+          <span className="text-[28px] font-bold tracking-tight text-primary md:text-[30px]" style={{ lineHeight: 1 }}>
             $11.10
           </span>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.85 }}
-          className="mt-3 flex flex-wrap gap-1.5"
-        >
+        <div className="mt-3 flex flex-wrap gap-1.5">
           {["Rouge since 2019", "12 purchases/yr", "$847 annual value", "Amex Platinum"].map((tag) => (
             <span key={tag} className="rounded-full border border-primary/15 bg-primary/[0.04] px-2.5 py-1 text-[10.5px] font-medium text-primary/70">
               {tag}
             </span>
           ))}
-        </motion.div>
+        </div>
 
         <div className="mt-4 grid grid-cols-2 gap-2">
           {[
@@ -233,7 +217,7 @@ const WithAnswer = () => {
           </svg>
           48ms · Zero PII · 3 merchants compared
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
