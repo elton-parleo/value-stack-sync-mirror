@@ -20,35 +20,35 @@ const TypingDots = () => (
 /* ── Chat window chrome ── */
 const ChatWindow = ({ children }: { children: React.ReactNode }) => (
   <div
-    className="mx-auto w-full max-w-[640px] overflow-hidden rounded-[20px] border border-border bg-card"
+    className="mx-auto w-full max-w-[640px] overflow-hidden rounded-[18px] border border-border bg-card"
     style={{ boxShadow: "var(--shadow-elevated)" }}
   >
     {/* Title bar */}
-    <div className="flex items-center justify-between border-b border-border/60 bg-secondary/40 px-4 py-3">
+    <div className="flex items-center justify-between border-b border-border/60 bg-secondary/40 px-3 py-2.5 md:px-4 md:py-3">
       <div className="flex items-center gap-1.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(0_70%_65%)]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(45_85%_60%)]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(140_50%_55%)]" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(0_70%_65%)] md:h-2.5 md:w-2.5" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(45_85%_60%)] md:h-2.5 md:w-2.5" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(140_50%_55%)] md:h-2.5 md:w-2.5" />
       </div>
-      <div className="flex items-center gap-2 text-[11px] font-medium text-foreground/45">
+      <div className="flex items-center gap-1.5 text-[10.5px] font-medium text-foreground/50 md:text-[11px]">
         <span className="relative flex h-1.5 w-1.5">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
         </span>
         Shopping assistant
       </div>
-      <div className="w-12" />
+      <div className="w-10 md:w-12" />
     </div>
 
     {/* Conversation */}
-    <div className="px-4 py-5 md:px-6 md:py-6">{children}</div>
+    <div className="px-3 py-4 md:px-6 md:py-6">{children}</div>
 
     {/* Composer (static) */}
-    <div className="border-t border-border/60 bg-secondary/30 px-4 py-3">
-      <div className="flex items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5">
-        <span className="flex-1 text-[12px] text-foreground/35">Ask anything about a product…</span>
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/90">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <div className="border-t border-border/60 bg-secondary/30 px-3 py-2.5 md:px-4 md:py-3">
+      <div className="flex items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-2 md:px-4 md:py-2.5">
+        <span className="flex-1 truncate text-[12px] text-foreground/35">Ask anything about a product…</span>
+        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/90 md:h-7 md:w-7">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </div>
@@ -83,17 +83,17 @@ const AssistantAvatar = () => (
 /* ── Without state ── */
 const WithoutAnswer = () => (
   <motion.div
-    initial={{ opacity: 0, y: 8 }}
+    initial={{ opacity: 0, y: 6 }}
     animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -8 }}
-    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
     className="space-y-3"
   >
-    <p className="text-[14px] leading-relaxed text-foreground/75">
+    <p className="text-[13.5px] leading-relaxed text-foreground/75 md:text-[14px]">
       Based on the listed price, here's what I can see:
     </p>
 
-    <div className="rounded-2xl border border-border bg-secondary/30 p-5">
+    <div className="rounded-2xl border border-border bg-secondary/30 p-4 md:p-5">
       <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-foreground/30">
         <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground/25" />
         Standard agent
@@ -137,21 +137,18 @@ const WithAnswer = () => {
   ];
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="space-y-3"
     >
-      <p className="text-[14px] leading-relaxed text-foreground/75">
+      <p className="text-[13.5px] leading-relaxed text-foreground/75 md:text-[14px]">
         Sephora is your best option. After your Rouge tier, an active Amex offer, and 4x Beauty Insider points, your true cost drops to <span className="font-semibold text-primary">$11.10</span>.
       </p>
 
-      <motion.div
-        initial={{ scale: 0.98 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="rounded-2xl border-2 border-primary/20 bg-card p-5"
+      <div
+        className="rounded-2xl border-2 border-primary/20 bg-card p-4 md:p-5"
         style={{ boxShadow: "0 0 0 1px hsl(213 99% 50% / 0.06), var(--shadow-md)" }}
       >
         <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-primary/70">
@@ -160,56 +157,43 @@ const WithAnswer = () => {
         </div>
 
         <div className="mt-4 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary">
-            <BrandLogo name="Sephora" size={22} />
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-secondary md:h-10 md:w-10">
+            <BrandLogo name="Sephora" size={20} />
           </div>
-          <div>
-            <p className="text-[13px] font-semibold text-foreground">Rare Beauty Soft Pinch Blush</p>
+          <div className="min-w-0">
+            <p className="truncate text-[13px] font-semibold text-foreground">Rare Beauty Soft Pinch Blush</p>
             <p className="text-[11px] text-foreground/45">Best deal via Sephora</p>
           </div>
         </div>
 
-        <div className="mt-4 space-y-0">
-          {rows.map((row, i) => (
-            <motion.div
+        <div className="mt-4">
+          {rows.map((row) => (
+            <div
               key={row.label}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.25 + i * 0.08, duration: 0.3 }}
               className="flex items-center justify-between border-b border-border/40 py-2 text-[12.5px]"
             >
               <span className="text-foreground/60">{row.label}</span>
               <span className={row.accent ? "font-semibold text-[hsl(var(--success))]" : "font-medium text-foreground"}>
                 {row.value}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65, duration: 0.4 }}
-          className="mt-3 flex items-baseline justify-between"
-        >
+        <div className="mt-3 flex items-baseline justify-between">
           <span className="text-[13px] font-semibold text-foreground">True cost</span>
-          <span className="text-[30px] font-bold tracking-tight text-primary" style={{ lineHeight: 1 }}>
+          <span className="text-[28px] font-bold tracking-tight text-primary md:text-[30px]" style={{ lineHeight: 1 }}>
             $11.10
           </span>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.85 }}
-          className="mt-3 flex flex-wrap gap-1.5"
-        >
+        <div className="mt-3 flex flex-wrap gap-1.5">
           {["Rouge since 2019", "12 purchases/yr", "$847 annual value", "Amex Platinum"].map((tag) => (
             <span key={tag} className="rounded-full border border-primary/15 bg-primary/[0.04] px-2.5 py-1 text-[10.5px] font-medium text-primary/70">
               {tag}
             </span>
           ))}
-        </motion.div>
+        </div>
 
         <div className="mt-4 grid grid-cols-2 gap-2">
           {[
@@ -233,7 +217,7 @@ const WithAnswer = () => {
           </svg>
           48ms · Zero PII · 3 merchants compared
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
@@ -298,22 +282,27 @@ const ProblemSection = () => {
           for your customers.
         </h2>
 
-        <div className="mt-6 grid grid-cols-3 gap-4 md:gap-8">
+        <div className="mt-10 grid grid-cols-1 divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {[
-            { value: "58%", label: "of consumers have used AI to shop", source: "Stripe" },
-            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe" },
-            { value: "$5T", label: "projected agentic commerce revenue by 2030", source: "McKinsey" },
+            { value: "58%", label: "of consumers have used AI to shop", source: "Stripe, 2024" },
+            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe, 2024" },
+            { value: "$5T", label: "projected agentic commerce revenue by 2030", source: "McKinsey, 2024" },
           ].map((s) => (
-            <div key={s.value}>
-              <span className="text-[26px] font-bold text-foreground md:text-[36px]" style={{ lineHeight: 1.1 }}>
-                {s.value}
-              </span>
-              <p className="mt-0.5 text-[11px] leading-[1.4] text-foreground/50 md:text-[13px]">
+            <div key={s.value} className="py-5 sm:px-6 sm:py-6 sm:first:pl-0 sm:last:pr-0">
+              <div className="flex items-baseline gap-2">
+                <span className="text-[32px] font-bold tracking-tight text-foreground md:text-[40px]" style={{ lineHeight: 1 }}>
+                  {s.value}
+                </span>
+              </div>
+              <p className="mt-2 text-[13px] leading-snug text-foreground/65 md:text-[14px]">
                 {s.label}
               </p>
-              <span className="mt-0.5 inline-block text-[10px] font-medium text-foreground/30">
-                {s.source}
-              </span>
+              <div className="mt-3 flex items-center gap-1.5">
+                <span className="h-px w-4 bg-foreground/20" />
+                <span className="text-[10.5px] font-medium uppercase tracking-wider text-foreground/40">
+                  {s.source}
+                </span>
+              </div>
             </div>
           ))}
         </div>
