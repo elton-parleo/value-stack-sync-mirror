@@ -20,35 +20,35 @@ const TypingDots = () => (
 /* ── Chat window chrome ── */
 const ChatWindow = ({ children }: { children: React.ReactNode }) => (
   <div
-    className="mx-auto w-full max-w-[640px] overflow-hidden rounded-[20px] border border-border bg-card"
+    className="mx-auto w-full max-w-[640px] overflow-hidden rounded-[18px] border border-border bg-card"
     style={{ boxShadow: "var(--shadow-elevated)" }}
   >
     {/* Title bar */}
-    <div className="flex items-center justify-between border-b border-border/60 bg-secondary/40 px-4 py-3">
+    <div className="flex items-center justify-between border-b border-border/60 bg-secondary/40 px-3 py-2.5 md:px-4 md:py-3">
       <div className="flex items-center gap-1.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(0_70%_65%)]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(45_85%_60%)]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(140_50%_55%)]" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(0_70%_65%)] md:h-2.5 md:w-2.5" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(45_85%_60%)] md:h-2.5 md:w-2.5" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(140_50%_55%)] md:h-2.5 md:w-2.5" />
       </div>
-      <div className="flex items-center gap-2 text-[11px] font-medium text-foreground/45">
+      <div className="flex items-center gap-1.5 text-[10.5px] font-medium text-foreground/50 md:text-[11px]">
         <span className="relative flex h-1.5 w-1.5">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
         </span>
         Shopping assistant
       </div>
-      <div className="w-12" />
+      <div className="w-10 md:w-12" />
     </div>
 
     {/* Conversation */}
-    <div className="px-4 py-5 md:px-6 md:py-6">{children}</div>
+    <div className="px-3 py-4 md:px-6 md:py-6">{children}</div>
 
     {/* Composer (static) */}
-    <div className="border-t border-border/60 bg-secondary/30 px-4 py-3">
-      <div className="flex items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5">
-        <span className="flex-1 text-[12px] text-foreground/35">Ask anything about a product…</span>
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/90">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <div className="border-t border-border/60 bg-secondary/30 px-3 py-2.5 md:px-4 md:py-3">
+      <div className="flex items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-2 md:px-4 md:py-2.5">
+        <span className="flex-1 truncate text-[12px] text-foreground/35">Ask anything about a product…</span>
+        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/90 md:h-7 md:w-7">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </div>
