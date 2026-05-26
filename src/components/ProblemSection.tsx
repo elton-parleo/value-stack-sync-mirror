@@ -212,11 +212,15 @@ const WithAnswer = () => {
         </div>
 
         <div className="mt-4 flex items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-secondary md:h-10 md:w-10">
-            <BrandLogo name="Sephora" size={20} />
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-secondary/60">
+            <img src={tatchaWaterCream} alt="Tatcha The Water Cream" className="h-full w-full object-contain" loading="lazy" />
           </div>
-          <div className="min-w-0">
-            <p className="truncate text-[13px] font-semibold text-foreground">Tatcha · The Water Cream · 50ml</p>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5">
+              <BrandLogo name="Sephora" size={12} />
+              <p className="text-[10.5px] uppercase tracking-wider text-foreground/45">Best deal · Sephora</p>
+            </div>
+            <p className="truncate text-[13px] font-semibold text-foreground">Tatcha The Water Cream</p>
             <p className="text-[11px] text-foreground/45">True cost after your incentive stack</p>
           </div>
         </div>
