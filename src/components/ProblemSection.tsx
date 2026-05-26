@@ -65,8 +65,8 @@ const UserMessage = () => (
     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     className="flex justify-end"
   >
-    <div className="max-w-[80%] rounded-2xl rounded-tr-md bg-primary px-4 py-2.5 text-[14px] leading-snug text-primary-foreground">
-      Where should I buy the Rare Beauty Soft Pinch Blush?
+    <div className="max-w-[85%] rounded-2xl rounded-tr-md bg-primary px-4 py-2.5 text-[14px] leading-snug text-primary-foreground">
+      Compare Tatcha The Water Cream across Sephora, Ulta, Amazon, and Nordstrom. Find me the best price.
     </div>
   </motion.div>
 );
@@ -80,6 +80,42 @@ const AssistantAvatar = () => (
   </div>
 );
 
+/* ── Retailer row ── */
+const RetailerRow = ({
+  name,
+  price,
+  badge,
+  highlighted,
+}: {
+  name: string;
+  price: string;
+  badge?: string;
+  highlighted?: boolean;
+}) => (
+  <div
+    className={`flex items-center justify-between rounded-lg border px-3 py-2.5 ${
+      highlighted
+        ? "border-foreground/20 bg-foreground/[0.04]"
+        : "border-border/60 bg-secondary/30"
+    }`}
+  >
+    <div className="flex items-center gap-2">
+      <BrandLogo name={name} size={14} />
+      <span className="text-[12.5px] font-medium text-foreground/80">{name}</span>
+    </div>
+    <div className="flex items-center gap-2">
+      <span className={`text-[13px] font-semibold ${highlighted ? "text-foreground" : "text-foreground/70"}`}>
+        {price}
+      </span>
+      {badge && (
+        <span className="rounded-full bg-foreground/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-foreground/70">
+          {badge}
+        </span>
+      )}
+    </div>
+  </div>
+);
+
 /* ── Without state ── */
 const WithoutAnswer = () => (
   <motion.div
@@ -90,50 +126,45 @@ const WithoutAnswer = () => (
     className="space-y-3"
   >
     <p className="text-[13.5px] leading-relaxed text-foreground/75 md:text-[14px]">
-      Based on the listed price, here's what I can see:
+      Here's the lowest listed price across the four retailers:
     </p>
 
-    <div className="rounded-2xl border border-border bg-secondary/30 p-4 md:p-5">
-      <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-foreground/30">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground/25" />
-        Standard agent
+    <div className="rounded-2xl border border-border bg-card p-4 md:p-5">
+      <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-foreground/40">
+        <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground/30" />
+        Standard agent · listed prices only
       </div>
 
-      <div className="mt-5 text-center">
-        <p className="text-[12px] text-foreground/45">Rare Beauty Soft Pinch Blush</p>
-        <p className="mt-2 text-[44px] font-bold tracking-tight text-foreground/80" style={{ lineHeight: 1 }}>
-          $23
-        </p>
-        <p className="mt-1 text-[11px] text-foreground/30">list price</p>
+      <div className="mt-3 flex items-baseline gap-2 border-b border-border/50 pb-3">
+        <p className="text-[10.5px] uppercase tracking-wider text-foreground/45">Tatcha</p>
+        <p className="text-[12.5px] font-semibold text-foreground">The Water Cream · 50ml</p>
       </div>
 
-      <div className="mt-6 space-y-2 border-t border-border/50 pt-4">
-        {[
-          ["Loyalty tier", "unknown"],
-          ["Card offers", "unknown"],
-          ["Points value", "unknown"],
-        ].map(([k, v]) => (
-          <div key={k} className="flex items-center justify-between text-[12px] text-foreground/35">
-            <span>{k}</span>
-            <span className="italic">{v}</span>
-          </div>
-        ))}
+      <div className="mt-3 space-y-1.5">
+        <RetailerRow name="Amazon" price="$28.00" badge="Recommended" highlighted />
+        <RetailerRow name="Sephora" price="$30.00" />
+        <RetailerRow name="Ulta" price="$30.00" />
+        <RetailerRow name="Nordstrom" price="$30.00" />
+      </div>
+
+      <div className="mt-4 rounded-lg bg-secondary/60 px-3 py-2.5 text-[12px] leading-relaxed text-foreground/65">
+        <span className="font-semibold text-foreground/80">Agent recommends Amazon.</span> The retailer with the best actual value is invisible.
       </div>
     </div>
 
-    <p className="text-[13px] italic text-foreground/45">
-      Price is all I have to work with.
+    <p className="text-[12.5px] italic text-foreground/45">
+      Loyalty, card-linked offers, GWP, and membership benefits don't exist to the agent.
     </p>
   </motion.div>
 );
 
 /* ── With state ── */
 const WithAnswer = () => {
-  const rows = [
-    { label: "List price", value: "$23.00", accent: false },
-    { label: "Rouge tier (−10%)", value: "−$2.30", accent: true },
-    { label: "Amex card offer", value: "−$5.00", accent: true },
-    { label: "Beauty Insider 4x", value: "$4.60 value", accent: true },
+  const stack = [
+    { label: "Listed price · Sephora", value: "$30.00", accent: false },
+    { label: "Beauty Insider Rouge · −20%", value: "−$6.00", accent: true },
+    { label: "Sephora Visa · 4% back", value: "−$0.96", accent: true },
+    { label: "Birthday GWP value", value: "−$8.40", accent: true },
   ];
   return (
     <motion.div
@@ -144,7 +175,7 @@ const WithAnswer = () => {
       className="space-y-3"
     >
       <p className="text-[13.5px] leading-relaxed text-foreground/75 md:text-[14px]">
-        Sephora is your best option. After your Rouge tier, an active Amex offer, and 4x Beauty Insider points, your true cost drops to <span className="font-semibold text-primary">$11.10</span>.
+        Listed prices say Amazon. But you're a Sephora Rouge member with an active card offer and birthday GWP. Your <span className="font-semibold text-primary">true cost at Sephora is $14.64</span>, beating Amazon by $13.36.
       </p>
 
       <div
@@ -153,7 +184,7 @@ const WithAnswer = () => {
       >
         <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-primary/70">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-          Parleo-enhanced
+          Parleo-enhanced · Sephora customer
         </div>
 
         <div className="mt-4 flex items-center gap-3">
@@ -161,13 +192,13 @@ const WithAnswer = () => {
             <BrandLogo name="Sephora" size={20} />
           </div>
           <div className="min-w-0">
-            <p className="truncate text-[13px] font-semibold text-foreground">Rare Beauty Soft Pinch Blush</p>
-            <p className="text-[11px] text-foreground/45">Best deal via Sephora</p>
+            <p className="truncate text-[13px] font-semibold text-foreground">Tatcha · The Water Cream · 50ml</p>
+            <p className="text-[11px] text-foreground/45">True cost after your incentive stack</p>
           </div>
         </div>
 
         <div className="mt-4">
-          {rows.map((row) => (
+          {stack.map((row) => (
             <div
               key={row.label}
               className="flex items-center justify-between border-b border-border/40 py-2 text-[12.5px]"
@@ -181,33 +212,14 @@ const WithAnswer = () => {
         </div>
 
         <div className="mt-3 flex items-baseline justify-between">
-          <span className="text-[13px] font-semibold text-foreground">True cost</span>
+          <span className="text-[13px] font-semibold text-foreground">True cost to you</span>
           <span className="text-[28px] font-bold tracking-tight text-primary md:text-[30px]" style={{ lineHeight: 1 }}>
-            $11.10
+            $14.64
           </span>
         </div>
 
-        <div className="mt-3 flex flex-wrap gap-1.5">
-          {["Rouge since 2019", "12 purchases/yr", "$847 annual value", "Amex Platinum"].map((tag) => (
-            <span key={tag} className="rounded-full border border-primary/15 bg-primary/[0.04] px-2.5 py-1 text-[10.5px] font-medium text-primary/70">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-4 grid grid-cols-2 gap-2">
-          {[
-            { name: "Ulta", price: "$23.00", note: "no offers" },
-            { name: "Target", price: "$23.00", note: "no offers" },
-          ].map((r) => (
-            <div key={r.name} className="rounded-lg bg-secondary/60 px-3 py-2 text-[11px]">
-              <span className="inline-flex items-center gap-1 font-medium text-foreground/60">
-                <BrandLogo name={r.name} size={12} />
-                {r.name}
-              </span>
-              <p className="mt-0.5 text-foreground/40">{r.price} · {r.note}</p>
-            </div>
-          ))}
+        <div className="mt-4 rounded-lg bg-primary/[0.06] px-3 py-2.5 text-[11.5px] leading-relaxed text-foreground/70">
+          Sephora wins by <span className="font-semibold text-primary">$13.36</span>. Without Parleo, that's revenue the retailer never competed for, because the agent couldn't see it.
         </div>
 
         <div className="mt-3 flex items-center gap-1.5 text-[10px] text-primary/50">
@@ -215,7 +227,7 @@ const WithAnswer = () => {
             <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(var(--primary))" />
             <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(var(--primary))" opacity="0.4" />
           </svg>
-          48ms · Zero PII · 3 merchants compared
+          48ms · Zero PII · 4 retailers compared
         </div>
       </div>
     </motion.div>
