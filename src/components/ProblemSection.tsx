@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import tatchaWaterCream from "@/assets/tatcha-water-cream.png";
+
 
 /* ── Typing dots ── */
 const TypingDots = () => (
