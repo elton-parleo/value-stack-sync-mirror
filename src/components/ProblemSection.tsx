@@ -153,9 +153,15 @@ const WithoutAnswer = () => (
         Standard agent · listed prices only
       </div>
 
-      <div className="mt-3 flex items-baseline gap-2 border-b border-border/50 pb-3">
-        <p className="text-[10.5px] uppercase tracking-wider text-foreground/45">Tatcha</p>
-        <p className="text-[12.5px] font-semibold text-foreground">The Water Cream · 50ml</p>
+      <div className="mt-3 flex items-center gap-3 border-b border-border/50 pb-3">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-secondary/60">
+          <img src={tatchaWaterCream} alt="Tatcha The Water Cream" className="h-full w-full object-contain" loading="lazy" />
+        </div>
+        <div className="min-w-0">
+          <p className="text-[10.5px] uppercase tracking-wider text-foreground/45">Tatcha</p>
+          <p className="text-[13px] font-semibold text-foreground">The Water Cream</p>
+          <p className="text-[11px] text-foreground/45">50ml · moisturizer</p>
+        </div>
       </div>
 
       <div className="mt-3 space-y-1.5">
