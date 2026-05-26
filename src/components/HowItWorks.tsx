@@ -54,96 +54,121 @@ const timeline = [
 ];
 
 /* ── C9: Visual agent → Parleo → merchant flow ── */
+const FlowNode = ({
+  label,
+  caption,
+  logos,
+  highlight,
+  icon,
+}: {
+  label: string;
+  caption?: string;
+  logos?: string[];
+  highlight?: boolean;
+  icon: React.ReactNode;
+}) => (
+  <div className="flex flex-col items-center gap-3">
+    <div
+      className={`flex h-20 w-20 items-center justify-center rounded-2xl border ${
+        highlight
+          ? "border-primary/40 bg-primary/[0.06]"
+          : "border-border bg-secondary"
+      }`}
+    >
+      {icon}
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <span
+        className={`text-[15px] font-semibold ${
+          highlight ? "text-primary" : "text-foreground"
+        }`}
+      >
+        {label}
+      </span>
+      {caption && (
+        <span className="text-[12px] text-foreground/50">{caption}</span>
+      )}
+      {logos && (
+        <div className="mt-1 flex gap-1.5">
+          {logos.map((p) => (
+            <BrandLogo key={p} name={p} size={18} />
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+const FlowArrow = ({ label }: { label: string }) => (
+  <div className="flex w-full flex-col items-center gap-2 md:w-auto md:flex-1 md:px-4">
+    <div className="hidden h-px w-full bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 md:block" />
+    <div className="h-8 w-px bg-primary/25 md:hidden" />
+    <span className="rounded-full border border-primary/15 bg-primary/[0.06] px-3 py-1 text-[12px] font-medium text-primary">
+      {label}
+    </span>
+    <div className="hidden h-px w-full bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 md:block" />
+    <div className="h-8 w-px bg-primary/25 md:hidden" />
+  </div>
+);
+
 const AgentFlowDiagram = () => (
   <motion.div
     initial={{ opacity: 0, y: 16 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: 0.2 }}
-    className="mt-8 rounded-xl border border-border bg-card p-5 md:p-6"
+    className="mt-8 rounded-2xl border border-border bg-card p-6 md:p-10"
     style={{ boxShadow: "var(--shadow-card)" }}
   >
-    <div className="flex flex-col items-center gap-3 md:flex-row md:gap-0 md:justify-between">
-      {/* Agent node */}
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-secondary">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6">
+    <div className="flex flex-col items-stretch gap-4 md:flex-row md:items-center md:gap-0 md:justify-between">
+      <FlowNode
+        label="AI Agent"
+        logos={["ChatGPT", "Claude", "Perplexity"]}
+        icon={
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.4" opacity="0.75">
             <path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4zM5 10h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2z" strokeLinecap="round" />
           </svg>
-        </div>
-        <span className="text-[11px] font-semibold text-foreground/60">AI Agent</span>
-        <div className="flex gap-1">
-          {["ChatGPT", "Claude", "Perplexity"].map(p => (
-            <BrandLogo key={p} name={p} size={12} />
-          ))}
-        </div>
-      </div>
-
-      {/* Arrow 1 */}
-      <div className="flex flex-col items-center gap-1 md:flex-1 md:px-3">
-        <div className="hidden h-px w-full bg-primary/20 md:block" />
-        <div className="h-6 w-px bg-primary/20 md:hidden" />
-        <span className="rounded-full bg-primary/[0.06] px-2 py-0.5 text-[9px] font-medium text-primary">
-          /true-cost query
-        </span>
-        <div className="hidden h-px w-full bg-primary/20 md:block" />
-        <div className="h-6 w-px bg-primary/20 md:hidden" />
-      </div>
-
-      {/* Parleo node */}
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl border-2 border-primary/30 bg-primary/[0.06]">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        }
+      />
+      <FlowArrow label="/true-cost query" />
+      <FlowNode
+        label="Parleo"
+        caption="47ms · Zero PII"
+        highlight
+        icon={
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
             <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
             <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
           </svg>
-        </div>
-        <span className="text-[11px] font-bold text-primary">Parleo</span>
-        <span className="text-[9px] text-foreground/40">47ms · Zero PII</span>
-      </div>
-
-      {/* Arrow 2 */}
-      <div className="flex flex-col items-center gap-1 md:flex-1 md:px-3">
-        <div className="hidden h-px w-full bg-primary/20 md:block" />
-        <div className="h-6 w-px bg-primary/20 md:hidden" />
-        <span className="rounded-full bg-primary/[0.06] px-2 py-0.5 text-[9px] font-medium text-primary">
-          structured response
-        </span>
-        <div className="hidden h-px w-full bg-primary/20 md:block" />
-        <div className="h-6 w-px bg-primary/20 md:hidden" />
-      </div>
-
-      {/* Merchant node */}
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-secondary">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6">
+        }
+      />
+      <FlowArrow label="structured response" />
+      <FlowNode
+        label="Your Store"
+        logos={["Sephora", "Nike", "Best Buy"]}
+        icon={
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.4" opacity="0.75">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M9 22V12h6v10" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </div>
-        <span className="text-[11px] font-semibold text-foreground/60">Your Store</span>
-        <div className="flex gap-1">
-          {["Sephora", "Nike", "Best Buy"].map(p => (
-            <BrandLogo key={p} name={p} size={12} />
-          ))}
-        </div>
-      </div>
+        }
+      />
     </div>
 
     {/* What flows through */}
-    <div className="mt-5 grid gap-2 md:grid-cols-3">
+    <div className="mt-8 grid gap-4 md:grid-cols-3">
       {[
         { label: "Agent sends", items: ["Product query", "Card signals", "Segment hints"] },
         { label: "Parleo computes", items: ["True cost", "Deal stacking", "Semantic context"] },
         { label: "Customer sees", items: ["Best deal ranked", "Savings breakdown", "Buy rationale"] },
       ].map((col) => (
-        <div key={col.label} className="rounded-lg border border-border/60 bg-secondary/30 p-3">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-foreground/40">{col.label}</span>
-          <div className="mt-1.5 space-y-1">
+        <div key={col.label} className="rounded-xl border border-border/60 bg-secondary/40 p-5">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/50">{col.label}</span>
+          <div className="mt-3 space-y-2.5">
             {col.items.map((item) => (
-              <div key={item} className="flex items-center gap-1.5 text-[12px] text-foreground/65">
-                <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-primary/10">
-                  <svg width="6" height="6" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="hsl(213,99%,50%)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <div key={item} className="flex items-center gap-2.5 text-[14px] text-foreground/80">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2 2 4-4" stroke="hsl(213,99%,50%)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
                 </span>
                 {item}
               </div>
