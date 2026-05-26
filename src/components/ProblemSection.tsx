@@ -84,7 +84,7 @@ const UserMessage = () => (
     className="flex justify-end"
   >
     <div className="max-w-[85%] rounded-2xl rounded-tr-md bg-primary px-4 py-2.5 text-[14px] leading-snug text-primary-foreground">
-      Compare Tatcha The Water Cream across Sephora, Ulta, Amazon, and Nordstrom. Find me the best price.
+      Can you find me the best deal on the Tatcha moisturizer?
     </div>
   </motion.div>
 );
