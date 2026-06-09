@@ -305,7 +305,7 @@ const AnswerCard = ({ phase }: { phase: Phase }) => {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: phase === "thinking" ? 0 : 1, y: phase === "thinking" ? 8 : 0 }}
       transition={{ duration: 0.55, ease }}
-      className="h-[350px] overflow-hidden rounded-xl border border-border bg-card sm:h-[360px]"
+      className="h-[410px] overflow-hidden rounded-xl border border-border bg-card"
     >
       <StatusHeader phase={phase} />
 
@@ -426,7 +426,7 @@ const HeroChatArtifact = () => {
           <UserBubble />
           <div className="flex items-start gap-3">
             <AssistantAvatar />
-            <div className="relative min-h-[350px] min-w-0 flex-1 sm:min-h-[360px]">
+            <div className="relative min-h-[410px] min-w-0 flex-1">
               <motion.div className="absolute left-0 top-0 rounded-2xl rounded-tl-md bg-secondary/60 px-3 py-2" animate={{ opacity: phase === "thinking" ? 1 : 0, y: phase === "thinking" ? 0 : -4 }} transition={{ duration: 0.3, ease }}>
                 <TypingDots />
               </motion.div>
