@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 import HeroChatArtifact from "./hero/HeroChatArtifact";
-import AgentLogosRow from "./hero/AgentLogosRow";
 import BrandLogo from "./BrandLogo";
 
 const FloatingIcon = ({
