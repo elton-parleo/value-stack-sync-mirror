@@ -367,18 +367,14 @@ const AnswerCard = ({ phase }: { phase: Phase }) => {
           </motion.div>
         </div>
 
-        <motion.div className="mt-3 rounded-lg border border-primary/18 bg-primary/[0.035] px-3 py-2" animate={{ opacity: active ? 1 : 0.42 }} transition={{ duration: 0.55, ease }}>
+        <motion.div className="mt-2.5 rounded-lg border px-3 py-2" animate={{ borderColor: active ? "hsl(213 99% 50% / 0.24)" : "hsl(var(--border) / 0.68)", backgroundColor: active ? "hsl(213 99% 50% / 0.045)" : "hsl(var(--secondary) / 0.24)" }} transition={{ duration: 0.6, ease }}>
           <div className="flex items-center justify-between gap-3 text-[11px] tabular-nums text-foreground/62">
-            <span>Rouge discount</span><span className="font-semibold text-[hsl(var(--success))]">{active ? "-$6.00" : "$0.00"}</span>
+            <span>{corrected ? "Corrected recommendation" : active ? "Applying hidden value" : "Sticker-price recommendation"}</span>
+            <span className={active ? "font-bold text-primary" : "font-bold text-foreground/70"}>{active ? "Sephora wins" : "Amazon wins"}</span>
           </div>
           <div className="mt-1 flex items-center justify-between gap-3 text-[11px] tabular-nums text-foreground/62">
-            <span>Visa rewards + gift value</span><span className="font-semibold text-[hsl(var(--success))]">{active ? "-$9.36" : "$0.00"}</span>
+            <span>Rouge + Visa + gift value</span><span className="font-semibold text-[hsl(var(--success))]">{active ? "-$15.36" : "$0.00"}</span>
           </div>
-        </motion.div>
-
-        <motion.div className="mt-3 rounded-lg border px-3 py-2" animate={{ borderColor: active ? "hsl(213 99% 50% / 0.24)" : "hsl(var(--border) / 0.68)", backgroundColor: active ? "hsl(213 99% 50% / 0.045)" : "hsl(var(--secondary) / 0.24)" }} transition={{ duration: 0.6, ease }}>
-          <p className="text-[12.5px] font-semibold leading-tight text-foreground">{corrected ? "Recommendation corrected to Sephora" : active ? "Finding the real winner" : "Recommendation: Amazon"}</p>
-          <p className="mt-0.5 text-[11.5px] leading-snug text-foreground/65">{corrected ? "Parleo turns hidden value into the price the agent can rank." : active ? "The incentive layer is being applied before the final answer." : "Without Parleo, the agent stops at lowest visible price."}</p>
         </motion.div>
       </div>
     </motion.div>
