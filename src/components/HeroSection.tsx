@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 import HeroChatArtifact from "./hero/HeroChatArtifact";
 import AgentLogosRow from "./hero/AgentLogosRow";
+import BrandLogo from "./BrandLogo";
 
 const FloatingIcon = ({
   children,
@@ -91,11 +92,33 @@ const HeroSection = () => {
             </Link>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <AgentLogosRow />
-            <span className="text-[13px] text-foreground/55">
-              Works across ChatGPT, Gemini, Perplexity & Copilot
-            </span>
+          <div className="mt-8 space-y-4 border-t border-border/60 pt-6">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="font-label text-foreground/45">Works across</span>
+              <AgentLogosRow />
+              <span className="text-[13px] text-foreground/70">
+                ChatGPT, Gemini, Perplexity & Copilot
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="font-label text-foreground/45">Works with</span>
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  { name: "MCP", logo: "Anthropic" },
+                  { name: "ACP", logo: "Stripe" },
+                  { name: "OpenAPI", logo: "OpenAI" },
+                  { name: "UCP", logo: "Google" },
+                ].map((p) => (
+                  <span
+                    key={p.name}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1 text-[12px] font-medium text-foreground/75"
+                  >
+                    <BrandLogo name={p.logo} size={13} grayscale />
+                    {p.name}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
 
