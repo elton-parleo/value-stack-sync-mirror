@@ -311,27 +311,41 @@ const HeroChatArtifact = () => {
           <UserBubble />
           <div className="flex items-start gap-3">
             <Avatar />
-            <div className="min-w-0 flex-1">
-              <AnimatePresence mode="wait">
-                {phase === "typing" ? (
+            <div className="relative min-h-[520px] min-w-0 flex-1 md:min-h-[560px]">
+              <AnimatePresence>
+                {phase === "typing" && (
                   <motion.div
                     key="typing"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="inline-block rounded-2xl rounded-tl-md bg-secondary/60 px-3 py-2"
+                    className="absolute left-0 top-0 inline-block rounded-2xl rounded-tl-md bg-secondary/60 px-3 py-2"
                   >
                     <TypingDots />
                   </motion.div>
-                ) : (
+                )}
+                {phase === "standard" && (
                   <motion.div
-                    key="answer"
+                    key="standard"
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.35 }}
+                    className="absolute inset-x-0 top-0"
                   >
-                    <AnswerCard phase={phase} />
+                    <AnswerCard phase="standard" />
+                  </motion.div>
+                )}
+                {phase === "parleo" && (
+                  <motion.div
+                    key="parleo"
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-x-0 top-0"
+                  >
+                    <AnswerCard phase="parleo" />
                   </motion.div>
                 )}
               </AnimatePresence>
