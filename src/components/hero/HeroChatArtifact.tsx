@@ -296,15 +296,94 @@ const Recommendation = ({ phase }: { phase: Phase }) => {
   );
 };
 
-const AnswerCard = ({ phase }: { phase: Phase }) => (
-  <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: phase === "thinking" ? 0 : 1, y: phase === "thinking" ? 8 : 0 }} transition={{ duration: 0.55, ease }} className="h-[350px] overflow-hidden rounded-xl border border-border bg-card sm:h-[360px]">
-    <StatusHeader phase={phase} />
-    <ProductHeader />
-    <ValueRoute phase={phase} />
-    <ValueStack phase={phase} />
-    <Recommendation phase={phase} />
-  </motion.div>
-);
+const AnswerCard = ({ phase }: { phase: Phase }) => {
+  const active = phase === "scan" || phase === "corrected";
+  const corrected = phase === "corrected";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: phase === "thinking" ? 0 : 1, y: phase === "thinking" ? 8 : 0 }}
+      transition={{ duration: 0.55, ease }}
+      className="h-[350px] overflow-hidden rounded-xl border border-border bg-card sm:h-[360px]"
+    >
+      <StatusHeader phase={phase} />
+
+      <div className="relative px-3 py-3">
+        <motion.div
+          className="pointer-events-none absolute inset-x-3 top-[118px] h-px bg-primary"
+          animate={{ scaleX: active ? 1 : 0.34, opacity: active ? 0.55 : 0.18 }}
+          transition={{ duration: 0.9, ease }}
+          style={{ transformOrigin: "left" }}
+        />
+        <motion.div
+          className="pointer-events-none absolute inset-y-0 left-0 w-[44%] bg-gradient-to-r from-transparent via-primary/10 to-transparent"
+          animate={{ x: phase === "scan" ? ["-110%", "250%"] : "250%", opacity: phase === "scan" ? [0, 1, 0] : 0 }}
+          transition={{ duration: 1.6, ease }}
+        />
+
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/70 bg-secondary/45">
+            <img src={tatchaWaterCream} alt="Tatcha The Water Cream" className="h-full w-full object-contain" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[9.5px] font-semibold uppercase tracking-[0.13em] text-foreground/45">Tatcha</p>
+            <p className="truncate text-[13.5px] font-semibold leading-tight text-foreground">The Water Cream</p>
+          </div>
+          <motion.div
+            className="rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.09em]"
+            animate={{ borderColor: active ? "hsl(213 99% 50% / 0.26)" : "hsl(var(--border))", color: active ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.46)" }}
+            transition={{ duration: 0.55, ease }}
+          >
+            {active ? "True cost" : "List price"}
+          </motion.div>
+        </div>
+
+        <div className="mt-3 grid grid-cols-[1fr_42px_1fr] items-center gap-2">
+          <motion.div
+            className="relative h-[86px] rounded-lg border px-2.5 py-2"
+            animate={{ y: active ? 0 : -4, opacity: corrected ? 0.55 : 1, borderColor: !active ? "hsl(213 99% 50% / 0.28)" : "hsl(var(--border) / 0.7)", backgroundColor: !active ? "hsl(213 99% 50% / 0.055)" : "hsl(var(--secondary) / 0.24)" }}
+            transition={{ duration: 0.7, ease }}
+          >
+            <div className="flex items-center gap-2 text-[12px] font-semibold text-foreground/82"><BrandLogo name="Amazon" size={15} /> Amazon</div>
+            <p className="mt-3 text-[9px] font-semibold uppercase tracking-[0.1em] text-foreground/38">Sticker price</p>
+            <p className="mt-0.5 text-right text-[18px] font-bold tabular-nums text-foreground">$28.00</p>
+            <motion.span className="absolute -right-1.5 -top-1.5 rounded-full border border-card bg-primary px-1.5 py-0.5 text-[8.5px] font-bold uppercase tracking-[0.08em] text-primary-foreground" animate={{ opacity: !active ? 1 : 0, scale: !active ? 1 : 0.92 }} transition={{ duration: 0.4, ease }}>Pick</motion.span>
+          </motion.div>
+
+          <motion.div className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/25 bg-primary/[0.055]" animate={{ scale: active ? [1, 1.12, 1] : 1, opacity: active ? 1 : 0.48 }} transition={{ duration: 1.7, repeat: active ? Infinity : 0, ease: "easeInOut" }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12h15" /><path d="M13 7l5 5-5 5" /></svg>
+          </motion.div>
+
+          <motion.div
+            className="relative h-[86px] rounded-lg border px-2.5 py-2"
+            animate={{ y: active ? -4 : 0, borderColor: active ? "hsl(213 99% 50% / 0.32)" : "hsl(var(--border) / 0.7)", backgroundColor: active ? "hsl(213 99% 50% / 0.06)" : "hsl(var(--secondary) / 0.24)" }}
+            transition={{ duration: 0.7, ease }}
+          >
+            <div className="flex items-center gap-2 text-[12px] font-semibold text-foreground/82"><BrandLogo name="Sephora" size={15} /> Sephora</div>
+            <p className="mt-3 text-[9px] font-semibold uppercase tracking-[0.1em] text-foreground/38">{active ? "After incentives" : "Sticker price"}</p>
+            <p className="mt-0.5 text-right text-[18px] font-bold tabular-nums text-primary"><AnimatedMoney value={active ? 14.64 : 30} /></p>
+            <motion.span className="absolute -right-1.5 -top-1.5 rounded-full border border-card bg-primary px-1.5 py-0.5 text-[8.5px] font-bold uppercase tracking-[0.08em] text-primary-foreground" animate={{ opacity: active ? 1 : 0, scale: active ? 1 : 0.92 }} transition={{ duration: 0.4, ease }}>Pick</motion.span>
+          </motion.div>
+        </div>
+
+        <motion.div className="mt-3 rounded-lg border border-primary/18 bg-primary/[0.035] px-3 py-2" animate={{ opacity: active ? 1 : 0.42 }} transition={{ duration: 0.55, ease }}>
+          <div className="flex items-center justify-between gap-3 text-[11px] tabular-nums text-foreground/62">
+            <span>Rouge discount</span><span className="font-semibold text-[hsl(var(--success))]">{active ? "-$6.00" : "$0.00"}</span>
+          </div>
+          <div className="mt-1 flex items-center justify-between gap-3 text-[11px] tabular-nums text-foreground/62">
+            <span>Visa rewards + gift value</span><span className="font-semibold text-[hsl(var(--success))]">{active ? "-$9.36" : "$0.00"}</span>
+          </div>
+        </motion.div>
+
+        <motion.div className="mt-3 rounded-lg border px-3 py-2" animate={{ borderColor: active ? "hsl(213 99% 50% / 0.24)" : "hsl(var(--border) / 0.68)", backgroundColor: active ? "hsl(213 99% 50% / 0.045)" : "hsl(var(--secondary) / 0.24)" }} transition={{ duration: 0.6, ease }}>
+          <p className="text-[12.5px] font-semibold leading-tight text-foreground">{corrected ? "Recommendation corrected to Sephora" : active ? "Finding the real winner" : "Recommendation: Amazon"}</p>
+          <p className="mt-0.5 text-[11.5px] leading-snug text-foreground/65">{corrected ? "Parleo turns hidden value into the price the agent can rank." : active ? "The incentive layer is being applied before the final answer." : "Without Parleo, the agent stops at lowest visible price."}</p>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
 
 const HeroChatArtifact = () => {
   const reduce = useReducedMotion();
