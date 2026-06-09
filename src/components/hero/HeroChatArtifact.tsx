@@ -1,28 +1,85 @@
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion, LayoutGroup } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
 import tatchaWaterCream from "@/assets/tatcha-water-cream.png";
 
 type Phase = "typing" | "standard" | "parleo";
 
+/* ─────────────────────────────────────────────
+   Tiny primitives
+   ───────────────────────────────────────────── */
+
 const TypingDots = () => (
-  <div className="flex items-center gap-1 px-1 py-1">
+  <div className="flex items-center gap-1.5 px-1 py-1">
     {[0, 1, 2].map((i) => (
       <motion.span
         key={i}
         className="h-1.5 w-1.5 rounded-full bg-foreground/35"
-        animate={{ opacity: [0.3, 1, 0.3], y: [0, -2, 0] }}
-        transition={{ duration: 1.1, repeat: Infinity, delay: i * 0.15, ease: "easeInOut" }}
+        animate={{ opacity: [0.25, 1, 0.25], y: [0, -2, 0] }}
+        transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
       />
     ))}
   </div>
 );
 
-const ChatChrome = ({ children }: { children: React.ReactNode }) => (
+/** Tween a numeric price for a soft counter feel. */
+const AnimatedPrice = ({
+  value,
+  className = "",
+  duration = 750,
+}: {
+  value: number;
+  className?: string;
+  duration?: number;
+}) => {
+  const [display, setDisplay] = useState(value);
+  const prev = useRef(value);
+
+  useEffect(() => {
+    const from = prev.current;
+    const to = value;
+    if (from === to) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setDisplay(from + (to - from) * eased);
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else prev.current = to;
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [value, duration]);
+
+  return <span className={className}>${display.toFixed(2)}</span>;
+};
+
+/* ─────────────────────────────────────────────
+   Chrome
+   ───────────────────────────────────────────── */
+
+const ChatChrome = ({
+  children,
+  progress,
+}: {
+  children: React.ReactNode;
+  progress: number;
+}) => (
   <div
-    className="w-full overflow-hidden rounded-[18px] border border-border bg-card"
+    className="relative w-full overflow-hidden rounded-[18px] border border-border bg-card"
     style={{ boxShadow: "var(--shadow-elevated)" }}
   >
+    {/* Cycle progress hairline */}
+    <div className="absolute inset-x-0 top-0 z-10 h-px bg-foreground/[0.04]">
+      <motion.div
+        className="h-full bg-primary/50"
+        style={{ width: `${progress * 100}%` }}
+        transition={{ ease: "linear" }}
+      />
+    </div>
+
+    {/* Title bar */}
     <div className="flex items-center justify-between border-b border-border/60 bg-card px-3 py-2.5 md:px-4 md:py-3">
       <div className="flex items-center gap-2">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/40">
@@ -45,6 +102,7 @@ const ChatChrome = ({ children }: { children: React.ReactNode }) => (
 
     <div className="px-3 py-4 md:px-5 md:py-5">{children}</div>
 
+    {/* Composer */}
     <div className="border-t border-border/60 bg-card px-3 py-2.5 md:px-4 md:py-3">
       <div className="flex items-center gap-2 rounded-full border border-border/70 bg-secondary/40 px-3 py-2 md:px-4 md:py-2.5">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/40">
@@ -71,61 +129,42 @@ const Avatar = () => (
   </div>
 );
 
-type Row = {
-  name: string;
-  listed: string;
-  trueCost?: string;
-  badge?: string;
-  highlight?: boolean;
-};
-
-const RetailerRow = ({ row, showTrue }: { row: Row; showTrue: boolean }) => (
+const UserBubble = () => (
   <motion.div
-    layout
-    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    className={`flex items-center justify-between rounded-lg border px-3 py-2.5 ${
-      row.highlight ? "border-primary/30 bg-primary/[0.05]" : "border-border/60 bg-secondary/30"
-    }`}
+    initial={{ opacity: 0, y: 6 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    className="flex justify-end"
   >
-    <div className="flex items-center gap-2">
-      <BrandLogo name={row.name} size={16} />
-      <span className="text-[13px] font-medium text-foreground/85">{row.name}</span>
-      {row.badge && (
-        <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider ${
-          row.highlight ? "bg-primary/15 text-primary" : "bg-foreground/10 text-foreground/70"
-        }`}>
-          {row.badge}
-        </span>
-      )}
-    </div>
-    <div className="flex items-baseline gap-2">
-      {showTrue && row.trueCost ? (
-        <>
-          <span className="text-[12px] text-foreground/35 line-through">{row.listed}</span>
-          <span className="text-[14px] font-semibold text-primary">{row.trueCost}</span>
-        </>
-      ) : (
-        <span className={`text-[14px] font-semibold ${row.highlight ? "text-foreground" : "text-foreground/75"}`}>
-          {row.listed}
-        </span>
-      )}
+    <div className="max-w-[85%] rounded-2xl rounded-tr-md bg-primary px-4 py-2.5 text-[14px] leading-snug text-primary-foreground">
+      Find me the best price on Tatcha The Water Cream.
     </div>
   </motion.div>
 );
 
-const standardRows: Row[] = [
-  { name: "Amazon", listed: "$28.00", badge: "Recommended", highlight: true },
-  { name: "Sephora", listed: "$30.00" },
-  { name: "Ulta", listed: "$30.00" },
-  { name: "Nordstrom", listed: "$30.00" },
+/* ─────────────────────────────────────────────
+   Data
+   ───────────────────────────────────────────── */
+
+type Retailer = {
+  name: string;
+  listed: number;
+  trueCost?: number;
+};
+
+const baseRetailers: Retailer[] = [
+  { name: "Amazon", listed: 28.0 },
+  { name: "Sephora", listed: 30.0, trueCost: 14.64 },
+  { name: "Ulta", listed: 30.0 },
+  { name: "Nordstrom", listed: 30.0 },
 ];
 
-const parleoRows: Row[] = [
-  { name: "Sephora", listed: "$30.00", trueCost: "$14.64", badge: "True best deal", highlight: true },
-  { name: "Amazon", listed: "$28.00" },
-  { name: "Ulta", listed: "$30.00" },
-  { name: "Nordstrom", listed: "$30.00" },
-];
+const ranked = (isParleo: boolean) =>
+  [...baseRetailers].sort((a, b) => {
+    const av = isParleo ? a.trueCost ?? a.listed : a.listed;
+    const bv = isParleo ? b.trueCost ?? b.listed : b.listed;
+    return av - bv;
+  });
 
 const incentiveStack = [
   { label: "Beauty Insider Rouge member", value: "−$6.00" },
@@ -133,50 +172,179 @@ const incentiveStack = [
   { label: "Birthday GWP value", value: "−$8.40" },
 ];
 
-const AnswerCard = ({ phase }: { phase: "standard" | "parleo" }) => {
-  const isParleo = phase === "parleo";
-  const rows = isParleo ? parleoRows : standardRows;
+/* ─────────────────────────────────────────────
+   Row
+   ───────────────────────────────────────────── */
+
+const RetailerRow = ({
+  retailer,
+  isParleo,
+  rank,
+}: {
+  retailer: Retailer;
+  isParleo: boolean;
+  rank: number;
+}) => {
+  const isBest = rank === 0;
+  const showTrueCost = isParleo && retailer.trueCost !== undefined;
+  const displayValue = showTrueCost ? retailer.trueCost! : retailer.listed;
 
   return (
     <motion.div
       layout
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="overflow-hidden rounded-xl border border-border bg-card"
+      layoutId={`row-${retailer.name}`}
+      transition={{ type: "spring", stiffness: 360, damping: 36, mass: 0.7 }}
+      className="relative"
     >
-      {/* Status bar */}
-      <AnimatePresence mode="wait" initial={false}>
-        {isParleo ? (
-          <motion.div
-            key="parleo-bar"
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            className="flex items-center gap-2 border-b border-primary/15 bg-primary/[0.05] px-4 py-2"
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-            </span>
-            <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">
-              Parleo true-price layer active
-            </span>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="std-bar"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="flex items-center gap-2 border-b border-border/60 bg-secondary/40 px-4 py-2"
-          >
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground/30" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/45">
-              Standard agent · listed prices
-            </span>
-          </motion.div>
+      <motion.div
+        animate={{
+          borderColor: isBest
+            ? isParleo
+              ? "hsl(213 99% 50% / 0.30)"
+              : "hsl(var(--foreground) / 0.16)"
+            : "hsl(var(--border) / 0.6)",
+          backgroundColor: isBest
+            ? isParleo
+              ? "hsl(213 99% 50% / 0.05)"
+              : "hsl(var(--foreground) / 0.03)"
+            : "hsl(var(--secondary) / 0.25)",
+        }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="flex items-center justify-between rounded-lg border px-3 py-2.5"
+      >
+        <div className="flex items-center gap-2">
+          <BrandLogo name={retailer.name} size={16} />
+          <span className="text-[13px] font-medium text-foreground/85">{retailer.name}</span>
+          <AnimatePresence mode="wait">
+            {isBest && (
+              <motion.span
+                key={isParleo ? "parleo-badge" : "std-badge"}
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider ${
+                  isParleo ? "bg-primary/15 text-primary" : "bg-foreground/10 text-foreground/70"
+                }`}
+              >
+                {isParleo ? "True best" : "Recommended"}
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
+
+        <div className="flex items-baseline gap-2 tabular-nums">
+          <AnimatePresence>
+            {showTrueCost && (
+              <motion.span
+                key="strike"
+                initial={{ opacity: 0, x: 4 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-[12px] text-foreground/40 line-through"
+              >
+                ${retailer.listed.toFixed(2)}
+              </motion.span>
+            )}
+          </AnimatePresence>
+          <AnimatedPrice
+            value={displayValue}
+            className={`text-[14px] font-semibold ${
+              showTrueCost ? "text-primary" : isBest ? "text-foreground" : "text-foreground/75"
+            }`}
+          />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+/* ─────────────────────────────────────────────
+   Status bar (single piece that morphs)
+   ───────────────────────────────────────────── */
+
+const StatusBar = ({ isParleo }: { isParleo: boolean }) => (
+  <motion.div
+    animate={{
+      backgroundColor: isParleo ? "hsl(213 99% 50% / 0.05)" : "hsl(var(--secondary) / 0.45)",
+      borderColor: isParleo ? "hsl(213 99% 50% / 0.18)" : "hsl(var(--border) / 0.6)",
+    }}
+    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    className="relative flex items-center gap-2 overflow-hidden border-b px-4 py-2"
+  >
+    {/* Sweep highlight on activation */}
+    <AnimatePresence>
+      {isParleo && (
+        <motion.div
+          key="sweep"
+          initial={{ x: "-100%" }}
+          animate={{ x: "120%" }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="pointer-events-none absolute inset-y-0 w-1/2"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, hsl(213 99% 50% / 0.18) 50%, transparent 100%)",
+          }}
+        />
+      )}
+    </AnimatePresence>
+
+    <motion.span
+      animate={{
+        backgroundColor: isParleo ? "hsl(213 99% 50%)" : "hsl(var(--foreground) / 0.3)",
+      }}
+      transition={{ duration: 0.4 }}
+      className="relative inline-flex h-1.5 w-1.5"
+    >
+      <AnimatePresence>
+        {isParleo && (
+          <motion.span
+            key="ping"
+            initial={{ opacity: 0.7, scale: 1 }}
+            animate={{ opacity: 0, scale: 2.4 }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: "easeOut" }}
+            className="absolute inset-0 rounded-full bg-primary"
+          />
         )}
       </AnimatePresence>
+      <span className="absolute inset-0 rounded-full" style={{ backgroundColor: "currentColor" }} />
+    </motion.span>
+
+    <div className="relative h-[14px] flex-1 overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={isParleo ? "p" : "s"}
+          initial={{ y: 12, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -12, opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className={`absolute inset-0 text-[11px] font-semibold uppercase tracking-[0.14em] ${
+            isParleo ? "text-primary" : "text-foreground/45"
+          }`}
+        >
+          {isParleo ? "Parleo true-price layer active" : "Standard agent · listed prices"}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  </motion.div>
+);
+
+/* ─────────────────────────────────────────────
+   Answer card (single, morphing)
+   ───────────────────────────────────────────── */
+
+const AnswerCard = ({ isParleo }: { isParleo: boolean }) => {
+  const rows = ranked(isParleo);
+
+  return (
+    <motion.div
+      layout
+      transition={{ type: "spring", stiffness: 280, damping: 34 }}
+      className="overflow-hidden rounded-xl border border-border bg-card"
+    >
+      <StatusBar isParleo={isParleo} />
 
       {/* Product header */}
       <div className="flex items-center gap-3 px-4 pt-4">
@@ -190,14 +358,16 @@ const AnswerCard = ({ phase }: { phase: "standard" | "parleo" }) => {
         </div>
       </div>
 
-      {/* Rows */}
-      <motion.div layout className="space-y-1.5 px-4 pt-4">
-        {rows.map((r) => (
-          <RetailerRow key={r.name} row={r} showTrue={isParleo && !!r.trueCost} />
-        ))}
-      </motion.div>
+      {/* Rows (reordered + reformatted via layout) */}
+      <LayoutGroup>
+        <motion.div layout className="space-y-1.5 px-4 pt-4">
+          {rows.map((r, i) => (
+            <RetailerRow key={r.name} retailer={r} isParleo={isParleo} rank={i} />
+          ))}
+        </motion.div>
+      </LayoutGroup>
 
-      {/* Incentive stack reveals only in parleo */}
+      {/* Incentive stack (parleo only) */}
       <AnimatePresence initial={false}>
         {isParleo && (
           <motion.div
@@ -205,21 +375,21 @@ const AnswerCard = ({ phase }: { phase: "standard" | "parleo" }) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden px-4"
           >
-            <div className="mt-4 rounded-lg border border-primary/15 bg-primary/[0.04] p-3">
-              <p className="text-[10.5px] font-semibold uppercase tracking-wider text-primary/70">
+            <div className="mt-4 rounded-lg border border-primary/15 bg-primary/[0.035] p-3">
+              <p className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-primary/70">
                 Sephora incentive stack
               </p>
               <div className="mt-2 space-y-1.5">
                 {incentiveStack.map((s, i) => (
                   <motion.div
                     key={s.label}
-                    initial={{ opacity: 0, x: -6 }}
+                    initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.15 + i * 0.1, duration: 0.35 }}
-                    className="flex items-center justify-between text-[12.5px]"
+                    transition={{ delay: 0.18 + i * 0.09, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex items-center justify-between text-[12.5px] tabular-nums"
                   >
                     <span className="text-foreground/65">{s.label}</span>
                     <span className="font-semibold text-[hsl(var(--success))]">{s.value}</span>
@@ -231,57 +401,60 @@ const AnswerCard = ({ phase }: { phase: "standard" | "parleo" }) => {
         )}
       </AnimatePresence>
 
-      {/* Recommendation */}
+      {/* Recommendation line */}
       <motion.div layout className="px-4 pb-4 pt-4">
-        <AnimatePresence mode="wait" initial={false}>
-          {isParleo ? (
-            <motion.p
-              key="rec-parleo"
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }}
-              className="text-[13.5px] leading-relaxed text-foreground/80"
-            >
-              Recommending <span className="font-semibold text-primary">Sephora</span>. True cost $14.64 beats Amazon by{" "}
-              <span className="font-semibold text-foreground">$13.36</span> after your incentives.
-            </motion.p>
-          ) : (
-            <motion.p
-              key="rec-std"
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }}
-              className="text-[13.5px] leading-relaxed text-foreground/75"
-            >
-              Recommending <span className="font-semibold text-foreground">Amazon</span>. Lowest listed price at $28.00.
-            </motion.p>
-          )}
-        </AnimatePresence>
+        <div className="relative h-[44px] md:h-[40px]">
+          <AnimatePresence mode="wait">
+            {isParleo ? (
+              <motion.p
+                key="rec-p"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 text-[13.5px] leading-relaxed text-foreground/80"
+              >
+                Recommending <span className="font-semibold text-primary">Sephora</span>. True cost
+                $14.64 beats Amazon by{" "}
+                <span className="font-semibold text-foreground">$13.36</span> after your incentives.
+              </motion.p>
+            ) : (
+              <motion.p
+                key="rec-s"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 text-[13.5px] leading-relaxed text-foreground/75"
+              >
+                Recommending <span className="font-semibold text-foreground">Amazon</span>. Lowest
+                listed price at $28.00.
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
       </motion.div>
     </motion.div>
   );
 };
 
-const UserBubble = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 6 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-    className="flex justify-end"
-  >
-    <div className="max-w-[85%] rounded-2xl rounded-tr-md bg-primary px-4 py-2.5 text-[14px] leading-snug text-primary-foreground">
-      Find me the best price on Tatcha The Water Cream.
-    </div>
-  </motion.div>
-);
+/* ─────────────────────────────────────────────
+   Orchestrator
+   ───────────────────────────────────────────── */
+
+const TIMELINE: Array<{ at: number; phase: Phase }> = [
+  { at: 0, phase: "typing" },
+  { at: 1200, phase: "standard" },
+  { at: 4600, phase: "parleo" },
+];
+const CYCLE_MS = 11000;
 
 const HeroChatArtifact = () => {
   const reduce = useReducedMotion();
   const [phase, setPhase] = useState<Phase>(reduce ? "parleo" : "typing");
   const [hovered, setHovered] = useState(false);
   const [cycle, setCycle] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const replay = useCallback(() => {
     setPhase("typing");
@@ -292,12 +465,29 @@ const HeroChatArtifact = () => {
     if (reduce) return;
     if (hovered) return;
     const timers: ReturnType<typeof setTimeout>[] = [];
-    setPhase("typing");
-    timers.push(setTimeout(() => setPhase("standard"), 1100));
-    timers.push(setTimeout(() => setPhase("parleo"), 3400));
-    timers.push(setTimeout(() => setPhase("typing"), 8800));
-    timers.push(setTimeout(() => setCycle((c) => c + 1), 9000));
+    TIMELINE.forEach(({ at, phase: p }) => {
+      timers.push(setTimeout(() => setPhase(p), at));
+    });
+    timers.push(setTimeout(() => setCycle((c) => c + 1), CYCLE_MS));
     return () => timers.forEach(clearTimeout);
+  }, [cycle, hovered, reduce]);
+
+  // Progress hairline
+  useEffect(() => {
+    if (reduce) {
+      setProgress(1);
+      return;
+    }
+    if (hovered) return;
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / CYCLE_MS);
+      setProgress(p);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [cycle, hovered, reduce]);
 
   return (
@@ -306,46 +496,37 @@ const HeroChatArtifact = () => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <ChatChrome>
+      <ChatChrome progress={progress}>
         <div className="space-y-4">
           <UserBubble />
           <div className="flex items-start gap-3">
             <Avatar />
-            <div className="relative min-h-[520px] min-w-0 flex-1 md:min-h-[560px]">
+            <div className="relative min-h-[460px] min-w-0 flex-1 md:min-h-[500px]">
               <AnimatePresence>
                 {phase === "typing" && (
                   <motion.div
                     key="typing"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0, transition: { duration: 0.25 } }}
                     className="absolute left-0 top-0 inline-block rounded-2xl rounded-tl-md bg-secondary/60 px-3 py-2"
                   >
                     <TypingDots />
                   </motion.div>
                 )}
-                {phase === "standard" && (
+              </AnimatePresence>
+
+              <AnimatePresence>
+                {phase !== "typing" && (
                   <motion.div
-                    key="standard"
-                    initial={{ opacity: 0, y: 6 }}
+                    key="answer"
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.35 }}
+                    exit={{ opacity: 0, transition: { duration: 0.35 } }}
+                    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-x-0 top-0"
                   >
-                    <AnswerCard phase="standard" />
-                  </motion.div>
-                )}
-                {phase === "parleo" && (
-                  <motion.div
-                    key="parleo"
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="absolute inset-x-0 top-0"
-                  >
-                    <AnswerCard phase="parleo" />
+                    <AnswerCard isParleo={phase === "parleo"} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -362,7 +543,7 @@ const HeroChatArtifact = () => {
           Replay
         </button>
         <span className="h-1 w-1 rounded-full bg-foreground/20" />
-        <span>Auto-plays the recommendation flip</span>
+        <span>Hover to pause</span>
       </div>
     </div>
   );
