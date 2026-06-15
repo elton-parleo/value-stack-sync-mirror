@@ -212,6 +212,26 @@ const FeedSection = () => (
         <span className="hidden sm:inline">·</span>
         <span>Sub-50ms response</span>
       </div>
+
+      {/* CTAs */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/demo"
+          className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-5 text-[13.5px] font-medium text-background transition-colors hover:bg-foreground/85"
+        >
+          See how it works
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-60 transition-transform group-hover:translate-x-0.5">
+            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+        <a
+          href="/developers"
+          className="inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[13.5px] font-medium text-primary transition-colors hover:bg-primary/[0.08]"
+        >
+          Read the docs
+          <span aria-hidden className="opacity-70">→</span>
+        </a>
+      </div>
     </div>
   </AnimatedSection>
 );
