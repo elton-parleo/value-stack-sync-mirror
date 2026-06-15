@@ -336,30 +336,6 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
   );
 };
 
-/* Loser row — only visible in parleo state, dimmed */
-const LoserRow = ({ visible }: { visible: boolean }) => (
-  <AnimatePresence>
-    {visible && (
-      <motion.div
-        initial={{ opacity: 0, y: -4 }}
-        animate={{ opacity: 0.55, y: 0, filter: "grayscale(100%)" }}
-        exit={{ opacity: 0, y: -4 }}
-        transition={{ duration: 0.45 }}
-        className="flex items-center justify-between rounded-xl border border-border/60 bg-secondary/30 px-3.5 py-2"
-      >
-        <div className="flex items-center gap-2">
-          <BrandLogo name="Amazon" size={14} />
-          <span className="text-[12px] font-medium text-foreground/75">Amazon</span>
-          <span className="rounded-full bg-foreground/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-foreground/55">
-            Sticker pick
-          </span>
-        </div>
-        <div className="text-[12.5px] font-semibold tabular-nums text-foreground/70">$28.00</div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
-
 /* ─────────────────────────────────────────────
    Assistant column
    ───────────────────────────────────────────── */
@@ -388,7 +364,6 @@ const AssistantContent = ({ phase }: { phase: Phase }) => (
             className="space-y-2.5"
           >
             <ProductCard phase={phase} />
-            <LoserRow visible={phase === "parleo"} />
           </motion.div>
         )}
       </AnimatePresence>
