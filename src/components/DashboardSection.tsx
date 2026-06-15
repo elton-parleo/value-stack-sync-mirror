@@ -58,44 +58,12 @@ const DashboardSection = () => {
         <img src={lifestyleRetail} alt="" className="h-full w-full object-cover" style={{ filter: 'grayscale(60%)', mixBlendMode: 'multiply' }} />
       </div>
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <div className="flex items-center gap-3">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
-              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
-            </svg>
-          </div>
-          <span className="font-label text-parleo-muted">COMMAND CENTER</span>
-        </div>
-        <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-          One console for your<br />agentic channel.
+        <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
+          Your agent channel,<br />in one console.
         </h2>
-        <p className="mt-3 max-w-[520px] text-[17px] text-foreground/70" style={{ lineHeight: 1.7 }}>
-          Control economics in agent channels: set guardrails on margin, liability burn, and offer exposure instead of leaving decisions to opaque ranking logic.
+        <p className="mt-3 max-w-[620px] text-[17px] text-foreground/70" style={{ lineHeight: 1.7 }}>
+          Score how agents rank you, see the margin they cannot, and set the rules your offers play by.
         </p>
-
-        {/* Headline metric strip */}
-        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-[1fr_1fr_auto]">
-          <div className="flex items-baseline justify-between gap-4 bg-card px-5 py-4 sm:flex-col sm:items-start sm:gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">Agent Commerce Score</span>
-            <div className="flex items-baseline gap-2">
-              <span className="font-display text-[40px] font-bold leading-none tabular-nums text-foreground">54</span>
-              <span className="text-[13px] text-foreground/45 tabular-nums">/ 100</span>
-              <span className="ml-1 rounded-full bg-[hsl(var(--success))/0.12] px-2 py-0.5 text-[10px] font-semibold text-[hsl(var(--success))]">+6 wk</span>
-            </div>
-          </div>
-          <div className="flex items-baseline justify-between gap-4 bg-card px-5 py-4 sm:flex-col sm:items-start sm:gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">Deal Leakage</span>
-            <div className="flex items-baseline gap-2">
-              <span className="font-display text-[40px] font-bold leading-none tabular-nums text-foreground">$4.8M</span>
-              <span className="text-[13px] text-foreground/45">/ qtr</span>
-              <span className="ml-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">recoverable</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 bg-card px-5 py-4 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45 sm:px-6">
-            <span className="inline-block h-1.5 w-1.5 animate-pulse-dot rounded-full bg-primary" />
-            Sample readout · Sephora
-          </div>
-        </div>
 
         {/* Dashboard mockup */}
         <div className="mt-8">
