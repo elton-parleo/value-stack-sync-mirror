@@ -70,11 +70,11 @@ const ChatChrome = ({
   const isParleo = phase === "parleo";
   return (
     <div
-      className="relative w-full overflow-hidden rounded-[20px] border border-border/70 bg-card"
+      className="relative w-full overflow-visible rounded-[20px] border border-border/70 bg-card"
       style={{ boxShadow: "var(--shadow-elevated)" }}
     >
       {/* Cycle progress hairline */}
-      <div className="absolute inset-x-0 top-0 z-10 h-px bg-foreground/[0.05]">
+      <div className="absolute inset-x-0 top-0 z-10 h-px overflow-hidden rounded-t-[20px] bg-foreground/[0.05]">
         <motion.div
           key={cycleKey}
           className="h-full origin-left bg-primary/60"
@@ -85,7 +85,7 @@ const ChatChrome = ({
       </div>
 
       {/* Chrome bar */}
-      <div className="flex items-center justify-between border-b border-border/50 px-4 py-2.5">
+      <div className="flex items-center justify-between rounded-t-[20px] border-b border-border/50 px-4 py-2.5">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             <span className="h-2 w-2 rounded-full bg-foreground/10" />
@@ -114,13 +114,13 @@ const ChatChrome = ({
               {isParleo ? "parleo · shopping" : "standard · shopping"}
             </motion.span>
           </AnimatePresence>
-          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[hsl(28_78%_62%)] text-[10px] font-bold text-white">
+          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
             S
           </div>
         </div>
       </div>
 
-      <div className="h-[396px] p-4 sm:h-[408px] sm:p-5">{children}</div>
+      <div className="min-h-[396px] p-4 sm:min-h-[408px] sm:p-5">{children}</div>
     </div>
   );
 };
@@ -423,8 +423,6 @@ const HeroChatArtifact = () => {
   const reduce = useReducedMotion();
   const [phase, setPhase] = useState<Phase>(reduce ? "parleo" : "typing");
   const [cycleKey, setCycleKey] = useState(0);
-  const [replayKey, setReplayKey] = useState(0);
-
   useEffect(() => {
     if (reduce) return;
     let timers: number[] = [];
@@ -437,11 +435,7 @@ const HeroChatArtifact = () => {
     };
     run();
     return () => timers.forEach(window.clearTimeout);
-  }, [reduce, replayKey]);
-
-  const replay = () => {
-    setReplayKey((key) => key + 1);
-  };
+  }, [reduce]);
 
   const displayPhase: Phase = phase === "typing" ? "standard" : phase;
 
@@ -457,15 +451,6 @@ const HeroChatArtifact = () => {
           <AssistantContent phase={phase} />
         </div>
       </ChatChrome>
-
-      <div className="mt-2 flex items-center justify-end px-1">
-        <button
-          onClick={replay}
-          className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/40 transition-colors hover:text-foreground/70"
-        >
-          Replay ↻
-        </button>
-      </div>
     </div>
   );
 };
