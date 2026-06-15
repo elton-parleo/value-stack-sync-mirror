@@ -68,8 +68,7 @@ const HeroSection = () => {
             The incentive layer for AI commerce.
           </h1>
           <p className="mt-5 max-w-[480px] text-[18px] leading-[1.6] text-foreground/70">
-            AI agents are the new comparison shopper. They see your list price, not your real one.
-            Parleo makes loyalty, card-linked offers + true value machine-readable across every agent surface.
+            Parleo makes loyalty programs, card-offers offers and true value of your products readable and transactable across every agent surface.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
