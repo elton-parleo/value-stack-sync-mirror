@@ -32,18 +32,25 @@ const CTASection = () => {
               Be visible to every agent.
             </h2>
             <p className="mt-3 text-[15px] text-foreground/70 md:text-[17px]" style={{ lineHeight: 1.7 }}>
-              Working with merchants getting ahead of the agentic shift.
+              Work with the merchants getting ahead of the agentic shift.
             </p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setContactOpen(true)}
                 className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85 active:scale-[0.98]"
               >
-                Request Demo
+                Request a demo
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50 transition-transform group-hover:translate-x-0.5">
                   <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
+              <a
+                href="/developers"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-primary transition-colors hover:bg-primary/[0.08]"
+              >
+                For developers
+                <span aria-hidden className="opacity-70">→</span>
+              </a>
             </div>
           </motion.div>
 

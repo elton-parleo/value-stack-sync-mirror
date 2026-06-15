@@ -19,18 +19,18 @@ type Era = {
 
 const SHELF = (
   <svg viewBox="0 0 80 60" className="h-full w-full">
-    <g stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.85">
-      <line x1="6" y1="14" x2="74" y2="14" />
-      <line x1="6" y1="30" x2="74" y2="30" />
-      <line x1="6" y1="46" x2="74" y2="46" />
-      {[10, 18, 26, 34, 42, 50, 58, 66].map((x) => (
-        <rect key={`s1-${x}`} x={x} y="6" width="6" height="8" fill="currentColor" opacity="0.18" />
+    <g stroke="currentColor" strokeWidth="1.1" fill="none">
+      <line x1="6" y1="16" x2="74" y2="16" />
+      <line x1="6" y1="32" x2="74" y2="32" />
+      <line x1="6" y1="48" x2="74" y2="48" />
+      {[10, 19, 28, 37, 46, 55, 64].map((x) => (
+        <rect key={`r1-${x}`} x={x} y="8" width="5" height="8" fill="currentColor" opacity="0.55" stroke="none" />
       ))}
-      {[10, 18, 26, 34, 42, 50, 58, 66].map((x) => (
-        <rect key={`s2-${x}`} x={x} y="22" width="6" height="8" fill="currentColor" opacity="0.18" />
+      {[10, 19, 28, 37, 46, 55, 64].map((x) => (
+        <rect key={`r2-${x}`} x={x} y="24" width="5" height="8" fill="currentColor" opacity="0.4" stroke="none" />
       ))}
-      {[10, 18, 26, 34, 42, 50, 58, 66].map((x) => (
-        <rect key={`s3-${x}`} x={x} y="38" width="6" height="8" fill="currentColor" opacity="0.18" />
+      {[10, 19, 28, 37, 46, 55, 64].map((x) => (
+        <rect key={`r3-${x}`} x={x} y="40" width="5" height="8" fill="currentColor" opacity="0.25" stroke="none" />
       ))}
     </g>
   </svg>
@@ -38,45 +38,41 @@ const SHELF = (
 
 const VOICE = (
   <svg viewBox="0 0 80 60" className="h-full w-full">
-    <g stroke="currentColor" strokeWidth="1.4" fill="none" opacity="0.9" strokeLinecap="round">
-      {[
-        [18, 30, 22], [26, 30, 30], [34, 30, 16], [42, 30, 36], [50, 30, 24], [58, 30, 28], [66, 30, 18],
-      ].map(([x, cy, h], i) => (
-        <line key={i} x1={x} y1={cy - h / 2} x2={x} y2={cy + h / 2} />
-      ))}
+    <g stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round">
+      {[10, 18, 26, 34, 42, 50, 58, 66, 74].map((x, i) => {
+        const heights = [10, 22, 14, 34, 20, 40, 28, 18, 8];
+        const h = heights[i];
+        return <line key={x} x1={x} y1={30 - h / 2} x2={x} y2={30 + h / 2} />;
+      })}
     </g>
   </svg>
 );
 
 const SEARCH = (
   <svg viewBox="0 0 80 60" className="h-full w-full">
-    <g stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.9">
-      <rect x="8" y="14" width="64" height="9" rx="1" />
-      <line x1="14" y1="18.5" x2="44" y2="18.5" strokeWidth="1" opacity="0.55" />
-      <rect x="8" y="28" width="50" height="5" opacity="0.35" fill="currentColor" />
-      <rect x="8" y="36" width="58" height="5" opacity="0.35" fill="currentColor" />
-      <rect x="8" y="44" width="42" height="5" opacity="0.35" fill="currentColor" />
+    <g fill="currentColor">
+      <rect x="8" y="12" width="64" height="8" rx="1" opacity="0.55" />
+      <rect x="8" y="24" width="52" height="6" rx="1" opacity="0.4" />
+      <rect x="8" y="34" width="44" height="6" rx="1" opacity="0.3" />
+      <rect x="8" y="44" width="34" height="6" rx="1" opacity="0.22" />
+    </g>
+    <g stroke="currentColor" strokeWidth="1" fill="none" opacity="0.6">
+      <rect x="8" y="12" width="64" height="8" rx="1" />
     </g>
   </svg>
 );
 
 const ALGO = (
   <svg viewBox="0 0 80 60" className="h-full w-full">
-    <defs>
-      <linearGradient id="algoGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="currentColor" stopOpacity="0.9" />
-        <stop offset="100%" stopColor="currentColor" stopOpacity="0.35" />
-      </linearGradient>
-    </defs>
-    <g fill="none" stroke="url(#algoGrad)" strokeWidth="1.3">
-      <circle cx="40" cy="30" r="4" fill="currentColor" />
-      {[
-        [16, 14], [64, 14], [12, 30], [68, 30], [16, 46], [64, 46], [40, 8], [40, 52],
-      ].map(([x, y], i) => (
-        <g key={i}>
-          <line x1="40" y1="30" x2={x} y2={y} opacity="0.55" />
-          <circle cx={x} cy={y} r="2.2" fill="currentColor" opacity="0.7" />
-        </g>
+    <g stroke="currentColor" strokeWidth="1.1" fill="none">
+      {[[16, 14], [64, 14], [10, 30], [70, 30], [16, 46], [64, 46]].map(([x, y], i) => (
+        <line key={i} x1="40" y1="30" x2={x} y2={y} opacity="0.55" />
+      ))}
+    </g>
+    <g fill="currentColor">
+      <circle cx="40" cy="30" r="4.5" />
+      {[[16, 14], [64, 14], [10, 30], [70, 30], [16, 46], [64, 46]].map(([x, y], i) => (
+        <circle key={i} cx={x} cy={y} r="2.4" opacity="0.85" />
       ))}
     </g>
   </svg>
@@ -85,34 +81,34 @@ const ALGO = (
 const ERAS: Era[] = [
   {
     year: "1960s",
-    label: "Shelf",
-    distribution: "Won by trade marketing and end-caps",
-    measured: "Facings, planogram share",
-    spend: "$120B / yr trade promo",
+    label: "Share of Shelf",
+    distribution: "Distribution moved through physical retail.",
+    measured: "Nielsen, IRI",
+    spend: "$8B+",
     glyph: SHELF,
   },
   {
     year: "1980s",
-    label: "Voice",
-    distribution: "Won by mass media and brand fame",
-    measured: "GRPs, reach, frequency",
-    spend: "$300B / yr advertising",
+    label: "Share of Voice",
+    distribution: "Distribution moved through broadcast media.",
+    measured: "GRPs, Media Mix",
+    spend: "$12B+",
     glyph: VOICE,
   },
   {
     year: "2010s",
-    label: "Search",
-    distribution: "Won by SEO and paid keywords",
-    measured: "Rank, CTR, share of voice",
-    spend: "$280B / yr digital",
+    label: "Share of Search",
+    distribution: "Distribution moved through query results.",
+    measured: "SEO / SEM rank",
+    spend: "$200B+",
     glyph: SEARCH,
   },
   {
     year: "2025",
-    label: "Algorithm",
-    distribution: "Won by what agents can read about you",
-    measured: "Agent Commerce Score",
-    spend: "$5T projected by 2030",
+    label: "Share of Algorithm",
+    distribution: "Distribution moves through agent decisions.",
+    measured: "Parleo",
+    spend: "$1T expected",
     glyph: ALGO,
     active: true,
   },
@@ -126,8 +122,8 @@ const EraCard = ({ era, i }: { era: Era; i: number }) => (
     transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     className={`relative flex flex-col rounded-2xl border p-5 transition-colors md:p-6 ${
       era.active
-        ? "border-primary/40 bg-card"
-        : "border-border/70 bg-card/60"
+        ? "border-primary/45 bg-primary/[0.04]"
+        : "border-border/70 bg-transparent"
     }`}
     style={era.active ? { boxShadow: "var(--shadow-card-hover)" } : undefined}
   >
@@ -153,7 +149,7 @@ const EraCard = ({ era, i }: { era: Era; i: number }) => (
 
     {/* Era name */}
     <h3
-      className={`mt-3 font-heading text-[28px] leading-none md:text-[34px] ${
+      className={`mt-3 font-heading text-[22px] leading-tight md:text-[24px] ${
         era.active ? "text-primary" : "text-foreground"
       }`}
     >
@@ -162,17 +158,17 @@ const EraCard = ({ era, i }: { era: Era; i: number }) => (
 
     {/* Glyph */}
     <div
-      className={`mt-5 h-[88px] rounded-lg border ${
+      className={`mt-5 h-[88px] rounded-lg ${
         era.active
-          ? "border-primary/20 bg-primary/[0.03] text-primary"
-          : "border-border/60 bg-secondary/40 text-foreground/55"
+          ? "bg-card text-primary"
+          : "text-foreground/45"
       }`}
     >
-      <div className="h-full p-2">{era.glyph}</div>
+      <div className="h-full p-3">{era.glyph}</div>
     </div>
 
     {/* Spec rows */}
-    <dl className="mt-5 space-y-2.5 border-t border-border/60 pt-4">
+    <dl className="mt-5 space-y-3 border-t border-border/60 pt-4">
       <div>
         <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/40">
           Distribution
@@ -213,32 +209,18 @@ const ShareOfAlgorithmSection = () => (
     <div className="diffusion-glow pointer-events-none absolute left-0 top-[20%]" />
 
     <div className="mx-auto max-w-content px-6 md:px-20">
-      {/* Header */}
-      <div className="flex items-center gap-3">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 3v18M3 12h18" strokeLinecap="round" />
-          </svg>
-        </div>
-        <span className="font-label text-parleo-muted">SHARE OF ALGORITHM</span>
-      </div>
-
-      <div className="mt-5 grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-12">
+      <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-12">
         <h2
           className="font-heading text-[32px] text-foreground md:text-[52px]"
           style={{ lineHeight: 1.04 }}
         >
-          Every era of retail
+          A new metric decides
           <br />
-          had a metric.
-          <br />
-          <span className="text-foreground/45">This one is yours.</span>
+          who agents recommend.
         </h2>
         <p className="self-end text-[17px] leading-[1.6] text-foreground/65 md:text-[19px]">
-          Shelf, voice, search. Each shift in distribution produced a new
-          scoreboard. Agentic commerce is the next one, and it is measurable
-          today.
+          After share of shelf, share of voice, and share of search comes Share
+          of Algorithm.
         </p>
       </div>
 

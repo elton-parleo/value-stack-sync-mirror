@@ -58,44 +58,12 @@ const DashboardSection = () => {
         <img src={lifestyleRetail} alt="" className="h-full w-full object-cover" style={{ filter: 'grayscale(60%)', mixBlendMode: 'multiply' }} />
       </div>
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <div className="flex items-center gap-3">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
-              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
-            </svg>
-          </div>
-          <span className="font-label text-parleo-muted">COMMAND CENTER</span>
-        </div>
-        <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-          One console for your<br />agentic channel.
+        <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
+          Your agent channel,<br />in one console.
         </h2>
-        <p className="mt-3 max-w-[520px] text-[17px] text-foreground/70" style={{ lineHeight: 1.7 }}>
-          Control economics in agent channels: set guardrails on margin, liability burn, and offer exposure instead of leaving decisions to opaque ranking logic.
+        <p className="mt-3 max-w-[620px] text-[17px] text-foreground/70" style={{ lineHeight: 1.7 }}>
+          Score how agents rank you, see the margin they cannot, and set the rules your offers play by.
         </p>
-
-        {/* Headline metric strip */}
-        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-[1fr_1fr_auto]">
-          <div className="flex items-baseline justify-between gap-4 bg-card px-5 py-4 sm:flex-col sm:items-start sm:gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">Agent Commerce Score</span>
-            <div className="flex items-baseline gap-2">
-              <span className="font-display text-[40px] font-bold leading-none tabular-nums text-foreground">54</span>
-              <span className="text-[13px] text-foreground/45 tabular-nums">/ 100</span>
-              <span className="ml-1 rounded-full bg-[hsl(var(--success))/0.12] px-2 py-0.5 text-[10px] font-semibold text-[hsl(var(--success))]">+6 wk</span>
-            </div>
-          </div>
-          <div className="flex items-baseline justify-between gap-4 bg-card px-5 py-4 sm:flex-col sm:items-start sm:gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">Deal Leakage</span>
-            <div className="flex items-baseline gap-2">
-              <span className="font-display text-[40px] font-bold leading-none tabular-nums text-foreground">$4.8M</span>
-              <span className="text-[13px] text-foreground/45">/ qtr</span>
-              <span className="ml-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">recoverable</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 bg-card px-5 py-4 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45 sm:px-6">
-            <span className="inline-block h-1.5 w-1.5 animate-pulse-dot rounded-full bg-primary" />
-            Sample readout · Sephora
-          </div>
-        </div>
 
         {/* Dashboard mockup */}
         <div className="mt-8">
@@ -112,7 +80,7 @@ const DashboardSection = () => {
               </div>
               <div className="flex items-center gap-1.5">
                 <PulsingDot />
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium text-foreground"><BrandLogo name="Sephora" size={12} />Sephora · Live</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/55">Sample readout · Sephora</span>
               </div>
             </div>
 
@@ -142,7 +110,27 @@ const DashboardSection = () => {
 
               {/* Main content */}
               <div className="flex-1 overflow-y-auto p-5">
-                <div className="flex items-center justify-between">
+                {/* Headline metrics — inside the dashboard */}
+                <div className="grid grid-cols-2 gap-3 pb-4">
+                  <div className="rounded-lg border border-border p-3" style={{ background: "#FAFAF9" }}>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-parleo-muted">Agent Commerce Score</p>
+                    <div className="mt-1.5 flex items-baseline gap-1.5">
+                      <span className="font-display text-[28px] font-bold leading-none tabular-nums text-foreground">54</span>
+                      <span className="text-[11px] text-parleo-muted tabular-nums">/ 100</span>
+                      <span className="ml-auto rounded-full px-2 py-0.5 text-[9px] font-semibold tabular-nums" style={{ background: "hsl(152 69% 31% / 0.12)", color: "hsl(152 69% 31%)" }}>+6 wk</span>
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-border p-3" style={{ background: "#FAFAF9" }}>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-parleo-muted">Deal Leakage</p>
+                    <div className="mt-1.5 flex items-baseline gap-1.5">
+                      <span className="font-display text-[28px] font-bold leading-none tabular-nums text-foreground">$4.8M</span>
+                      <span className="text-[11px] text-parleo-muted">/ qtr</span>
+                      <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-[9px] font-semibold text-primary">recoverable</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-border/60 pt-4">
                   <h3 className="text-[15px] font-bold text-foreground">Active Constraints</h3>
                   <span className="text-[10px] text-parleo-muted">Last synced: 2m ago</span>
                 </div>

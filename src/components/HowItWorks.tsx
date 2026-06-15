@@ -48,9 +48,9 @@ const benefits = [
 ];
 
 const timeline = [
-  { step: "1", label: "Connect your offers", desc: "Upload loyalty, card, and incentive data", icon: "upload" },
-  { step: "2", label: "Agents discover you", desc: "AI queries start including your value", icon: "search" },
-  { step: "3", label: "Customers convert", desc: "Better deals, more recommendations, more sales", icon: "check" },
+  { step: "1", label: "Connect your offers", desc: "Upload loyalty, card-linked, and incentive data." },
+  { step: "2", label: "Agents discover you", desc: "Queries start including your real value, not just list price." },
+  { step: "3", label: "Customers convert", desc: "Better deals, ranked higher, more recommendations." },
 ];
 
 /* ── C9: Visual agent → Parleo → merchant flow ── */
@@ -156,20 +156,17 @@ const AgentFlowDiagram = () => (
     </div>
 
     {/* What flows through */}
-    <div className="mt-8 grid gap-4 md:grid-cols-3">
+    <div className="mt-8 grid gap-0 border-t border-border/60 md:grid-cols-3 md:divide-x md:divide-border/60">
       {[
         { label: "Agent sends", items: ["Product query", "Card signals", "Segment hints"] },
         { label: "Parleo computes", items: ["True cost", "Deal stacking", "Semantic context"] },
         { label: "Customer sees", items: ["Best deal ranked", "Savings breakdown", "Buy rationale"] },
       ].map((col) => (
-        <div key={col.label} className="rounded-xl border border-border/60 bg-secondary/40 p-5">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/50">{col.label}</span>
-          <div className="mt-3 space-y-2.5">
+        <div key={col.label} className="px-1 pt-5 md:px-6">
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">{col.label}</span>
+          <div className="mt-3 space-y-1.5">
             {col.items.map((item) => (
-              <div key={item} className="flex items-center gap-2.5 text-[14px] text-foreground/80">
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                  <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2 2 4-4" stroke="hsl(213,99%,50%)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
-                </span>
+              <div key={item} className="text-[14px] tabular-nums text-foreground/80">
                 {item}
               </div>
             ))}
@@ -189,20 +186,11 @@ const HowItWorks = () => (
       {/* Section header with editorial image pair */}
       <div className="grid gap-8 md:grid-cols-[1fr_auto]">
         <div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <span className="font-label text-parleo-muted">THE WINDOW</span>
-          </div>
-          <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
+          <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
             The early-mover advantage<br className="hidden md:block" /> is closing fast.
           </h2>
-          <p className="mt-3 max-w-[540px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
-            Make loyalty, promos, and card-linked offers visible to agents, so your best customers don't see you as 'just another price' in Gemini, ChatGPT, or Perplexity.
+          <p className="mt-3 max-w-[600px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
+            Agents anchor on the merchants they surface first, and those defaults are being set now.
           </p>
         </div>
 

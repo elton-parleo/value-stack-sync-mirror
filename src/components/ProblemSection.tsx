@@ -88,32 +88,31 @@ const MAX_SAVINGS = Math.max(...RETAILERS.map((r) => r.sticker - r.trueCost));
 
 /* ── Editorial product panel (uses the real product image) ── */
 const ProductPanel = () => (
-  <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-[#F8F6F3] via-[#F2EFEB] to-[#EAE6DF] p-6 md:p-7">
-    {/* Vertical brand rail */}
-    <div
-      className="pointer-events-none absolute left-3 top-6 hidden font-mono text-[9.5px] uppercase tracking-[0.32em] text-foreground/35 md:block"
-      style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-    >
-      SK-II · Pitera™ · Facial Treatment Essence
-    </div>
-
+  <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-[#F8F6F3] via-[#F2EFEB] to-[#EAE6DF] p-6 md:p-8">
+    {/* Header: brand + size */}
     <div className="flex items-start justify-between gap-4">
       <div>
-        <div className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-foreground/45">
-          Live agent query
+        <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/50">
+          SK-II
         </div>
-        <div className="mt-2 max-w-[260px] text-[14px] leading-snug text-foreground/85">
-          "Where should I reorder SK-II Facial Treatment Essence 230ml?"
+        <div className="mt-1.5 font-heading text-[18px] leading-tight text-foreground md:text-[20px]">
+          Facial Treatment Essence
         </div>
+        <div className="mt-0.5 text-[12px] text-foreground/55">230 ml · Pitera</div>
       </div>
-      <div className="rounded-full border border-foreground/12 bg-card/70 px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/55">
-        ChatGPT · shopping
+      <div className="text-right">
+        <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/45">
+          MAP
+        </div>
+        <div className="mt-1 font-display text-[20px] font-semibold tabular-nums text-foreground">
+          $245.00
+        </div>
       </div>
     </div>
 
     {/* Product image */}
-    <div className="relative my-6 flex items-center justify-center md:my-2">
-      <div className="absolute inset-x-6 bottom-3 h-3 rounded-[50%] bg-foreground/15 blur-md" />
+    <div className="relative flex flex-1 items-center justify-center py-6">
+      <div className="absolute inset-x-10 bottom-4 h-3 rounded-[50%] bg-foreground/15 blur-md" />
       <motion.img
         src={skiiProduct.url}
         alt="SK-II Facial Treatment Essence 230ml bottle and red carton"
@@ -121,33 +120,17 @@ const ProductPanel = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 h-[230px] w-auto object-contain mix-blend-multiply md:h-[300px]"
+        className="relative z-10 h-[260px] w-auto object-contain mix-blend-multiply md:h-[340px]"
         loading="lazy"
       />
     </div>
 
-    {/* Spec strip */}
-    <div className="grid grid-cols-3 gap-3 border-t border-foreground/10 pt-4">
-      <div>
-        <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/45">
-          Brand
-        </div>
-        <div className="mt-1 text-[13px] font-semibold text-foreground">SK-II</div>
+    {/* Footer: tracked retailers */}
+    <div className="flex items-center justify-between border-t border-foreground/10 pt-4">
+      <div className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/45">
+        Tracked across
       </div>
-      <div>
-        <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/45">
-          Size
-        </div>
-        <div className="mt-1 text-[13px] font-semibold text-foreground">230 ml</div>
-      </div>
-      <div className="text-right">
-        <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/45">
-          MAP price
-        </div>
-        <div className="mt-1 font-display text-[18px] font-semibold tabular-nums text-foreground">
-          $245.00
-        </div>
-      </div>
+      <div className="font-mono text-[10.5px] tabular-nums text-foreground/70">5 retailers</div>
     </div>
   </div>
 );
@@ -476,18 +459,8 @@ const ProblemSection = () => {
       <div className="diffusion-glow pointer-events-none absolute right-0 top-[30%]" />
 
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <div className="flex items-center gap-3">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
-              <path d="M3 3v18h18" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M7 14l4-4 4 4 5-5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-          <span className="font-label text-parleo-muted">THE SHIFT</span>
-        </div>
-
         <h2
-          className="mt-4 max-w-[18ch] font-heading text-[32px] text-foreground md:text-[52px]"
+          className="max-w-[18ch] font-heading text-[32px] text-foreground md:text-[52px]"
           style={{ lineHeight: 1.05 }}
         >
           AI agents are already shopping for your customers.
@@ -550,13 +523,6 @@ const ProblemSection = () => {
           <ProductPanel />
           <RankingPanel />
         </div>
-
-        {/* Footnote */}
-        <p className="mt-4 max-w-[820px] font-mono text-[10.5px] leading-relaxed text-foreground/40">
-          Pricing reflects published MAP. Loyalty and co-brand rewards modeled from
-          Nordy Club, Loyallist, SaksFirst, Beauty Insider, and Prime Visa public
-          program terms (Q2 2026). Values shown as reward equivalent at redemption.
-        </p>
       </div>
     </AnimatedSection>
   );
