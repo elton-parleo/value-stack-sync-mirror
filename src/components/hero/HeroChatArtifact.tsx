@@ -424,53 +424,36 @@ const TOTAL = SEQUENCE.reduce((s, p) => s + p.hold, 0);
 const HeroChatArtifact = () => {
   const reduce = useReducedMotion();
   const [phase, setPhase] = useState<Phase>(reduce ? "parleo" : "typing");
-  const [progress, setProgress] = useState(reduce ? 1 : 0);
-  const [paused, setPaused] = useState(false);
-  const startedAt = useRef<number>(performance.now());
+  const [cycleKey, setCycleKey] = useState(0);
+  const [replayKey, setReplayKey] = useState(0);
 
   useEffect(() => {
     if (reduce) return;
-    let raf = 0;
-    const loop = (t: number) => {
-      if (paused) {
-        startedAt.current = t - progress * TOTAL;
-        raf = requestAnimationFrame(loop);
-        return;
-      }
-      const elapsed = (t - startedAt.current) % TOTAL;
-      let acc = 0;
-      let current: Phase = "typing";
-      for (const step of SEQUENCE) {
-        if (elapsed < acc + step.hold) {
-          current = step.phase;
-          break;
-        }
-        acc += step.hold;
-      }
-      setPhase(current);
-      setProgress(elapsed / TOTAL);
-      raf = requestAnimationFrame(loop);
+    let timers: number[] = [];
+    const run = () => {
+      setCycleKey((key) => key + 1);
+      setPhase("typing");
+      timers.push(window.setTimeout(() => setPhase("standard"), SEQUENCE[0].hold));
+      timers.push(window.setTimeout(() => setPhase("parleo"), SEQUENCE[0].hold + SEQUENCE[1].hold));
+      timers.push(window.setTimeout(run, TOTAL));
     };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paused, reduce]);
+    run();
+    return () => timers.forEach(window.clearTimeout);
+  }, [reduce, replayKey]);
 
   const replay = () => {
-    startedAt.current = performance.now();
-    setPhase("typing");
-    setProgress(0);
+    setReplayKey((key) => key + 1);
   };
 
   const displayPhase: Phase = phase === "typing" ? "standard" : phase;
 
   return (
-    <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <div>
       <div className="mb-2.5">
         <ModeCaption phase={displayPhase} />
       </div>
 
-      <ChatChrome progress={progress} phase={displayPhase}>
+      <ChatChrome phase={displayPhase} cycleKey={cycleKey} duration={TOTAL}>
         <div className="space-y-3.5">
           <UserBubble />
           <AssistantContent phase={phase} />
