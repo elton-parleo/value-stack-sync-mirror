@@ -58,12 +58,16 @@ const AnimatedPrice = ({
 
 const ChatChrome = ({
   children,
-  progress,
   phase,
+  cycleKey,
+  duration,
+  paused,
 }: {
   children: React.ReactNode;
-  progress: number;
   phase: Phase;
+  cycleKey: number;
+  duration: number;
+  paused: boolean;
 }) => {
   const isParleo = phase === "parleo";
   return (
@@ -73,9 +77,13 @@ const ChatChrome = ({
     >
       {/* Cycle progress hairline */}
       <div className="absolute inset-x-0 top-0 z-10 h-px bg-foreground/[0.05]">
-        <div
-          className="h-full bg-primary/60 transition-[width] duration-100 ease-linear"
-          style={{ width: `${progress * 100}%` }}
+        <motion.div
+          key={cycleKey}
+          className="h-full origin-left bg-primary/60"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: duration / 1000, ease: "linear" }}
+          style={{ animationPlayState: paused ? "paused" : "running" }}
         />
       </div>
 
@@ -115,7 +123,7 @@ const ChatChrome = ({
         </div>
       </div>
 
-      <div className="p-4 sm:p-5">{children}</div>
+      <div className="h-[396px] p-4 sm:h-[408px] sm:p-5">{children}</div>
     </div>
   );
 };
