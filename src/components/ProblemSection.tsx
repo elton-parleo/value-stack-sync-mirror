@@ -2,377 +2,383 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png.asset.json";
 
 /* ───────────────────────────────────────────────────────────
    Section A · The shift
-   Real data: SK-II Facial Treatment Essence 230ml, $245 MAP
-   across 8 real retailers. Loyalty programs and co-brand
-   cards are all live, documented programs. Math is conservative
-   and clearly labeled.
+   Product: SK-II Facial Treatment Essence 230ml · $245 MAP
+   Loyalty stacks are real, documented public programs.
+   No retailer discounts the MAP. The variance lives in
+   loyalty + co-brand card rewards. Sephora intentionally
+   does NOT win here: outside of a Rouge event window, the
+   department-store stacks beat it.
    ─────────────────────────────────────────────────────────── */
 
 type Retailer = {
   name: string;
+  program: string;
+  tier: string;
   sticker: number;
   trueCost: number;
-  stack: { label: string; value: string }[];
-  note?: string;
+  stack: { label: string; value: number; type: "loyalty" | "card" }[];
+  card: string;
 };
 
-const PRODUCT = {
-  brand: "SK-II",
-  name: "Facial Treatment Essence",
-  size: "230 ml · 90% PITERA essence",
-  sku: "Pitera essence · re-order",
-};
+const PRODUCT_PRICE = 245.0;
 
 const RETAILERS: Retailer[] = [
   {
-    name: "Sephora",
-    sticker: 245.0,
-    trueCost: 188.16,
+    name: "Nordstrom",
+    program: "Nordy Club",
+    tier: "Icon · Triple Points Day",
+    sticker: PRODUCT_PRICE,
+    trueCost: 222.95,
+    card: "Nordstrom Visa",
     stack: [
-      { label: "Rouge Savings Event 20% off", value: "−$49.00" },
-      { label: "Sephora Visa · 4% back", value: "−$7.84" },
+      { label: "Icon 3× base on beauty", value: 14.7, type: "loyalty" },
+      { label: "Nordstrom Visa · 3 pts / $1", value: 7.35, type: "card" },
     ],
   },
   {
     name: "Bloomingdale's",
-    sticker: 245.0,
-    trueCost: 227.85,
+    program: "Loyallist",
+    tier: "Top of the List event",
+    sticker: PRODUCT_PRICE,
+    trueCost: 225.4,
+    card: "Bloomie's Amex",
     stack: [
-      { label: "Loyallist Top of List", value: "−$5.00" },
-      { label: "Bloomie's Amex · 6% back", value: "−$12.15" },
-    ],
-  },
-  {
-    name: "Macy's",
-    sticker: 245.0,
-    trueCost: 228.00,
-    stack: [
-      { label: "Star Rewards Platinum · 5% Star Money", value: "−$12.25" },
-      { label: "Macy's Amex · 2% back", value: "−$4.75" },
+      { label: "Loyallist 6× base on beauty", value: 7.35, type: "loyalty" },
+      { label: "Bloomie's Amex · 6% beauty", value: 12.25, type: "card" },
     ],
   },
   {
     name: "Saks",
-    sticker: 245.0,
-    trueCost: 230.30,
+    program: "SaksFirst",
+    tier: "Platinum · Bonus reward",
+    sticker: PRODUCT_PRICE,
+    trueCost: 230.3,
+    card: "SaksFirst Mastercard",
     stack: [
-      { label: "SaksFirst Platinum reward · 4%", value: "−$9.80" },
-      { label: "SaksFirst Mastercard · 2% back", value: "−$4.90" },
-    ],
-  },
-  {
-    name: "Neiman Marcus",
-    sticker: 245.0,
-    trueCost: 232.75,
-    stack: [
-      { label: "InCircle 2 pts / $1", value: "−$4.90" },
-      { label: "NM Card · 3% back", value: "−$7.35" },
-    ],
-  },
-  {
-    name: "Nordstrom",
-    sticker: 245.0,
-    trueCost: 232.75,
-    stack: [
-      { label: "Nordy Club Icon · 3x base", value: "−$7.35" },
-      { label: "Nordstrom Visa · 2x bonus", value: "−$4.90" },
+      { label: "SaksFirst 4 pts / $1", value: 9.8, type: "loyalty" },
+      { label: "Mastercard · 2% back", value: 4.9, type: "card" },
     ],
   },
   {
     name: "Amazon",
-    sticker: 245.0,
+    program: "Prime",
+    tier: "Default agent destination",
+    sticker: PRODUCT_PRICE,
     trueCost: 232.75,
-    stack: [{ label: "Prime Visa · 5% back at Amazon", value: "−$12.25" }],
+    card: "Prime Visa",
+    stack: [{ label: "Prime Visa · 5% back at Amazon", value: 12.25, type: "card" }],
   },
   {
-    name: "SK-II",
-    sticker: 245.0,
-    trueCost: 232.75,
-    stack: [{ label: "Pitera Privilege · 5% in points", value: "−$12.25" }],
-    note: "brand direct",
+    name: "Sephora",
+    program: "Beauty Insider",
+    tier: "Rouge · between events",
+    sticker: PRODUCT_PRICE,
+    trueCost: 235.2,
+    card: "Sephora Visa",
+    stack: [{ label: "Sephora Visa · 4% back", value: 9.8, type: "card" }],
   },
 ];
 
 const fmt = (n: number) => `$${n.toFixed(2)}`;
+const MAX_SAVINGS = Math.max(...RETAILERS.map((r) => r.sticker - r.trueCost));
 
-/* ── Ranked row ── */
-const RankRow = ({
+/* ── Editorial product panel (uses the real product image) ── */
+const ProductPanel = () => (
+  <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-[#F8F6F3] via-[#F2EFEB] to-[#EAE6DF] p-6 md:p-7">
+    {/* Vertical brand rail */}
+    <div
+      className="pointer-events-none absolute left-3 top-6 hidden font-mono text-[9.5px] uppercase tracking-[0.32em] text-foreground/35 md:block"
+      style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+    >
+      SK-II · Pitera™ · Facial Treatment Essence
+    </div>
+
+    <div className="flex items-start justify-between gap-4">
+      <div>
+        <div className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-foreground/45">
+          Live agent query
+        </div>
+        <div className="mt-2 max-w-[260px] text-[14px] leading-snug text-foreground/85">
+          "Where should I reorder SK-II Facial Treatment Essence 230ml?"
+        </div>
+      </div>
+      <div className="rounded-full border border-foreground/12 bg-card/70 px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/55">
+        ChatGPT · shopping
+      </div>
+    </div>
+
+    {/* Product image */}
+    <div className="relative my-6 flex items-center justify-center md:my-2">
+      <div className="absolute inset-x-6 bottom-3 h-3 rounded-[50%] bg-foreground/15 blur-md" />
+      <motion.img
+        src={skiiProduct.url}
+        alt="SK-II Facial Treatment Essence 230ml bottle and red carton"
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 h-[230px] w-auto object-contain mix-blend-multiply md:h-[300px]"
+        loading="lazy"
+      />
+    </div>
+
+    {/* Spec strip */}
+    <div className="grid grid-cols-3 gap-3 border-t border-foreground/10 pt-4">
+      <div>
+        <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/45">
+          Brand
+        </div>
+        <div className="mt-1 text-[13px] font-semibold text-foreground">SK-II</div>
+      </div>
+      <div>
+        <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/45">
+          Size
+        </div>
+        <div className="mt-1 text-[13px] font-semibold text-foreground">230 ml</div>
+      </div>
+      <div className="text-right">
+        <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/45">
+          MAP price
+        </div>
+        <div className="mt-1 font-display text-[18px] font-semibold tabular-nums text-foreground">
+          $245.00
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+/* ── A single retailer row · large logo, savings bar, expanding winner ── */
+const RetailerRow = ({
   r,
   rank,
   mode,
-  winner,
+  isWinner,
+  expanded,
 }: {
   r: Retailer;
   rank: number;
   mode: "sticker" | "true";
-  winner: boolean;
+  isWinner: boolean;
+  expanded: boolean;
 }) => {
   const price = mode === "sticker" ? r.sticker : r.trueCost;
-  const delta = mode === "true" ? r.sticker - r.trueCost : 0;
-  const isAmazonDefault = mode === "sticker" && r.name === "Amazon";
+  const savings = r.sticker - r.trueCost;
+  const barPct = mode === "true" ? (savings / MAX_SAVINGS) * 100 : 0;
 
   return (
     <motion.div
       layout
-      transition={{ type: "spring", stiffness: 280, damping: 30 }}
-      className={`grid grid-cols-[26px_1fr_auto] items-center gap-3 rounded-lg border px-3 py-2.5 md:gap-4 md:px-4 ${
-        winner
-          ? "border-primary/35 bg-primary/[0.045]"
-          : "border-border/55 bg-card"
+      transition={{ type: "spring", stiffness: 280, damping: 32 }}
+      className={`relative rounded-xl border transition-colors ${
+        isWinner
+          ? "border-primary/45 bg-card"
+          : "border-border/60 bg-card/70 hover:border-border"
       }`}
+      style={isWinner ? { boxShadow: "var(--shadow-card-hover)" } : undefined}
     >
-      <div
-        className={`flex h-6 w-6 items-center justify-center rounded-full text-[10.5px] font-semibold tabular-nums ${
-          winner
-            ? "bg-primary text-primary-foreground"
-            : "bg-foreground/[0.06] text-foreground/55"
-        }`}
-      >
-        {rank}
-      </div>
-
-      <div className="min-w-0">
-        <div className="flex items-center gap-2">
-          <BrandLogo name={r.name} size={14} />
-          <span className="text-[13px] font-semibold text-foreground/85">
-            {r.name}
-          </span>
-          {r.note && (
-            <span className="rounded-full bg-foreground/[0.06] px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-foreground/45">
-              {r.note}
-            </span>
-          )}
-          {winner && (
-            <span className="rounded-full bg-primary px-1.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-primary-foreground">
-              Best value
-            </span>
-          )}
-          {isAmazonDefault && (
-            <span className="rounded-full border border-foreground/15 bg-card px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-foreground/55">
-              Agent default
-            </span>
-          )}
-        </div>
-
-        <AnimatePresence mode="wait">
-          {mode === "true" ? (
-            <motion.p
-              key="s"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="mt-0.5 truncate text-[10.5px] text-foreground/45"
-            >
-              {r.stack.map((s) => s.label).join(" + ")}
-            </motion.p>
-          ) : (
-            <motion.p
-              key="ph"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="mt-0.5 text-[10.5px] text-foreground/40"
-            >
-              Sticker price · MAP enforced
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </div>
-
-      <div className="text-right">
-        {mode === "true" && delta > 0 && (
-          <div className="text-[10px] text-foreground/40 line-through tabular-nums">
-            {fmt(r.sticker)}
-          </div>
-        )}
-        <motion.div
-          key={`${mode}-${price}`}
-          initial={{ opacity: 0, y: -3 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25 }}
-          className={`text-[14px] font-semibold tabular-nums leading-none ${
-            winner ? "text-primary" : "text-foreground/85"
+      <div className="grid grid-cols-[32px_44px_1fr_auto] items-center gap-3 px-3.5 py-3 md:gap-4 md:px-4">
+        {/* Rank */}
+        <div
+          className={`flex h-6 w-6 items-center justify-center rounded-full font-mono text-[10.5px] font-semibold tabular-nums ${
+            isWinner
+              ? "bg-primary text-primary-foreground"
+              : "bg-foreground/[0.06] text-foreground/55"
           }`}
         >
-          {fmt(price)}
-        </motion.div>
+          {rank}
+        </div>
+
+        {/* Logo tile */}
+        <div
+          className={`flex h-11 w-11 items-center justify-center rounded-lg border ${
+            isWinner ? "border-primary/25 bg-primary/[0.04]" : "border-border/70 bg-secondary/50"
+          }`}
+        >
+          <BrandLogo name={r.name} size={26} />
+        </div>
+
+        {/* Identity + program */}
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[14px] font-semibold text-foreground">{r.name}</span>
+            {isWinner && (
+              <span className="rounded-full bg-primary px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-primary-foreground">
+                Best true cost
+              </span>
+            )}
+            {r.name === "Amazon" && mode === "sticker" && (
+              <span className="rounded-full border border-foreground/15 bg-card px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/55">
+                Agent default
+              </span>
+            )}
+          </div>
+          <div className="mt-1 flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.12em] text-foreground/50">
+            <span>{r.program}</span>
+            <span className="text-foreground/25">/</span>
+            <span className="normal-case tracking-[0.04em] text-foreground/55">{r.tier}</span>
+          </div>
+        </div>
+
+        {/* Price */}
+        <div className="text-right">
+          {mode === "true" && savings > 0 && (
+            <div className="text-[10.5px] text-foreground/40 line-through tabular-nums">
+              {fmt(r.sticker)}
+            </div>
+          )}
+          <motion.div
+            key={`${mode}-${price}`}
+            initial={{ opacity: 0, y: -2 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className={`tabular-nums leading-none ${
+              isWinner
+                ? "font-display text-[22px] font-bold text-primary md:text-[24px]"
+                : "text-[15px] font-semibold text-foreground/85"
+            }`}
+          >
+            {fmt(price)}
+          </motion.div>
+          {mode === "true" && savings > 0 && (
+            <div
+              className={`mt-0.5 text-[10px] font-semibold tabular-nums ${
+                isWinner ? "text-[hsl(var(--success))]" : "text-foreground/45"
+              }`}
+            >
+              −{fmt(savings)}
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Savings bar (true-cost mode only) */}
+      <AnimatePresence>
+        {mode === "true" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="px-4 pb-2"
+          >
+            <div className="ml-[80px] h-[3px] w-[calc(100%-80px)] overflow-hidden rounded-full bg-foreground/[0.05]">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${barPct}%` }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className={isWinner ? "h-full bg-primary" : "h-full bg-foreground/25"}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Expanded incentive ladder for winner */}
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-primary/15 bg-primary/[0.03] px-4 py-3.5 md:px-5">
+              <div className="mb-2.5 flex items-center justify-between">
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/50">
+                  Resolved incentive ladder
+                </span>
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/50">
+                  {r.program} · {r.card}
+                </span>
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between text-[12px] tabular-nums">
+                  <span className="text-foreground/55">List price (MAP)</span>
+                  <span className="text-foreground/75">{fmt(r.sticker)}</span>
+                </div>
+                {r.stack.map((s, i) => (
+                  <motion.div
+                    key={s.label}
+                    initial={{ opacity: 0, x: -4 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 + i * 0.08, duration: 0.3 }}
+                    className="flex items-center justify-between text-[12px] tabular-nums"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`inline-block h-1.5 w-1.5 rounded-full ${
+                          s.type === "loyalty" ? "bg-primary" : "bg-[hsl(var(--success))]"
+                        }`}
+                      />
+                      <span className="text-foreground/70">{s.label}</span>
+                    </div>
+                    <span className="font-semibold text-[hsl(var(--success))]">
+                      −{fmt(s.value)}
+                    </span>
+                  </motion.div>
+                ))}
+                <div className="mt-2 flex items-end justify-between border-t border-primary/15 pt-2">
+                  <span className="text-[12px] font-semibold text-foreground">
+                    True cost to this member
+                  </span>
+                  <span className="font-display text-[22px] font-bold tabular-nums text-primary">
+                    {fmt(r.trueCost)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
 
-/* ── Inline expanded math for the winner row ── */
-const WinnerStack = ({ r }: { r: Retailer }) => (
-  <motion.div
-    initial={{ opacity: 0, height: 0 }}
-    animate={{ opacity: 1, height: "auto" }}
-    exit={{ opacity: 0, height: 0 }}
-    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-    className="overflow-hidden"
-  >
-    <div className="mx-auto mt-1.5 max-w-full rounded-lg border border-primary/25 bg-primary/[0.025] px-4 py-3">
-      <div className="mb-2 flex items-center justify-between">
-        <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/45">
-          Resolved incentive stack
-        </span>
-        <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/45">
-          Beauty Insider Rouge · Sephora Visa
-        </span>
-      </div>
-      <div className="space-y-1">
-        <div className="flex items-center justify-between text-[11.5px] tabular-nums">
-          <span className="text-foreground/60">List price</span>
-          <span className="text-foreground/70">{fmt(r.sticker)}</span>
-        </div>
-        {r.stack.map((s, i) => (
-          <motion.div
-            key={s.label}
-            initial={{ opacity: 0, x: -4 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.18 + i * 0.08, duration: 0.3 }}
-            className="flex items-center justify-between text-[11.5px] tabular-nums"
-          >
-            <span className="text-foreground/65">{s.label}</span>
-            <span className="font-semibold text-[hsl(var(--success))]">
-              {s.value}
-            </span>
-          </motion.div>
-        ))}
-        <div className="mt-1.5 flex items-center justify-between border-t border-primary/15 pt-1.5">
-          <span className="text-[11.5px] font-semibold text-foreground">
-            True cost to this member
-          </span>
-          <span className="font-display text-[18px] font-semibold tabular-nums text-primary">
-            {fmt(r.trueCost)}
-          </span>
-        </div>
-      </div>
-    </div>
-  </motion.div>
-);
-
-/* ── Product header (typographic, no AI image risk) ── */
-const ProductHeader = () => (
-  <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-xl border border-border/60 bg-secondary/30 px-4 py-3">
-    <div className="flex h-12 w-12 items-center justify-center rounded-md bg-[hsl(0_72%_46%)]">
-      <span className="font-display text-[15px] font-semibold tracking-tight text-white">
-        SK-II
-      </span>
-    </div>
-    <div className="min-w-0">
-      <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
-        {PRODUCT.brand}
-      </div>
-      <div className="mt-0.5 text-[14px] font-semibold leading-tight text-foreground">
-        {PRODUCT.name}
-      </div>
-      <div className="mt-0.5 text-[11px] text-foreground/55">{PRODUCT.size}</div>
-    </div>
-    <div className="text-right">
-      <div className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/45">
-        MAP price
-      </div>
-      <div className="font-display text-[18px] font-semibold tabular-nums text-foreground">
-        $245.00
-      </div>
-    </div>
-  </div>
-);
-
-/* ── ChatGPT chrome (mirrors hero) ── */
-const ChatChrome = ({
-  mode,
-  children,
-}: {
-  mode: "sticker" | "true";
-  children: React.ReactNode;
-}) => (
-  <div
-    className="overflow-hidden rounded-[20px] border border-border/70 bg-card"
-    style={{ boxShadow: "var(--shadow-elevated)" }}
-  >
-    <div className="flex items-center justify-between border-b border-border/55 px-4 py-2.5">
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1">
-          <span className="h-2 w-2 rounded-full bg-foreground/10" />
-          <span className="h-2 w-2 rounded-full bg-foreground/10" />
-          <span className="h-2 w-2 rounded-full bg-foreground/10" />
-        </div>
-        <span className="ml-1 text-[12px] font-semibold text-foreground/70">
-          ChatGPT <span className="font-normal text-foreground/35">5</span>
-        </span>
-      </div>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={mode}
-          initial={{ opacity: 0, y: 3 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -3 }}
-          transition={{ duration: 0.25 }}
-          className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/45"
-        >
-          <span
-            className={`h-1.5 w-1.5 rounded-full ${
-              mode === "true" ? "bg-primary" : "bg-foreground/25"
-            }`}
-          />
-          {mode === "true" ? "parleo · shopping" : "standard · shopping"}
-        </motion.span>
-      </AnimatePresence>
-    </div>
-    {children}
-  </div>
-);
-
-/* ── The artifact ── */
-const RankingArtifact = () => {
+/* ── Right panel: ranking artifact ── */
+const RankingPanel = () => {
   const [mode, setMode] = useState<"sticker" | "true">("true");
 
   const sorted = [...RETAILERS].sort((a, b) =>
     mode === "sticker" ? a.sticker - b.sticker : a.trueCost - b.trueCost,
   );
-
   const trueWinner = [...RETAILERS].sort((a, b) => a.trueCost - b.trueCost)[0];
-  const sephoraSticker = RETAILERS.find((r) => r.name === "Sephora")!.sticker;
-  const savings = sephoraSticker - trueWinner.trueCost;
+  const winnerSavings = trueWinner.sticker - trueWinner.trueCost;
 
   return (
-    <ChatChrome mode={mode}>
-      {/* User query bubble */}
-      <div className="space-y-3 px-4 pt-4 md:px-5">
-        <div className="flex justify-end">
-          <div className="max-w-[88%] rounded-[18px] rounded-tr-md bg-primary px-3.5 py-2 text-[13px] leading-snug text-primary-foreground">
-            Where should I buy SK-II Facial Treatment Essence 230ml? Show every retailer.
+    <div
+      className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card"
+      style={{ boxShadow: "var(--shadow-elevated)" }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-border/55 px-5 py-3.5">
+        <div>
+          <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
+            Assistant response
+          </div>
+          <div className="mt-0.5 text-[13.5px] font-semibold text-foreground">
+            5 retailers compared · ranked by true cost
           </div>
         </div>
-
-        {/* Assistant answer header */}
-        <div className="flex items-center justify-between">
-          <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
-            Assistant · 8 retailers compared
-          </div>
-          <div className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/40 md:flex">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-            resolved 48ms
-          </div>
+        <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/50">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
+          resolved 48ms
         </div>
-
-        <ProductHeader />
       </div>
 
       {/* Toggle */}
-      <div className="flex items-center justify-between gap-3 px-4 pt-4 md:px-5">
-        <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
-          Rank by
+      <div className="flex items-center justify-between gap-3 px-5 pt-4">
+        <div className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/50">
+          What the agent sees
         </div>
-        <div className="inline-flex items-center rounded-full border border-border bg-secondary/40 p-0.5">
+        <div className="inline-flex items-center rounded-full border border-border bg-secondary/50 p-0.5">
           <button
             onClick={() => setMode("sticker")}
-            className={`rounded-full px-3 py-1.5 text-[12px] font-medium transition-all ${
+            className={`rounded-full px-3 py-1.5 text-[11.5px] font-medium transition-all ${
               mode === "sticker"
                 ? "bg-card text-foreground shadow-sm"
                 : "text-foreground/50 hover:text-foreground/75"
@@ -382,7 +388,7 @@ const RankingArtifact = () => {
           </button>
           <button
             onClick={() => setMode("true")}
-            className={`rounded-full px-3 py-1.5 text-[12px] font-medium transition-all ${
+            className={`rounded-full px-3 py-1.5 text-[11.5px] font-medium transition-all ${
               mode === "true"
                 ? "bg-primary text-primary-foreground shadow-sm"
                 : "text-foreground/50 hover:text-foreground/75"
@@ -394,42 +400,51 @@ const RankingArtifact = () => {
       </div>
 
       {/* Rows */}
-      <div className="px-4 py-4 md:px-5">
+      <div className="flex-1 px-4 py-4 md:px-5">
         <LayoutGroup>
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {sorted.map((r, i) => {
-              const winner = mode === "true" && r.name === trueWinner.name;
+              const isWinner = mode === "true" && r.name === trueWinner.name;
               return (
-                <div key={r.name}>
-                  <RankRow r={r} rank={i + 1} mode={mode} winner={winner} />
-                  <AnimatePresence>
-                    {winner && <WinnerStack r={r} />}
-                  </AnimatePresence>
-                </div>
+                <RetailerRow
+                  key={r.name}
+                  r={r}
+                  rank={i + 1}
+                  mode={mode}
+                  isWinner={isWinner}
+                  expanded={isWinner}
+                />
               );
             })}
           </div>
         </LayoutGroup>
       </div>
 
-      {/* Footer */}
-      <div className="flex flex-col gap-2 border-t border-border/55 bg-secondary/30 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-5">
+      {/* Footer summary */}
+      <div className="border-t border-border/55 bg-secondary/30 px-5 py-3.5">
         <AnimatePresence mode="wait">
           {mode === "true" ? (
-            <motion.p
+            <motion.div
               key="t"
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="text-[12.5px] leading-snug text-foreground/70"
+              className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
             >
-              <span className="font-semibold text-foreground">
-                Sephora
-              </span>{" "}
-              wins for this Rouge member with a Sephora Visa. Parleo surfaced{" "}
-              <span className="font-semibold text-primary">{fmt(savings)}</span>{" "}
-              of merchant value the agent could not see at MAP.
-            </motion.p>
+              <p className="text-[12.5px] leading-snug text-foreground/70">
+                <span className="font-semibold text-foreground">{trueWinner.name}</span>{" "}
+                wins for a {trueWinner.tier.split(" · ")[0]} member.{" "}
+                <span className="font-semibold text-primary">{fmt(winnerSavings)}</span>{" "}
+                of merchant value the agent could not see at MAP.
+              </p>
+              <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/50">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(var(--primary))" />
+                  <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(var(--primary))" opacity="0.4" />
+                </svg>
+                Zero PII · loyalty + card-linked resolved
+              </div>
+            </motion.div>
           ) : (
             <motion.p
               key="s"
@@ -438,21 +453,14 @@ const RankingArtifact = () => {
               exit={{ opacity: 0 }}
               className="text-[12.5px] leading-snug text-foreground/70"
             >
-              All eight retailers tied at MAP. The agent defaults to{" "}
-              <span className="font-semibold text-foreground">Amazon</span>.
-              Every merchant with a richer offer is invisible.
+              All five retailers tied at MAP. The agent defaults to{" "}
+              <span className="font-semibold text-foreground">Amazon</span>. Every merchant with a
+              richer loyalty stack is invisible.
             </motion.p>
           )}
         </AnimatePresence>
-        <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-            <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(var(--primary))" />
-            <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(var(--primary))" opacity="0.4" />
-          </svg>
-          Zero PII · loyalty + card-linked resolved
-        </div>
       </div>
-    </ChatChrome>
+    </div>
   );
 };
 
@@ -468,12 +476,21 @@ const ProblemSection = () => {
       <div className="diffusion-glow pointer-events-none absolute right-0 top-[30%]" />
 
       <div className="mx-auto max-w-content px-6 md:px-20">
+        <div className="flex items-center gap-3">
+          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
+              <path d="M3 3v18h18" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M7 14l4-4 4 4 5-5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <span className="font-label text-parleo-muted">THE SHIFT</span>
+        </div>
+
         <h2
-          className="font-heading text-[32px] text-foreground md:text-[52px]"
+          className="mt-4 max-w-[18ch] font-heading text-[32px] text-foreground md:text-[52px]"
           style={{ lineHeight: 1.05 }}
         >
-          AI agents are already shopping
-          <br className="hidden md:block" /> for your customers.
+          AI agents are already shopping for your customers.
         </h2>
         <p className="mt-5 max-w-[640px] text-[17px] leading-[1.6] text-foreground/65 md:text-[19px]">
           This is the fastest-growing way people shop, and it is already changing
@@ -512,10 +529,34 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        {/* Ranking artifact */}
-        <div className="mt-12 md:mt-16">
-          <RankingArtifact />
+        {/* Editorial caption above artifact */}
+        <div className="mt-14 flex items-end justify-between gap-6 md:mt-20">
+          <div className="max-w-[560px]">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/45">
+              Sample readout · Reorder query
+            </div>
+            <h3 className="mt-2 font-heading text-[22px] leading-tight text-foreground md:text-[30px]">
+              One product. Five retailers. Five different prices the agent never sees.
+            </h3>
+          </div>
+          <div className="hidden shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/50 md:flex">
+            <span className="h-px w-10 bg-foreground/20" />
+            Live comparison
+          </div>
         </div>
+
+        {/* Asymmetric artifact: product hero + comparison panel */}
+        <div className="mt-6 grid gap-5 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
+          <ProductPanel />
+          <RankingPanel />
+        </div>
+
+        {/* Footnote */}
+        <p className="mt-4 max-w-[820px] font-mono text-[10.5px] leading-relaxed text-foreground/40">
+          Pricing reflects published MAP. Loyalty and co-brand rewards modeled from
+          Nordy Club, Loyallist, SaksFirst, Beauty Insider, and Prime Visa public
+          program terms (Q2 2026). Values shown as reward equivalent at redemption.
+        </p>
       </div>
     </AnimatedSection>
   );

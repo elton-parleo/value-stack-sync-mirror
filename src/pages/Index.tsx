@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import ProblemSection from "@/components/ProblemSection";
+import ShareOfAlgorithmSection from "@/components/ShareOfAlgorithmSection";
 import FeedSection from "@/components/FeedSection";
 import DashboardSection from "@/components/DashboardSection";
 import HowItWorks from "@/components/HowItWorks";
@@ -26,6 +27,7 @@ const Index = () => (
       <HeroSection />
       <SocialProofSection />
       <ProblemSection />
+      <ShareOfAlgorithmSection />
       <FeedSection />
       <DashboardSection />
       <HowItWorks />

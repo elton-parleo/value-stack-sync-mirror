@@ -73,6 +73,30 @@ const DashboardSection = () => {
           Control economics in agent channels: set guardrails on margin, liability burn, and offer exposure instead of leaving decisions to opaque ranking logic.
         </p>
 
+        {/* Headline metric strip */}
+        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-[1fr_1fr_auto]">
+          <div className="flex items-baseline justify-between gap-4 bg-card px-5 py-4 sm:flex-col sm:items-start sm:gap-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">Agent Commerce Score</span>
+            <div className="flex items-baseline gap-2">
+              <span className="font-display text-[40px] font-bold leading-none tabular-nums text-foreground">54</span>
+              <span className="text-[13px] text-foreground/45 tabular-nums">/ 100</span>
+              <span className="ml-1 rounded-full bg-[hsl(var(--success))/0.12] px-2 py-0.5 text-[10px] font-semibold text-[hsl(var(--success))]">+6 wk</span>
+            </div>
+          </div>
+          <div className="flex items-baseline justify-between gap-4 bg-card px-5 py-4 sm:flex-col sm:items-start sm:gap-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">Deal Leakage</span>
+            <div className="flex items-baseline gap-2">
+              <span className="font-display text-[40px] font-bold leading-none tabular-nums text-foreground">$4.8M</span>
+              <span className="text-[13px] text-foreground/45">/ qtr</span>
+              <span className="ml-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">recoverable</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 bg-card px-5 py-4 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45 sm:px-6">
+            <span className="inline-block h-1.5 w-1.5 animate-pulse-dot rounded-full bg-primary" />
+            Sample readout · Sephora
+          </div>
+        </div>
+
         {/* Dashboard mockup */}
         <div className="mt-8">
           <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="mx-auto overflow-hidden rounded-xl border border-border bg-card transition-shadow duration-500 hover:shadow-elevated" style={{ maxWidth: 960, boxShadow: 'var(--shadow-elevated)' }}>
