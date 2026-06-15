@@ -156,6 +156,11 @@ const incentiveStack = [
   { label: "Birthday gift credit", value: "−$8.40" },
 ];
 
+const rankingRows = [
+  { retailer: "Sephora", standard: "$30.00", parleo: "$14.64", note: "loyalty + card + gift value" },
+  { retailer: "Amazon", standard: "$28.00", parleo: "$28.00", note: "list price only" },
+];
+
 const ProductCard = ({ phase }: { phase: Phase }) => {
   const isParleo = phase === "parleo";
   return (
