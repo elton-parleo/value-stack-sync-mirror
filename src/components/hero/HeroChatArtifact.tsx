@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
+import tatchaAsset from "@/assets/tatcha-water-cream.png.asset.json";
 
 type Phase = "typing" | "standard" | "parleo";
 
@@ -9,13 +10,13 @@ type Phase = "typing" | "standard" | "parleo";
    ───────────────────────────────────────────── */
 
 const TypingDots = () => (
-  <div className="flex items-center gap-1.5 px-2 py-2">
+  <div className="flex items-center gap-1.5 py-1">
     {[0, 1, 2].map((i) => (
       <motion.span
         key={i}
-        className="h-1.5 w-1.5 rounded-full bg-foreground/30"
-        animate={{ opacity: [0.2, 1, 0.2], y: [0, -2, 0] }}
-        transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
+        className="h-1.5 w-1.5 rounded-full bg-foreground/35"
+        animate={{ opacity: [0.25, 1, 0.25], y: [0, -2, 0] }}
+        transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.16, ease: "easeInOut" }}
       />
     ))}
   </div>
@@ -24,7 +25,7 @@ const TypingDots = () => (
 const AnimatedPrice = ({
   value,
   className = "",
-  duration = 650,
+  duration = 700,
 }: {
   value: number;
   className?: string;
@@ -52,7 +53,77 @@ const AnimatedPrice = ({
 };
 
 /* ─────────────────────────────────────────────
-   Chrome
+   Product canvas (left rail)
+   ───────────────────────────────────────────── */
+
+const ProductCanvas = ({ phase }: { phase: Phase }) => {
+  const isParleo = phase === "parleo";
+  return (
+    <div
+      className="relative hidden overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-b from-[hsl(165_38%_92%)] to-[hsl(165_24%_85%)] sm:block"
+      style={{ boxShadow: "var(--shadow-elevated)" }}
+    >
+      {/* Editorial label */}
+      <div className="absolute left-4 top-4 z-10 flex items-center gap-1.5">
+        <span className="h-1 w-1 rounded-full bg-foreground/40" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/55">
+          SKU · 8675309
+        </span>
+      </div>
+
+      {/* Vertical brand mark */}
+      <div
+        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/40"
+        style={{ writingMode: "vertical-rl" }}
+      >
+        Tatcha · The Water Cream
+      </div>
+
+      {/* Product image */}
+      <motion.div
+        className="relative flex aspect-[4/5] items-center justify-center px-8 pb-12 pt-10"
+        animate={{ scale: isParleo ? 1.02 : 1 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <motion.img
+          src={tatchaAsset.url}
+          alt="Tatcha The Water Cream"
+          className="relative z-[1] h-full w-auto object-contain mix-blend-multiply"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{ filter: "drop-shadow(0 18px 28px hsl(165 40% 18% / 0.18))" }}
+        />
+        {/* Floor shadow */}
+        <div className="pointer-events-none absolute bottom-6 left-1/2 h-3 w-[55%] -translate-x-1/2 rounded-[50%] bg-[hsl(165_30%_20%)] opacity-25 blur-md" />
+      </motion.div>
+
+      {/* Bottom info bar */}
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between border-t border-foreground/[0.06] bg-[hsl(165_28%_88%)]/70 px-4 py-3 backdrop-blur-sm">
+        <div className="leading-tight">
+          <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/50">
+            8 retailers · live
+          </div>
+          <div className="mt-0.5 text-[12px] font-semibold text-foreground/80">
+            True price spread
+          </div>
+        </div>
+        <div className="text-right leading-none">
+          <AnimatedPrice
+            value={isParleo ? 14.64 : 28.0}
+            className="font-display text-[20px] tabular-nums text-foreground"
+          />
+          <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-foreground/45">
+            {isParleo ? "after incentives" : "list · best sticker"}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ─────────────────────────────────────────────
+   Chat chrome
    ───────────────────────────────────────────── */
 
 const ChatChrome = ({ children, progress }: { children: React.ReactNode; progress: number }) => (
@@ -60,49 +131,41 @@ const ChatChrome = ({ children, progress }: { children: React.ReactNode; progres
     className="relative w-full overflow-hidden rounded-2xl border border-border/70 bg-card"
     style={{ boxShadow: "var(--shadow-elevated)" }}
   >
-    {/* Cycle progress hairline */}
-    <div className="absolute inset-x-0 top-0 z-10 h-px bg-foreground/[0.04]">
+    <div className="absolute inset-x-0 top-0 z-10 h-px bg-foreground/[0.05]">
       <div
-        className="h-full bg-primary/50 transition-[width] duration-100 ease-linear"
+        className="h-full bg-primary/60 transition-[width] duration-100 ease-linear"
         style={{ width: `${progress * 100}%` }}
       />
     </div>
 
-    {/* Title bar */}
-    <div className="flex items-center justify-between border-b border-border/50 px-4 py-3">
+    <div className="flex items-center justify-between border-b border-border/50 px-4 py-2.5">
       <div className="flex items-center gap-2">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/35">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <line x1="9" y1="3" x2="9" y2="21" />
-        </svg>
-        <div className="flex items-center gap-1 text-[13px] font-semibold text-foreground/70">
-          ChatGPT
-          <span className="ml-0.5 font-normal text-foreground/35">5</span>
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/35">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
+        <div className="flex items-center gap-1">
+          <span className="h-2 w-2 rounded-full bg-foreground/10" />
+          <span className="h-2 w-2 rounded-full bg-foreground/10" />
+          <span className="h-2 w-2 rounded-full bg-foreground/10" />
+        </div>
+        <span className="ml-1 text-[12px] font-semibold text-foreground/70">
+          ChatGPT <span className="font-normal text-foreground/35">5</span>
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/40">
+          shopping
+        </span>
+        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[hsl(28_78%_62%)] text-[10px] font-bold text-white">
+          S
         </div>
       </div>
-      <div className="flex items-center gap-2">
-        <button className="rounded-full bg-foreground px-3 py-1 text-[12px] font-medium text-background">Share</button>
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(28_78%_62%)] text-[11px] font-bold text-white">S</div>
-      </div>
     </div>
 
-    <div className="px-5 py-5">{children}</div>
-
-    {/* Composer */}
-    <div className="px-5 pb-5">
-      <div className="flex h-11 w-full items-center rounded-2xl border border-border/60 bg-secondary/40 px-4">
-        <span className="text-[13px] text-foreground/30">Message ChatGPT...</span>
-      </div>
-    </div>
+    <div className="px-4 py-4">{children}</div>
   </div>
 );
 
 const AssistantAvatar = () => (
-  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/70 bg-card">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(213 99% 50% / 0.12)" stroke="hsl(213 99% 50%)" strokeWidth="1.8" strokeLinejoin="round">
+  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border/70 bg-card">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="hsl(213 99% 50% / 0.12)" stroke="hsl(213 99% 50%)" strokeWidth="1.8" strokeLinejoin="round">
       <path d="M12 3 L13.7 9.3 A2 2 0 0 0 14.7 10.3 L21 12 L14.7 13.7 A2 2 0 0 0 13.7 14.7 L12 21 L10.3 14.7 A2 2 0 0 0 9.3 13.7 L3 12 L9.3 10.3 A2 2 0 0 0 10.3 9.3 Z" />
     </svg>
   </div>
@@ -115,14 +178,14 @@ const UserBubble = () => (
     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     className="flex justify-end"
   >
-    <div className="max-w-[85%] rounded-[20px] rounded-tr-md bg-primary px-4 py-2.5 text-[14px] leading-snug text-primary-foreground">
+    <div className="max-w-[88%] rounded-[18px] rounded-tr-md bg-primary px-3.5 py-2 text-[13px] leading-snug text-primary-foreground">
       Find me the best price on Tatcha The Water Cream.
     </div>
   </motion.div>
 );
 
 /* ─────────────────────────────────────────────
-   Retailer / Sephora cards
+   Result rows
    ───────────────────────────────────────────── */
 
 const incentiveStack = [
@@ -134,21 +197,20 @@ const incentiveStack = [
 const SephoraCard = () => (
   <motion.div
     layout
-    initial={{ opacity: 0, y: 12, height: 0 }}
-    animate={{ opacity: 1, y: 0, height: "auto" }}
-    exit={{ opacity: 0, y: -8, height: 0 }}
-    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    className="overflow-visible"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -6 }}
+    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
   >
     <div
-      className="relative rounded-xl border border-primary/25 bg-primary/[0.04] p-4"
+      className="relative rounded-xl border border-primary/25 bg-primary/[0.035] p-3.5"
       style={{ boxShadow: "0 0 0 4px hsl(213 99% 50% / 0.04)" }}
     >
       <motion.div
         initial={{ opacity: 0, y: -4 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -top-2.5 right-4 inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-primary-foreground"
+        transition={{ delay: 0.2, duration: 0.4 }}
+        className="absolute -top-2 right-3 inline-flex items-center gap-1.5 rounded-full bg-primary px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.12em] text-primary-foreground"
         style={{ boxShadow: "var(--shadow-md)" }}
       >
         <span className="relative inline-flex h-1.5 w-1.5">
@@ -158,25 +220,25 @@ const SephoraCard = () => (
         Best with Parleo
       </motion.div>
 
-      <div className="mb-3 flex items-start justify-between">
+      <div className="mb-2.5 flex items-start justify-between">
         <div className="flex items-center gap-2">
-          <BrandLogo name="Sephora" size={18} />
-          <span className="text-[14px] font-semibold text-foreground">Sephora</span>
+          <BrandLogo name="Sephora" size={16} />
+          <span className="text-[13px] font-semibold text-foreground">Sephora</span>
         </div>
         <div className="text-right leading-none">
-          <div className="mb-1 text-[12px] text-foreground/40 line-through">$30.00</div>
-          <AnimatedPrice value={14.64} className="text-[20px] font-bold text-primary" />
+          <div className="mb-0.5 text-[11px] text-foreground/40 line-through tabular-nums">$30.00</div>
+          <AnimatedPrice value={14.64} className="text-[18px] font-bold text-primary tabular-nums" />
         </div>
       </div>
 
-      <div className="space-y-1.5 border-t border-primary/15 pt-3">
+      <div className="space-y-1 border-t border-primary/15 pt-2.5">
         {incentiveStack.map((s, i) => (
           <motion.div
             key={s.label}
-            initial={{ opacity: 0, x: -6 }}
+            initial={{ opacity: 0, x: -4 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 + i * 0.08, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center justify-between text-[12.5px] tabular-nums"
+            transition={{ delay: 0.25 + i * 0.07, duration: 0.3 }}
+            className="flex items-center justify-between text-[11.5px] tabular-nums"
           >
             <span className="text-foreground/65">{s.label}</span>
             <span className="font-semibold text-[hsl(var(--success))]">{s.value}</span>
@@ -190,13 +252,16 @@ const SephoraCard = () => (
 const AmazonRow = ({ isParleo }: { isParleo: boolean }) => (
   <motion.div
     layout
-    animate={{ opacity: isParleo ? 0.45 : 1, filter: isParleo ? "grayscale(100%)" : "grayscale(0%)" }}
-    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    className="flex items-center justify-between rounded-xl border border-border/60 bg-secondary/30 px-4 py-3"
+    animate={{
+      opacity: isParleo ? 0.5 : 1,
+      filter: isParleo ? "grayscale(100%)" : "grayscale(0%)",
+    }}
+    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    className="flex items-center justify-between rounded-xl border border-border/60 bg-secondary/30 px-3.5 py-2.5"
   >
     <div className="flex items-center gap-2">
-      <BrandLogo name="Amazon" size={18} />
-      <span className="text-[13.5px] font-medium text-foreground/80">Amazon</span>
+      <BrandLogo name="Amazon" size={16} />
+      <span className="text-[12.5px] font-medium text-foreground/80">Amazon</span>
       <AnimatePresence>
         {!isParleo && (
           <motion.span
@@ -211,29 +276,28 @@ const AmazonRow = ({ isParleo }: { isParleo: boolean }) => (
         )}
       </AnimatePresence>
     </div>
-    <div className="text-[14px] font-semibold tabular-nums text-foreground/80">$28.00</div>
+    <div className="text-[13px] font-semibold tabular-nums text-foreground/80">$28.00</div>
   </motion.div>
 );
 
-const ActionRow = ({ isParleo }: { isParleo: boolean }) => (
-  <motion.div
-    initial={false}
-    animate={{ opacity: 1 }}
-    className="flex flex-wrap gap-2 pt-1"
-  >
-    <button
-      className={`rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-colors ${
-        isParleo
-          ? "border-primary/30 bg-primary/[0.06] text-primary"
-          : "border-border/70 bg-card text-foreground/70"
-      }`}
-    >
-      {isParleo ? "View on Sephora" : "View on Amazon"}
+const Footnote = ({ isParleo }: { isParleo: boolean }) => (
+  <div className="flex items-center justify-between pt-0.5">
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={isParleo ? "p" : "s"}
+        initial={{ opacity: 0, y: 3 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -3 }}
+        transition={{ duration: 0.3 }}
+        className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/45"
+      >
+        {isParleo ? "with parleo · 8 retailers" : "sticker price · 8 retailers"}
+      </motion.span>
+    </AnimatePresence>
+    <button className="text-[11px] font-medium text-primary/80 hover:text-primary">
+      View all →
     </button>
-    <button className="rounded-full border border-border/70 bg-card px-3.5 py-1.5 text-[12.5px] font-medium text-foreground/70">
-      See all 8 retailers
-    </button>
-  </motion.div>
+  </div>
 );
 
 /* ─────────────────────────────────────────────
@@ -241,7 +305,7 @@ const ActionRow = ({ isParleo }: { isParleo: boolean }) => (
    ───────────────────────────────────────────── */
 
 const AssistantContent = ({ phase }: { phase: Phase }) => (
-  <div className="flex gap-3">
+  <div className="flex gap-2.5">
     <AssistantAvatar />
     <div className="min-w-0 flex-1">
       <AnimatePresence mode="wait">
@@ -261,13 +325,13 @@ const AssistantContent = ({ phase }: { phase: Phase }) => (
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-3"
+            className="space-y-2.5"
           >
             <AnimatePresence initial={false}>
               {phase === "parleo" && <SephoraCard key="sephora" />}
             </AnimatePresence>
             <AmazonRow isParleo={phase === "parleo"} />
-            <ActionRow isParleo={phase === "parleo"} />
+            <Footnote isParleo={phase === "parleo"} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -276,12 +340,46 @@ const AssistantContent = ({ phase }: { phase: Phase }) => (
 );
 
 /* ─────────────────────────────────────────────
+   Mode toggle (top, editorial)
+   ───────────────────────────────────────────── */
+
+const ModeIndicator = ({ phase }: { phase: Phase }) => {
+  const isParleo = phase === "parleo";
+  return (
+    <div className="flex items-center justify-between rounded-full border border-border/70 bg-card/80 px-1 py-1 backdrop-blur">
+      <div className="relative flex w-full">
+        <motion.div
+          layout
+          className="absolute inset-y-0 w-1/2 rounded-full bg-foreground"
+          animate={{ x: isParleo ? "100%" : "0%" }}
+          transition={{ type: "spring", stiffness: 380, damping: 32 }}
+        />
+        <span
+          className={`relative z-[1] flex-1 text-center text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+            !isParleo ? "text-background" : "text-foreground/45"
+          }`}
+        >
+          Standard agent
+        </span>
+        <span
+          className={`relative z-[1] flex-1 text-center text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+            isParleo ? "text-background" : "text-foreground/45"
+          }`}
+        >
+          With Parleo
+        </span>
+      </div>
+    </div>
+  );
+};
+
+/* ─────────────────────────────────────────────
    Orchestrator
    ───────────────────────────────────────────── */
 
 const SEQUENCE: { phase: Phase; hold: number }[] = [
   { phase: "typing", hold: 1100 },
-  { phase: "standard", hold: 2400 },
+  { phase: "standard", hold: 2600 },
   { phase: "parleo", hold: 4800 },
 ];
 
@@ -328,20 +426,34 @@ const HeroChatArtifact = () => {
     setProgress(0);
   };
 
+  // Display phase for top indicator (treat typing as standard)
+  const displayPhase: Phase = phase === "typing" ? "standard" : phase;
+
   return (
     <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <ChatChrome progress={progress}>
-        <div className="space-y-5">
-          <UserBubble />
-          <AssistantContent phase={phase} />
-        </div>
-      </ChatChrome>
-      <div className="mt-2 flex justify-end">
+      <div className="mb-3">
+        <ModeIndicator phase={displayPhase} />
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-[0.85fr_1.15fr]">
+        <ProductCanvas phase={displayPhase} />
+        <ChatChrome progress={progress}>
+          <div className="space-y-4">
+            <UserBubble />
+            <AssistantContent phase={phase} />
+          </div>
+        </ChatChrome>
+      </div>
+
+      <div className="mt-2 flex items-center justify-between">
+        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/35">
+          Live demo · auto-cycles
+        </span>
         <button
           onClick={replay}
           className="text-[11px] font-medium text-foreground/40 transition-colors hover:text-foreground/70"
         >
-          Replay
+          Replay ↻
         </button>
       </div>
     </div>
