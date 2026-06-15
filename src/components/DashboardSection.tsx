@@ -97,6 +97,8 @@ const DashboardSection = () => {
           </div>
         </div>
 
+        {/* Dashboard mockup */}
+        <div className="mt-8">
           <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="mx-auto overflow-hidden rounded-xl border border-border bg-card transition-shadow duration-500 hover:shadow-elevated" style={{ maxWidth: 960, boxShadow: 'var(--shadow-elevated)' }}>
             {/* Chrome bar */}
             <div className="flex h-10 items-center justify-between border-b border-border px-4" style={{ background: "#FAFAF9" }}>
