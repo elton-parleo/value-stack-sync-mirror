@@ -192,15 +192,18 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
 
       <div className="grid grid-cols-[38%_1fr] items-stretch">
         {/* Product image well */}
-        <div className="relative flex min-h-[214px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
+        <div className="relative flex min-h-[246px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
           <div className="absolute left-4 top-4 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35">SKU 320418</div>
+          <div className="absolute bottom-4 left-4 max-w-[120px] font-mono text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-foreground/35">
+            Merchant value made readable
+          </div>
           <motion.img
             src={tatchaAsset.url}
             alt="Tatcha The Water Cream"
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[1] h-[150px] w-auto object-contain"
+            className="relative z-[1] h-[146px] w-auto object-contain"
             style={{ filter: "drop-shadow(0 14px 18px hsl(165 40% 18% / 0.16))" }}
           />
         </div>
@@ -208,13 +211,33 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
         {/* Detail rail */}
         <div className="flex min-w-0 flex-1 flex-col justify-between p-3.5">
           <div>
-            <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
-              Tatcha
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
+                  Tatcha
+                </div>
+                <div className="mt-0.5 text-[13.5px] font-semibold leading-tight text-foreground">
+                  The Water Cream
+                </div>
+                <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
+              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={isParleo ? "flips" : "default"}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className={`shrink-0 rounded-full border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] ${
+                    isParleo
+                      ? "border-primary/25 bg-primary/[0.06] text-primary"
+                      : "border-border bg-secondary/40 text-foreground/45"
+                  }`}
+                >
+                  {isParleo ? "Agent result flips" : "List price ranks"}
+                </motion.div>
+              </AnimatePresence>
             </div>
-            <div className="mt-0.5 text-[13.5px] font-semibold leading-tight text-foreground">
-              The Water Cream
-            </div>
-            <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
           </div>
 
           {/* Winner retailer */}
@@ -243,7 +266,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
 
             <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2.5">
               <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
-                <span>Agent ranking input</span>
+                <span>{isParleo ? "LLM sees incentives" : "LLM sees list prices"}</span>
                 <span>{isParleo ? "Effective cost" : "Sticker price"}</span>
               </div>
               <div className="space-y-1.5">
@@ -253,14 +276,14 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                     <motion.div
                       layout
                       key={row.retailer}
-                      className={`grid grid-cols-[1fr_auto] items-center gap-3 rounded-md px-2 py-1.5 transition-colors duration-500 ${
+                      className={`grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-md px-2 py-1.5 transition-colors duration-500 ${
                         winner ? "bg-card text-foreground" : "text-foreground/48"
                       }`}
                     >
-                      <div className="flex min-w-0 items-center gap-1.5">
+                      <div className="grid min-w-0 grid-cols-[auto_minmax(48px,auto)_minmax(0,1fr)] items-center gap-1.5">
                         <BrandLogo name={row.retailer} size={12} grayscale={!winner} />
-                        <span className="truncate text-[11px] font-semibold">{row.retailer}</span>
-                        <span className="truncate text-[10px] text-foreground/42">{isParleo ? row.note : "visible to LLM"}</span>
+                        <span className="text-[11px] font-semibold">{row.retailer}</span>
+                        <span className="truncate text-[10px] text-foreground/42">{isParleo ? row.note : "visible to agent"}</span>
                       </div>
                       <span className={`text-[11px] font-semibold tabular-nums ${winner && isParleo ? "text-primary" : ""}`}>
                         {isParleo ? row.parleo : row.standard}
