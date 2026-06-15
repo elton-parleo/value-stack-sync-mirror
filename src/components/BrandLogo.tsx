@@ -35,6 +35,13 @@ const domainMap: Record<string, string> = {
   "Dyson": "dyson.com",
   "Patagonia": "patagonia.com",
   "Adidas": "adidas.com",
+  "Bloomingdale's": "bloomingdales.com",
+  "Saks": "saksfifthavenue.com",
+  "Neiman Marcus": "neimanmarcus.com",
+  "Bergdorf Goodman": "bergdorfgoodman.com",
+  "SK-II": "sk-ii.com",
+  "Costco": "costco.com",
+  "Walmart": "walmart.com",
   // Cards
   "Amex": "americanexpress.com",
   "Chase": "chase.com",
