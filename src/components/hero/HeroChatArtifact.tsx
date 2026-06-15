@@ -190,26 +190,17 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
         )}
       </AnimatePresence>
 
-      <div className="flex items-stretch">
+      <div className="grid grid-cols-[38%_1fr] items-stretch">
         {/* Product image well */}
-        <div className="relative flex w-[38%] shrink-0 items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
-          {/* subtle grid texture */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.5]"
-            style={{
-              backgroundImage:
-                "linear-gradient(hsl(34 8% 85% / 0.5) 1px, transparent 1px), linear-gradient(90deg, hsl(34 8% 85% / 0.5) 1px, transparent 1px)",
-              backgroundSize: "22px 22px",
-              maskImage: "radial-gradient(ellipse at center, black 40%, transparent 75%)",
-            }}
-          />
+        <div className="relative flex min-h-[214px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
+          <div className="absolute left-4 top-4 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35">SKU 320418</div>
           <motion.img
             src={tatchaAsset.url}
             alt="Tatcha The Water Cream"
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[1] h-[148px] w-auto object-contain"
+            className="relative z-[1] h-[150px] w-auto object-contain"
             style={{ filter: "drop-shadow(0 14px 18px hsl(165 40% 18% / 0.16))" }}
           />
         </div>
@@ -250,13 +241,43 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
               </div>
             </div>
 
+            <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2.5">
+              <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
+                <span>Agent ranking input</span>
+                <span>{isParleo ? "Effective cost" : "Sticker price"}</span>
+              </div>
+              <div className="space-y-1.5">
+                {rankingRows.map((row) => {
+                  const winner = isParleo ? row.retailer === "Sephora" : row.retailer === "Amazon";
+                  return (
+                    <motion.div
+                      layout
+                      key={row.retailer}
+                      className={`grid grid-cols-[1fr_auto] items-center gap-3 rounded-md px-2 py-1.5 transition-colors duration-500 ${
+                        winner ? "bg-card text-foreground" : "text-foreground/48"
+                      }`}
+                    >
+                      <div className="flex min-w-0 items-center gap-1.5">
+                        <BrandLogo name={row.retailer} size={12} grayscale={!winner} />
+                        <span className="truncate text-[11px] font-semibold">{row.retailer}</span>
+                        <span className="truncate text-[10px] text-foreground/42">{isParleo ? row.note : "visible to LLM"}</span>
+                      </div>
+                      <span className={`text-[11px] font-semibold tabular-nums ${winner && isParleo ? "text-primary" : ""}`}>
+                        {isParleo ? row.parleo : row.standard}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Incentive stack: only parleo */}
             <AnimatePresence>
               {isParleo && (
                 <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
