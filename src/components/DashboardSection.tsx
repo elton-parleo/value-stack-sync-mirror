@@ -80,7 +80,7 @@ const DashboardSection = () => {
               </div>
               <div className="flex items-center gap-1.5">
                 <PulsingDot />
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium text-foreground"><BrandLogo name="Sephora" size={12} />Sephora · Live</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/55">Sample readout · Sephora</span>
               </div>
             </div>
 
@@ -110,7 +110,27 @@ const DashboardSection = () => {
 
               {/* Main content */}
               <div className="flex-1 overflow-y-auto p-5">
-                <div className="flex items-center justify-between">
+                {/* Headline metrics — inside the dashboard */}
+                <div className="grid grid-cols-2 gap-3 pb-4">
+                  <div className="rounded-lg border border-border p-3" style={{ background: "#FAFAF9" }}>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-parleo-muted">Agent Commerce Score</p>
+                    <div className="mt-1.5 flex items-baseline gap-1.5">
+                      <span className="font-display text-[28px] font-bold leading-none tabular-nums text-foreground">54</span>
+                      <span className="text-[11px] text-parleo-muted tabular-nums">/ 100</span>
+                      <span className="ml-auto rounded-full px-2 py-0.5 text-[9px] font-semibold tabular-nums" style={{ background: "hsl(152 69% 31% / 0.12)", color: "hsl(152 69% 31%)" }}>+6 wk</span>
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-border p-3" style={{ background: "#FAFAF9" }}>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-parleo-muted">Deal Leakage</p>
+                    <div className="mt-1.5 flex items-baseline gap-1.5">
+                      <span className="font-display text-[28px] font-bold leading-none tabular-nums text-foreground">$4.8M</span>
+                      <span className="text-[11px] text-parleo-muted">/ qtr</span>
+                      <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-[9px] font-semibold text-primary">recoverable</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-border/60 pt-4">
                   <h3 className="text-[15px] font-bold text-foreground">Active Constraints</h3>
                   <span className="text-[10px] text-parleo-muted">Last synced: 2m ago</span>
                 </div>

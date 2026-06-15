@@ -145,21 +145,12 @@ const FeedSection = () => (
     
 
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
-      <div className="flex items-center gap-3">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
-            <path d="M4 11a9 9 0 019-9M4 4a16 16 0 0116 16M6 21a1 1 0 100-2 1 1 0 000 2z" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <span className="font-label text-parleo-muted">HONEY FOR AGENTS</span>
-      </div>
-
-      <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
+      <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
         The directory agents check first.
       </h2>
 
-      <p className="mt-3 max-w-[580px] text-[17px] leading-[1.7] text-foreground/70">
-        One API call instead of 8 to 12 tools: Parleo pre-computes product identity, true-cost deal signals, and semantic content so your agent can skip web search and focus tokens on last-mile personalization.
+      <p className="mt-3 max-w-[640px] text-[17px] leading-[1.7] text-foreground/70">
+        One API call returns normalized products, true-cost deal signals, and semantic context, so your agent skips the 8 to 12 tool calls.
       </p>
 
       {/* Pipeline */}

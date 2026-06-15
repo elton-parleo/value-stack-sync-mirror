@@ -31,22 +31,13 @@ const IntegrationSection = () => (
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
-                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span className="font-label text-parleo-muted">PROTOCOL NATIVE</span>
-          </div>
-          <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
+          <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
             Ships on every protocol<br />that matters.
           </h2>
-          <p className="mt-3 max-w-[440px] text-[17px] leading-[1.6] text-foreground/70">
-            One API contract. Every agent. OpenAI, Perplexity, Claude, and custom systems on ACP, MCP, or AP2.
+          <p className="mt-3 max-w-[460px] text-[17px] leading-[1.6] text-foreground/70">
+            Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP.
           </p>
-          <p className="mt-3 max-w-[440px] text-[13.5px] leading-[1.55] text-foreground/55">
+          <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">
             Six protocols. Zero cross-protocol incentive resolution. Parleo is the layer that resolves it.
           </p>
 
