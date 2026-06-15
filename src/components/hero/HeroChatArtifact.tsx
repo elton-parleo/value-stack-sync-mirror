@@ -61,13 +61,11 @@ const ChatChrome = ({
   phase,
   cycleKey,
   duration,
-  paused,
 }: {
   children: React.ReactNode;
   phase: Phase;
   cycleKey: number;
   duration: number;
-  paused: boolean;
 }) => {
   const isParleo = phase === "parleo";
   return (
@@ -83,7 +81,6 @@ const ChatChrome = ({
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: duration / 1000, ease: "linear" }}
-          style={{ animationPlayState: paused ? "paused" : "running" }}
         />
       </div>
 
