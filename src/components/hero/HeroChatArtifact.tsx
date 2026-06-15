@@ -58,12 +58,14 @@ const AnimatedPrice = ({
 
 const ChatChrome = ({
   children,
-  progress,
   phase,
+  cycleKey,
+  duration,
 }: {
   children: React.ReactNode;
-  progress: number;
   phase: Phase;
+  cycleKey: number;
+  duration: number;
 }) => {
   const isParleo = phase === "parleo";
   return (
@@ -73,9 +75,12 @@ const ChatChrome = ({
     >
       {/* Cycle progress hairline */}
       <div className="absolute inset-x-0 top-0 z-10 h-px bg-foreground/[0.05]">
-        <div
-          className="h-full bg-primary/60 transition-[width] duration-100 ease-linear"
-          style={{ width: `${progress * 100}%` }}
+        <motion.div
+          key={cycleKey}
+          className="h-full origin-left bg-primary/60"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: duration / 1000, ease: "linear" }}
         />
       </div>
 
@@ -115,7 +120,7 @@ const ChatChrome = ({
         </div>
       </div>
 
-      <div className="p-4 sm:p-5">{children}</div>
+      <div className="h-[396px] p-4 sm:h-[408px] sm:p-5">{children}</div>
     </div>
   );
 };
@@ -151,6 +156,11 @@ const incentiveStack = [
   { label: "Birthday gift credit", value: "−$8.40" },
 ];
 
+const rankingRows = [
+  { retailer: "Sephora", standard: "$30.00", parleo: "$14.64", note: "loyalty + card + gift value" },
+  { retailer: "Amazon", standard: "$28.00", parleo: "$28.00", note: "list price only" },
+];
+
 const ProductCard = ({ phase }: { phase: Phase }) => {
   const isParleo = phase === "parleo";
   return (
@@ -180,26 +190,20 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
         )}
       </AnimatePresence>
 
-      <div className="flex items-stretch">
+      <div className="grid grid-cols-[38%_1fr] items-stretch">
         {/* Product image well */}
-        <div className="relative flex w-[38%] shrink-0 items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
-          {/* subtle grid texture */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.5]"
-            style={{
-              backgroundImage:
-                "linear-gradient(hsl(34 8% 85% / 0.5) 1px, transparent 1px), linear-gradient(90deg, hsl(34 8% 85% / 0.5) 1px, transparent 1px)",
-              backgroundSize: "22px 22px",
-              maskImage: "radial-gradient(ellipse at center, black 40%, transparent 75%)",
-            }}
-          />
+        <div className="relative flex min-h-[226px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
+          <div className="absolute left-4 top-4 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35">SKU 320418</div>
+          <div className="absolute bottom-4 left-4 max-w-[120px] font-mono text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-foreground/35">
+            Merchant value made readable
+          </div>
           <motion.img
             src={tatchaAsset.url}
             alt="Tatcha The Water Cream"
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[1] h-[148px] w-auto object-contain"
+            className="relative z-[1] h-[136px] w-auto object-contain"
             style={{ filter: "drop-shadow(0 14px 18px hsl(165 40% 18% / 0.16))" }}
           />
         </div>
@@ -207,13 +211,33 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
         {/* Detail rail */}
         <div className="flex min-w-0 flex-1 flex-col justify-between p-3.5">
           <div>
-            <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
-              Tatcha
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
+                  Tatcha
+                </div>
+                <div className="mt-0.5 text-[13px] font-semibold leading-tight text-foreground">
+                  The Water Cream
+                </div>
+                <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
+              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={isParleo ? "flips" : "default"}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className={`shrink-0 rounded-full border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] ${
+                    isParleo
+                      ? "border-primary/25 bg-primary/[0.06] text-primary"
+                      : "border-border bg-secondary/40 text-foreground/45"
+                  }`}
+                >
+                  {isParleo ? "Agent result flips" : "List price ranks"}
+                </motion.div>
+              </AnimatePresence>
             </div>
-            <div className="mt-0.5 text-[13.5px] font-semibold leading-tight text-foreground">
-              The Water Cream
-            </div>
-            <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
           </div>
 
           {/* Winner retailer */}
@@ -240,24 +264,54 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
               </div>
             </div>
 
+            <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2">
+              <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
+                <span>{isParleo ? "LLM sees incentives" : "LLM sees list prices"}</span>
+                <span>{isParleo ? "Effective cost" : "Sticker price"}</span>
+              </div>
+              <div className="space-y-1.5">
+                {rankingRows.map((row) => {
+                  const winner = isParleo ? row.retailer === "Sephora" : row.retailer === "Amazon";
+                  return (
+                    <motion.div
+                      layout
+                      key={row.retailer}
+                      className={`grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-md px-2 py-1 transition-colors duration-500 ${
+                        winner ? "bg-card text-foreground" : "text-foreground/48"
+                      }`}
+                    >
+                      <div className="grid min-w-0 grid-cols-[auto_minmax(48px,auto)_minmax(0,1fr)] items-center gap-1.5">
+                        <BrandLogo name={row.retailer} size={12} grayscale={!winner} />
+                        <span className="text-[11px] font-semibold">{row.retailer}</span>
+                        <span className="truncate text-[10px] text-foreground/42">{isParleo ? row.note : "visible to agent"}</span>
+                      </div>
+                      <span className={`text-[11px] font-semibold tabular-nums ${winner && isParleo ? "text-primary" : ""}`}>
+                        {isParleo ? row.parleo : row.standard}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Incentive stack: only parleo */}
             <AnimatePresence>
               {isParleo && (
                 <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="mt-2.5 space-y-1 border-t border-border/60 pt-2.5">
+                  <div className="mt-2 space-y-0.5 border-t border-border/60 pt-2">
                     {incentiveStack.map((s, i) => (
                       <motion.div
                         key={s.label}
                         initial={{ opacity: 0, x: -4 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.18 + i * 0.07, duration: 0.3 }}
-                        className="flex items-center justify-between text-[11px] tabular-nums"
+                        className="flex items-center justify-between text-[10.5px] tabular-nums"
                       >
                         <span className="text-foreground/60">{s.label}</span>
                         <span className="font-semibold text-[hsl(var(--success))]">{s.value}</span>
@@ -272,7 +326,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
       </div>
 
       {/* Footer strip */}
-      <div className="flex items-center justify-between border-t border-border/60 bg-secondary/30 px-3.5 py-2">
+      <div className="flex items-center justify-between border-t border-border/60 bg-secondary/30 px-3.5 py-1.5">
         <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
           {isParleo ? "8 retailers · true price" : "8 retailers · list price"}
         </span>
@@ -281,30 +335,6 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
     </motion.div>
   );
 };
-
-/* Loser row — only visible in parleo state, dimmed */
-const LoserRow = ({ visible }: { visible: boolean }) => (
-  <AnimatePresence>
-    {visible && (
-      <motion.div
-        initial={{ opacity: 0, y: -4 }}
-        animate={{ opacity: 0.55, y: 0, filter: "grayscale(100%)" }}
-        exit={{ opacity: 0, y: -4 }}
-        transition={{ duration: 0.45 }}
-        className="flex items-center justify-between rounded-xl border border-border/60 bg-secondary/30 px-3.5 py-2"
-      >
-        <div className="flex items-center gap-2">
-          <BrandLogo name="Amazon" size={14} />
-          <span className="text-[12px] font-medium text-foreground/75">Amazon</span>
-          <span className="rounded-full bg-foreground/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-foreground/55">
-            Sticker pick
-          </span>
-        </div>
-        <div className="text-[12.5px] font-semibold tabular-nums text-foreground/70">$28.00</div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
 
 /* ─────────────────────────────────────────────
    Assistant column
@@ -334,7 +364,6 @@ const AssistantContent = ({ phase }: { phase: Phase }) => (
             className="space-y-2.5"
           >
             <ProductCard phase={phase} />
-            <LoserRow visible={phase === "parleo"} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -393,53 +422,36 @@ const TOTAL = SEQUENCE.reduce((s, p) => s + p.hold, 0);
 const HeroChatArtifact = () => {
   const reduce = useReducedMotion();
   const [phase, setPhase] = useState<Phase>(reduce ? "parleo" : "typing");
-  const [progress, setProgress] = useState(reduce ? 1 : 0);
-  const [paused, setPaused] = useState(false);
-  const startedAt = useRef<number>(performance.now());
+  const [cycleKey, setCycleKey] = useState(0);
+  const [replayKey, setReplayKey] = useState(0);
 
   useEffect(() => {
     if (reduce) return;
-    let raf = 0;
-    const loop = (t: number) => {
-      if (paused) {
-        startedAt.current = t - progress * TOTAL;
-        raf = requestAnimationFrame(loop);
-        return;
-      }
-      const elapsed = (t - startedAt.current) % TOTAL;
-      let acc = 0;
-      let current: Phase = "typing";
-      for (const step of SEQUENCE) {
-        if (elapsed < acc + step.hold) {
-          current = step.phase;
-          break;
-        }
-        acc += step.hold;
-      }
-      setPhase(current);
-      setProgress(elapsed / TOTAL);
-      raf = requestAnimationFrame(loop);
+    let timers: number[] = [];
+    const run = () => {
+      setCycleKey((key) => key + 1);
+      setPhase("typing");
+      timers.push(window.setTimeout(() => setPhase("standard"), SEQUENCE[0].hold));
+      timers.push(window.setTimeout(() => setPhase("parleo"), SEQUENCE[0].hold + SEQUENCE[1].hold));
+      timers.push(window.setTimeout(run, TOTAL));
     };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paused, reduce]);
+    run();
+    return () => timers.forEach(window.clearTimeout);
+  }, [reduce, replayKey]);
 
   const replay = () => {
-    startedAt.current = performance.now();
-    setPhase("typing");
-    setProgress(0);
+    setReplayKey((key) => key + 1);
   };
 
   const displayPhase: Phase = phase === "typing" ? "standard" : phase;
 
   return (
-    <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <div>
       <div className="mb-2.5">
         <ModeCaption phase={displayPhase} />
       </div>
 
-      <ChatChrome progress={progress} phase={displayPhase}>
+      <ChatChrome phase={displayPhase} cycleKey={cycleKey} duration={TOTAL}>
         <div className="space-y-3.5">
           <UserBubble />
           <AssistantContent phase={phase} />
