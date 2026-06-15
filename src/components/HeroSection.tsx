@@ -119,7 +119,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="relative md:col-span-7"
         >
-          <div className="mx-auto w-full max-w-[560px]">
+          <div className="mx-auto w-full max-w-[620px]">
             <HeroChatArtifact />
           </div>
         </motion.div>
