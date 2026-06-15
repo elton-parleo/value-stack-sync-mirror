@@ -120,7 +120,7 @@ const ChatChrome = ({
         </div>
       </div>
 
-      <div className="h-[376px] p-4 sm:h-[388px] sm:p-5">{children}</div>
+      <div className="h-[396px] p-4 sm:h-[408px] sm:p-5">{children}</div>
     </div>
   );
 };
@@ -192,7 +192,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
 
       <div className="grid grid-cols-[38%_1fr] items-stretch">
         {/* Product image well */}
-        <div className="relative flex min-h-[246px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
+        <div className="relative flex min-h-[226px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
           <div className="absolute left-4 top-4 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35">SKU 320418</div>
           <div className="absolute bottom-4 left-4 max-w-[120px] font-mono text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-foreground/35">
             Merchant value made readable
@@ -203,7 +203,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[1] h-[146px] w-auto object-contain"
+            className="relative z-[1] h-[136px] w-auto object-contain"
             style={{ filter: "drop-shadow(0 14px 18px hsl(165 40% 18% / 0.16))" }}
           />
         </div>
@@ -216,7 +216,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                 <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
                   Tatcha
                 </div>
-                <div className="mt-0.5 text-[13.5px] font-semibold leading-tight text-foreground">
+                <div className="mt-0.5 text-[13px] font-semibold leading-tight text-foreground">
                   The Water Cream
                 </div>
                 <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
@@ -264,7 +264,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
               </div>
             </div>
 
-            <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2.5">
+            <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2">
               <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
                 <span>{isParleo ? "LLM sees incentives" : "LLM sees list prices"}</span>
                 <span>{isParleo ? "Effective cost" : "Sticker price"}</span>
@@ -276,7 +276,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                     <motion.div
                       layout
                       key={row.retailer}
-                      className={`grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-md px-2 py-1.5 transition-colors duration-500 ${
+                      className={`grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-md px-2 py-1 transition-colors duration-500 ${
                         winner ? "bg-card text-foreground" : "text-foreground/48"
                       }`}
                     >
