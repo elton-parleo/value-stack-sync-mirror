@@ -120,7 +120,7 @@ const ChatChrome = ({
         </div>
       </div>
 
-      <div className="h-[396px] p-4 sm:h-[408px] sm:p-5">{children}</div>
+      <div className="h-[376px] p-4 sm:h-[388px] sm:p-5">{children}</div>
     </div>
   );
 };
