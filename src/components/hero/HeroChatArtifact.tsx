@@ -304,14 +304,14 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="mt-2.5 space-y-1 border-t border-border/60 pt-2.5">
+                  <div className="mt-2 space-y-0.5 border-t border-border/60 pt-2">
                     {incentiveStack.map((s, i) => (
                       <motion.div
                         key={s.label}
                         initial={{ opacity: 0, x: -4 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.18 + i * 0.07, duration: 0.3 }}
-                        className="flex items-center justify-between text-[11px] tabular-nums"
+                        className="flex items-center justify-between text-[10.5px] tabular-nums"
                       >
                         <span className="text-foreground/60">{s.label}</span>
                         <span className="font-semibold text-[hsl(var(--success))]">{s.value}</span>
@@ -326,7 +326,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
       </div>
 
       {/* Footer strip */}
-      <div className="flex items-center justify-between border-t border-border/60 bg-secondary/30 px-3.5 py-2">
+      <div className="flex items-center justify-between border-t border-border/60 bg-secondary/30 px-3.5 py-1.5">
         <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
           {isParleo ? "8 retailers · true price" : "8 retailers · list price"}
         </span>
