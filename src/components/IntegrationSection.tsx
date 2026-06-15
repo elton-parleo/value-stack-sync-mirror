@@ -43,8 +43,11 @@ const IntegrationSection = () => (
           <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
             Ships on every protocol<br />that matters.
           </h2>
-          <p className="mt-3 max-w-[420px] text-[17px] leading-[1.7] text-foreground/70">
+          <p className="mt-3 max-w-[440px] text-[17px] leading-[1.6] text-foreground/70">
             One API contract. Every agent. OpenAI, Perplexity, Claude, and custom systems on ACP, MCP, or AP2.
+          </p>
+          <p className="mt-3 max-w-[440px] text-[13.5px] leading-[1.55] text-foreground/55">
+            Six protocols. Zero cross-protocol incentive resolution. Parleo is the layer that resolves it.
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
