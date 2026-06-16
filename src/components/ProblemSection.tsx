@@ -451,14 +451,15 @@ const ProblemSection = () => {
 
       <div className="mx-auto max-w-content px-6 md:px-20">
         <h2
-          className="max-w-[18ch] font-heading text-[32px] text-foreground md:text-[52px]"
-          style={{ lineHeight: 1.05 }}
+          className="max-w-[20ch] font-heading text-[36px] text-foreground md:text-[60px]"
+          style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
         >
-          AI agents are already shopping for your customers.
+          Your customers are shopping through agents.{" "}
+          <span className="text-foreground/45">Agents are shopping on sticker price.</span>
         </h2>
-        <p className="mt-5 max-w-[640px] text-[17px] leading-[1.6] text-foreground/65 md:text-[19px]">
-          This is the fastest-growing way people shop, and it is already changing
-          who gets the sale.
+        <p className="mt-5 max-w-[620px] text-[17px] leading-[1.55] text-foreground/65 md:text-[19px]">
+          The fastest-growing channel in commerce ranks merchants on the one number that has
+          nothing to do with what a customer actually pays.
         </p>
 
         {/* Stats */}
@@ -494,27 +495,23 @@ const ProblemSection = () => {
         </div>
 
         {/* Editorial caption above artifact */}
-        <div className="mt-14 flex items-end justify-between gap-6 md:mt-20">
-          <div className="max-w-[560px]">
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/45">
-              Sample readout · Reorder query
-            </div>
-            <h3 className="mt-2 font-heading text-[22px] leading-tight text-foreground md:text-[30px]">
-              One product. Five retailers. Five different prices the agent never sees.
-            </h3>
-          </div>
-          <div className="hidden shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/50 md:flex">
-            <span className="h-px w-10 bg-foreground/20" />
-            Live comparison
-          </div>
+        <div className="mt-16 max-w-[680px] md:mt-24">
+          <h3
+            className="font-heading text-[26px] leading-[1.1] text-foreground md:text-[38px]"
+            style={{ letterSpacing: "-0.015em" }}
+          >
+            One product. Five retailers.{" "}
+            <span className="text-foreground/45">Five different prices the agent never sees.</span>
+          </h3>
         </div>
 
         {/* Asymmetric artifact: product hero + comparison panel */}
-        <div className="mt-6 grid gap-5 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
+        <div className="mt-8 grid gap-5 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
           <ProductPanel />
           <RankingPanel />
         </div>
       </div>
+
     </AnimatedSection>
   );
 };
