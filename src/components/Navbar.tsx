@@ -75,14 +75,13 @@ const Navbar = () => {
             {!isHome && (
               <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
             )}
-            <Link
-              to="/demo"
-              className="animate-border-pulse group inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/[0.04] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07]"
+            <button
+              onClick={() => setContactOpen(true)}
+              className="inline-flex items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
               style={{ height: 32 }}
             >
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-              How it Works
-            </Link>
+              Request a demo
+            </button>
             <button
               onClick={() => setContactOpen(true)}
               className="inline-flex items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
