@@ -407,27 +407,18 @@ const RankingPanel = () => {
       <div className="border-t border-border/55 bg-secondary/30 px-5 py-3.5">
         <AnimatePresence mode="wait">
           {mode === "true" ? (
-            <motion.div
+            <motion.p
               key="t"
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+              className="text-[12.5px] leading-snug text-foreground/70"
             >
-              <p className="text-[12.5px] leading-snug text-foreground/70">
-                <span className="font-semibold text-foreground">{trueWinner.name}</span>{" "}
-                wins for a {trueWinner.tier.split(" · ")[0]} member.{" "}
-                <span className="font-semibold text-primary">{fmt(winnerSavings)}</span>{" "}
-                of merchant value the agent could not see at MAP.
-              </p>
-              <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/50">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                  <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(var(--primary))" />
-                  <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(var(--primary))" opacity="0.4" />
-                </svg>
-                Zero PII · loyalty + card-linked resolved
-              </div>
-            </motion.div>
+              <span className="font-semibold text-foreground">{trueWinner.name}</span>{" "}
+              wins by{" "}
+              <span className="font-semibold text-primary">{fmt(winnerSavings)}</span>.{" "}
+              Value the agent could not see at MAP.
+            </motion.p>
           ) : (
             <motion.p
               key="s"
@@ -436,13 +427,13 @@ const RankingPanel = () => {
               exit={{ opacity: 0 }}
               className="text-[12.5px] leading-snug text-foreground/70"
             >
-              All five retailers tied at MAP. The agent defaults to{" "}
-              <span className="font-semibold text-foreground">Amazon</span>. Every merchant with a
-              richer loyalty stack is invisible.
+              All five tied at MAP. The agent defaults to{" "}
+              <span className="font-semibold text-foreground">Amazon</span>.
             </motion.p>
           )}
         </AnimatePresence>
       </div>
+
     </div>
   );
 };
