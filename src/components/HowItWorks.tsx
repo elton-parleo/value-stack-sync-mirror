@@ -4,48 +4,6 @@ import BrandLogo from "./BrandLogo";
 import lifestyleVanity from "@/assets/lifestyle-vanity.jpg";
 import lifestyleUnboxing from "@/assets/lifestyle-unboxing.jpg";
 
-const benefits = [
-  {
-    title: "Get discovered by AI agents",
-    body: "When customers ask AI for recommendations, Parleo ensures your offers are part of the answer.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    ),
-  },
-  {
-    title: "Showcase your full value",
-    body: "Loyalty tiers, card offers, member pricing. Agents surface all of it so customers see why you're the best deal.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Early movers win the default",
-    body: "AI agents form habits. Merchants who show up first become the ones agents recommend by default.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Keep full control of your margins",
-    body: "See which incentives move the needle: the Command Center shows which programs and offers actually shift agent recommendations and conversions.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
-        <rect x="3" y="3" width="7" height="7" rx="1" />
-        <rect x="14" y="3" width="7" height="7" rx="1" />
-        <rect x="3" y="14" width="7" height="7" rx="1" />
-        <rect x="14" y="14" width="7" height="7" rx="1" />
-      </svg>
-    ),
-  },
-];
 
 const timeline = [
   { step: "1", label: "Connect your offers", desc: "Upload loyalty, card-linked, and incentive data." },
