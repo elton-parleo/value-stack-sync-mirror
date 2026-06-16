@@ -48,9 +48,10 @@ const ERAS: Era[] = [
     label: "Share of Algorithm",
     distribution: "Agent decisions.",
     measured: "Parleo",
-    spend: "$1T expected",
+    spend: "~$1T",
     active: true,
   },
+
 ];
 
 const EraCard = ({ era, i }: { era: Era; i: number }) => {
