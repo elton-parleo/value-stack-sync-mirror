@@ -32,7 +32,7 @@ const ERAS: Era[] = [
     year: "1980s",
     label: "Share of Voice",
     distribution: "Broadcast media.",
-    measured: "GRPs, Media Mix",
+    measured: "GRPs / MMM",
     spend: "$12B+",
   },
   {
@@ -42,6 +42,7 @@ const ERAS: Era[] = [
     measured: "SEO / SEM rank",
     spend: "$200B+",
   },
+
   {
     year: "2025",
     label: "Share of Algorithm",
