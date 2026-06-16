@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import ProblemSection from "@/components/ProblemSection";
-import StructuralGapSection from "@/components/StructuralGapSection";
+
 import ShareOfAlgorithmSection from "@/components/ShareOfAlgorithmSection";
 import FeedSection from "@/components/FeedSection";
 import DashboardSection from "@/components/DashboardSection";
