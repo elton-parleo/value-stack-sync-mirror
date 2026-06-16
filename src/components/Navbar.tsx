@@ -4,10 +4,9 @@ import { Link, useLocation } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
-  { label: "The Channel", href: "#problem" },
-  { label: "The Window", href: "#how-it-works" },
+  { label: "Share of Algorithm", href: "#share-of-algorithm" },
   { label: "Command Center", href: "#dashboard" },
-  { label: "Protocol", href: "#integration" },
+  { label: "For developers", href: "#for-developers" },
   { label: "Team", href: "#team" },
 ];
 
