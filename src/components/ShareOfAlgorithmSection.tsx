@@ -111,7 +111,7 @@ const EraCard = ({ era, i }: { era: Era; i: number }) => {
       </p>
 
       <dl
-        className={`mt-6 space-y-3 border-t pt-4 ${
+        className={`mt-auto space-y-3 border-t pt-4 ${
           dark ? "border-white/10" : "border-border/60"
         }`}
       >
