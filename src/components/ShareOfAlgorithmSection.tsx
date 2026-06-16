@@ -201,81 +201,6 @@ const EraCard = ({ era, i }: { era: Era; i: number }) => (
   </motion.div>
 );
 
-const PILLARS = [
-  {
-    eyebrow: "01 · Visibility",
-    question: "Are you in the room?",
-    metrics: ["Mention Rate", "Share of Voice", "Recommendation Strength"],
-    measured: "Measured by others (Profound, Bluefish, AEO tools)",
-    lit: false,
-  },
-  {
-    eyebrow: "02 · Accessibility",
-    question: "Can agents read your commerce data?",
-    metrics: ["Structured Data Completeness", "Platform Distribution"],
-    measured: "Partly measured",
-    lit: false,
-  },
-  {
-    eyebrow: "True Value",
-    question: "Are agents seeing your real offer?",
-    metrics: ["06 · Incentive Citation Rate", "07 · Incentive Accuracy", "08 · True Value Delta"],
-    measured: "Measured by Parleo",
-    lit: true,
-  },
-];
-
-const PillarCard = ({ p, i }: { p: typeof PILLARS[number]; i: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-60px" }}
-    transition={{ duration: 0.5, delay: i * 0.08 }}
-    className={`flex flex-col rounded-2xl border p-6 md:p-7 ${
-      p.lit
-        ? "border-[#0166FF]/40 text-white"
-        : "border-border/60 bg-card/60 text-foreground/55"
-    }`}
-    style={p.lit ? { background: "#1E1E2E", boxShadow: "var(--shadow-card-hover)" } : undefined}
-  >
-    <span
-      className={`font-mono text-[10px] uppercase tracking-[0.18em] ${
-        p.lit ? "text-[#6FA8FF]" : "text-foreground/40"
-      }`}
-    >
-      {p.eyebrow}
-    </span>
-    <h3
-      className={`mt-3 font-heading text-[22px] leading-tight md:text-[26px] ${
-        p.lit ? "text-white" : "text-foreground/75"
-      }`}
-    >
-      {p.question}
-    </h3>
-    <ul className="mt-5 space-y-2 border-t border-current/15 pt-4">
-      {p.metrics.map((m) => (
-        <li
-          key={m}
-          className={`text-[13.5px] tabular-nums ${
-            p.lit ? "text-white/85" : "text-foreground/55"
-          }`}
-        >
-          {m}
-        </li>
-      ))}
-    </ul>
-    <div
-      className={`mt-6 inline-flex items-center gap-2 self-start rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
-        p.lit
-          ? "bg-[#0166FF] text-white"
-          : "bg-foreground/[0.05] text-foreground/50"
-      }`}
-    >
-      {p.measured}
-    </div>
-  </motion.div>
-);
-
 const ShareOfAlgorithmSection = () => (
   <AnimatedSection
     id="share-of-algorithm"
@@ -294,7 +219,8 @@ const ShareOfAlgorithmSection = () => (
           who agents recommend.
         </h2>
         <p className="self-end text-[17px] leading-[1.6] text-foreground/65 md:text-[19px]">
-          After share of shelf, share of voice, and share of search comes Share of Algorithm.
+          After share of shelf, share of voice, and share of search comes Share
+          of Algorithm.
         </p>
       </div>
 
@@ -305,30 +231,6 @@ const ShareOfAlgorithmSection = () => (
         ))}
       </div>
 
-      {/* Three-pillar framework */}
-      <div className="mt-20">
-        <div className="grid gap-6 md:grid-cols-[1.1fr_1fr] md:items-end md:gap-12">
-          <h3
-            className="font-heading text-[26px] text-foreground md:text-[36px]"
-            style={{ lineHeight: 1.1 }}
-          >
-            Three pillars. One that nobody else measures.
-          </h3>
-          <p className="text-[15px] leading-[1.6] text-foreground/65 md:text-[17px]">
-            Visibility and accessibility are crowded layers. True Value is open, and it's where your margin actually pools.
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-3 md:gap-5">
-          {PILLARS.map((p, i) => (
-            <PillarCard key={p.eyebrow} p={p} i={i} />
-          ))}
-        </div>
-
-        <p className="mt-8 max-w-[760px] text-[15px] leading-[1.65] text-foreground/70 md:text-[17px]">
-          Visibility is covered. True Value is the layer where your margin pools, and nobody else measures it. That's us.
-        </p>
-      </div>
     </div>
   </AnimatedSection>
 );

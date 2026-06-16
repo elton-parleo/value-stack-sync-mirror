@@ -65,21 +65,10 @@ const HeroSection = () => {
             className="font-display text-[44px] text-foreground md:text-[64px]"
             style={{ lineHeight: 1.05 }}
           >
-            The incentive layer for{" "}
-            <span
-              style={{
-                fontFamily: "'Instrument Serif', 'Cormorant Garamond', Georgia, serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-              }}
-              className="text-primary"
-            >
-              agentic commerce
-            </span>
-            .
+            The incentive layer for AI commerce.
           </h1>
           <p className="mt-5 max-w-[480px] text-[18px] leading-[1.6] text-foreground/70">
-            Parleo makes your loyalty programs, card-linked offers, and true product value readable and transactable across every agent surface.
+            Parleo makes loyalty programs, card-offers and true value of your products readable and transactable across every agent surface.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -92,24 +81,30 @@ const HeroSection = () => {
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <a
-              href="#developers"
+            <Link
+              to="/developers"
               className="group inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07] active:scale-[0.98]"
             >
               For developers
-              <span className="text-primary transition-transform group-hover:translate-x-0.5">↓</span>
-            </a>
+              <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
+            </Link>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-border/60 pt-6">
             <span className="font-label text-foreground/45">Works with</span>
             <div className="flex flex-wrap gap-1.5">
-              {["MCP", "ACP", "AP2", "UCP", "TAP", "OpenAI"].map((p) => (
+              {[
+                { name: "MCP", logo: "Anthropic" },
+                { name: "ACP", logo: "Stripe" },
+                { name: "OpenAPI", logo: "OpenAI" },
+                { name: "UCP", logo: "Google" },
+              ].map((p) => (
                 <span
-                  key={p}
-                  className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-1 text-[12px] font-medium text-foreground/75"
+                  key={p.name}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1 text-[12px] font-medium text-foreground/75"
                 >
-                  {p}
+                  <BrandLogo name={p.logo} size={13} grayscale />
+                  {p.name}
                 </span>
               ))}
             </div>
