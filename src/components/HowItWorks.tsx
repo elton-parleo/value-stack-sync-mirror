@@ -260,26 +260,6 @@ const HowItWorks = () => (
       {/* Agent flow diagram — C9 */}
       <AgentFlowDiagram />
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
-        {benefits.map((b, i) => (
-          <motion.div
-            key={b.title}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.08 }}
-            viewport={{ once: true }}
-            className="flex items-start gap-4"
-          >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/[0.06]">
-              {b.icon}
-            </div>
-            <div>
-              <h3 className="text-[15px] font-bold text-foreground">{b.title}</h3>
-              <p className="mt-1 text-[14px] leading-[1.6] text-foreground/70">{b.body}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
     </div>
   </AnimatedSection>
 );
