@@ -231,16 +231,6 @@ const ShareOfAlgorithmSection = () => (
         ))}
       </div>
 
-      {/* Closing line */}
-      <div className="mt-10 grid gap-6 border-t border-border/60 pt-8 md:grid-cols-[auto_1fr] md:items-center">
-        <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/45">
-          Bottom line
-        </div>
-        <p className="max-w-[760px] text-[18px] leading-[1.5] text-foreground/85 md:text-[20px]">
-          Your competitors are already being measured on this. They just do not
-          have the scorecard yet.
-        </p>
-      </div>
     </div>
   </AnimatedSection>
 );
