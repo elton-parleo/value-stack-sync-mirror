@@ -459,67 +459,20 @@ const ProblemSection = () => {
       <div className="diffusion-glow pointer-events-none absolute right-0 top-[30%]" />
 
       <div className="mx-auto max-w-content px-6 md:px-20">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/45">
+          The proof
+        </span>
         <h2
-          className="max-w-[18ch] font-heading text-[32px] text-foreground md:text-[52px]"
+          className="mt-3 max-w-[22ch] font-heading text-[32px] text-foreground md:text-[52px]"
           style={{ lineHeight: 1.05 }}
         >
-          AI agents are already shopping for your customers.
+          One product. Five retailers. Five prices the agent never sees.
         </h2>
         <p className="mt-5 max-w-[640px] text-[17px] leading-[1.6] text-foreground/65 md:text-[19px]">
-          This is the fastest-growing way people shop, and it is already changing
-          who gets the sale.
+          Toggle the view. Same SKU, same MAP, five different true costs once loyalty and card-linked offers resolve.
         </p>
 
-        {/* Stats */}
-        <div className="mt-10 grid grid-cols-1 divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {[
-            { value: "58%", label: "of consumers have used AI to shop", source: "Stripe, 2024" },
-            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe, 2024" },
-            { value: "$5T", label: "projected agentic commerce revenue by 2030", source: "McKinsey, 2024" },
-          ].map((s) => (
-            <div
-              key={s.value}
-              className="py-5 sm:px-6 sm:py-6 sm:first:pl-0 sm:last:pr-0"
-            >
-              <div className="flex items-baseline gap-2">
-                <span
-                  className="text-[32px] font-bold tracking-tight text-foreground md:text-[40px]"
-                  style={{ lineHeight: 1 }}
-                >
-                  {s.value}
-                </span>
-              </div>
-              <p className="mt-2 text-[13px] leading-snug text-foreground/65 md:text-[14px]">
-                {s.label}
-              </p>
-              <div className="mt-3 flex items-center gap-1.5">
-                <span className="h-px w-4 bg-foreground/20" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/40">
-                  {s.source}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Editorial caption above artifact */}
-        <div className="mt-14 flex items-end justify-between gap-6 md:mt-20">
-          <div className="max-w-[560px]">
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/45">
-              Sample readout · Reorder query
-            </div>
-            <h3 className="mt-2 font-heading text-[22px] leading-tight text-foreground md:text-[30px]">
-              One product. Five retailers. Five different prices the agent never sees.
-            </h3>
-          </div>
-          <div className="hidden shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/50 md:flex">
-            <span className="h-px w-10 bg-foreground/20" />
-            Live comparison
-          </div>
-        </div>
-
-        {/* Asymmetric artifact: product hero + comparison panel */}
-        <div className="mt-6 grid gap-5 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
+        <div className="mt-10 grid gap-5 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
           <ProductPanel />
           <RankingPanel />
         </div>
