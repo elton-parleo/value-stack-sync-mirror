@@ -28,8 +28,8 @@ const CTASection = () => {
                 <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
-              Be visible to every agent.
+            <h2 className="font-display text-[32px] text-foreground md:text-[48px]" style={{ lineHeight: 1.05 }}>
+              Be the brand agents can actually price.
             </h2>
             <p className="mt-3 text-[15px] text-foreground/70 md:text-[17px]" style={{ lineHeight: 1.7 }}>
               Work with the merchants getting ahead of the agentic shift.
@@ -45,11 +45,11 @@ const CTASection = () => {
                 </svg>
               </button>
               <a
-                href="/developers"
+                href="#developers"
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-primary transition-colors hover:bg-primary/[0.08]"
               >
                 For developers
-                <span aria-hidden className="opacity-70">→</span>
+                <span aria-hidden className="opacity-70">↓</span>
               </a>
             </div>
           </motion.div>
