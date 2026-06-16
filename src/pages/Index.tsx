@@ -28,7 +28,6 @@ const Index = () => (
       <HeroSection />
       <SocialProofSection />
       <ProblemSection />
-      <StructuralGapSection />
       <ShareOfAlgorithmSection />
       <FeedSection />
       <DashboardSection />
