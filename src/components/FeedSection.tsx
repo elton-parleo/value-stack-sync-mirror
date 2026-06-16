@@ -1,228 +1,289 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
-import lifestylePortrait from "@/assets/lifestyle-editorial-portrait.jpg";
 
-/* ── Tiny illustrative visuals for each state ── */
+/* ───────────────────────────────────────────────
+   Section C · Architecture
+   Merchant data sources → Parleo API → Agents
+   ─────────────────────────────────────────────── */
 
-const FeedVisual = () => (
-  <div className="mt-4 space-y-1.5">
-    {[
-      { id: "sephora_loyalty_tiers", brand: "Sephora" },
-      { id: "amex_plat_benefits", brand: "Amex" },
-      { id: "target_circle_offers", brand: "Target" },
-    ].map((item, i) => (
-      <motion.div
-        key={item.id}
-        initial={{ opacity: 0, x: -8 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.4 + i * 0.08 }}
-        viewport={{ once: true }}
-        className="flex items-center gap-2 rounded-md bg-secondary/60 px-3 py-2"
-      >
-        <BrandLogo name={item.brand} size={12} />
-        <span className="font-mono text-[10px] text-parleo-muted">{item.id}</span>
-        <span className="ml-auto rounded bg-secondary px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider text-parleo-muted/60">
-          {["offers", "cards", "loyalty"][i]}
-        </span>
-      </motion.div>
-    ))}
-  </div>
-);
+type Source = { brand: string; label: string };
 
-const HabitVisual = () => (
-  <div className="mt-4 rounded-lg border border-primary/10 bg-primary/[0.02] p-3">
-    <div className="flex items-end gap-[3px]">
-      {[18, 24, 20, 32, 28, 38, 42, 36, 44, 48, 40, 52].map((h, i) => (
-        <motion.div
-          key={i}
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          transition={{ delay: 0.5 + i * 0.04, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true }}
-          className="flex-1 origin-bottom rounded-sm bg-primary"
-          style={{ height: h * 0.6, opacity: 0.12 + (i / 12) * 0.25 }}
-        />
-      ))}
-    </div>
-    <div className="mt-2 flex items-center justify-between">
-      <span className="text-[9px] font-medium text-parleo-muted/60">4 weeks ago</span>
-      <div className="flex items-center gap-1">
-        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="text-[9px] font-semibold text-primary">+240% queries</span>
-      </div>
-    </div>
-  </div>
-);
-
-const DirectVisual = () => (
-  <div className="mt-4 space-y-2">
-    {[
-      { rule: "Margin floor", value: "25%", status: "enforced" },
-      { rule: "VIP unlock", value: "Active", status: "live" },
-      { rule: "Attribution", value: "On", status: "tracking" },
-    ].map((r, i) => (
-      <motion.div
-        key={r.rule}
-        initial={{ opacity: 0, x: 8 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5 + i * 0.08 }}
-        viewport={{ once: true }}
-        className="flex items-center justify-between rounded-md border border-primary/10 bg-primary/[0.02] px-3 py-2"
-      >
-        <div className="flex items-center gap-2">
-          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-primary/10">
-            <svg width="8" height="8" viewBox="0 0 10 10">
-              <path d="M2 5l2.5 2.5L8 3" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-          <span className="text-[12px] font-medium text-foreground">{r.rule}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-[11px] font-semibold text-primary">{r.value}</span>
-          <span className="rounded bg-primary/[0.08] px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider text-primary/70">
-            {r.status}
-          </span>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-);
-
-const stages = [
-  {
-    label: "STRUCTURED FEED",
-    color: "text-parleo-muted",
-    borderColor: "border-border",
-    headline: "Your value, structured.",
-    description: "Normalizes SKUs across merchants into canonical objects your agent can reuse across query patterns.",
-    visual: <FeedVisual />,
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--parleo-muted))" strokeWidth="1.5">
-        <path d="M4 11a9 9 0 019-9M4 4a16 16 0 0116 16M6 21a1 1 0 100-2 1 1 0 000 2z" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    label: "AGENT ADOPTION",
-    color: "text-foreground",
-    borderColor: "border-primary/20",
-    headline: "One place to check.",
-    description: "Agents form query habits. A single Parleo call returns comparative value across merchants. Repeat queries compound daily.",
-    visual: <HabitVisual />,
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
-        <path d="M21 12a9 9 0 11-6.219-8.56" strokeLinecap="round" />
-        <path d="M12 7v5l3 3" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    label: "DIRECT CONNECTION",
-    color: "text-primary",
-    borderColor: "border-primary/30",
-    headline: "Shopping-specific semantics.",
-    description: "Cached briefs, review digests, and ranked shortlists so your agent asks smarter questions and gives clearer answers.",
-    visual: <DirectVisual />,
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
-        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" />
-        <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
+const SOURCES_TOP: Source[] = [
+  { brand: "Sephora", label: "Loyalty + tier data" },
+  { brand: "Ulta", label: "Promo + member pricing" },
+  { brand: "Nordstrom", label: "Catalog + SKU graph" },
 ];
 
-const FeedSection = () => (
-  <AnimatedSection id="feed" className="section-grid relative bg-background py-10 md:py-14">
-    <div className="diffusion-glow pointer-events-none absolute left-[15%] top-[40%]" />
-    {/* Subtle editorial background accent */}
-    <div className="pointer-events-none absolute right-0 top-[10%] h-[300px] w-[180px] overflow-hidden opacity-[0.04] blur-[4px] md:h-[500px] md:w-[300px] md:opacity-[0.05]">
-      <img src={lifestylePortrait} alt="" className="h-full w-full object-cover" style={{ filter: 'grayscale(60%)', mixBlendMode: 'multiply' }} />
+const SOURCES_BOTTOM: Source[] = [
+  { brand: "Amex", label: "Card-linked offers" },
+  { brand: "Visa", label: "TAP network" },
+  { brand: "Chase", label: "Statement credits" },
+];
+
+const AGENTS: Source[] = [
+  { brand: "ChatGPT", label: "ChatGPT" },
+  { brand: "Claude", label: "Claude" },
+  { brand: "Perplexity", label: "Perplexity" },
+  { brand: "Google", label: "Gemini" },
+];
+
+const LAYERS = [
+  { id: "01", name: "Unified Product Taxonomy", detail: "SKUs resolved across merchants" },
+  { id: "02", name: "Deal Signals + True Cost", detail: "Loyalty, card, member pricing" },
+  { id: "03", name: "Semantic Intelligence", detail: "Reviews, briefs, ranked shortlists" },
+];
+
+const SourceCard = ({ source, side }: { source: Source; side: "left" | "right" }) => (
+  <motion.div
+    initial={{ opacity: 0, x: side === "left" ? -10 : 10 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true, margin: "-40px" }}
+    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    className="group flex items-center gap-3 rounded-xl border border-border/70 bg-card/60 px-3.5 py-2.5 backdrop-blur-sm transition-colors hover:border-primary/30"
+  >
+    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-background/80">
+      <BrandLogo name={source.brand} size={16} />
+    </span>
+    <div className="min-w-0 flex-1">
+      <div className="truncate text-[12.5px] font-medium leading-tight text-foreground">
+        {source.brand}
+      </div>
+      <div className="truncate font-mono text-[10px] uppercase tracking-[0.12em] text-foreground/45">
+        {source.label}
+      </div>
     </div>
-    
+  </motion.div>
+);
 
-    <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
-      <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-        The directory agents check first.
-      </h2>
+const FlowLine = ({ direction }: { direction: "in" | "out" }) => (
+  <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+    <defs>
+      <linearGradient id={`flow-${direction}`} x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0%" stopColor="hsl(213 99% 50%)" stopOpacity={direction === "in" ? "0" : "0.5"} />
+        <stop offset="50%" stopColor="hsl(213 99% 50%)" stopOpacity="0.35" />
+        <stop offset="100%" stopColor="hsl(213 99% 50%)" stopOpacity={direction === "in" ? "0.5" : "0"} />
+      </linearGradient>
+    </defs>
+  </svg>
+);
 
-      <p className="mt-3 max-w-[640px] text-[17px] leading-[1.7] text-foreground/70">
-        One API call returns normalized products, true-cost deal signals, and semantic context, so your agent skips the 8 to 12 tool calls.
-      </p>
+const FeedSection = () => (
+  <AnimatedSection id="architecture" className="relative bg-background py-24 md:py-32">
+    <div className="mx-auto max-w-content px-6 md:px-20">
+      {/* Eyebrow */}
+      <div className="flex items-center gap-3">
+        <span className="h-px w-8 bg-primary" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
+          The architecture
+        </span>
+      </div>
 
-      {/* Pipeline */}
-      <div className="relative mt-8">
-        <div className="pointer-events-none absolute left-0 right-0 top-[52px] hidden h-px md:block" style={{
-          background: "linear-gradient(90deg, transparent 5%, hsl(var(--primary) / 0.12) 20%, hsl(var(--primary) / 0.2) 50%, hsl(var(--primary) / 0.12) 80%, transparent 95%)"
-        }} />
+      {/* Headline */}
+      <div className="mt-6 grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
+        <h2
+          className="font-heading text-[36px] text-foreground md:text-[60px]"
+          style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
+        >
+          One call.{" "}
+          <span className="text-foreground/45">Every signal an agent needs.</span>
+        </h2>
+        <p className="self-end max-w-[440px] text-[17px] leading-[1.55] text-foreground/65 md:text-[19px]">
+          Parleo collapses 8 to 12 merchant lookups into a single pre-computed
+          response — normalized SKUs, loyalty math, card-linked offers, and
+          semantic context.
+        </p>
+      </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          {stages.map((s, i) => (
+      {/* Diagram */}
+      <div className="relative mt-16 md:mt-20">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.1fr_1fr] md:gap-6 lg:gap-10">
+          {/* LEFT · Data sources */}
+          <div className="flex flex-col">
+            <div className="mb-5 flex items-center justify-between">
+              <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-foreground/50">
+                01 · Sources
+              </span>
+              <span className="font-mono text-[9.5px] tabular-nums text-foreground/35">
+                200+ merchants
+              </span>
+            </div>
+            <div className="space-y-2.5">
+              {SOURCES_TOP.map((s) => (
+                <SourceCard key={s.brand} source={s} side="left" />
+              ))}
+              <div className="flex items-center gap-3 px-1 py-1.5">
+                <span className="h-px flex-1 bg-border/60" />
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-foreground/35">
+                  Cards + networks
+                </span>
+                <span className="h-px flex-1 bg-border/60" />
+              </div>
+              {SOURCES_BOTTOM.map((s) => (
+                <SourceCard key={s.brand} source={s} side="left" />
+              ))}
+            </div>
+          </div>
+
+          {/* CENTER · Parleo core */}
+          <div className="relative flex flex-col">
+            <div className="mb-5 flex items-center justify-between">
+              <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-primary">
+                02 · Parleo API
+              </span>
+              <span className="flex items-center gap-1.5 font-mono text-[9.5px] uppercase tracking-[0.16em] text-foreground/45">
+                <span className="relative inline-flex h-1.5 w-1.5">
+                  <span className="absolute inset-0 rounded-full bg-primary opacity-50 animate-ping" />
+                  <span className="relative inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                </span>
+                Live
+              </span>
+            </div>
+
             <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] }}
-              viewport={{ once: true }}
-              className={`group relative rounded-xl border ${s.borderColor} bg-card p-5 transition-all duration-300 hover:border-primary/20 hover:shadow-card-hover`}
-              style={{ boxShadow: "var(--shadow-card)" }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="relative overflow-hidden rounded-2xl border border-transparent bg-[#1E1E2E] p-5 md:p-6"
+              style={{ boxShadow: "var(--shadow-elevated)" }}
             >
-              <div className="pointer-events-none absolute -top-[5px] left-1/2 hidden h-[10px] w-[10px] -translate-x-1/2 rounded-full border-2 border-card md:block" style={{
-                background: i === 2 ? "hsl(var(--primary))" : i === 1 ? "hsl(var(--primary) / 0.4)" : "hsl(var(--parleo-muted) / 0.3)",
-              }} />
+              {/* Soft glow */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full"
+                style={{ background: "radial-gradient(circle, hsl(213 99% 50% / 0.18), transparent 60%)" }}
+              />
 
-              <div className="flex items-center justify-between">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/[0.06] transition-colors duration-300 group-hover:bg-primary/[0.1]">
-                  {s.icon}
-                </div>
-                <span className="text-[32px] font-extrabold text-primary/[0.06]">
-                  {String(i + 1).padStart(2, "0")}
+              {/* Endpoint header */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <code className="font-mono text-[11.5px] text-white/80">
+                  <span className="text-primary">POST</span>{" "}
+                  /v1/intel
+                </code>
+                <span className="font-mono text-[10px] tabular-nums text-white/45">
+                  ~42ms
                 </span>
               </div>
 
-              <span className={`mt-3 block font-label ${s.color}`}>{s.label}</span>
-              <h3 className="mt-1.5 text-[16px] font-semibold text-foreground">{s.headline}</h3>
-              <p className="mt-1.5 text-[14px] leading-[1.6] text-foreground/70">{s.description}</p>
+              {/* Layers */}
+              <ul className="mt-4 space-y-3">
+                {LAYERS.map((l, i) => (
+                  <motion.li
+                    key={l.id}
+                    initial={{ opacity: 0, x: -6 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
+                    className="flex items-start gap-3 rounded-lg border border-white/[0.06] bg-white/[0.025] p-3"
+                  >
+                    <span className="mt-[1px] font-mono text-[10px] tabular-nums text-primary">
+                      {l.id}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[13px] font-medium leading-snug text-white">
+                        {l.name}
+                      </div>
+                      <div className="mt-0.5 text-[11.5px] leading-snug text-white/55">
+                        {l.detail}
+                      </div>
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
 
-              {s.visual}
-
-              <div className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-primary/20 transition-all duration-500 group-hover:w-1/2" />
+              {/* Spec strip */}
+              <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/10 pt-4">
+                {[
+                  { k: "Tokens", v: "~2K" },
+                  { k: "Latency", v: "<50ms" },
+                  { k: "PII", v: "Zero" },
+                ].map((m) => (
+                  <div key={m.k} className="text-center">
+                    <div className="font-mono text-[8.5px] uppercase tracking-[0.18em] text-white/40">
+                      {m.k}
+                    </div>
+                    <div className="mt-1 font-mono text-[12px] tabular-nums text-white">
+                      {m.v}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
-          ))}
+
+            {/* Caption under core */}
+            <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/40">
+              Pre-computed · Hourly refresh
+            </p>
+          </div>
+
+          {/* RIGHT · Agents */}
+          <div className="flex flex-col">
+            <div className="mb-5 flex items-center justify-between">
+              <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-foreground/50">
+                03 · Agents
+              </span>
+              <span className="font-mono text-[9.5px] tabular-nums text-foreground/35">
+                MCP · ACP · OpenAPI
+              </span>
+            </div>
+            <div className="space-y-2.5">
+              {AGENTS.map((s) => (
+                <SourceCard key={s.brand} source={s} side="right" />
+              ))}
+              <div className="mt-3 rounded-xl border border-primary/20 bg-primary/[0.04] px-3.5 py-3">
+                <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-primary">
+                  Result
+                </div>
+                <div className="mt-1 text-[12.5px] leading-snug text-foreground/80">
+                  Agent recommends with true cost, not sticker price.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Connector lines (desktop only) */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="conn-l" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stopColor="hsl(213 99% 50%)" stopOpacity="0" />
+              <stop offset="100%" stopColor="hsl(213 99% 50%)" stopOpacity="0.35" />
+            </linearGradient>
+            <linearGradient id="conn-r" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stopColor="hsl(213 99% 50%)" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="hsl(213 99% 50%)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
 
-      {/* Metrics strip */}
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12px] text-parleo-muted">
-        <span>60% fewer tokens than direct crawling</span>
-        <span className="hidden sm:inline">·</span>
-        <span>Hourly refresh</span>
-        <span className="hidden sm:inline">·</span>
-        <span>Sub-50ms response</span>
-      </div>
-
-      {/* CTAs */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a
-          href="/demo"
-          className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-5 text-[13.5px] font-medium text-background transition-colors hover:bg-foreground/85"
-        >
-          See how it works
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-60 transition-transform group-hover:translate-x-0.5">
-            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
-        <a
-          href="/developers"
-          className="inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[13.5px] font-medium text-primary transition-colors hover:bg-primary/[0.08]"
-        >
-          Read the docs
-          <span aria-hidden className="opacity-70">→</span>
-        </a>
-      </div>
+      {/* Footer insight bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mt-12 flex flex-col gap-3 rounded-2xl border border-border/60 bg-card/40 px-6 py-5 md:flex-row md:items-center md:gap-6 md:px-7"
+      >
+        <div className="flex items-center gap-3 md:shrink-0">
+          <span className="h-6 w-[3px] rounded-full bg-primary" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
+            The result
+          </span>
+        </div>
+        <p className="text-[14.5px] leading-snug text-foreground/75 md:text-[15.5px]">
+          Agents stop guessing on sticker price.{" "}
+          <span className="font-semibold text-foreground">
+            One call returns the offer your customer actually qualifies for
+          </span>
+          , with sub-50ms latency and zero PII.
+        </p>
+      </motion.div>
     </div>
   </AnimatedSection>
 );
