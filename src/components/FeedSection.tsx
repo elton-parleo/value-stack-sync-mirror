@@ -90,7 +90,7 @@ const FeedSection = () => (
         </h2>
         <p className="self-end max-w-[440px] text-[17px] leading-[1.55] text-foreground/65 md:text-[19px]">
           Parleo collapses 8 to 12 merchant lookups into a single pre-computed
-          response — normalized SKUs, loyalty math, card-linked offers, and
+          response: normalized SKUs, loyalty math, card-linked offers, and
           semantic context.
         </p>
       </div>
