@@ -14,8 +14,21 @@ const CTASection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-3xl bg-code-bg px-8 py-14 md:px-16 md:py-20"
+          className="atmos-cool-dark relative overflow-hidden rounded-3xl bg-code-bg px-8 py-14 md:px-16 md:py-20"
         >
+          {/* faint dot texture — architectural, not decorative */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.06]"
+            style={{
+              backgroundImage:
+                "radial-gradient(hsl(0 0% 100%) 1px, transparent 1px)",
+              backgroundSize: "22px 22px",
+              maskImage:
+                "radial-gradient(80% 70% at 50% 40%, #000 0%, transparent 75%)",
+              WebkitMaskImage:
+                "radial-gradient(80% 70% at 50% 40%, #000 0%, transparent 75%)",
+            }}
+          />
           <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
             <div>
               <h2 className="section-heading section-heading-dark">
