@@ -3,158 +3,103 @@ import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
 import lifestyleFragrance from "@/assets/lifestyle-fragrance.jpg";
 import lifestyleFashion from "@/assets/lifestyle-fashion.jpg";
 import lifestyleTech from "@/assets/lifestyle-tech.jpg";
-import lifestyleVanity from "@/assets/lifestyle-vanity.jpg";
 
-type Tile = {
-  src: string;
-  alt: string;
-  label: string;
-  index: string;
-  /** desktop column span out of 12 */
-  col: string;
-  /** desktop height */
-  h: string;
-  /** desktop vertical offset for editorial rhythm */
-  offset?: string;
-  ratio: string;
-};
-
-const tiles: Tile[] = [
-  {
-    src: lifestyleSkincare,
-    alt: "Editorial skincare bottles on stone with directional sunlight",
-    label: "Skincare",
-    index: "01",
-    col: "md:col-span-3",
-    h: "h-[220px] md:h-[300px]",
-    offset: "md:mt-10",
-    ratio: "aspect-[4/5]",
-  },
-  {
-    src: lifestyleFragrance,
-    alt: "Fragrance still life, warm side light",
-    label: "Fragrance",
-    index: "02",
-    col: "md:col-span-5",
-    h: "h-[240px] md:h-[360px]",
-    ratio: "aspect-[16/10]",
-  },
-  {
-    src: lifestyleFashion,
-    alt: "Cropped editorial fashion detail in a neutral coat",
-    label: "Apparel",
-    index: "03",
-    col: "md:col-span-2",
-    h: "h-[200px] md:h-[260px]",
-    offset: "md:mt-16",
-    ratio: "aspect-[3/4]",
-  },
-  {
-    src: lifestyleTech,
-    alt: "Consumer technology accessories on a warm desk surface",
-    label: "Electronics",
-    index: "04",
-    col: "md:col-span-2",
-    h: "h-[180px] md:h-[220px]",
-    offset: "md:mt-4",
-    ratio: "aspect-square",
-  },
+/**
+ * Editorial backdrop band. Images are layered into the background of a
+ * full-bleed section, faded into the page color via radial + linear masks,
+ * never floating as cards. The whole band sits behind a quiet headline.
+ */
+const tiles = [
+  { src: lifestyleSkincare, alt: "", area: "left", className: "left-[-4%] top-[8%] w-[28%]" },
+  { src: lifestyleFragrance, alt: "", area: "center", className: "left-[28%] top-0 w-[42%]" },
+  { src: lifestyleFashion, alt: "", area: "right-1", className: "right-[10%] top-[14%] w-[18%]" },
+  { src: lifestyleTech, alt: "", area: "right-2", className: "right-[-4%] top-[6%] w-[20%]" },
 ];
 
 const LifestyleStripSection = () => (
   <section
-    aria-label="Parleo commerce context"
-    className="relative overflow-hidden bg-background py-16 md:py-24"
+    aria-label="Parleo commerce verticals"
+    className="relative overflow-hidden bg-background"
   >
-    {/* faded mega background image, layered behind everything */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 -z-0"
-      style={{
-        backgroundImage: `url(${lifestyleVanity})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center 30%",
-        opacity: 0.08,
-        filter: "grayscale(40%) contrast(1.05)",
-        maskImage:
-          "radial-gradient(80% 60% at 50% 40%, #000 0%, transparent 78%)",
-        WebkitMaskImage:
-          "radial-gradient(80% 60% at 50% 40%, #000 0%, transparent 78%)",
-      }}
-    />
-
-    <div className="relative mx-auto max-w-content px-6 md:px-20">
-      {/* eyebrow */}
-      <div className="mb-8 flex items-baseline gap-4 md:mb-10">
-        <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/40">
-          FIG. 02 / VERTICALS
-        </span>
-        <span className="h-px flex-1 bg-border" />
-        <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/40">
-          BEAUTY · FRAGRANCE · APPAREL · ELECTRONICS
-        </span>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-5"
-      >
-        {tiles.map((t, i) => (
-          <motion.figure
-            key={t.alt}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{
-              duration: 0.7,
-              delay: i * 0.08,
-              ease: [0.22, 1, 0.36, 1],
+    {/* full-bleed editorial backdrop, 320px tall on mobile / 460px on desktop */}
+    <div className="relative h-[280px] w-full md:h-[440px]">
+      {tiles.map((t, i) => (
+        <motion.div
+          key={i}
+          aria-hidden
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 1.1, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          className={`absolute hidden md:block ${t.className}`}
+          style={{ height: "100%" }}
+        >
+          <img
+            src={t.src}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+            style={{
+              opacity: 0.42,
+              filter: "grayscale(35%) contrast(1.02) saturate(0.85)",
+              mixBlendMode: "multiply",
+              maskImage:
+                "radial-gradient(60% 60% at 50% 50%, #000 0%, transparent 78%)",
+              WebkitMaskImage:
+                "radial-gradient(60% 60% at 50% 50%, #000 0%, transparent 78%)",
             }}
-            className={`group relative ${t.col} ${t.offset ?? ""}`}
-          >
-            <div
-              className={`relative overflow-hidden rounded-lg border border-border/70 bg-secondary/50 ${t.h}`}
-            >
-              <img
-                src={t.src}
-                alt={t.alt}
-                loading="lazy"
-                className="h-full w-full object-cover transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-                style={{
-                  filter: "grayscale(30%) contrast(1.04) saturate(0.85)",
-                }}
-              />
-              {/* color restoration on hover */}
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100"
-                style={{
-                  backgroundImage: `url(${t.src})`,
-                  filter: "contrast(1.05) saturate(1)",
-                }}
-              />
-              {/* warm bottom wash */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-foreground/30 via-foreground/0 to-transparent opacity-60"
-              />
-              {/* label badge */}
-              <figcaption className="absolute bottom-3 left-3 flex items-center gap-2 text-background">
-                <span className="font-mono text-[10px] tracking-[0.18em] opacity-70">
-                  {t.index}
-                </span>
-                <span className="h-px w-4 bg-background/40" />
-                <span className="text-[12px] font-medium tracking-tight">
-                  {t.label}
-                </span>
-              </figcaption>
-            </div>
-          </motion.figure>
-        ))}
-      </motion.div>
+          />
+        </motion.div>
+      ))}
+
+      {/* mobile: single soft backdrop image, center-blended */}
+      <div
+        aria-hidden
+        className="absolute inset-0 md:hidden"
+        style={{
+          backgroundImage: `url(${lifestyleFragrance})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.32,
+          filter: "grayscale(35%) contrast(1.02) saturate(0.85)",
+          mixBlendMode: "multiply",
+          maskImage:
+            "radial-gradient(70% 70% at 50% 50%, #000 0%, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(70% 70% at 50% 50%, #000 0%, transparent 80%)",
+        }}
+      />
+
+      {/* vertical fade-to-bg top/bottom so the band reads as continuous */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 18%, transparent 82%, hsl(var(--background)) 100%)",
+        }}
+      />
+
+      {/* warm-cool subtle wash, restoring the blue light burn */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(45% 50% at 78% 30%, hsl(213 99% 50% / 0.07) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* eyebrow + headline floats inside */}
+      <div className="relative z-10 mx-auto flex h-full max-w-content flex-col justify-center px-6 md:px-20">
+        <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/45">
+          VERTICALS — BEAUTY · FRAGRANCE · APPAREL · ELECTRONICS
+        </span>
+        <h2 className="mt-3 max-w-[640px] font-display text-[26px] leading-[1.1] tracking-[-0.02em] text-foreground md:text-[40px]">
+          The product worlds agents now shop on your behalf.
+        </h2>
+      </div>
     </div>
   </section>
 );

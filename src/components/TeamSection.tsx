@@ -131,8 +131,17 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 );
 
 const TeamSection = () => (
-  <AnimatedSection id="team" className="atmos-warm relative bg-background py-20 md:py-28">
-    <div className="mx-auto max-w-content px-6 md:px-20">
+  <AnimatedSection id="team" className="relative overflow-hidden bg-background py-16 md:py-20">
+    {/* subtle blue light burn */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(40% 50% at 92% 12%, hsl(213 99% 50% / 0.06) 0%, transparent 70%)",
+      }}
+    />
+    <div className="relative mx-auto max-w-content px-6 md:px-20">
       {/* eyebrow */}
       <div className="mb-6 flex items-baseline gap-4">
         <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/40">
