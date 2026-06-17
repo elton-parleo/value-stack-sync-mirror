@@ -28,7 +28,7 @@ const IntegrationSection = () => (
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
-          <h2 className="font-display text-[44px] text-foreground md:text-[72px]" style={{ lineHeight: 0.98 }}>
+          <h2 className="font-display text-[36px] text-foreground md:text-[52px]" style={{ lineHeight: 0.98 }}>
             Ships on every protocol that matters.
           </h2>
           <p className="mt-5 max-w-[520px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">

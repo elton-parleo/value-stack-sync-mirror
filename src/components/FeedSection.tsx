@@ -74,7 +74,7 @@ const FeedSection = () => (
       {/* Header */}
       <div className="max-w-3xl">
         <h2
-          className="font-display text-[44px] text-foreground md:text-[72px]"
+          className="font-display text-[36px] text-foreground md:text-[52px]"
           style={{ lineHeight: 0.98 }}
         >
           One call. Every signal an agent needs.

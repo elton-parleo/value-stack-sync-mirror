@@ -100,7 +100,7 @@ const ShareOfAlgorithmSection = () => {
     <AnimatedSection id="share-of-algorithm" className="relative bg-background py-16 md:py-24">
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
-          <h2 className="font-display text-[44px] text-foreground md:text-[72px]" style={{ lineHeight: 0.98 }}>
+          <h2 className="font-display text-[36px] text-foreground md:text-[52px]" style={{ lineHeight: 0.98 }}>
             The new shelf is decided by <span className="text-primary">agents.</span>
           </h2>
           <p className="mt-5 max-w-[600px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
@@ -139,20 +139,22 @@ const ShareOfAlgorithmSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.15 + i * 0.12, duration: 0.4 }}
-                    className="flex flex-col items-start"
+                    className="group flex cursor-default flex-col items-start"
                   >
-                    <div
-                      className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 ${
+                    <motion.div
+                      whileHover={{ scale: 1.08, y: -2 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                      className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 transition-colors ${
                         era.active
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border bg-card text-foreground/45"
+                          ? "border-primary bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_hsl(213_99%_50%/0.5)]"
+                          : "border-border bg-card text-foreground/45 group-hover:border-foreground/40 group-hover:text-foreground/80"
                       }`}
                     >
                       {era.glyph}
-                    </div>
+                    </motion.div>
                     <div className="mt-4 font-mono text-[11px] tabular-nums text-foreground/45">{era.year}</div>
                     <div
-                      className={`mt-1 text-[15px] font-semibold ${era.active ? "text-foreground" : "text-foreground/70"}`}
+                      className={`mt-1 text-[15px] font-semibold transition-colors ${era.active ? "text-foreground" : "text-foreground/70 group-hover:text-foreground"}`}
                     >
                       {era.caption}
                     </div>
@@ -171,11 +173,11 @@ const ShareOfAlgorithmSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="grid grid-cols-1 items-center gap-6 px-6 py-7 md:grid-cols-[80px_1fr_280px_140px] md:px-10 md:py-8"
+                className="group grid cursor-default grid-cols-1 items-center gap-6 px-6 py-7 transition-colors hover:bg-secondary/40 md:grid-cols-[80px_1fr_280px_140px] md:px-10 md:py-8"
               >
                 <div className="flex items-center gap-4 md:block">
                   <div className="font-mono text-[12px] tabular-nums text-foreground/40">{p.n}</div>
-                  <div className="mt-0 flex h-11 w-11 items-center justify-center rounded-xl bg-secondary/60 text-foreground/55 md:mt-3">
+                  <div className="mt-0 flex h-11 w-11 items-center justify-center rounded-xl bg-secondary/60 text-foreground/55 transition-all group-hover:bg-foreground/10 group-hover:text-foreground md:mt-3">
                     <p.icon className="h-5 w-5" strokeWidth={1.6} />
                   </div>
                 </div>
@@ -259,7 +261,8 @@ const ShareOfAlgorithmSection = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 + i * 0.08, duration: 0.4 }}
-                      className="rounded-2xl border border-background/10 bg-background/[0.035] p-5"
+                      whileHover={{ y: -3, borderColor: "hsl(213 99% 50% / 0.4)" }}
+                      className="cursor-default rounded-2xl border border-background/10 bg-background/[0.035] p-5 transition-colors hover:bg-background/[0.06]"
                     >
                       <div className="flex items-baseline justify-between">
                         <div className="font-mono text-[11px] tabular-nums text-primary">{d.n}</div>

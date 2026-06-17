@@ -449,7 +449,7 @@ const ProblemSection = () => {
     >
       <div className="mx-auto max-w-content px-6 md:px-20">
         <h2
-          className="max-w-[18ch] font-display text-[44px] text-foreground md:text-[72px]"
+          className="max-w-[18ch] font-display text-[36px] text-foreground md:text-[52px]"
           style={{ lineHeight: 0.98 }}
         >
           Your customers are shopping through agents.{" "}
