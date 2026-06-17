@@ -40,20 +40,10 @@ const CTASection = () => {
           <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
             <div>
               <h2
-                className="font-display text-[40px] font-medium text-white md:text-[64px]"
-                style={{ lineHeight: 1.02, letterSpacing: "-0.025em" }}
+                className="font-display text-[44px] font-medium text-white md:text-[72px]"
+                style={{ lineHeight: 0.98 }}
               >
-                Be the answer{" "}
-                <em
-                  className="font-serif italic text-primary"
-                  style={{
-                    fontFamily:
-                      "'Instrument Serif', 'Cormorant Garamond', Georgia, serif",
-                  }}
-                >
-                  agents recommend
-                </em>
-                .
+                Be the answer agents recommend.
               </h2>
               <p className="mt-5 max-w-[520px] text-[16px] leading-[1.65] text-white/65 md:text-[17px]">
                 Working with a small group of merchants and infra teams setting the defaults for agentic commerce.

@@ -95,25 +95,18 @@ const DashboardSection = () => {
   const ref = useRef(null);
 
   return (
-    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-20" ref={ref}>
-      {/* Ambient blue glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-32 left-1/2 h-[520px] w-[820px] -translate-x-1/2"
-        style={{ background: "radial-gradient(ellipse at center, hsl(213 99% 50% / 0.08), transparent 60%)" }}
-      />
-
+    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-24" ref={ref}>
       <div className="relative mx-auto max-w-content px-6 md:px-20">
         {/* Headline */}
         <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
           <h2
-            className="font-heading text-[36px] text-foreground md:text-[60px]"
-            style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
+            className="font-display text-[44px] text-foreground md:text-[72px]"
+            style={{ lineHeight: 0.98 }}
           >
             Your agent channel,{" "}
             <span className="text-foreground/45">in one console.</span>
           </h2>
-          <p className="self-end max-w-[440px] text-[17px] leading-[1.55] text-foreground/65 md:text-[19px]">
+          <p className="self-end max-w-[460px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
             Score how agents rank you, see the margin they cannot, and set the
             rules your offers play by.
           </p>
