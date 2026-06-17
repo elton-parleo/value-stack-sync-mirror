@@ -270,9 +270,9 @@ const ShareOfAlgorithmSection = () => {
                     <div className="mt-2 text-[26px] font-semibold leading-tight text-background md:text-[30px]">
                       True Value
                     </div>
-                    <div className="mt-2 max-w-[440px] text-[14px] leading-[1.55] text-background/60">
-                      The real offer after loyalty tier, card rules, member pricing, and stacked incentives resolve.
-                    </div>
+                    <h3 className="mt-2 max-w-[440px] text-[14px] leading-[1.55] text-background/60">
+                      True Value of your product.{"\n"}Invisible to agents.
+                    </h3>
                   </div>
                   <div>
                     <div className="mb-2 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-background/55">
@@ -286,7 +286,7 @@ const ShareOfAlgorithmSection = () => {
                   </div>
                   <div className="flex md:justify-end">
                     <div className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-[12px] font-semibold text-primary-foreground">
-                      Owned by Parleo
+                      Parleo
                     </div>
                   </div>
                 </div>
