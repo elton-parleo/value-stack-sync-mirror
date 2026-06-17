@@ -15,6 +15,12 @@ import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
+const Divider = () => (
+  <div className="mx-auto max-w-content px-6 md:px-20">
+    <div className="section-divider" />
+  </div>
+);
+
 const Index = () => (
   <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
     <Helmet>
@@ -30,13 +36,17 @@ const Index = () => (
       <HeroSection />
       <SocialProofSection />
       <LifestyleStripSection />
+      <Divider />
       <ProblemSection />
-      
+      <Divider />
       <ShareOfAlgorithmSection />
       <EditorialBreakSection />
+      <Divider />
       <DashboardSection />
       <FeedSection />
+      <Divider />
       <IntegrationSection />
+      <Divider />
       <TeamSection />
       <CTASection />
     </main>
@@ -45,4 +55,3 @@ const Index = () => (
 );
 
 export default Index;
-
