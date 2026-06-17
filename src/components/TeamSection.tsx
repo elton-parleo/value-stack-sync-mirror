@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import landorLogo from "@/assets/logos/landor.png";
 import wppLogo from "@/assets/logos/wpp.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer.png";
 import nikeLogo from "@/assets/logos/nike.png";
-import xboxLogo from "@/assets/logos/xbox.png";
+import metamapLogo from "@/assets/logos/metamap.png";
 import rakutenLogo from "@/assets/logos/rakuten.png";
 import grouponLogo from "@/assets/logos/groupon.png";
 import alphaflowLogo from "@/assets/logos/alphaflow.png";
@@ -13,37 +13,28 @@ type Founder = {
   role: string;
   name: string;
   bio: string;
-  bullets: string[];
+  linkedinUrl: string;
   logos: { name: string; src: string }[];
 };
 
 const team: Founder[] = [
   {
-    role: "Co-Founder & CEO",
+    role: "Co-Founder · Commercial Strategy",
     name: "Samar Birwadker",
-    bio: "Brand strategist turned founder. Builds at the seam of brand, growth, and infrastructure.",
-    bullets: [
-      "3x founder, 2x exits (SaaS, Fintech)",
-      "VP Growth + advisor to 10+ commerce startups",
-      "Brand strategy at WPP / AKQA for Nike, Xbox, CPG",
-    ],
+    bio: "Founded Good&Co (acq. Axel Springer, 25M ARR). VP Marketing at MetaMap. Brand & growth at WPP/AKQA for Nike, Xbox, Google.",
+    linkedinUrl: "https://www.linkedin.com/in/samarbirwadker/",
     logos: [
-      { name: "Landor", src: landorLogo },
-      { name: "WPP", src: wppLogo },
       { name: "Axel Springer", src: axelSpringerLogo },
+      { name: "WPP", src: wppLogo },
       { name: "Nike", src: nikeLogo },
-      { name: "Xbox", src: xboxLogo },
+      { name: "MetaMap", src: metamapLogo },
     ],
   },
   {
-    role: "Co-Founder & CTO",
+    role: "Co-Founder · Protocol Architecture",
     name: "Elton Cheung",
-    bio: "Two decades shipping marketplace and loyalty infrastructure at scale.",
-    bullets: [
-      "20 years building commerce infrastructure",
-      "Head of Product + Engineering at Rakuten Marketing",
-      "5 years at Groupon: marketplace + loyalty infra",
-    ],
+    bio: "Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
+    linkedinUrl: "https://www.linkedin.com/in/eltoncheung/",
     logos: [
       { name: "Rakuten", src: rakutenLogo },
       { name: "Groupon", src: grouponLogo },
