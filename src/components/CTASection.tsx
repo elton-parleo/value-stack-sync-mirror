@@ -39,15 +39,6 @@ const CTASection = () => {
 
           <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
             <div>
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-primary/60" />
-                  <span className="relative h-2 w-2 rounded-full bg-primary" />
-                </span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/55">
-                  Onboarding cohort · Q2 2026
-                </span>
-              </div>
               <h2
                 className="mt-6 font-display text-[40px] font-medium text-white md:text-[64px]"
                 style={{ lineHeight: 1.02, letterSpacing: "-0.025em" }}
