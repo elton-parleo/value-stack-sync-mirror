@@ -95,7 +95,7 @@ const DashboardSection = () => {
   const ref = useRef(null);
 
   return (
-    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-24 md:py-32" ref={ref}>
+    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-20" ref={ref}>
       {/* Ambient blue glow */}
       <div
         aria-hidden
@@ -104,16 +104,8 @@ const DashboardSection = () => {
       />
 
       <div className="relative mx-auto max-w-content px-6 md:px-20">
-        {/* Eyebrow */}
-        <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-primary" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-            The console
-          </span>
-        </div>
-
         {/* Headline */}
-        <div className="mt-6 grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
+        <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
           <h2
             className="font-heading text-[36px] text-foreground md:text-[60px]"
             style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
