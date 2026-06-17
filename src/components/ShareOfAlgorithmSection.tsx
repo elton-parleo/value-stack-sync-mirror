@@ -145,7 +145,7 @@ const ShareOfAlgorithmSection = () => {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute left-0 top-[26px] h-px bg-primary"
               />
-              <div className="relative grid grid-cols-4 gap-4">
+              <div className="relative grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
                 {eras.map((era, i) => (
                   <motion.button
                     key={era.key}
@@ -158,7 +158,12 @@ const ShareOfAlgorithmSection = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.15 + i * 0.12, duration: 0.4 }}
                     aria-pressed={activeEra === i}
-                    className="group flex cursor-pointer flex-col items-start text-left focus:outline-none"
+                    aria-label={`Show ${era.caption}`}
+                    className={`group flex cursor-pointer flex-col items-start rounded-2xl border p-3 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 md:p-4 ${
+                      activeEra === i
+                        ? "border-primary bg-card shadow-[0_14px_32px_-24px_hsl(var(--primary))]"
+                        : "border-border bg-card/60 hover:border-primary/45 hover:bg-card"
+                    }`}
                   >
                     <motion.div
                       animate={activeEra === i ? { scale: 1.06 } : { scale: 1 }}
@@ -186,19 +191,21 @@ const ShareOfAlgorithmSection = () => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
-              className="mt-8 grid gap-3 rounded-2xl border border-border bg-card p-5 md:grid-cols-[1fr_180px_180px] md:items-center"
+              className={`mt-8 grid gap-3 rounded-2xl border p-5 transition-colors md:grid-cols-[1fr_180px_180px] md:items-center ${
+                era.key === "algorithm" ? "border-primary/35 bg-code-bg" : "border-border bg-card"
+              }`}
             >
               <div>
-                <div className="text-[18px] font-semibold leading-tight text-foreground">{era.title}</div>
-                <p className="mt-1 text-[14px] leading-[1.45] text-foreground/60">{era.readout}</p>
+                <div className={`text-[18px] font-semibold leading-tight ${era.key === "algorithm" ? "text-background" : "text-foreground"}`}>{era.title}</div>
+                <p className={`mt-1 text-[14px] leading-[1.45] ${era.key === "algorithm" ? "text-background/60" : "text-foreground/60"}`}>{era.readout}</p>
               </div>
-              <div className="border-t border-border pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0">
-                <div className="font-mono text-[10px] text-foreground/40">Signal</div>
-                <div className="mt-1 text-[13px] font-medium text-foreground/80">{era.signal}</div>
+              <div className={`border-t pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 ${era.key === "algorithm" ? "border-background/15" : "border-border"}`}>
+                <div className={`font-mono text-[10px] ${era.key === "algorithm" ? "text-background/40" : "text-foreground/40"}`}>Signal</div>
+                <div className={`mt-1 text-[13px] font-medium ${era.key === "algorithm" ? "text-background/80" : "text-foreground/80"}`}>{era.signal}</div>
               </div>
-              <div className="border-t border-border pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0">
-                <div className="font-mono text-[10px] text-foreground/40">Ranking basis</div>
-                <div className="mt-1 text-[13px] font-medium text-foreground/80">{era.rank}</div>
+              <div className={`border-t pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 ${era.key === "algorithm" ? "border-background/15" : "border-border"}`}>
+                <div className={`font-mono text-[10px] ${era.key === "algorithm" ? "text-background/40" : "text-foreground/40"}`}>Ranking basis</div>
+                <div className={`mt-1 text-[13px] font-medium ${era.key === "algorithm" ? "text-background/80" : "text-foreground/80"}`}>{era.rank}</div>
               </div>
             </motion.div>
           </div>

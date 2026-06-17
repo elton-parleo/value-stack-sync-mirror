@@ -1,53 +1,44 @@
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import landorLogo from "@/assets/logos/landor.png";
-import wppLogo from "@/assets/logos/wpp.png";
-import axelSpringerLogo from "@/assets/logos/axel-springer.png";
-import nikeLogo from "@/assets/logos/nike.png";
-import xboxLogo from "@/assets/logos/xbox.png";
-import rakutenLogo from "@/assets/logos/rakuten.png";
-import grouponLogo from "@/assets/logos/groupon.png";
-import alphaflowLogo from "@/assets/logos/alphaflow.png";
+import wppLogo from "@/assets/logos/wpp-tight.png";
+import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
+import nikeLogo from "@/assets/logos/nike-tight.png";
+import metamapLogo from "@/assets/logos/metamap-tight.png";
+import rakutenLogo from "@/assets/logos/rakuten-tight.png";
+import grouponLogo from "@/assets/logos/groupon-tight.png";
+import alphaflowLogo from "@/assets/logos/alphaflow-tight.png";
 
 type Founder = {
   role: string;
   name: string;
   bio: string;
-  bullets: string[];
-  logos: { name: string; src: string }[];
+  linkedinUrl: string;
+  logos: { name: string; src: string; widthClass: string }[];
 };
 
 const team: Founder[] = [
   {
-    role: "Co-Founder & CEO",
+    role: "Co-Founder · Commercial Strategy",
     name: "Samar Birwadker",
-    bio: "Brand strategist turned founder. Builds at the seam of brand, growth, and infrastructure.",
-    bullets: [
-      "3x founder, 2x exits (SaaS, Fintech)",
-      "VP Growth + advisor to 10+ commerce startups",
-      "Brand strategy at WPP / AKQA for Nike, Xbox, CPG",
-    ],
+    bio: "Founded Good&Co (acq. Axel Springer, 25M ARR). VP Marketing at MetaMap. Brand & growth at WPP/AKQA for Nike, Xbox, Google.",
+    linkedinUrl: "https://www.linkedin.com/in/samarbirwadker/",
     logos: [
-      { name: "Landor", src: landorLogo },
-      { name: "WPP", src: wppLogo },
-      { name: "Axel Springer", src: axelSpringerLogo },
-      { name: "Nike", src: nikeLogo },
-      { name: "Xbox", src: xboxLogo },
+      { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[98px]" },
+      { name: "WPP", src: wppLogo, widthClass: "w-[92px]" },
+      { name: "Nike", src: nikeLogo, widthClass: "w-[56px]" },
+      { name: "MetaMap", src: metamapLogo, widthClass: "w-[86px]" },
     ],
   },
   {
-    role: "Co-Founder & CTO",
+    role: "Co-Founder · Protocol Architecture",
     name: "Elton Cheung",
-    bio: "Two decades shipping marketplace and loyalty infrastructure at scale.",
-    bullets: [
-      "20 years building commerce infrastructure",
-      "Head of Product + Engineering at Rakuten Marketing",
-      "5 years at Groupon: marketplace + loyalty infra",
-    ],
+    bio: "Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
+    linkedinUrl: "https://www.linkedin.com/in/eltoncheung/",
     logos: [
-      { name: "Rakuten", src: rakutenLogo },
-      { name: "Groupon", src: grouponLogo },
-      { name: "AlphaFlow", src: alphaflowLogo },
+      { name: "Rakuten", src: rakutenLogo, widthClass: "w-[90px]" },
+      { name: "Groupon", src: grouponLogo, widthClass: "w-[96px]" },
+      { name: "AlphaFlow", src: alphaflowLogo, widthClass: "w-[82px]" },
     ],
   },
 ];
@@ -58,43 +49,38 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     viewport={{ once: true, margin: "-60px" }}
-    className="group flex flex-col rounded-2xl border border-border/70 bg-card p-6 text-foreground md:p-8"
+    className="flex min-h-[330px] flex-col rounded-[18px] border border-border bg-card p-7 text-foreground md:min-h-[360px] md:p-9 lg:min-h-[492px] lg:p-12"
     style={{ boxShadow: "var(--shadow-card)" }}
   >
-    <p className="text-[14px] font-medium text-primary">{f.role}</p>
-    <h3
-      className="mt-3 font-display text-[30px] text-foreground md:text-[36px]"
-      style={{ lineHeight: 1.1 }}
-    >
+    <h3 className="font-display text-[24px] font-semibold leading-none text-foreground md:text-[28px]">
       {f.name}
     </h3>
-    <p className="mt-4 border-t border-border pt-4 text-[16px] leading-[1.5] text-foreground/65">{f.bio}</p>
-
-    {/* Bullets */}
-    <ul className="mt-5 space-y-3">
-      {f.bullets.map((b) => (
-        <li
-          key={b}
-          className="flex gap-3 text-[15px] leading-[1.45] text-foreground/85"
-        >
-          <span aria-hidden className="mt-[11px] h-px w-4 shrink-0 bg-primary" />
-          <span>{b}</span>
-        </li>
-      ))}
-    </ul>
+    <div className="mt-5 flex items-center gap-3 text-[18px] leading-none text-foreground/45 md:text-[20px] lg:text-[24px]">
+      <span>{f.role}</span>
+      <a
+        href={f.linkedinUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${f.name} on LinkedIn`}
+        className="text-primary transition-opacity hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      >
+        <Linkedin className="h-5 w-5" strokeWidth={2.2} />
+      </a>
+    </div>
+    <p className="mt-9 max-w-[760px] text-[22px] leading-[1.65] text-foreground/70 md:text-[26px] lg:text-[30px]">
+      {f.bio}
+    </p>
 
     {/* Prior work */}
-    <div className="mt-auto pt-8">
-      <div className="mb-5 h-px w-full bg-foreground/10" />
-      <p className="mb-5 text-[13px] font-medium text-foreground/45">Prior work</p>
-      <div className="grid grid-cols-3 gap-x-8 gap-y-5 sm:grid-cols-4">
+    <div className="mt-auto pt-12">
+      <div className="flex flex-wrap items-center gap-x-12 gap-y-5 md:gap-x-16 lg:gap-x-20">
         {f.logos.map((l) => (
-          <div key={l.name} className="flex h-12 items-center">
+          <div key={l.name} className="flex h-14 items-center">
             <img
-            src={l.src}
-            alt={`${l.name} logo`}
-            className="max-h-10 max-w-[112px] object-contain opacity-80 grayscale transition-opacity hover:opacity-100"
-            loading="lazy"
+              src={l.src}
+              alt={`${l.name} logo`}
+              className={`${l.widthClass} max-h-10 object-contain opacity-45 grayscale transition-opacity hover:opacity-70`}
+              loading="lazy"
             />
           </div>
         ))}
@@ -105,15 +91,15 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 
 const TeamSection = () => (
   <AnimatedSection id="team" className="relative bg-background py-16 md:py-24">
-    <div className="mx-auto max-w-content px-6 md:px-20">
+    <div className="mx-auto max-w-[1840px] px-6 md:px-11">
       <h2
-        className="max-w-[860px] font-display text-[34px] text-foreground md:text-[48px]"
+        className="mx-auto max-w-content font-display text-[34px] text-foreground md:text-[48px]"
         style={{ lineHeight: 1 }}
       >
         Built by operators who have shipped brand and infrastructure.
       </h2>
 
-      <div className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2">
+      <div className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2 lg:gap-9">
         {team.map((f, i) => (
           <FounderCard key={f.name} f={f} i={i} />
         ))}
