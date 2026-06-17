@@ -15,10 +15,7 @@ const integrations = [
 ];
 
 const IntegrationSection = () => (
-  <AnimatedSection id="integration" className="section-grid relative bg-background py-10 md:py-14">
-    <div className="diffusion-glow pointer-events-none absolute left-[20%] top-[40%]" />
-    
-
+  <AnimatedSection id="integration" className="relative bg-background py-16 md:py-24">
     <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
       <svg width="60" height="60" viewBox="0 0 60 60" className="opacity-[0.06]">
         {[0, 20, 40].map(x => [0, 20, 40].map(y => (
@@ -27,14 +24,14 @@ const IntegrationSection = () => (
       </svg>
     </div>
 
-    <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
+    <div className="mx-auto max-w-content px-6 md:px-20">
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
-          <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-            Ships on every protocol<br />that matters.
+          <h2 className="font-display text-[44px] text-foreground md:text-[72px]" style={{ lineHeight: 0.98 }}>
+            Ships on every protocol that matters.
           </h2>
-          <p className="mt-3 max-w-[460px] text-[17px] leading-[1.6] text-foreground/70">
+          <p className="mt-5 max-w-[520px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
             Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP.
           </p>
           <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">
