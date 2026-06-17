@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, FileCode2, Sparkles, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
@@ -8,6 +9,9 @@ const eras = [
     year: "1960s",
     title: "Shelf",
     caption: "Share of Shelf",
+    readout: "Endcap placement and aisle dominance decided what entered the basket.",
+    signal: "Retail footprint",
+    rank: "Physical availability",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="6" y="10" width="28" height="3" />
@@ -24,6 +28,9 @@ const eras = [
     year: "1980s",
     title: "Voice",
     caption: "Share of Voice",
+    readout: "Media weight and brand memory shaped the set a shopper could recall.",
+    signal: "Paid attention",
+    rank: "Awareness",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="20" cy="20" r="3" />
@@ -39,6 +46,9 @@ const eras = [
     year: "2010s",
     title: "Search",
     caption: "Share of Search",
+    readout: "Crawlers rewarded the pages with the right keywords, links, and schema.",
+    signal: "Indexed content",
+    rank: "Relevance",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="17" cy="17" r="9" />
@@ -52,6 +62,9 @@ const eras = [
     title: "Algorithm",
     caption: "Share of Algorithm",
     active: true,
+    readout: "Agents rank the product they can resolve into the strongest customer outcome.",
+    signal: "Resolved true value",
+    rank: "Recommendation",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="20" cy="20" r="3" />
@@ -96,11 +109,14 @@ const dimensions = [
 ];
 
 const ShareOfAlgorithmSection = () => {
+  const [activeEra, setActiveEra] = useState(3);
+  const era = eras[activeEra];
+
   return (
     <AnimatedSection id="share-of-algorithm" className="relative bg-background py-16 md:py-24">
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
-          <h2 className="font-display text-[36px] text-foreground md:text-[52px]" style={{ lineHeight: 0.98 }}>
+          <h2 className="font-display text-[34px] text-foreground md:text-[48px]" style={{ lineHeight: 1 }}>
             The new shelf is decided by <span className="text-primary">agents.</span>
           </h2>
           <p className="mt-5 max-w-[600px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
