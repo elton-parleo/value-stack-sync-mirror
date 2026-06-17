@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import wppLogo from "@/assets/logos/wpp.png";
-import axelSpringerLogo from "@/assets/logos/axel-springer.png";
-import nikeLogo from "@/assets/logos/nike.png";
-import metamapLogo from "@/assets/logos/metamap.png";
-import rakutenLogo from "@/assets/logos/rakuten.png";
-import grouponLogo from "@/assets/logos/groupon.png";
-import alphaflowLogo from "@/assets/logos/alphaflow.png";
+import wppLogo from "@/assets/logos/wpp-tight.png";
+import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
+import nikeLogo from "@/assets/logos/nike-tight.png";
+import metamapLogo from "@/assets/logos/metamap-tight.png";
+import rakutenLogo from "@/assets/logos/rakuten-tight.png";
+import grouponLogo from "@/assets/logos/groupon-tight.png";
+import alphaflowLogo from "@/assets/logos/alphaflow-tight.png";
 
 type Founder = {
   role: string;
@@ -79,7 +79,7 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
             <img
               src={l.src}
               alt={`${l.name} logo`}
-              className="max-h-14 max-w-[140px] object-contain opacity-45 grayscale transition-opacity hover:opacity-70"
+              className="max-h-14 max-w-[140px] object-contain opacity-45 grayscale transition-opacity hover:opacity-70 md:max-w-[160px]"
               loading="lazy"
             />
           </div>
