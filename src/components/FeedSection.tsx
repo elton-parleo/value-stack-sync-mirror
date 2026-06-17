@@ -260,14 +260,8 @@ const FeedSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-12 flex flex-col gap-3 rounded-2xl border border-border/60 bg-card/40 px-6 py-5 md:flex-row md:items-center md:gap-6 md:px-7"
+        className="mt-10 rounded-2xl border border-border/60 bg-card/40 px-6 py-5 md:px-7"
       >
-        <div className="flex items-center gap-3 md:shrink-0">
-          <span className="h-6 w-[3px] rounded-full bg-primary" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-            The result
-          </span>
-        </div>
         <p className="text-[14.5px] leading-snug text-foreground/75 md:text-[15.5px]">
           Agents stop guessing on sticker price.{" "}
           <span className="font-semibold text-foreground">
