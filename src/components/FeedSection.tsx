@@ -71,24 +71,23 @@ const FlowLine = ({ direction }: { direction: "in" | "out" }) => (
 const FeedSection = () => (
   <AnimatedSection id="architecture" className="relative bg-background py-24 md:py-32">
     <div className="mx-auto max-w-content px-6 md:px-20">
-      {/* Eyebrow */}
-      <div className="flex items-center gap-3">
-        <span className="h-px w-8 bg-primary" />
-        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-          The architecture
-        </span>
-      </div>
+      {/* Header — tight, single-column, scan-friendly */}
+      <div className="max-w-3xl">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-8 bg-primary" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
+            The architecture
+          </span>
+        </div>
 
-      {/* Headline */}
-      <div className="mt-6 grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
         <h2
-          className="font-heading text-[36px] text-foreground md:text-[60px]"
-          style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
+          className="mt-5 font-heading text-[40px] leading-[1.04] text-foreground md:text-[52px]"
+          style={{ letterSpacing: "-0.022em" }}
         >
-          One call.{" "}
-          <span className="text-foreground/45">Every signal an agent needs.</span>
+          One call. Every signal an agent needs.
         </h2>
-        <p className="self-end max-w-[440px] text-[17px] leading-[1.55] text-foreground/65 md:text-[19px]">
+
+        <p className="mt-5 max-w-[640px] text-[17px] leading-[1.55] text-foreground/65 md:text-[18px]">
           Parleo collapses 8 to 12 merchant lookups into a single pre-computed
           response: normalized SKUs, loyalty math, card-linked offers, and
           semantic context.
