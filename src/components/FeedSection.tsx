@@ -69,19 +69,12 @@ const FlowLine = ({ direction }: { direction: "in" | "out" }) => (
 );
 
 const FeedSection = () => (
-  <AnimatedSection id="architecture" className="relative bg-background py-24 md:py-32">
+  <AnimatedSection id="architecture" className="relative bg-background py-16 md:py-20">
     <div className="mx-auto max-w-content px-6 md:px-20">
-      {/* Header — tight, single-column, scan-friendly */}
+      {/* Header */}
       <div className="max-w-3xl">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-primary" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-            The architecture
-          </span>
-        </div>
-
         <h2
-          className="mt-5 font-heading text-[40px] leading-[1.04] text-foreground md:text-[52px]"
+          className="font-heading text-[40px] leading-[1.04] text-foreground md:text-[52px]"
           style={{ letterSpacing: "-0.022em" }}
         >
           One call. Every signal an agent needs.
