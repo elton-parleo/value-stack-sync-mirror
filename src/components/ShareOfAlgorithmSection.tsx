@@ -161,7 +161,7 @@ const ShelfPanel = ({
       {items.map((item) => (
         <div
           key={item.name}
-          className={`grid grid-cols-[32px_34px_1fr_auto] items-center gap-3 rounded-xl border px-3 py-3 ${
+          className={`grid grid-cols-[28px_34px_auto] items-center gap-3 rounded-xl border px-3 py-3 ${
             dark
               ? item.win
                 ? "border-primary/45 bg-primary/[0.10]"
@@ -173,7 +173,6 @@ const ShelfPanel = ({
           <span className={`flex h-8 w-8 items-center justify-center rounded-md ${dark ? "bg-background/10" : "bg-secondary/70"}`}>
             <BrandLogo name={item.name} size={17} grayscale={!item.win} />
           </span>
-          <div className={`truncate text-[13px] font-medium ${dark ? "text-background/85" : "text-foreground/75"}`}>{item.name}</div>
           <div className={`font-mono text-[12px] font-semibold tabular-nums ${item.win ? "text-primary" : dark ? "text-background/65" : "text-foreground/50"}`}>{item.price}</div>
         </div>
       ))}
