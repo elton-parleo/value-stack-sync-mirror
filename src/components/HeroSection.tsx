@@ -5,32 +5,6 @@ import ContactFormDialog from "./ContactFormDialog";
 import HeroChatArtifact from "./hero/HeroChatArtifact";
 import BrandLogo from "./BrandLogo";
 
-const FloatingIcon = ({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    className={`absolute hidden md:flex items-center justify-center rounded-xl border border-border bg-card ${className}`}
-    style={{ boxShadow: "var(--shadow-md)" }}
-    whileHover={{ scale: 1.1 }}
-  >
-    <motion.div
-      animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 3 + delay, repeat: Infinity, ease: "easeInOut" }}
-    >
-      {children}
-    </motion.div>
-  </motion.div>
-);
-
 const HeroSection = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
