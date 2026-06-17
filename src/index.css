@@ -104,6 +104,25 @@
     font-size: 16px;
     line-height: 1.6;
   }
+  .card-heading {
+    color: hsl(var(--foreground));
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+  .card-subheading {
+    color: hsl(var(--foreground) / 0.48);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.25;
+  }
+  .card-copy {
+    color: hsl(var(--foreground) / 0.62);
+    font-size: 15px;
+    line-height: 1.5;
+  }
   .section-heading-dark {
     color: hsl(var(--background));
   }
@@ -116,6 +135,15 @@
     }
     .section-copy {
       font-size: 18px;
+    }
+    .card-heading {
+      font-size: 20px;
+    }
+    .card-subheading {
+      font-size: 14px;
+    }
+    .card-copy {
+      font-size: 16px;
     }
   }
   .shadow-card {
