@@ -3,7 +3,7 @@ import editorialPortrait from "@/assets/lifestyle-editorial-portrait.jpg";
 import retailMoment from "@/assets/lifestyle-retail-moment.jpg";
 
 const EditorialBreakSection = () => (
-  <section aria-label="Brand moment" className="atmos-warm relative bg-background py-20 md:py-28">
+  <section aria-label="Brand moment" className="relative bg-background py-14 md:py-20">
     {/* faint architectural dot field in the top-right quadrant */}
     <div
       aria-hidden
