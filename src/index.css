@@ -163,6 +163,29 @@
     background-size: 64px 64px;
   }
 
+  /* Finer architectural grid with center-burn mask */
+  .bg-grid-fine {
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
+            mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
+  }
+
+  /* Light-burn: warm sun-spot used behind hero / large headings */
+  .light-burn-warm {
+    background:
+      radial-gradient(45% 55% at 18% 18%, hsl(32 95% 60% / 0.10) 0%, transparent 65%),
+      radial-gradient(35% 40% at 82% 28%, hsl(213 99% 50% / 0.06) 0%, transparent 70%);
+    filter: blur(2px);
+  }
+  .light-burn-cool {
+    background:
+      radial-gradient(50% 50% at 80% 20%, hsl(213 99% 50% / 0.09) 0%, transparent 70%),
+      radial-gradient(45% 50% at 15% 80%, hsl(32 95% 60% / 0.06) 0%, transparent 70%);
+  }
+
   .diffusion-glow {
     width: 700px;
     height: 500px;
