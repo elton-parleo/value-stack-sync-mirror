@@ -7,7 +7,7 @@ import ProblemSection from "@/components/ProblemSection";
 import ShareOfAlgorithmSection from "@/components/ShareOfAlgorithmSection";
 import FeedSection from "@/components/FeedSection";
 import DashboardSection from "@/components/DashboardSection";
-import HowItWorks from "@/components/HowItWorks";
+
 import IntegrationSection from "@/components/IntegrationSection";
 import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
