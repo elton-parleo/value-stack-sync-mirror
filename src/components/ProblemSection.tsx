@@ -498,8 +498,8 @@ const ProblemSection = () => {
             className="font-heading text-[24px] leading-[1.1] text-foreground md:text-[34px]"
             style={{ letterSpacing: "-0.015em" }}
           >
-            One product. Five retailers.{" "}
-            <span className="text-foreground/45">Five different prices the agent never sees.</span>
+            True Value of your product.{" "}
+            <span className="text-foreground/45">Invisible to agents.</span>
           </h3>
         </div>
 
