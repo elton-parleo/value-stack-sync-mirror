@@ -12,6 +12,15 @@ const HeroSection = () => {
     <section id="hero" className="relative overflow-hidden bg-background">
       {/* fine architectural grid, masked to center */}
       <div aria-hidden className="bg-grid-fine pointer-events-none absolute inset-0 -z-0 opacity-60" />
+      {/* subtle blue light burn, top-right */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-0"
+        style={{
+          background:
+            "radial-gradient(45% 50% at 85% 18%, hsl(213 99% 50% / 0.10) 0%, transparent 65%)",
+        }}
+      />
       <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-10 md:px-20 md:pb-24 md:pt-16">
         {/* Left: copy */}
         <motion.div
