@@ -40,12 +40,12 @@ const LifestyleStripSection = () => (
         {images.map((image) => (
           <figure
             key={image.alt}
-            className={`${image.className} h-[250px] shrink-0 overflow-hidden rounded-lg border border-border/70 bg-secondary/50 md:h-[280px]`}
+            className={`${image.className} group h-[250px] shrink-0 overflow-hidden rounded-lg border border-border/70 bg-secondary/50 md:h-[280px]`}
           >
             <img
               src={image.src}
               alt={image.alt}
-              className="h-full w-full object-cover"
+              className="img-editorial h-full w-full object-cover"
               style={{ filter: "grayscale(18%) contrast(1.04) saturate(0.9)", mixBlendMode: "multiply" }}
               loading="lazy"
               width={1024}
