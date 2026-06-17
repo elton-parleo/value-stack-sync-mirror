@@ -49,13 +49,13 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     viewport={{ once: true, margin: "-60px" }}
-    className="flex min-h-[330px] flex-col rounded-2xl border border-border bg-card p-7 text-foreground md:min-h-[360px] md:p-9"
+    className="flex min-h-[330px] flex-col rounded-[18px] border border-border bg-card p-7 text-foreground md:min-h-[360px] md:p-9 lg:min-h-[492px] lg:p-12"
     style={{ boxShadow: "var(--shadow-card)" }}
   >
     <h3 className="font-display text-[24px] font-semibold leading-none text-foreground md:text-[28px]">
       {f.name}
     </h3>
-    <div className="mt-4 flex items-center gap-3 text-[18px] leading-none text-foreground/45 md:text-[20px]">
+    <div className="mt-5 flex items-center gap-3 text-[18px] leading-none text-foreground/45 md:text-[20px] lg:text-[24px]">
       <span>{f.role}</span>
       <a
         href={f.linkedinUrl}
@@ -67,13 +67,13 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
         <Linkedin className="h-5 w-5" strokeWidth={2.2} />
       </a>
     </div>
-    <p className="mt-8 max-w-[760px] text-[24px] leading-[1.65] text-foreground/70 md:text-[28px]">
+    <p className="mt-9 max-w-[760px] text-[22px] leading-[1.65] text-foreground/70 md:text-[26px] lg:text-[30px]">
       {f.bio}
     </p>
 
     {/* Prior work */}
-    <div className="mt-auto pt-10">
-      <div className="flex flex-wrap items-center gap-x-12 gap-y-5">
+    <div className="mt-auto pt-12">
+      <div className="flex flex-wrap items-center gap-x-12 gap-y-5 md:gap-x-16 lg:gap-x-20">
         {f.logos.map((l) => (
           <div key={l.name} className="flex h-14 items-center">
             <img
@@ -91,15 +91,15 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 
 const TeamSection = () => (
   <AnimatedSection id="team" className="relative bg-background py-16 md:py-24">
-    <div className="mx-auto max-w-content px-6 md:px-20">
+    <div className="mx-auto max-w-[1840px] px-6 md:px-11">
       <h2
-        className="max-w-[860px] font-display text-[34px] text-foreground md:text-[48px]"
+        className="mx-auto max-w-content font-display text-[34px] text-foreground md:text-[48px]"
         style={{ lineHeight: 1 }}
       >
         Built by operators who have shipped brand and infrastructure.
       </h2>
 
-      <div className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2">
+      <div className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2 lg:gap-9">
         {team.map((f, i) => (
           <FounderCard key={f.name} f={f} i={i} />
         ))}
