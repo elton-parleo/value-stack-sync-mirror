@@ -10,7 +10,11 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="atmos-warm relative overflow-hidden bg-background">
-      <div className="mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-10 md:px-20 md:pb-24 md:pt-16">
+      {/* fine architectural grid, masked to center */}
+      <div aria-hidden className="bg-grid-fine pointer-events-none absolute inset-0 -z-0 opacity-70" />
+      {/* warm light burn */}
+      <div aria-hidden className="light-burn-warm pointer-events-none absolute inset-x-0 top-0 -z-0 h-[600px]" />
+      <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-10 md:px-20 md:pb-24 md:pt-16">
         {/* Left: copy */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
