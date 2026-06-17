@@ -152,14 +152,14 @@ const Navbar = () => {
                     {link.label}
                   </motion.a>
                 ))}
-                <Link
-                  to="/demo"
+                <a
+                  href="#architecture"
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
                 >
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-                  How it Works
-                </Link>
+                  For developers
+                </a>
               </div>
               <div className="mt-auto">
                 <button
