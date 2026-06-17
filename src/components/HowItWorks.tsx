@@ -193,24 +193,27 @@ const HowItWorks = () => (
         </motion.div>
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="relative mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border/60 md:grid-cols-3" style={{ boxShadow: "var(--shadow-card)" }}>
         {timeline.map((t, i) => (
           <motion.div
             key={t.step}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="relative flex items-start gap-4 rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/20 hover:shadow-sm"
-            style={{ boxShadow: "var(--shadow-card)" }}
+            className="group relative flex flex-col bg-card p-7 transition-colors duration-300 hover:bg-primary/[0.02]"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/[0.08] text-[15px] font-bold text-primary">
-              {t.step}
+            <div className="flex items-baseline justify-between">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/40">
+                Step 0{t.step}
+              </span>
+              <span className="font-display text-[44px] font-light leading-none text-primary/15 tabular-nums transition-colors group-hover:text-primary/40">
+                0{t.step}
+              </span>
             </div>
-            <div>
-              <h3 className="text-[15px] font-bold text-foreground">{t.label}</h3>
-              <p className="mt-1 text-[14px] text-foreground/70">{t.desc}</p>
-            </div>
+            <h3 className="mt-5 text-[18px] font-semibold tracking-tight text-foreground">{t.label}</h3>
+            <p className="mt-2 text-[14px] leading-[1.6] text-foreground/65">{t.desc}</p>
+            <div className="mt-5 h-px w-8 bg-primary/40 transition-all duration-300 group-hover:w-16" />
           </motion.div>
         ))}
       </div>
