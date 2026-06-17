@@ -348,12 +348,14 @@ const AssistantContent = ({ phase }: { phase: Phase }) => (
         {phase === "typing" ? (
           <motion.div
             key="typing"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.25 }}
+            className="space-y-2.5"
           >
             <TypingDots />
+            <ProductCard phase="standard" />
           </motion.div>
         ) : (
           <motion.div

@@ -93,6 +93,31 @@
     text-transform: uppercase;
     letter-spacing: 0.12em;
   }
+  .section-heading {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.06;
+  }
+  .section-copy {
+    color: hsl(var(--foreground) / 0.65);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .section-heading-dark {
+    color: hsl(var(--background));
+  }
+  .section-copy-dark {
+    color: hsl(var(--background) / 0.65);
+  }
+  @media (min-width: 768px) {
+    .section-heading {
+      font-size: 40px;
+    }
+    .section-copy {
+      font-size: 18px;
+    }
+  }
   .shadow-card {
     box-shadow: var(--shadow-card);
   }

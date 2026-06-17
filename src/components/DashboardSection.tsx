@@ -99,14 +99,11 @@ const DashboardSection = () => {
       <div className="relative mx-auto max-w-content px-6 md:px-20">
         {/* Headline */}
         <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
-          <h2
-            className="font-display text-[34px] text-foreground md:text-[48px]"
-            style={{ lineHeight: 1 }}
-          >
+          <h2 className="section-heading text-foreground">
             Your agent channel,{" "}
             <span className="text-foreground/45">in one console.</span>
           </h2>
-          <p className="self-end max-w-[460px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
+          <p className="section-copy max-w-[460px] self-end">
             Score how agents rank you, see the margin they cannot, and set the
             rules your offers play by.
           </p>
