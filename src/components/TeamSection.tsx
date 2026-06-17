@@ -49,43 +49,38 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     viewport={{ once: true, margin: "-60px" }}
-    className="group flex flex-col rounded-2xl border border-border/70 bg-card p-6 text-foreground md:p-8"
+    className="flex min-h-[330px] flex-col rounded-2xl border border-border bg-card p-7 text-foreground md:min-h-[360px] md:p-9"
     style={{ boxShadow: "var(--shadow-card)" }}
   >
-    <p className="text-[14px] font-medium text-primary">{f.role}</p>
-    <h3
-      className="mt-3 font-display text-[30px] text-foreground md:text-[36px]"
-      style={{ lineHeight: 1.1 }}
-    >
+    <h3 className="font-display text-[24px] font-semibold leading-none text-foreground md:text-[28px]">
       {f.name}
     </h3>
-    <p className="mt-4 border-t border-border pt-4 text-[16px] leading-[1.5] text-foreground/65">{f.bio}</p>
-
-    {/* Bullets */}
-    <ul className="mt-5 space-y-3">
-      {f.bullets.map((b) => (
-        <li
-          key={b}
-          className="flex gap-3 text-[15px] leading-[1.45] text-foreground/85"
-        >
-          <span aria-hidden className="mt-[11px] h-px w-4 shrink-0 bg-primary" />
-          <span>{b}</span>
-        </li>
-      ))}
-    </ul>
+    <div className="mt-4 flex items-center gap-3 text-[18px] leading-none text-foreground/45 md:text-[20px]">
+      <span>{f.role}</span>
+      <a
+        href={f.linkedinUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${f.name} on LinkedIn`}
+        className="text-primary transition-opacity hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      >
+        <Linkedin className="h-5 w-5" strokeWidth={2.2} />
+      </a>
+    </div>
+    <p className="mt-8 max-w-[760px] text-[24px] leading-[1.65] text-foreground/70 md:text-[28px]">
+      {f.bio}
+    </p>
 
     {/* Prior work */}
-    <div className="mt-auto pt-8">
-      <div className="mb-5 h-px w-full bg-foreground/10" />
-      <p className="mb-5 text-[13px] font-medium text-foreground/45">Prior work</p>
-      <div className="grid grid-cols-3 gap-x-8 gap-y-5 sm:grid-cols-4">
+    <div className="mt-auto pt-10">
+      <div className="flex flex-wrap items-center gap-x-12 gap-y-5">
         {f.logos.map((l) => (
-          <div key={l.name} className="flex h-12 items-center">
+          <div key={l.name} className="flex h-14 items-center">
             <img
-            src={l.src}
-            alt={`${l.name} logo`}
-            className="max-h-10 max-w-[112px] object-contain opacity-80 grayscale transition-opacity hover:opacity-100"
-            loading="lazy"
+              src={l.src}
+              alt={`${l.name} logo`}
+              className="max-h-14 max-w-[140px] object-contain opacity-45 grayscale transition-opacity hover:opacity-70"
+              loading="lazy"
             />
           </div>
         ))}
