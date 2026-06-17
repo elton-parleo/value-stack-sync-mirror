@@ -79,7 +79,7 @@ const CTASection = () => {
                 </svg>
               </button>
               <a
-                href="/developers"
+                href="#architecture"
                 className="group inline-flex h-12 items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.04] px-7 text-[14px] font-medium text-white/85 transition-colors hover:border-white/30 hover:bg-white/[0.08]"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="opacity-70">
