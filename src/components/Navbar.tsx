@@ -5,7 +5,6 @@ import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
   { label: "Problem", href: "#problem" },
-  { label: "Timing", href: "#how-it-works" },
   { label: "Framework", href: "#share-of-algorithm" },
   { label: "Console", href: "#dashboard" },
   { label: "API", href: "#architecture" },
