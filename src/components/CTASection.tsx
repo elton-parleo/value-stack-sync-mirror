@@ -45,13 +45,13 @@ const CTASection = () => {
                 </svg>
               </button>
               <a
-                href="#architecture"
+                href="https://parleo.io/demo"
                 className="group inline-flex h-12 items-center gap-2.5 rounded-full border border-background/15 bg-background/[0.04] px-7 text-[14px] font-medium text-background/85 transition-colors hover:border-background/30 hover:bg-background/[0.08]"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="opacity-70">
                   <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                For developers
+                How it works
               </a>
               <div className="mt-2 flex items-center gap-4 text-[11px] text-background/40 md:justify-end">
                 <span>Zero PII</span>

@@ -39,10 +39,10 @@ const HeroSection = () => {
               </svg>
             </button>
             <a
-              href="#architecture"
+              href="https://parleo.io/demo"
               className="group inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07] active:scale-[0.98]"
             >
-              For developers
+              How it works
               <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
             </a>
           </div>

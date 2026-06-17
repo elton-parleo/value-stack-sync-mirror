@@ -78,12 +78,12 @@ const Navbar = () => {
               <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
             )}
             <a
-              href="#architecture"
+              href="https://parleo.io/demo"
               className="animate-border-pulse group inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/[0.04] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07]"
               style={{ height: 32 }}
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-              For developers
+              How it works
             </a>
             <button
               onClick={() => setContactOpen(true)}
@@ -153,12 +153,12 @@ const Navbar = () => {
                   </motion.a>
                 ))}
                 <a
-                  href="#architecture"
+                  href="https://parleo.io/demo"
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
                 >
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-                  For developers
+                  How it works
                 </a>
               </div>
               <div className="mt-auto">
