@@ -18,7 +18,7 @@ const AnimatedSection = forwardRef<HTMLElement, AnimatedSectionProps>(
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay }}
       viewport={{ once: true, margin: "-60px" }}
-      className={className}
+      className={`scroll-mt-24 ${className}`}
       style={style}
     >
       {children}

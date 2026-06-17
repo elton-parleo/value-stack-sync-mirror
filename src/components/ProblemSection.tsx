@@ -449,8 +449,8 @@ const ProblemSection = () => {
     >
       <div className="mx-auto max-w-content px-6 md:px-20">
         <h2
-          className="max-w-[18ch] font-display text-[36px] text-foreground md:text-[52px]"
-          style={{ lineHeight: 0.98 }}
+          className="max-w-[18ch] font-display text-[34px] text-foreground md:text-[48px]"
+          style={{ lineHeight: 1 }}
         >
           Your customers are shopping through agents.{" "}
           <span className="text-foreground/45">Agents are shopping on sticker price.</span>
@@ -495,7 +495,7 @@ const ProblemSection = () => {
         {/* Editorial caption above artifact */}
         <div className="mt-16 max-w-[680px] md:mt-24">
           <h3
-            className="font-heading text-[26px] leading-[1.1] text-foreground md:text-[38px]"
+            className="font-heading text-[24px] leading-[1.1] text-foreground md:text-[34px]"
             style={{ letterSpacing: "-0.015em" }}
           >
             One product. Five retailers.{" "}

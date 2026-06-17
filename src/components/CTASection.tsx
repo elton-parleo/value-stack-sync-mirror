@@ -40,8 +40,8 @@ const CTASection = () => {
           <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
             <div>
               <h2
-                className="font-display text-[36px] font-medium text-white md:text-[52px]"
-                style={{ lineHeight: 0.98 }}
+                className="font-display text-[34px] font-medium text-white md:text-[48px]"
+                style={{ lineHeight: 1 }}
               >
                 Be the answer agents recommend.
               </h2>

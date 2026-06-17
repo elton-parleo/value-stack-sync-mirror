@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, FileCode2, Sparkles, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
@@ -8,6 +9,9 @@ const eras = [
     year: "1960s",
     title: "Shelf",
     caption: "Share of Shelf",
+    readout: "Endcap placement and aisle dominance decided what entered the basket.",
+    signal: "Retail footprint",
+    rank: "Physical availability",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="6" y="10" width="28" height="3" />
@@ -24,6 +28,9 @@ const eras = [
     year: "1980s",
     title: "Voice",
     caption: "Share of Voice",
+    readout: "Media weight and brand memory shaped the set a shopper could recall.",
+    signal: "Paid attention",
+    rank: "Awareness",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="20" cy="20" r="3" />
@@ -39,6 +46,9 @@ const eras = [
     year: "2010s",
     title: "Search",
     caption: "Share of Search",
+    readout: "Crawlers rewarded the pages with the right keywords, links, and schema.",
+    signal: "Indexed content",
+    rank: "Relevance",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="17" cy="17" r="9" />
@@ -52,6 +62,9 @@ const eras = [
     title: "Algorithm",
     caption: "Share of Algorithm",
     active: true,
+    readout: "Agents rank the product they can resolve into the strongest customer outcome.",
+    signal: "Resolved true value",
+    rank: "Recommendation",
     glyph: (
       <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="20" cy="20" r="3" />
@@ -96,11 +109,14 @@ const dimensions = [
 ];
 
 const ShareOfAlgorithmSection = () => {
+  const [activeEra, setActiveEra] = useState(3);
+  const era = eras[activeEra];
+
   return (
     <AnimatedSection id="share-of-algorithm" className="relative bg-background py-16 md:py-24">
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
-          <h2 className="font-display text-[36px] text-foreground md:text-[52px]" style={{ lineHeight: 0.98 }}>
+          <h2 className="font-display text-[34px] text-foreground md:text-[48px]" style={{ lineHeight: 1 }}>
             The new shelf is decided by <span className="text-primary">agents.</span>
           </h2>
           <p className="mt-5 max-w-[600px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
@@ -117,36 +133,39 @@ const ShareOfAlgorithmSection = () => {
           style={{ boxShadow: "var(--shadow-elevated)" }}
         >
           {/* Era Timeline */}
-          <div className="relative border-b border-border bg-secondary/30 px-6 py-8 md:px-10 md:py-10">
+          <div className="relative border-b border-border bg-secondary/30 px-6 py-7 md:px-10 md:py-9">
             <div className="mb-6 flex items-baseline justify-between">
-              <div className="text-[13px] font-medium text-foreground/55">The distribution era</div>
-              <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/40">1960 — 2025</div>
+              <div className="text-[13px] font-medium text-foreground/55">Distribution era</div>
+              <div className="font-mono text-[11px] tabular-nums text-foreground/40">1960 to 2025</div>
             </div>
             <div className="relative">
               <div className="absolute left-0 right-0 top-[26px] h-px bg-border" />
               <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                animate={{ width: `${(activeEra / (eras.length - 1)) * 100}%` }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute left-0 top-[26px] h-px bg-primary"
               />
               <div className="relative grid grid-cols-4 gap-4">
                 {eras.map((era, i) => (
-                  <motion.div
+                  <motion.button
                     key={era.key}
+                    type="button"
+                    onClick={() => setActiveEra(i)}
                     initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.15 + i * 0.12, duration: 0.4 }}
-                    className="group flex cursor-default flex-col items-start"
+                    aria-pressed={activeEra === i}
+                    className="group flex cursor-pointer flex-col items-start text-left focus:outline-none"
                   >
                     <motion.div
-                      whileHover={{ scale: 1.08, y: -2 }}
+                      animate={activeEra === i ? { scale: 1.06 } : { scale: 1 }}
                       transition={{ type: "spring", stiffness: 320, damping: 18 }}
                       className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 transition-colors ${
-                        era.active
-                          ? "border-primary bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_hsl(213_99%_50%/0.5)]"
+                        activeEra === i
+                          ? "border-primary bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_hsl(213_99%_50%/0.35)]"
                           : "border-border bg-card text-foreground/45 group-hover:border-foreground/40 group-hover:text-foreground/80"
                       }`}
                     >
@@ -154,14 +173,34 @@ const ShareOfAlgorithmSection = () => {
                     </motion.div>
                     <div className="mt-4 font-mono text-[11px] tabular-nums text-foreground/45">{era.year}</div>
                     <div
-                      className={`mt-1 text-[15px] font-semibold transition-colors ${era.active ? "text-foreground" : "text-foreground/70 group-hover:text-foreground"}`}
+                      className={`mt-1 text-[15px] font-semibold transition-colors ${activeEra === i ? "text-foreground" : "text-foreground/70 group-hover:text-foreground"}`}
                     >
                       {era.caption}
                     </div>
-                  </motion.div>
+                  </motion.button>
                 ))}
               </div>
             </div>
+            <motion.div
+              key={era.key}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+              className="mt-8 grid gap-3 rounded-2xl border border-border bg-card p-5 md:grid-cols-[1fr_180px_180px] md:items-center"
+            >
+              <div>
+                <div className="text-[18px] font-semibold leading-tight text-foreground">{era.title}</div>
+                <p className="mt-1 text-[14px] leading-[1.45] text-foreground/60">{era.readout}</p>
+              </div>
+              <div className="border-t border-border pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+                <div className="font-mono text-[10px] text-foreground/40">Signal</div>
+                <div className="mt-1 text-[13px] font-medium text-foreground/80">{era.signal}</div>
+              </div>
+              <div className="border-t border-border pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+                <div className="font-mono text-[10px] text-foreground/40">Ranking basis</div>
+                <div className="mt-1 text-[13px] font-medium text-foreground/80">{era.rank}</div>
+              </div>
+            </motion.div>
           </div>
 
           {/* Pillar Stack */}
