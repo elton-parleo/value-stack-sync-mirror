@@ -35,24 +35,7 @@ const HeroSection = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <section id="hero" className="section-grid relative overflow-hidden bg-background">
-      <div
-        className="pointer-events-none absolute -right-[300px] -top-[100px] h-[700px] w-[700px] rounded-full opacity-[0.04]"
-        style={{ background: "radial-gradient(circle, hsl(213 99% 50%) 0%, transparent 70%)" }}
-      />
-      <div className="diffusion-glow pointer-events-none absolute left-1/2 top-[40%] -translate-x-1/2" />
-
-      <FloatingIcon className="left-[6%] top-[18%] h-10 w-10" delay={0.4}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </FloatingIcon>
-      <FloatingIcon className="left-[10%] bottom-[18%] h-8 w-8" delay={0.8}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5" opacity="0.5">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-        </svg>
-      </FloatingIcon>
-
+    <section id="hero" className="relative overflow-hidden bg-background">
       <div className="mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-10 md:px-20 md:pb-24 md:pt-16">
         {/* Left: copy */}
         <motion.div
