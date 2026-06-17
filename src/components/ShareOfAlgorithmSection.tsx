@@ -177,7 +177,7 @@ const ShareOfAlgorithmSection = () => {
               >
                 <div className="flex items-center gap-4 md:block">
                   <div className="font-mono text-[12px] tabular-nums text-foreground/40">{p.n}</div>
-                  <div className="mt-0 flex h-11 w-11 items-center justify-center rounded-xl bg-secondary/60 text-foreground/55 md:mt-3">
+                  <div className="mt-0 flex h-11 w-11 items-center justify-center rounded-xl bg-secondary/60 text-foreground/55 transition-all group-hover:bg-foreground/10 group-hover:text-foreground md:mt-3">
                     <p.icon className="h-5 w-5" strokeWidth={1.6} />
                   </div>
                 </div>
