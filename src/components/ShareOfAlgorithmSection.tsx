@@ -1,34 +1,34 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 
 /* ───────────────────────────────────────────────────────────
    Section B · Share of Algorithm
-   B1  Four eras of distribution (compact context strip)
-   B2  Three pillars / eight dimensions framework (the IP)
+   One interactive panel: Era timeline → Pillar lens → True Value.
    ─────────────────────────────────────────────────────────── */
 
-/* ──────────────────────────────────────────────
-   B1 · Era strip
-   ────────────────────────────────────────────── */
+type EraId = "1960s" | "1980s" | "2010s" | "2025";
 
 type Era = {
+  id: EraId;
   year: string;
   label: string;
   distribution: string;
   measured: string;
   spend: string;
-  active?: boolean;
 };
 
 const ERAS: Era[] = [
   {
+    id: "1960s",
     year: "1960s",
     label: "Share of Shelf",
-    distribution: "Physical retail.",
+    distribution: "Physical retail aisles.",
     measured: "Nielsen, IRI",
     spend: "$8B+",
   },
   {
+    id: "1980s",
     year: "1980s",
     label: "Share of Voice",
     distribution: "Broadcast media.",
@@ -36,135 +36,30 @@ const ERAS: Era[] = [
     spend: "$12B+",
   },
   {
+    id: "2010s",
     year: "2010s",
     label: "Share of Search",
     distribution: "Query results.",
     measured: "SEO / SEM rank",
     spend: "$200B+",
   },
-
   {
+    id: "2025",
     year: "2025",
     label: "Share of Algorithm",
     distribution: "Agent decisions.",
     measured: "Parleo",
     spend: "~$1T",
-    active: true,
   },
-
 ];
 
-const EraCard = ({ era, i }: { era: Era; i: number }) => {
-  const dark = !!era.active;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative flex flex-col rounded-2xl border p-5 md:p-6 ${
-        dark
-          ? "border-transparent bg-[#1E1E2E] text-white"
-          : "border-border/70 bg-transparent"
-      }`}
-      style={dark ? { boxShadow: "var(--shadow-elevated)" } : undefined}
-    >
-      {dark && (
-        <span className="absolute -top-2.5 left-5 flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-primary-foreground">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary-foreground animate-pulse-dot" />
-          Now
-        </span>
-      )}
-
-      <div className="flex items-center justify-between">
-        <span
-          className={`font-mono text-[10px] uppercase tracking-[0.18em] ${
-            dark ? "text-primary" : "text-foreground/45"
-          }`}
-        >
-          {era.year}
-        </span>
-        <span
-          className={`font-mono text-[10px] uppercase tracking-[0.16em] ${
-            dark ? "text-white/35" : "text-foreground/35"
-          }`}
-        >
-          0{i + 1}
-        </span>
-      </div>
-
-      <h3
-        className={`mt-4 font-heading text-[22px] leading-tight md:text-[26px] ${
-          dark ? "text-white" : "text-foreground"
-        }`}
-        style={{ letterSpacing: "-0.01em" }}
-      >
-        {era.label}
-      </h3>
-
-      <p
-        className={`mt-2 text-[13px] leading-snug ${
-          dark ? "text-white/65" : "text-foreground/60"
-        }`}
-      >
-        Distribution moved through {era.distribution.toLowerCase().replace(/\.$/, "")}.
-      </p>
-
-      <dl
-        className={`mt-auto space-y-3 border-t pt-4 ${
-          dark ? "border-white/10" : "border-border/60"
-        }`}
-      >
-        <div className="flex items-baseline justify-between gap-3">
-          <dt
-            className={`font-mono text-[9px] uppercase tracking-[0.16em] ${
-              dark ? "text-white/40" : "text-foreground/40"
-            }`}
-          >
-            Measured by
-          </dt>
-          <dd
-            className={`text-right text-[12.5px] ${
-              dark ? "font-semibold text-primary" : "text-foreground/80"
-            }`}
-          >
-            {era.measured}
-          </dd>
-        </div>
-        <div className="flex items-baseline justify-between gap-3">
-          <dt
-            className={`font-mono text-[9px] uppercase tracking-[0.16em] ${
-              dark ? "text-white/40" : "text-foreground/40"
-            }`}
-          >
-            Annual spend
-          </dt>
-          <dd
-            className={`text-right font-mono text-[12px] tabular-nums ${
-              dark ? "text-white/85" : "text-foreground/70"
-            }`}
-          >
-            {era.spend}
-          </dd>
-        </div>
-      </dl>
-    </motion.div>
-  );
-};
-
-/* ──────────────────────────────────────────────
-   B2 · Three pillars · Eight dimensions
-   ────────────────────────────────────────────── */
-
 type PillarTone = "measured" | "partial" | "open";
+type PillarId = "visibility" | "accessibility" | "true-value";
 
-type Dimension = {
-  id: string;
-  name: string;
-  detail?: string;
-};
+type Dimension = { id: string; name: string; detail?: string };
 
 type Pillar = {
+  id: PillarId;
   label: string;
   question: string;
   dimensions: Dimension[];
@@ -175,6 +70,7 @@ type Pillar = {
 
 const PILLARS: Pillar[] = [
   {
+    id: "visibility",
     label: "Visibility",
     question: "Are you in the room?",
     dimensions: [
@@ -187,24 +83,26 @@ const PILLARS: Pillar[] = [
     tone: "measured",
   },
   {
+    id: "accessibility",
     label: "Accessibility",
     question: "Can agents read your commerce data?",
     dimensions: [
       { id: "04", name: "Structured Data Completeness" },
       { id: "05", name: "Platform Distribution" },
     ],
-    measured: "Partially, SEO / structured-data tools",
+    measured: "Partial · SEO / structured-data tools",
     status: "Partly measured",
     tone: "partial",
   },
   {
+    id: "true-value",
     label: "True Value",
     question: "Are agents seeing your real offer?",
     dimensions: [
       {
         id: "06",
         name: "Incentive Citation Rate",
-        detail: "Are agents citing your incentive and loyalty data?",
+        detail: "Are agents citing your loyalty and incentive data?",
       },
       {
         id: "07",
@@ -223,262 +121,376 @@ const PILLARS: Pillar[] = [
   },
 ];
 
-const StatusDot = ({ tone }: { tone: PillarTone }) => {
-  const color =
-    tone === "measured"
-      ? "bg-[hsl(var(--success))]"
-      : tone === "partial"
-        ? "bg-[hsl(var(--warning))]"
-        : "bg-primary";
-  return (
-    <span className="relative inline-flex h-2 w-2">
-      <span className={`absolute inset-0 rounded-full ${color} opacity-40 animate-ping`} />
-      <span className={`relative inline-block h-2 w-2 rounded-full ${color}`} />
-    </span>
-  );
-};
+const toneAccent = (tone: PillarTone) =>
+  tone === "measured"
+    ? "hsl(var(--success))"
+    : tone === "partial"
+      ? "hsl(var(--warning))"
+      : "hsl(213 99% 50%)";
 
-const PillarCard = ({ pillar, i }: { pillar: Pillar; i: number }) => {
-  const dark = pillar.tone === "open";
+const StatusDot = ({ tone, ping = false }: { tone: PillarTone; ping?: boolean }) => (
+  <span className="relative inline-flex h-1.5 w-1.5">
+    {ping && (
+      <span
+        className="absolute inset-0 rounded-full opacity-50 animate-ping"
+        style={{ background: toneAccent(tone) }}
+      />
+    )}
+    <span
+      className="relative inline-block h-1.5 w-1.5 rounded-full"
+      style={{ background: toneAccent(tone) }}
+    />
+  </span>
+);
+
+const ShareOfAlgorithmSection = () => {
+  const [activeEraId, setActiveEraId] = useState<EraId>("2025");
+  const [activePillarId, setActivePillarId] = useState<PillarId>("true-value");
+  const reduce = useReducedMotion();
+
+  const activeEra = ERAS.find((e) => e.id === activeEraId)!;
+  const activeEraIndex = ERAS.findIndex((e) => e.id === activeEraId);
+  const activePillar = PILLARS.find((p) => p.id === activePillarId)!;
+
+  const progressPct = (activeEraIndex / (ERAS.length - 1)) * 100;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 md:p-7 ${
-        dark
-          ? "border-transparent bg-[#1E1E2E] text-white"
-          : pillar.tone === "partial"
-            ? "border-border/60 bg-card/40 text-foreground"
-            : "border-border/55 bg-card/30 text-foreground"
-      }`}
-      style={dark ? { boxShadow: "var(--shadow-elevated)" } : undefined}
+    <AnimatedSection
+      id="share-of-algorithm"
+      className="relative bg-background py-20 md:py-28"
     >
-      {dark && (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full"
-          style={{ background: "radial-gradient(circle, hsl(213 99% 50% / 0.18), transparent 60%)" }}
-        />
-      )}
-
-      {/* Eyebrow */}
-      <div className="flex items-center justify-between">
-        <span
-          className={`font-mono text-[10px] uppercase tracking-[0.22em] ${
-            dark
-              ? "text-primary"
-              : pillar.tone === "partial"
-                ? "text-foreground/55"
-                : "text-foreground/45"
-          }`}
-        >
-          Pillar {String(i + 1).padStart(2, "0")}
-        </span>
-        <div className="flex items-center gap-2">
-          <StatusDot tone={pillar.tone} />
-          <span
-            className={`font-mono text-[9.5px] uppercase tracking-[0.16em] ${
-              dark ? "text-white/55" : "text-foreground/45"
-            }`}
-          >
-            {pillar.status}
-          </span>
-        </div>
-      </div>
-
-      {/* Pillar name */}
-      <h4
-        className={`mt-4 font-heading text-[28px] leading-[1.05] md:text-[34px] ${
-          dark ? "text-white" : pillar.tone === "partial" ? "text-foreground/85" : "text-foreground/75"
-        }`}
-        style={{ letterSpacing: "-0.015em" }}
-      >
-        {pillar.label}
-      </h4>
-
-      <p
-        className={`mt-2 text-[14px] leading-snug ${
-          dark ? "text-white/65" : "text-foreground/55"
-        }`}
-      >
-        "{pillar.question}"
-      </p>
-
-      {/* Dimensions */}
-      <ul
-        className={`mt-6 flex-1 space-y-3 border-t pt-5 ${
-          dark ? "border-white/10" : "border-border/55"
-        }`}
-      >
-        {pillar.dimensions.map((d, di) => (
-          <motion.li
-            key={d.id}
-            initial={{ opacity: 0, x: -6 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 + di * 0.06 }}
-            className="flex items-start gap-3"
-          >
-            <span
-              className={`mt-[2px] font-mono text-[11px] tabular-nums ${
-                dark
-                  ? "text-primary"
-                  : pillar.tone === "partial"
-                    ? "text-foreground/45"
-                    : "text-foreground/35"
-              }`}
-              style={{ letterSpacing: "0.02em" }}
-            >
-              {d.id}
-            </span>
-            <div className="min-w-0">
-              <div
-                className={`text-[14px] font-medium leading-snug ${
-                  dark ? "text-white" : "text-foreground/85"
-                }`}
-              >
-                {d.name}
-              </div>
-              {d.detail && (
-                <div
-                  className={`mt-1 text-[12.5px] leading-snug ${
-                    dark ? "text-white/55" : "text-foreground/55"
-                  }`}
-                >
-                  {d.detail}
-                </div>
-              )}
-            </div>
-          </motion.li>
-        ))}
-      </ul>
-
-      {/* Footer */}
-      <div
-        className={`mt-6 flex items-center justify-between border-t pt-4 ${
-          dark ? "border-white/10" : "border-border/55"
-        }`}
-      >
-        <span
-          className={`font-mono text-[9.5px] uppercase tracking-[0.18em] ${
-            dark ? "text-white/45" : "text-foreground/40"
-          }`}
-        >
-          Measured by
-        </span>
-        <span
-          className={`text-right text-[12.5px] ${
-            dark
-              ? "font-semibold text-primary"
-              : pillar.tone === "partial"
-                ? "text-foreground/75"
-                : "text-foreground/70"
-          }`}
-        >
-          {pillar.measured}
-        </span>
-      </div>
-    </motion.div>
-  );
-};
-
-/* ──────────────────────────────────────────────
-   Section wrapper
-   ────────────────────────────────────────────── */
-
-const ShareOfAlgorithmSection = () => (
-  <AnimatedSection
-    id="share-of-algorithm"
-    className="relative bg-background py-20 md:py-32"
-  >
-    <div className="mx-auto max-w-content px-6 md:px-20">
-      {/* Eyebrow */}
-      <div className="flex items-center gap-3">
-        <span className="h-px w-8 bg-primary" />
-        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-          Share of Algorithm
-        </span>
-      </div>
-
-      {/* Section headline */}
-      <div className="mt-6 grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
-        <h2
-          className="font-heading text-[36px] text-foreground md:text-[60px]"
-          style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
-        >
-          A new metric decides{" "}
-          <span className="text-foreground/45">who agents recommend.</span>
-        </h2>
-        <p className="self-end max-w-[440px] text-[17px] leading-[1.55] text-foreground/65 md:text-[19px]">
-          After share of shelf, share of voice, and share of search comes
-          the era that quietly redirects every category.
-        </p>
-      </div>
-
-      {/* B1 · Era strip */}
-      <div className="mt-14 grid gap-4 md:grid-cols-4 md:gap-5">
-        {ERAS.map((era, i) => (
-          <EraCard key={era.label} era={era} i={i} />
-        ))}
-      </div>
-
-      {/* B2 · Framework */}
-      <div className="mt-24 md:mt-32">
-        {/* Hairline + eyebrow */}
-        <div className="flex items-center gap-3 border-t border-foreground/10 pt-10">
+      <div className="mx-auto max-w-content px-6 md:px-20">
+        {/* Eyebrow */}
+        <div className="flex items-center gap-3">
           <span className="h-px w-8 bg-primary" />
           <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-            The framework
+            Share of Algorithm
           </span>
         </div>
 
+        {/* Headline */}
         <div className="mt-6 grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
-          <h3
-            className="font-heading text-[32px] text-foreground md:text-[52px]"
-            style={{ lineHeight: 1.04, letterSpacing: "-0.02em" }}
+          <h2
+            className="font-heading text-[36px] text-foreground md:text-[58px]"
+            style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
           >
-            Three pillars.{" "}
-            <span className="text-foreground/45">Eight dimensions.</span>{" "}
-            One score.
-          </h3>
-          <p className="self-end max-w-[440px] text-[16px] leading-[1.6] text-foreground/65 md:text-[18px]">
-            Visibility asks if the agent saw you. Accessibility asks if it
-            could read you. True Value asks what it actually saw.
+            A new metric decides{" "}
+            <span className="text-foreground/45">who agents recommend.</span>
+          </h2>
+          <p className="self-end max-w-[460px] text-[16px] leading-[1.55] text-foreground/65 md:text-[18px]">
+            After shelf, voice, and search comes the era that quietly redirects
+            every category. Three pillars decide the score. One is still
+            unmeasured.
           </p>
         </div>
 
-        {/* Three columns */}
-        <div className="mt-12 grid gap-5 md:grid-cols-3 md:gap-6">
-          {PILLARS.map((p, i) => (
-            <PillarCard key={p.label} pillar={p} i={i} />
-          ))}
-        </div>
-
-        {/* Footer insight bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 flex flex-col gap-3 rounded-2xl border border-border/60 bg-card/40 px-6 py-5 md:flex-row md:items-center md:gap-6 md:px-7"
+        {/* ─── Interactive editorial canvas ─── */}
+        <div
+          className="relative mt-12 overflow-hidden rounded-2xl border border-transparent bg-[#0E0E14] text-white md:mt-16"
+          style={{ boxShadow: "var(--shadow-elevated)" }}
         >
-          <div className="flex items-center gap-3 md:shrink-0">
-            <span className="h-6 w-[3px] rounded-full bg-primary" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-              The opening
-            </span>
+          {/* Ambient glow */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, hsl(213 99% 50% / 0.18), transparent 60%)",
+            }}
+          />
+
+          {/* ── Era rail ── */}
+          <div className="relative px-6 pt-8 md:px-10 md:pt-10">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-white/45">
+                Four eras of distribution
+              </span>
+              <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-white/35">
+                {String(activeEraIndex + 1).padStart(2, "0")} / 04
+              </span>
+            </div>
+
+            {/* Rail */}
+            <div className="relative mt-7">
+              {/* Base hairline */}
+              <div className="absolute left-0 right-0 top-1.5 h-px bg-white/10" />
+              {/* Progress fill */}
+              <motion.div
+                className="absolute left-0 top-1.5 h-px bg-primary"
+                initial={reduce ? { width: `${progressPct}%` } : { width: 0 }}
+                animate={{ width: `${progressPct}%` }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              />
+
+              {/* Nodes */}
+              <div className="relative grid grid-cols-4 gap-2">
+                {ERAS.map((era, i) => {
+                  const isActive = era.id === activeEraId;
+                  const isPast = i < activeEraIndex;
+                  return (
+                    <button
+                      key={era.id}
+                      type="button"
+                      onClick={() => setActiveEraId(era.id)}
+                      onMouseEnter={() => setActiveEraId(era.id)}
+                      aria-pressed={isActive}
+                      className="group flex flex-col items-start gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-md"
+                    >
+                      <span className="relative flex h-3 w-3 items-center justify-center">
+                        {isActive && (
+                          <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
+                        )}
+                        <span
+                          className={`relative inline-block h-3 w-3 rounded-full border transition-colors ${
+                            isActive
+                              ? "border-primary bg-primary"
+                              : isPast
+                                ? "border-primary/50 bg-primary/30"
+                                : "border-white/25 bg-[#0E0E14] group-hover:border-white/55"
+                          }`}
+                        />
+                      </span>
+                      <div className="min-w-0">
+                        <div
+                          className={`font-mono text-[10px] uppercase tracking-[0.2em] transition-colors ${
+                            isActive ? "text-primary" : "text-white/45"
+                          }`}
+                        >
+                          {era.year}
+                        </div>
+                        <div
+                          className={`mt-1 font-heading text-[15px] leading-tight md:text-[17px] transition-colors ${
+                            isActive ? "text-white" : "text-white/55 group-hover:text-white/80"
+                          }`}
+                          style={{ letterSpacing: "-0.01em" }}
+                        >
+                          {era.label}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-          <p className="text-[14.5px] leading-snug text-foreground/75 md:text-[15.5px]">
-            Visibility and Accessibility already have tools.{" "}
-            <span className="font-semibold text-foreground">True Value does not</span>,
-            and that is the opening.
-          </p>
-        </motion.div>
+
+          {/* ── Era detail + pillar lens ── */}
+          <div className="relative mt-8 grid gap-px bg-white/[0.06] md:mt-10 md:grid-cols-[0.9fr_1.4fr]">
+            {/* LEFT: Era detail (morphs) */}
+            <div className="bg-[#0E0E14] px-6 py-7 md:px-10 md:py-9">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeEra.id}
+                  initial={reduce ? false : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduce ? undefined : { opacity: 0, y: -4 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="flex items-center gap-2">
+                    <StatusDot tone="open" ping={activeEra.id === "2025"} />
+                    <span className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-white/55">
+                      {activeEra.id === "2025" ? "Now" : "Past era"}
+                    </span>
+                  </div>
+
+                  <h3
+                    className="mt-4 font-heading text-[28px] leading-[1.05] text-white md:text-[36px]"
+                    style={{ letterSpacing: "-0.015em" }}
+                  >
+                    {activeEra.label}
+                  </h3>
+
+                  <p className="mt-3 text-[14px] leading-snug text-white/65 md:text-[15px]">
+                    Distribution moved through{" "}
+                    {activeEra.distribution.toLowerCase().replace(/\.$/, "")}.
+                  </p>
+
+                  <dl className="mt-7 space-y-4 border-t border-white/10 pt-5">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-white/40">
+                        Measured by
+                      </dt>
+                      <dd
+                        className={`text-right text-[12.5px] ${
+                          activeEra.id === "2025"
+                            ? "font-semibold text-primary"
+                            : "text-white/80"
+                        }`}
+                      >
+                        {activeEra.measured}
+                      </dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-white/40">
+                        Annual spend
+                      </dt>
+                      <dd className="text-right font-mono text-[12.5px] tabular-nums text-white/85">
+                        {activeEra.spend}
+                      </dd>
+                    </div>
+                  </dl>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* RIGHT: Pillar lens (only meaningful on 2025; locked open) */}
+            <div className="relative bg-[#0E0E14] px-6 py-7 md:px-10 md:py-9">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-white/55">
+                  Decided by three pillars
+                </span>
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-white/35">
+                  Eight dimensions
+                </span>
+              </div>
+
+              {/* Pillar chips */}
+              <div className="mt-5 grid grid-cols-3 gap-2">
+                {PILLARS.map((p) => {
+                  const isActive = p.id === activePillarId;
+                  const accent = toneAccent(p.tone);
+                  return (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => setActivePillarId(p.id)}
+                      onMouseEnter={() => setActivePillarId(p.id)}
+                      aria-pressed={isActive}
+                      className={`group relative flex flex-col items-start gap-2 rounded-xl border px-3.5 py-3 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ${
+                        isActive
+                          ? "border-transparent"
+                          : "border-white/10 hover:border-white/25"
+                      }`}
+                      style={
+                        isActive
+                          ? {
+                              background:
+                                p.tone === "open"
+                                  ? "linear-gradient(180deg, hsl(213 99% 50% / 0.16), hsl(213 99% 50% / 0.06))"
+                                  : "rgba(255,255,255,0.05)",
+                              boxShadow:
+                                p.tone === "open"
+                                  ? "inset 0 0 0 1px hsl(213 99% 50% / 0.45)"
+                                  : "inset 0 0 0 1px rgba(255,255,255,0.18)",
+                            }
+                          : undefined
+                      }
+                    >
+                      <div className="flex items-center gap-2">
+                        <StatusDot tone={p.tone} ping={isActive && p.tone === "open"} />
+                        <span
+                          className="font-mono text-[9px] uppercase tracking-[0.2em]"
+                          style={{
+                            color: isActive ? accent : "rgba(255,255,255,0.45)",
+                          }}
+                        >
+                          {p.status}
+                        </span>
+                      </div>
+                      <div
+                        className={`font-heading text-[17px] leading-tight transition-colors md:text-[19px] ${
+                          isActive ? "text-white" : "text-white/70 group-hover:text-white"
+                        }`}
+                        style={{ letterSpacing: "-0.01em" }}
+                      >
+                        {p.label}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active pillar expanded panel */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePillar.id}
+                  initial={reduce ? false : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduce ? undefined : { opacity: 0, y: -4 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-5 rounded-xl border border-white/[0.08] bg-white/[0.025] p-4 md:p-5"
+                >
+                  <p className="text-[13px] italic leading-snug text-white/65 md:text-[14px]">
+                    "{activePillar.question}"
+                  </p>
+
+                  <ul className="mt-4 space-y-3 border-t border-white/10 pt-4">
+                    {activePillar.dimensions.map((d, di) => (
+                      <motion.li
+                        key={d.id}
+                        initial={reduce ? false : { opacity: 0, x: -4 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.05 + di * 0.05 }}
+                        className="flex items-start gap-3"
+                      >
+                        <span
+                          className="mt-[2px] font-mono text-[10.5px] tabular-nums"
+                          style={{
+                            color:
+                              activePillar.tone === "open"
+                                ? "hsl(213 99% 60%)"
+                                : "rgba(255,255,255,0.45)",
+                            letterSpacing: "0.02em",
+                          }}
+                        >
+                          {d.id}
+                        </span>
+                        <div className="min-w-0">
+                          <div className="text-[13.5px] font-medium leading-snug text-white">
+                            {d.name}
+                          </div>
+                          {d.detail && (
+                            <div className="mt-1 text-[12px] leading-snug text-white/55">
+                              {d.detail}
+                            </div>
+                          )}
+                        </div>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-3">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/40">
+                      Measured by
+                    </span>
+                    <span
+                      className="text-right text-[12px]"
+                      style={{
+                        color:
+                          activePillar.tone === "open"
+                            ? "hsl(213 99% 65%)"
+                            : "rgba(255,255,255,0.8)",
+                        fontWeight: activePillar.tone === "open" ? 600 : 400,
+                      }}
+                    >
+                      {activePillar.measured}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Closing strip inside the canvas */}
+          <div className="relative flex flex-col gap-3 border-t border-white/10 px-6 py-5 md:flex-row md:items-center md:gap-6 md:px-10">
+            <div className="flex items-center gap-3 md:shrink-0">
+              <span className="h-5 w-[3px] rounded-full bg-primary" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
+                The opening
+              </span>
+            </div>
+            <p className="text-[14px] leading-snug text-white/75 md:text-[15px]">
+              Visibility and Accessibility already have tools.{" "}
+              <span className="font-semibold text-white">
+                True Value does not
+              </span>
+              , and that is the layer Parleo owns.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </AnimatedSection>
-);
+    </AnimatedSection>
+  );
+};
 
 export default ShareOfAlgorithmSection;
