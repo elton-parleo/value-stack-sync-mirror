@@ -5,6 +5,7 @@ import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
   { label: "Problem", href: "#problem" },
+  { label: "Timing", href: "#how-it-works" },
   { label: "Framework", href: "#share-of-algorithm" },
   { label: "Console", href: "#dashboard" },
   { label: "API", href: "#architecture" },
@@ -64,7 +65,7 @@ const Navbar = () => {
           )}
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-7 md:flex">
+          <div className="hidden items-center gap-5 md:flex lg:gap-7">
             {isHome && navLinks.map((link) => (
               <a
                 key={link.href}
