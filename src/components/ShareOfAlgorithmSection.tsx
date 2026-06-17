@@ -261,7 +261,8 @@ const ShareOfAlgorithmSection = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 + i * 0.08, duration: 0.4 }}
-                      className="rounded-2xl border border-background/10 bg-background/[0.035] p-5"
+                      whileHover={{ y: -3, borderColor: "hsl(213 99% 50% / 0.4)" }}
+                      className="cursor-default rounded-2xl border border-background/10 bg-background/[0.035] p-5 transition-colors hover:bg-background/[0.06]"
                     >
                       <div className="flex items-baseline justify-between">
                         <div className="font-mono text-[11px] tabular-nums text-primary">{d.n}</div>
