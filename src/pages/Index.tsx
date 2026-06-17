@@ -29,10 +29,10 @@ const Index = () => (
     <main>
       <HeroSection />
       <SocialProofSection />
-      <LifestyleStripSection />
       <ProblemSection />
       <ShareOfAlgorithmSection />
       <EditorialBreakSection />
+      <LifestyleStrip />
       <DashboardSection />
       <FeedSection />
       <IntegrationSection />
