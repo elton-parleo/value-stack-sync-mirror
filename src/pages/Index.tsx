@@ -29,9 +29,9 @@ const Index = () => (
       <SocialProofSection />
       <ProblemSection />
       <ShareOfAlgorithmSection />
-      <FeedSection />
       <DashboardSection />
       <HowItWorks />
+      <FeedSection />
       <IntegrationSection />
       <TeamSection />
       <CTASection />
