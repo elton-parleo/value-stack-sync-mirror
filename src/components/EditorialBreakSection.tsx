@@ -3,7 +3,16 @@ import editorialPortrait from "@/assets/lifestyle-editorial-portrait.jpg";
 import retailMoment from "@/assets/lifestyle-retail-moment.jpg";
 
 const EditorialBreakSection = () => (
-  <section aria-label="Brand moment" className="relative bg-background py-20 md:py-28">
+  <section aria-label="Brand moment" className="atmos-warm relative bg-background py-20 md:py-28">
+    {/* faint architectural dot field in the top-right quadrant */}
+    <div
+      aria-hidden
+      className="texture-dots-faint pointer-events-none absolute right-0 top-0 hidden h-[260px] w-[40%] md:block"
+      style={{
+        maskImage: "linear-gradient(225deg, #000 0%, transparent 70%)",
+        WebkitMaskImage: "linear-gradient(225deg, #000 0%, transparent 70%)",
+      }}
+    />
     <div className="mx-auto max-w-content px-6 md:px-20">
       <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14">
         {/* Left: tall editorial portrait */}
