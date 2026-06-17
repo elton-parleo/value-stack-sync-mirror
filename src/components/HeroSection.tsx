@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+
 import ContactFormDialog from "./ContactFormDialog";
 import HeroChatArtifact from "./hero/HeroChatArtifact";
 import BrandLogo from "./BrandLogo";
@@ -81,13 +81,13 @@ const HeroSection = () => {
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <Link
-              to="/developers"
+            <a
+              href="#architecture"
               className="group inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07] active:scale-[0.98]"
             >
               For developers
               <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
-            </Link>
+            </a>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-border/60 pt-6">

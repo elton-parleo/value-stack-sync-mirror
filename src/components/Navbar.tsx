@@ -4,10 +4,11 @@ import { Link, useLocation } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 
 const navLinks = [
-  { label: "The Channel", href: "#problem" },
-  { label: "The Window", href: "#how-it-works" },
-  { label: "Command Center", href: "#dashboard" },
-  { label: "Protocol", href: "#integration" },
+  { label: "Problem", href: "#problem" },
+  { label: "Framework", href: "#share-of-algorithm" },
+  { label: "Console", href: "#dashboard" },
+  { label: "API", href: "#architecture" },
+  { label: "Protocols", href: "#integration" },
   { label: "Team", href: "#team" },
 ];
 
@@ -76,14 +77,14 @@ const Navbar = () => {
             {!isHome && (
               <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
             )}
-            <Link
-              to="/demo"
+            <a
+              href="#architecture"
               className="animate-border-pulse group inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/[0.04] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07]"
               style={{ height: 32 }}
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-              How it Works
-            </Link>
+              For developers
+            </a>
             <button
               onClick={() => setContactOpen(true)}
               className="inline-flex items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
@@ -151,14 +152,14 @@ const Navbar = () => {
                     {link.label}
                   </motion.a>
                 ))}
-                <Link
-                  to="/demo"
+                <a
+                  href="#architecture"
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
                 >
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-                  How it Works
-                </Link>
+                  For developers
+                </a>
               </div>
               <div className="mt-auto">
                 <button

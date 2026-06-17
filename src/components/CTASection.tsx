@@ -39,17 +39,8 @@ const CTASection = () => {
 
           <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
             <div>
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-primary/60" />
-                  <span className="relative h-2 w-2 rounded-full bg-primary" />
-                </span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/55">
-                  Onboarding cohort · Q2 2026
-                </span>
-              </div>
               <h2
-                className="mt-6 font-display text-[40px] font-medium text-white md:text-[64px]"
+                className="font-display text-[40px] font-medium text-white md:text-[64px]"
                 style={{ lineHeight: 1.02, letterSpacing: "-0.025em" }}
               >
                 Be the answer{" "}
@@ -88,7 +79,7 @@ const CTASection = () => {
                 </svg>
               </button>
               <a
-                href="/developers"
+                href="#architecture"
                 className="group inline-flex h-12 items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.04] px-7 text-[14px] font-medium text-white/85 transition-colors hover:border-white/30 hover:bg-white/[0.08]"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="opacity-70">
