@@ -444,15 +444,13 @@ const ProblemSection = () => {
   return (
     <AnimatedSection
       id="problem"
-      className="section-grid relative bg-background py-12 md:py-20"
+      className="relative bg-background py-16 md:py-24"
       ref={ref}
     >
-      <div className="diffusion-glow pointer-events-none absolute right-0 top-[30%]" />
-
       <div className="mx-auto max-w-content px-6 md:px-20">
         <h2
-          className="max-w-[20ch] font-heading text-[36px] text-foreground md:text-[60px]"
-          style={{ lineHeight: 1.02, letterSpacing: "-0.02em" }}
+          className="max-w-[18ch] font-display text-[44px] text-foreground md:text-[72px]"
+          style={{ lineHeight: 0.98 }}
         >
           Your customers are shopping through agents.{" "}
           <span className="text-foreground/45">Agents are shopping on sticker price.</span>
