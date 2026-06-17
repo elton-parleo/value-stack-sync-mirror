@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin } from "lucide-react";
+import { Linkedin, ArrowUpRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import wppLogo from "@/assets/logos/wpp-tight.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
@@ -10,35 +10,41 @@ import grouponLogo from "@/assets/logos/groupon-tight.png";
 import alphaflowLogo from "@/assets/logos/alphaflow-tight.png";
 
 type Founder = {
+  index: string;
   role: string;
   name: string;
   bio: string;
   linkedinUrl: string;
+  linkedinHandle: string;
   logos: { name: string; src: string; widthClass: string }[];
 };
 
 const team: Founder[] = [
   {
+    index: "01",
     role: "Co-Founder · Commercial Strategy",
     name: "Samar Birwadker",
     bio: "Founded Good&Co (acq. Axel Springer, 25M ARR). VP Marketing at MetaMap. Brand & growth at WPP/AKQA for Nike, Xbox, Google.",
     linkedinUrl: "https://www.linkedin.com/in/samarbirwadker/",
+    linkedinHandle: "samarbirwadker",
     logos: [
-      { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[98px]" },
-      { name: "WPP", src: wppLogo, widthClass: "w-[92px]" },
-      { name: "Nike", src: nikeLogo, widthClass: "w-[56px]" },
-      { name: "MetaMap", src: metamapLogo, widthClass: "w-[86px]" },
+      { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[88px]" },
+      { name: "WPP", src: wppLogo, widthClass: "w-[82px]" },
+      { name: "Nike", src: nikeLogo, widthClass: "w-[50px]" },
+      { name: "MetaMap", src: metamapLogo, widthClass: "w-[76px]" },
     ],
   },
   {
+    index: "02",
     role: "Co-Founder · Protocol Architecture",
     name: "Elton Cheung",
     bio: "Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
     linkedinUrl: "https://www.linkedin.com/in/eltoncheung/",
+    linkedinHandle: "eltoncheung",
     logos: [
-      { name: "Rakuten", src: rakutenLogo, widthClass: "w-[90px]" },
-      { name: "Groupon", src: grouponLogo, widthClass: "w-[96px]" },
-      { name: "AlphaFlow", src: alphaflowLogo, widthClass: "w-[82px]" },
+      { name: "Rakuten", src: rakutenLogo, widthClass: "w-[80px]" },
+      { name: "Groupon", src: grouponLogo, widthClass: "w-[86px]" },
+      { name: "AlphaFlow", src: alphaflowLogo, widthClass: "w-[72px]" },
     ],
   },
 ];
@@ -47,56 +53,99 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
   <motion.article
     initial={{ opacity: 0, y: 18 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+    transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     viewport={{ once: true, margin: "-60px" }}
-    className="flex min-h-[236px] flex-col rounded-2xl border border-border bg-card p-5 text-foreground md:min-h-[260px] md:p-6 lg:p-7"
+    className="group relative flex flex-col rounded-2xl border border-border bg-card p-7 text-foreground transition-all duration-300 hover:border-primary/20 md:p-9"
     style={{ boxShadow: "var(--shadow-card)" }}
   >
-    <h3 className="card-heading">
+    {/* faint radial wash on hover */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      style={{
+        background:
+          "radial-gradient(60% 60% at 100% 0%, hsl(213 99% 50% / 0.05) 0%, transparent 70%)",
+      }}
+    />
+
+    {/* index + role row */}
+    <div className="relative flex items-center gap-3">
+      <span className="font-mono text-[10px] tracking-[0.2em] text-foreground/35">
+        {f.index}
+      </span>
+      <span className="h-px w-6 bg-border" />
+      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
+        {f.role}
+      </span>
+    </div>
+
+    {/* name */}
+    <h3 className="relative mt-5 font-display text-[26px] leading-[1.1] tracking-[-0.02em] text-foreground md:text-[30px]">
       {f.name}
     </h3>
-    <div className="card-subheading mt-2.5 flex items-center gap-2.5">
-      <span>{f.role}</span>
-      <a
-        href={f.linkedinUrl}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`${f.name} on LinkedIn`}
-        className="text-primary transition-opacity hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-      >
-        <Linkedin className="h-4 w-4" strokeWidth={2.2} />
-      </a>
-    </div>
-    <p className="card-copy mt-5 max-w-[560px]">
+
+    {/* hairline */}
+    <div className="relative mt-5 h-px w-full bg-border/70" />
+
+    {/* bio */}
+    <p className="relative mt-5 max-w-[560px] text-[15px] leading-[1.6] text-foreground/65 md:text-[16px]">
       {f.bio}
     </p>
 
-    {/* Prior work */}
-    <div className="mt-auto pt-7">
-      <div className="flex flex-wrap items-center gap-x-7 gap-y-3 md:gap-x-9">
+    {/* prior work */}
+    <div className="relative mt-7">
+      <div className="font-mono text-[10px] tracking-[0.2em] text-foreground/35">
+        PREVIOUSLY
+      </div>
+      <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-8">
         {f.logos.map((l) => (
-          <div key={l.name} className="flex h-10 items-center">
+          <div key={l.name} className="flex h-7 items-center">
             <img
               src={l.src}
               alt={`${l.name} logo`}
-              className={`${l.widthClass} max-h-6 object-contain opacity-42 grayscale transition-opacity hover:opacity-65`}
+              className={`${l.widthClass} max-h-5 object-contain opacity-40 grayscale transition-opacity duration-300 group-hover:opacity-70`}
               loading="lazy"
             />
           </div>
         ))}
       </div>
     </div>
+
+    {/* linkedin */}
+    <div className="relative mt-8 flex items-center justify-between border-t border-border/70 pt-5">
+      <a
+        href={f.linkedinUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="link-reveal inline-flex items-center gap-2 text-[13px] font-medium text-foreground/70 transition-colors hover:text-foreground"
+      >
+        <Linkedin className="h-3.5 w-3.5" strokeWidth={2.2} />
+        linkedin.com/in/{f.linkedinHandle}
+      </a>
+      <ArrowUpRight
+        className="h-4 w-4 text-foreground/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+        strokeWidth={1.6}
+      />
+    </div>
   </motion.article>
 );
 
 const TeamSection = () => (
-  <AnimatedSection id="team" className="relative bg-background py-14 md:py-16">
+  <AnimatedSection id="team" className="atmos-warm relative bg-background py-20 md:py-28">
     <div className="mx-auto max-w-content px-6 md:px-20">
+      {/* eyebrow */}
+      <div className="mb-6 flex items-baseline gap-4">
+        <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/40">
+          FIG. 05 / TEAM
+        </span>
+        <span className="h-px flex-1 bg-border" />
+      </div>
+
       <h2 className="section-heading max-w-[760px] text-foreground">
         Built by operators who have shipped brand and infrastructure.
       </h2>
 
-      <div className="mt-8 grid gap-5 md:mt-9 md:grid-cols-2 lg:gap-6">
+      <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-2 lg:gap-6">
         {team.map((f, i) => (
           <FounderCard key={f.name} f={f} i={i} />
         ))}
