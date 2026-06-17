@@ -100,8 +100,8 @@ const DashboardSection = () => {
         {/* Headline */}
         <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
           <h2
-            className="font-display text-[36px] text-foreground md:text-[52px]"
-            style={{ lineHeight: 0.98 }}
+            className="font-display text-[34px] text-foreground md:text-[48px]"
+            style={{ lineHeight: 1 }}
           >
             Your agent channel,{" "}
             <span className="text-foreground/45">in one console.</span>
