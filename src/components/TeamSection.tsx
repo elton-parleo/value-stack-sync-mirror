@@ -14,7 +14,7 @@ type Founder = {
   name: string;
   bio: string;
   linkedinUrl: string;
-  logos: { name: string; src: string }[];
+  logos: { name: string; src: string; widthClass: string }[];
 };
 
 const team: Founder[] = [
@@ -24,10 +24,10 @@ const team: Founder[] = [
     bio: "Founded Good&Co (acq. Axel Springer, 25M ARR). VP Marketing at MetaMap. Brand & growth at WPP/AKQA for Nike, Xbox, Google.",
     linkedinUrl: "https://www.linkedin.com/in/samarbirwadker/",
     logos: [
-      { name: "Axel Springer", src: axelSpringerLogo },
-      { name: "WPP", src: wppLogo },
-      { name: "Nike", src: nikeLogo },
-      { name: "MetaMap", src: metamapLogo },
+      { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[98px]" },
+      { name: "WPP", src: wppLogo, widthClass: "w-[92px]" },
+      { name: "Nike", src: nikeLogo, widthClass: "w-[56px]" },
+      { name: "MetaMap", src: metamapLogo, widthClass: "w-[86px]" },
     ],
   },
   {
@@ -36,9 +36,9 @@ const team: Founder[] = [
     bio: "Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
     linkedinUrl: "https://www.linkedin.com/in/eltoncheung/",
     logos: [
-      { name: "Rakuten", src: rakutenLogo },
-      { name: "Groupon", src: grouponLogo },
-      { name: "AlphaFlow", src: alphaflowLogo },
+      { name: "Rakuten", src: rakutenLogo, widthClass: "w-[90px]" },
+      { name: "Groupon", src: grouponLogo, widthClass: "w-[96px]" },
+      { name: "AlphaFlow", src: alphaflowLogo, widthClass: "w-[82px]" },
     ],
   },
 ];
@@ -79,7 +79,7 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
             <img
               src={l.src}
               alt={`${l.name} logo`}
-              className="max-h-14 max-w-[140px] object-contain opacity-45 grayscale transition-opacity hover:opacity-70 md:max-w-[160px]"
+              className={`${l.widthClass} max-h-10 object-contain opacity-45 grayscale transition-opacity hover:opacity-70`}
               loading="lazy"
             />
           </div>
