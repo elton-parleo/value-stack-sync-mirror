@@ -173,7 +173,7 @@ const ShareOfAlgorithmSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="grid grid-cols-1 items-center gap-6 px-6 py-7 md:grid-cols-[80px_1fr_280px_140px] md:px-10 md:py-8"
+                className="group grid cursor-default grid-cols-1 items-center gap-6 px-6 py-7 transition-colors hover:bg-secondary/40 md:grid-cols-[80px_1fr_280px_140px] md:px-10 md:py-8"
               >
                 <div className="flex items-center gap-4 md:block">
                   <div className="font-mono text-[12px] tabular-nums text-foreground/40">{p.n}</div>
