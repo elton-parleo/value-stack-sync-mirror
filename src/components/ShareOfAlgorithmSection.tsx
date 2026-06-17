@@ -100,7 +100,7 @@ const ShareOfAlgorithmSection = () => {
     <AnimatedSection id="share-of-algorithm" className="relative bg-background py-16 md:py-24">
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
-          <h2 className="font-display text-[44px] text-foreground md:text-[72px]" style={{ lineHeight: 0.98 }}>
+          <h2 className="font-display text-[36px] text-foreground md:text-[52px]" style={{ lineHeight: 0.98 }}>
             The new shelf is decided by <span className="text-primary">agents.</span>
           </h2>
           <p className="mt-5 max-w-[600px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">

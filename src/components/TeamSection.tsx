@@ -106,7 +106,7 @@ const TeamSection = () => (
   <AnimatedSection id="team" className="relative bg-background py-16 md:py-24">
     <div className="mx-auto max-w-content px-6 md:px-20">
       <h2
-        className="max-w-[980px] font-display text-[44px] text-foreground md:text-[72px]"
+        className="max-w-[980px] font-display text-[36px] text-foreground md:text-[52px]"
         style={{ lineHeight: 0.98 }}
       >
         Built by operators who have shipped brand and infrastructure.
