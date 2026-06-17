@@ -90,7 +90,7 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 );
 
 const TeamSection = () => (
-  <AnimatedSection id="team" className="relative bg-background py-16 md:py-22">
+  <AnimatedSection id="team" className="relative bg-background py-16 md:py-20">
     <div className="mx-auto max-w-content px-6 md:px-20">
       <h2 className="section-heading max-w-[900px] text-foreground">
         Built by operators who have shipped brand and infrastructure.
