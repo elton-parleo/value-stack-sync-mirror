@@ -154,9 +154,8 @@ const ShareOfAlgorithmSection = () => {
                     <div
                       className={`mt-1 text-[15px] font-semibold ${era.active ? "text-foreground" : "text-foreground/70"}`}
                     >
-                      Share of {era.title}
+                      {era.caption}
                     </div>
-                    <div className="mt-0.5 text-[12px] text-foreground/45">{era.caption}</div>
                   </motion.div>
                 ))}
               </div>
