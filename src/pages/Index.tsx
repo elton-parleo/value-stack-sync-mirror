@@ -32,8 +32,8 @@ const Index = () => (
       <ProblemSection />
       <ShareOfAlgorithmSection />
       <EditorialBreakSection />
-      <LifestyleStrip />
       <DashboardSection />
+      <LifestyleStrip />
       <FeedSection />
       <IntegrationSection />
       <TeamSection />
