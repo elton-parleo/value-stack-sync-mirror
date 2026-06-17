@@ -2,77 +2,110 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import ContactFormDialog from "./ContactFormDialog";
-import lifestyleRetail from "@/assets/lifestyle-retail-moment.jpg";
 
 const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <AnimatedSection id="cta" className="relative overflow-hidden py-10 md:py-16">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
-        background: 'radial-gradient(ellipse at center, hsl(213 99% 50%), transparent 70%)'
-      }} />
-
+    <AnimatedSection id="cta" className="relative overflow-hidden py-16 md:py-24">
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <div className="grid gap-8 md:grid-cols-[1fr_auto] items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-[560px]"
-          >
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/[0.08]">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="1.5">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative overflow-hidden rounded-3xl bg-[#0E0E14] px-8 py-14 md:px-16 md:py-20"
+        >
+          {/* Ambient glow */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, hsl(213 99% 50% / 0.28) 0%, transparent 65%)",
+              filter: "blur(40px)",
+            }}
+          />
+          {/* Grid texture */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(hsl(0 0% 100%) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100%) 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+          />
+
+          <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-primary/60" />
+                  <span className="relative h-2 w-2 rounded-full bg-primary" />
+                </span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/55">
+                  Onboarding cohort · Q2 2026
+                </span>
+              </div>
+              <h2
+                className="mt-6 font-display text-[40px] font-medium text-white md:text-[64px]"
+                style={{ lineHeight: 1.02, letterSpacing: "-0.025em" }}
+              >
+                Be the answer{" "}
+                <em
+                  className="font-serif italic text-primary"
+                  style={{
+                    fontFamily:
+                      "'Instrument Serif', 'Cormorant Garamond', Georgia, serif",
+                  }}
+                >
+                  agents recommend
+                </em>
+                .
+              </h2>
+              <p className="mt-5 max-w-[520px] text-[16px] leading-[1.65] text-white/65 md:text-[17px]">
+                Working with a small group of merchants and infra teams setting the defaults for agentic commerce.
+              </p>
             </div>
-            <h2 className="font-display text-[32px] text-foreground md:text-[48px]">
-              Be visible to every agent.
-            </h2>
-            <p className="mt-3 text-[15px] text-foreground/70 md:text-[17px]" style={{ lineHeight: 1.7 }}>
-              Work with the merchants getting ahead of the agentic shift.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+
+            <div className="flex flex-col gap-3 md:items-end">
               <button
                 onClick={() => setContactOpen(true)}
-                className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85 active:scale-[0.98]"
+                className="group inline-flex h-12 items-center gap-2.5 rounded-full bg-white px-7 text-[14px] font-medium text-[#0E0E14] transition-all hover:bg-white/90 active:scale-[0.98]"
               >
                 Request a demo
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50 transition-transform group-hover:translate-x-0.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="opacity-60 transition-transform group-hover:translate-x-0.5"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
               <a
                 href="/developers"
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-primary transition-colors hover:bg-primary/[0.08]"
+                className="group inline-flex h-12 items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.04] px-7 text-[14px] font-medium text-white/85 transition-colors hover:border-white/30 hover:bg-white/[0.08]"
               >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="opacity-70">
+                  <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 For developers
-                <span aria-hidden className="opacity-70">→</span>
               </a>
+              <div className="mt-2 flex items-center gap-4 text-[11px] text-white/40 md:justify-end">
+                <span>Zero PII</span>
+                <span className="h-1 w-1 rounded-full bg-white/20" />
+                <span>{"<"}50ms</span>
+                <span className="h-1 w-1 rounded-full bg-white/20" />
+                <span>SOC 2 in progress</span>
+              </div>
             </div>
-          </motion.div>
-
-          {/* Editorial accent image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="overflow-hidden rounded-2xl"
-          >
-            <img
-              src={lifestyleRetail}
-              alt="Luxury retail moment"
-              className="h-[180px] w-full object-cover md:h-[280px] md:w-[220px]"
-              style={{ filter: 'grayscale(30%) contrast(1.05)', mixBlendMode: 'multiply' }}
-              loading="lazy"
-              width={1024}
-              height={800}
-            />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </AnimatedSection>
