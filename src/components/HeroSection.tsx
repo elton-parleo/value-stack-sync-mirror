@@ -31,19 +31,19 @@ const HeroSection = () => {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setContactOpen(true)}
-              className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background transition-colors hover:bg-foreground/85 active:scale-[0.98]"
+              className="btn-lift group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background hover:bg-foreground/90"
             >
               Request a demo
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-60 transition-transform group-hover:translate-x-0.5">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-60 transition-transform duration-300 group-hover:translate-x-1">
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
             <a
               href="https://parleo.io/demo"
-              className="group inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07] active:scale-[0.98]"
+              className="btn-lift group inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground hover:border-primary/50 hover:bg-primary/[0.07]"
             >
               How it works
-              <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
+              <span className="text-primary transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
 
