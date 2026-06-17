@@ -135,7 +135,7 @@ const ShareOfAlgorithmSection = () => {
           {/* Era Timeline */}
           <div className="relative border-b border-border bg-secondary/30 px-6 py-7 md:px-10 md:py-9">
             <div className="mb-6 flex items-baseline justify-between">
-              <div className="text-[13px] font-medium text-foreground/55">Click an era</div>
+              <div className="text-[13px] font-medium text-foreground/55">Distribution era</div>
               <div className="font-mono text-[11px] tabular-nums text-foreground/40">1960 to 2025</div>
             </div>
             <div className="relative">
