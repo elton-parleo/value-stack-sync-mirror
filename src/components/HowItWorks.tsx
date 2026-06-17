@@ -136,19 +136,15 @@ const AgentFlowDiagram = () => (
 );
 
 const HowItWorks = () => (
-  <AnimatedSection id="how-it-works" className="section-grid relative bg-background py-10 md:py-14">
-    <div className="diffusion-glow pointer-events-none absolute left-[10%] top-[50%] -translate-y-1/2" />
-    
-
-    <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
-      {/* Section header with editorial image pair */}
-      <div className="grid gap-8 md:grid-cols-[1fr_auto]">
+  <AnimatedSection id="how-it-works" className="relative bg-background py-16 md:py-24">
+    <div className="mx-auto max-w-content px-6 md:px-20">
+      <div className="grid gap-8 md:grid-cols-[1.15fr_auto] md:items-end">
         <div>
-          <h2 className="font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-            The early-mover advantage<br className="hidden md:block" /> is closing fast.
+          <h2 className="font-display text-[44px] text-foreground md:text-[72px]" style={{ lineHeight: 0.98 }}>
+            The early-mover advantage is closing fast.
           </h2>
-          <p className="mt-3 max-w-[600px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
-            Agents anchor on the merchants they surface first, and those defaults are being set now.
+          <p className="mt-5 max-w-[620px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
+            Agent defaults harden around the merchants they can already understand. The window to become readable is now.
           </p>
         </div>
 
@@ -193,7 +189,7 @@ const HowItWorks = () => (
         </motion.div>
       </div>
 
-      <div className="relative mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border/60 md:grid-cols-3" style={{ boxShadow: "var(--shadow-card)" }}>
+      <div className="relative mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border/60 md:grid-cols-3" style={{ boxShadow: "var(--shadow-card)" }}>
         {timeline.map((t, i) => (
           <motion.div
             key={t.step}
@@ -204,9 +200,7 @@ const HowItWorks = () => (
             className="group relative flex flex-col bg-card p-7 transition-colors duration-300 hover:bg-primary/[0.02]"
           >
             <div className="flex items-baseline justify-between">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/40">
-                Step 0{t.step}
-              </span>
+              <span className="font-mono text-[10px] tabular-nums text-foreground/40">0{t.step}</span>
               <span className="font-display text-[44px] font-light leading-none text-primary/15 tabular-nums transition-colors group-hover:text-primary/40">
                 0{t.step}
               </span>
