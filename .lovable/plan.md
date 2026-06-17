@@ -1,84 +1,118 @@
+# Fix-pass: layout, nav, team, spacing, and a real Share of Algorithm redesign
 
-## Goal
+A focused cleanup pass across the homepage. Each change ends with a visual check at desktop (1440) and mobile (390).
 
-Collapse the two stacked sub-panels inside `src/components/ShareOfAlgorithmSection.tsx` (Era strip + Three Pillars / Eight Dimensions) into a single, compact, design-forward, interactive panel. The combined panel must:
+## 1. Remove eyebrows everywhere
 
-- Tell the philosophy in one breath: distribution has gone through 4 eras, and the era we're in (Share of Algorithm) is decided by 3 pillars, with True Value being the missing one Parleo owns.
-- Take roughly half the vertical space the two current panels do.
-- Feel like a high-craft interactive artifact, not a dashboard.
+Per memory rule, eyebrows are out. Strip the tiny uppercase "kicker" labels (the blue bar + `font-mono uppercase tracking` text) from every section, including:
 
-## Concept: "The Distribution Timeline → True Value Lens"
+- `ShareOfAlgorithmSection` ("Share of Algorithm", "Distribution metrics", "Recommendation stack")
+- `FeedSection` ("The architecture", "01 · Sources" column headers)
+- `ProblemSection` ("THE RESULT", "THE CONSOLE", and any other kickers)
+- `DashboardSection`, `HowItWorks`, `IntegrationSection`, `TeamSection`, `CTASection`
 
-A single dark editorial canvas (`#0E0E14`) with two coordinated halves that share state:
+Replace with a clean single-column headline stack: H2 + sub. Section identity comes from the H2, not a label above it.
 
-```text
-┌─ Share of Algorithm ────────────────────────────────────────────┐
-│                                                                 │
-│  1960s ───── 1980s ───── 2010s ───── 2025 ●                     │
-│  Shelf       Voice       Search      Algorithm                  │
-│  ───────────────────────────────────── animated progress ───────│
-│                                                                 │
-│  ┌─────────────── ACTIVE ERA DETAIL (right side morphs) ──────┐ │
-│  │  Distribution: Agent decisions                             │ │
-│  │  Spend: ~$1T  ·  Measured by: Parleo                       │ │
-│  │                                                            │ │
-│  │  Decided by 3 pillars ─────────────────────────────────    │ │
-│  │  ◐ Visibility    ◐ Accessibility    ● True Value           │ │
-│  │     (measured)      (partial)         (Parleo · unmeasured)│ │
-│  │                                                            │ │
-│  │  [True Value selected by default — expands inline]         │ │
-│  │   06 Incentive Citation Rate                               │ │
-│  │   07 Incentive Accuracy                                    │ │
-│  │   08 True Value Delta                                      │ │
-│  └────────────────────────────────────────────────────────────┘ │
-│                                                                 │
-│  True Value is the only pillar without tooling. That is the    │
-│  opening Parleo owns.                                          │
-└─────────────────────────────────────────────────────────────────┘
+## 2. Navbar — labels match actual sections
+
+Current links use invented names ("The Channel", "The Window", "Command Center") that don't match section content. Rewrite `navLinks` in `src/components/Navbar.tsx` to mirror the page in order:
+
+```
+The problem        → #problem
+Share of Algorithm → #share-of-algorithm
+The API            → #architecture
+Live dashboard     → #dashboard
+Protocols          → #integration
+Team               → #team
 ```
 
-### Interaction model
+Drop "How it Works" pill from the navbar (it currently routes to `/demo` and conflicts with the on-page `#how-it-works` section). Keep "Request Demo" as the sole CTA.
 
-- **Horizontal timeline** of 4 eras as nodes on a single hairline rail. On scroll into view, a blue progress line draws from 1960s → 2025, settling on the active node (`Share of Algorithm`) with a pulsing dot.
-- Hovering or clicking a node morphs the right-side detail panel (cross-fade + small y-shift) to show that era's distribution / spend / measured-by. Default and resting state is **2025 · Share of Algorithm**.
-- When 2025 is active, three pillar chips appear under the era detail. Hover/click a pillar to expand its dimensions (the framework's "Eight dimensions" live here as expandable rows, not as three separate cards). **True Value is selected by default** and visually dominant (filled blue chip, expanded list, primary text); Visibility and Accessibility are dimmed status-chips that expand on hover.
-- Subtle motion: progress rail draws on enter, status dots have a soft `animate-ping`, pillar expand uses framer-motion `AnimatePresence` with height auto.
+## 3. Hero "For developers" button → architecture section
 
-### Why this works
+In `HeroSection.tsx`, change the secondary CTA from `<Link to="/developers">` to `<a href="#architecture">`. Same styling. Label stays "For developers".
 
-- One headline replaces two ("**A new metric decides who agents recommend.** Three pillars decide the score. One is still unmeasured.").
-- The eras become context, not equal real estate. They live as a slim navigable rail.
-- The framework becomes the payoff of the era — not a second section. True Value is the visual climax (filled, expanded, primary-colored).
-- Everything fits in a single panel ~the height of one of today's sub-panels.
+## 4. Reorder sections
 
-## Files to change
+In `src/pages/Index.tsx`, move `FeedSection` (the "One call. Every signal an agent needs." API panel) to sit immediately above `IntegrationSection` ("Ships on every protocol that matters."). New order:
 
-- `src/components/ShareOfAlgorithmSection.tsx` — full rewrite of the body. Keep the same export, same `id="share-of-algorithm"`, same `AnimatedSection` wrapper. Replace the two-panel layout with a single `<div>` editorial card containing:
-  1. Eyebrow + condensed headline + one-line dek.
-  2. Horizontal era rail (4 nodes, animated progress line, active state).
-  3. Morphing era-detail block (cross-fades on era change).
-  4. Pillar chip row + expandable dimensions list (True Value default-open).
-  5. Closing one-liner ("True Value does not. That is the opening.").
-- No other files touched. `Index.tsx` already imports `ShareOfAlgorithmSection`; nothing else changes.
+```
+Hero → SocialProof → Problem → ShareOfAlgorithm → Dashboard → HowItWorks → Feed → Integration → Team → CTA
+```
 
-## Technical notes
+## 5. Share of Algorithm — real redesign (not text + chips)
 
-- React state: `activeEra` (default `2025`), `activePillar` (default `True Value`).
-- Animations: `framer-motion` (already in project), `AnimatePresence` for the morphing detail and expanding pillar rows. Progress rail uses a `motion.div` width tween triggered by `useInView`.
-- Tokens: reuse existing semantic tokens (`bg-card`, `border-border`, `text-foreground`, `text-primary`). The interactive canvas uses the existing dark surface pattern `#1E1E2E` already used by `EraCard` and `PillarCard` so it stays on-system. No new colors.
-- No new dependencies.
-- Accessibility: era rail nodes and pillar chips are real `<button>`s with `aria-pressed`. Keyboard focusable. Reduced-motion respected via `useReducedMotion`.
+The current panel is a text-and-pill data dump. Rebuild it as a single design-forward interactive canvas with three visual moves that do the explaining:
 
-## Out of scope
+**Layout**
 
-- No copy rewrite beyond the merge (keep the existing pillar/dimension names, era data, and "The opening" closing line).
-- No changes to `FeedSection`, `PlatformContextSection`, or anything downstream.
-- Not adding charts, particles, or 3D. Motion stays Stripe-subtle per project memory.
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  H2: The new shelf is decided by agents.                    │
+│  Sub: Visibility gets you considered. True Value gets you   │
+│       ranked.                                               │
+│                                                             │
+│  ┌──────── Era rail (horizontal, animated) ──────────────┐  │
+│  │  Shelf —— Voice —— Search ——●—— Algorithm            │  │
+│  │  1960s   1980s    2010s         2025  (Parleo)        │  │
+│  └───────────────────────────────────────────────────────┘  │
+│                                                             │
+│  ┌─── Pillars (3 stacked tiles, click-to-focus) ──────────┐ │
+│  │  01 Visibility   ░░░░░░░░░ measured                    │ │
+│  │  02 Accessibility ░░░░░░░  partial                     │ │
+│  │  03 True Value   ███████   PARLEO LAYER  ◀ active      │ │
+│  └───────────────────────────────────────────────────────┘  │
+│                                                             │
+│  ┌── Live resolution canvas (changes with active pillar) ─┐ │
+│  │  Sticker rank #3   →   True-value rank #1              │ │
+│  │  $30.00  −$7.60 incentives  =  $22.40 effective        │ │
+│  │  [stacked horizontal bars: list → member → loyalty →   │ │
+│  │   card → effective, animating into place]              │ │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
 
-## Verification
+**Specifics**
+- One container, light cream surface (`bg-card`), generous interior padding.
+- Era rail: SVG glyphs per era, animated progress fill (framer-motion), caption updates below.
+- Pillar tiles: real visual "coverage" bars (full / partial / Parleo-fills-the-gap) instead of status pill chips. True Value tile is the visual hero — primary-blue accent stripe, subtle inner glow-free elevation.
+- Resolution canvas: a single animated bar-chart breakdown ($30 → $22.40) plus the rank swap card. No "Active lens" chips, no 8-dimension footer strip, no "ScorePlate" sidebar — all removed.
+- Numbers in `tabular-nums`. No eyebrow. No 8-chip dimension strip. No floating score plate.
 
-After the rewrite, visually verify the new section at 1440×900 and 390×844 via `browser--view_preview` + `browser--screenshot`:
-- Era rail renders horizontally on desktop, stacks cleanly on mobile.
-- True Value chip is the default-active, visually dominant element.
-- Section occupies roughly half the previous combined height.
-- No overflow, no console errors.
+## 6. Tighten wasted vertical space
+
+The screenshot shows ~400px of empty cream between the Result panel and The Console band in `ProblemSection`. Audit `ProblemSection.tsx` and reduce: collapse oversized `py-*`, `mt-*`, and any empty spacer divs between those two blocks down to ~64-80px. Apply the same audit to gaps between `ShareOfAlgorithm → Dashboard` and `Dashboard → HowItWorks` if similarly bloated.
+
+## 7. Team section — fix to match site
+
+Memory rule: grayscale company logos at `h-14`, no avatars or initials.
+
+In `TeamSection.tsx`:
+- Remove the `SB` / `EC` initials avatar circles entirely.
+- Logos: bump from `h-8 md:h-9` to `h-14`, keep grayscale, increase gap so they breathe.
+- Card padding and divider rhythm stay, but the headline area becomes name + role on its own (no avatar puck).
+- Both founder cards use the same light card treatment (drop the one-card-dark variant) so the section reads as a consistent pair rather than mismatched halves.
+
+## 8. Visual verification (mandatory before finishing)
+
+Use `browser--view_preview` then `browser--screenshot` (full_page) at 1440 wide and 390 wide. Check explicitly:
+- Nav anchors scroll to the right sections.
+- No eyebrow labels remain anywhere on the homepage.
+- Hero "For developers" jumps to `#architecture`.
+- Section order matches the spec.
+- No empty bands >120px between sections.
+- Team logos are clearly legible; no initials circles.
+- Share of Algorithm reads as a designed interactive panel, not a text wall.
+
+If any check fails, fix and re-screenshot before declaring done.
+
+## Files touched
+
+- `src/components/Navbar.tsx`
+- `src/components/HeroSection.tsx`
+- `src/pages/Index.tsx`
+- `src/components/ShareOfAlgorithmSection.tsx` (rebuild)
+- `src/components/ProblemSection.tsx` (eyebrows + spacing)
+- `src/components/FeedSection.tsx` (eyebrow + column kickers)
+- `src/components/DashboardSection.tsx`, `HowItWorks.tsx`, `IntegrationSection.tsx`, `CTASection.tsx` (eyebrow sweep)
+- `src/components/TeamSection.tsx` (avatars out, logos up)
