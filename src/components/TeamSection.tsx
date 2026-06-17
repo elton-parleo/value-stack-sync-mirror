@@ -49,13 +49,13 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     viewport={{ once: true, margin: "-60px" }}
-    className="flex min-h-[300px] flex-col rounded-2xl border border-border bg-card p-6 text-foreground md:min-h-[330px] md:p-8 lg:p-9"
+    className="flex min-h-[236px] flex-col rounded-2xl border border-border bg-card p-5 text-foreground md:min-h-[260px] md:p-6 lg:p-7"
     style={{ boxShadow: "var(--shadow-card)" }}
   >
-    <h3 className="text-[22px] font-bold leading-none text-foreground md:text-[24px]">
+    <h3 className="card-heading">
       {f.name}
     </h3>
-    <div className="mt-3 flex items-center gap-2.5 text-[15px] leading-none text-foreground/45 md:text-[16px]">
+    <div className="card-subheading mt-2.5 flex items-center gap-2.5">
       <span>{f.role}</span>
       <a
         href={f.linkedinUrl}
@@ -67,19 +67,19 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
         <Linkedin className="h-4 w-4" strokeWidth={2.2} />
       </a>
     </div>
-    <p className="mt-7 max-w-[620px] text-[17px] leading-[1.55] text-foreground/68 md:text-[18px] lg:text-[19px]">
+    <p className="card-copy mt-5 max-w-[560px]">
       {f.bio}
     </p>
 
     {/* Prior work */}
-    <div className="mt-auto pt-9">
-      <div className="flex flex-wrap items-center gap-x-9 gap-y-4 md:gap-x-12">
+    <div className="mt-auto pt-7">
+      <div className="flex flex-wrap items-center gap-x-7 gap-y-3 md:gap-x-9">
         {f.logos.map((l) => (
-          <div key={l.name} className="flex h-14 items-center">
+          <div key={l.name} className="flex h-10 items-center">
             <img
               src={l.src}
               alt={`${l.name} logo`}
-              className={`${l.widthClass} max-h-7 object-contain opacity-42 grayscale transition-opacity hover:opacity-65`}
+              className={`${l.widthClass} max-h-6 object-contain opacity-42 grayscale transition-opacity hover:opacity-65`}
               loading="lazy"
             />
           </div>
@@ -90,13 +90,13 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 );
 
 const TeamSection = () => (
-  <AnimatedSection id="team" className="relative bg-background py-16 md:py-20">
+  <AnimatedSection id="team" className="relative bg-background py-14 md:py-18">
     <div className="mx-auto max-w-content px-6 md:px-20">
-      <h2 className="section-heading max-w-[900px] text-foreground">
+      <h2 className="section-heading max-w-[760px] text-foreground">
         Built by operators who have shipped brand and infrastructure.
       </h2>
 
-      <div className="mt-9 grid gap-6 md:mt-11 md:grid-cols-2 lg:gap-7">
+      <div className="mt-8 grid gap-5 md:mt-9 md:grid-cols-2 lg:gap-6">
         {team.map((f, i) => (
           <FounderCard key={f.name} f={f} i={i} />
         ))}
