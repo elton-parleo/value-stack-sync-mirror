@@ -49,13 +49,13 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     viewport={{ once: true, margin: "-60px" }}
-    className="flex min-h-[330px] flex-col rounded-[18px] border border-border bg-card p-7 text-foreground md:min-h-[360px] md:p-9 lg:min-h-[492px] lg:p-12"
+    className="flex min-h-[310px] flex-col rounded-[18px] border border-border bg-card p-7 text-foreground md:min-h-[360px] md:p-9 lg:min-h-[390px] lg:p-10"
     style={{ boxShadow: "var(--shadow-card)" }}
   >
-    <h3 className="font-display text-[24px] font-semibold leading-none text-foreground md:text-[28px]">
+    <h3 className="text-[24px] font-bold leading-none text-foreground md:text-[27px]">
       {f.name}
     </h3>
-    <div className="mt-5 flex items-center gap-3 text-[18px] leading-none text-foreground/45 md:text-[20px] lg:text-[24px]">
+    <div className="mt-4 flex items-center gap-3 text-[16px] leading-none text-foreground/45 md:text-[18px]">
       <span>{f.role}</span>
       <a
         href={f.linkedinUrl}
@@ -67,19 +67,19 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
         <Linkedin className="h-5 w-5" strokeWidth={2.2} />
       </a>
     </div>
-    <p className="mt-9 max-w-[760px] text-[22px] leading-[1.65] text-foreground/70 md:text-[26px] lg:text-[30px]">
+    <p className="mt-7 max-w-[720px] text-[18px] leading-[1.58] text-foreground/70 md:text-[21px] lg:text-[23px]">
       {f.bio}
     </p>
 
     {/* Prior work */}
-    <div className="mt-auto pt-12">
-      <div className="flex flex-wrap items-center gap-x-12 gap-y-5 md:gap-x-16 lg:gap-x-20">
+    <div className="mt-auto pt-10">
+      <div className="flex flex-wrap items-center gap-x-10 gap-y-5 md:gap-x-14 lg:gap-x-16">
         {f.logos.map((l) => (
           <div key={l.name} className="flex h-14 items-center">
             <img
               src={l.src}
               alt={`${l.name} logo`}
-              className={`${l.widthClass} max-h-10 object-contain opacity-45 grayscale transition-opacity hover:opacity-70`}
+              className={`${l.widthClass} max-h-8 object-contain opacity-45 grayscale transition-opacity hover:opacity-70`}
               loading="lazy"
             />
           </div>
@@ -92,10 +92,7 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 const TeamSection = () => (
   <AnimatedSection id="team" className="relative bg-background py-16 md:py-24">
     <div className="mx-auto max-w-[1840px] px-6 md:px-11">
-      <h2
-        className="mx-auto max-w-content font-display text-[34px] text-foreground md:text-[48px]"
-        style={{ lineHeight: 1 }}
-      >
+      <h2 className="section-heading mx-auto max-w-content text-foreground">
         Built by operators who have shipped brand and infrastructure.
       </h2>
 

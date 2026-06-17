@@ -28,10 +28,10 @@ const IntegrationSection = () => (
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
-          <h2 className="font-display text-[34px] text-foreground md:text-[48px]" style={{ lineHeight: 1 }}>
+          <h2 className="section-heading text-foreground">
             Ships on every protocol that matters.
           </h2>
-          <p className="mt-5 max-w-[520px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
+          <p className="section-copy mt-5 max-w-[520px]">
             Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP.
           </p>
           <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">

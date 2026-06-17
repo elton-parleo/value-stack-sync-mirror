@@ -448,14 +448,11 @@ const ProblemSection = () => {
       ref={ref}
     >
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <h2
-          className="max-w-[18ch] font-display text-[34px] text-foreground md:text-[48px]"
-          style={{ lineHeight: 1 }}
-        >
+        <h2 className="section-heading max-w-[20ch] text-foreground">
           Your customers are shopping through agents.{" "}
           <span className="text-foreground/45">Agents are shopping on sticker price.</span>
         </h2>
-        <p className="mt-5 max-w-[620px] text-[17px] leading-[1.55] text-foreground/65 md:text-[19px]">
+        <p className="section-copy mt-5 max-w-[620px]">
           The fastest-growing channel in commerce ranks merchants on the one number that has
           nothing to do with what a customer actually pays.
         </p>
@@ -494,10 +491,7 @@ const ProblemSection = () => {
 
         {/* Editorial caption above artifact */}
         <div className="mt-16 max-w-[680px] md:mt-24">
-          <h3
-            className="font-heading text-[24px] leading-[1.1] text-foreground md:text-[34px]"
-            style={{ letterSpacing: "-0.015em" }}
-          >
+          <h3 className="text-[23px] font-semibold leading-[1.14] text-foreground md:text-[28px]">
             True Value of your product.{" "}
             <span className="text-foreground/45">Invisible to agents.</span>
           </h3>
