@@ -96,7 +96,7 @@ const ChatChrome = ({
             ChatGPT <span className="font-normal text-foreground/35">5</span>
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <AnimatePresence mode="wait">
             <motion.span
               key={isParleo ? "p" : "s"}
@@ -104,7 +104,7 @@ const ChatChrome = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -3 }}
               transition={{ duration: 0.3 }}
-              className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/45"
+              className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/45 sm:flex"
             >
               <span
                 className={`h-1.5 w-1.5 rounded-full ${
