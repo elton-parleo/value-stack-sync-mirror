@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import LifestyleStrip from "@/components/LifestyleStrip";
 import ProblemSection from "@/components/ProblemSection";
-import EditorialBreakSection from "@/components/EditorialBreakSection";
+
 
 import ShareOfAlgorithmSection from "@/components/ShareOfAlgorithmSection";
 import FeedSection from "@/components/FeedSection";
@@ -31,7 +31,6 @@ const Index = () => (
       <SocialProofSection />
       <ProblemSection />
       <ShareOfAlgorithmSection />
-      <EditorialBreakSection />
       <DashboardSection />
       <LifestyleStrip />
       <FeedSection />
