@@ -190,11 +190,11 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
         )}
       </AnimatePresence>
 
-      <div className="grid grid-cols-[38%_1fr] items-stretch">
+      <div className="grid grid-cols-[34%_1fr] items-stretch sm:grid-cols-[38%_1fr]">
         {/* Product image well */}
-        <div className="relative flex min-h-[226px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)]">
-          <div className="absolute left-4 top-4 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35">SKU 320418</div>
-          <div className="absolute bottom-4 left-4 max-w-[120px] font-mono text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-foreground/35">
+        <div className="relative flex min-h-[180px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)] sm:min-h-[226px]">
+          <div className="absolute left-3 top-3 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35 sm:left-4 sm:top-4">SKU 320418</div>
+          <div className="absolute bottom-3 left-3 hidden max-w-[120px] font-mono text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-foreground/35 sm:bottom-4 sm:left-4 sm:block">
             Merchant value made readable
           </div>
           <motion.img
@@ -203,7 +203,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[1] h-[136px] w-auto object-contain"
+            className="relative z-[1] h-[100px] w-auto object-contain sm:h-[136px]"
             style={{ filter: "drop-shadow(0 14px 18px hsl(165 40% 18% / 0.16))" }}
           />
         </div>
