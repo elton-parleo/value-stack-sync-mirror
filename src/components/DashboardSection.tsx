@@ -166,7 +166,7 @@ const DashboardSection = () => {
             </div>
 
             {/* Body */}
-            <div className="flex flex-col md:flex-row" style={{ minHeight: 520 }}>
+            <div className="flex flex-col md:flex-row md:min-h-[520px]">
               {/* Sidebar */}
               <aside className="hidden w-[200px] flex-col border-r border-border/70 md:flex" style={{ background: "#FBFAF9" }}>
                 <div className="flex items-center gap-2 px-5 pb-3 pt-5">
