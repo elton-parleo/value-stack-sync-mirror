@@ -228,7 +228,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.3 }}
-                  className={`shrink-0 rounded-full border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] ${
+                  className={`hidden shrink-0 rounded-full border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] sm:inline-block ${
                     isParleo
                       ? "border-primary/25 bg-primary/[0.06] text-primary"
                       : "border-border bg-secondary/40 text-foreground/45"
