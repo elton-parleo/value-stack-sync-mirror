@@ -66,7 +66,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-32px)] max-w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-lg border border-border bg-card p-6 md:p-8"
+            className="fixed inset-x-0 top-0 z-50 mx-auto flex max-h-[100dvh] w-full max-w-[480px] flex-col overflow-y-auto overscroll-contain rounded-none border border-border bg-card p-5 pb-8 sm:inset-x-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:max-h-[92vh] sm:rounded-lg sm:p-8"
             style={{ boxShadow: "var(--shadow-elevated)" }}
           >
             <button
