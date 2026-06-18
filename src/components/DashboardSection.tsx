@@ -144,17 +144,17 @@ const DashboardSection = () => {
             }}
           >
             {/* Window chrome */}
-            <div className="flex h-11 items-center justify-between border-b border-border/70 px-4" style={{ background: "#FAFAF9" }}>
-              <div className="flex gap-1.5">
+            <div className="flex h-11 items-center justify-between gap-3 border-b border-border/70 px-4" style={{ background: "#FAFAF9" }}>
+              <div className="flex shrink-0 gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#E8E6E3]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#E8E6E3]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#E8E6E3]" />
               </div>
-              <div className="flex h-6 min-w-[240px] items-center justify-center gap-1.5 rounded-md px-3 text-[11px] text-foreground/55" style={{ background: "#F0EFED" }}>
-                <span className="h-1 w-1 rounded-full bg-primary" />
-                app.parleo.io / sephora / constraints
+              <div className="flex h-6 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-md px-3 text-[11px] text-foreground/55 sm:min-w-[240px] sm:flex-initial" style={{ background: "#F0EFED" }}>
+                <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
+                <span className="truncate">app.parleo.io / sephora / constraints</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="hidden items-center gap-2 sm:flex">
                 <span className="relative inline-flex h-1.5 w-1.5">
                   <span className="absolute inset-0 rounded-full bg-primary opacity-60 animate-ping" />
                   <span className="relative inline-block h-1.5 w-1.5 rounded-full bg-primary" />
