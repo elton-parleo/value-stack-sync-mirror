@@ -280,10 +280,10 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                         winner ? "bg-card text-foreground" : "text-foreground/48"
                       }`}
                     >
-                      <div className="grid min-w-0 grid-cols-[auto_minmax(48px,auto)_minmax(0,1fr)] items-center gap-1.5">
+                      <div className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-1.5 sm:grid-cols-[auto_minmax(48px,auto)_minmax(0,1fr)]">
                         <BrandLogo name={row.retailer} size={12} grayscale={!winner} />
                         <span className="text-[11px] font-semibold">{row.retailer}</span>
-                        <span className="truncate text-[10px] text-foreground/42">{isParleo ? row.note : "visible to agent"}</span>
+                        <span className="hidden truncate text-[10px] text-foreground/42 sm:inline">{isParleo ? row.note : "visible to agent"}</span>
                       </div>
                       <span className={`text-[11px] font-semibold tabular-nums ${winner && isParleo ? "text-primary" : ""}`}>
                         {isParleo ? row.parleo : row.standard}
