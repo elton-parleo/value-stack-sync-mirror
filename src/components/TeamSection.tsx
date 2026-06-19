@@ -31,7 +31,7 @@ const team: Founder[] = [
       { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[88px]" },
       { name: "WPP", src: wppLogo, widthClass: "w-[82px]" },
       { name: "Nike", src: nikeLogo, widthClass: "w-[50px]" },
-      { name: "MetaMap", src: metamapLogo, widthClass: "w-[76px]" },
+      { name: "Landor", src: landorLogo.url, widthClass: "w-[78px]" },
     ],
   },
   {
