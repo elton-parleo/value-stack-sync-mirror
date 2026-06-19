@@ -24,7 +24,7 @@ const team: Founder[] = [
     index: "01",
     role: "Co-Founder · Commercial Strategy",
     name: "Samar Birwadker",
-    bio: "Founded Good&Co (acq. Axel Springer, 25M ARR). VP Marketing at MetaMap. Brand & growth at WPP/AKQA for Nike, Xbox, Google.",
+    bio: "Brand strategist turned founder. Builds at the seam of brand, growth, and infrastructure. 3x founder, 2x exits (SaaS, Fintech). VP Growth + advisor & investor in 10+ startups. Brand strategy at WPP / AKQA for Nike, Xbox, CPG.",
     linkedinUrl: "https://www.linkedin.com/in/samarbirwadker/",
     linkedinHandle: "samarbirwadker",
     logos: [
