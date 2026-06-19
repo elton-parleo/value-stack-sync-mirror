@@ -4,7 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 import wppLogo from "@/assets/logos/wpp-tight.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
 import nikeLogo from "@/assets/logos/nike-tight.png";
-import metamapLogo from "@/assets/logos/metamap-tight.png";
+import landorLogo from "@/assets/logos/landor.png.asset.json";
 import rakutenLogo from "@/assets/logos/rakuten-tight.png";
 import grouponLogo from "@/assets/logos/groupon-tight.png";
 import alphaflowLogo from "@/assets/logos/alphaflow-tight.png";
