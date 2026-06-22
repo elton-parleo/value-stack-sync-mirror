@@ -69,20 +69,30 @@ const FlowLine = ({ direction }: { direction: "in" | "out" }) => (
 );
 
 const FeedSection = () => (
-  <AnimatedSection id="architecture" className="relative bg-background py-16 md:py-24">
-    <div className="mx-auto max-w-content px-6 md:px-20">
+  <AnimatedSection id="architecture" className="relative overflow-hidden bg-background py-24 md:py-32">
+    {/* faint dot texture */}
+    <div
+      aria-hidden
+      className="texture-dots-faint pointer-events-none absolute inset-0 -z-0 opacity-60"
+      style={{
+        WebkitMaskImage: "radial-gradient(60% 50% at 50% 30%, #000 0%, transparent 80%)",
+        maskImage: "radial-gradient(60% 50% at 50% 30%, #000 0%, transparent 80%)",
+      }}
+    />
+    <div className="relative mx-auto max-w-content px-6 md:px-20">
       {/* Header */}
       <div className="max-w-3xl">
         <h2 className="section-heading text-foreground">
           One call. Every signal an agent needs.
         </h2>
 
-        <p className="section-copy mt-5 max-w-[640px]">
+        <p className="section-copy mt-6 max-w-[640px]">
           Parleo collapses 8 to 12 merchant lookups into a single pre-computed
           response: normalized SKUs, loyalty math, card-linked offers, and
           semantic context.
         </p>
       </div>
+
 
       {/* Diagram */}
       <div className="relative mt-16 md:mt-20">
