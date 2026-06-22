@@ -29,9 +29,25 @@ const HeroSection = () => {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="md:col-span-5"
         >
+          {/* Editorial chrome */}
+          <div className="flex items-center justify-between gap-4 pb-3">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/45 tabular-nums">
+              00 <span className="text-foreground/25">/</span>{" "}
+              <span className="text-foreground/55">Parleo</span>
+            </span>
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/35 sm:inline">
+              Field guide / 2026
+            </span>
+          </div>
+          <div
+            aria-hidden
+            className="h-px w-full"
+            style={{ background: "hsl(var(--border) / 0.85)" }}
+          />
+
           <h1
-            className="font-display text-[44px] text-foreground md:text-[64px]"
-            style={{ lineHeight: 1.05 }}
+            className="mt-8 font-display text-[44px] text-foreground md:text-[68px]"
+            style={{ lineHeight: 1.02, letterSpacing: "-0.045em" }}
           >
             The incentive layer for AI commerce.
           </h1>
@@ -39,7 +55,7 @@ const HeroSection = () => {
             Parleo makes loyalty programs, card-offers and true value of your products readable and transactable across every agent surface.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-5">
             <button
               onClick={() => setContactOpen(true)}
               className="btn-lift group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-medium text-background hover:bg-foreground/90"
@@ -51,12 +67,13 @@ const HeroSection = () => {
             </button>
             <a
               href="https://parleo.io/demo"
-              className="btn-lift group inline-flex h-11 items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.04] px-5 text-[14px] font-medium text-foreground hover:border-primary/50 hover:bg-primary/[0.07]"
+              className="link-reveal group inline-flex items-center gap-2 text-[13px] font-medium text-foreground/75 hover:text-foreground"
             >
+              <span className="font-mono text-[11px] text-foreground/40">→</span>
               How it works
-              <span className="text-primary transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
+
 
           <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-border/60 pt-6">
             <span className="font-label text-foreground/45">Works with</span>
@@ -88,9 +105,13 @@ const HeroSection = () => {
         >
           <div className="mx-auto w-full max-w-[620px]">
             <HeroChatArtifact />
+            <p className="mt-4 text-right font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/40">
+              Fig. 01 — Agent response with Parleo true-cost layer
+            </p>
           </div>
         </motion.div>
       </div>
+
 
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </section>
