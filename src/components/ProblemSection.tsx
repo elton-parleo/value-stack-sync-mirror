@@ -2,6 +2,7 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import SectionHeader from "./editorial/SectionHeader";
 import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png.asset.json";
 
 /* ───────────────────────────────────────────────────────────
@@ -444,18 +445,23 @@ const ProblemSection = () => {
   return (
     <AnimatedSection
       id="problem"
-      className="relative bg-background py-16 md:py-24"
+      className="relative bg-background py-20 md:py-32"
       ref={ref}
     >
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <h2 className="section-heading max-w-[20ch] text-foreground">
-          Your customers are shopping through agents.{" "}
-          <span className="text-foreground/45">Agents are shopping on sticker price.</span>
-        </h2>
-        <p className="section-copy mt-5 max-w-[620px]">
-          The fastest-growing channel in commerce ranks merchants on the one number that has
-          nothing to do with what a customer actually pays.
-        </p>
+        <SectionHeader
+          index="02"
+          kicker="The gap"
+          title={
+            <>
+              Your customers are shopping through agents.{" "}
+              <span className="text-foreground/45">Agents are shopping on sticker price.</span>
+            </>
+          }
+          standfirst="The fastest-growing channel in commerce ranks merchants on the one number that has nothing to do with what a customer actually pays."
+          align="wide"
+        />
+
 
         {/* Stats */}
         <div className="mt-10 grid grid-cols-1 divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import SectionHeader from "./editorial/SectionHeader";
 
 /* ───────────────────────────────────────────────
    Section D · Command Center
@@ -95,19 +96,21 @@ const DashboardSection = () => {
   const ref = useRef(null);
 
   return (
-    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-24" ref={ref}>
+    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-20 md:py-32" ref={ref}>
       <div className="relative mx-auto max-w-content px-6 md:px-20">
-        {/* Headline */}
-        <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
-          <h2 className="section-heading text-foreground">
-            Your agent channel,{" "}
-            <span className="text-foreground/45">in one console.</span>
-          </h2>
-          <p className="section-copy max-w-[460px] self-end">
-            Score how agents rank you, see the margin they cannot, and set the
-            rules your offers play by.
-          </p>
-        </div>
+        <SectionHeader
+          index="04"
+          kicker="Merchant view"
+          title={
+            <>
+              Your agent channel,{" "}
+              <span className="text-foreground/45">in one console.</span>
+            </>
+          }
+          standfirst="Score how agents rank you, see the margin they cannot, and set the rules your offers play by."
+          align="wide"
+        />
+
 
         {/* Dashboard mockup with annotation callouts */}
         <div className="relative mt-16 md:mt-20">
