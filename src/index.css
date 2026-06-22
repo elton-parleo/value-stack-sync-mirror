@@ -101,15 +101,16 @@
     letter-spacing: 0.12em;
   }
   .section-heading {
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: 1.06;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
   }
   .section-copy {
-    color: hsl(var(--foreground) / 0.65);
+    color: hsl(var(--foreground) / 0.6);
     font-size: 16px;
     line-height: 1.6;
+    text-wrap: balance;
   }
   .card-heading {
     color: hsl(var(--foreground));
