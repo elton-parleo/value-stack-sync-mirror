@@ -30,14 +30,23 @@ const HeroSection = () => {
           className="md:col-span-5"
         >
           <h1
-            className="font-display text-[44px] text-foreground md:text-[64px]"
-            style={{ lineHeight: 1.05 }}
+            className="font-display text-[44px] tracking-[-0.045em] text-foreground md:text-[68px]"
+            style={{ lineHeight: 1.02 }}
           >
-            The incentive layer for AI commerce.
+            The{" "}
+            <span className="relative inline-block">
+              incentive
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] bg-[hsl(var(--accent-warm))]/70"
+              />
+            </span>{" "}
+            layer for AI commerce.
           </h1>
-          <p className="mt-5 max-w-[480px] text-[18px] leading-[1.6] text-foreground/70">
+          <p className="mt-6 max-w-[480px] text-[18px] leading-[1.6] text-foreground/65">
             Parleo makes loyalty programs, card-offers and true value of your products readable and transactable across every agent surface.
           </p>
+
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
