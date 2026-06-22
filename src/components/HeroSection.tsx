@@ -106,7 +106,7 @@ const HeroSection = () => {
           <div className="mx-auto w-full max-w-[620px]">
             <HeroChatArtifact />
             <p className="mt-4 text-right font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/40">
-              Fig. 01 — Agent response with Parleo true-cost layer
+              Fig. 01 · Agent response with Parleo true-cost layer
             </p>
           </div>
         </motion.div>
