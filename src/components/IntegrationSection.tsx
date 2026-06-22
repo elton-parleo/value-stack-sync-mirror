@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import SectionHeader from "./editorial/SectionHeader";
 
 const integrations = [
   { name: "MCP", desc: "Model Context Protocol", logo: "Anthropic" },
@@ -15,28 +16,20 @@ const integrations = [
 ];
 
 const IntegrationSection = () => (
-  <AnimatedSection id="integration" className="relative bg-background py-16 md:py-24">
-    <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
-      <svg width="60" height="60" viewBox="0 0 60 60" className="opacity-[0.06]">
-        {[0, 20, 40].map(x => [0, 20, 40].map(y => (
-          <circle key={`${x}-${y}`} cx={x + 5} cy={y + 5} r="2" fill="hsl(213,99%,50%)" />
-        )))}
-      </svg>
-    </div>
-
+  <AnimatedSection id="integration" className="relative bg-background py-20 md:py-32">
     <div className="mx-auto max-w-content px-6 md:px-20">
-      <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
+      <SectionHeader
+        index="07"
+        kicker="Surfaces"
+        title="Ships on every protocol that matters."
+        standfirst="Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP. Six protocols, one resolution layer."
+        align="wide"
+      />
+
+      <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
-          <h2 className="section-heading text-foreground">
-            Ships on every protocol that matters.
-          </h2>
-          <p className="section-copy mt-5 max-w-[520px]">
-            Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP.
-          </p>
-          <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">
-            Six protocols. Zero cross-protocol incentive resolution. Parleo is the layer that resolves it.
-          </p>
+
 
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {integrations.map((t, i) => (

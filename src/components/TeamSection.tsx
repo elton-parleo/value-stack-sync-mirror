@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, ArrowUpRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeader from "./editorial/SectionHeader";
 import wppLogo from "@/assets/logos/wpp-tight.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
 import nikeLogo from "@/assets/logos/nike-tight.png";
@@ -131,30 +132,16 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 );
 
 const TeamSection = () => (
-  <AnimatedSection id="team" className="relative overflow-hidden bg-background py-16 md:py-20">
-    {/* subtle blue light burn */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0"
-      style={{
-        background:
-          "radial-gradient(40% 50% at 92% 12%, hsl(213 99% 50% / 0.06) 0%, transparent 70%)",
-      }}
-    />
+  <AnimatedSection id="team" className="relative overflow-hidden bg-background py-20 md:py-32">
     <div className="relative mx-auto max-w-content px-6 md:px-20">
-      {/* eyebrow */}
-      <div className="mb-6 flex items-baseline gap-4">
-        <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/40">
-          FIG. 05 / TEAM
-        </span>
-        <span className="h-px flex-1 bg-border" />
-      </div>
+      <SectionHeader
+        index="08"
+        kicker="Authors"
+        title="Built by operators who have shipped brand and infrastructure."
+        align="wide"
+      />
 
-      <h2 className="section-heading max-w-[760px] text-foreground">
-        Built by operators who have shipped brand and infrastructure.
-      </h2>
-
-      <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-2 lg:gap-6">
+      <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 lg:gap-6">
         {team.map((f, i) => (
           <FounderCard key={f.name} f={f} i={i} />
         ))}

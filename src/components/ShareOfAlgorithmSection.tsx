@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, FileCode2, Sparkles, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeader from "./editorial/SectionHeader";
 
 const eras = [
   {
@@ -113,16 +114,20 @@ const ShareOfAlgorithmSection = () => {
   const era = eras[activeEra];
 
   return (
-    <AnimatedSection id="share-of-algorithm" className="relative bg-background py-16 md:py-24">
+    <AnimatedSection id="share-of-algorithm" className="relative bg-background py-20 md:py-32">
       <div className="mx-auto max-w-content px-6 md:px-20">
-        <div className="max-w-[820px]">
-          <h2 className="section-heading text-foreground">
-            The new shelf is decided by <span className="text-primary">agents.</span>
-          </h2>
-          <p className="section-copy mt-5 max-w-[600px]">
-            Visibility gets you considered. Accessibility gets you parsed. True Value gets you ranked. Parleo owns the layer that nobody else measures.
-          </p>
-        </div>
+        <SectionHeader
+          index="03"
+          kicker="Mechanism"
+          title={
+            <>
+              The new shelf is decided by <span className="text-primary">agents.</span>
+            </>
+          }
+          standfirst="Visibility gets you considered. Accessibility gets you parsed. True Value gets you ranked. Parleo owns the layer that nobody else measures."
+          align="wide"
+        />
+
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
