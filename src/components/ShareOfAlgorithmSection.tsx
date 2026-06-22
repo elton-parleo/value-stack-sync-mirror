@@ -117,7 +117,7 @@ const ShareOfAlgorithmSection = () => {
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
           <h2 className="section-heading text-foreground">
-            Share of Algorithm:&nbsp;Winning in <span className="text-primary">agentic.</span>
+            Share of Algorithm = Winning in <span className="text-primary">agentic.</span>
           </h2>
           <p className="section-copy mt-5 max-w-[600px]">
             Visibility gets you considered. Accessibility gets you parsed. True Value gets you ranked. Parleo owns the layer that nobody else measures.
