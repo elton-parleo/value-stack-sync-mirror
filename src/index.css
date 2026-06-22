@@ -139,7 +139,8 @@
   }
   @media (min-width: 768px) {
     .section-heading {
-      font-size: 40px;
+      font-size: 46px;
+      letter-spacing: -0.04em;
     }
     .section-copy {
       font-size: 18px;
@@ -154,6 +155,32 @@
       font-size: 16px;
     }
   }
+
+  /* Page-level paper texture — extremely faint, sits behind all sections */
+  .paper-grain {
+    position: relative;
+  }
+  .paper-grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    background-image:
+      radial-gradient(hsl(var(--foreground) / 0.025) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .paper-grain > * { position: relative; z-index: 1; }
+
+  /* Small-caps utility for quiet eyebrows */
+  .smallcaps {
+    font-feature-settings: "smcp", "c2sc", "ss01";
+    letter-spacing: 0.04em;
+  }
+
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
