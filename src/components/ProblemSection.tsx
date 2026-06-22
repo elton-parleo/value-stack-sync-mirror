@@ -444,18 +444,37 @@ const ProblemSection = () => {
   return (
     <AnimatedSection
       id="problem"
-      className="relative bg-background py-16 md:py-24"
+      className="relative overflow-hidden bg-background py-24 md:py-32"
       ref={ref}
     >
-      <div className="mx-auto max-w-content px-6 md:px-20">
+      {/* faint dot texture, top-left anchor */}
+      <div
+        aria-hidden
+        className="texture-dots-faint pointer-events-none absolute inset-0 -z-0 opacity-60"
+        style={{
+          WebkitMaskImage: "radial-gradient(50% 40% at 10% 0%, #000 0%, transparent 75%)",
+          maskImage: "radial-gradient(50% 40% at 10% 0%, #000 0%, transparent 75%)",
+        }}
+      />
+      {/* single warm burn, bottom-right */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-0"
+        style={{
+          background:
+            "radial-gradient(35% 40% at 92% 88%, hsl(32 95% 60% / 0.06) 0%, transparent 70%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-content px-6 md:px-20">
         <h2 className="section-heading max-w-[20ch] text-foreground">
           Your customers are shopping through agents.{" "}
-          <span className="text-foreground/45">Agents are shopping on sticker price.</span>
+          <span className="text-foreground/40">Agents are shopping on sticker price.</span>
         </h2>
-        <p className="section-copy mt-5 max-w-[620px]">
+        <p className="section-copy mt-6 max-w-[640px]">
           The fastest-growing channel in commerce ranks merchants on the one number that has
           nothing to do with what a customer actually pays.
         </p>
+
 
         {/* Stats */}
         <div className="mt-10 grid grid-cols-1 divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
