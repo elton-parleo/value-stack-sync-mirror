@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @layer base {
   :root {
@@ -68,14 +71,28 @@
     font-family: 'Inter Tight', sans-serif;
     font-size: 17px;
     line-height: 1.7;
+    font-feature-settings: "ss01", "cv11";
+  }
+  /* Tabular figures on all numeric-leaning contexts */
+  .tabular-nums,
+  code,
+  pre,
+  time,
+  [data-numeric],
+  .font-display,
+  .section-heading {
+    font-variant-numeric: tabular-nums;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
+    font-family: 'Fraunces', 'Inter Tight', serif;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    font-optical-sizing: auto;
   }
   .font-heading {
     font-weight: 700;
@@ -85,20 +102,31 @@
     font-weight: 500;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
   }
   .font-label-wide {
     font-weight: 500;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
+  }
+  .font-mono-tick {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: hsl(var(--foreground) / 0.32);
+    font-feature-settings: "tnum";
   }
   .section-heading {
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: 1.06;
+    font-family: 'Fraunces', 'Inter Tight', serif;
+    font-size: 32px;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: -0.018em;
+    line-height: 1.04;
+    font-optical-sizing: auto;
   }
+
   .section-copy {
     color: hsl(var(--foreground) / 0.65);
     font-size: 16px;
@@ -131,8 +159,10 @@
   }
   @media (min-width: 768px) {
     .section-heading {
-      font-size: 40px;
+      font-size: 44px;
+      letter-spacing: -0.022em;
     }
+
     .section-copy {
       font-size: 18px;
     }
