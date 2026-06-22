@@ -95,34 +95,19 @@ const DashboardSection = () => {
   const ref = useRef(null);
 
   return (
-    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-24 md:py-32" ref={ref}>
-      {/* hairline light-burn behind the artifact */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-0"
-        style={{
-          background:
-            "radial-gradient(55% 50% at 50% 60%, hsl(213 99% 50% / 0.05) 0%, transparent 70%)",
-        }}
-      />
-      {/* tiny floating geometric mark */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[8%] top-[14%] hidden h-2 w-2 rounded-full border border-foreground/15 animate-float md:block"
-      />
+    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-24" ref={ref}>
       <div className="relative mx-auto max-w-content px-6 md:px-20">
         {/* Headline */}
         <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
           <h2 className="section-heading text-foreground">
             Your agent channel,{" "}
-            <span className="text-foreground/40">in one console.</span>
+            <span className="text-foreground/45">in one console.</span>
           </h2>
           <p className="section-copy max-w-[460px] self-end">
             Score how agents rank you, see the margin they cannot, and set the
             rules your offers play by.
           </p>
         </div>
-
 
         {/* Dashboard mockup with annotation callouts */}
         <div className="relative mt-16 md:mt-20">

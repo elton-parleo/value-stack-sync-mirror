@@ -7,7 +7,7 @@ const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <AnimatedSection id="cta" className="relative overflow-hidden py-24 md:py-32">
+    <AnimatedSection id="cta" className="relative overflow-hidden py-16 md:py-24">
       <div className="mx-auto max-w-content px-6 md:px-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -31,12 +31,6 @@ const CTASection = () => {
           />
           <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
             <div>
-              <div className="mb-5 flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--accent-warm))]" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-background/45">
-                  Early access
-                </span>
-              </div>
               <h2 className="section-heading section-heading-dark">
                 Be the answer agents recommend.
               </h2>
@@ -44,7 +38,6 @@ const CTASection = () => {
                 Working with a small group of merchants and infra teams setting the defaults for agentic commerce.
               </p>
             </div>
-
 
             <div className="flex flex-col gap-3 md:items-end">
               <button

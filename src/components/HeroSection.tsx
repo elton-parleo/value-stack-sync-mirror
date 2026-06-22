@@ -21,13 +21,7 @@ const HeroSection = () => {
             "radial-gradient(45% 50% at 85% 18%, hsl(213 99% 50% / 0.10) 0%, transparent 65%)",
         }}
       />
-      {/* tiny floating geometric mark */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[6%] top-[18%] hidden h-1.5 w-1.5 rounded-full bg-foreground/15 animate-float md:block"
-      />
       <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-10 md:px-20 md:pb-24 md:pt-16">
-
         {/* Left: copy */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -36,23 +30,14 @@ const HeroSection = () => {
           className="md:col-span-5"
         >
           <h1
-            className="font-display text-[44px] tracking-[-0.045em] text-foreground md:text-[68px]"
-            style={{ lineHeight: 1.02 }}
+            className="font-display text-[44px] text-foreground md:text-[64px]"
+            style={{ lineHeight: 1.05 }}
           >
-            The{" "}
-            <span className="relative inline-block">
-              incentive
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] bg-[hsl(var(--accent-warm))]/70"
-              />
-            </span>{" "}
-            layer for AI commerce.
+            The incentive layer for AI commerce.
           </h1>
-          <p className="mt-6 max-w-[480px] text-[18px] leading-[1.6] text-foreground/65">
+          <p className="mt-5 max-w-[480px] text-[18px] leading-[1.6] text-foreground/70">
             Parleo makes loyalty programs, card-offers and true value of your products readable and transactable across every agent surface.
           </p>
-
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button

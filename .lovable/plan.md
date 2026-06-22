@@ -1,72 +1,118 @@
+# Fix-pass: layout, nav, team, spacing, and a real Share of Algorithm redesign
 
-# Visual refinement plan
+A focused cleanup pass across the homepage. Each change ends with a visual check at desktop (1440) and mobile (390).
 
-Goal: make the site feel handcrafted and quietly premium — Landor restraint with Aesop warmth, rendered through a technology-infrastructure lens. No new components, no eyebrows, no numbered markers, no gimmicks. Restore the atmospheric layer that was stripped, tighten the typography, and unify the rhythm between sections.
+## 1. Remove eyebrows everywhere
 
-## What I will NOT do
-- Not change fonts (Inter Tight stays). Not add Instrument Serif or any new typeface.
-- Not add new sections, eyebrows, badges, kickers, numbered markers, or icon chrome.
-- Not change copy.
-- Not redesign individual components (HeroChatArtifact, DashboardSection internals stay as-is).
-- Not introduce purple, glow, glassmorphism, or any prohibited effects.
+Per memory rule, eyebrows are out. Strip the tiny uppercase "kicker" labels (the blue bar + `font-mono uppercase tracking` text) from every section, including:
 
-## 1. Restore the atmospheric layer (globally, not per-section)
+- `ShareOfAlgorithmSection` ("Share of Algorithm", "Distribution metrics", "Recommendation stack")
+- `FeedSection` ("The architecture", "01 · Sources" column headers)
+- `ProblemSection` ("THE RESULT", "THE CONSOLE", and any other kickers)
+- `DashboardSection`, `HowItWorks`, `IntegrationSection`, `TeamSection`, `CTASection`
 
-Right now `bg-grid-fine`, `light-burn-warm`, `atmos-warm`, `texture-dots`, and `section-divider` exist in `index.css` but are only used in the hero. Re-deploy them as a quiet, consistent system across the page so every section sits on the same crafted ground.
+Replace with a clean single-column headline stack: H2 + sub. Section identity comes from the H2, not a label above it.
 
-- **Page-level paper texture**: add one extremely faint global noise/dot layer fixed under `main` (opacity ~0.025), warm-neutral. Replaces the feeling that sections are just stacked white rectangles.
-- **Per-section atmospherics**: assign each major section ONE atmospheric treatment, alternating quietly:
-  - Hero — keep current grid + cool burn (already there).
-  - ProblemSection — `texture-dots-faint` top-left, single warm burn bottom-right.
-  - ShareOfAlgorithm — `bg-grid-fine` masked to the right edge only.
-  - DashboardSection — flat warm surface, one hairline light-burn behind the artifact.
-  - LifestyleStrip — no atmosphere (let the images breathe).
-  - FeedSection — `texture-dots-faint` only.
-  - IntegrationSection — single cool burn top-right.
-  - TeamSection — flat, with hairline rules above and below.
-  - CTASection — keep dark, add `atmos-cool-dark` (already exists, currently unused).
-- **Hairline section dividers**: insert the existing `.section-divider` between every adjacent section so transitions feel deliberate instead of abrupt. One 1px gradient rule, centered, ~70% width.
-- **Floating quiet marks**: bring back 2–3 very small, slow-floating geometric marks (a 1px circle, a 1px square, a single dot) using existing `animate-float`. Placed once in hero, once around DashboardSection, once near CTA. No icons, no metaphors — pure geometric punctuation.
+## 2. Navbar — labels match actual sections
 
-## 2. Elevate typographic treatment (no font swap)
+Current links use invented names ("The Channel", "The Window", "Command Center") that don't match section content. Rewrite `navLinks` in `src/components/Navbar.tsx` to mirror the page in order:
 
-Inter Tight stays. The refinement is in *treatment*:
+```
+The problem        → #problem
+Share of Algorithm → #share-of-algorithm
+The API            → #architecture
+Live dashboard     → #dashboard
+Protocols          → #integration
+Team               → #team
+```
 
-- **Display headlines**: increase tracking tightness (`tracking-[-0.045em]` on h1, `-0.035em` on section headings), bump display weight contrast (h1 stays 800, but section heads drop to 600 with larger size — currently they're 800/30–40px, which reads heavy and uniform). New scale: h1 unchanged, section heads 36/52px weight 600, card heads 18/20 weight 600.
-- **Optical line-height**: h1 1.02 (currently 1.05), section heads 1.08, body unchanged.
-- **Quiet color shift on headings**: headings render at `hsl(var(--foreground))` full strength; supporting paragraphs already at /70 — increase the contrast gap by moving section copy to /60. Makes the page feel composed instead of evenly gray.
-- **Numeric treatment**: enable `font-feature-settings: "ss01", "tnum", "cv11"` on the body. Inter Tight has tabular and stylistic alternates that immediately read as "designed" — zero markup cost.
-- **First-letter / first-line refinement**: on the first paragraph after each section heading, apply a subtle `text-balance` and a slightly heavier first line via `first-line:font-medium`. Editorial micro-touch, invisible until you notice it.
-- **Remove uppercase clutter**: audit `font-label`/`font-label-wide` (uppercase 11px) usages. Where they're decorative rather than functional, drop to small caps via `font-feature-settings: "smcp"` or remove. Aesop-quiet, not SaaS-shouty.
+Drop "How it Works" pill from the navbar (it currently routes to `/demo` and conflicts with the on-page `#how-it-works` section). Keep "Request Demo" as the sole CTA.
 
-## 3. Unify section rhythm
+## 3. Hero "For developers" button → architecture section
 
-- **Vertical padding system**: standardize all major sections to `py-24 md:py-32` (currently inconsistent — some 16, some 24, some 20). Same breathing pattern everywhere.
-- **Container**: every section uses `max-w-content` (1120px) with `px-5 md:px-20`. Audit and fix the 2–3 sections that drift wider.
-- **Section heading block**: standardize the heading + lead-paragraph block to a single max-width (`max-w-[640px]`) and left-aligned. No centered headings, no full-width leads. Reads as a designed system, not a template.
+In `HeroSection.tsx`, change the secondary CTA from `<Link to="/developers">` to `<a href="#architecture">`. Same styling. Label stays "For developers".
 
-## 4. Color discipline
+## 4. Reorder sections
 
-- **Reserve `--primary` (#0166FF)** for: links, one accent rule per section, the single emphasis word per heading (if any already exists). Remove primary tint from large soft backgrounds where it's currently used as decoration.
-- **Add one warm punctuation**: the existing `--accent-warm` (32 95% 52%) is defined but barely used. Use it exactly twice in the whole page — once as a 1px underline on a single word in the hero, once as a tiny dot marker in CTA. Restraint as the signature.
+In `src/pages/Index.tsx`, move `FeedSection` (the "One call. Every signal an agent needs." API panel) to sit immediately above `IntegrationSection` ("Ships on every protocol that matters."). New order:
 
-## 5. Micro-interactions (keep, don't add)
+```
+Hero → SocialProof → Problem → ShareOfAlgorithm → Dashboard → HowItWorks → Feed → Integration → Team → CTA
+```
 
-Existing `btn-lift`, `link-reveal`, `img-editorial`, `animate-shimmer`, `animate-float`, `animate-caret` all stay. Just audit that they're applied consistently:
-- Every text link → `link-reveal`.
-- Every pill button → `btn-lift`.
-- Every editorial image → `img-editorial`.
+## 5. Share of Algorithm — real redesign (not text + chips)
 
-No new animations.
+The current panel is a text-and-pill data dump. Rebuild it as a single design-forward interactive canvas with three visual moves that do the explaining:
+
+**Layout**
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  H2: The new shelf is decided by agents.                    │
+│  Sub: Visibility gets you considered. True Value gets you   │
+│       ranked.                                               │
+│                                                             │
+│  ┌──────── Era rail (horizontal, animated) ──────────────┐  │
+│  │  Shelf —— Voice —— Search ——●—— Algorithm            │  │
+│  │  1960s   1980s    2010s         2025  (Parleo)        │  │
+│  └───────────────────────────────────────────────────────┘  │
+│                                                             │
+│  ┌─── Pillars (3 stacked tiles, click-to-focus) ──────────┐ │
+│  │  01 Visibility   ░░░░░░░░░ measured                    │ │
+│  │  02 Accessibility ░░░░░░░  partial                     │ │
+│  │  03 True Value   ███████   PARLEO LAYER  ◀ active      │ │
+│  └───────────────────────────────────────────────────────┘  │
+│                                                             │
+│  ┌── Live resolution canvas (changes with active pillar) ─┐ │
+│  │  Sticker rank #3   →   True-value rank #1              │ │
+│  │  $30.00  −$7.60 incentives  =  $22.40 effective        │ │
+│  │  [stacked horizontal bars: list → member → loyalty →   │ │
+│  │   card → effective, animating into place]              │ │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Specifics**
+- One container, light cream surface (`bg-card`), generous interior padding.
+- Era rail: SVG glyphs per era, animated progress fill (framer-motion), caption updates below.
+- Pillar tiles: real visual "coverage" bars (full / partial / Parleo-fills-the-gap) instead of status pill chips. True Value tile is the visual hero — primary-blue accent stripe, subtle inner glow-free elevation.
+- Resolution canvas: a single animated bar-chart breakdown ($30 → $22.40) plus the rank swap card. No "Active lens" chips, no 8-dimension footer strip, no "ScorePlate" sidebar — all removed.
+- Numbers in `tabular-nums`. No eyebrow. No 8-chip dimension strip. No floating score plate.
+
+## 6. Tighten wasted vertical space
+
+The screenshot shows ~400px of empty cream between the Result panel and The Console band in `ProblemSection`. Audit `ProblemSection.tsx` and reduce: collapse oversized `py-*`, `mt-*`, and any empty spacer divs between those two blocks down to ~64-80px. Apply the same audit to gaps between `ShareOfAlgorithm → Dashboard` and `Dashboard → HowItWorks` if similarly bloated.
+
+## 7. Team section — fix to match site
+
+Memory rule: grayscale company logos at `h-14`, no avatars or initials.
+
+In `TeamSection.tsx`:
+- Remove the `SB` / `EC` initials avatar circles entirely.
+- Logos: bump from `h-8 md:h-9` to `h-14`, keep grayscale, increase gap so they breathe.
+- Card padding and divider rhythm stay, but the headline area becomes name + role on its own (no avatar puck).
+- Both founder cards use the same light card treatment (drop the one-card-dark variant) so the section reads as a consistent pair rather than mismatched halves.
+
+## 8. Visual verification (mandatory before finishing)
+
+Use `browser--view_preview` then `browser--screenshot` (full_page) at 1440 wide and 390 wide. Check explicitly:
+- Nav anchors scroll to the right sections.
+- No eyebrow labels remain anywhere on the homepage.
+- Hero "For developers" jumps to `#architecture`.
+- Section order matches the spec.
+- No empty bands >120px between sections.
+- Team logos are clearly legible; no initials circles.
+- Share of Algorithm reads as a designed interactive panel, not a text wall.
+
+If any check fails, fix and re-screenshot before declaring done.
 
 ## Files touched
-- `src/index.css` — add page-level paper texture utility, refine type scale utilities (`section-heading`, `card-heading`), add `font-feature-settings` to body, add small-caps utility.
-- `src/pages/Index.tsx` — insert `<div className="section-divider" />` between sections; wrap `<main>` with the paper-texture layer; standardize section spacing wrapper.
-- Section components (`ProblemSection`, `ShareOfAlgorithmSection`, `DashboardSection`, `FeedSection`, `IntegrationSection`, `TeamSection`, `CTASection`) — add the one atmospheric treatment per section, standardize padding/container, apply the new heading max-width and weight.
-- `src/components/HeroSection.tsx` — tighten h1 tracking, add warm-accent underline on one word, add one floating geometric mark.
-- 2–3 small floating-mark elements added inline (pure divs, no new components).
 
-## Technical notes
-- All atmospheric layers use existing CSS utilities already defined in `index.css`. No new dependencies, no new assets.
-- All changes are presentation-only (CSS + JSX class changes). No logic, no content, no new components.
-- Mobile: every atmospheric layer uses `mask-image` fades and `opacity` low enough that it never adds visual weight on small screens; padding scale already responsive.
+- `src/components/Navbar.tsx`
+- `src/components/HeroSection.tsx`
+- `src/pages/Index.tsx`
+- `src/components/ShareOfAlgorithmSection.tsx` (rebuild)
+- `src/components/ProblemSection.tsx` (eyebrows + spacing)
+- `src/components/FeedSection.tsx` (eyebrow + column kickers)
+- `src/components/DashboardSection.tsx`, `HowItWorks.tsx`, `IntegrationSection.tsx`, `CTASection.tsx` (eyebrow sweep)
+- `src/components/TeamSection.tsx` (avatars out, logos up)

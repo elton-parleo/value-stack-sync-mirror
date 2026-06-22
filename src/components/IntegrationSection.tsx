@@ -15,16 +15,7 @@ const integrations = [
 ];
 
 const IntegrationSection = () => (
-  <AnimatedSection id="integration" className="relative overflow-hidden bg-background py-24 md:py-32">
-    {/* cool light burn, top-right */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 -z-0"
-      style={{
-        background:
-          "radial-gradient(45% 50% at 90% 12%, hsl(213 99% 50% / 0.06) 0%, transparent 70%)",
-      }}
-    />
+  <AnimatedSection id="integration" className="relative bg-background py-16 md:py-24">
     <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
       <svg width="60" height="60" viewBox="0 0 60 60" className="opacity-[0.06]">
         {[0, 20, 40].map(x => [0, 20, 40].map(y => (
@@ -33,17 +24,16 @@ const IntegrationSection = () => (
       </svg>
     </div>
 
-    <div className="relative mx-auto max-w-content px-6 md:px-20">
+    <div className="mx-auto max-w-content px-6 md:px-20">
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
           <h2 className="section-heading text-foreground">
             Ships on every protocol that matters.
           </h2>
-          <p className="section-copy mt-6 max-w-[540px]">
+          <p className="section-copy mt-5 max-w-[520px]">
             Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP.
           </p>
-
           <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">
             Six protocols. Zero cross-protocol incentive resolution. Parleo is the layer that resolves it.
           </p>

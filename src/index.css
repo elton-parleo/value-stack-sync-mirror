@@ -68,25 +68,18 @@
     font-family: 'Inter Tight', sans-serif;
     font-size: 17px;
     line-height: 1.7;
-    font-feature-settings: "ss01", "cv11", "cv05", "calt";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-  .tabular-nums, .font-mono {
-    font-feature-settings: "tnum", "ss01", "cv11";
   }
 }
 
 @layer utilities {
   .font-display {
     font-weight: 800;
-    letter-spacing: -0.045em;
-    line-height: 1.02;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
   }
   .font-heading {
     font-weight: 700;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
   }
   .font-label {
     font-weight: 500;
@@ -101,16 +94,15 @@
     letter-spacing: 0.12em;
   }
   .section-heading {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.06;
   }
   .section-copy {
-    color: hsl(var(--foreground) / 0.6);
+    color: hsl(var(--foreground) / 0.65);
     font-size: 16px;
     line-height: 1.6;
-    text-wrap: balance;
   }
   .card-heading {
     color: hsl(var(--foreground));
@@ -139,8 +131,7 @@
   }
   @media (min-width: 768px) {
     .section-heading {
-      font-size: 46px;
-      letter-spacing: -0.04em;
+      font-size: 40px;
     }
     .section-copy {
       font-size: 18px;
@@ -155,32 +146,6 @@
       font-size: 16px;
     }
   }
-
-  /* Page-level paper texture — extremely faint, sits behind all sections */
-  .paper-grain {
-    position: relative;
-  }
-  .paper-grain::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.5;
-    background-image:
-      radial-gradient(hsl(var(--foreground) / 0.025) 1px, transparent 1px);
-    background-size: 28px 28px;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-            mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  }
-  .paper-grain > * { position: relative; z-index: 1; }
-
-  /* Small-caps utility for quiet eyebrows */
-  .smallcaps {
-    font-feature-settings: "smcp", "c2sc", "ss01";
-    letter-spacing: 0.04em;
-  }
-
   .shadow-card {
     box-shadow: var(--shadow-card);
   }

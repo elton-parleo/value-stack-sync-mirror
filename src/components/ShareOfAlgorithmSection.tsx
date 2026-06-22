@@ -113,26 +113,16 @@ const ShareOfAlgorithmSection = () => {
   const era = eras[activeEra];
 
   return (
-    <AnimatedSection id="share-of-algorithm" className="relative overflow-hidden bg-background py-24 md:py-32">
-      {/* fine architectural grid, right-edge anchored */}
-      <div
-        aria-hidden
-        className="bg-grid-fine pointer-events-none absolute inset-0 -z-0 opacity-50"
-        style={{
-          WebkitMaskImage: "radial-gradient(55% 60% at 100% 30%, #000 0%, transparent 75%)",
-          maskImage: "radial-gradient(55% 60% at 100% 30%, #000 0%, transparent 75%)",
-        }}
-      />
-      <div className="relative mx-auto max-w-content px-6 md:px-20">
+    <AnimatedSection id="share-of-algorithm" className="relative bg-background py-16 md:py-24">
+      <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
           <h2 className="section-heading text-foreground">
             The new shelf is decided by <span className="text-primary">agents.</span>
           </h2>
-          <p className="section-copy mt-6 max-w-[640px]">
+          <p className="section-copy mt-5 max-w-[600px]">
             Visibility gets you considered. Accessibility gets you parsed. True Value gets you ranked. Parleo owns the layer that nobody else measures.
           </p>
         </div>
-
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
