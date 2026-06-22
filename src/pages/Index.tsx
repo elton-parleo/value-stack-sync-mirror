@@ -15,8 +15,14 @@ import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
+const Divider = () => (
+  <div aria-hidden className="mx-auto max-w-content px-6 md:px-20">
+    <div className="section-divider" />
+  </div>
+);
+
 const Index = () => (
-  <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
+  <div className="min-h-screen overflow-x-hidden bg-background grain-overlay paper-grain">
     <Helmet>
       <title>Parleo: The incentive layer for AI commerce</title>
       <meta name="description" content="Parleo gives AI agents a pre-computed true-cost and product intelligence layer in one API call. Loyalty, card offers, and real value at runtime." />
@@ -29,12 +35,18 @@ const Index = () => (
     <main>
       <HeroSection />
       <SocialProofSection />
+      <Divider />
       <ProblemSection />
+      <Divider />
       <ShareOfAlgorithmSection />
+      <Divider />
       <DashboardSection />
       <LifestyleStrip />
+      <Divider />
       <FeedSection />
+      <Divider />
       <IntegrationSection />
+      <Divider />
       <TeamSection />
       <CTASection />
     </main>
