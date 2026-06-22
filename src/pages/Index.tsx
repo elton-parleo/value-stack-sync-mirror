@@ -4,14 +4,16 @@ import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import LifestyleStrip from "@/components/LifestyleStrip";
 import ProblemSection from "@/components/ProblemSection";
+
+
 import ShareOfAlgorithmSection from "@/components/ShareOfAlgorithmSection";
 import FeedSection from "@/components/FeedSection";
 import DashboardSection from "@/components/DashboardSection";
+
 import IntegrationSection from "@/components/IntegrationSection";
 import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import SectionDivider from "@/components/editorial/SectionDivider";
 
 const Index = () => (
   <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
@@ -27,21 +29,13 @@ const Index = () => (
     <main>
       <HeroSection />
       <SocialProofSection />
-      <SectionDivider label="§ 02" />
       <ProblemSection />
-      <SectionDivider label="§ 03" />
       <ShareOfAlgorithmSection />
-      <SectionDivider label="§ 04" />
       <DashboardSection />
-      <SectionDivider label="§ 05" />
       <LifestyleStrip />
-      <SectionDivider label="§ 06" />
       <FeedSection />
-      <SectionDivider label="§ 07" />
       <IntegrationSection />
-      <SectionDivider label="§ 08" />
       <TeamSection />
-      <SectionDivider label="§ 09" />
       <CTASection />
     </main>
     <Footer />
