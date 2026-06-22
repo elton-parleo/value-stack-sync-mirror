@@ -68,18 +68,25 @@
     font-family: 'Inter Tight', sans-serif;
     font-size: 17px;
     line-height: 1.7;
+    font-feature-settings: "ss01", "cv11", "cv05", "calt";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  .tabular-nums, .font-mono {
+    font-feature-settings: "tnum", "ss01", "cv11";
   }
 }
 
 @layer utilities {
   .font-display {
     font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
   }
   .font-heading {
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
   }
   .font-label {
     font-weight: 500;
