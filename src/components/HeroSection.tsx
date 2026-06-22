@@ -21,7 +21,13 @@ const HeroSection = () => {
             "radial-gradient(45% 50% at 85% 18%, hsl(213 99% 50% / 0.10) 0%, transparent 65%)",
         }}
       />
+      {/* tiny floating geometric mark */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[6%] top-[18%] hidden h-1.5 w-1.5 rounded-full bg-foreground/15 animate-float md:block"
+      />
       <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-10 md:px-20 md:pb-24 md:pt-16">
+
         {/* Left: copy */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
