@@ -85,7 +85,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="relative md:col-span-7"
+          className="relative md:col-span-5"
         >
           <div className="mx-auto w-full max-w-[620px]">
             <HeroChatArtifact />
