@@ -27,14 +27,15 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="md:col-span-5"
+          className="md:col-span-7"
         >
           <h1
-            className="font-display text-[44px] text-foreground md:text-[64px]"
+            className="font-display text-[40px] text-foreground md:text-[56px] lg:text-[60px] text-balance"
             style={{ lineHeight: 1.05 }}
           >
             The incentive layer for AI commerce.
           </h1>
+
           <p className="mt-5 max-w-[480px] text-[18px] leading-[1.6] text-foreground/70">
             Parleo makes loyalty programs, card-offers and true value of your products readable and transactable across every agent surface.
           </p>
