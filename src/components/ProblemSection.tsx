@@ -2,7 +2,7 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
-import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png";
+import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png.asset.json";
 
 /* ───────────────────────────────────────────────────────────
    Section A · The shift
@@ -88,7 +88,7 @@ const MAX_SAVINGS = Math.max(...RETAILERS.map((r) => r.sticker - r.trueCost));
 
 /* ── Editorial product panel (uses the real product image) ── */
 const ProductPanel = () => (
-  <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/70 p-6 md:p-8">
+  <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-[#F8F6F3] via-[#F2EFEB] to-[#EAE6DF] p-6 md:p-8">
     {/* Header: brand + size */}
     <div className="flex items-start justify-between gap-4">
       <div>
@@ -112,8 +112,9 @@ const ProductPanel = () => (
 
     {/* Product image */}
     <div className="relative flex flex-1 items-center justify-center py-6">
+      <div className="absolute inset-x-10 bottom-4 h-3 rounded-[50%] bg-foreground/15 blur-md" />
       <motion.img
-        src={skiiProduct}
+        src={skiiProduct.url}
         alt="SK-II Facial Treatment Essence 230ml bottle and red carton"
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -161,6 +162,7 @@ const RetailerRow = ({
           ? "border-primary/45 bg-card"
           : "border-border/60 bg-card/70 hover:border-border"
       }`}
+      style={isWinner ? { boxShadow: "var(--shadow-card-hover)" } : undefined}
     >
       <div className="grid grid-cols-[32px_44px_1fr_auto] items-center gap-3 px-3.5 py-3 md:gap-4 md:px-4">
         {/* Rank */}
@@ -331,7 +333,10 @@ const RankingPanel = () => {
   const winnerSavings = trueWinner.sticker - trueWinner.trueCost;
 
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card">
+    <div
+      className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card"
+      style={{ boxShadow: "var(--shadow-elevated)" }}
+    >
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border/55 px-5 py-3.5">
         <div>

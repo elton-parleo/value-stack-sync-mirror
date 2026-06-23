@@ -79,9 +79,9 @@ const Callout = ({
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, margin: "-80px" }}
     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-    className={`pointer-events-none absolute z-10 hidden w-[200px] 2xl:block ${className}`}
+    className={`pointer-events-none absolute z-10 hidden w-[200px] lg:block ${className}`}
   >
-    <div className="rounded-lg border border-primary/25 bg-background px-3 py-2.5">
+    <div className="rounded-lg border border-primary/25 bg-background/95 px-3 py-2.5 shadow-[0_8px_28px_-12px_hsl(213_99%_50%/0.35)] backdrop-blur">
       <div className="flex items-center gap-1.5">
         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-primary">{title}</span>
@@ -139,7 +139,8 @@ const DashboardSection = () => {
             className="relative mx-auto overflow-hidden rounded-2xl border border-border/70 bg-card"
             style={{
               maxWidth: 1080,
-              boxShadow: "var(--shadow-card)",
+              boxShadow:
+                "0 30px 80px -30px hsl(243 30% 15% / 0.18), 0 8px 24px -12px hsl(243 30% 15% / 0.08)",
             }}
           >
             {/* Window chrome */}

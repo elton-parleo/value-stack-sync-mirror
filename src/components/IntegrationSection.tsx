@@ -16,6 +16,14 @@ const integrations = [
 
 const IntegrationSection = () => (
   <AnimatedSection id="integration" className="relative bg-background py-16 md:py-24">
+    <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
+      <svg width="60" height="60" viewBox="0 0 60 60" className="opacity-[0.06]">
+        {[0, 20, 40].map(x => [0, 20, 40].map(y => (
+          <circle key={`${x}-${y}`} cx={x + 5} cy={y + 5} r="2" fill="hsl(213,99%,50%)" />
+        )))}
+      </svg>
+    </div>
+
     <div className="mx-auto max-w-content px-6 md:px-20">
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
@@ -38,7 +46,7 @@ const IntegrationSection = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
                 viewport={{ once: true }}
-                className="group flex items-center gap-2.5 rounded-lg border border-border bg-card px-3.5 py-3 transition-colors duration-200 hover:border-foreground/20"
+                className="group flex items-center gap-2.5 rounded-lg border border-border bg-card px-3.5 py-3 transition-all duration-200 hover:border-primary/20 hover:shadow-sm"
               >
               <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/[0.06] transition-colors group-hover:bg-primary/[0.12]">
                   <BrandLogo name={t.logo} size={16} />
@@ -65,7 +73,8 @@ const IntegrationSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="overflow-hidden rounded-xl border border-background/10 bg-code-bg"
+          className="overflow-hidden rounded-xl bg-code-bg transition-shadow duration-300 hover:shadow-elevated"
+          style={{ boxShadow: 'var(--shadow-lg)' }}
         >
           <div className="flex items-center gap-2 border-b px-5 py-3" style={{ borderColor: 'hsl(260 11% 18%)' }}>
             <span className="h-2 w-2 rounded-full" style={{ background: "#3a3a3a" }} />

@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @layer base {
   :root {
@@ -71,28 +68,14 @@
     font-family: 'Inter Tight', sans-serif;
     font-size: 17px;
     line-height: 1.7;
-    font-feature-settings: "ss01", "cv11";
-  }
-  /* Tabular figures on all numeric-leaning contexts */
-  .tabular-nums,
-  code,
-  pre,
-  time,
-  [data-numeric],
-  .font-display,
-  .section-heading {
-    font-variant-numeric: tabular-nums;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Inter Tight', sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: 0;
-    line-height: 1.02;
-    font-optical-sizing: auto;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
   }
   .font-heading {
     font-weight: 700;
@@ -102,31 +85,20 @@
     font-weight: 500;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
   }
   .font-label-wide {
     font-weight: 500;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-  }
-  .font-mono-tick {
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    color: hsl(var(--foreground) / 0.32);
-    font-feature-settings: "tnum";
+    letter-spacing: 0.12em;
   }
   .section-heading {
-    font-family: 'Inter Tight', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    font-style: normal;
+    font-size: 30px;
+    font-weight: 800;
     letter-spacing: 0;
-    line-height: 1.04;
-    font-optical-sizing: auto;
+    line-height: 1.06;
   }
-
   .section-copy {
     color: hsl(var(--foreground) / 0.65);
     font-size: 16px;
@@ -159,10 +131,8 @@
   }
   @media (min-width: 768px) {
     .section-heading {
-      font-size: 44px;
-      letter-spacing: 0;
+      font-size: 40px;
     }
-
     .section-copy {
       font-size: 18px;
     }
@@ -304,42 +274,7 @@
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
             mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
-
-  /* Hairline corner ticks. Apply to a relatively-positioned container. */
-  .corner-ticks {
-    position: relative;
-  }
-  .corner-ticks::before,
-  .corner-ticks::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: hsl(var(--foreground) / 0.22);
-    pointer-events: none;
-  }
-  .corner-ticks::before {
-    top: 0; left: 0;
-    border-top: 1px solid;
-    border-left: 1px solid;
-  }
-  .corner-ticks::after {
-    bottom: 0; right: 0;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-  }
-
-  /* Hairline rule */
-  .hairline {
-    height: 1px;
-    background: hsl(var(--foreground) / 0.10);
-  }
-  .hairline-strong {
-    height: 1px;
-    background: hsl(var(--foreground) / 0.18);
-  }
 }
-
 
 @keyframes pulse-dot {
   0%, 100% { transform: scale(1); }

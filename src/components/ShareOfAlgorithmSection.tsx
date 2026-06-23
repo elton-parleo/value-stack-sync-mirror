@@ -117,7 +117,7 @@ const ShareOfAlgorithmSection = () => {
       <div className="mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
           <h2 className="section-heading text-foreground">
-            Share of Algorithm = Winning in agentic.
+            Share of Algorithm = Winning in <span className="text-primary">agentic.</span>
           </h2>
           <p className="section-copy mt-5 max-w-[600px]">
             Visibility gets you considered. Accessibility gets you parsed. True Value gets you ranked. Parleo owns the layer that nobody else measures.
@@ -129,7 +129,8 @@ const ShareOfAlgorithmSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 overflow-hidden rounded-2xl border border-border bg-card md:mt-16"
+          className="mt-12 overflow-hidden rounded-3xl border border-border bg-card md:mt-16"
+          style={{ boxShadow: "var(--shadow-elevated)" }}
         >
           {/* Era Timeline */}
           <div className="relative border-b border-border bg-secondary/30 px-6 py-7 md:px-10 md:py-9">
@@ -160,7 +161,7 @@ const ShareOfAlgorithmSection = () => {
                     aria-label={`Show ${era.caption}`}
                     className={`group flex cursor-pointer flex-col items-start rounded-2xl border p-3 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 md:p-4 ${
                       activeEra === i
-                        ? "border-primary bg-card"
+                        ? "border-primary bg-card shadow-[0_14px_32px_-24px_hsl(var(--primary))]"
                         : "border-border bg-card/60 hover:border-primary/45 hover:bg-card"
                     }`}
                   >
@@ -169,7 +170,7 @@ const ShareOfAlgorithmSection = () => {
                       transition={{ type: "spring", stiffness: 320, damping: 18 }}
                       className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 transition-colors ${
                         activeEra === i
-                          ? "border-primary bg-primary text-primary-foreground"
+                          ? "border-primary bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_hsl(213_99%_50%/0.35)]"
                           : "border-border bg-card text-foreground/45 group-hover:border-foreground/40 group-hover:text-foreground/80"
                       }`}
                     >

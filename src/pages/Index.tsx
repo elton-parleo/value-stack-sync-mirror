@@ -16,7 +16,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="relative min-h-screen overflow-x-hidden bg-background grain-overlay">
+  <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
     <Helmet>
       <title>Parleo: The incentive layer for AI commerce</title>
       <meta name="description" content="Parleo gives AI agents a pre-computed true-cost and product intelligence layer in one API call. Loyalty, card offers, and real value at runtime." />
@@ -26,7 +26,7 @@ const Index = () => (
       <meta property="og:url" content="https://parleo.io/" />
     </Helmet>
     <Navbar />
-    <main className="relative">
+    <main>
       <HeroSection />
       <SocialProofSection />
       <ProblemSection />
@@ -43,4 +43,3 @@ const Index = () => (
 );
 
 export default Index;
-
