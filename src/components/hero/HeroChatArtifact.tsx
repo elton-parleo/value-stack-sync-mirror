@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
-import tatchaAsset from "@/assets/tatcha-water-cream.png.asset.json";
+import tatchaImage from "@/assets/tatcha-water-cream.png";
 
 type Phase = "typing" | "standard" | "parleo";
 
@@ -198,7 +198,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
             Merchant value made readable
           </div>
           <motion.img
-            src={tatchaAsset.url}
+            src={tatchaImage}
             alt="Tatcha The Water Cream"
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
