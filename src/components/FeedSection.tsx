@@ -40,7 +40,7 @@ const SourceCard = ({ source, side }: { source: Source; side: "left" | "right" }
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, margin: "-40px" }}
     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-    className="group flex items-center gap-3 rounded-xl border border-border/70 bg-card/60 px-3.5 py-2.5 backdrop-blur-sm transition-colors hover:border-primary/30"
+    className="group flex items-center gap-3 rounded-xl border border-border/70 bg-card/60 px-3.5 py-2.5 transition-colors hover:border-foreground/20"
   >
     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-background/80">
       <BrandLogo name={source.brand} size={16} />
@@ -134,23 +134,15 @@ const FeedSection = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="relative overflow-hidden rounded-2xl border border-transparent bg-[#1E1E2E] p-5 md:p-6"
-              style={{ boxShadow: "var(--shadow-elevated)" }}
+              className="relative overflow-hidden rounded-2xl border border-background/10 bg-code-bg p-5 md:p-6"
             >
-              {/* Soft glow */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full"
-                style={{ background: "radial-gradient(circle, hsl(213 99% 50% / 0.18), transparent 60%)" }}
-              />
-
               {/* Endpoint header */}
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <code className="font-mono text-[11.5px] text-white/80">
+                <code className="font-mono text-[11.5px] text-background/80">
                   <span className="text-primary">POST</span>{" "}
                   /v1/intel
                 </code>
-                <span className="font-mono text-[10px] tabular-nums text-white/45">
+                <span className="font-mono text-[10px] tabular-nums text-background/45">
                   ~42ms
                 </span>
               </div>
@@ -164,16 +156,16 @@ const FeedSection = () => (
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
-                    className="flex items-start gap-3 rounded-lg border border-white/[0.06] bg-white/[0.025] p-3"
+                     className="flex items-start gap-3 rounded-lg border border-background/[0.06] bg-background/[0.025] p-3"
                   >
                     <span className="mt-[1px] font-mono text-[10px] tabular-nums text-primary">
                       {l.id}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <div className="text-[13px] font-medium leading-snug text-white">
+                      <div className="text-[13px] font-medium leading-snug text-background">
                         {l.name}
                       </div>
-                      <div className="mt-0.5 text-[11.5px] leading-snug text-white/55">
+                      <div className="mt-0.5 text-[11.5px] leading-snug text-background/55">
                         {l.detail}
                       </div>
                     </div>
@@ -182,17 +174,17 @@ const FeedSection = () => (
               </ul>
 
               {/* Spec strip */}
-              <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/10 pt-4">
+              <div className="mt-4 grid grid-cols-3 gap-2 border-t border-background/10 pt-4">
                 {[
                   { k: "Tokens", v: "~2K" },
                   { k: "Latency", v: "<50ms" },
                   { k: "PII", v: "Zero" },
                 ].map((m) => (
                   <div key={m.k} className="text-center">
-                    <div className="font-mono text-[8.5px] uppercase tracking-[0.18em] text-white/40">
+                    <div className="font-mono text-[8.5px] uppercase tracking-[0.18em] text-background/40">
                       {m.k}
                     </div>
-                    <div className="mt-1 font-mono text-[12px] tabular-nums text-white">
+                    <div className="mt-1 font-mono text-[12px] tabular-nums text-background">
                       {m.v}
                     </div>
                   </div>

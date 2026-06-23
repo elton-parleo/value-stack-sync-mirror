@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -87,10 +87,10 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'Fraunces', 'Inter Tight', serif;
-    font-weight: 500;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 700;
     font-style: normal;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
     line-height: 1.02;
     font-optical-sizing: auto;
   }
@@ -118,11 +118,11 @@
     font-feature-settings: "tnum";
   }
   .section-heading {
-    font-family: 'Fraunces', 'Inter Tight', serif;
+    font-family: 'Inter Tight', sans-serif;
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 700;
     font-style: normal;
-    letter-spacing: -0.018em;
+    letter-spacing: 0;
     line-height: 1.04;
     font-optical-sizing: auto;
   }
@@ -160,7 +160,7 @@
   @media (min-width: 768px) {
     .section-heading {
       font-size: 44px;
-      letter-spacing: -0.022em;
+      letter-spacing: 0;
     }
 
     .section-copy {

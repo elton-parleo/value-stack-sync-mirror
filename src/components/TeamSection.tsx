@@ -4,7 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 import wppLogo from "@/assets/logos/wpp-tight.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
 import nikeLogo from "@/assets/logos/nike-tight.png";
-import landorLogo from "@/assets/logos/landor.png.asset.json";
+import landorLogo from "@/assets/logos/landor.png";
 import rakutenLogo from "@/assets/logos/rakuten-tight.png";
 import grouponLogo from "@/assets/logos/groupon-tight.png";
 import alphaflowLogo from "@/assets/logos/alphaflow-tight.png";
@@ -31,7 +31,7 @@ const team: Founder[] = [
       { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[88px]" },
       { name: "WPP", src: wppLogo, widthClass: "w-[82px]" },
       { name: "Nike", src: nikeLogo, widthClass: "w-[50px]" },
-      { name: "Landor", src: landorLogo.url, widthClass: "w-[78px]" },
+      { name: "Landor", src: landorLogo, widthClass: "w-[78px]" },
     ],
   },
   {
@@ -56,18 +56,7 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
     transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
     viewport={{ once: true, margin: "-60px" }}
     className="group relative flex flex-col rounded-2xl border border-border bg-card p-7 text-foreground transition-all duration-300 hover:border-primary/20 md:p-9"
-    style={{ boxShadow: "var(--shadow-card)" }}
   >
-    {/* faint radial wash on hover */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      style={{
-        background:
-          "radial-gradient(60% 60% at 100% 0%, hsl(213 99% 50% / 0.05) 0%, transparent 70%)",
-      }}
-    />
-
     {/* index + role row */}
     <div className="relative flex items-center gap-3">
       <span className="font-mono text-[10px] tracking-[0.2em] text-foreground/35">
@@ -132,15 +121,6 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 
 const TeamSection = () => (
   <AnimatedSection id="team" className="relative overflow-hidden bg-background py-16 md:py-20">
-    {/* subtle blue light burn */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0"
-      style={{
-        background:
-          "radial-gradient(40% 50% at 92% 12%, hsl(213 99% 50% / 0.06) 0%, transparent 70%)",
-      }}
-    />
     <div className="relative mx-auto max-w-content px-6 md:px-20">
       {/* eyebrow */}
       <div className="mb-6 flex items-baseline gap-4">

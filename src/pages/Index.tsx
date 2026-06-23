@@ -16,7 +16,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="relative min-h-screen overflow-x-hidden bg-background grain-overlay page-grid-bg">
+  <div className="relative min-h-screen overflow-x-hidden bg-background grain-overlay">
     <Helmet>
       <title>Parleo: The incentive layer for AI commerce</title>
       <meta name="description" content="Parleo gives AI agents a pre-computed true-cost and product intelligence layer in one API call. Loyalty, card offers, and real value at runtime." />
@@ -25,13 +25,6 @@ const Index = () => (
       <meta property="og:description" content="Pre-computed true-cost and product intelligence for AI agents. Loyalty, card offers, and real value, in one API call." />
       <meta property="og:url" content="https://parleo.io/" />
     </Helmet>
-    {/* Sparse registration marks: technical, not decorative */}
-    <div aria-hidden className="pointer-events-none fixed left-4 top-24 z-10 hidden md:block reg-coord">
-      <span>N 40°44′ · W 73°59′</span>
-    </div>
-    <div aria-hidden className="pointer-events-none fixed right-4 bottom-6 z-10 hidden md:block reg-coord">
-      <span>LAYER 02 / INCENTIVE</span>
-    </div>
     <Navbar />
     <main className="relative">
       <HeroSection />
