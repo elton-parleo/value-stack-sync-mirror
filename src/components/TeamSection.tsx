@@ -39,7 +39,6 @@ const team: Founder[] = [
     name: "Elton Cheung",
     bio: "Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
     linkedinUrl: "https://www.linkedin.com/in/eltoncheung/",
-    linkedinHandle: "eltoncheung",
     logos: [
       { name: "Rakuten", src: rakutenLogo, widthClass: "w-[80px]" },
       { name: "Groupon", src: grouponLogo, widthClass: "w-[86px]" },
