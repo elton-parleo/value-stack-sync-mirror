@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import LifestyleAccent from "./LifestyleAccent";
 import BrandLogo from "./BrandLogo";
 
 /* ───────────────────────────────────────────────
@@ -96,7 +97,8 @@ const DashboardSection = () => {
 
   return (
     <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-24" ref={ref}>
-      <div className="relative mx-auto max-w-content px-6 md:px-20">
+      <LifestyleAccent variant="tech" corner="tr" size={40} opacity={0.14} blur={18} />
+      <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         {/* Headline */}
         <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
           <h2 className="section-heading text-foreground">

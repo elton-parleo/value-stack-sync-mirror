@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import LifestyleAccent from "./LifestyleAccent";
 import BrandLogo from "./BrandLogo";
 import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png.asset.json";
 
@@ -444,10 +445,11 @@ const ProblemSection = () => {
   return (
     <AnimatedSection
       id="problem"
-      className="relative bg-background py-16 md:py-24"
+      className="relative overflow-hidden bg-background py-16 md:py-24"
       ref={ref}
     >
-      <div className="mx-auto max-w-content px-6 md:px-20">
+      <LifestyleAccent variant="skincare" corner="tr" size={42} opacity={0.16} blur={16} />
+      <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         <h2 className="section-heading max-w-[20ch] text-foreground">
           Your customers are shopping through agents.{" "}
           <span className="text-foreground/45">Agents are shopping on sticker price.</span>

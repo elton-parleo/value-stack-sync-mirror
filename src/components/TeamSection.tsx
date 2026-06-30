@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Linkedin, ArrowUpRight } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import LifestyleAccent from "./LifestyleAccent";
 import wppLogo from "@/assets/logos/wpp-tight.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
 import nikeLogo from "@/assets/logos/nike-tight.png";
@@ -15,7 +16,6 @@ type Founder = {
   name: string;
   bio: string;
   linkedinUrl: string;
-  linkedinHandle: string;
   logos: { name: string; src: string; widthClass: string }[];
 };
 
@@ -26,7 +26,6 @@ const team: Founder[] = [
     name: "Samar Birwadker",
     bio: "Brand strategist turned founder. Builds at the seam of brand, growth, and infrastructure. 3x founder, 2x exits (SaaS, Fintech). VP Growth + advisor & investor in 10+ startups. Brand strategy at WPP / AKQA for Nike, Xbox, CPG.",
     linkedinUrl: "https://www.linkedin.com/in/samarbirwadker/",
-    linkedinHandle: "samarbirwadker",
     logos: [
       { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[88px]" },
       { name: "WPP", src: wppLogo, widthClass: "w-[82px]" },
@@ -40,7 +39,6 @@ const team: Founder[] = [
     name: "Elton Cheung",
     bio: "Head of Product & Engineering at Rakuten. 5 years scaling marketplace infra at Groupon. Fintech architect at AlphaFlow.",
     linkedinUrl: "https://www.linkedin.com/in/eltoncheung/",
-    linkedinHandle: "eltoncheung",
     logos: [
       { name: "Rakuten", src: rakutenLogo, widthClass: "w-[80px]" },
       { name: "Groupon", src: grouponLogo, widthClass: "w-[86px]" },
@@ -79,10 +77,21 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
       </span>
     </div>
 
-    {/* name */}
-    <h3 className="relative mt-5 font-display text-[26px] leading-[1.1] tracking-[-0.02em] text-foreground md:text-[30px]">
-      {f.name}
-    </h3>
+    {/* name + linkedin */}
+    <div className="relative mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
+      <h3 className="font-display text-[26px] leading-[1.1] tracking-[-0.02em] text-foreground md:text-[30px]">
+        {f.name}
+      </h3>
+      <a
+        href={f.linkedinUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${f.name} on LinkedIn`}
+        className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-card text-foreground/55 transition-all duration-300 hover:border-primary/40 hover:bg-primary/[0.06] hover:text-primary"
+      >
+        <Linkedin className="h-3.5 w-3.5" strokeWidth={2.2} />
+      </a>
+    </div>
 
     {/* hairline */}
     <div className="relative mt-5 h-px w-full bg-border/70" />
@@ -111,27 +120,12 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
       </div>
     </div>
 
-    {/* linkedin */}
-    <div className="relative mt-8 flex items-center justify-between border-t border-border/70 pt-5">
-      <a
-        href={f.linkedinUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="link-reveal inline-flex items-center gap-2 text-[13px] font-medium text-foreground/70 transition-colors hover:text-foreground"
-      >
-        <Linkedin className="h-3.5 w-3.5" strokeWidth={2.2} />
-        linkedin.com/in/{f.linkedinHandle}
-      </a>
-      <ArrowUpRight
-        className="h-4 w-4 text-foreground/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
-        strokeWidth={1.6}
-      />
-    </div>
   </motion.article>
 );
 
 const TeamSection = () => (
   <AnimatedSection id="team" className="relative overflow-hidden bg-background py-16 md:py-20">
+    <LifestyleAccent variant="fashion" corner="tr" size={40} opacity={0.16} blur={18} />
     {/* subtle blue light burn */}
     <div
       aria-hidden
@@ -141,14 +135,7 @@ const TeamSection = () => (
           "radial-gradient(40% 50% at 92% 12%, hsl(213 99% 50% / 0.06) 0%, transparent 70%)",
       }}
     />
-    <div className="relative mx-auto max-w-content px-6 md:px-20">
-      {/* eyebrow */}
-      <div className="mb-6 flex items-baseline gap-4">
-        <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/40">
-          FIG. 05 / TEAM
-        </span>
-        <span className="h-px flex-1 bg-border" />
-      </div>
+    <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
 
       <h2 className="section-heading max-w-[760px] text-foreground">
         Built by operators who have shipped brand and infrastructure.
