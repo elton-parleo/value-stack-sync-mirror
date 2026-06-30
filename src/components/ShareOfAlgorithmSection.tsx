@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, FileCode2, Sparkles, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import LifestyleAccent from "./LifestyleAccent";
 
 const eras = [
   {
@@ -113,8 +114,9 @@ const ShareOfAlgorithmSection = () => {
   const era = eras[activeEra];
 
   return (
-    <AnimatedSection id="share-of-algorithm" className="relative bg-background py-16 md:py-24">
-      <div className="mx-auto max-w-content px-6 md:px-20">
+    <AnimatedSection id="share-of-algorithm" className="relative overflow-hidden bg-background py-16 md:py-24">
+      <LifestyleAccent variant="fragrance" corner="bl" size={44} opacity={0.14} blur={18} />
+      <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
           <h2 className="section-heading text-foreground">
             Share of Algorithm = Winning in <span className="text-primary">agentic.</span>
