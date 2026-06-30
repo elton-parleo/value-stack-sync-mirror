@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Linkedin, ArrowUpRight } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import LifestyleAccent from "./LifestyleAccent";
 import wppLogo from "@/assets/logos/wpp-tight.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
 import nikeLogo from "@/assets/logos/nike-tight.png";
@@ -15,7 +16,6 @@ type Founder = {
   name: string;
   bio: string;
   linkedinUrl: string;
-  linkedinHandle: string;
   logos: { name: string; src: string; widthClass: string }[];
 };
 
@@ -26,7 +26,6 @@ const team: Founder[] = [
     name: "Samar Birwadker",
     bio: "Brand strategist turned founder. Builds at the seam of brand, growth, and infrastructure. 3x founder, 2x exits (SaaS, Fintech). VP Growth + advisor & investor in 10+ startups. Brand strategy at WPP / AKQA for Nike, Xbox, CPG.",
     linkedinUrl: "https://www.linkedin.com/in/samarbirwadker/",
-    linkedinHandle: "samarbirwadker",
     logos: [
       { name: "Axel Springer", src: axelSpringerLogo, widthClass: "w-[88px]" },
       { name: "WPP", src: wppLogo, widthClass: "w-[82px]" },
