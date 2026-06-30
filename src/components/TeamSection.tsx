@@ -77,10 +77,21 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
       </span>
     </div>
 
-    {/* name */}
-    <h3 className="relative mt-5 font-display text-[26px] leading-[1.1] tracking-[-0.02em] text-foreground md:text-[30px]">
-      {f.name}
-    </h3>
+    {/* name + linkedin */}
+    <div className="relative mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
+      <h3 className="font-display text-[26px] leading-[1.1] tracking-[-0.02em] text-foreground md:text-[30px]">
+        {f.name}
+      </h3>
+      <a
+        href={f.linkedinUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${f.name} on LinkedIn`}
+        className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-card text-foreground/55 transition-all duration-300 hover:border-primary/40 hover:bg-primary/[0.06] hover:text-primary"
+      >
+        <Linkedin className="h-3.5 w-3.5" strokeWidth={2.2} />
+      </a>
+    </div>
 
     {/* hairline */}
     <div className="relative mt-5 h-px w-full bg-border/70" />
@@ -109,27 +120,12 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
       </div>
     </div>
 
-    {/* linkedin */}
-    <div className="relative mt-8 flex items-center justify-between border-t border-border/70 pt-5">
-      <a
-        href={f.linkedinUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="link-reveal inline-flex items-center gap-2 text-[13px] font-medium text-foreground/70 transition-colors hover:text-foreground"
-      >
-        <Linkedin className="h-3.5 w-3.5" strokeWidth={2.2} />
-        linkedin.com/in/{f.linkedinHandle}
-      </a>
-      <ArrowUpRight
-        className="h-4 w-4 text-foreground/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
-        strokeWidth={1.6}
-      />
-    </div>
   </motion.article>
 );
 
 const TeamSection = () => (
   <AnimatedSection id="team" className="relative overflow-hidden bg-background py-16 md:py-20">
+    <LifestyleAccent variant="fashion" corner="tr" size={40} opacity={0.16} blur={18} />
     {/* subtle blue light burn */}
     <div
       aria-hidden
