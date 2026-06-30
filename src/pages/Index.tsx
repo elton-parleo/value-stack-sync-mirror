@@ -26,7 +26,7 @@ const Index = () => (
       <meta property="og:url" content="https://parleo.io/" />
     </Helmet>
     <Navbar />
-    <main>
+    <main className="site-texture">
       <HeroSection />
       <SocialProofSection />
       <ProblemSection />

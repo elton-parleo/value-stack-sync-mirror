@@ -173,6 +173,35 @@
             mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
   }
 
+  .site-texture > section {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .site-texture > section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(80% 70% at 50% 42%, #000 0%, transparent 76%);
+            mask-image: radial-gradient(80% 70% at 50% 42%, #000 0%, transparent 76%);
+  }
+
+  .site-texture > section:nth-of-type(even)::before {
+    background-position: 28px 18px;
+    opacity: 0.72;
+  }
+
+  .site-texture > section > * {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Light-burn: warm sun-spot used behind hero / large headings */
   .light-burn-warm {
     background:
