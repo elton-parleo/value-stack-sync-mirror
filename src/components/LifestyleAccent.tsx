@@ -56,8 +56,10 @@ const LifestyleAccent = ({
   return (
     <div
       aria-hidden
-      className={`pointer-events-none absolute z-0 ${className}`}
+      className={`pointer-events-none ${className}`}
       style={{
+        position: "absolute",
+        zIndex: 0,
         ...cornerStyle[corner],
         width: `${size}vw`,
         maxWidth: 720,
