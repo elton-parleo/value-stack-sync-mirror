@@ -166,8 +166,8 @@
   /* Finer architectural grid with center-burn mask */
   .bg-grid-fine {
     background-image:
-      linear-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+      linear-gradient(hsl(var(--foreground) / 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.10) 1px, transparent 1px);
     background-size: 48px 48px;
     -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
             mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
