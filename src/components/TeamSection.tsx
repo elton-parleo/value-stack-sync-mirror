@@ -135,14 +135,7 @@ const TeamSection = () => (
           "radial-gradient(40% 50% at 92% 12%, hsl(213 99% 50% / 0.06) 0%, transparent 70%)",
       }}
     />
-    <div className="relative mx-auto max-w-content px-6 md:px-20">
-      {/* eyebrow */}
-      <div className="mb-6 flex items-baseline gap-4">
-        <span className="font-mono text-[10px] tracking-[0.22em] text-foreground/40">
-          FIG. 05 / TEAM
-        </span>
-        <span className="h-px flex-1 bg-border" />
-      </div>
+    <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
 
       <h2 className="section-heading max-w-[760px] text-foreground">
         Built by operators who have shipped brand and infrastructure.
