@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import LifestyleAccent from "./LifestyleAccent";
 import BrandLogo from "./BrandLogo";
-import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png.asset.json";
+import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.jpg";
 
 /* ───────────────────────────────────────────────────────────
    Section A · The shift
