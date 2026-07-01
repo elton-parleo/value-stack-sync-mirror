@@ -76,8 +76,7 @@ const LifestyleAccent = ({
         className="h-full w-full object-cover"
         style={{
           opacity,
-          filter: `blur(${blur}px) saturate(0.9) contrast(1.02)`,
-          mixBlendMode: "multiply",
+          filter: `blur(${blur}px) saturate(0.95) contrast(1)`,
           transform: "translateZ(0)",
         }}
       />
