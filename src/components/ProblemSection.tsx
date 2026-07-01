@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import LifestyleAccent from "./LifestyleAccent";
 import BrandLogo from "./BrandLogo";
-import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.jpg";
+import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png";
 
 /* ───────────────────────────────────────────────────────────
    Section A · The shift
@@ -121,7 +121,7 @@ const ProductPanel = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 h-[360px] w-auto object-contain mix-blend-multiply md:h-[440px]"
+        className="relative z-10 h-[380px] w-auto object-contain md:h-[460px]"
         loading="lazy"
       />
     </div>
