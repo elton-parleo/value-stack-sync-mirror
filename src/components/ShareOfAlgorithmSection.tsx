@@ -140,53 +140,79 @@ const ShareOfAlgorithmSection = () => {
               <div className="text-[13px] font-medium text-foreground/55">Distribution era</div>
               <div className="font-mono text-[11px] tabular-nums text-foreground/40">1960 to 2025</div>
             </div>
-            <div className="relative">
-              <div className="absolute left-0 right-0 top-[26px] h-px bg-border" />
+            {/* Stepper rail — sits above the cards, connects the era dots cleanly */}
+            <div className="relative mb-5 px-[6%] md:px-[10%]">
+              <div className="absolute left-[6%] right-[6%] top-1/2 h-px -translate-y-1/2 bg-border md:left-[10%] md:right-[10%]" />
               <motion.div
-                animate={{ width: `${(activeEra / (eras.length - 1)) * 100}%` }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute left-0 top-[26px] h-px bg-primary"
+                animate={{ width: `calc(${(activeEra / (eras.length - 1)) * 100}% * ${1 - 0.12} )` }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute left-[6%] top-1/2 h-px -translate-y-1/2 bg-primary md:left-[10%]"
               />
-              <div className="relative grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-                {eras.map((era, i) => (
-                  <motion.button
-                    key={era.key}
-                    type="button"
-                    onClick={() => setActiveEra(i)}
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.15 + i * 0.12, duration: 0.4 }}
-                    aria-pressed={activeEra === i}
-                    aria-label={`Show ${era.caption}`}
-                    className={`group flex cursor-pointer flex-col items-start rounded-2xl border p-3 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 md:p-4 ${
+              <div className="relative flex items-center justify-between">
+                {eras.map((era, i) => {
+                  const isActive = activeEra === i;
+                  const isPast = i < activeEra;
+                  return (
+                    <div key={era.key} className="flex flex-col items-center">
+                      <motion.span
+                        animate={isActive ? { scale: 1.15 } : { scale: 1 }}
+                        transition={{ type: "spring", stiffness: 320, damping: 20 }}
+                        className={`h-2.5 w-2.5 rounded-full ring-4 ring-secondary/30 transition-colors ${
+                          isActive
+                            ? "bg-primary"
+                            : isPast
+                              ? "bg-primary/50"
+                              : "bg-border"
+                        }`}
+                      />
+                      <span className="mt-2 hidden font-mono text-[10px] tabular-nums text-foreground/40 sm:block">
+                        {era.year}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="relative grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+              {eras.map((era, i) => (
+                <motion.button
+                  key={era.key}
+                  type="button"
+                  onClick={() => setActiveEra(i)}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 + i * 0.08, duration: 0.4 }}
+                  aria-pressed={activeEra === i}
+                  aria-label={`Show ${era.caption}`}
+                  className={`group flex cursor-pointer flex-col items-start rounded-2xl border p-3 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 md:p-4 ${
+                    activeEra === i
+                      ? "border-primary bg-card shadow-[0_14px_32px_-24px_hsl(var(--primary))]"
+                      : "border-border bg-card/60 hover:border-primary/45 hover:bg-card"
+                  }`}
+                >
+                  <motion.div
+                    animate={activeEra === i ? { scale: 1.06 } : { scale: 1 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                    className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 transition-colors ${
                       activeEra === i
-                        ? "border-primary bg-card shadow-[0_14px_32px_-24px_hsl(var(--primary))]"
-                        : "border-border bg-card/60 hover:border-primary/45 hover:bg-card"
+                        ? "border-primary bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_hsl(213_99%_50%/0.35)]"
+                        : "border-border bg-card text-foreground/45 group-hover:border-foreground/40 group-hover:text-foreground/80"
                     }`}
                   >
-                    <motion.div
-                      animate={activeEra === i ? { scale: 1.06 } : { scale: 1 }}
-                      transition={{ type: "spring", stiffness: 320, damping: 18 }}
-                      className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 transition-colors ${
-                        activeEra === i
-                          ? "border-primary bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_hsl(213_99%_50%/0.35)]"
-                          : "border-border bg-card text-foreground/45 group-hover:border-foreground/40 group-hover:text-foreground/80"
-                      }`}
-                    >
-                      {era.glyph}
-                    </motion.div>
-                    <div className="mt-4 font-mono text-[11px] tabular-nums text-foreground/45">{era.year}</div>
-                    <div
-                      className={`mt-1 text-[15px] font-semibold transition-colors ${activeEra === i ? "text-foreground" : "text-foreground/70 group-hover:text-foreground"}`}
-                    >
-                      {era.caption}
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
+                    {era.glyph}
+                  </motion.div>
+                  <div className="mt-4 font-mono text-[11px] tabular-nums text-foreground/45 sm:hidden">{era.year}</div>
+                  <div
+                    className={`mt-1 text-[15px] font-semibold transition-colors sm:mt-4 ${activeEra === i ? "text-foreground" : "text-foreground/70 group-hover:text-foreground"}`}
+                  >
+                    {era.caption}
+                  </div>
+                </motion.button>
+              ))}
             </div>
             <motion.div
               key={era.key}
