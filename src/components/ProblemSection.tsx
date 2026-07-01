@@ -448,7 +448,7 @@ const ProblemSection = () => {
       className="relative overflow-hidden bg-background py-16 md:py-24"
       ref={ref}
     >
-      <LifestyleAccent variant="skincare" corner="tr" size={42} opacity={0.16} blur={16} />
+      <LifestyleAccent variant="skincare" corner="tr" size={50} opacity={0.42} blur={6} />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         <h2 className="section-heading max-w-[20ch] text-foreground">
           Your customers are shopping through agents.{" "}

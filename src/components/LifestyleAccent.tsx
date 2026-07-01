@@ -31,25 +31,25 @@ type Props = {
 };
 
 const cornerStyle: Record<Corner, React.CSSProperties> = {
-  tr: { top: "-6%", right: "-8%" },
-  tl: { top: "-6%", left: "-8%" },
-  br: { bottom: "-8%", right: "-8%" },
-  bl: { bottom: "-8%", left: "-8%" },
+  tr: { top: "0%", right: "0%" },
+  tl: { top: "0%", left: "0%" },
+  br: { bottom: "0%", right: "0%" },
+  bl: { bottom: "0%", left: "0%" },
 };
 
 const cornerMask: Record<Corner, string> = {
-  tr: "radial-gradient(70% 70% at 85% 15%, #000 0%, transparent 75%)",
-  tl: "radial-gradient(70% 70% at 15% 15%, #000 0%, transparent 75%)",
-  br: "radial-gradient(70% 70% at 85% 85%, #000 0%, transparent 75%)",
-  bl: "radial-gradient(70% 70% at 15% 85%, #000 0%, transparent 75%)",
+  tr: "radial-gradient(65% 65% at 78% 22%, #000 30%, transparent 85%)",
+  tl: "radial-gradient(65% 65% at 22% 22%, #000 30%, transparent 85%)",
+  br: "radial-gradient(65% 65% at 78% 78%, #000 30%, transparent 85%)",
+  bl: "radial-gradient(65% 65% at 22% 78%, #000 30%, transparent 85%)",
 };
 
 const LifestyleAccent = ({
   variant,
   corner = "tr",
-  size = 46,
-  opacity = 0.18,
-  blur = 14,
+  size = 52,
+  opacity = 0.42,
+  blur = 6,
   className = "",
 }: Props) => {
   const mask = cornerMask[corner];
@@ -76,8 +76,7 @@ const LifestyleAccent = ({
         className="h-full w-full object-cover"
         style={{
           opacity,
-          filter: `blur(${blur}px) saturate(0.78) contrast(0.96)`,
-          mixBlendMode: "multiply",
+          filter: `blur(${blur}px) saturate(0.95) contrast(1)`,
           transform: "translateZ(0)",
         }}
       />

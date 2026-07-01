@@ -97,7 +97,7 @@ const DashboardSection = () => {
 
   return (
     <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-24" ref={ref}>
-      <LifestyleAccent variant="tech" corner="tr" size={40} opacity={0.14} blur={18} />
+      <LifestyleAccent variant="tech" corner="tr" size={48} opacity={0.42} blur={6} />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         {/* Headline */}
         <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
