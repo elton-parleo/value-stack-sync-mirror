@@ -115,7 +115,7 @@ const ProductPanel = () => (
     <div className="relative flex flex-1 items-center justify-center py-6">
       <div className="absolute inset-x-10 bottom-4 h-3 rounded-[50%] bg-foreground/15 blur-md" />
       <motion.img
-        src={skiiProduct.url}
+        src={skiiProduct}
         alt="SK-II Facial Treatment Essence 230ml bottle and red carton"
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
