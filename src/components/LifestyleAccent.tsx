@@ -31,17 +31,17 @@ type Props = {
 };
 
 const cornerStyle: Record<Corner, React.CSSProperties> = {
-  tr: { top: "-6%", right: "-8%" },
-  tl: { top: "-6%", left: "-8%" },
-  br: { bottom: "-8%", right: "-8%" },
-  bl: { bottom: "-8%", left: "-8%" },
+  tr: { top: "-4%", right: "-6%" },
+  tl: { top: "-4%", left: "-6%" },
+  br: { bottom: "-6%", right: "-6%" },
+  bl: { bottom: "-6%", left: "-6%" },
 };
 
 const cornerMask: Record<Corner, string> = {
-  tr: "radial-gradient(70% 70% at 85% 15%, #000 0%, transparent 75%)",
-  tl: "radial-gradient(70% 70% at 15% 15%, #000 0%, transparent 75%)",
-  br: "radial-gradient(70% 70% at 85% 85%, #000 0%, transparent 75%)",
-  bl: "radial-gradient(70% 70% at 15% 85%, #000 0%, transparent 75%)",
+  tr: "radial-gradient(75% 75% at 88% 12%, #000 10%, transparent 82%)",
+  tl: "radial-gradient(75% 75% at 12% 12%, #000 10%, transparent 82%)",
+  br: "radial-gradient(75% 75% at 88% 88%, #000 10%, transparent 82%)",
+  bl: "radial-gradient(75% 75% at 12% 88%, #000 10%, transparent 82%)",
 };
 
 const LifestyleAccent = ({
