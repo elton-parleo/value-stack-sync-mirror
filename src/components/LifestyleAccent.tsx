@@ -47,9 +47,9 @@ const cornerMask: Record<Corner, string> = {
 const LifestyleAccent = ({
   variant,
   corner = "tr",
-  size = 46,
-  opacity = 0.18,
-  blur = 14,
+  size = 52,
+  opacity = 0.42,
+  blur = 6,
   className = "",
 }: Props) => {
   const mask = cornerMask[corner];
