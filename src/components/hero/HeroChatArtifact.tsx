@@ -73,50 +73,51 @@ const ChatChrome = ({
       className="relative w-full overflow-visible rounded-[20px] border border-border/70 bg-card"
       style={{ boxShadow: "var(--shadow-elevated)" }}
     >
-      {/* Cycle progress hairline — sits on the chrome-bar seam (a straight edge) */}
-      <div className="pointer-events-none absolute inset-x-0 top-[44px] z-10 h-px overflow-hidden bg-transparent">
-        <motion.div
-          key={cycleKey}
-          className="h-full origin-left bg-primary/70"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: duration / 1000, ease: "linear" }}
-        />
-      </div>
-
-      {/* Chrome bar */}
-      <div className="flex items-center justify-between rounded-t-[20px] border-b border-border/50 px-4 py-2.5">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1">
-            <span className="h-2 w-2 rounded-full bg-foreground/10" />
-            <span className="h-2 w-2 rounded-full bg-foreground/10" />
-            <span className="h-2 w-2 rounded-full bg-foreground/10" />
+      {/* Chrome bar (with progress hairline sitting on its bottom edge — a straight seam) */}
+      <div className="relative rounded-t-[20px] px-4 py-2.5">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              <span className="h-2 w-2 rounded-full bg-foreground/10" />
+              <span className="h-2 w-2 rounded-full bg-foreground/10" />
+              <span className="h-2 w-2 rounded-full bg-foreground/10" />
+            </div>
+            <span className="ml-1 text-[12px] font-semibold text-foreground/70">
+              ChatGPT <span className="font-normal text-foreground/35">5</span>
+            </span>
           </div>
-          <span className="ml-1 text-[12px] font-semibold text-foreground/70">
-            ChatGPT <span className="font-normal text-foreground/35">5</span>
-          </span>
+          <div className="flex min-w-0 items-center gap-2">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={isParleo ? "p" : "s"}
+                initial={{ opacity: 0, y: 3 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -3 }}
+                transition={{ duration: 0.3 }}
+                className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/45 sm:flex"
+              >
+                <span
+                  className={`h-1.5 w-1.5 rounded-full ${
+                    isParleo ? "bg-primary" : "bg-foreground/25"
+                  }`}
+                />
+                {isParleo ? "parleo · shopping" : "standard · shopping"}
+              </motion.span>
+            </AnimatePresence>
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+              S
+            </div>
+          </div>
         </div>
-        <div className="flex min-w-0 items-center gap-2">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={isParleo ? "p" : "s"}
-              initial={{ opacity: 0, y: 3 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -3 }}
-              transition={{ duration: 0.3 }}
-              className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/45 sm:flex"
-            >
-              <span
-                className={`h-1.5 w-1.5 rounded-full ${
-                  isParleo ? "bg-primary" : "bg-foreground/25"
-                }`}
-              />
-              {isParleo ? "parleo · shopping" : "standard · shopping"}
-            </motion.span>
-          </AnimatePresence>
-          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
-            S
-          </div>
+        {/* Cycle progress hairline sits exactly on the bottom seam — no corner clash */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px overflow-hidden bg-border/50">
+          <motion.div
+            key={cycleKey}
+            className="h-full origin-left bg-primary/70"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: duration / 1000, ease: "linear" }}
+          />
         </div>
       </div>
 
