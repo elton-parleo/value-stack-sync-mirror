@@ -125,7 +125,7 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
 
 const TeamSection = () => (
   <AnimatedSection id="team" className="relative overflow-hidden bg-background py-16 md:py-20">
-    <LifestyleAccent variant="fashion" corner="tr" size={40} opacity={0.16} blur={18} />
+    <LifestyleAccent variant="fashion" corner="tr" size={48} opacity={0.42} blur={6} />
     {/* subtle blue light burn */}
     <div
       aria-hidden

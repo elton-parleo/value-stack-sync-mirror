@@ -115,7 +115,7 @@ const ShareOfAlgorithmSection = () => {
 
   return (
     <AnimatedSection id="share-of-algorithm" className="relative overflow-hidden bg-background py-16 md:py-24">
-      <LifestyleAccent variant="fragrance" corner="bl" size={44} opacity={0.14} blur={18} />
+      <LifestyleAccent variant="fragrance" corner="bl" size={52} opacity={0.42} blur={6} />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         <div className="max-w-[820px]">
           <h2 className="section-heading text-foreground">
