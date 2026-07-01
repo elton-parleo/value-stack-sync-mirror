@@ -121,7 +121,7 @@ const ProductPanel = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 h-[260px] w-auto object-contain mix-blend-multiply md:h-[340px]"
+        className="relative z-10 h-[360px] w-auto object-contain mix-blend-multiply md:h-[440px]"
         loading="lazy"
       />
     </div>
