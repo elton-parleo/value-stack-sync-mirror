@@ -73,11 +73,11 @@ const ChatChrome = ({
       className="relative w-full overflow-visible rounded-[20px] border border-border/70 bg-card"
       style={{ boxShadow: "var(--shadow-elevated)" }}
     >
-      {/* Cycle progress hairline */}
-      <div className="absolute inset-x-0 top-0 z-10 h-px overflow-hidden rounded-t-[20px] bg-foreground/[0.05]">
+      {/* Cycle progress hairline — sits on the chrome-bar seam (a straight edge) */}
+      <div className="pointer-events-none absolute inset-x-0 top-[44px] z-10 h-px overflow-hidden bg-transparent">
         <motion.div
           key={cycleKey}
-          className="h-full origin-left bg-primary/60"
+          className="h-full origin-left bg-primary/70"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: duration / 1000, ease: "linear" }}
