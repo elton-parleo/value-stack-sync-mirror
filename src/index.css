@@ -112,7 +112,7 @@
     line-height: 1.1;
   }
   .card-subheading {
-    color: hsl(var(--foreground) / 0.48);
+    color: hsl(var(--foreground) / 0.7);
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0;
