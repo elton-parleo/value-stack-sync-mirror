@@ -23,12 +23,7 @@ const HeroSection = () => {
       />
       <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-10 md:px-20 md:pb-24 md:pt-16">
         {/* Left: copy */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="md:col-span-5"
-        >
+        <div className="md:col-span-5">
           <h1
             className="font-display text-[44px] text-foreground md:text-[64px]"
             style={{ lineHeight: 1.05 }}
