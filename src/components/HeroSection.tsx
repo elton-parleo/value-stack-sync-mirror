@@ -72,7 +72,7 @@ const HeroSection = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Right: artifact */}
         <motion.div
