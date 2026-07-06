@@ -116,7 +116,7 @@ const ChatChrome = ({
             className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
             style={{ backgroundColor: isParleo ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.25)" }}
           />
-          <span className="relative block h-[12px] w-[104px] overflow-hidden">
+          <span className="relative block h-[12px] w-[128px] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.span
                 key={isParleo ? "p" : "s"}
@@ -327,7 +327,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
           {/* Ranking box */}
           <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2">
             <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
-              <span className="relative block h-[11px] min-w-[110px]">
+              <span className="relative block h-[11px] w-[130px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={isParleo ? "li" : "lp"}
@@ -341,7 +341,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                   </motion.span>
                 </AnimatePresence>
               </span>
-              <span className="relative block h-[11px] min-w-[80px] text-right">
+              <span className="relative block h-[11px] w-[92px] text-right">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={isParleo ? "ec" : "sp"}
@@ -408,7 +408,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
 
       {/* Footer strip */}
       <div className="flex items-center justify-between border-t border-border/60 bg-secondary/30 px-3.5 py-1.5">
-        <span className="relative block h-[13px] min-w-[160px] font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
+        <span className="relative block h-[13px] w-[190px] font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
           <AnimatePresence mode="wait">
             <motion.span
               key={isParleo ? "tp" : "lp"}
