@@ -441,18 +441,12 @@ const HeroChatArtifact = () => {
   const displayPhase: Phase = phase === "typing" ? "standard" : phase;
 
   return (
-    <div>
-      <div className="mb-2.5">
-        <ModeCaption phase={displayPhase} />
+    <ChatChrome phase={displayPhase} cycleKey={cycleKey} duration={TOTAL}>
+      <div className="space-y-3.5">
+        <UserBubble />
+        <AssistantContent phase={phase} />
       </div>
-
-      <ChatChrome phase={displayPhase} cycleKey={cycleKey} duration={TOTAL}>
-        <div className="space-y-3.5">
-          <UserBubble />
-          <AssistantContent phase={phase} />
-        </div>
-      </ChatChrome>
-    </div>
+    </ChatChrome>
   );
 };
 
