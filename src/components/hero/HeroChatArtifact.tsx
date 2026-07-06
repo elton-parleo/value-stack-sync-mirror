@@ -175,30 +175,66 @@ const rankingRows = [
   { retailer: "Amazon", standard: "$74.00", parleo: "$74.00", note: "list price only" },
 ];
 
+const EASE = [0.32, 0.72, 0, 1] as const; // Apple-style smooth
+const SPRING = { type: "spring" as const, stiffness: 220, damping: 30, mass: 0.9 };
+
+const RetailerRow = ({
+  retailer,
+  price,
+  note,
+  winner,
+  isParleo,
+}: {
+  retailer: string;
+  price: string;
+  note: string;
+  winner: boolean;
+  isParleo: boolean;
+}) => (
+  <div
+    className="relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-md px-2 py-1"
+    style={{
+      transition: "background-color 600ms cubic-bezier(0.32,0.72,0,1), color 600ms cubic-bezier(0.32,0.72,0,1)",
+      backgroundColor: winner ? "hsl(var(--card))" : "transparent",
+      color: winner ? "hsl(var(--foreground))" : "hsl(var(--foreground) / 0.5)",
+    }}
+  >
+    <div className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-1.5 sm:grid-cols-[auto_minmax(48px,auto)_minmax(0,1fr)]">
+      <BrandLogo name={retailer} size={12} grayscale={!winner} />
+      <span className="text-[11px] font-semibold">{retailer}</span>
+      <span className="hidden truncate text-[10px] text-foreground/42 sm:inline">
+        {isParleo ? note : "visible to agent"}
+      </span>
+    </div>
+    <span
+      className={`text-[11px] font-semibold tabular-nums transition-colors duration-500 ${
+        winner && isParleo ? "text-primary" : ""
+      }`}
+    >
+      {price}
+    </span>
+  </div>
+);
+
 const ProductCard = ({ phase }: { phase: Phase }) => {
   const isParleo = phase === "parleo";
   return (
-    <motion.div
-      layout
+    <div
       className="relative overflow-hidden rounded-2xl border border-border/70 bg-card"
-      transition={{ layout: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }}
       style={{ boxShadow: "var(--shadow-card)" }}
     >
-      {/* Badge */}
+      {/* Badge — gentler entrance, no ping */}
       <AnimatePresence>
         {isParleo && (
           <motion.div
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.35 }}
+            initial={{ opacity: 0, y: -4, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.96 }}
+            transition={{ duration: 0.55, ease: EASE }}
             className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-primary px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.12em] text-primary-foreground"
             style={{ boxShadow: "var(--shadow-md)" }}
           >
-            <span className="relative inline-flex h-1.5 w-1.5">
-              <span className="absolute inset-0 animate-ping rounded-full bg-white/70" />
-              <span className="absolute inset-0 rounded-full bg-white" />
-            </span>
+            <span className="h-1.5 w-1.5 rounded-full bg-white" />
             Best with Parleo
           </motion.div>
         )}
@@ -206,147 +242,189 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
 
       <div className="grid grid-cols-[34%_1fr] items-stretch sm:grid-cols-[38%_1fr]">
         {/* Product image well */}
-        <div className="relative flex min-h-[180px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)] sm:min-h-[226px]">
-          <div className="absolute left-3 top-3 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35 sm:left-4 sm:top-4">SKU 320418</div>
+        <div className="relative flex min-h-[180px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)] sm:min-h-[240px]">
+          <div className="absolute left-3 top-3 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35 sm:left-4 sm:top-4">
+            SKU 320418
+          </div>
           <div className="absolute bottom-3 left-3 hidden max-w-[120px] font-mono text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-foreground/35 sm:bottom-4 sm:left-4 sm:block">
             Merchant value made readable
           </div>
           <motion.img
             src={tatchaAsset.url}
             alt="Tatcha The Water Cream"
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[1] h-[100px] w-auto object-contain sm:h-[136px]"
-            style={{ filter: "drop-shadow(0 14px 18px hsl(165 40% 18% / 0.16))" }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: isParleo ? 1.04 : 1 }}
+            transition={{ duration: 1.1, ease: EASE }}
+            className="relative z-[1] h-[100px] w-auto object-contain sm:h-[140px]"
+            style={{ filter: "drop-shadow(0 14px 22px hsl(165 40% 18% / 0.18))" }}
           />
         </div>
 
         {/* Detail rail */}
-        <div className="flex min-w-0 flex-1 flex-col justify-between p-3.5">
-          <div>
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
-                  Tatcha
-                </div>
-                <div className="mt-0.5 text-[13px] font-semibold leading-tight text-foreground">
-                  The Water Cream
-                </div>
-                <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
+        <div className="flex min-w-0 flex-1 flex-col p-3.5">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-foreground/45">
+                Tatcha
               </div>
-              <AnimatePresence mode="wait">
-                {!isParleo && (
-                  <motion.div
-                    key="default"
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="hidden shrink-0 rounded-full border border-border bg-secondary/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-foreground/45 sm:inline-block"
-                  >
-                    List price ranks
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div className="mt-0.5 text-[13px] font-semibold leading-tight text-foreground">
+                The Water Cream
+              </div>
+              <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
             </div>
           </div>
 
-          {/* Winner retailer */}
-          <div className="mt-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <BrandLogo name={isParleo ? "Sephora" : "Amazon"} size={14} />
-                <span className="text-[12px] font-semibold text-foreground">
-                  {isParleo ? "Sephora" : "Amazon"}
-                </span>
+          {/* Winner retailer — crossfade instead of instant swap */}
+          <div className="mt-3 flex items-center justify-between">
+            <div className="relative h-[18px] min-w-[90px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={isParleo ? "sephora" : "amazon"}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                  className="absolute inset-0 flex items-center gap-1.5"
+                >
+                  <BrandLogo name={isParleo ? "Sephora" : "Amazon"} size={14} />
+                  <span className="text-[12px] font-semibold text-foreground">
+                    {isParleo ? "Sephora" : "Amazon"}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <div className="text-right leading-none">
+              <div
+                className="mb-0.5 text-[10.5px] text-foreground/40 line-through tabular-nums"
+                style={{
+                  opacity: isParleo ? 1 : 0,
+                  transform: `translateY(${isParleo ? 0 : 4}px)`,
+                  transition: "opacity 500ms cubic-bezier(0.32,0.72,0,1), transform 500ms cubic-bezier(0.32,0.72,0,1)",
+                }}
+              >
+                $74.00
               </div>
-              <div className="text-right leading-none">
-                {isParleo && (
-                  <div className="mb-0.5 text-[10.5px] text-foreground/40 line-through tabular-nums">
-                    $74.00
-                  </div>
-                )}
+              <motion.div
+                key={isParleo ? "p-price" : "s-price"}
+                initial={{ scale: 0.95, opacity: 0.6 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, ease: EASE }}
+              >
                 <AnimatedPrice
                   value={isParleo ? 51.24 : 74.0}
-                  className={`font-display text-[20px] tabular-nums ${
+                  duration={900}
+                  className={`font-display text-[20px] tabular-nums transition-colors duration-500 ${
                     isParleo ? "text-primary" : "text-foreground"
                   }`}
                 />
-              </div>
+              </motion.div>
             </div>
+          </div>
 
-            <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2">
-              <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
-                <span>{isParleo ? "LLM sees incentives" : "LLM sees list prices"}</span>
-                <span>{isParleo ? "Effective cost" : "Sticker price"}</span>
-              </div>
-              <div className="space-y-1.5">
-                {rankingRows.map((row) => {
-                  const winner = isParleo ? row.retailer === "Sephora" : row.retailer === "Amazon";
-                  return (
-                    <motion.div
-                      layout
-                      key={row.retailer}
-                      className={`grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-md px-2 py-1 transition-colors duration-500 ${
-                        winner ? "bg-card text-foreground" : "text-foreground/48"
-                      }`}
-                    >
-                      <div className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-1.5 sm:grid-cols-[auto_minmax(48px,auto)_minmax(0,1fr)]">
-                        <BrandLogo name={row.retailer} size={12} grayscale={!winner} />
-                        <span className="text-[11px] font-semibold">{row.retailer}</span>
-                        <span className="hidden truncate text-[10px] text-foreground/42 sm:inline">{isParleo ? row.note : "visible to agent"}</span>
-                      </div>
-                      <span className={`text-[11px] font-semibold tabular-nums ${winner && isParleo ? "text-primary" : ""}`}>
-                        {isParleo ? row.parleo : row.standard}
-                      </span>
-                    </motion.div>
-                  );
-                })}
-              </div>
+          {/* Ranking box */}
+          <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2">
+            <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
+              <span className="relative block h-[11px] min-w-[110px]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={isParleo ? "li" : "lp"}
+                    initial={{ opacity: 0, y: 3 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -3 }}
+                    transition={{ duration: 0.35, ease: EASE }}
+                    className="absolute inset-0"
+                  >
+                    {isParleo ? "LLM sees incentives" : "LLM sees list prices"}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+              <span className="relative block h-[11px] min-w-[80px] text-right">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={isParleo ? "ec" : "sp"}
+                    initial={{ opacity: 0, y: 3 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -3 }}
+                    transition={{ duration: 0.35, ease: EASE }}
+                    className="absolute inset-0"
+                  >
+                    {isParleo ? "Effective cost" : "Sticker price"}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
             </div>
+            <div className="space-y-1.5">
+              {rankingRows.map((row) => (
+                <RetailerRow
+                  key={row.retailer}
+                  retailer={row.retailer}
+                  price={isParleo ? row.parleo : row.standard}
+                  note={row.note}
+                  winner={isParleo ? row.retailer === "Sephora" : row.retailer === "Amazon"}
+                  isParleo={isParleo}
+                />
+              ))}
+            </div>
+          </div>
 
-            {/* Incentive stack: only parleo */}
-            <AnimatePresence>
-              {isParleo && (
+          {/* Incentive stack — reserved space, opacity+stagger reveal */}
+          <div
+            className="mt-2 border-t border-border/60 pt-2"
+            style={{
+              minHeight: 60,
+              opacity: isParleo ? 1 : 0,
+              transform: `translateY(${isParleo ? 0 : 4}px)`,
+              transition: "opacity 600ms cubic-bezier(0.32,0.72,0,1), transform 600ms cubic-bezier(0.32,0.72,0,1)",
+              pointerEvents: isParleo ? "auto" : "none",
+            }}
+          >
+            <div className="space-y-0.5">
+              {incentiveStack.map((s, i) => (
                 <motion.div
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
+                  key={s.label}
+                  initial={false}
+                  animate={{
+                    opacity: isParleo ? 1 : 0,
+                    x: isParleo ? 0 : -4,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    ease: EASE,
+                    delay: isParleo ? 0.22 + i * 0.08 : 0,
+                  }}
+                  className="flex items-center justify-between text-[10.5px] tabular-nums"
                 >
-                  <div className="mt-2 space-y-0.5 border-t border-border/60 pt-2">
-                    {incentiveStack.map((s, i) => (
-                      <motion.div
-                        key={s.label}
-                        initial={{ opacity: 0, x: -4 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.18 + i * 0.07, duration: 0.3 }}
-                        className="flex items-center justify-between text-[10.5px] tabular-nums"
-                      >
-                        <span className="text-foreground/60">{s.label}</span>
-                        <span className="font-semibold text-[hsl(var(--success))]">{s.value}</span>
-                      </motion.div>
-                    ))}
-                  </div>
+                  <span className="text-foreground/60">{s.label}</span>
+                  <span className="font-semibold text-[hsl(var(--success))]">{s.value}</span>
                 </motion.div>
-              )}
-            </AnimatePresence>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Footer strip */}
       <div className="flex items-center justify-between border-t border-border/60 bg-secondary/30 px-3.5 py-1.5">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
-          {isParleo ? "8 retailers · true price" : "8 retailers · list price"}
+        <span className="relative block h-[13px] min-w-[160px] font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/45">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={isParleo ? "tp" : "lp"}
+              initial={{ opacity: 0, y: 3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              transition={{ duration: 0.35, ease: EASE }}
+              className="absolute inset-0"
+            >
+              {isParleo ? "8 retailers · true price" : "8 retailers · list price"}
+            </motion.span>
+          </AnimatePresence>
         </span>
         <span className="text-[11px] font-medium text-primary/85">View all →</span>
       </div>
-    </motion.div>
+    </div>
   );
 };
+
 
 /* ─────────────────────────────────────────────
    Assistant column
