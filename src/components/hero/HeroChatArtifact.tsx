@@ -152,14 +152,14 @@ const UserBubble = () => (
    ───────────────────────────────────────────── */
 
 const incentiveStack = [
-  { label: "Beauty Insider Rouge", value: "−$6.00" },
-  { label: "Sephora Visa · 4% back", value: "−$0.96" },
-  { label: "Birthday gift credit", value: "−$8.40" },
+  { label: "Beauty Insider Rouge · 20% event", value: "−$14.80" },
+  { label: "Sephora Visa · 4% back", value: "−$2.96" },
+  { label: "Birthday gift credit", value: "−$5.00" },
 ];
 
 const rankingRows = [
-  { retailer: "Sephora", standard: "$30.00", parleo: "$14.64", note: "loyalty + card + gift value" },
-  { retailer: "Amazon", standard: "$28.00", parleo: "$28.00", note: "list price only" },
+  { retailer: "Sephora", standard: "$74.00", parleo: "$51.24", note: "loyalty + card + gift value" },
+  { retailer: "Amazon", standard: "$74.00", parleo: "$74.00", note: "list price only" },
 ];
 
 const ProductCard = ({ phase }: { phase: Phase }) => {
