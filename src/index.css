@@ -77,7 +77,7 @@
     letter-spacing: -0.038em;
     line-height: 1.04;
     font-feature-settings: "ss01", "cv11", "cv06";
-    text-wrap: balance;
+    text-wrap: pretty;
   }
   .font-heading {
     font-weight: 720;
