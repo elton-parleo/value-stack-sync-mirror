@@ -430,38 +430,37 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
    Assistant column
    ───────────────────────────────────────────── */
 
-const AssistantContent = ({ phase }: { phase: Phase }) => (
-  <div className="flex gap-2.5">
-    <AssistantAvatar />
-    <div className="min-w-0 flex-1 space-y-2.5">
-      <AnimatePresence mode="wait">
-        {phase === "typing" ? (
-          <motion.div
-            key="typing"
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="space-y-2.5"
-          >
-            <TypingDots />
-            <ProductCard phase="standard" />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="answer"
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-2.5"
-          >
-            <ProductCard phase={phase} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+const AssistantContent = ({ phase }: { phase: Phase }) => {
+  const cardPhase: Phase = phase === "typing" ? "standard" : phase;
+  return (
+    <div className="flex gap-2.5">
+      <AssistantAvatar />
+      <div className="min-w-0 flex-1 space-y-2.5">
+        <div
+          style={{
+            opacity: phase === "typing" ? 0.55 : 1,
+            transition: "opacity 500ms cubic-bezier(0.32,0.72,0,1)",
+          }}
+        >
+          <AnimatePresence>
+            {phase === "typing" && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="mb-2.5"
+              >
+                <TypingDots />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <ProductCard phase={cardPhase} />
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 /* ─────────────────────────────────────────────
    Mode caption (subtle, editorial)
