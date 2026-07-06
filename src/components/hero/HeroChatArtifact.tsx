@@ -111,23 +111,26 @@ const ChatChrome = ({
           </svg>
         </button>
         <div className="flex items-center gap-2">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={isParleo ? "p" : "s"}
-              initial={{ opacity: 0, y: 3 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -3 }}
-              transition={{ duration: 0.3 }}
-              className="hidden items-center gap-1.5 rounded-full border border-border/60 bg-card px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/55 sm:flex"
-            >
-              <span
-                className={`h-1.5 w-1.5 rounded-full ${
-                  isParleo ? "bg-primary" : "bg-foreground/25"
-                }`}
-              />
-              {isParleo ? "parleo · shopping" : "shopping"}
-            </motion.span>
-          </AnimatePresence>
+        <div className="hidden items-center gap-1.5 rounded-full border border-border/60 bg-card px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/55 sm:flex">
+          <span
+            className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
+            style={{ backgroundColor: isParleo ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.25)" }}
+          />
+          <span className="relative block h-[12px] w-[104px] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={isParleo ? "p" : "s"}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+                className="absolute inset-0"
+              >
+                {isParleo ? "parleo · shopping" : "shopping"}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+        </div>
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#10a37f] text-[11px] font-semibold text-white">
             S
           </div>
