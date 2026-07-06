@@ -251,11 +251,11 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
               <div className="text-right leading-none">
                 {isParleo && (
                   <div className="mb-0.5 text-[10.5px] text-foreground/40 line-through tabular-nums">
-                    $30.00
+                    $74.00
                   </div>
                 )}
                 <AnimatedPrice
-                  value={isParleo ? 14.64 : 28.0}
+                  value={isParleo ? 51.24 : 74.0}
                   className={`font-display text-[20px] tabular-nums ${
                     isParleo ? "text-primary" : "text-foreground"
                   }`}
