@@ -341,7 +341,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                   </motion.span>
                 </AnimatePresence>
               </span>
-              <span className="relative block h-[11px] w-[92px] text-right">
+              <span className="relative block h-[11px] w-[108px] text-right">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={isParleo ? "ec" : "sp"}
