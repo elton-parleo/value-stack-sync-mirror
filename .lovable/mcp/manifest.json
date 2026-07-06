@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "parleo-mcp",
+      "version": "0.1.0",
+      "title": "Parleo"
+    },
+    "tools": [
+      {
+        "name": "list_supported_protocols",
+        "title": "List supported protocols",
+        "description": "Return the agentic-commerce protocols Parleo ships on (MCP, ACP, AP2, UCP, TAP, OpenAPI).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_integrations",
+        "title": "List Parleo integrations",
+        "description": "Return the merchant, protocol, and platform integrations Parleo supports. Optionally filter by category.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "enum": [
+                "protocol",
+                "platform",
+                "payments",
+                "enterprise"
+              ],
+              "description": "Filter by integration category."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "enrich_product",
+        "title": "Enrich product with true cost",
+        "description": "Demo of Parleo's incentive intelligence layer. Given a merchant and product context, returns a mock true-cost breakdown (loyalty, card offers, effective price). Uses deterministic sample data — not live merchant pricing.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "merchant_id": {
+              "type": "string",
+              "description": "Merchant identifier, e.g. 'nike_us', 'sephora_us'."
+            },
+            "product_sku": {
+              "type": "string",
+              "description": "Product SKU or identifier."
+            },
+            "list_price": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "Advertised list price in USD."
+            },
+            "card_signal": {
+              "type": "string",
+              "description": "Optional card context, e.g. 'amex_plat', 'chase_sapphire'."
+            },
+            "loyalty_tier": {
+              "type": "string",
+              "description": "Optional loyalty tier, e.g. 'vip', 'gold'."
+            }
+          },
+          "required": [
+            "merchant_id",
+            "product_sku",
+            "list_price"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
