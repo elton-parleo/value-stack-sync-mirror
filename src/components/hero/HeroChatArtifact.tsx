@@ -411,23 +411,10 @@ const AssistantContent = ({ phase }: { phase: Phase }) => {
       <div className="min-w-0 flex-1 space-y-2.5">
         <div
           style={{
-            opacity: phase === "typing" ? 0.55 : 1,
+            opacity: phase === "typing" ? 0.6 : 1,
             transition: "opacity 500ms cubic-bezier(0.32,0.72,0,1)",
           }}
         >
-          <AnimatePresence>
-            {phase === "typing" && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                className="mb-2.5"
-              >
-                <TypingDots />
-              </motion.div>
-            )}
-          </AnimatePresence>
           <ProductCard phase={cardPhase} />
         </div>
       </div>
