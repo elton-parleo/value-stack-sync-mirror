@@ -326,36 +326,6 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
 
           {/* Ranking box */}
           <div className="mt-2 rounded-lg border border-border/60 bg-secondary/30 p-2">
-            <div className="mb-1.5 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/40">
-              <span className="relative block h-[11px] w-[130px]">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={isParleo ? "li" : "lp"}
-                    initial={{ opacity: 0, y: 3 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -3 }}
-                    transition={{ duration: 0.35, ease: EASE }}
-                    className="absolute inset-0"
-                  >
-                    {isParleo ? "LLM sees incentives" : "LLM sees list prices"}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-              <span className="relative block h-[11px] w-[108px] text-right">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={isParleo ? "ec" : "sp"}
-                    initial={{ opacity: 0, y: 3 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -3 }}
-                    transition={{ duration: 0.35, ease: EASE }}
-                    className="absolute inset-0"
-                  >
-                    {isParleo ? "Effective cost" : "Sticker price"}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-            </div>
             <div className="space-y-1.5">
               {rankingRows.map((row) => (
                 <RetailerRow
