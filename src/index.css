@@ -73,13 +73,16 @@
 
 @layer utilities {
   .font-display {
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
+    font-weight: 780;
+    letter-spacing: -0.038em;
+    line-height: 1.04;
+    font-feature-settings: "ss01", "cv11", "cv06";
+    text-wrap: balance;
   }
   .font-heading {
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: 720;
+    letter-spacing: -0.028em;
+    font-feature-settings: "ss01", "cv11";
   }
   .font-label {
     font-weight: 500;
@@ -94,10 +97,33 @@
     letter-spacing: 0.12em;
   }
   .section-heading {
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: 1.06;
+    font-size: 32px;
+    font-weight: 780;
+    letter-spacing: -0.022em;
+    line-height: 1.05;
+    font-feature-settings: "ss01", "cv11", "cv06";
+    text-wrap: balance;
+  }
+  /* Subtle handcrafted accent for the muted second phrase of a headline.
+     Slightly lighter weight + warmer muted tone keeps rhythm without italic. */
+  .section-heading-accent {
+    color: hsl(var(--foreground) / 0.42);
+    font-weight: 720;
+  }
+  /* Optional editorial mark placed before a section heading (small primary tick). */
+  .section-heading-mark {
+    position: relative;
+    padding-left: 22px;
+  }
+  .section-heading-mark::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 10px;
+    height: 2px;
+    background: hsl(var(--primary));
+    border-radius: 1px;
   }
   .section-copy {
     color: hsl(var(--foreground) / 0.65);
@@ -107,9 +133,10 @@
   .card-heading {
     color: hsl(var(--foreground));
     font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1.1;
+    font-weight: 720;
+    letter-spacing: -0.018em;
+    line-height: 1.12;
+    font-feature-settings: "ss01", "cv11";
   }
   .card-subheading {
     color: hsl(var(--foreground) / 0.7);
@@ -131,7 +158,7 @@
   }
   @media (min-width: 768px) {
     .section-heading {
-      font-size: 40px;
+      font-size: 44px;
     }
     .section-copy {
       font-size: 18px;
@@ -144,6 +171,13 @@
     }
     .card-copy {
       font-size: 16px;
+    }
+    .section-heading-mark {
+      padding-left: 28px;
+    }
+    .section-heading-mark::before {
+      width: 14px;
+      height: 2px;
     }
   }
   .shadow-card {
