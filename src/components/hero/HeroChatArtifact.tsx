@@ -223,20 +223,18 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
                 <div className="mt-0.5 text-[11px] text-foreground/50">50 ml · moisturizer</div>
               </div>
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={isParleo ? "flips" : "default"}
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className={`hidden shrink-0 rounded-full border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] sm:inline-block ${
-                    isParleo
-                      ? "border-primary/25 bg-primary/[0.06] text-primary"
-                      : "border-border bg-secondary/40 text-foreground/45"
-                  }`}
-                >
-                  {isParleo ? "Agent result flips" : "List price ranks"}
-                </motion.div>
+                {!isParleo && (
+                  <motion.div
+                    key="default"
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.3 }}
+                    className="hidden shrink-0 rounded-full border border-border bg-secondary/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-foreground/45 sm:inline-block"
+                  >
+                    List price ranks
+                  </motion.div>
+                )}
               </AnimatePresence>
             </div>
           </div>
