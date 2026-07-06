@@ -73,11 +73,10 @@
 
 @layer utilities {
   .font-display {
-    font-weight: 780;
-    letter-spacing: -0.038em;
+    font-weight: 800;
+    letter-spacing: -0.04em;
     line-height: 1.04;
     font-feature-settings: "ss01", "cv11", "cv06";
-    text-wrap: pretty;
   }
   .font-heading {
     font-weight: 720;
