@@ -140,7 +140,7 @@ const HowItWorks = () => (
     <div className="mx-auto max-w-content px-6 md:px-20">
       <div className="grid gap-8 md:grid-cols-[1.15fr_auto] md:items-end">
         <div>
-          <h2 className="font-display text-[44px] text-foreground md:text-[72px]" style={{ lineHeight: 0.98 }}>
+          <h2 className="section-heading text-foreground">
             The early-mover advantage is closing fast.
           </h2>
           <p className="mt-5 max-w-[620px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
