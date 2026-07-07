@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import SectionHeading from "./SectionHeading";
 
 /* ── Platform mockup showing Parleo enrichment inside real AI interfaces ── */
 
