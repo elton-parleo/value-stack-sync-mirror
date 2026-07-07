@@ -95,35 +95,43 @@
     text-transform: uppercase;
     letter-spacing: 0.12em;
   }
+  /* Unified section headline.
+     Handcrafted signals baked into the type itself:
+     - Tighter optical tracking + Inter Tight stylistic sets (ss01, cv11, cv06)
+     - Balanced wrapping for editorial line breaks
+     - A small primary square end-mark (::after) acts as a consistent signature
+       across every section, replacing the old eyebrows. */
   .section-heading {
-    font-size: 32px;
-    font-weight: 780;
-    letter-spacing: -0.022em;
-    line-height: 1.05;
+    position: relative;
+    font-size: 34px;
+    font-weight: 760;
+    letter-spacing: -0.028em;
+    line-height: 1.02;
     font-feature-settings: "ss01", "cv11", "cv06";
     text-wrap: balance;
   }
-  /* Subtle handcrafted accent for the muted second phrase of a headline.
-     Slightly lighter weight + warmer muted tone keeps rhythm without italic. */
-  .section-heading-accent {
-    color: hsl(var(--foreground) / 0.42);
-    font-weight: 720;
-  }
-  /* Optional editorial mark placed before a section heading (small primary tick). */
-  .section-heading-mark {
-    position: relative;
-    padding-left: 22px;
-  }
-  .section-heading-mark::before {
+  .section-heading::after {
     content: "";
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 10px;
-    height: 2px;
+    display: inline-block;
+    width: 0.36em;
+    height: 0.36em;
+    margin-left: 0.18em;
+    margin-bottom: 0.04em;
+    vertical-align: baseline;
     background: hsl(var(--primary));
     border-radius: 1px;
+    transform: translateY(0.02em);
   }
+  /* Subtle handcrafted accent for the muted second phrase of a headline.
+     Lighter weight + warmer muted tone keeps rhythm without italic. */
+  .section-heading-accent {
+    color: hsl(var(--foreground) / 0.42);
+    font-weight: 640;
+    letter-spacing: -0.024em;
+  }
+  /* Legacy mark class kept as no-op so any lingering usages don't shift layout. */
+  .section-heading-mark { position: relative; }
+  .section-heading-mark::before { content: none; }
   .section-copy {
     color: hsl(var(--foreground) / 0.65);
     font-size: 16px;
