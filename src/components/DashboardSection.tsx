@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import LifestyleAccent from "./LifestyleAccent";
 import BrandLogo from "./BrandLogo";
 
