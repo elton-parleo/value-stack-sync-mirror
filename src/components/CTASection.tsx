@@ -32,7 +32,7 @@ const CTASection = () => {
           <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
             <div>
               <h2 className="section-heading section-heading-dark">
-                Be the answer agents recommend.
+                Be the answer agents recommend
               </h2>
               <p className="section-copy section-copy-dark mt-5 max-w-[520px]">
                 Working with a small group of merchants and infra teams setting the defaults for agentic commerce.

@@ -104,12 +104,12 @@ const DashboardSection = () => {
         <SectionHeading
           eyebrowNumber="03"
           eyebrow="Console"
-          accent="in one console."
+          accent="in one console"
           body="Score how agents rank you, see the margin they cannot, and set the rules your offers play by."
           maxWidth="920px"
           bodyMaxWidth="520px"
         >
-          Your agent channel,
+          Your agent channel, in one console
         </SectionHeading>
 
         {/* Dashboard mockup with annotation callouts */}
