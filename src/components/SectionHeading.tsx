@@ -54,32 +54,7 @@ const SectionHeading = ({
       className={cn(align === "center" && "text-center", className)}
       style={maxWidth ? { maxWidth } : undefined}
     >
-      {eyebrow && (
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className={cn(
-            "mb-5 flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em]",
-            align === "center" && "justify-center",
-            dark ? "text-background/55" : "text-foreground/55",
-          )}
-        >
-          <span
-            className={cn(
-              "inline-block h-px w-7",
-              dark ? "bg-background/25" : "bg-primary/70",
-            )}
-          />
-          {eyebrowNumber && (
-            <span className={dark ? "text-background/75" : "text-primary/85"}>
-              {eyebrowNumber}
-            </span>
-          )}
-          <span>{eyebrow}</span>
-        </motion.div>
-      )}
+      {/* Eyebrows intentionally removed. Unified motif lives on the headline itself. */}
 
       <motion.h2
         initial={{ opacity: 0, y: 12 }}
