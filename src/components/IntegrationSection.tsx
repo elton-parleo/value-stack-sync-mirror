@@ -32,7 +32,7 @@ const IntegrationSection = () => (
           <SectionHeading
             eyebrowNumber="05"
             eyebrow="Protocols"
-            accent="that matters."
+            accent="that matters"
             body="Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP."
             bodyMaxWidth="520px"
           >

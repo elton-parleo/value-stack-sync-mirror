@@ -454,7 +454,7 @@ const ProblemSection = () => {
         <SectionHeading
           eyebrowNumber="01"
           eyebrow="Problem"
-          accent="Agents are shopping on list price."
+          accent="Agents are shopping on list price"
           body="The fastest-growing channel in commerce ranks merchants on the one number that has nothing to do with what a customer actually pays."
           maxWidth="720px"
           bodyMaxWidth="620px"
