@@ -73,17 +73,16 @@ const FeedSection = () => (
   <AnimatedSection id="architecture" className="relative bg-background py-16 md:py-24">
     <div className="mx-auto max-w-content px-6 md:px-20">
       {/* Header */}
-      <div className="max-w-3xl">
-        <h2 className="section-heading text-foreground">
-          One call. Every signal an agent needs.
-        </h2>
-
-        <p className="section-copy mt-5 max-w-[640px]">
-          Parleo collapses 8 to 12 merchant lookups into a single pre-computed
-          response: normalized SKUs, loyalty math, card-linked offers, and
-          semantic context.
-        </p>
-      </div>
+      <SectionHeading
+        eyebrowNumber="04"
+        eyebrow="API"
+        accent="Every signal an agent needs."
+        body="Parleo collapses 8 to 12 merchant lookups into a single pre-computed response: normalized SKUs, loyalty math, card-linked offers, and semantic context."
+        maxWidth="820px"
+        bodyMaxWidth="640px"
+      >
+        One call.
+      </SectionHeading>
 
       {/* Diagram */}
       <div className="relative mt-16 md:mt-20">
