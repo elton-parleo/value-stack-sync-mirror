@@ -122,7 +122,7 @@ const ShareOfAlgorithmSection = () => {
           eyebrowNumber="02"
           eyebrow="Framework"
           accent="agentic."
-          accentTone="primary"
+          
           body="Visibility gets you considered. Accessibility gets you parsed. True Value gets you ranked. Parleo owns the layer that nobody else measures."
           maxWidth="820px"
           bodyMaxWidth="600px"
