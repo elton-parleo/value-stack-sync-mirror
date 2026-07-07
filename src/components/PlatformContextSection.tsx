@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import BrandLogo from "./BrandLogo";
+import SectionHeading from "./SectionHeading";
 
 /* ── Platform mockup showing Parleo enrichment inside real AI interfaces ── */
 
@@ -104,22 +105,14 @@ const PlatformMockup = ({
 const PlatformContextSection = () => (
   <AnimatedSection className="section-grid relative bg-background py-10 md:py-14">
     <div className="mx-auto max-w-content px-6 pt-6 md:px-20">
-      <div className="flex items-center gap-3">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/[0.08]">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(213,99%,50%)" strokeWidth="2">
-            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <span className="font-label text-parleo-muted">INSIDE EVERY AGENT</span>
-      </div>
-
-      <h2 className="mt-4 font-heading text-[28px] text-foreground md:text-[44px]" style={{ lineHeight: 1.1 }}>
-        Same product. Different price.<br className="hidden md:block" />
-        Only one agent knows.
-      </h2>
-      <p className="mt-3 max-w-[600px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
-        A customer asks two AI assistants the same question. The one connected to Parleo sees loyalty tiers, card offers, and point multipliers. The other sees list price and guesses.
-      </p>
+      <SectionHeading
+        accent="Only one agent knows."
+        body="A customer asks two AI assistants the same question. The one connected to Parleo sees loyalty tiers, card offers, and point multipliers. The other sees list price and guesses."
+        maxWidth="820px"
+        bodyMaxWidth="600px"
+      >
+        Same product. Different price.
+      </SectionHeading>
 
       {/* Platform mockups */}
       <div className="mt-8 grid gap-5 md:grid-cols-2">
