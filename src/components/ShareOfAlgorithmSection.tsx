@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, FileCode2, Sparkles, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import LifestyleAccent from "./LifestyleAccent";
 
 const eras = [
