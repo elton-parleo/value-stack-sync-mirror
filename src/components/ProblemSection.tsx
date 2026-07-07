@@ -369,7 +369,7 @@ const RankingPanel = () => {
                 : "text-foreground/50 hover:text-foreground/75"
             }`}
           >
-            Sticker price
+            List price
           </button>
           <button
             onClick={() => setMode("true")}
