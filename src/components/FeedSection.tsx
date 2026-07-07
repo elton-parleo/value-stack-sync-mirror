@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import BrandLogo from "./BrandLogo";
 
 /* ───────────────────────────────────────────────
