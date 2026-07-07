@@ -118,7 +118,7 @@ const PlatformContextSection = () => (
         Only one agent knows.
       </h2>
       <p className="mt-3 max-w-[600px] text-[15px] leading-[1.7] text-foreground/70 md:text-[17px]">
-        A customer asks two AI assistants the same question. The one connected to Parleo sees loyalty tiers, card offers, and point multipliers. The other sees sticker price and guesses.
+        A customer asks two AI assistants the same question. The one connected to Parleo sees loyalty tiers, card offers, and point multipliers. The other sees list price and guesses.
       </p>
 
       {/* Platform mockups */}

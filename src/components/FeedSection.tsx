@@ -225,7 +225,7 @@ const FeedSection = () => (
                   Result
                 </div>
                 <div className="mt-1 text-[12.5px] leading-snug text-foreground/80">
-                  Agent recommends with true cost, not sticker price.
+                  Agent recommends with true cost, not list price.
                 </div>
               </div>
             </div>
@@ -260,7 +260,7 @@ const FeedSection = () => (
         className="mt-10 rounded-2xl border border-border/60 bg-card/40 px-6 py-5 md:px-7"
       >
         <p className="text-[14.5px] leading-snug text-foreground/75 md:text-[15.5px]">
-          Agents stop guessing on sticker price.{" "}
+          Agents stop guessing on list price.{" "}
           <span className="font-semibold text-foreground">
             One call returns the offer your customer actually qualifies for
           </span>

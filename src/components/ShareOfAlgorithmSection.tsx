@@ -107,7 +107,7 @@ const pillars = [
 const dimensions = [
   { n: "06", title: "Incentive citation", body: "Loyalty, card, and bundled offers an agent can quote at runtime." },
   { n: "07", title: "Resolution accuracy", body: "True effective price across tiers, members, and stacked rules." },
-  { n: "08", title: "True-value delta", body: "The dollars between sticker price and what the customer pays." },
+  { n: "08", title: "True-value delta", body: "The dollars between list price and what the customer pays." },
 ];
 
 const ShareOfAlgorithmSection = () => {
