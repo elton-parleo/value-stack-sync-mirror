@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import BrandLogo from "./BrandLogo";
 
 /* ───────────────────────────────────────────────
@@ -72,17 +73,16 @@ const FeedSection = () => (
   <AnimatedSection id="architecture" className="relative bg-background py-16 md:py-24">
     <div className="mx-auto max-w-content px-6 md:px-20">
       {/* Header */}
-      <div className="max-w-3xl">
-        <h2 className="section-heading text-foreground">
-          One call. Every signal an agent needs.
-        </h2>
-
-        <p className="section-copy mt-5 max-w-[640px]">
-          Parleo collapses 8 to 12 merchant lookups into a single pre-computed
-          response: normalized SKUs, loyalty math, card-linked offers, and
-          semantic context.
-        </p>
-      </div>
+      <SectionHeading
+        eyebrowNumber="04"
+        eyebrow="API"
+        accent="Every signal an agent needs."
+        body="Parleo collapses 8 to 12 merchant lookups into a single pre-computed response: normalized SKUs, loyalty math, card-linked offers, and semantic context."
+        maxWidth="820px"
+        bodyMaxWidth="640px"
+      >
+        One call.
+      </SectionHeading>
 
       {/* Diagram */}
       <div className="relative mt-16 md:mt-20">
@@ -225,7 +225,7 @@ const FeedSection = () => (
                   Result
                 </div>
                 <div className="mt-1 text-[12.5px] leading-snug text-foreground/80">
-                  Agent recommends with true cost, not sticker price.
+                  Agent recommends with true cost, not list price.
                 </div>
               </div>
             </div>
@@ -260,7 +260,7 @@ const FeedSection = () => (
         className="mt-10 rounded-2xl border border-border/60 bg-card/40 px-6 py-5 md:px-7"
       >
         <p className="text-[14.5px] leading-snug text-foreground/75 md:text-[15.5px]">
-          Agents stop guessing on sticker price.{" "}
+          Agents stop guessing on list price.{" "}
           <span className="font-semibold text-foreground">
             One call returns the offer your customer actually qualifies for
           </span>

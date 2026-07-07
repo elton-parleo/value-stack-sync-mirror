@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import BrandLogo from "./BrandLogo";
 
 const integrations = [
@@ -28,12 +29,15 @@ const IntegrationSection = () => (
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         {/* Left */}
         <div>
-          <h2 className="section-heading text-foreground">
-            Ships on every protocol that matters.
-          </h2>
-          <p className="section-copy mt-5 max-w-[520px]">
-            Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP.
-          </p>
+          <SectionHeading
+            eyebrowNumber="05"
+            eyebrow="Protocols"
+            accent="that matters."
+            body="Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP."
+            bodyMaxWidth="520px"
+          >
+            Ships on every protocol
+          </SectionHeading>
           <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">
             Six protocols. Zero cross-protocol incentive resolution. Parleo is the layer that resolves it.
           </p>

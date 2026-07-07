@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import BrandLogo from "./BrandLogo";
 import lifestyleVanity from "@/assets/lifestyle-vanity.jpg";
 import lifestyleUnboxing from "@/assets/lifestyle-unboxing.jpg";
@@ -140,12 +141,15 @@ const HowItWorks = () => (
     <div className="mx-auto max-w-content px-6 md:px-20">
       <div className="grid gap-8 md:grid-cols-[1.15fr_auto] md:items-end">
         <div>
-          <h2 className="section-heading text-foreground">
-            The early-mover advantage is closing fast.
-          </h2>
-          <p className="mt-5 max-w-[620px] text-[18px] leading-[1.55] text-foreground/65 md:text-[20px]">
-            Agent defaults harden around the merchants they can already understand. The window to become readable is now.
-          </p>
+          <SectionHeading
+            eyebrowNumber="07"
+            eyebrow="Timing"
+            accent="closing fast."
+            body="Agent defaults harden around the merchants they can already understand. The window to become readable is now."
+            bodyMaxWidth="620px"
+          >
+            The early-mover advantage is
+          </SectionHeading>
         </div>
 
         {/* Graphic diptych — two images through slit-like clip paths */}

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import LifestyleAccent from "./LifestyleAccent";
 import BrandLogo from "./BrandLogo";
 import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png";
@@ -368,7 +369,7 @@ const RankingPanel = () => {
                 : "text-foreground/50 hover:text-foreground/75"
             }`}
           >
-            Sticker price
+            List price
           </button>
           <button
             onClick={() => setMode("true")}
@@ -450,14 +451,16 @@ const ProblemSection = () => {
     >
       <LifestyleAccent variant="skincare" corner="tr" size={50} opacity={0.42} blur={6} />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
-        <h2 className="section-heading max-w-[20ch] text-foreground">
-          Your customers are shopping through agents.{" "}
-          <span className="text-foreground/45">Agents are shopping on sticker price.</span>
-        </h2>
-        <p className="section-copy mt-5 max-w-[620px]">
-          The fastest-growing channel in commerce ranks merchants on the one number that has
-          nothing to do with what a customer actually pays.
-        </p>
+        <SectionHeading
+          eyebrowNumber="01"
+          eyebrow="Problem"
+          accent="Agents are shopping on list price."
+          body="The fastest-growing channel in commerce ranks merchants on the one number that has nothing to do with what a customer actually pays."
+          maxWidth="720px"
+          bodyMaxWidth="620px"
+        >
+          Your customers are shopping through agents.
+        </SectionHeading>
 
         {/* Stats */}
         <div className="mt-10 grid grid-cols-1 divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">

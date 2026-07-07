@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import LifestyleAccent from "./LifestyleAccent";
 import wppLogo from "@/assets/logos/wpp-tight.png";
 import axelSpringerLogo from "@/assets/logos/axel-springer-tight.png";
@@ -137,9 +138,14 @@ const TeamSection = () => (
     />
     <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
 
-      <h2 className="section-heading max-w-[760px] text-foreground">
-        Built by operators who have shipped brand and infrastructure.
-      </h2>
+      <SectionHeading
+        eyebrowNumber="06"
+        eyebrow="Team"
+        accent="brand and infrastructure."
+        maxWidth="820px"
+      >
+        Built by operators who have shipped
+      </SectionHeading>
 
       <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-2 lg:gap-6">
         {team.map((f, i) => (
