@@ -101,16 +101,16 @@ const DashboardSection = () => {
       <LifestyleAccent variant="tech" corner="tr" size={48} opacity={0.42} blur={6} />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         {/* Headline */}
-        <div className="grid gap-8 md:grid-cols-[1.05fr_1fr] md:gap-14">
-          <h2 className="section-heading text-foreground">
-            Your agent channel,{" "}
-            <span className="text-foreground/45">in one console.</span>
-          </h2>
-          <p className="section-copy max-w-[460px] self-end">
-            Score how agents rank you, see the margin they cannot, and set the
-            rules your offers play by.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrowNumber="03"
+          eyebrow="Console"
+          accent="in one console."
+          body="Score how agents rank you, see the margin they cannot, and set the rules your offers play by."
+          maxWidth="920px"
+          bodyMaxWidth="520px"
+        >
+          Your agent channel,
+        </SectionHeading>
 
         {/* Dashboard mockup with annotation callouts */}
         <div className="relative mt-16 md:mt-20">
