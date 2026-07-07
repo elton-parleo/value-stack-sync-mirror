@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeading from "./SectionHeading";
 import LifestyleAccent from "./LifestyleAccent";
 import BrandLogo from "./BrandLogo";
 import skiiProduct from "@/assets/sk-ii-facial-treatment-essence.png";
