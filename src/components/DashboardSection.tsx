@@ -109,7 +109,7 @@ const DashboardSection = () => {
           maxWidth="920px"
           bodyMaxWidth="520px"
         >
-          Your agent channel,
+          Your agent channel, in one console
         </SectionHeading>
 
         {/* Dashboard mockup with annotation callouts */}

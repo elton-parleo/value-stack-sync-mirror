@@ -36,7 +36,7 @@ const IntegrationSection = () => (
             body="Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP."
             bodyMaxWidth="520px"
           >
-            Ships on every protocol
+            Ships on every protocol that matters
           </SectionHeading>
           <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">
             Six protocols. Zero cross-protocol incentive resolution. Parleo is the layer that resolves it.

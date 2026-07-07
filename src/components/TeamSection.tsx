@@ -144,7 +144,7 @@ const TeamSection = () => (
         accent="brand and infrastructure"
         maxWidth="820px"
       >
-        Built by operators who have shipped
+        Built by operators who have shipped brand and infrastructure
       </SectionHeading>
 
       <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-2 lg:gap-6">

@@ -459,7 +459,7 @@ const ProblemSection = () => {
           maxWidth="720px"
           bodyMaxWidth="620px"
         >
-          Your customers are shopping through agents.
+          Your customers are shopping through agents
         </SectionHeading>
 
         {/* Stats */}
@@ -498,7 +498,7 @@ const ProblemSection = () => {
         <div className="mt-16 max-w-[680px] md:mt-24">
           <h3 className="text-[23px] font-semibold leading-[1.14] text-foreground md:text-[28px]">
             True Value of your product.{" "}
-            <span className="text-foreground/45">Invisible to agents.</span>
+            <span className="text-foreground/45">Invisible to agents</span>
           </h3>
         </div>
 
