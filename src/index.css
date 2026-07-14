@@ -133,9 +133,10 @@
   .section-heading-mark { position: relative; }
   .section-heading-mark::before { content: none; }
   .section-copy {
-    color: hsl(var(--foreground) / 0.65);
-    font-size: 16px;
-    line-height: 1.6;
+    color: hsl(var(--foreground) / 0.62);
+    font-size: 14.5px;
+    line-height: 1.62;
+    letter-spacing: -0.005em;
   }
   .card-heading {
     color: hsl(var(--foreground));
