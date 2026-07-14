@@ -454,12 +454,12 @@ const ProblemSection = () => {
         <SectionHeading
           eyebrowNumber="01"
           eyebrow="Problem"
-          accent="Agents are shopping on list price"
+          accent=""
           body="The fastest-growing channel in commerce ranks merchants on the one number that has nothing to do with what a customer actually pays."
-          maxWidth="720px"
+          maxWidth="820px"
           bodyMaxWidth="620px"
         >
-          Your customers are shopping through agents
+          Agents are recommending your products based on list price.
         </SectionHeading>
 
         {/* Stats */}
@@ -494,13 +494,8 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        {/* Editorial caption above artifact */}
-        <div className="mt-16 max-w-[680px] md:mt-24">
-          <h3 className="text-[23px] font-semibold leading-[1.14] text-foreground md:text-[28px]">
-            True Value of your product.{" "}
-            <span className="text-foreground/45">Invisible to agents</span>
-          </h3>
-        </div>
+
+
 
         {/* Asymmetric artifact: product hero + comparison panel */}
         <div className="mt-8 grid gap-5 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
