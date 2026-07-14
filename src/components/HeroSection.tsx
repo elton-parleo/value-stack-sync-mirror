@@ -28,7 +28,7 @@ const HeroSection = () => {
             className="font-display text-[36px] text-foreground md:text-[44px] lg:text-[52px]"
             style={{ lineHeight: 1.08, letterSpacing: '-0.03em', textWrap: 'balance', hyphens: 'auto', overflowWrap: 'break-word' }}
           >
-            Your best price is invisible to the agents recommending you.
+            Your true price is invisible to AI agents recommending you.
           </h1>
           <p className="mt-5 max-w-[480px] text-[18px] leading-[1.6] text-foreground/70">
             Parleo scores, tracks, and optimizes how pricing, promotions, and incentives perform when AI agents decide where to buy.
