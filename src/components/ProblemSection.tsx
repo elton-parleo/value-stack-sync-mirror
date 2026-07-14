@@ -459,7 +459,7 @@ const ProblemSection = () => {
           maxWidth="820px"
           bodyMaxWidth="620px"
         >
-          Agents are recommending your products based on list price.
+          Agents are recommending your products based on list price
         </SectionHeading>
 
         {/* Stats */}
