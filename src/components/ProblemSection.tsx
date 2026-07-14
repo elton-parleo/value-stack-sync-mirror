@@ -494,13 +494,8 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        {/* Editorial caption above artifact */}
-        <div className="mt-16 max-w-[680px] md:mt-24">
-          <h3 className="text-[23px] font-semibold leading-[1.14] text-foreground md:text-[28px]">
-            True Value of your product.{" "}
-            <span className="text-foreground/45">Invisible to agents</span>
-          </h3>
-        </div>
+
+
 
         {/* Asymmetric artifact: product hero + comparison panel */}
         <div className="mt-8 grid gap-5 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
