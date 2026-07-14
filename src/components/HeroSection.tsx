@@ -28,10 +28,10 @@ const HeroSection = () => {
             className="font-display text-[44px] text-foreground md:text-[64px]"
             style={{ lineHeight: 1.05 }}
           >
-            The incentive layer for AI commerce.
+            Your best price is invisible to the agents recommending you.
           </h1>
           <p className="mt-5 max-w-[480px] text-[18px] leading-[1.6] text-foreground/70">
-            Parleo makes loyalty programs, card-offers and true value of your products readable and transactable across every agent surface.
+            Parleo scores, tracks, and optimizes how pricing, promotions, and incentives perform when AI agents decide where to buy.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
