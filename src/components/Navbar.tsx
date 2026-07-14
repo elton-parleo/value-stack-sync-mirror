@@ -44,7 +44,7 @@ const Navbar = () => {
             : 'linear-gradient(135deg, hsl(213 99% 50% / 0.05) 0%, hsl(213 99% 50% / 0.02) 50%, hsl(213 99% 50% / 0.04) 100%)',
         }}
       >
-        <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-20">
+        <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-8 lg:px-20">
           {isHome ? (
             <a href="#hero" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -64,22 +64,26 @@ const Navbar = () => {
           )}
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-5 md:flex lg:gap-7">
-            {isHome && navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="relative text-[13px] font-medium text-foreground/55 transition-colors hover:text-foreground after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="hidden items-center gap-3 md:flex lg:gap-7">
+            {isHome && (
+              <div className="hidden items-center gap-5 lg:flex lg:gap-7">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="relative whitespace-nowrap text-[13px] font-medium text-foreground/55 transition-colors hover:text-foreground after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
             {!isHome && (
               <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
             )}
             <a
               href="https://parleo.io/demo"
-              className="animate-border-pulse group inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/[0.04] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07]"
+              className="animate-border-pulse group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/30 bg-primary/[0.04] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07]"
               style={{ height: 32 }}
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
@@ -87,12 +91,13 @@ const Navbar = () => {
             </a>
             <button
               onClick={() => setContactOpen(true)}
-              className="inline-flex items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+              className="inline-flex items-center whitespace-nowrap rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
               style={{ height: 32 }}
             >
               Request Demo
             </button>
           </div>
+
 
           {/* Mobile hamburger */}
           <button
