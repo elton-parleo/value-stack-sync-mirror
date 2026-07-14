@@ -121,13 +121,11 @@ const ShareOfAlgorithmSection = () => {
         <SectionHeading
           eyebrowNumber="02"
           eyebrow="Framework"
-          
-          
-          body="Visibility gets you considered. Accessibility gets you parsed. True Value gets you ranked. Parleo owns the layer that nobody else measures."
+          body="The tools you already run measure whether agents can read you. None of them measure whether agents pick you."
           maxWidth="820px"
           bodyMaxWidth="600px"
         >
-          Share of Algorithm = Winning in agentic
+          Being visible is not the same as being chosen
         </SectionHeading>
 
         <motion.div
