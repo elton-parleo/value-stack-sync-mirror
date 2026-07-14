@@ -141,7 +141,7 @@ const TeamSection = () => (
       <SectionHeading
         eyebrowNumber="06"
         eyebrow="Team"
-        accent="brand and infrastructure"
+        accent=""
         maxWidth="820px"
       >
         Built by operators who have shipped brand and infrastructure
