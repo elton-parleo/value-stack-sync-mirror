@@ -425,7 +425,7 @@ const ProblemSection = () => {
   return (
     <AnimatedSection
       id="problem"
-      className="relative overflow-hidden bg-background py-16 md:py-24"
+      className="relative overflow-hidden bg-background py-14 md:py-20"
       ref={ref}
     >
       <LifestyleAccent variant="skincare" corner="tr" size={50} opacity={0.42} blur={6} />

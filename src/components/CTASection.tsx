@@ -7,7 +7,7 @@ const CTASection = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <AnimatedSection id="cta" className="relative overflow-hidden py-16 md:py-24">
+    <AnimatedSection id="cta" className="relative overflow-hidden py-14 md:py-20">
       <div className="mx-auto max-w-content px-6 md:px-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
