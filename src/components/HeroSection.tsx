@@ -28,7 +28,7 @@ const HeroSection = () => {
             className="font-display text-[44px] text-foreground md:text-[60px] lg:text-[72px]"
             style={{ lineHeight: 0.98, letterSpacing: '-0.04em', textWrap: 'balance', hyphens: 'none', overflowWrap: 'normal' }}
           >
-            Your true price is{' '}
+            Your true value is{' '}
             <span className="text-primary" style={{ fontStyle: 'italic', fontWeight: 500 }}>invisible</span>
             {' '}to AI agents.
           </h1>
