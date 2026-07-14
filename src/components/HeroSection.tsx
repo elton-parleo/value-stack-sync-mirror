@@ -25,12 +25,12 @@ const HeroSection = () => {
         {/* Left: copy */}
         <div className="md:col-span-6">
           <h1
-            className="font-display text-[36px] text-foreground md:text-[44px] lg:text-[52px]"
-            style={{ lineHeight: 1.02, letterSpacing: '-0.035em', textWrap: 'balance', hyphens: 'none', overflowWrap: 'normal' }}
+            className="font-display text-[44px] text-foreground md:text-[60px] lg:text-[72px]"
+            style={{ lineHeight: 0.98, letterSpacing: '-0.04em', textWrap: 'balance', hyphens: 'none', overflowWrap: 'normal' }}
           >
             Your true price is{' '}
             <span className="text-primary" style={{ fontStyle: 'italic', fontWeight: 500 }}>invisible</span>
-            {' '}to AI agents recommending you.
+            {' '}to AI agents.
           </h1>
 
 
