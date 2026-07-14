@@ -467,7 +467,7 @@ const ProblemSection = () => {
           {[
             { value: "46%", label: "of AI shoppers use it to find deals", source: "Bloomreach, July 2026" },
             { value: "1.8%", label: "of agent mentions in grooming cite any incentive at all", source: "Parleo Benchmark, 2026" },
-            { value: "3", label: "benefit types the agent checkout protocol can express: amount off, percent off, free shipping", source: "Agentic Commerce Protocol (OpenAI/Stripe), 2026" },
+            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe, 2024" },
           ].map((s) => (
             <div
               key={s.value}
