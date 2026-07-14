@@ -455,7 +455,7 @@ const ProblemSection = () => {
           eyebrowNumber="01"
           eyebrow="Problem"
           accent=""
-          body="The fastest-growing channel in commerce ranks merchants on the one number that has nothing to do with what a customer actually pays."
+          body="The fastest-growing channel in commerce ranks you on list price your customer would never actually pay."
           maxWidth="820px"
           bodyMaxWidth="620px"
         >
