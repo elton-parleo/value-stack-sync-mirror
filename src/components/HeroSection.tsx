@@ -24,22 +24,15 @@ const HeroSection = () => {
       <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-16 pt-10 md:grid md:grid-cols-12 md:items-center md:gap-14 md:px-20 md:pb-24 md:pt-16">
         {/* Left: copy */}
         <div className="md:col-span-6">
-          {/* editorial index marker */}
-          <div className="mb-8 flex items-center gap-3">
-            <span className="h-px w-8 bg-foreground/30" aria-hidden />
-            <span className="font-label text-[11px] tracking-[0.22em] text-foreground/50">
-              01 / Agentic Commerce
-            </span>
-          </div>
-
           <h1
-            className="font-display text-[40px] text-foreground md:text-[52px] lg:text-[64px]"
-            style={{ lineHeight: 0.98, letterSpacing: '-0.045em', textWrap: 'balance', hyphens: 'none', overflowWrap: 'normal' }}
+            className="font-display text-[36px] text-foreground md:text-[44px] lg:text-[52px]"
+            style={{ lineHeight: 1.02, letterSpacing: '-0.035em', textWrap: 'balance', hyphens: 'none', overflowWrap: 'normal' }}
           >
             Your true price is{' '}
-            <span className="text-primary italic font-medium" style={{ fontStyle: 'italic' }}>invisible</span>
+            <span className="text-primary" style={{ fontStyle: 'italic', fontWeight: 500 }}>invisible</span>
             {' '}to AI agents recommending you.
           </h1>
+
 
           <p className="mt-7 max-w-[500px] text-[19px] leading-[1.55] text-foreground/65">
             Parleo scores, tracks, and optimizes how pricing, promotions, and incentives perform when AI agents decide where to buy.
