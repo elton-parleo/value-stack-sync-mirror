@@ -70,7 +70,7 @@ const FlowLine = ({ direction }: { direction: "in" | "out" }) => (
 );
 
 const FeedSection = () => (
-  <AnimatedSection id="architecture" className="relative bg-background py-16 md:py-24">
+  <AnimatedSection id="architecture" className="relative bg-background pt-16 pb-10 md:pt-24 md:pb-14">
     <div className="mx-auto max-w-content px-6 md:px-20">
       {/* Header */}
       <SectionHeading

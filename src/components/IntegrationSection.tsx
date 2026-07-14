@@ -16,7 +16,7 @@ const integrations = [
 ];
 
 const IntegrationSection = () => (
-  <AnimatedSection id="integration" className="relative bg-background py-16 md:py-24">
+  <AnimatedSection id="integration" className="relative bg-background pt-10 pb-16 md:pt-14 md:pb-24">
     <div className="pointer-events-none absolute right-[10%] top-[15%] hidden md:block">
       <svg width="60" height="60" viewBox="0 0 60 60" className="opacity-[0.06]">
         {[0, 20, 40].map(x => [0, 20, 40].map(y => (
