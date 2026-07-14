@@ -25,8 +25,8 @@ const HeroSection = () => {
         {/* Left: copy */}
         <div className="md:col-span-5">
           <h1
-            className="font-display text-[44px] text-foreground md:text-[64px]"
-            style={{ lineHeight: 1.05 }}
+            className="font-display text-[36px] text-foreground md:text-[44px] lg:text-[52px]"
+            style={{ lineHeight: 1.08, letterSpacing: '-0.03em', textWrap: 'balance', hyphens: 'auto', overflowWrap: 'break-word' }}
           >
             Your best price is invisible to the agents recommending you.
           </h1>
