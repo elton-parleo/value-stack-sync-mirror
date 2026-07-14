@@ -54,18 +54,6 @@ const RETAILERS: Retailer[] = [
     ],
   },
   {
-    name: "Saks",
-    program: "SaksFirst",
-    tier: "Platinum · Bonus reward",
-    sticker: PRODUCT_PRICE,
-    trueCost: 230.3,
-    card: "SaksFirst Mastercard",
-    stack: [
-      { label: "SaksFirst 4 pts / $1", value: 9.8, type: "loyalty" },
-      { label: "Mastercard · 2% back", value: 4.9, type: "card" },
-    ],
-  },
-  {
     name: "Amazon",
     program: "Prime",
     tier: "Default agent destination",
@@ -73,15 +61,6 @@ const RETAILERS: Retailer[] = [
     trueCost: 232.75,
     card: "Prime Visa",
     stack: [{ label: "Prime Visa · 5% back at Amazon", value: 12.25, type: "card" }],
-  },
-  {
-    name: "Sephora",
-    program: "Beauty Insider",
-    tier: "Rouge · between events",
-    sticker: PRODUCT_PRICE,
-    trueCost: 235.2,
-    card: "Sephora Visa",
-    stack: [{ label: "Sephora Visa · 4% back", value: 9.8, type: "card" }],
   },
 ];
 
