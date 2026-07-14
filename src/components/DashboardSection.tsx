@@ -97,7 +97,7 @@ const DashboardSection = () => {
   const ref = useRef(null);
 
   return (
-    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-16 md:py-24" ref={ref}>
+    <AnimatedSection id="dashboard" className="relative overflow-hidden bg-background py-14 md:py-20" ref={ref}>
       <LifestyleAccent variant="tech" corner="tr" size={48} opacity={0.42} blur={6} />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         {/* Headline */}

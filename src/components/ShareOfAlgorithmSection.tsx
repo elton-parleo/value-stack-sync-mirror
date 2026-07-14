@@ -115,7 +115,7 @@ const ShareOfAlgorithmSection = () => {
   const era = eras[activeEra];
 
   return (
-    <AnimatedSection id="share-of-algorithm" className="relative overflow-hidden bg-background py-16 md:py-24">
+    <AnimatedSection id="share-of-algorithm" className="relative overflow-hidden bg-background py-14 md:py-20">
       <LifestyleAccent variant="fragrance" corner="bl" size={52} opacity={0.42} blur={6} />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-20">
         <SectionHeading
