@@ -21,7 +21,7 @@ const HeroSection = () => {
             "radial-gradient(45% 50% at 85% 18%, hsl(213 99% 50% / 0.10) 0%, transparent 65%)",
         }}
       />
-      <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-14 pt-10 md:grid md:grid-cols-12 md:items-start md:gap-14 md:px-20 md:pb-20 md:pt-14">
+      <div className="relative mx-auto flex w-full max-w-content flex-col gap-12 px-5 pb-14 pt-10 md:grid md:grid-cols-12 md:items-start md:gap-10 md:px-8 md:pb-20 md:pt-14 lg:gap-14 lg:px-20">
         {/* Left: copy */}
         <div className="md:col-span-6">
           <h1

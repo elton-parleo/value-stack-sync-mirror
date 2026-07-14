@@ -450,7 +450,7 @@ const ProblemSection = () => {
           ].map((s) => (
             <div
               key={s.value}
-              className="py-5 sm:px-6 sm:py-6 sm:first:pl-0 sm:last:pr-0"
+              className="flex flex-col py-5 sm:px-6 sm:py-6 sm:first:pl-0 sm:last:pr-0"
             >
               <div className="flex items-baseline gap-2">
                 <span
@@ -463,13 +463,14 @@ const ProblemSection = () => {
               <p className="mt-2 text-[13px] leading-snug text-foreground/65 md:text-[14px]">
                 {s.label}
               </p>
-              <div className="mt-3 flex items-center gap-1.5">
+              <div className="mt-auto flex items-center gap-1.5 pt-3">
                 <span className="h-px w-4 bg-foreground/20" />
                 <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/40">
                   {s.source}
                 </span>
               </div>
             </div>
+
           ))}
         </div>
 
