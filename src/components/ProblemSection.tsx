@@ -465,9 +465,9 @@ const ProblemSection = () => {
         {/* Stats */}
         <div className="mt-10 grid grid-cols-1 divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {[
-            { value: "58%", label: "of consumers have used AI to shop", source: "Stripe, 2024" },
-            { value: "4,700%", label: "YoY increase in AI-driven retail traffic", source: "Adobe, 2024" },
-            { value: "$5T", label: "projected agentic commerce revenue by 2030", source: "McKinsey, 2024" },
+            { value: "46%", label: "of AI shoppers use it to find deals", source: "Bloomreach, July 2026" },
+            { value: "1.8%", label: "of agent mentions in grooming cite any incentive at all", source: "Parleo Benchmark, 2026" },
+            { value: "3", label: "benefit types the agent checkout protocol can express: amount off, percent off, free shipping", source: "Agentic Commerce Protocol (OpenAI/Stripe), 2026" },
           ].map((s) => (
             <div
               key={s.value}
