@@ -33,14 +33,25 @@ const IntegrationSection = () => (
             eyebrowNumber="05"
             eyebrow="Protocols"
             accent="that matters"
-            body="Live on OpenAI, Perplexity, Claude, and custom systems across ACP, MCP, AP2, UCP, and TAP."
-            bodyMaxWidth="520px"
           >
             Ships on every protocol that matters
           </SectionHeading>
-          <p className="mt-3 max-w-[460px] text-[13.5px] leading-[1.55] text-foreground/55">
+          <p className="mt-5 max-w-[520px] text-[14px] leading-[1.65] text-foreground/60 md:text-[15px]">
+            Live on{' '}
+            <span className="text-foreground/85">OpenAI</span>,{' '}
+            <span className="text-foreground/85">Perplexity</span>,{' '}
+            <span className="text-foreground/85">Claude</span>, and custom systems across{' '}
+            {['ACP', 'MCP', 'AP2', 'UCP', 'TAP'].map((p, i, a) => (
+              <span key={p}>
+                <span className="rounded-[4px] bg-foreground/[0.05] px-1.5 py-0.5 font-mono text-[11px] tracking-[0.08em] text-foreground/75">{p}</span>
+                {i < a.length - 1 ? (i === a.length - 2 ? ', and ' : ', ') : '.'}
+              </span>
+            ))}
+          </p>
+          <p className="mt-3 max-w-[460px] text-[12.5px] leading-[1.55] text-foreground/50">
             Six protocols. Zero cross-protocol incentive resolution. Parleo is the layer that resolves it.
           </p>
+
 
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {integrations.map((t, i) => (

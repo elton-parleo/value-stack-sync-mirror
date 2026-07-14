@@ -98,9 +98,10 @@ const FounderCard = ({ f, i }: { f: Founder; i: number }) => (
     <div className="relative mt-5 h-px w-full bg-border/70" />
 
     {/* bio */}
-    <p className="relative mt-5 max-w-[560px] text-[15px] leading-[1.6] text-foreground/65 md:text-[16px]">
+    <p className="relative mt-5 max-w-[560px] text-[13.5px] leading-[1.65] text-foreground/60 md:text-[14px]">
       {f.bio}
     </p>
+
 
     {/* prior work */}
     <div className="relative mt-7">

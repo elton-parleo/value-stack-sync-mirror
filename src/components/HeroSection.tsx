@@ -34,9 +34,15 @@ const HeroSection = () => {
           </h1>
 
 
-          <p className="mt-7 max-w-[500px] text-[19px] leading-[1.55] text-foreground/65">
-            Parleo scores, tracks, and optimizes how pricing, promotions, and incentives perform when AI agents decide where to buy.
+          <p className="mt-7 max-w-[460px] text-[15px] leading-[1.6] text-foreground/60 md:text-[16px]">
+            Parleo scores, tracks, and optimizes how pricing, promotions, and incentives perform when{' '}
+            <span className="relative whitespace-nowrap text-foreground/80">
+              AI agents
+              <span aria-hidden className="absolute inset-x-0 -bottom-0.5 h-px bg-primary/40" />
+            </span>{' '}
+            decide where to buy.
           </p>
+
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <button
