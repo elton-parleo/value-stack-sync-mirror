@@ -38,6 +38,15 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
 
       if (res.ok) {
         setSucceeded(true);
+        try {
+          (window as unknown as { oaiq?: (...args: unknown[]) => void }).oaiq?.(
+            "measure",
+            "appointment_scheduled",
+            { type: "customer_action" },
+          );
+        } catch {
+          // no-op
+        }
       } else {
         const data = await res.json().catch(() => null);
         setError(data?.errors?.[0]?.message || "Something went wrong. Please try again.");
