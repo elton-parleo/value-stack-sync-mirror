@@ -158,7 +158,8 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 };
 
