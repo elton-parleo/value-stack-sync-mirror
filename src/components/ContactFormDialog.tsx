@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ContactFormDialogProps {
@@ -58,7 +59,18 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     }
   };
 
-  return (
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <AnimatePresence>
       {open && (
         <>
@@ -146,7 +158,8 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 };
 
