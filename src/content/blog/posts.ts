@@ -58,7 +58,7 @@ export const posts: Post[] = [
   {
     slug: "share-of-algorithm",
     title: "Share of Algorithm: the metric that replaces share of shelf",
-    dek: "Retail媒 distribution used to be physical, then it was search. Now it is a ranking decision made by a model. Here is the framework we use to explain what brands actually compete on.",
+    dek: "Retail distribution used to be physical, then it was search. Now it is a ranking decision made by a model. Here is the framework we use to explain what brands actually compete on.",
     category: "Agentic commerce",
     tags: ["framework", "positioning", "ranking"],
     date: "2026-07-28",
@@ -315,7 +315,7 @@ results.sort((a, b) => a.true_cost - b.true_cost);`,
       },
       {
         type: "list",
-          items: [
+        items: [
           "Tier discounts change the base, not the promotion.",
           "Card offers apply post-tax and are frequently uncapped at these order values.",
           "Earned points are deferred value, and shoppers behave as if they are immediate.",
@@ -363,7 +363,7 @@ candidates.sort((a, b) => a.true_cost - b.true_cost);`,
       { type: "h2", text: "What we are building" },
       {
         type: "list",
-          items: [
+        items: [
           "A unified product taxonomy so agents can compare like with like across retailers.",
           "Deal signals and true cost so ranking happens on effective price.",
           "Semantic intelligence so intent maps to products without a crawl.",
