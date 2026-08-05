@@ -81,12 +81,6 @@ const Navbar = () => {
             {!isHome && (
               <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
             )}
-            <Link
-              to="/blog"
-              className="relative whitespace-nowrap text-[13px] font-medium text-foreground/55 transition-colors hover:text-foreground after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
-            >
-              Blog
-            </Link>
             <a
               href="https://parleo.io/demo"
               className="animate-border-pulse group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/30 bg-primary/[0.04] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07]"
@@ -163,13 +157,6 @@ const Navbar = () => {
                     {link.label}
                   </motion.a>
                 ))}
-                <Link
-                  to="/blog"
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
-                >
-                  Blog
-                </Link>
                 <a
                   href="https://parleo.io/demo"
                   onClick={() => setMobileOpen(false)}

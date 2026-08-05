@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const Footer = () => (
   <footer className="border-t border-border bg-background">
     <div className="mx-auto flex h-14 max-w-content items-center justify-between px-6 md:px-20">
@@ -10,15 +8,7 @@ const Footer = () => (
         </svg>
         <span className="text-[13px] font-bold tracking-tight text-foreground">PARLEO</span>
       </div>
-      <div className="flex items-center gap-5">
-        <Link
-          to="/blog"
-          className="link-reveal text-[12px] text-foreground/55 transition-colors hover:text-foreground"
-        >
-          Blog
-        </Link>
-        <span className="text-[11px] text-parleo-muted">© 2026 Parleo, Inc.</span>
-      </div>
+      <span className="text-[11px] text-parleo-muted">© 2026 Parleo, Inc.</span>
     </div>
   </footer>
 );
