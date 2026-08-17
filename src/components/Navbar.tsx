@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
+import AnnouncementBanner from "./AnnouncementBanner";
 
 const AUDIT_URL = "https://audit.parleo.io/";
+const BANNER_KEY = "parleo_audit_launch_dismissed";
 
 type NavItem = { label: string; to: string; external?: boolean };
 
@@ -13,6 +15,7 @@ const navItems: NavItem[] = [
   { label: "Insights", to: "/insights" },
   { label: "Team", to: "/#team" },
 ];
+
 
 const Wordmark = ({ size = 20 }: { size?: number }) => (
   <>
