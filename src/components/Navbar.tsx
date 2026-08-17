@@ -31,6 +31,9 @@ const Navbar = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [bannerOpen, setBannerOpen] = useState(
+    () => typeof window !== "undefined" && sessionStorage.getItem(BANNER_KEY) !== "1",
+  );
   const location = useLocation();
 
   useEffect(() => {
@@ -46,6 +49,11 @@ const Navbar = () => {
 
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
+  const dismissBanner = () => {
+    sessionStorage.setItem(BANNER_KEY, "1");
+    setBannerOpen(false);
+  };
+
   const renderItem = (item: NavItem, className: string, onClick?: () => void) =>
     item.external ? (
       <a key={item.label} href={item.to} className={className} onClick={onClick}>
@@ -59,18 +67,33 @@ const Navbar = () => {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "h-12 border-b border-primary/10 backdrop-blur-xl"
-            : "h-14 backdrop-blur-md"
-        }`}
-        style={{
-          background: scrolled
-            ? 'linear-gradient(135deg, hsl(213 99% 50% / 0.08) 0%, hsl(213 99% 50% / 0.04) 50%, hsl(213 99% 50% / 0.06) 100%)'
-            : 'linear-gradient(135deg, hsl(213 99% 50% / 0.05) 0%, hsl(213 99% 50% / 0.02) 50%, hsl(213 99% 50% / 0.04) 100%)',
-        }}
-      >
+      <div className="fixed left-0 right-0 top-0 z-50">
+        <AnimatePresence initial={false}>
+          {bannerOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 36, opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <AnnouncementBanner onDismiss={dismissBanner} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <nav
+          className={`relative transition-all duration-300 ${
+            scrolled
+              ? "h-12 border-b border-primary/10 backdrop-blur-xl"
+              : "h-14 backdrop-blur-md"
+          }`}
+          style={{
+            background: scrolled
+              ? 'linear-gradient(135deg, hsl(213 99% 50% / 0.08) 0%, hsl(213 99% 50% / 0.04) 50%, hsl(213 99% 50% / 0.06) 100%)'
+              : 'linear-gradient(135deg, hsl(213 99% 50% / 0.05) 0%, hsl(213 99% 50% / 0.02) 50%, hsl(213 99% 50% / 0.04) 100%)',
+          }}
+        >
         <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-8 lg:px-20">
           <Link to="/" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
             <Wordmark />
@@ -87,18 +110,13 @@ const Navbar = () => {
               )}
             </div>
 
-            <a
-              href={AUDIT_URL}
-              className="animate-border-pulse group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/35 bg-primary/[0.06] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/60 hover:bg-primary/[0.1]"
-              style={{ height: 32 }}
-            >
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
+            <a href={AUDIT_URL} className="btn-base btn-primary btn-sm">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary-foreground/80 animate-pulse-dot" />
               Free Audit
             </a>
             <button
               onClick={() => setContactOpen(true)}
-              className="inline-flex items-center whitespace-nowrap rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
-              style={{ height: 32 }}
+              className="btn-base btn-secondary btn-sm"
             >
               Request demo
             </button>
@@ -124,10 +142,12 @@ const Navbar = () => {
             />
           </button>
         </div>
-      </nav>
+        </nav>
+      </div>
 
-      {/* Spacer to offset fixed nav */}
-      <div className="h-14" />
+      {/* Spacer to offset fixed nav + banner */}
+      <div style={{ height: bannerOpen ? 92 : 56 }} className="transition-all duration-300" />
+
 
       {/* Mobile drawer */}
       <AnimatePresence>
