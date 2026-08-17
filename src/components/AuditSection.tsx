@@ -93,7 +93,7 @@ const AuditSection = () => {
                     <span className="text-[12px] text-muted-foreground">Quoted true value</span>
                     <motion.span
                       initial={{ opacity: 0, y: 5 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      animate={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.45, duration: 0.4 }}
                       className="text-[32px] font-semibold leading-none tabular-nums text-primary"

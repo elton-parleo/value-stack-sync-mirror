@@ -1,4 +1,4 @@
-import image from "@/assets/insights/parleo-agent-blindspot-1200x1200.png.asset.json";
+import image from "@/assets/insights/rendered/new-shelf.webp";
 import type { Post } from "./types";
 
 const post: Post = {
@@ -9,7 +9,7 @@ const post: Post = {
   dateLabel: "August 11, 2026",
   category: "Point of view",
   readTime: "4 min read",
-  image: image.url,
+  image,
   imageAlt:
     "ChatGPT comparing a Patagonia Down Sweater at Amazon and REI, with a panel showing the REI true price is $228.65 after member benefits.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
