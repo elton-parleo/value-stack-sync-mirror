@@ -188,16 +188,18 @@ const Navbar = () => {
                 <a
                   href={AUDIT_URL}
                   onClick={() => setMobileOpen(false)}
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary text-[15px] font-medium text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
+                  className="btn-base btn-primary w-full"
                 >
                   Run your free audit
+                  <span>→</span>
                 </a>
                 <button
                   onClick={() => { setMobileOpen(false); setContactOpen(true); }}
-                  className="h-12 w-full rounded-full border border-foreground/15 text-[15px] font-medium text-foreground transition-all hover:border-foreground/30 active:scale-[0.98]"
+                  className="btn-base btn-secondary w-full"
                 >
                   Request demo
                 </button>
+
               </div>
             </motion.div>
           </>
