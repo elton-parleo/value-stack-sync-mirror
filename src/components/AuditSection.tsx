@@ -23,18 +23,18 @@ const AuditSection = () => {
   };
 
   return (
-    <AnimatedSection id="audit" className="overflow-hidden border-y border-border py-14 md:py-20">
-      <div className="mx-auto max-w-content px-6 md:px-20">
+    <AnimatedSection id="audit" className="max-w-full overflow-hidden border-y border-border py-14 md:py-20">
+      <div className="mx-auto min-w-0 max-w-content px-6 md:px-20">
         <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:gap-16">
-          <div className="max-w-[470px]">
-            <h2 className="section-heading text-foreground">See what agents actually quote for your brand</h2>
+          <div className="min-w-0 max-w-[470px]">
+            <h2 className="section-heading break-words text-foreground">See what agents actually quote for your brand</h2>
             <p className="section-copy mt-5 max-w-[420px]">
               One free audit. A clear view of the value agents can see, and the value they miss.
             </p>
 
             <form onSubmit={submit} className="mt-8 max-w-[450px]">
               <label htmlFor="audit-domain" className="sr-only">Brand domain</label>
-              <div className="flex min-h-14 items-center rounded-full border border-foreground/20 bg-card p-1.5 shadow-sm focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10">
+              <div className="flex min-h-14 min-w-0 items-center rounded-full border border-foreground/20 bg-card p-1.5 shadow-sm focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10">
                 <span className="pl-4 text-[13px] text-muted-foreground">https://</span>
                 <input
                   id="audit-domain"
@@ -44,7 +44,7 @@ const AuditSection = () => {
                   inputMode="url"
                   className="min-w-0 flex-1 bg-transparent px-1.5 text-[14px] text-foreground outline-none placeholder:text-muted-foreground"
                 />
-                <Button type="submit" size="sm" className="shrink-0 px-5">Run free audit</Button>
+                <Button type="submit" size="sm" className="shrink-0 px-3.5 sm:px-5">Run free audit</Button>
               </div>
             </form>
 
@@ -59,9 +59,9 @@ const AuditSection = () => {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative min-w-0 max-w-full">
             <div className="absolute -left-5 top-10 hidden h-[78%] w-px bg-primary/30 lg:block" aria-hidden />
-            <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-card">
+            <div className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-border bg-secondary shadow-card">
               <div className="flex items-center justify-between border-b border-border bg-card/70 px-5 py-3.5 md:px-7">
                 <div className="flex items-center gap-2.5">
                   <BrandLogo name="OpenAI" size={16} grayscale />
