@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 import AnnouncementBanner from "./AnnouncementBanner";
+import { Button } from "@/components/ui/button";
 
 const AUDIT_URL = "https://audit.parleo.io/";
 const BANNER_KEY = "parleo_audit_launch_dismissed";
@@ -11,7 +12,7 @@ type NavItem = { label: string; to: string; external?: boolean };
 
 const navItems: NavItem[] = [
   { label: "Product", to: "/#problem" },
-  { label: "Free Audit", to: AUDIT_URL, external: true },
+  { label: "How it works", to: "https://parleo.io/demo", external: true },
   { label: "Insights", to: "/insights" },
   { label: "Team", to: "/#team" },
 ];
@@ -110,22 +111,24 @@ const Navbar = () => {
               )}
             </div>
 
-            <a href={AUDIT_URL} className="btn-base btn-primary btn-sm">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary-foreground/80 animate-pulse-dot" />
-              Free Audit
-            </a>
-            <button
+            <Button asChild size="sm">
+              <a href={AUDIT_URL}>Free audit</a>
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => setContactOpen(true)}
-              className="btn-base btn-secondary btn-sm"
             >
               Request demo
-            </button>
+            </Button>
           </div>
 
           {/* Mobile hamburger */}
-          <button
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="flex h-11 w-11 flex-col gap-1.5 md:hidden"
             aria-label="Toggle menu"
           >
             <motion.span
@@ -140,7 +143,7 @@ const Navbar = () => {
               animate={mobileOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
               className="block h-px w-5 bg-foreground"
             />
-          </button>
+          </Button>
         </div>
         </nav>
       </div>
@@ -176,29 +179,19 @@ const Navbar = () => {
                     () => setMobileOpen(false),
                   )
                 )}
-                <a
-                  href="https://parleo.io/demo"
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-md px-3 py-3 text-[14px] text-foreground/55 underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-foreground"
-                >
-                  How it works
-                </a>
               </div>
               <div className="mt-auto flex flex-col gap-2.5">
-                <a
-                  href={AUDIT_URL}
-                  onClick={() => setMobileOpen(false)}
-                  className="btn-base btn-primary w-full"
-                >
-                  Run your free audit
-                  <span>→</span>
-                </a>
-                <button
+                <Button asChild size="lg" className="w-full">
+                  <a href={AUDIT_URL} onClick={() => setMobileOpen(false)}>Run your free audit</a>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
                   onClick={() => { setMobileOpen(false); setContactOpen(true); }}
-                  className="btn-base btn-secondary w-full"
+                  className="w-full"
                 >
                   Request demo
-                </button>
+                </Button>
 
               </div>
             </motion.div>

@@ -1,4 +1,4 @@
-import image from "@/assets/insights/parleo-four-prices-1200x1200.png.asset.json";
+import image from "@/assets/insights/rendered/pricing-rails.webp";
 import type { Post } from "./types";
 
 const post: Post = {
@@ -9,7 +9,7 @@ const post: Post = {
   dateLabel: "August 12, 2026",
   category: "Point of view",
   readTime: "3 min read",
-  image: image.url,
+  image,
   imageAlt:
     "ChatGPT quoting $19.99 for Greenies on Chewy, next to a panel showing three lower published prices the agent missed.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",

@@ -1,4 +1,4 @@
-import image from "@/assets/insights/which-card-is-in-your-wallet-1200x1500.png.asset.json";
+import image from "@/assets/insights/rendered/best-price.webp";
 import type { Post } from "./types";
 
 const post: Post = {
@@ -9,7 +9,7 @@ const post: Post = {
   dateLabel: "August 12, 2026",
   category: "Research",
   readTime: "5 min read",
-  image: image.url,
+  image,
   imageAlt:
     "ChatGPT quoting $565 for Augustinus Bader face cream across retailers, next to a panel showing the $423.75 Anniversary Sale price gated by card status.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
