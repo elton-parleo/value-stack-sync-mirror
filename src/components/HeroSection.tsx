@@ -70,7 +70,7 @@ const HeroSection = () => {
 
 
 
-          <div className="mt-12 flex flex-col gap-3 border-t border-foreground/10 pt-6">
+          <div className="mt-10 flex flex-col gap-3 border-t border-foreground/10 pt-5">
             <span className="font-label text-[10px] tracking-[0.22em] text-foreground/40">
               WORKS WITH
             </span>
