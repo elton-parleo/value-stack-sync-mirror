@@ -180,7 +180,7 @@ const AuditSection = () => {
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-4">
                 {audited.map((d) => (
-                  <BrandLogo key={d} name={d.replace(".com", "")} size={20} grayscale />
+                  <BrandLogo key={d} name={d.replace(".com", "")} domain={d} size={20} grayscale />
                 ))}
               </div>
             </div>
