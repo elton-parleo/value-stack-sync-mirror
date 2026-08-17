@@ -115,13 +115,16 @@ const InsightPost = () => {
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href={AUDIT_URL}
-                className="btn-lift inline-flex h-11 items-center gap-2 rounded-full bg-background px-6 text-[14px] font-medium text-foreground"
+                className="btn-base btn-primary group"
               >
-                Run your free audit →
+                Run your free audit
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               {post.linkedInUrl && (
                 <a
                   href={post.linkedInUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-[13px] text-background/55 underline decoration-background/25 underline-offset-4 transition-colors hover:text-background"
                 >
                   Read the original on LinkedIn

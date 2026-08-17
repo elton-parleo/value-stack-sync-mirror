@@ -89,25 +89,25 @@ const pillars = [
     icon: Eye,
     name: "Visibility",
     sub: "Can an agent see your product?",
-    status: "Measured",
-    coverage: "8 / 8",
-    width: "100%",
+    status: "Tooling exists",
+    coverage: "32 pts",
+    width: "64%",
   },
   {
     n: "02",
     icon: FileCode2,
     name: "Accessibility",
     sub: "Can an agent parse your catalog?",
-    status: "Partial",
-    coverage: "5 / 8",
-    width: "62%",
+    status: "Tooling exists",
+    coverage: "18 pts",
+    width: "36%",
   },
 ];
 
 const dimensions = [
-  { n: "06", title: "Incentive citation", body: "Loyalty, card, and bundled offers an agent can quote at runtime." },
-  { n: "07", title: "Resolution accuracy", body: "True effective price across tiers, members, and stacked rules." },
-  { n: "08", title: "True-value delta", body: "The dollars between list price and what the customer pays." },
+  { n: "01", title: "Incentive citation", body: "Loyalty, card, and bundled offers an agent can quote at runtime." },
+  { n: "02", title: "Resolution accuracy", body: "True effective price across tiers, members, and stacked rules." },
+  { n: "03", title: "True-value delta", body: "The dollars between list price and what the customer pays." },
 ];
 
 const ShareOfAlgorithmSection = () => {
@@ -263,7 +263,7 @@ const ShareOfAlgorithmSection = () => {
                 </div>
                 <div>
                   <div className="mb-2 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-foreground/45">
-                    <span>Industry coverage</span>
+                    <span>Weight in the score</span>
                     <span className="tabular-nums text-foreground/70">{p.coverage}</span>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-foreground/[0.08]">
@@ -308,18 +308,24 @@ const ShareOfAlgorithmSection = () => {
                       True Value
                     </div>
                     <h3 className="mt-2 max-w-[440px] text-[14px] leading-[1.55] text-background/60">
-                      True Value of your product.{"\n"}Invisible to agents.
+                      Half of your score, and the half no other tool reads. TrueSync encodes it back into the answer.
                     </h3>
                   </div>
                   <div>
                     <div className="mb-2 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-background/55">
-                      <span>Industry coverage</span>
-                      <span className="tabular-nums text-background/85">0 / 8</span>
+                      <span>Weight in the score</span>
+                      <span className="tabular-nums text-background/85">50 pts</span>
                     </div>
                     <div className="h-1.5 overflow-hidden rounded-full bg-background/10">
-                      <div className="h-full w-0 rounded-full bg-primary" />
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        className="h-full rounded-full bg-primary"
+                      />
                     </div>
-                    <div className="mt-2 text-[11px] text-background/45">Unmeasured by every existing tool.</div>
+                    <div className="mt-2 text-[11px] text-background/45">Half the Agentic Value Score. Unmeasured by every other tool.</div>
                   </div>
                   <div className="flex md:justify-end">
                     <div className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-[12px] font-semibold text-primary-foreground">
@@ -351,8 +357,27 @@ const ShareOfAlgorithmSection = () => {
                     </motion.div>
                   ))}
                 </div>
+
+                {/* deeper links out of the framework */}
+                <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-background/10 pt-6">
+                  <a
+                    href="https://audit.parleo.io/"
+                    className="group inline-flex items-center gap-2 text-[13.5px] font-medium text-background/80 transition-colors hover:text-background"
+                  >
+                    <span className="inline-block h-px w-3.5 bg-primary transition-all duration-300 group-hover:w-6" />
+                    Score your brand on all three pillars, free
+                  </a>
+                  <a
+                    href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440"
+                    className="group inline-flex items-center gap-2 text-[13.5px] text-background/55 transition-colors hover:text-background"
+                  >
+                    <span className="inline-block h-px w-3.5 bg-primary transition-all duration-300 group-hover:w-6" />
+                    See a sample scorecard
+                  </a>
+                </div>
               </div>
             </motion.div>
+
           </div>
         </motion.div>
       </div>

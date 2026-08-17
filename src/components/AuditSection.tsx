@@ -1,15 +1,42 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 import AuditScorecard from "./AuditScorecard";
+import BrandLogo from "./BrandLogo";
 
 const AUDIT_URL = "https://audit.parleo.io/";
+const SAMPLE_URL = "https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440";
 
 const deliverables = [
-  { title: "Agentic Value Score", copy: "One number for how much of your funded value survives into an agent's answer." },
-  { title: "Ranked fixes", copy: "What to ship first, ordered by the value it puts back in the answer." },
-  { title: "Dollar exposure", copy: "Modeled revenue sitting behind incentives agents can't resolve." },
+  {
+    n: "01",
+    title: "Agentic Value Score",
+    copy: "One number out of 100, scored across three pillars. The readiness bar sits at 60.",
+    meta: "0 to 100",
+  },
+  {
+    n: "02",
+    title: "Ranked fixes",
+    copy: "What to ship first, ordered by the points and the value each one puts back in the answer.",
+    meta: "3 in priority order",
+  },
+  {
+    n: "03",
+    title: "Dollar exposure",
+    copy: "Modeled revenue sitting behind incentives agents cannot resolve today.",
+    meta: "Modeled annually",
+  },
 ];
+
+const pillarWeights = [
+  { name: "Visibility", pts: 32, note: "Whether agents mention you at all" },
+  { name: "Accessibility", pts: 18, note: "Whether they can read your pages" },
+  { name: "True Value", pts: 50, note: "Whether they can quote your real price", own: true },
+];
+
+const audited = ["allbirds.com", "nike.com", "sephora.com", "patagonia.com", "bestbuy.com", "ulta.com", "lululemon.com", "dyson.com"];
 
 const AuditSection = () => {
   const [url, setUrl] = useState("");
@@ -36,48 +63,129 @@ const AuditSection = () => {
         <div className="grid gap-10 md:grid-cols-2 md:items-start md:gap-14">
           <div>
             <SectionHeading
-              body="Free, no login to start. We run your catalog through the same benchmark we use with merchants and show you what an agent quotes back."
+              body="Free, no login to start. We test ChatGPT across the purchase funnel, then simulate how agents crawl your site and read your offers."
               bodyMaxWidth="440px"
             >
               See what agents actually quote for your brand
             </SectionHeading>
 
-            <form onSubmit={submit} className="mt-8 flex w-full max-w-[440px] flex-col gap-3 sm:flex-row">
-              <input
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                placeholder="yourbrand.com"
-                aria-label="Your brand domain"
-                inputMode="url"
-                className="h-12 flex-1 rounded-full border border-foreground/15 bg-card px-5 text-[15px] text-foreground outline-none transition-colors placeholder:text-foreground/35 focus:border-primary/60"
-              />
-              <button
-                type="submit"
-                className="btn-lift group inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-6 text-[15px] font-medium text-primary-foreground hover:bg-primary/90"
-              >
+            <form onSubmit={submit} className="mt-8 flex w-full max-w-[460px] flex-col gap-3 sm:flex-row">
+              <div className="relative flex-1">
+                <span className="pointer-events-none absolute left-5 top-1/2 flex -translate-y-1/2 items-center gap-3 font-mono text-[12.5px] text-foreground/30">
+                  https://
+                  <span className="h-4 w-px bg-foreground/10" />
+                </span>
+                <input
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder="yourbrand.com"
+                  aria-label="Your brand domain"
+                  inputMode="url"
+                  className="h-12 w-full rounded-full border border-foreground/15 bg-card pl-[92px] pr-5 text-[15px] text-foreground shadow-[inset_0_1px_2px_0_hsl(243_10%_30%/0.05)] outline-none transition-all placeholder:text-foreground/35 focus:border-primary/60 focus:shadow-[0_0_0_4px_hsl(213_99%_50%/0.10)]"
+                />
+              </div>
+              <button type="submit" className="btn-base btn-primary group">
                 Run free audit
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </button>
             </form>
 
+            <div className="mt-4 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-[12.5px] text-foreground/45">
+              <span>Measured on</span>
+              <BrandLogo name="OpenAI" size={13} grayscale />
+              <span className="text-foreground/60">ChatGPT</span>
+              <span className="h-1 w-1 rounded-full bg-foreground/20" />
+              <span>Gemini, Perplexity and Claude in the full analysis</span>
+            </div>
+
+            {/* what you get */}
             <div className="mt-9 flex flex-col divide-y divide-border border-t border-border">
-              {deliverables.map((d) => (
-                <div key={d.title} className="py-4">
-                  <div className="card-subheading text-foreground">{d.title}</div>
-                  <p className="mt-1 text-[13.5px] leading-[1.5] text-foreground/58">{d.copy}</p>
-                </div>
+              {deliverables.map((d, i) => (
+                <motion.div
+                  key={d.title}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  className="group grid grid-cols-[28px_1fr] gap-4 py-4 transition-colors"
+                >
+                  <span className="mt-[3px] font-mono text-[11px] tabular-nums text-foreground/35 transition-colors group-hover:text-primary">
+                    {d.n}
+                  </span>
+                  <div>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                      <div className="card-subheading text-foreground">{d.title}</div>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/35">
+                        {d.meta}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-[13.5px] leading-[1.5] text-foreground/58">{d.copy}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
 
-            <a
-              href={AUDIT_URL}
-              className="mt-6 inline-flex items-center gap-2 text-[13.5px] text-foreground/55 underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-foreground"
-            >
-              See a sample report
-            </a>
+            {/* scoring weights, in sync with the audit tool */}
+            <div className="mt-8 rounded-2xl border border-border bg-card/70 p-5">
+              <div className="flex items-baseline justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/40">
+                  How the 100 points split
+                </span>
+                <span className="font-mono text-[10px] tabular-nums text-foreground/40">Bar 60</span>
+              </div>
+              <div className="mt-4 flex h-2 overflow-hidden rounded-full bg-foreground/[0.08]">
+                {pillarWeights.map((p) => (
+                  <motion.div
+                    key={p.name}
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${p.pts}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    className={`h-full ${p.own ? "bg-primary" : "bg-foreground/25"} ${p.own ? "" : "border-r border-background/60"}`}
+                  />
+                ))}
+              </div>
+              <div className="mt-4 flex flex-col gap-2.5">
+                {pillarWeights.map((p) => (
+                  <div key={p.name} className="flex items-baseline gap-3">
+                    <span className={`h-1.5 w-1.5 shrink-0 translate-y-[-2px] rounded-sm ${p.own ? "bg-primary" : "bg-foreground/25"}`} />
+                    <span className={`text-[13px] font-medium ${p.own ? "text-primary" : "text-foreground/80"}`}>
+                      {p.name}
+                    </span>
+                    <span className="min-w-0 flex-1 truncate text-[12.5px] text-foreground/45">{p.note}</span>
+                    <span className="font-mono text-[12px] tabular-nums text-foreground/60">{p.pts}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
+              <a href={SAMPLE_URL} className="link-more">
+                <span data-rule />
+                See the full sample report
+              </a>
+              <Link to="/insights" className="link-more">
+                <span data-rule />
+                Read the research behind the score
+              </Link>
+            </div>
           </div>
 
-          <AuditScorecard />
+          <div className="flex flex-col gap-6">
+            <AuditScorecard />
+
+            {/* stores we audit */}
+            <div className="rounded-2xl border border-border bg-card/60 px-5 py-4">
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/40">
+                Stores we audit
+              </div>
+              <div className="mt-3 flex flex-wrap items-center gap-4">
+                {audited.map((d) => (
+                  <BrandLogo key={d} name={d.replace(".com", "")} domain={d} size={20} grayscale />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </AnimatedSection>
