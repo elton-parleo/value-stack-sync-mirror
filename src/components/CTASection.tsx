@@ -42,7 +42,7 @@ const CTASection = () => {
             <div className="flex flex-col gap-3 md:items-end">
               <a
                 href="https://audit.parleo.io/"
-                className="btn-lift group inline-flex h-12 items-center gap-2.5 rounded-full bg-background px-7 text-[14px] font-medium text-foreground hover:bg-background/95"
+                className="btn-base btn-primary group"
               >
                 Run your free audit
                 <svg
@@ -52,17 +52,18 @@ const CTASection = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="opacity-60 transition-transform duration-300 group-hover:translate-x-1"
+                  className="opacity-90 transition-transform duration-300 group-hover:translate-x-1"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
               <button
                 onClick={() => setContactOpen(true)}
-                className="btn-lift inline-flex h-12 items-center gap-2.5 rounded-full border border-background/15 bg-background/[0.04] px-7 text-[14px] font-medium text-background/85 hover:border-background/30 hover:bg-background/[0.08]"
+                className="btn-base inline-flex border border-background/20 bg-background/[0.05] text-background/85 transition-all hover:-translate-y-[1.5px] hover:border-background/40 hover:bg-background/[0.1]"
               >
                 Request a demo
               </button>
+
               <a
                 href="https://parleo.io/demo"
                 className="text-[13px] text-background/50 underline decoration-background/25 underline-offset-4 transition-colors hover:text-background"
