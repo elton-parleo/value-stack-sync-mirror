@@ -1,118 +1,61 @@
-# Fix-pass: layout, nav, team, spacing, and a real Share of Algorithm redesign
+# Site evolution: Free Audit funnel + Insights
 
-A focused cleanup pass across the homepage. Each change ends with a visual check at desktop (1440) and mobile (390).
+Two additions and one structural change: promote the new free audit tool (audit.parleo.io) as the primary conversion path, restructure the nav for a multi-page site, and launch an Insights section seeded with the three LinkedIn posts.
 
-## 1. Remove eyebrows everywhere
+## 1. Navigation restructure
 
-Per memory rule, eyebrows are out. Strip the tiny uppercase "kicker" labels (the blue bar + `font-mono uppercase tracking` text) from every section, including:
-
-- `ShareOfAlgorithmSection` ("Share of Algorithm", "Distribution metrics", "Recommendation stack")
-- `FeedSection` ("The architecture", "01 · Sources" column headers)
-- `ProblemSection` ("THE RESULT", "THE CONSOLE", and any other kickers)
-- `DashboardSection`, `HowItWorks`, `IntegrationSection`, `TeamSection`, `CTASection`
-
-Replace with a clean single-column headline stack: H2 + sub. Section identity comes from the H2, not a label above it.
-
-## 2. Navbar — labels match actual sections
-
-Current links use invented names ("The Channel", "The Window", "Command Center") that don't match section content. Rewrite `navLinks` in `src/components/Navbar.tsx` to mirror the page in order:
-
-```
-The problem        → #problem
-Share of Algorithm → #share-of-algorithm
-The API            → #architecture
-Live dashboard     → #dashboard
-Protocols          → #integration
-Team               → #team
-```
-
-Drop "How it Works" pill from the navbar (it currently routes to `/demo` and conflicts with the on-page `#how-it-works` section). Keep "Request Demo" as the sole CTA.
-
-## 3. Hero "For developers" button → architecture section
-
-In `HeroSection.tsx`, change the secondary CTA from `<Link to="/developers">` to `<a href="#architecture">`. Same styling. Label stays "For developers".
-
-## 4. Reorder sections
-
-In `src/pages/Index.tsx`, move `FeedSection` (the "One call. Every signal an agent needs." API panel) to sit immediately above `IntegrationSection` ("Ships on every protocol that matters."). New order:
-
-```
-Hero → SocialProof → Problem → ShareOfAlgorithm → Dashboard → HowItWorks → Feed → Integration → Team → CTA
-```
-
-## 5. Share of Algorithm — real redesign (not text + chips)
-
-The current panel is a text-and-pill data dump. Rebuild it as a single design-forward interactive canvas with three visual moves that do the explaining:
-
-**Layout**
+Today the nav is a list of on-page anchors (Problem, Framework, Console, API, Protocols, Team). That doesn't scale once there are real pages. New structure:
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│  H2: The new shelf is decided by agents.                    │
-│  Sub: Visibility gets you considered. True Value gets you   │
-│       ranked.                                               │
-│                                                             │
-│  ┌──────── Era rail (horizontal, animated) ──────────────┐  │
-│  │  Shelf —— Voice —— Search ——●—— Algorithm            │  │
-│  │  1960s   1980s    2010s         2025  (Parleo)        │  │
-│  └───────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌─── Pillars (3 stacked tiles, click-to-focus) ──────────┐ │
-│  │  01 Visibility   ░░░░░░░░░ measured                    │ │
-│  │  02 Accessibility ░░░░░░░  partial                     │ │
-│  │  03 True Value   ███████   PARLEO LAYER  ◀ active      │ │
-│  └───────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌── Live resolution canvas (changes with active pillar) ─┐ │
-│  │  Sticker rank #3   →   True-value rank #1              │ │
-│  │  $30.00  −$7.60 incentives  =  $22.40 effective        │ │
-│  │  [stacked horizontal bars: list → member → loyalty →   │ │
-│  │   card → effective, animating into place]              │ │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+PARLEO    Product   Free Audit   Insights   Team          [Free Audit]  [Request demo]
 ```
 
-**Specifics**
-- One container, light cream surface (`bg-card`), generous interior padding.
-- Era rail: SVG glyphs per era, animated progress fill (framer-motion), caption updates below.
-- Pillar tiles: real visual "coverage" bars (full / partial / Parleo-fills-the-gap) instead of status pill chips. True Value tile is the visual hero — primary-blue accent stripe, subtle inner glow-free elevation.
-- Resolution canvas: a single animated bar-chart breakdown ($30 → $22.40) plus the rank swap card. No "Active lens" chips, no 8-dimension footer strip, no "ScorePlate" sidebar — all removed.
-- Numbers in `tabular-nums`. No eyebrow. No 8-chip dimension strip. No floating score plate.
+- Anchors removed. Product is a link to the homepage product region; Free Audit, Insights, and Team become real routes.
+- Persistent pill button "Free Audit" in primary blue-accented style, with "Request demo" beside it as the dark button.
+- "How it works" is demoted from a nav button to a quieter text link (kept in the footer and inside the product sections, not in the top bar).
+- Mobile drawer mirrors this: four links, then Free Audit as the primary full-width button and Request demo below it.
+- Footer gains an Insights column and a Free Audit link.
 
-## 6. Tighten wasted vertical space
+## 2. Homepage changes
 
-The screenshot shows ~400px of empty cream between the Result panel and The Console band in `ProblemSection`. Audit `ProblemSection.tsx` and reduce: collapse oversized `py-*`, `mt-*`, and any empty spacer divs between those two blocks down to ~64-80px. Apply the same audit to gaps between `ShareOfAlgorithm → Dashboard` and `Dashboard → HowItWorks` if similarly bloated.
+**Hero.** Primary CTA becomes "Run your free audit" (links to audit.parleo.io) with the arrow treatment. "Request a demo" becomes the secondary outlined button. "How it works" drops to a small underlined text link below the buttons. Under the buttons, a thin trust line: free, no email to start, ready in 10 to 20 minutes.
 
-## 7. Team section — fix to match site
+**New Agentic Value Audit section**, placed after the Share of Algorithm framework section (the audit is the proof of the framework) and before the console section. Design-forward interactive scorecard built in the Parleo system, modeled on the audit tool's sample report:
 
-Memory rule: grayscale company logos at `h-14`, no avatars or initials.
+- Left column: headline "See what agents actually quote for your brand", short support copy, a URL input ("yourbrand.com") that on submit deep-links to `https://audit.parleo.io/?url=...`, plus three plain-language deliverables (Agentic Value Score, ranked fixes, dollar exposure).
+- Right column: interactive scorecard card on the darker demo surface with the 2px blue top border. Animated score ring counting to 59/100 with the "readiness bar 60" tick, then three pillar bars filling in sequence: Visibility 25/32, Accessibility 14/18, True Value 15/50 with a "only Parleo measures this" marker in blue. A footer strip shows modeled dollar exposure counting up.
+- Scroll-triggered once, Intersection Observer, 200ms fade-up, count-up on numbers. No new colors or effects outside the existing tokens.
+- Section ends with a link to the public sample report on audit.parleo.io.
 
-In `TeamSection.tsx`:
-- Remove the `SB` / `EC` initials avatar circles entirely.
-- Logos: bump from `h-8 md:h-9` to `h-14`, keep grayscale, increase gap so they breathe.
-- Card padding and divider rhythm stay, but the headline area becomes name + role on its own (no avatar puck).
-- Both founder cards use the same light card treatment (drop the one-card-dark variant) so the section reads as a consistent pair rather than mismatched halves.
+## 3. Insights section (blog)
 
-## 8. Visual verification (mandatory before finishing)
+Posts live as data files in the repo. Each new article you send gets added as one file; no CMS, no login.
 
-Use `browser--view_preview` then `browser--screenshot` (full_page) at 1440 wide and 390 wide. Check explicitly:
-- Nav anchors scroll to the right sections.
-- No eyebrow labels remain anywhere on the homepage.
-- Hero "For developers" jumps to `#architecture`.
-- Section order matches the spec.
-- No empty bands >120px between sections.
-- Team logos are clearly legible; no initials circles.
-- Share of Algorithm reads as a designed interactive panel, not a text wall.
+**Index page `/insights`**: editorial listing. Featured lead post with its 1200x1200 card image, then a two-column list of the rest with date, read time, category (Research, Benchmark, Point of view), and title. Same warm background, hairline rules, no eyebrows.
 
-If any check fails, fix and re-screenshot before declaring done.
+**Article page `/insights/:slug`**: single-column measure-limited reading column, large headline, dateline, the accompanying visual full width inside the column, pull-quote treatment for the key stat lines, and a footer CTA block offering the free audit plus a link to the LinkedIn original.
 
-## Files touched
+**Seeded with the three posts:**
 
-- `src/components/Navbar.tsx`
-- `src/components/HeroSection.tsx`
-- `src/pages/Index.tsx`
-- `src/components/ShareOfAlgorithmSection.tsx` (rebuild)
-- `src/components/ProblemSection.tsx` (eyebrows + spacing)
-- `src/components/FeedSection.tsx` (eyebrow + column kickers)
-- `src/components/DashboardSection.tsx`, `HowItWorks.tsx`, `IntegrationSection.tsx`, `CTASection.tsx` (eyebrow sweep)
-- `src/components/TeamSection.tsx` (avatars out, logos up)
+1. *The new shelf is being built for a customer that isn't human* (Aug 11) with the Patagonia blindspot image. Walmart/OpenAI Instant Checkout, Salesforce +200%, Adobe Prime Day, McKinsey $1T.
+2. *Incentives are becoming pricing rails* (Aug 12) with the Chewy four-prices image. One bag, four published prices, agent quotes the worst one.
+3. *How agents actually pick the "best price"* (Aug 12) with the Augustinus Bader card-status image. Profound feed vs scrape data, Nordstrom Anniversary Sale tiers, Salesforce 41%.
+
+Copy is lightly edited from your LinkedIn text into web register: LinkedIn scaffolding ("More tomorrow", "This week we're going to share") removed, paragraphs kept, no em dashes, all numbers preserved exactly as published.
+
+**Homepage tie-in**: a compact three-card Insights strip above the closing CTA, linking into `/insights`.
+
+## Technical notes
+
+- New routes in `src/App.tsx`: `/insights` and `/insights/:slug`. Both get per-route Helmet tags (title, description, self-referencing canonical, og:*) plus Article and BreadcrumbList JSON-LD. Note that social-preview crawlers only read the static `index.html` head on this stack, so link previews for individual articles will fall back to the sitewide tags.
+- Content model: `src/content/insights/*.ts` exporting typed post objects (slug, title, dek, date, category, readTime, hero image, linkedInUrl, body blocks) plus an index. Body uses a small block union (paragraph, heading, list, stat, quote) rendered by one component, so no MDX toolchain is added.
+- The three 1200x1200 images are uploaded as CDN assets via lovable-assets and referenced by pointer JSON, not committed as binaries.
+- `public/sitemap.xml` updated with the new routes.
+- New components: `Navbar` rewrite, `AuditSection.tsx`, `AuditScorecard.tsx`, `InsightsStrip.tsx`, `pages/Insights.tsx`, `pages/InsightPost.tsx`, `components/insights/PostBody.tsx`.
+- All existing anchor IDs stay in place so in-page links from within sections keep working.
+- Verified at mobile, tablet, and desktop widths with screenshots before handoff.
+
+## Not included
+
+- No changes to the existing Problem, Framework, Console, API, Protocols, or Team sections beyond removing their nav anchors.
+- No standalone Product or Team page yet; those nav items scroll to the homepage regions until you want dedicated pages.
