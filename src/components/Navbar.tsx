@@ -3,21 +3,32 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 
-const navLinks = [
-  { label: "Problem", href: "#problem" },
-  { label: "Framework", href: "#share-of-algorithm" },
-  { label: "Console", href: "#dashboard" },
-  { label: "API", href: "#architecture" },
-  { label: "Protocols", href: "#integration" },
-  { label: "Team", href: "#team" },
+const AUDIT_URL = "https://audit.parleo.io/";
+
+type NavItem = { label: string; to: string; external?: boolean };
+
+const navItems: NavItem[] = [
+  { label: "Product", to: "/#problem" },
+  { label: "Free Audit", to: AUDIT_URL, external: true },
+  { label: "Insights", to: "/insights" },
+  { label: "Team", to: "/#team" },
 ];
+
+const Wordmark = ({ size = 20 }: { size?: number }) => (
+  <>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
+      <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
+    </svg>
+    PARLEO
+  </>
+);
 
 const Navbar = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -29,6 +40,19 @@ const Navbar = () => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  useEffect(() => { setMobileOpen(false); }, [location.pathname]);
+
+  const renderItem = (item: NavItem, className: string, onClick?: () => void) =>
+    item.external ? (
+      <a key={item.label} href={item.to} className={className} onClick={onClick}>
+        {item.label}
+      </a>
+    ) : (
+      <Link key={item.label} to={item.to} className={className} onClick={onClick}>
+        {item.label}
+      </Link>
+    );
 
   return (
     <>
@@ -45,59 +69,37 @@ const Navbar = () => {
         }}
       >
         <div className="mx-auto flex h-full max-w-content items-center justify-between px-6 md:px-8 lg:px-20">
-          {isHome ? (
-            <a href="#hero" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
-                <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
-              </svg>
-              PARLEO
-            </a>
-          ) : (
-            <Link to="/" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <rect x="2" y="2" width="8" height="20" rx="1.5" fill="hsl(213,99%,50%)" />
-                <rect x="14" y="6" width="8" height="12" rx="1.5" fill="hsl(213,99%,50%)" opacity="0.4" />
-              </svg>
-              PARLEO
-            </Link>
-          )}
+          <Link to="/" className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-foreground">
+            <Wordmark />
+          </Link>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-3 md:flex lg:gap-7">
-            {isHome && (
-              <div className="hidden items-center gap-5 lg:flex lg:gap-7">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="relative whitespace-nowrap text-[13px] font-medium text-foreground/55 transition-colors hover:text-foreground after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            )}
-            {!isHome && (
-              <Link to="/" className="text-[13px] text-foreground/50 transition-colors hover:text-foreground">← Home</Link>
-            )}
+          <div className="hidden items-center gap-4 md:flex lg:gap-7">
+            <div className="hidden items-center gap-5 lg:flex lg:gap-7">
+              {navItems.map((item) =>
+                renderItem(
+                  item,
+                  "relative whitespace-nowrap text-[13px] font-medium text-foreground/55 transition-colors hover:text-foreground after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full",
+                )
+              )}
+            </div>
+
             <a
-              href="https://parleo.io/demo"
-              className="animate-border-pulse group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/30 bg-primary/[0.04] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/[0.07]"
+              href={AUDIT_URL}
+              className="animate-border-pulse group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/35 bg-primary/[0.06] px-3.5 text-[13px] font-medium text-foreground transition-colors hover:border-primary/60 hover:bg-primary/[0.1]"
               style={{ height: 32 }}
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-              How it works
+              Free Audit
             </a>
             <button
               onClick={() => setContactOpen(true)}
               className="inline-flex items-center whitespace-nowrap rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
               style={{ height: 32 }}
             >
-              Request Demo
+              Request demo
             </button>
           </div>
-
 
           {/* Mobile hamburger */}
           <button
@@ -144,34 +146,34 @@ const Navbar = () => {
               style={{ boxShadow: "var(--shadow-elevated)" }}
             >
               <div className="flex flex-col gap-1">
-                {isHome && navLinks.map((link, i) => (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className="rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
-                  >
-                    {link.label}
-                  </motion.a>
-                ))}
+                {navItems.map((item) =>
+                  renderItem(
+                    item,
+                    "rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary",
+                    () => setMobileOpen(false),
+                  )
+                )}
                 <a
                   href="https://parleo.io/demo"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2 rounded-md px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-secondary"
+                  className="rounded-md px-3 py-3 text-[14px] text-foreground/55 underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-foreground"
                 >
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
                   How it works
                 </a>
               </div>
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-col gap-2.5">
+                <a
+                  href={AUDIT_URL}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary text-[15px] font-medium text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
+                >
+                  Run your free audit
+                </a>
                 <button
                   onClick={() => { setMobileOpen(false); setContactOpen(true); }}
-                  className="h-12 w-full rounded-full bg-foreground text-[15px] font-medium text-background transition-all hover:bg-foreground/85 active:scale-[0.98]"
+                  className="h-12 w-full rounded-full border border-foreground/15 text-[15px] font-medium text-foreground transition-all hover:border-foreground/30 active:scale-[0.98]"
                 >
-                  Request Demo
+                  Request demo
                 </button>
               </div>
             </motion.div>
