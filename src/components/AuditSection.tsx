@@ -71,8 +71,9 @@ const AuditSection = () => {
 
             <form onSubmit={submit} className="mt-8 flex w-full max-w-[460px] flex-col gap-3 sm:flex-row">
               <div className="relative flex-1">
-                <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 font-mono text-[13px] text-foreground/30">
+                <span className="pointer-events-none absolute left-5 top-1/2 flex -translate-y-1/2 items-center gap-3 font-mono text-[12.5px] text-foreground/30">
                   https://
+                  <span className="h-4 w-px bg-foreground/10" />
                 </span>
                 <input
                   value={url}
@@ -80,7 +81,7 @@ const AuditSection = () => {
                   placeholder="yourbrand.com"
                   aria-label="Your brand domain"
                   inputMode="url"
-                  className="h-12 w-full rounded-full border border-foreground/15 bg-card pl-[74px] pr-5 text-[15px] text-foreground shadow-[inset_0_1px_2px_0_hsl(243_10%_30%/0.05)] outline-none transition-all placeholder:text-foreground/35 focus:border-primary/60 focus:shadow-[0_0_0_4px_hsl(213_99%_50%/0.10)]"
+                  className="h-12 w-full rounded-full border border-foreground/15 bg-card pl-[92px] pr-5 text-[15px] text-foreground shadow-[inset_0_1px_2px_0_hsl(243_10%_30%/0.05)] outline-none transition-all placeholder:text-foreground/35 focus:border-primary/60 focus:shadow-[0_0_0_4px_hsl(213_99%_50%/0.10)]"
                 />
               </div>
               <button type="submit" className="btn-base btn-primary group">

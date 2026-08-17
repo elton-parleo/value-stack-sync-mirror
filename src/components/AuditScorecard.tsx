@@ -4,11 +4,11 @@ import { motion, useInView } from "framer-motion";
 const pillars = [
   { name: "Visibility", score: 25, max: 32, note: "Do agents see you at all" },
   { name: "Accessibility", score: 14, max: 18, note: "Can they read your feed" },
-  { name: "True Value", score: 15, max: 50, note: "Only Parleo measures this", own: true },
+  { name: "True Value", score: 20, max: 50, note: "Only Parleo measures this", own: true },
 ];
 
-const TOTAL = 54;
-const EXPOSURE = 1840000;
+const TOTAL = 59;
+const EXPOSURE = 4500000;
 
 const useCountUp = (target: number, active: boolean, duration = 900) => {
   const [value, setValue] = useState(0);
@@ -82,9 +82,9 @@ const AuditScorecard = () => {
             </div>
           </div>
           <div className="min-w-0">
-            <div className="card-heading">Below agent readiness</div>
+            <div className="card-heading">1 short of the readiness bar</div>
             <p className="mt-2 text-[13.5px] leading-[1.5] text-foreground/60">
-              Readiness bar sits at 60. Most of the gap is value agents can't resolve, not visibility.
+              Readiness sits at 60. Most of the gap is value agents can't resolve, not visibility. 20 points are recoverable.
             </p>
           </div>
         </div>
