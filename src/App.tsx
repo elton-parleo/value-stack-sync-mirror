@@ -8,6 +8,7 @@ import Demo from "./pages/Demo.tsx";
 import Insights from "./pages/Insights.tsx";
 import InsightPost from "./pages/InsightPost.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ScrollToHash from "./components/ScrollToHash.tsx";
 
 
 const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToHash />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/insights" element={<Insights />} />
