@@ -45,19 +45,13 @@ const HeroSection = () => {
 
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
-            <a
-              href="https://audit.parleo.io/"
-              className="btn-lift group inline-flex h-12 items-center gap-2 rounded-full bg-primary px-6 text-[15px] font-medium text-primary-foreground hover:bg-primary/90"
-            >
+            <a href="https://audit.parleo.io/" className="btn-base btn-primary group">
               Run your free audit
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-80 transition-transform duration-300 group-hover:translate-x-1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-90 transition-transform duration-300 group-hover:translate-x-1">
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-            <button
-              onClick={() => setContactOpen(true)}
-              className="btn-lift inline-flex h-12 items-center gap-2 rounded-full border border-foreground/15 bg-transparent px-6 text-[15px] font-medium text-foreground hover:border-foreground/30 hover:bg-foreground/[0.03]"
-            >
+            <button onClick={() => setContactOpen(true)} className="btn-base btn-secondary">
               Request a demo
             </button>
           </div>
@@ -68,13 +62,12 @@ const HeroSection = () => {
             <span>No email to start</span>
             <span className="h-1 w-1 rounded-full bg-foreground/20" />
             <span>Ready in 10 to 20 minutes</span>
-            <a
-              href="https://parleo.io/demo"
-              className="text-foreground/60 underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-foreground"
-            >
-              How it works
+            <a href="#audit" className="link-more">
+              <span data-rule />
+              How the score works
             </a>
           </div>
+
 
 
           <div className="mt-12 flex flex-col gap-3 border-t border-foreground/10 pt-6">
