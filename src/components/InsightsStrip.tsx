@@ -10,10 +10,10 @@ const InsightsStrip = () => (
         <SectionHeading maxWidth="620px">Research from the new shelf</SectionHeading>
         <Link
           to="/insights"
-          className="group inline-flex items-center gap-2 text-[13.5px] font-medium text-foreground/60 transition-colors hover:text-foreground"
+          className="link-more"
         >
-          All insights
-          <span className="text-primary transition-transform duration-300 group-hover:translate-x-1">→</span>
+          <span data-rule />
+          Read all insights
         </Link>
       </div>
 
@@ -40,6 +40,10 @@ const InsightsStrip = () => (
               </div>
               <h3 className="card-heading leading-[1.18]">{p.title}</h3>
               <p className="text-[13.5px] leading-[1.5] text-foreground/58">{p.dek}</p>
+              <span className="mt-auto inline-flex items-center gap-1.5 pt-3 text-[12.5px] font-medium text-primary">
+                Read more
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
             </div>
           </Link>
         ))}
