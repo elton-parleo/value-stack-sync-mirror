@@ -34,16 +34,11 @@ const Insights = () => {
       <Navbar />
 
       <main className="site-texture">
-        <section className="relative overflow-hidden border-b border-border py-12 md:py-16">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{ background: "radial-gradient(40% 50% at 80% 15%, hsl(213 99% 50% / 0.09) 0%, transparent 70%)" }}
-          />
-          <div className="relative mx-auto max-w-content px-6 md:px-20">
+        <section className="border-b border-border py-12 md:py-16">
+          <div className="mx-auto max-w-content px-6 md:px-20">
             <h1
-              className="font-display max-w-[820px] text-[38px] text-foreground md:text-[58px]"
-              style={{ lineHeight: 1.0, letterSpacing: "-0.038em", textWrap: "balance" }}
+               className="font-display max-w-[820px] text-[38px] text-foreground md:text-[54px]"
+               style={{ lineHeight: 1.02, textWrap: "balance" }}
             >
               Insights from the new shelf
             </h1>
@@ -55,7 +50,7 @@ const Insights = () => {
 
         {/* Lead */}
         {lead && (
-          <section className="mx-auto max-w-content px-6 py-12 md:px-20 md:py-16">
+           <section className="mx-auto max-w-content px-6 py-10 md:px-20 md:py-14">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -64,16 +59,16 @@ const Insights = () => {
             >
               <Link
                 to={`/insights/${lead.slug}`}
-                className="group grid gap-8 md:grid-cols-2 md:items-center"
+                 className="group grid gap-0 overflow-hidden border-y border-border md:grid-cols-[1.25fr_0.75fr]"
               >
-                <div className="overflow-hidden rounded-2xl border border-border bg-secondary">
+                 <div className="aspect-[4/3] overflow-hidden bg-secondary md:aspect-[16/11]">
                   <img
                     src={lead.image}
                     alt={lead.imageAlt}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
-                <div>
+                 <div className="flex flex-col justify-center border-t border-border py-7 md:border-l md:border-t-0 md:p-9">
                   <div className="flex items-center gap-2.5 text-[11.5px] text-foreground/45">
                     <span className="text-primary">{lead.category}</span>
                     <span className="h-1 w-1 rounded-full bg-foreground/20" />
@@ -81,7 +76,7 @@ const Insights = () => {
                     <span className="h-1 w-1 rounded-full bg-foreground/20" />
                     <span>{lead.readTime}</span>
                   </div>
-                  <h2 className="mt-4 text-[28px] font-heading leading-[1.1] text-foreground md:text-[38px]">
+                   <h2 className="mt-4 text-[28px] font-heading leading-[1.1] text-foreground md:text-[34px]">
                     {lead.title}
                   </h2>
                   <p className="section-copy mt-4 max-w-[460px]">{lead.dek}</p>
@@ -98,7 +93,7 @@ const Insights = () => {
         {/* Rest */}
         {rest.length > 0 && (
           <section className="mx-auto max-w-content px-6 pb-16 md:px-20 md:pb-24">
-            <div className="grid gap-x-10 gap-y-0 border-t border-border md:grid-cols-2">
+             <div className="grid border-t border-border md:grid-cols-2">
               {rest.map((p, i) => (
                 <motion.div
                   key={p.slug}
@@ -106,9 +101,13 @@ const Insights = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.45, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                  className="border-b border-border"
+                   className="border-b border-border md:odd:border-r"
                 >
-                  <Link to={`/insights/${p.slug}`} className="group flex flex-col gap-3 py-8">
+                   <Link to={`/insights/${p.slug}`} className="group grid gap-5 py-8 md:grid-cols-[132px_1fr] md:px-7 md:first:pl-0">
+                    <div className="aspect-square overflow-hidden bg-secondary">
+                      <img src={p.image} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]" />
+                    </div>
+                    <div className="flex flex-col gap-3">
                     <div className="flex items-center gap-2.5 text-[11.5px] text-foreground/45">
                       <span className="text-primary">{p.category}</span>
                       <span className="h-1 w-1 rounded-full bg-foreground/20" />
@@ -116,10 +115,11 @@ const Insights = () => {
                       <span className="h-1 w-1 rounded-full bg-foreground/20" />
                       <span>{p.readTime}</span>
                     </div>
-                    <h3 className="text-[21px] font-heading leading-[1.16] text-foreground transition-colors group-hover:text-primary md:text-[24px]">
+                     <h3 className="text-[21px] font-heading leading-[1.16] text-foreground transition-colors group-hover:text-primary md:text-[23px]">
                       {p.title}
                     </h3>
-                    <p className="text-[13.5px] leading-[1.55] text-foreground/58 md:text-[14.5px]">{p.dek}</p>
+                     <p className="text-[13.5px] leading-[1.55] text-muted-foreground md:text-[14px]">{p.dek}</p>
+                    </div>
                   </Link>
                 </motion.div>
               ))}
