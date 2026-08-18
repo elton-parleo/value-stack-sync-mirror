@@ -30,6 +30,10 @@ const Insights = () => {
           content="Parleo research and points of view on how AI agents price, rank, and recommend products, and the funded value they can't see."
         />
         <link rel="canonical" href="https://parleo.io/insights" />
+        <meta
+          name="keywords"
+          content="agentic commerce, AI shopping agents, agentic search, loyalty pricing, true cost, merchant feeds"
+        />
         <meta property="og:title" content="Insights: research on agentic commerce | Parleo" />
         <meta
           property="og:description"
@@ -37,17 +41,42 @@ const Insights = () => {
         />
         <meta property="og:url" content="https://parleo.io/insights" />
         <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Insights: research on agentic commerce | Parleo" />
+        <meta
+          name="twitter:description"
+          content="How AI agents price, rank, and recommend products, and the funded value they can't see."
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
             name: "Parleo Insights",
             url: "https://parleo.io/insights",
+            description:
+              "Research, benchmarks, and points of view on how AI agents price, rank, and recommend products.",
+            inLanguage: "en-US",
+            publisher: { "@type": "Organization", name: "Parleo", url: "https://parleo.io/" },
             blogPost: posts.map((p) => ({
               "@type": "BlogPosting",
               headline: p.title,
+              description: p.dek,
+              datePublished: p.date,
+              articleSection: p.category,
+              author: { "@type": "Person", name: p.author ?? "Parleo" },
               url: `https://parleo.io/insights/${p.slug}`,
+              image: `https://parleo.io${p.image}`,
             })),
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://parleo.io/" },
+              { "@type": "ListItem", position: 2, name: "Insights", item: "https://parleo.io/insights" },
+            ],
           })}
         </script>
       </Helmet>
