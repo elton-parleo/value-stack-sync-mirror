@@ -34,7 +34,7 @@ const AnnouncementBanner = ({ onDismiss }: Props) => (
     {/* Animated shimmer sweep */}
     <motion.div
       aria-hidden
-      className="pointer-events-none absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-primary/4 to-transparent skew-x-[-20deg]"
+      className="pointer-events-none absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-primary/5 to-transparent skew-x-[-20deg]"
       initial={{ x: "-100%" }}
       animate={{ x: ["-100%", "400%"] }}
       transition={{ duration: 4.5, repeat: Infinity, repeatDelay: 6, ease: "easeInOut" }}
