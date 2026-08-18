@@ -8,3 +8,16 @@ Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-li
 
 - [Home](/): Product overview, how Parleo works, integration paths, and team.
 - [Demo](/demo): Interactive Honey for Agents demo — see live enrichment across scenarios with merchant network and developer reference.
+- [Insights](/insights): Research, benchmarks, and points of view on how AI agents price, rank, and recommend products.
+
+## Insights
+
+- [How agents actually pick the best price](/insights/how-agents-pick-the-best-price): Structured merchant feeds win ChatGPT's Best Price tag 100% of the time vs 21% for scraped pages, and take the top answer slot 99.9% of the time. Feeds still don't carry member prices.
+- [Incentives are becoming pricing rails in agentic commerce](/insights/incentives-are-becoming-pricing-rails): Chewy publishes four prices for the same product ($19.99 to $11.69); ChatGPT quotes the highest. $200B+ US trade promotion and ~$69B retail media are bypassed by agents.
+- [The new shelf is being built for a customer that isn't human](/insights/new-shelf-is-not-human): 46% of AI shoppers compare prices with agents, agentic search referrals grew 200% YoY, and the comparison table is almost entirely list prices.
+
+## Key facts
+
+- Sub-50ms API response time; ~60% token reduction vs direct crawling (~2K vs ~40K tokens); zero PII transmitted.
+- Supports MCP, ACP, and OpenAPI protocols.
+- Free agent-readiness audit: https://audit.parleo.io
