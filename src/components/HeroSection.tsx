@@ -70,9 +70,9 @@ const HeroSection = () => {
             <span>No email to start</span>
             <span className="h-1 w-1 rounded-full bg-foreground/20" />
             <span>Ready in 10 to 20 minutes</span>
-            <a href="#audit" className="link-more">
+            <a href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440" target="_blank" rel="noreferrer" className="link-more">
               <span data-rule />
-              How the score works
+              see a sample report
             </a>
           </div>
 
