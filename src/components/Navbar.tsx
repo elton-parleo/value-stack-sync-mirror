@@ -12,7 +12,7 @@ type NavItem = { label: string; to: string; external?: boolean };
 
 const navItems: NavItem[] = [
   { label: "Product", to: "/#problem" },
-  { label: "How it works", to: "https://parleo.io/demo", external: true },
+  { label: "How it works", to: "https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440", external: true },
   { label: "Insights", to: "/insights" },
   { label: "Team", to: "/#team" },
 ];

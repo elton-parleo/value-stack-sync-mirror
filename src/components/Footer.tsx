@@ -21,7 +21,7 @@ const Footer = () => (
           <FooterLink to="/#problem">Overview</FooterLink>
           <FooterLink to="/#dashboard">Console</FooterLink>
           <FooterLink to="/#architecture">API</FooterLink>
-          <FooterExternal href="https://parleo.io/demo">How it works</FooterExternal>
+          <FooterExternal href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440">How it works</FooterExternal>
         </FooterCol>
 
         <FooterCol title="Insights">

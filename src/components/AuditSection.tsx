@@ -42,7 +42,7 @@ const AuditSection = () => {
             </form>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <a href="https://parleo.io/demo" className="link-more">
+              <a href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440" className="link-more">
                 <span data-rule />
                 How it works
               </a>
