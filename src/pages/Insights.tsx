@@ -1,14 +1,26 @@
+import { useState, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { posts } from "@/content/insights";
+import type { Category } from "@/content/insights";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const categories: ("All" | Category)[] = [
+  "All",
+  ...Array.from(new Set(posts.map((p) => p.category))),
+];
+
 const Insights = () => {
-  const [lead, ...rest] = posts;
+  const [active, setActive] = useState<"All" | Category>("All");
+  const visiblePosts = useMemo(
+    () => (active === "All" ? posts : posts.filter((p) => p.category === active)),
+    [active],
+  );
+  const [lead, ...rest] = visiblePosts;
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
