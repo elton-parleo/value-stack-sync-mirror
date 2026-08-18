@@ -125,7 +125,7 @@ const Insights = () => {
             >
               <Link to={`/insights/${lead.slug}`} className="group block">
                 <div className="relative overflow-hidden bg-secondary">
-                  <div className="aspect-[16/10] w-full md:aspect-[21/9]">
+                  <div className="aspect-[16/10] w-full md:aspect-[16/9]">
                     <img
                       src={lead.image}
                       alt={lead.imageAlt}
@@ -257,7 +257,7 @@ const Insights = () => {
                 href="https://audit.parleo.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary shrink-0 self-start md:self-auto"
+                className="btn-base btn-primary group shrink-0 self-start md:self-auto"
               >
                 Run your free audit
                 <span data-slot="arrow">↗</span>
