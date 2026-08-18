@@ -65,8 +65,6 @@ const HeroSection = () => {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[12.5px] text-foreground/45">
-            <span>Free</span>
-            <span className="h-1 w-1 rounded-full bg-foreground/20" />
             <span>No email to start</span>
             <span className="h-1 w-1 rounded-full bg-foreground/20" />
             <span>Ready in 10 to 20 minutes</span>
