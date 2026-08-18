@@ -119,7 +119,7 @@ const Insights = () => {
                   style={{ letterSpacing: "-0.022em", wordSpacing: "0.04em", textWrap: "balance" }}
                 >
                   Insights from the new shelf
-                  <span className="ml-2 inline-block h-[9px] w-[9px] translate-y-[-5px] rounded-full bg-primary align-middle md:h-2.5 md:w-2.5" />
+
                 </h1>
                 <p className="section-copy mt-5 max-w-[520px]">
                   Essays, frameworks, and field notes on the incentives, infrastructure, and
