@@ -1,17 +1,10 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import BrandLogo from "./BrandLogo";
+import AuditScorecard from "./AuditScorecard";
 import { Button } from "@/components/ui/button";
 
 const AUDIT_URL = "https://audit.parleo.io/";
-
-const valueRows = [
-  { label: "List price", value: "$68.00" },
-  { label: "Member reward", value: "− $10.20" },
-  { label: "Card offer", value: "− $8.00" },
-];
 
 const AuditSection = () => {
   const [url, setUrl] = useState("");
