@@ -11,7 +11,7 @@ const post: Post = {
   readTime: "6 min read",
   image,
   imageAlt:
-    "A sample Agentic Value Audit scorecard: 40 out of 100 with the readiness bar at 60, pillar scores of Visibility 18/32, Accessibility 11/18 and True Value 11/50, beside agent findings from 24 live ChatGPT queries and $775K of modeled annual exposure.",
+    "A sample Agentic Value Audit scorecard: 40 out of 100 with the readiness bar at 60, pillar scores of Visibility 18/32, Accessibility 11/18 and True Value 11/50, beside agent findings from 24 live ChatGPT queries and $18.4M of modeled annual exposure.",
   author: "Samar Birwadker",
   seoTitle: "How Agent-Ready Is Your Store? Inside the Agentic Value Audit | Parleo",
   seoDescription:
@@ -28,7 +28,7 @@ const post: Post = {
     "The audit runs two instruments in one pass: 24 live ChatGPT shopper queries in your category, and a full crawl reading only what an agent can read.",
     "It returns a score out of 100 on the Share of Algorithm framework, with the readiness bar at 60. Crossing it takes real points on True Value.",
     "Every True Value dimension is scored twice, what your pages encode and what agents actually said. The gap between the two is the diagnosis.",
-    "Our sample run: a sharp DTC brand came back 40 out of 100 with about $775K a year in modeled exposure. That result is the pattern, not the outlier.",
+    "Our sample run: an enterprise beauty brand came back 40 out of 100 with about $18.4M a year in modeled exposure. That result is the pattern, not the outlier.",
   ],
   faq: [
     {
@@ -114,7 +114,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "Our sample run makes it concrete. A well-run DTC brand, the kind most operators would call sharp, came back 40 out of 100: solid mentions, a readable price on one product page of four, no member value visible anywhere, no deal encoded for an agent to find, nothing declared at checkout, and about $775K a year in modeled exposure.",
+      text: "Our sample run makes it concrete. An enterprise beauty brand, the kind most operators would call sharp, came back 40 out of 100: solid mentions, a readable price on one product page of four, no member value visible anywhere, no deal encoded for an agent to find, nothing declared at checkout, and about $18.4M a year in modeled exposure.",
     },
     {
       type: "quote",
