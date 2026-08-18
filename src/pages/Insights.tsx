@@ -30,6 +30,10 @@ const Insights = () => {
           content="Parleo research and points of view on how AI agents price, rank, and recommend products, and the funded value they can't see."
         />
         <link rel="canonical" href="https://parleo.io/insights" />
+        <meta
+          name="keywords"
+          content="agentic commerce, AI shopping agents, agentic search, loyalty pricing, true cost, merchant feeds"
+        />
         <meta property="og:title" content="Insights: research on agentic commerce | Parleo" />
         <meta
           property="og:description"
@@ -37,17 +41,42 @@ const Insights = () => {
         />
         <meta property="og:url" content="https://parleo.io/insights" />
         <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Insights: research on agentic commerce | Parleo" />
+        <meta
+          name="twitter:description"
+          content="How AI agents price, rank, and recommend products, and the funded value they can't see."
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
             name: "Parleo Insights",
             url: "https://parleo.io/insights",
+            description:
+              "Research, benchmarks, and points of view on how AI agents price, rank, and recommend products.",
+            inLanguage: "en-US",
+            publisher: { "@type": "Organization", name: "Parleo", url: "https://parleo.io/" },
             blogPost: posts.map((p) => ({
               "@type": "BlogPosting",
               headline: p.title,
+              description: p.dek,
+              datePublished: p.date,
+              articleSection: p.category,
+              author: { "@type": "Person", name: p.author ?? "Parleo" },
               url: `https://parleo.io/insights/${p.slug}`,
+              image: `https://parleo.io${p.image}`,
             })),
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://parleo.io/" },
+              { "@type": "ListItem", position: 2, name: "Insights", item: "https://parleo.io/insights" },
+            ],
           })}
         </script>
       </Helmet>
@@ -159,17 +188,26 @@ const Insights = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: i * 0.05, ease }}
-                  className="border-b border-border"
+                  className="relative border-b border-border"
                 >
                   <Link
                     to={`/insights/${p.slug}`}
-                    className="group grid grid-cols-[120px_1fr] items-start gap-4 py-7 md:grid-cols-[44px_180px_1fr] md:items-start md:gap-8 md:py-10"
+                    className="group relative grid grid-cols-[120px_1fr] items-start gap-4 py-7 transition-colors md:grid-cols-[44px_180px_1fr] md:items-start md:gap-8 md:py-10"
                   >
-                    <span className="hidden pt-1 font-mono text-[11px] tabular-nums text-foreground/25 transition-colors group-hover:text-primary md:block">
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -inset-x-5 inset-y-0 rounded-lg bg-foreground/[0.02] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute left-[-20px] top-1/2 h-0 w-[2px] -translate-y-1/2 bg-primary transition-all duration-500 group-hover:h-[62%]"
+                    />
+
+                    <span className="relative hidden pt-1 font-mono text-[11px] tabular-nums text-foreground/25 transition-colors group-hover:text-primary md:block">
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
-                    <div className="overflow-hidden rounded-md bg-secondary">
+                    <div className="relative overflow-hidden rounded-md border border-border/70 bg-secondary">
                       <div className="aspect-[4/3] w-full md:aspect-[4/3]">
                         <img
                           src={p.image}
@@ -179,9 +217,18 @@ const Insights = () => {
                           className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                         />
                       </div>
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                        style={{
+                          background:
+                            "linear-gradient(to top, hsl(var(--primary) / 0.14), transparent 60%)",
+                        }}
+                      />
                     </div>
 
-                    <div className="flex flex-col justify-center">
+
+                    <div className="relative flex flex-col justify-center">
                       <div className="flex flex-wrap items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.09em] text-foreground/40">
                         <span className="text-primary">{p.category}</span>
                         <span className="h-[3px] w-[3px] rounded-full bg-foreground/20" />
@@ -198,6 +245,12 @@ const Insights = () => {
                       <p className="mt-2.5 max-w-[520px] text-[14px] leading-[1.55] text-muted-foreground md:text-[15px]">
                         {p.dek}
                       </p>
+                      {p.takeaways?.[0] && (
+                        <p className="mt-3 hidden max-w-[520px] border-l border-primary/30 pl-3 text-[13px] leading-[1.5] text-foreground/50 md:block">
+                          {p.takeaways[0]}
+                        </p>
+                      )}
+
                       <span className="mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-foreground/70 transition-colors group-hover:text-foreground">
                         Read
                         <span className="inline-block text-primary transition-transform duration-300 group-hover:translate-x-1.5">

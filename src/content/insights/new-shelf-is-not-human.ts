@@ -13,6 +13,35 @@ const post: Post = {
   imageAlt:
     "ChatGPT comparing a Patagonia Down Sweater at Amazon and REI, with a panel showing the REI true price is $228.65 after member benefits.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
+  author: "Samar Birwadker",
+  keywords: [
+    "agentic commerce",
+    "AI shopping",
+    "list price",
+    "loyalty",
+    "true cost",
+    "agentic search",
+  ],
+  takeaways: [
+    "46% of AI shoppers use agents to compare prices and find deals, and the table they see is almost entirely list prices.",
+    "Walmart pulled 200,000 products out of third-party agent checkout, rebuilt inside its own walls, and now posts 35% bigger baskets.",
+    "Shoppers starting purchases with agentic search grew 200% year over year.",
+    "Trade spend funds the offers and retail media buys the placement. Agents bypass both.",
+  ],
+  faq: [
+    {
+      q: "Why do AI agents compare list prices instead of real prices?",
+      a: "Agents read whatever price is structurally available, which is usually the list or sale price on the page or in the feed. Member pricing, card-linked offers and loyalty math live in systems the agent can't query, so they never reach the comparison table.",
+    },
+    {
+      q: "How big is agentic retail going to get?",
+      a: "McKinsey puts US agentic retail at roughly $1T by 2030, and Salesforce measured 200% year over year growth in shoppers starting purchases with agentic search.",
+    },
+    {
+      q: "What should brands do about the gap?",
+      a: "Make funded value machine-readable so the agent can compute true cost, not just list price. That's the layer Parleo builds.",
+    },
+  ],
   body: [
     { type: "p", text: "The internet and e-commerce are being rebuilt for a customer that isn't human." },
     { type: "p", text: "And people are already using AI that way. 46% of AI shoppers use it to compare prices and find deals." },

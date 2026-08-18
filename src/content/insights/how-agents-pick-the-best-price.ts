@@ -13,6 +13,35 @@ const post: Post = {
   imageAlt:
     "ChatGPT quoting $565 for Augustinus Bader face cream across retailers, next to a panel showing the $423.75 Anniversary Sale price gated by card status.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
+  author: "Samar Birwadker",
+  keywords: [
+    "agentic commerce",
+    "AI shopping agents",
+    "best price",
+    "merchant feeds",
+    "loyalty pricing",
+    "ChatGPT shopping",
+  ],
+  takeaways: [
+    "Products delivered through a structured merchant feed earn ChatGPT's Best Price tag 100% of the time, versus 21% when the agent has to scrape the page.",
+    "Feed-sourced offers take the top answer slot 99.9% of the time, so rank is largely a function of what you handed the machine.",
+    "Feeds still don't carry member prices: only 1 in 31 mentions of the top grooming brand cited any incentive.",
+    "A single jar of face cream carried five prices in 27 days at one retailer, all decided by card status the agent can't read.",
+  ],
+  faq: [
+    {
+      q: "How do AI shopping agents decide which price is the best price?",
+      a: "They rank on the offer data they can read. Structured merchant feeds win the Best Price tag 100% of the time in Profound's sample of roughly a million shopping offers, and take the top answer slot 99.9% of the time. Scraped pages win it 21% of the time.",
+    },
+    {
+      q: "Do agents see member prices and card-linked offers?",
+      a: "Almost never. Feeds carry list price and sale price, not loyalty tiers or card status. In our grooming benchmark only 1 in 31 mentions of the category leader cited any incentive at all.",
+    },
+    {
+      q: "What is the fastest way to improve agent price rank?",
+      a: "Ship a structured product feed first, then expose funded value (member price, card offers, subscription pricing) in a machine-readable layer so the agent can quote the price a shopper would actually pay.",
+    },
+  ],
   body: [
     { type: "p", text: "ChatGPT doesn't just quote prices anymore, it awards its own Best Price tag." },
     { type: "p", text: "Profound's June pass through about a million shopping offers found the rule: products arriving through a structured merchant feed get that tag 100% of the time, versus 21% when the machine has to scrape the page. Feed-sourced offers take the top slot in the answer 99.9% of the time." },
