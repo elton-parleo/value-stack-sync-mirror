@@ -3,7 +3,7 @@ import type { Post } from "./types";
 
 const post: Post = {
   slug: "share-of-algorithm",
-  title: "Share of Algorithm: the score for the era agents decide",
+  title: "Share of Algorithm: the complete score for winning the agentic era",
   dek: "Three pillars, nine dimensions, 100 points. Half the score sits on True Value, because that's the part connected to money.",
   date: "2026-08-18",
   dateLabel: "August 18, 2026",
