@@ -12,6 +12,7 @@ Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-li
 
 ## Insights
 
+- [Share of Algorithm](/insights/share-of-algorithm): Parleo's 100-point score for how AI agents see a brand. Three pillars and nine dimensions: Visibility (32), Accessibility (18), True Value (50).
 - [How agents actually pick the best price](/insights/how-agents-pick-the-best-price): Structured merchant feeds win ChatGPT's Best Price tag 100% of the time vs 21% for scraped pages, and take the top answer slot 99.9% of the time. Feeds still don't carry member prices.
 - [Incentives are becoming pricing rails in agentic commerce](/insights/incentives-are-becoming-pricing-rails): Chewy publishes four prices for the same product ($19.99 to $11.69); ChatGPT quotes the highest. $200B+ US trade promotion and ~$69B retail media are bypassed by agents.
 - [The new shelf is being built for a customer that isn't human](/insights/new-shelf-is-not-human): 46% of AI shoppers compare prices with agents, agentic search referrals grew 200% YoY, and the comparison table is almost entirely list prices.

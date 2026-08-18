@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { posts } from "@/content/insights";
+import { posts, postNumber } from "@/content/insights";
 import type { Category } from "@/content/insights";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -204,7 +204,7 @@ const Insights = () => {
                     />
 
                     <span className="relative hidden pt-1 font-mono text-[11px] tabular-nums text-foreground/25 transition-colors group-hover:text-primary md:block">
-                      {String(i + 1).padStart(2, "0")}
+                      {String(postNumber(p.slug)).padStart(2, "0")}
                     </span>
 
                     <div className="relative overflow-hidden rounded-md border border-border/70 bg-secondary">

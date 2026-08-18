@@ -1,4 +1,145 @@
-import type { Block } from "@/content/insights";
+import { Fragment, type ReactNode } from "react";
+import type { Block, Pillar } from "@/content/insights";
+
+/** Renders inline markdown links: [label](https://url) */
+const RichText = ({ text }: { text: string }) => {
+  const parts: ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    parts.push(
+      <a
+        key={m.index}
+        href={m[2]}
+        target="_blank"
+        rel="noreferrer"
+        className="text-foreground underline decoration-primary/40 decoration-1 underline-offset-[3px] transition-colors hover:decoration-primary"
+      >
+        {m[1]}
+      </a>,
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return <>{parts.map((p, i) => <Fragment key={i}>{p}</Fragment>)}</>;
+};
+
+const PillarsBlock = ({ total, items }: { total: number; items: Pillar[] }) => (
+  <figure className="my-4 flex flex-col gap-3">
+    {/* Weight bar */}
+    <div className="flex h-11 w-full overflow-hidden rounded-lg border border-border">
+      {items.map((p) => (
+        <div
+          key={p.name}
+          style={{ flexGrow: p.points }}
+          className={`flex items-center gap-2 px-3 ${
+            p.highlight
+              ? "bg-primary text-primary-foreground"
+              : "bg-[#1A1A22] text-white/70"
+          }`}
+        >
+          <span
+            className="font-display text-[17px] leading-none"
+            style={{ fontVariantNumeric: "tabular-nums", letterSpacing: "-0.03em" }}
+          >
+            {p.points}
+          </span>
+          <span className="truncate text-[12px]">{p.name}</span>
+        </div>
+      ))}
+    </div>
+
+    <div className="grid gap-3 md:grid-cols-2">
+      {items.map((p) => (
+        <div
+          key={p.name}
+          className={`relative overflow-hidden rounded-2xl border px-5 py-5 ${
+            p.highlight
+              ? "border-transparent bg-[#0E0E14] md:col-span-2"
+              : "border-border bg-card"
+          }`}
+        >
+          {p.highlight && (
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -right-14 -top-20 h-[260px] w-[300px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(closest-side, hsl(var(--primary) / 0.3), transparent 70%)",
+              }}
+            />
+          )}
+          <div className="relative flex items-start justify-between gap-4">
+            <div>
+              <h3
+                className={`font-heading text-[19px] leading-none ${
+                  p.highlight ? "text-white" : "text-foreground"
+                }`}
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                {p.name}
+              </h3>
+              <p
+                className={`mt-2 max-w-[340px] text-[13.5px] leading-[1.5] ${
+                  p.highlight ? "text-white/55" : "text-foreground/55"
+                }`}
+              >
+                {p.question}
+              </p>
+            </div>
+            <span
+              className={`font-display text-[34px] leading-none ${
+                p.highlight ? "text-primary" : "text-foreground/85"
+              }`}
+              style={{ fontVariantNumeric: "tabular-nums", letterSpacing: "-0.04em" }}
+            >
+              {p.points}
+            </span>
+          </div>
+
+          <div
+            className={`relative mt-4 grid gap-2 ${p.highlight ? "md:grid-cols-2" : ""}`}
+          >
+            {p.dimensions.map((d) => (
+              <div
+                key={d.label}
+                className={`flex items-center justify-between rounded-lg px-3.5 py-2.5 text-[13.5px] ${
+                  p.highlight
+                    ? "bg-white/[0.05] text-white/80"
+                    : "bg-background text-foreground/75"
+                }`}
+              >
+                <span>{d.label}</span>
+                <span
+                  className={p.highlight ? "text-primary" : "text-foreground/40"}
+                  style={{ fontVariantNumeric: "tabular-nums" }}
+                >
+                  {d.points}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {p.note && (
+            <p
+              className={`relative mt-3.5 text-[12.5px] leading-[1.5] ${
+                p.highlight ? "text-white/45" : "text-foreground/45"
+              }`}
+            >
+              {p.note}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <figcaption className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-foreground/40">
+      {total} points, one straight sum
+    </figcaption>
+  </figure>
+);
 
 const PostBody = ({ blocks }: { blocks: Block[] }) => {
   let headingIndex = 0;
@@ -30,7 +171,10 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
           }
           case "list":
             return (
-              <ul key={i} className="flex flex-col divide-y divide-border/70 rounded-xl border border-border bg-card/60">
+              <ul
+                key={i}
+                className="flex flex-col divide-y divide-border/70 rounded-xl border border-border bg-card/60"
+              >
                 {b.items.map((it, idx) => (
                   <li
                     key={it}
@@ -40,7 +184,7 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
                     <span className="font-mono text-[10.5px] tabular-nums text-foreground/30">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
-                    {it}
+                    <RichText text={it} />
                   </li>
                 ))}
               </ul>
@@ -65,12 +209,12 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
                 <span aria-hidden className="absolute left-0 top-0 h-full w-[2px] bg-primary" />
                 <div className="relative flex flex-col gap-2 md:flex-row md:items-baseline md:gap-7">
                   <span
-                    className="font-display text-[38px] leading-none text-foreground md:text-[48px]"
+                    className="shrink-0 font-display text-[38px] leading-none text-foreground md:text-[48px]"
                     style={{ letterSpacing: "-0.04em", fontVariantNumeric: "tabular-nums" }}
                   >
                     {b.value}
                   </span>
-                  <figcaption className="max-w-[320px] text-[13px] leading-[1.5] text-foreground/55 md:text-[14px]">
+                  <figcaption className="max-w-[380px] text-[13px] leading-[1.5] text-foreground/55 md:text-[14px]">
                     {b.label}
                   </figcaption>
                 </div>
@@ -79,7 +223,10 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
           case "quote":
             return (
               <blockquote key={i} className="relative my-2 pl-6 md:pl-8">
-                <span aria-hidden className="absolute left-0 top-1 h-[calc(100%-8px)] w-[2px] bg-primary" />
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-1 h-[calc(100%-8px)] w-[2px] bg-primary"
+                />
                 <p
                   className="font-display text-[20px] leading-[1.24] text-foreground md:text-[26px]"
                   style={{ letterSpacing: "-0.025em", textWrap: "balance" }}
@@ -87,6 +234,52 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
                   {b.text}
                 </p>
               </blockquote>
+            );
+          case "pillars":
+            return <PillarsBlock key={i} total={b.total} items={b.items} />;
+          case "sources":
+            return (
+              <details
+                key={i}
+                className="group mt-8 rounded-2xl border border-border bg-card/60 px-5 py-4 md:px-6"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <span className="font-heading text-[15px] text-foreground">
+                    Sources ({b.items.length})
+                  </span>
+                  <span className="text-[15px] text-primary transition-transform duration-300 group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <ul className="mt-4 flex flex-col divide-y divide-border border-t border-border">
+                  {b.items.map((s) => (
+                    <li
+                      key={s.claim}
+                      className="grid gap-1 py-3 md:grid-cols-[1fr_auto] md:items-baseline md:gap-6"
+                    >
+                      <span className="text-[13.5px] leading-[1.5] text-foreground/70">
+                        {s.claim}
+                      </span>
+                      <span className="text-[12.5px] text-foreground/45 md:text-right">
+                        {s.url ? (
+                          <a
+                            href={s.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-primary transition-opacity hover:opacity-70"
+                          >
+                            {s.source}
+                          </a>
+                        ) : (
+                          s.source
+                        )}
+                        <span className="px-1.5 text-foreground/25">·</span>
+                        {s.date}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
             );
           default: {
             const isLead = firstParagraph;
@@ -100,7 +293,7 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
                     : "text-[15.5px] leading-[1.68] text-foreground/70 md:text-[17px]"
                 }
               >
-                {b.text}
+                <RichText text={b.text} />
               </p>
             );
           }

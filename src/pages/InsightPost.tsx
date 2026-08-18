@@ -52,8 +52,8 @@ const InsightPost = () => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
       <Helmet>
-        <title>{`${post.title} | Parleo`}</title>
-        <meta name="description" content={post.dek} />
+        <title>{post.seoTitle ?? `${post.title} | Parleo`}</title>
+        <meta name="description" content={post.seoDescription ?? post.dek} />
         <link rel="canonical" href={url} />
         {post.keywords?.length ? <meta name="keywords" content={post.keywords.join(", ")} /> : null}
         <meta name="author" content={author} />
