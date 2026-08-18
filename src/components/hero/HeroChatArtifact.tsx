@@ -253,13 +253,15 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
             Merchant value made readable
           </div>
           <motion.img
-            src={tatchaAsset.url}
-            alt="Tatcha The Water Cream"
+            src={waterCreamJar}
+            alt="Tatcha The Water Cream moisturizer jar"
+            width={912}
+            height={912}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: isParleo ? 1.04 : 1 }}
             transition={{ duration: 1.1, ease: EASE }}
-            className="relative z-[1] h-[100px] w-auto object-contain sm:h-[140px]"
-            style={{ filter: "drop-shadow(0 14px 22px hsl(165 40% 18% / 0.18))" }}
+            className="relative z-[1] h-[92px] w-auto object-contain sm:h-[124px]"
+            style={{ filter: "drop-shadow(0 14px 22px hsl(165 20% 25% / 0.16))" }}
           />
         </div>
 
