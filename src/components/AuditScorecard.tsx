@@ -93,12 +93,13 @@ const AuditScorecard = () => {
     >
       {/* header */}
       <div className="flex items-center justify-between gap-3 border-b border-foreground/[0.07] px-5 py-3.5 md:px-7">
-        <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-foreground/45">
+        <span className="whitespace-nowrap font-mono text-[9.5px] uppercase tracking-[0.14em] text-foreground/45 md:text-[10.5px] md:tracking-[0.16em]">
           Agentic value report
         </span>
-        <span className="rounded-full border border-foreground/12 px-2.5 py-1 font-mono text-[10.5px] text-foreground/50">
+        <span className="whitespace-nowrap rounded-full border border-foreground/12 px-2.5 py-1 font-mono text-[9.5px] text-foreground/50 md:text-[10.5px]">
           sample · skincare
         </span>
+
       </div>
 
       {/* score plate */}
