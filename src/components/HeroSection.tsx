@@ -52,10 +52,13 @@ const HeroSection = () => {
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a href="https://audit.parleo.io/" className="btn-base btn-primary group">
               Run your free audit
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-90 transition-transform duration-300 group-hover:translate-x-1">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span data-slot="arrow" aria-hidden>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
             </a>
+
             <button onClick={() => setContactOpen(true)} className="btn-base btn-secondary">
               Request a demo
             </button>
