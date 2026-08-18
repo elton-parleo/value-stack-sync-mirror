@@ -237,50 +237,6 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
             );
           case "pillars":
             return <PillarsBlock key={i} total={b.total} items={b.items} />;
-          case "sources":
-            return (
-              <details
-                key={i}
-                className="group mt-8 rounded-2xl border border-border bg-card/60 px-5 py-4 md:px-6"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                  <span className="font-heading text-[15px] text-foreground">
-                    Sources ({b.items.length})
-                  </span>
-                  <span className="text-[15px] text-primary transition-transform duration-300 group-open:rotate-45">
-                    +
-                  </span>
-                </summary>
-                <ul className="mt-4 flex flex-col divide-y divide-border border-t border-border">
-                  {b.items.map((s) => (
-                    <li
-                      key={s.claim}
-                      className="grid gap-1 py-3 md:grid-cols-[1fr_auto] md:items-baseline md:gap-6"
-                    >
-                      <span className="text-[13.5px] leading-[1.5] text-foreground/70">
-                        {s.claim}
-                      </span>
-                      <span className="text-[12.5px] text-foreground/45 md:text-right">
-                        {s.url ? (
-                          <a
-                            href={s.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-primary transition-opacity hover:opacity-70"
-                          >
-                            {s.source}
-                          </a>
-                        ) : (
-                          s.source
-                        )}
-                        <span className="px-1.5 text-foreground/25">·</span>
-                        {s.date}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            );
           default: {
             const isLead = firstParagraph;
             firstParagraph = false;
