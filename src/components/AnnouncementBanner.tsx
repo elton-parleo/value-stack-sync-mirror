@@ -19,7 +19,7 @@ const AnnouncementBanner = ({ onDismiss }: Props) => (
 
     <a
       href={AUDIT_URL}
-      className="group mx-auto flex h-9 max-w-content items-center gap-2.5 px-5 sm:justify-center md:px-20"
+      className="group mx-auto flex h-9 max-w-content items-center gap-2.5 pl-5 pr-11 sm:justify-center md:px-20"
     >
       <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary/15 px-2 py-[3px] font-mono text-[9.5px] font-semibold uppercase tracking-[0.16em] text-primary">
         <motion.span
