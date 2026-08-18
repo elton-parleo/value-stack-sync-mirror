@@ -141,7 +141,7 @@ const Insights = () => {
         </section>
 
         {/* Lead story */}
-        {lead && (
+        {lead ? (
           <section className="mx-auto max-w-content px-6 pt-12 md:px-20 md:pt-16">
             <motion.div
               initial={{ opacity: 0, y: 22 }}
