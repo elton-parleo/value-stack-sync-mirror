@@ -25,19 +25,19 @@ const AuditSection = () => {
               One free audit returns a 100 point readiness score across visibility, accessibility, and true value.
             </p>
 
-            <form onSubmit={submit} className="mt-8 max-w-[450px]">
+            <form onSubmit={submit} className="mt-8 max-w-[440px]">
               <label htmlFor="audit-domain" className="sr-only">Brand domain</label>
-              <div className="flex min-h-14 min-w-0 items-center rounded-full border border-foreground/20 bg-card p-1.5 shadow-sm focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10">
-                <span className="pl-4 text-[13px] text-muted-foreground">https://</span>
+              <div className="flex min-w-0 items-center gap-2 border-b border-foreground/25 pb-2.5 transition-colors focus-within:border-primary">
+                <span className="font-mono text-[12px] text-muted-foreground">https://</span>
                 <input
                   id="audit-domain"
                   value={url}
                   onChange={(event) => setUrl(event.target.value)}
                   placeholder="yourbrand.com"
                   inputMode="url"
-                  className="min-w-0 flex-1 bg-transparent px-1.5 text-[14px] text-foreground outline-none placeholder:text-muted-foreground"
+                  className="min-w-0 flex-1 bg-transparent text-[15px] text-foreground outline-none placeholder:text-foreground/35"
                 />
-                <Button type="submit" size="sm" className="shrink-0 px-3.5 sm:px-5">Run free audit</Button>
+                <Button type="submit" size="sm" className="shrink-0 px-4">Run free audit</Button>
               </div>
             </form>
 
