@@ -12,7 +12,7 @@ Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-li
 
 ## Insights
 
-- [How agent-ready is your store?](/insights/inside-the-agentic-value-audit): Inside the Agentic Value Audit. 24 live ChatGPT queries plus a full crawl, scored out of 100 with the readiness bar at 60. Sample run: 40/100 and ~$775K a year in modeled exposure.
+- [How agent-ready is your store?](/insights/inside-the-agentic-value-audit): Inside the Agentic Value Audit. 24 live ChatGPT queries plus a full crawl, scored out of 100 with the readiness bar at 60. Sample run: 40/100 and ~$18.4M a year in modeled exposure.
 - [Share of Algorithm](/insights/share-of-algorithm): Parleo's 100-point score for how AI agents see a brand. Three pillars and nine dimensions: Visibility (32), Accessibility (18), True Value (50).
 
 - [How agents actually pick the best price](/insights/how-agents-pick-the-best-price): Structured merchant feeds win ChatGPT's Best Price tag 100% of the time vs 21% for scraped pages, and take the top answer slot 99.9% of the time. Feeds still don't carry member prices.
