@@ -96,18 +96,47 @@ const Insights = () => {
                 </p>
               </motion.div>
 
-              {/* Running index */}
-              <motion.ol
+              {/* Topic filter */}
+              <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.12, ease }}
-                className="border-t border-border"
+                className="flex flex-col gap-5"
               >
-                {posts.map((p, i) => (
-                  <li key={p.slug} className="border-b border-border">
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((cat) => {
+                    const count =
+                      cat === "All" ? posts.length : posts.filter((p) => p.category === cat).length;
+                    const selected = active === cat;
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => setActive(cat)}
+                        className={`rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-all ${
+                          selected
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : "border-foreground/10 bg-card/60 text-foreground/60 hover:border-foreground/25 hover:text-foreground"
+                        }`}
+                      >
+                        {cat}
+                        <span
+                          className={`ml-1.5 inline-block rounded-full px-1.5 py-0.5 text-[10px] tabular-nums ${
+                            selected ? "bg-primary-foreground/20 text-primary-foreground" : "bg-foreground/5 text-foreground/40"
+                          }`}
+                        >
+                          {count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="border-t border-border">
+                  {visiblePosts.slice(0, 5).map((p, i) => (
                     <Link
+                      key={p.slug}
                       to={`/insights/${p.slug}`}
-                      className="group flex items-baseline gap-4 py-3.5"
+                      className="group flex items-baseline gap-4 border-b border-border py-3"
                     >
                       <span className="w-7 shrink-0 font-mono text-[11px] tabular-nums text-foreground/35 transition-colors group-hover:text-primary">
                         {String(i + 1).padStart(2, "0")}
@@ -115,13 +144,10 @@ const Insights = () => {
                       <span className="flex-1 text-[14px] leading-[1.35] text-foreground/70 transition-colors group-hover:text-foreground md:text-[14.5px]">
                         {p.title}
                       </span>
-                      <span className="shrink-0 font-mono text-[10.5px] uppercase tracking-[0.08em] text-foreground/30">
-                        {p.readTime.replace(" read", "")}
-                      </span>
                     </Link>
-                  </li>
-                ))}
-              </motion.ol>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
