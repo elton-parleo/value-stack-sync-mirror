@@ -78,9 +78,9 @@ const Insights = () => {
                   Insights from the new shelf
                   <span className="ml-2 inline-block h-[10px] w-[10px] translate-y-[-6px] rounded-full bg-primary align-middle md:h-3 md:w-3" />
                 </h1>
-                <p className="section-copy mt-6 max-w-[460px]">
-                  What agents quote, what they rank, and what happens to the value you funded on the
-                  way there.
+                <p className="section-copy mt-6 max-w-[520px]">
+                  Essays, frameworks, and field notes on the incentives, infrastructure, and
+                  merchant strategy behind agentic commerce.
                 </p>
               </motion.div>
 
