@@ -25,11 +25,11 @@ const AuditSection = () => {
   return (
     <AnimatedSection id="audit" className="max-w-full overflow-hidden border-y border-border py-14 md:py-20">
       <div className="mx-auto min-w-0 max-w-content px-6 md:px-20">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:gap-16">
-          <div className="min-w-0 max-w-[470px]">
-            <h2 className="section-heading break-words text-foreground">See what agents actually quote for your brand</h2>
-            <p className="section-copy mt-5 max-w-[420px]">
-              One free audit. A clear view of the value agents can see, and the value they miss.
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.92fr] lg:items-center lg:gap-16">
+          <div className="min-w-0 max-w-[520px]">
+            <h2 className="section-heading text-foreground">Score how agents read your brand</h2>
+            <p className="section-copy mt-5 max-w-[430px]">
+              One free audit returns a 100 point readiness score across visibility, accessibility, and true value.
             </p>
 
             <form onSubmit={submit} className="mt-8 max-w-[450px]">
