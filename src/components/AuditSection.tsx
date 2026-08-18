@@ -26,10 +26,16 @@ const AuditSection = () => {
     <AnimatedSection id="audit" className="relative max-w-full overflow-hidden border-y border-border py-14 md:py-20">
       {/* soft blue light burn, orthographic and flat */}
       <div
-        className="pointer-events-none absolute -right-40 top-0 hidden h-[520px] w-[620px] opacity-[0.07] lg:block"
-        style={{ background: "radial-gradient(closest-side, hsl(213 99% 50%), transparent 72%)" }}
+        className="pointer-events-none hidden h-[520px] w-[620px] opacity-[0.07] lg:block"
+        style={{
+          position: "absolute",
+          right: "-10rem",
+          top: 0,
+          background: "radial-gradient(closest-side, hsl(213 99% 50%), transparent 72%)",
+        }}
         aria-hidden
       />
+
 
       <div className="relative mx-auto min-w-0 max-w-content px-6 md:px-20">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.96fr] lg:gap-16">
