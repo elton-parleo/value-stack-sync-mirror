@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from "react";
-import type { Block, Pillar } from "@/content/insights";
+import type { Block, Leak, Pillar } from "@/content/insights";
+
 
 /** Renders inline markdown links: [label](https://url) */
 const RichText = ({ text }: { text: string }) => {
@@ -141,7 +142,66 @@ const PillarsBlock = ({ total, items }: { total: number; items: Pillar[] }) => (
   </figure>
 );
 
+/** True Value dimension breakdown: weight rail + labelled cards. */
+const LeaksBlock = ({ total, items }: { total: number; items: Leak[] }) => (
+  <figure className="my-4 overflow-hidden rounded-2xl border border-border bg-card">
+    <div className="flex items-baseline justify-between gap-4 border-b border-border px-5 py-4 md:px-7">
+      <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-foreground/45">
+        True Value dimensions
+      </span>
+      <span
+        className="font-display text-[20px] leading-none text-foreground"
+        style={{ fontVariantNumeric: "tabular-nums", letterSpacing: "-0.03em" }}
+      >
+        {total}
+        <span className="text-foreground/35"> pts</span>
+      </span>
+    </div>
+
+    <div className="divide-y divide-border">
+      {items.map((it, idx) => (
+        <div key={it.name} className="grid gap-3 px-5 py-5 md:grid-cols-[168px_1fr] md:gap-7 md:px-7">
+          <div className="flex items-start gap-3">
+            <span className="mt-[5px] font-mono text-[10.5px] tabular-nums text-foreground/30">
+              {String(idx + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3
+                className="font-heading text-[16px] leading-tight text-foreground"
+                style={{ letterSpacing: "-0.01em" }}
+              >
+                {it.name}
+              </h3>
+              <div className="mt-2 flex items-center gap-2">
+                <span
+                  className="font-display text-[15px] leading-none text-foreground/80"
+                  style={{ fontVariantNumeric: "tabular-nums" }}
+                >
+                  {it.points}
+                </span>
+                <span className="h-[3px] w-[72px] overflow-hidden rounded-full bg-border">
+                  <span
+                    className={`block h-full rounded-full ${it.highlight ? "bg-primary" : "bg-foreground/45"}`}
+                    style={{ width: `${(it.points / 16) * 100}%` }}
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="text-[13.5px] leading-[1.5] text-foreground/50">{it.test}</p>
+            <p className="mt-2 text-[14.5px] leading-[1.6] text-foreground/75 md:text-[15.5px]">
+              {it.detail}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </figure>
+);
+
 const PostBody = ({ blocks }: { blocks: Block[] }) => {
+
   let headingIndex = 0;
   let firstParagraph = true;
 
