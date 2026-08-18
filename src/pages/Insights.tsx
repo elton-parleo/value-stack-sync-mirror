@@ -163,7 +163,7 @@ const Insights = () => {
                 >
                   <Link
                     to={`/insights/${p.slug}`}
-                    className="group grid gap-4 py-8 md:grid-cols-[44px_180px_1fr] md:items-start md:gap-8 md:py-10"
+                    className="group grid grid-cols-[120px_1fr] items-start gap-4 py-7 md:grid-cols-[44px_180px_1fr] md:items-start md:gap-8 md:py-10"
                   >
                     <span className="hidden pt-1 font-mono text-[11px] tabular-nums text-foreground/25 transition-colors group-hover:text-primary md:block">
                       {String(i + 1).padStart(2, "0")}
