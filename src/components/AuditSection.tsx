@@ -1,10 +1,17 @@
 import { useState } from "react";
-import { ArrowUpRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import AuditScorecard from "./AuditScorecard";
-import { Button } from "@/components/ui/button";
+import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
 
 const AUDIT_URL = "https://audit.parleo.io/";
+const SAMPLE_REPORT = "https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440";
+
+const deliverables = [
+  { n: "01", label: "Per retailer price truth", copy: "Every price, promo, and loyalty offset an agent can resolve today." },
+  { n: "02", label: "Feed diagnostics", copy: "What agents parse, what they skip, and where the structure breaks." },
+  { n: "03", label: "Recoverable points", copy: "The exact fixes ranked by score impact, heaviest first." },
+];
 
 const AuditSection = () => {
   const [url, setUrl] = useState("");
@@ -16,16 +23,23 @@ const AuditSection = () => {
   };
 
   return (
-    <AnimatedSection id="audit" className="max-w-full overflow-hidden border-y border-border py-14 md:py-20">
-      <div className="mx-auto min-w-0 max-w-content px-6 md:px-20">
-        <div className="grid gap-10 lg:grid-cols-[1fr_0.92fr] lg:items-center lg:gap-16">
-          <div className="min-w-0 max-w-[520px]">
+    <AnimatedSection id="audit" className="relative max-w-full overflow-hidden border-y border-border py-14 md:py-20">
+      {/* soft blue light burn, orthographic and flat */}
+      <div
+        className="pointer-events-none absolute -right-40 top-0 hidden h-[520px] w-[620px] opacity-[0.07] lg:block"
+        style={{ background: "radial-gradient(closest-side, hsl(213 99% 50%), transparent 72%)" }}
+        aria-hidden
+      />
+
+      <div className="relative mx-auto min-w-0 max-w-content px-6 md:px-20">
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.96fr] lg:gap-16">
+          <div className="min-w-0 max-w-[540px]">
             <h2 className="section-heading text-foreground">Score how agents read your brand</h2>
-            <p className="section-copy mt-5 max-w-[430px]">
+            <p className="section-copy mt-5 max-w-[440px]">
               One free audit returns a 100 point readiness score across visibility, accessibility, and true value.
             </p>
 
-            <form onSubmit={submit} className="mt-8 max-w-[440px]">
+            <form onSubmit={submit} className="mt-8 max-w-[460px]">
               <label htmlFor="audit-domain" className="sr-only">Brand domain</label>
               <div className="flex min-w-0 items-center gap-2 border-b border-foreground/25 pb-2.5 transition-colors focus-within:border-primary">
                 <span className="font-mono text-[12px] text-muted-foreground">https://</span>
@@ -37,31 +51,63 @@ const AuditSection = () => {
                   inputMode="url"
                   className="min-w-0 flex-1 bg-transparent text-[15px] text-foreground outline-none placeholder:text-foreground/35"
                 />
-                <Button type="submit" size="sm" className="shrink-0 px-4">Run free audit</Button>
+              </div>
+
+              <div className="mt-5 flex flex-wrap items-center gap-4">
+                <button type="submit" className="btn-base btn-primary group">
+                  Run your free audit
+                  <span data-slot="arrow" aria-hidden>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </button>
+                <a href={SAMPLE_REPORT} target="_blank" rel="noreferrer" className="link-more">
+                  <span data-rule />
+                  See a sample report
+                </a>
               </div>
             </form>
 
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <a href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440" className="link-more">
-                <span data-rule />
-                How it works
-              </a>
-              <span className="inline-flex items-center gap-1.5 text-[12px] text-muted-foreground">
-                <Check className="h-3.5 w-3.5 text-success" /> No login to start
-              </span>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] text-muted-foreground">
+              <Check className="h-3.5 w-3.5 text-success" /> No login to start
+            </span>
+
+            {/* what the report returns */}
+            <dl className="mt-10 border-t border-foreground/10">
+              {deliverables.map((d) => (
+                <div key={d.n} className="flex gap-5 border-b border-foreground/10 py-4">
+                  <span className="mt-[3px] font-mono text-[10.5px] tracking-[0.12em] text-primary">{d.n}</span>
+                  <div className="min-w-0">
+                    <dt className="text-[13.5px] font-semibold tracking-[-0.01em] text-foreground">{d.label}</dt>
+                    <dd className="mt-1 text-[12.5px] leading-[1.5] text-foreground/55">{d.copy}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+
+            {/* editorial depth: cropped lifestyle band, no captions */}
+            <div className="relative mt-8 hidden h-[132px] overflow-hidden rounded-xl border border-foreground/10 md:block">
+              <img
+                src={lifestyleSkincare}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover object-[50%_38%] opacity-[0.42] grayscale"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(90deg, hsl(34 12% 94% / 0.85) 0%, hsl(34 12% 94% / 0.15) 55%, hsl(213 99% 50% / 0.10) 100%)",
+                }}
+                aria-hidden
+              />
             </div>
           </div>
 
-          <div className="relative min-w-0 max-w-full">
-            <div className="absolute -left-5 top-10 hidden h-[78%] w-px bg-primary/30 lg:block" aria-hidden />
+          <div className="relative min-w-0 max-w-full lg:pt-2">
             <AuditScorecard />
-            <a
-              href={AUDIT_URL}
-              className="group mt-3 flex items-center justify-between gap-3 border-t border-foreground/10 pt-3 text-[12px] font-medium text-foreground/70 transition-colors hover:text-foreground"
-            >
-              Audit your brand against the same journey
-              <ArrowUpRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
           </div>
         </div>
       </div>
