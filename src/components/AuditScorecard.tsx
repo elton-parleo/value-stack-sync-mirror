@@ -82,9 +82,9 @@ const AuditScorecard = () => {
             </div>
           </div>
           <div className="min-w-0">
-            <div className="card-heading">1 short of the readiness bar</div>
+            <div className="text-[17px] font-semibold leading-[1.2] text-foreground">One point below readiness</div>
             <p className="mt-2 text-[13.5px] leading-[1.5] text-foreground/60">
-              Readiness sits at 60. Most of the gap is value agents can't resolve, not visibility. 20 points are recoverable.
+              The gap isn't visibility. It's value agents can't resolve. 20 points are recoverable.
             </p>
           </div>
         </div>

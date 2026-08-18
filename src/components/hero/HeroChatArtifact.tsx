@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
-import tatchaAsset from "@/assets/tatcha-water-cream.png.asset.json";
+import waterCreamJar from "@/assets/water-cream-jar.png";
 
 type Phase = "typing" | "standard" | "parleo";
 
@@ -137,7 +137,7 @@ const ChatChrome = ({
         </div>
       </div>
 
-      <div className="h-[420px] p-4 sm:h-[432px] sm:p-5">{children}</div>
+      <div className="h-[392px] p-3.5 sm:h-[400px] sm:p-4">{children}</div>
     </div>
   );
 };
@@ -253,13 +253,15 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
             Merchant value made readable
           </div>
           <motion.img
-            src={tatchaAsset.url}
-            alt="Tatcha The Water Cream"
+            src={waterCreamJar}
+            alt="Tatcha The Water Cream moisturizer jar"
+            width={912}
+            height={912}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: isParleo ? 1.04 : 1 }}
             transition={{ duration: 1.1, ease: EASE }}
-            className="relative z-[1] h-[100px] w-auto object-contain sm:h-[140px]"
-            style={{ filter: "drop-shadow(0 14px 22px hsl(165 40% 18% / 0.18))" }}
+            className="relative z-[1] h-[92px] w-auto object-contain sm:h-[124px]"
+            style={{ filter: "drop-shadow(0 14px 22px hsl(165 20% 25% / 0.16))" }}
           />
         </div>
 

@@ -29,8 +29,13 @@ const HeroSection = () => {
             style={{ lineHeight: 0.98, letterSpacing: '-0.04em', textWrap: 'balance', hyphens: 'none', overflowWrap: 'normal' }}
           >
             Your true value is{' '}
-            <span className="text-primary" style={{ fontStyle: 'italic', fontWeight: 500 }}>invisible</span>
-            {' '}to AI agents.
+            <span
+              className="inline-block pr-[0.09em] text-primary"
+              style={{ fontStyle: 'italic', fontWeight: 500 }}
+            >
+              invisible
+            </span>{' '}
+            to AI agents.
           </h1>
 
 
