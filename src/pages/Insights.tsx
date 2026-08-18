@@ -131,22 +131,10 @@ const Insights = () => {
                   })}
                 </div>
 
-                <div className="border-t border-border">
-                  {visiblePosts.slice(0, 5).map((p, i) => (
-                    <Link
-                      key={p.slug}
-                      to={`/insights/${p.slug}`}
-                      className="group flex items-baseline gap-4 border-b border-border py-3"
-                    >
-                      <span className="w-7 shrink-0 font-mono text-[11px] tabular-nums text-foreground/35 transition-colors group-hover:text-primary">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="flex-1 text-[14px] leading-[1.35] text-foreground/70 transition-colors group-hover:text-foreground md:text-[14.5px]">
-                        {p.title}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
+                <p className="text-[12.5px] leading-[1.5] text-foreground/45">
+                  {visiblePosts.length} {visiblePosts.length === 1 ? "piece" : "pieces"} in this view.
+                  Filter by topic to narrow the feed below.
+                </p>
               </motion.div>
             </div>
           </div>
