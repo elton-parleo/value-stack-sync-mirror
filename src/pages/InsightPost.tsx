@@ -144,7 +144,7 @@ const InsightPost = () => {
 
           <h1
             className="mt-4 font-display text-[32px] text-foreground md:text-[46px]"
-            style={{ lineHeight: 1.04, letterSpacing: "-0.036em", textWrap: "balance" }}
+            style={{ lineHeight: 1.06, letterSpacing: "-0.024em", wordSpacing: "0.045em", textWrap: "balance" }}
           >
             {post.title}
             <span className="ml-2 inline-block h-[8px] w-[8px] translate-y-[-6px] rounded-full bg-primary align-middle md:h-2.5 md:w-2.5" />
