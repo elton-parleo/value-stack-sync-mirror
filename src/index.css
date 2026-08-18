@@ -74,13 +74,15 @@
 @layer utilities {
   .font-display {
     font-weight: 800;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
+    word-spacing: 0.05em;
     line-height: 1.04;
     font-feature-settings: "ss01", "cv11", "cv06";
   }
   .font-heading {
     font-weight: 720;
-    letter-spacing: -0.028em;
+    letter-spacing: -0.022em;
+    word-spacing: 0.04em;
     font-feature-settings: "ss01", "cv11";
   }
   .font-label {
@@ -105,8 +107,9 @@
     position: relative;
     font-size: 34px;
     font-weight: 760;
-    letter-spacing: -0.028em;
-    line-height: 1.02;
+    letter-spacing: -0.022em;
+    word-spacing: 0.045em;
+    line-height: 1.04;
     font-feature-settings: "ss01", "cv11", "cv06";
     text-wrap: balance;
   }
@@ -127,7 +130,8 @@
   .section-heading-accent {
     color: hsl(var(--foreground) / 0.42);
     font-weight: 640;
-    letter-spacing: -0.024em;
+    letter-spacing: -0.018em;
+    word-spacing: 0.045em;
   }
   /* Legacy mark class kept as no-op so any lingering usages don't shift layout. */
   .section-heading-mark { position: relative; }
@@ -167,7 +171,8 @@
   @media (min-width: 768px) {
     .section-heading {
       font-size: 52px;
-      letter-spacing: -0.032em;
+      letter-spacing: -0.026em;
+      word-spacing: 0.04em;
     }
     .section-copy {
       font-size: 16px;

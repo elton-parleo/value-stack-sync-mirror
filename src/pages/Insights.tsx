@@ -116,7 +116,7 @@ const Insights = () => {
               >
                 <h1
                   className="max-w-[620px] font-display text-[34px] leading-[1] text-foreground md:text-[46px]"
-                  style={{ letterSpacing: "-0.03em", textWrap: "balance" }}
+                  style={{ letterSpacing: "-0.022em", wordSpacing: "0.04em", textWrap: "balance" }}
                 >
                   Insights from the new shelf
                   <span className="ml-2 inline-block h-[9px] w-[9px] translate-y-[-5px] rounded-full bg-primary align-middle md:h-2.5 md:w-2.5" />
