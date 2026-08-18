@@ -15,11 +15,9 @@ const InsightPost = () => {
   const post = getPost(slug);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 28, mass: 0.3 });
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setOpenFaq(0);
   }, [slug]);
 
   if (!post) {
@@ -228,48 +226,6 @@ const InsightPost = () => {
             <PostBody blocks={post.body} />
           </div>
 
-          {/* Q&A for answer engines */}
-          {post.faq?.length ? (
-            <section aria-labelledby="faq" className="mt-14 border-t border-border pt-8">
-              <h2 id="faq" className="font-heading text-[20px] text-foreground md:text-[24px]">
-                Questions this answers
-              </h2>
-              <div className="mt-5 flex flex-col divide-y divide-border border-y border-border">
-                {post.faq.map((f, i) => {
-                  const open = openFaq === i;
-                  return (
-                    <div key={f.q}>
-                      <button
-                        onClick={() => setOpenFaq(open ? null : i)}
-                        aria-expanded={open}
-                        className="flex w-full items-start justify-between gap-5 py-4 text-left"
-                      >
-                        <h3 className="text-[15px] font-medium leading-[1.4] text-foreground md:text-[16px]">
-                          {f.q}
-                        </h3>
-                        <span
-                          className={`mt-[2px] shrink-0 text-[15px] text-primary transition-transform duration-300 ${
-                            open ? "rotate-45" : ""
-                          }`}
-                        >
-                          +
-                        </span>
-                      </button>
-                      <div
-                        className={`grid transition-all duration-300 ease-out ${
-                          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                        }`}
-                      >
-                        <p className="overflow-hidden pb-4 pr-8 text-[14.5px] leading-[1.62] text-foreground/65 md:text-[15px]">
-                          {f.a}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          ) : null}
 
           {/* CTA */}
           <div className="relative mt-14 overflow-hidden rounded-2xl bg-code-bg px-7 py-9 md:px-9">
