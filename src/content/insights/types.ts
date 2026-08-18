@@ -13,8 +13,7 @@ export type Block =
   | { type: "list"; items: string[] }
   | { type: "stat"; value: string; label: string }
   | { type: "quote"; text: string }
-  | { type: "pillars"; total: number; items: Pillar[] }
-  | { type: "sources"; items: { claim: string; source: string; date: string; url?: string }[] };
+  | { type: "pillars"; total: number; items: Pillar[] };
 
 export type Category = "Research" | "Benchmark" | "Point of view" | "Framework";
 
