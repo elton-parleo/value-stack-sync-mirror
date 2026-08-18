@@ -15,11 +15,9 @@ const InsightPost = () => {
   const post = getPost(slug);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 28, mass: 0.3 });
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setOpenFaq(0);
   }, [slug]);
 
   if (!post) {
