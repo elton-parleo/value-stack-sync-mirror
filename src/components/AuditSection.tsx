@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import AuditScorecard from "./AuditScorecard";
-import lifestyleSkincare from "@/assets/lifestyle-skincare.jpg";
 
 const AUDIT_URL = "https://audit.parleo.io/";
 const SAMPLE_REPORT = "https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440";
@@ -92,24 +91,6 @@ const AuditSection = () => {
               ))}
             </dl>
 
-            {/* editorial depth: cropped lifestyle band, no captions */}
-            <div className="relative mt-8 hidden h-[132px] overflow-hidden rounded-xl border border-foreground/10 md:block">
-              <img
-                src={lifestyleSkincare}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover object-[50%_38%] opacity-[0.42] grayscale"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, hsl(34 12% 94% / 0.85) 0%, hsl(34 12% 94% / 0.15) 55%, hsl(213 99% 50% / 0.10) 100%)",
-                }}
-                aria-hidden
-              />
-            </div>
           </div>
 
           <div className="relative min-w-0 max-w-full lg:pt-2">
