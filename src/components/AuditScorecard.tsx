@@ -113,14 +113,15 @@ const AuditScorecard = () => {
             </span>
             <span className="pb-2 font-mono text-[11px] tracking-[0.1em] text-foreground/40">/100</span>
           </div>
-          <div className="max-w-[190px] pb-1 text-right">
+          <div className="max-w-[212px] pb-1.5">
             <div className="text-[13px] font-semibold leading-[1.25] text-foreground">
               One point below readiness
             </div>
             <p className="mt-1.5 text-[12px] leading-[1.45] text-foreground/55">
-              20 of the 41 missing points sit in True Value.
+              20 of the 41 missing points sit in True Value
             </p>
           </div>
+
         </div>
 
         {/* 100-point rule with readiness threshold */}
