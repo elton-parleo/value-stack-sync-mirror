@@ -113,18 +113,11 @@
     font-feature-settings: "ss01", "cv11", "cv06";
     text-wrap: balance;
   }
+  /* End-mark removed: the floating dot read as a rendering artifact. */
   .section-heading::after {
-    content: "";
-    display: inline-block;
-    width: 0.36em;
-    height: 0.36em;
-    margin-left: 0.18em;
-    margin-bottom: 0.04em;
-    vertical-align: baseline;
-    background: hsl(var(--primary));
-    border-radius: 1px;
-    transform: translateY(0.02em);
+    content: none;
   }
+
   /* Subtle handcrafted accent for the muted second phrase of a headline.
      Lighter weight + warmer muted tone keeps rhythm without italic. */
   .section-heading-accent {
