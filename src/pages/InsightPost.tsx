@@ -160,19 +160,6 @@ const InsightPost = () => {
             <span className="text-foreground/70">{author}</span>
             <span className="h-[3px] w-[3px] rounded-full bg-foreground/20" />
             <time dateTime={post.date}>{post.dateLabel}</time>
-            {post.linkedInUrl && (
-              <>
-                <span className="h-[3px] w-[3px] rounded-full bg-foreground/20" />
-                <a
-                  href={post.linkedInUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary transition-opacity hover:opacity-70"
-                >
-                  Original on LinkedIn
-                </a>
-              </>
-            )}
           </div>
 
           <figure className="relative mt-9 overflow-hidden rounded-2xl border border-border bg-secondary">
