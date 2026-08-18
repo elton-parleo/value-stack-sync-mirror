@@ -78,7 +78,7 @@ const AnnouncementBanner = ({ onDismiss }: Props) => (
       </span>
 
       {/* CTA */}
-      <span className="ml-auto inline-flex shrink-0 items-center gap-1 rounded-full border border-primary/30 bg-primary/8 px-2.5 py-1 text-[11.5px] font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:ml-3 sm:px-3">
+      <span className="ml-auto inline-flex shrink-0 items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[11.5px] font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:ml-3 sm:px-3">
         Run free
         <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </span>
