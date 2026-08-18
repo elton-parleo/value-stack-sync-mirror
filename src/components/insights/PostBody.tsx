@@ -297,6 +297,9 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
             );
           case "pillars":
             return <PillarsBlock key={i} total={b.total} items={b.items} />;
+          case "leaks":
+            return <LeaksBlock key={i} total={b.total} items={b.items} />;
+
           default: {
             const isLead = firstParagraph;
             firstParagraph = false;
