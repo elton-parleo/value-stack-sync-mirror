@@ -11,7 +11,7 @@ const post: Post = {
   readTime: "6 min read",
   image,
   imageAlt:
-    "An Agentic Value Audit scorecard: a 40 out of 100 score on a 100-tick readiness meter with the readiness bar marked at 60, beside pillar weights for Visibility 32, Accessibility 18 and a highlighted True Value 50 split into four dimensions.",
+    "A sample Agentic Value Audit scorecard: 40 out of 100 with the readiness bar at 60, pillar scores of Visibility 18/32, Accessibility 11/18 and True Value 11/50, beside agent findings from 24 live ChatGPT queries and $775K of modeled annual exposure.",
   author: "Samar Birwadker",
   seoTitle: "How Agent-Ready Is Your Store? Inside the Agentic Value Audit | Parleo",
   seoDescription:
