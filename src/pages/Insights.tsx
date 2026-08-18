@@ -192,6 +192,10 @@ const Insights = () => {
               </Link>
             </motion.div>
           </section>
+        ) : (
+          <section className="mx-auto max-w-content px-6 py-12 md:px-20 md:py-16">
+            <p className="section-copy text-foreground/55">No pieces match this topic yet.</p>
+          </section>
         )}
 
         {/* Remaining stories, numbered editorial rows */}
