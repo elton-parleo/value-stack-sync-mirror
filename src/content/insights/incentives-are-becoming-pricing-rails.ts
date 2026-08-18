@@ -13,6 +13,35 @@ const post: Post = {
   imageAlt:
     "ChatGPT quoting $19.99 for Greenies on Chewy, next to a panel showing three lower published prices the agent missed.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
+  author: "Samar Birwadker",
+  keywords: [
+    "incentives",
+    "pricing infrastructure",
+    "trade promotion",
+    "retail media",
+    "agentic commerce",
+    "autoship pricing",
+  ],
+  takeaways: [
+    "Chewy publishes four prices for the same bag of dog treats: $19.99, $17.98, $17.08 and $11.69. ChatGPT quotes $19.99.",
+    "Incentives are no longer a marketing line. They're the last lever that protects margin without breaking MAP.",
+    "US trade promotion runs $200B+ a year and retail media about $69B. Agents bypass both.",
+    "The brands that win agent channels are the ones whose member prices and deals an agent can actually read.",
+  ],
+  faq: [
+    {
+      q: "Why does an AI agent quote the highest price on the page?",
+      a: "Agents read the top of the pricing ladder: list price. Tiered prices like autoship, first-order discounts and member pricing sit below it in logic the agent has no structured access to, so they never enter the answer.",
+    },
+    {
+      q: "Are incentives now part of pricing infrastructure?",
+      a: "Yes. In agentic commerce, funded incentives determine the price an agent quotes, which determines rank and conversion. That makes them pricing rails rather than promotional spend.",
+    },
+    {
+      q: "How much money sits behind incentives that agents can't see?",
+      a: "Roughly $200B a year in US trade promotion funds the deals, and about $69B in retail media buys the placement layered on top. Agents bypass both.",
+    },
+  ],
   body: [
     { type: "p", text: "In the eyeball era, incentives were a marketing line. Points, member pricing, card-linked offers, subscription discounts. Brands funded them to nudge behavior and mostly treated them as a cost of doing business." },
     { type: "p", text: "In the agentic era incentives become pricing infrastructure, probably the last lever that protects margin without torching MAP or racing everyone to the bottom on list price." },
