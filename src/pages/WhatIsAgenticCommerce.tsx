@@ -195,7 +195,7 @@ const WhatIsAgenticCommerce = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="section-heading max-w-[19ch] text-foreground"
+            className="section-heading text-foreground"
           >
             What is agentic commerce?
           </motion.h1>
@@ -272,7 +272,7 @@ const WhatIsAgenticCommerce = () => {
             accent="agentic commerce"
             body="Same catalog, different reader. Everything that persuades a human is invisible to a machine, and everything a machine needs is usually buried."
             accentTone="muted"
-            maxWidth="22ch"
+            maxWidth="none"
             bodyMaxWidth="60ch"
           >
             Ecommerce vs
@@ -318,7 +318,7 @@ const WhatIsAgenticCommerce = () => {
           <SectionHeading
             accent="in four steps"
             body="Most brands optimize the last step. Agents decide in the middle two, before a cart exists."
-            maxWidth="24ch"
+            maxWidth="none"
             bodyMaxWidth="58ch"
           >
             How an agentic purchase happens
@@ -359,7 +359,7 @@ const WhatIsAgenticCommerce = () => {
               dark
               accent="agents quote the top of it"
               body="A shopper who is already a member pays one price. The agent publishes another. Every line below the first one is funded value that never reaches the answer."
-              maxWidth="26ch"
+              maxWidth="none"
               bodyMaxWidth="60ch"
             >
               Your price is a ladder.
@@ -426,7 +426,7 @@ const WhatIsAgenticCommerce = () => {
           <SectionHeading
             accent="three questions"
             body="Agent-readiness reduces to three sequential tests. Fail the first and the other two never get asked."
-            maxWidth="24ch"
+            maxWidth="none"
             bodyMaxWidth="56ch"
           >
             Agent readiness is
@@ -503,7 +503,7 @@ const WhatIsAgenticCommerce = () => {
 
         {/* FAQ */}
         <AnimatedSection id="faq" className="mx-auto max-w-content px-6 py-14 md:px-20 md:py-20">
-          <SectionHeading accent="answered" maxWidth="22ch">
+          <SectionHeading accent="answered">
             Agentic commerce,
           </SectionHeading>
 
