@@ -8,6 +8,7 @@ Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-li
 
 - [Home](/): Product overview, how Parleo works, integration paths, and team.
 - [Demo](/demo): Interactive Honey for Agents demo — see live enrichment across scenarios with merchant network and developer reference.
+- [What is agentic commerce?](/what-is-agentic-commerce): Definition and field guide. How an agentic purchase happens (intent, retrieval, resolution, execution), the protocols involved (MCP, ACP, UCP, Visa TAP), and why agents quote list price instead of member price.
 - [Insights](/insights): Research, benchmarks, and points of view on how AI agents price, rank, and recommend products.
 
 ## Insights

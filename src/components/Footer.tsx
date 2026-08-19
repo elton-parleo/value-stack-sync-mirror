@@ -26,6 +26,7 @@ const Footer = () => (
 
         <FooterCol title="Insights">
           <FooterLink to="/insights">All posts</FooterLink>
+          <FooterLink to="/what-is-agentic-commerce">What is agentic commerce?</FooterLink>
           <FooterLink to="/insights/incentives-are-becoming-pricing-rails">Pricing rails</FooterLink>
           <FooterLink to="/insights/how-agents-pick-the-best-price">Best price</FooterLink>
         </FooterCol>
