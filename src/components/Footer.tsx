@@ -34,6 +34,7 @@ const Footer = () => (
         <FooterCol title="Company">
           <FooterExternal href="https://audit.parleo.io/">Free Audit</FooterExternal>
           <FooterLink to="/#team">Team</FooterLink>
+          <FooterExternal href="https://www.linkedin.com/company/parleo-sf/">LinkedIn</FooterExternal>
         </FooterCol>
       </div>
 
