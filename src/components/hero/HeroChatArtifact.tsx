@@ -260,7 +260,7 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: isParleo ? 1.04 : 1 }}
             transition={{ duration: 1.1, ease: EASE }}
-            className="relative z-[1] h-[74px] w-auto object-contain sm:h-[118px]"
+            className="relative z-[1] h-[74px] w-auto max-w-[72%] object-contain sm:h-[104px]"
             style={{ filter: "drop-shadow(0 14px 22px hsl(165 20% 25% / 0.16))" }}
           />
         </div>
