@@ -255,8 +255,8 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
           <motion.img
             src={productJar}
             alt="Tatcha The Water Cream moisturizer jar"
-            width={347}
-            height={298}
+            width={700}
+            height={657}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: isParleo ? 1.04 : 1 }}
             transition={{ duration: 1.1, ease: EASE }}
