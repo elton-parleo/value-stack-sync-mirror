@@ -14,7 +14,6 @@ const navItems: NavItem[] = [
   { label: "Product", to: "/#problem" },
   { label: "How it works", to: "https://parleo.io/demo", external: true },
   { label: "Insights", to: "/insights" },
-  { label: "Team", to: "/#team" },
 ];
 
 
