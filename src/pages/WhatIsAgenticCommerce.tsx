@@ -447,7 +447,7 @@ const WhatIsAgenticCommerce = () => {
             The shift
           </SectionHeading>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:items-start">
             <TrafficGrowthChart />
             <ConversionFlipChart />
           </div>
