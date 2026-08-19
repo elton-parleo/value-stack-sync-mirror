@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
-import tatchaAsset from "@/assets/tatcha-water-cream.png.asset.json";
+import productJar from "@/assets/water-cream-jar.webp";
 
 type Phase = "typing" | "standard" | "parleo";
 
@@ -137,7 +137,7 @@ const ChatChrome = ({
         </div>
       </div>
 
-      <div className="h-[392px] p-3.5 sm:h-[400px] sm:p-4">{children}</div>
+      <div className="h-[514px] p-3 sm:h-[400px] sm:p-4">{children}</div>
     </div>
   );
 };
@@ -243,9 +243,9 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
         )}
       </AnimatePresence>
 
-      <div className="grid grid-cols-[34%_1fr] items-stretch sm:grid-cols-[38%_1fr]">
-        {/* Product image well */}
-        <div className="relative flex min-h-[180px] items-center justify-center overflow-hidden border-r border-border/60 bg-[hsl(36_18%_94%)] sm:min-h-[240px]">
+      <div className="grid grid-cols-1 items-stretch sm:grid-cols-[38%_1fr]">
+        {/* Product image well: horizontal band on mobile, side rail from sm up */}
+        <div className="relative flex h-[112px] items-center justify-center overflow-hidden border-b border-border/60 bg-[hsl(36_18%_94%)] sm:h-auto sm:min-h-[240px] sm:border-b-0 sm:border-r">
           <div className="absolute left-3 top-3 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/35 sm:left-4 sm:top-4">
             SKU 320418
           </div>
@@ -253,14 +253,14 @@ const ProductCard = ({ phase }: { phase: Phase }) => {
             Merchant value made readable
           </div>
           <motion.img
-            src={tatchaAsset.url}
+            src={productJar}
             alt="Tatcha The Water Cream moisturizer jar"
-            width={912}
-            height={912}
+            width={347}
+            height={298}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: isParleo ? 1.04 : 1 }}
             transition={{ duration: 1.1, ease: EASE }}
-            className="relative z-[1] h-[92px] w-auto object-contain sm:h-[124px]"
+            className="relative z-[1] h-[74px] w-auto max-w-[72%] object-contain sm:h-[104px]"
             style={{ filter: "drop-shadow(0 14px 22px hsl(165 20% 25% / 0.16))" }}
           />
         </div>
