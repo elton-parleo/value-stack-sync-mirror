@@ -149,7 +149,7 @@ export const ConversionFlipChart = () => {
     { label: "Mar 2025", value: -38 },
     { label: "Mar 2026", value: 42 },
   ];
-  const scale = 46;
+  const scale = 58;
 
   return (
     <Figure
@@ -162,7 +162,7 @@ export const ConversionFlipChart = () => {
         </>
       }
     >
-      <div className="relative" style={{ height: 210 }}>
+      <div className="relative" style={{ height: 280 }}>
         <div className="absolute left-0 right-0 top-1/2 h-px bg-foreground/20" />
         <span className="absolute left-0 top-1/2 -translate-y-[calc(100%+6px)] font-mono text-[10px] tracking-[0.1em] text-foreground/40">
           PARITY
@@ -188,7 +188,7 @@ export const ConversionFlipChart = () => {
                 />
                 <div
                   className="absolute left-0 right-0 flex flex-col items-center"
-                  style={up ? { bottom: `calc(50% + ${pct}% + 10px)` } : { top: `calc(50% + ${pct}% + 10px)` }}
+                  style={up ? { bottom: `calc(50% + ${pct}% + 12px)` } : { top: `calc(50% + ${pct}% + 12px)` }}
                 >
                   <span
                     className={`font-mono text-[22px] font-medium tracking-[-0.02em] md:text-[30px] ${
@@ -205,7 +205,7 @@ export const ConversionFlipChart = () => {
           })}
         </div>
       </div>
-      <div className="mt-4 grid grid-cols-3 gap-4 border-t border-foreground/15 pt-4">
+      <div className="mt-6 grid grid-cols-3 gap-4 border-t border-foreground/15 pt-4">
         {[
           { k: "+12%", v: "Engagement rate" },
           { k: "+48%", v: "Time on site" },
