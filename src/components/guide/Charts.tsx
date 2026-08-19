@@ -79,8 +79,8 @@ export const Figure = ({
 /* ------------------------------------------------------------------ */
 
 const growth = [
-  { period: "Nov–Dec 2025", sub: "Holiday", value: 693 },
-  { period: "Q1 2026", sub: "Jan–Mar", value: 393 },
+  { period: "Nov-Dec 2025", sub: "Holiday", value: 693 },
+  { period: "Q1 2026", sub: "Jan to Mar", value: 393 },
   { period: "Mar 2026", sub: "Latest month", value: 269 },
 ];
 
@@ -278,7 +278,7 @@ export const ForecastRangeChart = () => (
     note="Four independent 2030 estimates, plotted on a log scale because they measure different things: US transacted value, US autonomous value, and global agent-mediated value. The spread is the honest answer."
     source={
       <>
-        Sources: Morgan Stanley, Bain, BCG, McKinsey, 2025–2026{" "}
+        Sources: Morgan Stanley, Bain, BCG, McKinsey, 2025 to 2026{" "}
         <Cite id={["morganstanley", "bain", "bcg", "mckinsey"]} />
       </>
     }
@@ -301,7 +301,7 @@ export const ForecastRangeChart = () => (
                 r.highlight ? "text-primary" : "text-white/75"
               }`}
             >
-              {r.low === r.high ? fmt(r.low) : `${fmt(r.low)}–${fmt(r.high)}`}
+              {r.low === r.high ? fmt(r.low) : `${fmt(r.low)} to ${fmt(r.high)}`}
             </span>
           </div>
           <div className="relative mt-3 h-[10px] w-full overflow-hidden rounded-full bg-white/[0.07]">
@@ -662,7 +662,7 @@ const adoption = [
   { k: "85%", v: "of those say it improved the experience", c: "adobe" },
   { k: "66%", v: "believe AI tools return accurate results", c: "adobe" },
   { k: "23%", v: "made a purchase using AI in the past month", c: "morganstanley" },
-  { k: "30–45%", v: "use generative AI for product research and comparison", c: "bain" },
+  { k: "30 to 45%", v: "use generative AI for product research and comparison", c: "bain" },
   { k: "81%", v: "expect to use agentic tools to shop", c: "bcg" },
 ];
 
