@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
-import productJar from "@/assets/water-cream-jar.webp";
+import productJar from "@/assets/tatcha-water-cream.webp";
 
 type Phase = "typing" | "standard" | "parleo";
 
