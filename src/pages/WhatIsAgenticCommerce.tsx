@@ -50,7 +50,7 @@ const faq = [
   },
   {
     q: "How is agentic commerce different from ecommerce?",
-    a: "Traditional ecommerce optimises a human's path through a storefront: imagery, layout, reviews and checkout flow. Agentic commerce optimises machine-readable structure: whether an agent can retrieve your catalogue, parse your real price and cite your offer inside a single answer. Adobe's visibility benchmark makes the gap concrete, with US retail product pages scoring 66 out of 100 on machine readability while returns policy pages score 82.",
+    a: "Traditional ecommerce optimizes a human's path through a storefront: imagery, layout, reviews and checkout flow. Agentic commerce optimizes machine-readable structure: whether an agent can retrieve your catalog, parse your real price and cite your offer inside a single answer. Adobe's visibility benchmark makes the gap concrete, with US retail product pages scoring 66 out of 100 on machine readability while returns policy pages score 82.",
   },
   {
     q: "How does an agentic commerce transaction work?",
@@ -58,7 +58,7 @@ const faq = [
   },
   {
     q: "What protocols power agentic commerce?",
-    a: "Four layers matter. MCP from Anthropic exposes tools and data to agents. ACP, open-sourced by OpenAI and Stripe in September 2025, standardises agent checkout and powers Instant Checkout in ChatGPT. UCP from Google, launched January 2026, standardises how merchants publish catalogue and offer data. AP2 from Google, backed by more than 60 organisations, carries verifiable payment mandates, alongside network programmes such as Visa Intelligent Commerce and Mastercard Agent Pay. Support is additive rather than exclusive.",
+    a: "Four layers matter. MCP from Anthropic exposes tools and data to agents. ACP, open-sourced by OpenAI and Stripe in September 2025, standardizes agent checkout and powers Instant Checkout in ChatGPT. UCP from Google, launched January 2026, standardizes how merchants publish catalog and offer data. AP2 from Google, backed by more than 60 organizations, carries verifiable payment mandates, alongside network programs such as Visa Intelligent Commerce and Mastercard Agent Pay. Support is additive rather than exclusive.",
   },
   {
     q: "Are AI shopping agents actually accurate?",
@@ -70,11 +70,11 @@ const faq = [
   },
   {
     q: "How much value sits in incentives agents cannot see?",
-    a: "Enough to change rankings. Loyalty points are booked as deferred revenue, and the six largest US airline programmes alone carry roughly $30B of liability, with industry breakage typically running 10% to 20% of points issued. Retail equivalents such as member tiers, funded promotions and issuer offers routinely move the real price by double digits. None of that reaches an agent unless it is published as structured, resolvable data.",
+    a: "Enough to change rankings. Loyalty points are booked as deferred revenue, and the six largest US airline programs alone carry roughly $30B of liability, with industry breakage typically running 10% to 20% of points issued. Retail equivalents such as member tiers, funded promotions and issuer offers routinely move the real price by double digits. None of that reaches an agent unless it is published as structured, resolvable data.",
   },
   {
     q: "How do brands prepare for agentic commerce?",
-    a: "Make three things machine-readable in order. Visibility: a crawlable, structured catalogue an agent can retrieve. Accessibility: an access surface an agent can call, whether MCP tools, an OpenAPI spec or a supported checkout protocol. True value: member price, funded promotion, points and card-linked value resolved before the answer is written. Start by auditing what agents say about you today, then close the gaps that cost the most revenue.",
+    a: "Make three things machine-readable in order. Visibility: a crawlable, structured catalog an agent can retrieve. Accessibility: an access surface an agent can call, whether MCP tools, an OpenAPI spec or a supported checkout protocol. True value: member price, funded promotion, points and card-linked value resolved before the answer is written. Start by auditing what agents say about you today, then close the gaps that cost the most revenue.",
   },
 ];
 
@@ -128,7 +128,7 @@ const steps = [
     n: "04",
     label: "Execution",
     title: "The agent buys or hands off",
-    body: "Agent checkout over ACP, a tokenised network credential, or a deep link back to the storefront. Instant Checkout shipped this step in September 2025.",
+    body: "Agent checkout over ACP, a tokenized network credential, or a deep link back to the storefront. Instant Checkout shipped this step in September 2025.",
     stat: "Over 1M Shopify merchants staged for in-chat checkout",
     cite: ["openai", "stripe"],
   },
@@ -138,12 +138,12 @@ const layers = [
   {
     name: "Visibility",
     q: "Can an agent find you at all?",
-    body: "Crawlable catalogue, structured product data and presence in the feeds agents retrieve from. Fail here and the other two questions never get asked.",
+    body: "Crawlable catalog, structured product data and presence in the feeds agents retrieve from. Fail here and the other two questions never get asked.",
   },
   {
     name: "Accessibility",
     q: "Can an agent query you directly?",
-    body: "An access surface an agent can call: MCP tools, an OpenAPI spec, a checkout protocol it recognises. Shopify made this default in June 2026.",
+    body: "An access surface an agent can call: MCP tools, an OpenAPI spec, a checkout protocol it recognizes. Shopify made this default in June 2026.",
   },
   {
     name: "True value",
@@ -171,15 +171,15 @@ const protocols = [
   {
     name: "UCP",
     owner: "Google",
-    role: "Catalogue and offers",
-    detail: "Launched January 2026 to standardise how merchants publish product and availability data.",
+    role: "Catalog and offers",
+    detail: "Launched January 2026 to standardize how merchants publish product and availability data.",
     carries: false,
   },
   {
     name: "AP2",
     owner: "Google",
     role: "Payment mandates",
-    detail: "Backed by 60+ organisations. Carries verifiable proof of what the shopper authorised.",
+    detail: "Backed by 60+ organizations. Carries verifiable proof of what the shopper authorized.",
     carries: false,
   },
 ];
@@ -210,7 +210,7 @@ const playbook = [
   {
     n: "04",
     t: "Resolve incentives into a number before the answer is written",
-    b: "Member price, funded promotion, points value and card-linked offer collapsed into one quotable figure at retrieval time. This is the layer no protocol standardises, and the one that changes rankings.",
+    b: "Member price, funded promotion, points value and card-linked offer collapsed into one quotable figure at retrieval time. This is the layer no protocol standardizes, and the one that changes rankings.",
   },
   {
     n: "05",
@@ -220,7 +220,7 @@ const playbook = [
   {
     n: "06",
     t: "Re-check quarterly, because the stack moves quarterly",
-    b: "Between April 2025 and June 2026 the ecosystem shipped agent payments, open checkout, a catalogue standard and merchant readiness scoring. Annual planning cycles do not survive that cadence.",
+    b: "Between April 2025 and June 2026 the ecosystem shipped agent payments, open checkout, a catalog standard and merchant readiness scoring. Annual planning cycles do not survive that cadence.",
   },
 ];
 
@@ -357,7 +357,7 @@ const WhatIsAgenticCommerce = () => {
                 <Cite id={["adobe", "dc360"]} /> This guide is the version we wanted when we started
                 Parleo: the measured numbers, the protocol stack as it actually shipped, the
                 benchmark evidence on how good agents really are, and the one layer nobody has
-                standardised yet.
+                standardized yet.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -660,12 +660,12 @@ const WhatIsAgenticCommerce = () => {
                 <h3 className="card-heading">Read the ranking, not the average</h3>
                 <p className="section-copy mt-3">
                   Your returns policy is more legible to an agent than your product page. Your help
-                  centre outranks your catalogue. Retailers optimised the pages a human reads once
+                  center outranks your catalog. Retailers optimized the pages a human reads once
                   and left the pages a machine reads a thousand times.
                 </p>
                 <p className="section-copy mt-4">
                   Loyalty and membership pages score 78, but the number flatters the reality: what is
-                  readable there is the marketing description of the programme, not the eligibility
+                  readable there is the marketing description of the program, not the eligibility
                   logic or the price a member would actually pay.
                   <Cite id="adobe" />
                 </p>
@@ -774,9 +774,9 @@ const WhatIsAgenticCommerce = () => {
             </div>
           </div>
           <p className="section-copy mt-5 max-w-[70ch]">
-            Read that last row across all four. Access, checkout, catalogue and payment authorisation
-            are standardised. What a specific shopper actually pays, once membership, funded
-            promotions, points and issuer offers resolve, is standardised nowhere.
+            Read that last row across all four. Access, checkout, catalog and payment authorization
+            are standardized. What a specific shopper actually pays, once membership, funded
+            promotions, points and issuer offers resolve, is standardized nowhere.
           </p>
         </AnimatedSection>
 
@@ -846,7 +846,7 @@ const WhatIsAgenticCommerce = () => {
                     Funded value is not soft marketing spend
                   </h3>
                   <p className="mt-3 text-[13.5px] leading-[1.6] text-white/58 md:text-[14.5px]">
-                    Points are deferred revenue. The six largest US airline programmes alone carry
+                    Points are deferred revenue. The six largest US airline programs alone carry
                     roughly $30B of loyalty liability, with breakage typically running 10% to 20% of
                     points issued.
                     <Cite id="loyalty" dark /> Retail runs the same mechanics at smaller unit size

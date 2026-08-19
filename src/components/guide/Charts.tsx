@@ -350,7 +350,7 @@ const pages = [
   { name: "Returns", score: 82 },
   { name: "Contact", score: 81 },
   { name: "FAQ", score: 80 },
-  { name: "Help centre", score: 79 },
+  { name: "Help center", score: 79 },
   { name: "Loyalty", score: 78, flag: true },
   { name: "Homepage", score: 75 },
   { name: "Category", score: 74 },
@@ -513,7 +513,7 @@ const milestones: Milestone[] = [
     short: "Apr '25",
     actor: "Visa",
     title: "Intelligent Commerce and AI-ready cards",
-    body: "Visa opens its network to agents through tokenised credentials, working with Anthropic, OpenAI and Stripe. Spend controls and merchant-category limits move into the credential itself.",
+    body: "Visa opens its network to agents through tokenized credentials, working with Anthropic, OpenAI and Stripe. Spend controls and merchant-category limits move into the credential itself.",
     cite: ["atlas"],
   },
   {
@@ -521,7 +521,7 @@ const milestones: Milestone[] = [
     short: "Sep '25",
     actor: "Google",
     title: "AP2 gives agent payments a mandate model",
-    body: "The Agent Payments Protocol launches with more than 60 backing organisations, extending A2A and MCP with verifiable intent and cart mandates so a merchant can prove what the shopper actually authorised.",
+    body: "The Agent Payments Protocol launches with more than 60 backing organizations, extending A2A and MCP with verifiable intent and cart mandates so a merchant can prove what the shopper actually authorized.",
     cite: ["ap2", "atlas"],
   },
   {
@@ -536,15 +536,15 @@ const milestones: Milestone[] = [
     date: "Oct 2025",
     short: "Oct '25",
     actor: "Walmart, PayPal",
-    title: "Catalogue scale arrives",
-    body: "Walmart opens its catalogue to ChatGPT shoppers, and PayPal adopts ACP weeks later, bringing its merchant network and wallet into Instant Checkout. Agent surfaces stop being a pilot.",
+    title: "Catalog scale arrives",
+    body: "Walmart opens its catalog to ChatGPT shoppers, and PayPal adopts ACP weeks later, bringing its merchant network and wallet into Instant Checkout. Agent surfaces stop being a pilot.",
     cite: ["atlas"],
   },
   {
     date: "11 Jan 2026",
     short: "Jan '26",
     actor: "Google",
-    title: "UCP standardises the catalogue side",
+    title: "UCP standardizes the catalog side",
     body: "The Universal Commerce Protocol addresses the half ACP left open: how a merchant publishes structured product, availability and offer data for an agent to retrieve before any checkout exists.",
     cite: ["atlas", "acpchangelog"],
   },
@@ -566,7 +566,7 @@ export const ProtocolTimeline = () => {
     <Figure
       label="Figure 06"
       title="Fifteen months from proposal to infrastructure"
-      note="Payments networks moved first, checkout second, catalogue third, and scoring fourth. Read the sequence and the gap is obvious: every layer standardised except the one carrying what a shopper actually pays."
+      note="Payments networks moved first, checkout second, catalog third, and scoring fourth. Read the sequence and the gap is obvious: every layer standardized except the one carrying what a shopper actually pays."
       source={
         <>
           Sources: primary announcements, compiled <Cite id={["atlas", "acpchangelog", "openai", "ap2"]} />
