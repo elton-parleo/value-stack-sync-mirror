@@ -47,6 +47,24 @@ const readPosts = (root: string): PostMeta[] => {
   return out;
 };
 
+
+interface StaticRoute {
+  path: string;
+  title: string;
+  ogTitle: string;
+  description: string;
+}
+
+const staticRoutes: StaticRoute[] = [
+  {
+    path: "/what-is-agentic-commerce",
+    title: "What Is Agentic Commerce? A Definition and Field Guide | Parleo",
+    ogTitle: "What is agentic commerce?",
+    description:
+      "Agentic commerce is shopping done by AI agents on a buyer's behalf: they search, compare, and increasingly transact. How it works, the protocols behind it, and why agents quote list price instead of your real price.",
+  },
+];
+
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -121,6 +139,39 @@ export const prerenderSocial = (): Plugin => ({
       );
 
       const outDir = path.join(dist, "insights", post.slug);
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(path.join(outDir, "index.html"), html);
+    }
+
+    for (const route of staticRoutes) {
+      const url = `${SITE}${route.path}`;
+      const html = template
+        .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(route.title)}</title>`)
+        .replace(
+          /<meta name="description"[^>]*>/,
+          `<meta name="description" content="${esc(route.description)}" />`,
+        )
+        .replace(/<meta property="og:type"[^>]*>/, `<meta property="og:type" content="article" />`)
+        .replace(
+          /<meta property="og:title"[^>]*>/,
+          `<meta property="og:title" content="${esc(route.ogTitle)}" />`,
+        )
+        .replace(
+          /<meta property="og:description"[^>]*>/,
+          `<meta property="og:description" content="${esc(route.description)}" />`,
+        )
+        .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${url}" />`)
+        .replace(
+          /<meta name="twitter:title"[^>]*>/,
+          `<meta name="twitter:title" content="${esc(route.ogTitle)}" />`,
+        )
+        .replace(
+          /<meta name="twitter:description"[^>]*>/,
+          `<meta name="twitter:description" content="${esc(route.description)}" />`,
+        )
+        .replace("</head>", `  <link rel="canonical" href="${url}" />\n  </head>`);
+
+      const outDir = path.join(dist, route.path.replace(/^\//, ""));
       fs.mkdirSync(outDir, { recursive: true });
       fs.writeFileSync(path.join(outDir, "index.html"), html);
     }
