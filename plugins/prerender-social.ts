@@ -11,6 +11,7 @@ interface PostMeta {
   seoTitle?: string;
   seoDescription?: string;
   imageBase: string;
+  socialImage?: string;
   imageAlt: string;
   date: string;
 }
@@ -33,6 +34,16 @@ const readPosts = (root: string): PostMeta[] => {
     const title = grab(src, "title");
     if (!slug || !title) continue;
     const imgMatch = src.match(/import\s+image\s+from\s+["'](.+?)["']/);
+    const socialMatch = src.match(/import\s+socialImageAsset\s+from\s+["'](.+?\.asset\.json)["']/);
+    let socialImage: string | undefined;
+    if (socialMatch) {
+      const relativePath = socialMatch[1].replace(/^@\//, "src/");
+      const pointerPath = path.join(root, relativePath);
+      if (fs.existsSync(pointerPath)) {
+        const pointer = JSON.parse(fs.readFileSync(pointerPath, "utf8")) as { url?: string };
+        socialImage = pointer.url;
+      }
+    }
     out.push({
       slug,
       title,
@@ -42,6 +53,7 @@ const readPosts = (root: string): PostMeta[] => {
       imageAlt: grab(src, "imageAlt") ?? title,
       date: grab(src, "date") ?? "",
       imageBase: imgMatch ? path.basename(imgMatch[1]).replace(/\.[^.]+$/, "") : "",
+      socialImage,
     });
   }
   return out;
@@ -92,7 +104,11 @@ export const prerenderSocial = (): Plugin => ({
     for (const post of readPosts(root)) {
       const url = `${SITE}/insights/${post.slug}`;
       const asset = findAsset(post.imageBase);
-      const image = asset ? `${SITE}/assets/${asset}` : undefined;
+      const image = post.socialImage
+        ? `${SITE}${post.socialImage}`
+        : asset
+          ? `${SITE}/assets/${asset}`
+          : undefined;
       const title = post.seoTitle ?? `${post.title} | Parleo`;
       const description = post.seoDescription ?? post.dek;
 

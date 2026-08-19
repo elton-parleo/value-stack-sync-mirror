@@ -1,4 +1,5 @@
 import image from "@/assets/insights/rendered/audit-scorecard.webp";
+import socialImageAsset from "@/assets/social/inside-the-agentic-value-audit.jpg.asset.json";
 import type { Post } from "./types";
 
 const post: Post = {
@@ -10,6 +11,7 @@ const post: Post = {
   category: "Point of view",
   readTime: "6 min read",
   image,
+  socialImage: socialImageAsset.url,
   imageAlt:
     "Sample Agentic Value Audit scorecard for an enterprise beauty brand.",
   author: "Samar Birwadker",

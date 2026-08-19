@@ -36,7 +36,8 @@ const InsightPost = () => {
   }
 
   const url = `${SITE}/insights/${post.slug}`;
-  const imageUrl = post.image.startsWith("http") ? post.image : `${SITE}${post.image}`;
+  const socialImage = post.socialImage ?? post.image;
+  const imageUrl = socialImage.startsWith("http") ? socialImage : `${SITE}${socialImage}`;
   const more = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
   const author = post.author ?? "Parleo";
   const wordCount = post.body.reduce(

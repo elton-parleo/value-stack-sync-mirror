@@ -42,6 +42,8 @@ export interface Post {
   category: Category;
   readTime: string;
   image: string;
+  /** Dedicated 1200x630 social card. Falls back to the article image. */
+  socialImage?: string;
   imageAlt: string;
   linkedInUrl?: string;
   author?: string;
