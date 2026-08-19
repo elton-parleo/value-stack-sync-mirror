@@ -26,7 +26,7 @@ const InsightsStrip = () => (
                   src={p.image}
                   alt={p.imageAlt}
                   loading="lazy"
-                  className="h-full w-full scale-[1.02] object-cover object-left-top transition-transform duration-700 group-hover:scale-[1.06]"
+                  className="h-full w-full scale-[1.02] object-cover object-top transition-transform duration-700 group-hover:scale-[1.06]"
                 />
               </div>
             </div>
