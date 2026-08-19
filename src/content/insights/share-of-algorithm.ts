@@ -1,4 +1,4 @@
-import imageAsset from "@/assets/insights/share-of-algorithm.png.asset.json";
+import imageAsset from "@/assets/insights/rendered/share-of-algorithm.webp";
 import type { Post } from "./types";
 
 const post: Post = {
@@ -9,7 +9,7 @@ const post: Post = {
   dateLabel: "August 18, 2026",
   category: "Framework",
   readTime: "6 min read",
-  image: imageAsset.url,
+  image: imageAsset,
   imageAlt:
     "The Share of Algorithm framework: Visibility 32, Accessibility 18, and a highlighted True Value pillar worth 50 points across Price Truth, Value Protocols, Deal Citability and Member Value.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
