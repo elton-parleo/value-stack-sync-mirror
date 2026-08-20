@@ -6,6 +6,7 @@ import {
   DialogDescription,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { captureEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 
 interface ContactFormDialogProps {
@@ -44,6 +45,11 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
         throw new Error(data?.errors?.[0]?.message || "Something went wrong. Please try again.");
       }
       setSucceeded(true);
+      try {
+        captureEvent("contact_form_submitted", { source: "dialog" });
+      } catch {
+        // Analytics must never interrupt the form.
+      }
       try {
         (window as unknown as { oaiq?: (...args: unknown[]) => void }).oaiq?.("measure", "appointment_scheduled", { type: "customer_action" });
       } catch {
