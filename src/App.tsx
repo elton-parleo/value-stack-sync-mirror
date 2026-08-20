@@ -10,6 +10,7 @@ import Insights from "./pages/Insights.tsx";
 import InsightPost from "./pages/InsightPost.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToHash from "./components/ScrollToHash.tsx";
+import PostHogPageView from "./components/PostHogPageView.tsx";
 
 
 const queryClient = new QueryClient();
