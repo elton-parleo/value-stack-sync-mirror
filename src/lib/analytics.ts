@@ -15,6 +15,8 @@ export const initPostHog = () => {
     return;
   }
 
+  console.log("[PostHog] initializing with token", PROJECT_TOKEN.slice(0, 8) + "...", "region", REGION);
+
   posthog.init(PROJECT_TOKEN, {
     api_host: API_HOST,
     capture_pageview: false,
