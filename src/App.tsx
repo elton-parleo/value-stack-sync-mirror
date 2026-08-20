@@ -21,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PostHogPageView />
         <ScrollToHash />
         <Routes>
           <Route path="/" element={<Index />} />
