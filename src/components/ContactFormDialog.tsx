@@ -6,6 +6,7 @@ import {
   DialogDescription,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { captureEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 
 interface ContactFormDialogProps {
