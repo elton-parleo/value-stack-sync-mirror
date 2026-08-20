@@ -845,14 +845,14 @@ const WhatIsAgenticCommerce = () => {
                   <h3 className="text-[17px] font-semibold tracking-[-0.015em] text-white md:text-[19px]">
                     Funded value is not soft marketing spend
                   </h3>
-                  <p className="mt-3 text-[13.5px] leading-[1.6] text-white/58 md:text-[14.5px]">
+                  <p className="mt-3 text-[13.5px] leading-[1.65] text-white/70 md:text-[14.5px]">
                     Points are deferred revenue. The six largest US airline programs alone carry
                     roughly $30B of loyalty liability, with breakage typically running 10% to 20% of
-                    points issued.
-                    <Cite id="loyalty" dark /> Retail runs the same mechanics at smaller unit size
-                    and higher frequency. Every unquoted incentive is money already committed and
-                    then wasted at the exact moment it could have won the comparison.
+                    points issued.<Cite id="loyalty" dark /> Retail runs the same mechanics at
+                    smaller unit size and higher frequency. Every unquoted incentive is money already
+                    committed and then wasted at the exact moment it could have won the comparison.
                   </p>
+
                   <div className="mt-6 grid grid-cols-2 gap-5 border-t border-white/10 pt-5">
                     {[
                       { k: "~$30B", v: "US airline loyalty liability, 2024 filings" },

@@ -17,7 +17,7 @@ const Cite = ({ id, dark = false }: Props) => {
   if (!refs.length) return null;
 
   return (
-    <sup className="ml-[2px] inline-flex gap-[2px] align-super">
+    <sup className="relative -top-[0.35em] ml-[1px] inline-flex gap-[2px] whitespace-nowrap align-baseline text-[0.7em] leading-none">
       {refs.map((r, i) => (
         <a
           key={r!.id}
