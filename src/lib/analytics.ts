@@ -20,11 +20,6 @@ export const initPostHog = () => {
     capture_pageview: false,
     capture_pageleave: true,
     autocapture: true,
-    loaded: (posthogInstance) => {
-      if (import.meta.env.DEV) {
-        posthogInstance.opt_out_capturing();
-      }
-    },
   });
 };
 
