@@ -27,6 +27,10 @@ export const initPostHog = () => {
       console.log("[PostHog] loaded callback fired");
     },
   });
+
+  if (import.meta.env.DEV) {
+    posthog.capture("posthog_dev_test", { source: "analytics.ts" });
+  }
 };
 
 export const capturePageView = (pathname: string) => {
