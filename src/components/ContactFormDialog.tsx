@@ -46,6 +46,11 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
       }
       setSucceeded(true);
       try {
+        captureEvent("contact_form_submitted", { source: "dialog" });
+      } catch {
+        // Analytics must never interrupt the form.
+      }
+      try {
         (window as unknown as { oaiq?: (...args: unknown[]) => void }).oaiq?.("measure", "appointment_scheduled", { type: "customer_action" });
       } catch {
         // Analytics must never interrupt the form.
