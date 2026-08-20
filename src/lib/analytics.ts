@@ -22,6 +22,10 @@ export const initPostHog = () => {
     capture_pageview: false,
     capture_pageleave: true,
     autocapture: true,
+    debug: import.meta.env.DEV,
+    loaded: () => {
+      console.log("[PostHog] loaded callback fired");
+    },
   });
 };
 
