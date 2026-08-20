@@ -31,6 +31,7 @@ export const initPostHog = () => {
 
 export const capturePageView = (pathname: string) => {
   if (!isPostHogEnabled) return;
+  console.log("[PostHog] capturing pageview", pathname);
   posthog.capture("$pageview", { pathname });
 };
 
