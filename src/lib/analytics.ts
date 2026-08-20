@@ -15,27 +15,16 @@ export const initPostHog = () => {
     return;
   }
 
-  console.log("[PostHog] initializing with token", PROJECT_TOKEN.slice(0, 8) + "...", "region", REGION);
-
   posthog.init(PROJECT_TOKEN, {
     api_host: API_HOST,
     capture_pageview: false,
     capture_pageleave: true,
     autocapture: true,
-    debug: import.meta.env.DEV,
-    loaded: () => {
-      console.log("[PostHog] loaded callback fired");
-    },
   });
-
-  if (import.meta.env.DEV) {
-    posthog.capture("posthog_dev_test", { source: "analytics.ts" });
-  }
 };
 
 export const capturePageView = (pathname: string) => {
   if (!isPostHogEnabled) return;
-  console.log("[PostHog] capturing pageview", pathname);
   posthog.capture("$pageview", { pathname });
 };
 
