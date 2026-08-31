@@ -53,20 +53,20 @@ const post: Post = {
   body: [
     {
       type: "p",
-      text: "All week I've been writing about the same gap from different angles: the [Chewy pricing ladder](https://www.chewy.com/greenies-bursting-blueberry-regular/dp/113459) where four published prices collapse into one AI answer, the loyalty flywheels no crawler can resolve, the [Best Price tag](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive) ChatGPT hands to whoever ships a structured feed. The replies mostly asked one thing, and it wasn't about the framework. It was: how do I see this for my own store?",
+      text: "All week I've been circling the same gap from different angles: the [Chewy pricing ladder](https://www.chewy.com/greenies-bursting-blueberry-regular/dp/113459) where four published prices collapse into one AI answer, the loyalty flywheels no crawler can resolve, the [Best Price tag](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive) ChatGPT hands to whoever ships a structured feed. The replies mostly asked one thing, and it wasn't about the framework. It was: how do I see this for my own store?",
     },
     {
       type: "p",
-      text: "So we built the Agentic Value Audit to answer exactly that, and today it's live. Here's what it measures, what it keeps finding, and how to read your own report.",
+      text: "So we built the Agentic Value Audit to answer that, and today it's live. Here's what it measures, what it keeps finding, and how to read your own report.",
     },
     { type: "h", text: "What the audit actually does" },
     {
       type: "p",
-      text: "Two instruments, one run. First, 24 live ChatGPT shopper queries in your category, the questions real buyers ask, with every brand mention, recommendation, price claim and deal citation coded. Second, a full crawl of your site reading exactly what an agent can read: your product markup, your price and offer data, your loyalty pages, your robots rules, and what you've declared into the checkout standards agents transact on.",
+      text: "Two instruments, one run. First, 24 live ChatGPT shopper queries in your category, the questions real buyers ask, with every brand mention, recommendation, price claim and deal citation coded. Second, a full crawl of your site reading exactly what an agent can read: product markup, price and offer data, loyalty pages, robots rules, and whatever you've declared into the checkout standards agents transact on.",
     },
     {
       type: "p",
-      text: "The output is your score out of 100 on the [Share of Algorithm framework](/insights/share-of-algorithm): Visibility 32, Accessibility 18, True Value 50. Three pillars, nine dimensions, one straight sum, and every True Value dimension scored through two lenses, what your pages encode and what agents actually said. Those two disagree constantly, and the gap between them is the diagnosis: a readable price that never gets quoted is a ranking problem, a price that isn't readable at all is an encoding problem, and the fix is different for each.",
+      text: "Out comes your score out of 100 on the [Share of Algorithm framework](/insights/share-of-algorithm): Visibility 32, Accessibility 18, True Value 50. Three pillars, nine dimensions, one straight sum. Every True Value dimension gets scored through two lenses, what your pages encode and what agents actually said, and those two disagree constantly. The gap between them is the diagnosis. A readable price that never gets quoted is a ranking problem. A price that isn't readable at all is an encoding problem. Different fix for each.",
     },
     {
       type: "stat",
@@ -77,7 +77,7 @@ const post: Post = {
     { type: "h", text: "Where the points leak" },
     {
       type: "p",
-      text: "Half the score lives in the four True Value dimensions, and they're where the audit keeps finding the damage.",
+      text: "Half the score lives in the four True Value dimensions, and that's where the audit keeps finding the damage.",
     },
     {
       type: "leaks",
@@ -88,7 +88,7 @@ const post: Post = {
           points: 16,
           test: "Can agents state your real price, and do they",
           detail:
-            "The most common miss is structural: the price in your markup disagrees with the page, or exists on some products and not others, so agents quote stale or partial numbers. Usually the quickest fix and the most embarrassing finding, because it means your own structured data is working against you.",
+            "The most common miss is structural: the price in your markup disagrees with the page, or exists on some products and not others, so agents quote stale or partial numbers. Usually the quickest fix and the most embarrassing finding, because your own structured data is working against you.",
           highlight: true,
         },
         {
@@ -96,7 +96,7 @@ const post: Post = {
           points: 14,
           test: "Can your value execute inside agent checkout",
           detail:
-            "Almost no store has declared anything here yet, which makes it the most forward-looking dimension on the board. The brands that declare first get a structural advantage as the standards mature.",
+            "Almost no store has declared anything here yet, which makes it the most forward-looking dimension on the board. Declare first and the advantage compounds as the standards mature.",
         },
         {
           name: "Deal Citability",
@@ -110,13 +110,13 @@ const post: Post = {
           points: 8,
           test: "Can agents see what members get, and do they say it",
           detail:
-            "Tiers, member pricing, points math, all typically living in PDFs, banners and logged-in pages an agent can't parse. The most painful gap for brands that invested heavily in loyalty, because the investment itself is what's invisible.",
+            "Tiers, member pricing, points math, all of it typically living in PDFs, banners and logged-in pages an agent can't parse. The most painful gap for brands that invested heavily in loyalty, because the investment itself is what's invisible.",
         },
       ],
     },
     {
       type: "p",
-      text: "Our sample run makes it concrete. An enterprise beauty brand, the kind most operators would call sharp, came back 40 out of 100: solid mentions, a readable price on one product page of four, no member value visible anywhere, no deal encoded for an agent to find, nothing declared at checkout, and about $18.4M a year in modeled exposure.",
+      text: "Our sample run makes it concrete. An enterprise beauty brand, the kind most operators would call sharp, came back 40 out of 100: solid mentions, a readable price on one product page of four, no member value visible anywhere, no deal encoded for an agent to find, nothing declared at checkout. About $18.4M a year in modeled exposure.",
     },
     {
       type: "quote",
@@ -131,7 +131,7 @@ const post: Post = {
       type: "list",
       items: [
         "Which pillar is bleeding. A Visibility problem and a True Value problem have different owners and different fixes, and most teams are staffed for the first while the second sits in nobody's inbox. The CMO owns mention rate, the ecommerce team owns the feed, and your loyalty program's AI visibility has no owner at all.",
-        "Which lens is failing. Readable but never quoted means the ranking model is the bottleneck, and the structured feed is your fix. Not readable at all means the machine couldn't find it, and encoding is the fix.",
+        "Which lens is failing. Readable but never quoted means the ranking model is the bottleneck, and the structured feed is your fix. Not readable at all means the machine couldn't find it, so encoding is the fix.",
         "What doesn't apply. Where a dimension genuinely isn't relevant to your model, the report says so and renormalizes rather than quietly docking you. A score you can't trust point by point is a sales pitch, not a measurement.",
       ],
     },
@@ -146,7 +146,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The industry spent twenty years making pages persuasive to people and about two making them legible to machines. That gap is sitting on every P&L as invisible value, and it grows every quarter as [agent-referred traffic compounds](https://www.salesforce.com/news/stories/agentic-search-growth/). The audit is free and takes less time than a coffee: [audit.parleo.io](https://audit.parleo.io). You see your number before we ever see your name, and if the report gets something wrong about your store, tell me. That's the feedback I want most, and it's how the measurement gets better.",
+      text: "The industry spent twenty years making pages persuasive to people and about two making them legible to machines. That gap is sitting on every P&L as invisible value, and it grows every quarter as [agent-referred traffic compounds](https://www.salesforce.com/news/stories/agentic-search-growth/). The audit is free and takes less time than a coffee: [audit.parleo.io](https://audit.parleo.io). You see your number before we ever see your name. And if the report gets something wrong about your store, tell me. That's the feedback I want most, and it's how the measurement gets better.",
     },
   ],
 };
