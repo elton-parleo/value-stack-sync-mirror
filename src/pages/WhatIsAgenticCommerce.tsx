@@ -38,7 +38,7 @@ const DESCRIPTION =
 const faq = [
   {
     q: "What is agentic commerce?",
-    a: "Agentic commerce is commerce where an AI agent does the shopping: it interprets intent, retrieves candidate products, compares them across merchants, and increasingly completes the purchase on the buyer's behalf. Bain defines it as purchases initiated, influenced or completed by third-party or retailer-hosted agents, excluding journeys that only use AI-assisted search. The shopper reads one answer instead of ten tabs, so the agent, not the storefront, becomes the point of decision.",
+    a: "Agentic commerce is commerce where an AI agent does the shopping: it interprets intent, retrieves candidate products, compares them across merchants, and increasingly completes the purchase on the buyer's behalf. Bain defines it as purchases initiated, influenced or completed by third-party or retailer-hosted agents, excluding journeys that only use AI-assisted search. The shopper reads one answer instead of opening ten tabs, so the agent becomes the point of decision, not the storefront.",
   },
   {
     q: "How big is agentic commerce right now?",
@@ -50,31 +50,31 @@ const faq = [
   },
   {
     q: "How is agentic commerce different from ecommerce?",
-    a: "Traditional ecommerce optimizes a human's path through a storefront: imagery, layout, reviews and checkout flow. Agentic commerce optimizes machine-readable structure: whether an agent can retrieve your catalog, parse your real price and cite your offer inside a single answer. Adobe's visibility benchmark makes the gap concrete, with US retail product pages scoring 66 out of 100 on machine readability while returns policy pages score 82.",
+    a: "Traditional ecommerce optimizes a human's path through a storefront: imagery, layout, reviews, checkout flow. Agentic commerce optimizes machine-readable structure: whether an agent can retrieve your catalog, parse your real price and cite your offer inside one answer. Adobe's visibility benchmark makes the gap concrete, with US retail product pages scoring 66 out of 100 on machine readability while returns policy pages score 82.",
   },
   {
     q: "How does an agentic commerce transaction work?",
-    a: "Four steps: intent capture, where the shopper states a constraint set rather than a keyword; retrieval, where the agent pulls candidates from feeds, structured pages and connected APIs; resolution, where the agent ranks on the attributes it can actually parse, usually list price and availability; and execution, where it checks out over a protocol such as ACP or hands a deep link back. Most brand value is won or lost in retrieval and resolution, before a cart exists.",
+    a: "Four steps: intent capture, where the shopper states a constraint set rather than a keyword; retrieval, where the agent pulls candidates from feeds, structured pages and connected APIs; resolution, where the agent ranks on the attributes it can actually parse, usually list price and availability; and execution, where it checks out over a protocol such as ACP or hands a deep link back. Most brand value is won or lost in retrieval and resolution, before a cart even exists.",
   },
   {
     q: "What protocols power agentic commerce?",
-    a: "Four layers matter. MCP from Anthropic exposes tools and data to agents. ACP, open-sourced by OpenAI and Stripe in September 2025, standardizes agent checkout and powers Instant Checkout in ChatGPT. UCP from Google, launched January 2026, standardizes how merchants publish catalog and offer data. AP2 from Google, backed by more than 60 organizations, carries verifiable payment mandates, alongside network programs such as Visa Intelligent Commerce and Mastercard Agent Pay. Support is additive rather than exclusive.",
+    a: "Four layers matter. MCP from Anthropic exposes tools and data to agents. ACP, open-sourced by OpenAI and Stripe in September 2025, standardizes agent checkout and powers Instant Checkout in ChatGPT. UCP from Google, launched January 2026, standardizes how merchants publish catalog and offer data. AP2 from Google, backed by more than 60 organizations, carries verifiable payment mandates, alongside network programs such as Visa Intelligent Commerce and Mastercard Agent Pay. Supporting one doesn't rule out the others.",
   },
   {
     q: "Are AI shopping agents actually accurate?",
-    a: "Not yet reliably. On ShoppingComp, a benchmark of 120 expert-curated tasks and 1,026 real-product scenarios, GPT-5 scored 11.22% and Gemini 2.5 Flash 3.92%. Documented failure modes include missing stated constraints and being misled by promotional claims. On the older WebShop benchmark the best trained agent reached 29% task success against 59% for human experts. Agents compensate by trusting clean, structured data, which is why publishing it matters.",
+    a: "Not reliably, not yet. On ShoppingComp, a benchmark of 120 expert-curated tasks and 1,026 real-product scenarios, GPT-5 scored 11.22% and Gemini 2.5 Flash 3.92%. Documented failure modes include missing stated constraints and being misled by promotional claims. On the older WebShop benchmark the best trained agent reached 29% task success against 59% for human experts. Agents compensate by trusting clean, structured data, which is why publishing it matters.",
   },
   {
     q: "Why do AI agents quote the wrong price?",
-    a: "Because the price agents can read is the list price. Member pricing, funded promotions, points multipliers and card-linked offers usually resolve at checkout or later, and agents overwhelmingly operate in the retrieval and comparison phase. Adobe scores loyalty and membership pages at 78 out of 100 for machine readability, and the eligibility logic behind them is rarely exposed at all. The result is a brand that funded a better price losing to a competitor whose list price is simply lower.",
+    a: "Because the only price agents can read is the list price. Member pricing, funded promotions, points multipliers and card-linked offers usually resolve at checkout or later, and agents overwhelmingly operate in the retrieval and comparison phase. Adobe scores loyalty and membership pages at 78 out of 100 for machine readability, and the eligibility logic behind them is rarely exposed at all. So a brand that funded a better price loses to a competitor whose list price just happens to be lower.",
   },
   {
     q: "How much value sits in incentives agents cannot see?",
-    a: "Enough to change rankings. Loyalty points are booked as deferred revenue, and the six largest US airline programs alone carry roughly $30B of liability, with industry breakage typically running 10% to 20% of points issued. Retail equivalents such as member tiers, funded promotions and issuer offers routinely move the real price by double digits. None of that reaches an agent unless it is published as structured, resolvable data.",
+    a: "Enough to change rankings. Points are booked as deferred revenue, and the six largest US airline programs alone carry roughly $30B of liability, with industry breakage typically running 10% to 20% of points issued. Retail equivalents such as member tiers, funded promotions and issuer offers routinely move the real price by double digits. None of that reaches an agent unless it is published as structured, resolvable data.",
   },
   {
     q: "How do brands prepare for agentic commerce?",
-    a: "Make three things machine-readable in order. Visibility: a crawlable, structured catalog an agent can retrieve. Accessibility: an access surface an agent can call, whether MCP tools, an OpenAPI spec or a supported checkout protocol. True value: member price, funded promotion, points and card-linked value resolved before the answer is written. Start by auditing what agents say about you today, then close the gaps that cost the most revenue.",
+    a: "Make three things machine-readable, in this order. Visibility: a crawlable, structured catalog an agent can retrieve. Accessibility: an access surface an agent can call, whether MCP tools, an OpenAPI spec or a supported checkout protocol. True value: member price, funded promotion, points and card-linked value resolved before the answer is written. Start by auditing what agents say about you today, then close the gaps costing you the most revenue.",
   },
 ];
 
@@ -104,7 +104,7 @@ const steps = [
     n: "01",
     label: "Intent",
     title: "The shopper states a goal",
-    body: "Not a keyword. A constraint set: budget, category, timeline, brand tolerance. Benchmarks show much of that intent stays hidden until the agent asks for it.",
+    body: "Not a keyword. A constraint set: budget, category, timeline, brand tolerance. Benchmarks show a lot of that intent stays hidden until the agent thinks to ask.",
     stat: "662 tasks in EComAgentBench scatter intent across query, profile and clarification",
     cite: ["ecomagent"],
   },
@@ -112,7 +112,7 @@ const steps = [
     n: "02",
     label: "Retrieval",
     title: "The agent pulls candidates",
-    body: "Merchant feeds, structured pages and connected APIs. Anything unreadable is never considered, and a third of an average retail product page is unreadable.",
+    body: "Merchant feeds, structured pages and connected APIs. Anything unreadable never enters the set, and roughly a third of an average retail product page is unreadable.",
     stat: "66 / 100 average machine readability on US retail product pages",
     cite: ["adobe"],
   },
@@ -120,8 +120,8 @@ const steps = [
     n: "03",
     label: "Resolution",
     title: "The agent ranks on what it parsed",
-    body: "Price, availability, shipping, returns. Almost always headline price, because that is the field that is reliably exposed across every merchant in the set.",
-    stat: "Funded price is resolved after this step, so it does not count",
+    body: "Price, availability, shipping, returns. Almost always headline price, because that's the one field reliably exposed across every merchant in the set.",
+    stat: "Funded price resolves after this step, so it never counts",
     cite: [],
   },
   {
@@ -138,7 +138,7 @@ const layers = [
   {
     name: "Visibility",
     q: "Can an agent find you at all?",
-    body: "Crawlable catalog, structured product data and presence in the feeds agents retrieve from. Fail here and the other two questions never get asked.",
+    body: "Crawlable catalog, structured product data, presence in the feeds agents pull from. Fail here and nobody asks the other two questions.",
   },
   {
     name: "Accessibility",
@@ -148,7 +148,7 @@ const layers = [
   {
     name: "True value",
     q: "Can an agent quote your real price?",
-    body: "Member price, funded promotion, points and card-linked value, resolved into a single number before the answer is written. Standardised nowhere.",
+    body: "Member price, funded promotion, points and card-linked value, resolved into one number before the answer is written. Standardized nowhere.",
     highlight: true,
   },
 ];
@@ -195,32 +195,32 @@ const playbook = [
   {
     n: "01",
     t: "Measure what agents can read, not what you published",
-    b: "Run your product templates through a machine-readability check before you touch copy. A third of the average retail product page is invisible to an LLM, and it is rarely the part you would guess.",
+    b: "Run your product templates through a machine-readability check before you touch a word of copy. A third of the average retail product page is invisible to an LLM, and it's rarely the part you'd guess.",
   },
   {
     n: "02",
     t: "Treat the product page as an API with a design on top",
-    b: "Complete structured product markup, resolvable variants, explicit availability and shipping fields. Anything rendered only in client-side script or in an image is not in the candidate set.",
+    b: "Complete structured product markup, resolvable variants, explicit availability and shipping fields. Anything that only renders in client-side script or inside an image isn't in the candidate set.",
   },
   {
     n: "03",
     t: "Publish an access surface, not just a website",
-    b: "An MCP endpoint or an OpenAPI spec turns retrieval from scraping into querying. Merchants on platforms that ship this by default already inherit the advantage.",
+    b: "An MCP endpoint or an OpenAPI spec turns retrieval from scraping into querying. Merchants on platforms that ship it by default already inherit the advantage.",
   },
   {
     n: "04",
     t: "Resolve incentives into a number before the answer is written",
-    b: "Member price, funded promotion, points value and card-linked offer collapsed into one quotable figure at retrieval time. This is the layer no protocol standardizes, and the one that changes rankings.",
+    b: "Member price, funded promotion, points value and card-linked offer, collapsed into one quotable figure at retrieval time. No protocol standardizes this layer, and it's the one that changes rankings.",
   },
   {
     n: "05",
     t: "Instrument agent traffic as its own channel",
-    b: "AI-referred visits engage 12% more, stay 48% longer and convert 42% better. If that sits inside a direct or referral bucket, you are optimising a channel you cannot see.",
+    b: "AI-referred visits engage 12% more, stay 48% longer and convert 42% better. Leave that buried in a direct or referral bucket and you're optimizing a channel you can't see.",
   },
   {
     n: "06",
     t: "Re-check quarterly, because the stack moves quarterly",
-    b: "Between April 2025 and June 2026 the ecosystem shipped agent payments, open checkout, a catalog standard and merchant readiness scoring. Annual planning cycles do not survive that cadence.",
+    b: "Between April 2025 and June 2026 the ecosystem shipped agent payments, open checkout, a catalog standard and merchant readiness scoring. Annual planning cycles don't survive that cadence.",
   },
 ];
 
@@ -353,8 +353,8 @@ const WhatIsAgenticCommerce = () => {
               <p className="section-copy mt-6 max-w-[64ch]">
                 It stopped being a thesis in 2025. AI-referred traffic to US retail sites grew 393%
                 year over year in the first quarter of 2026, and those visits now convert 42% better
-                than every other channel.
-                <Cite id={["adobe", "dc360"]} /> This guide is the version we wanted when we started
+                than any other channel.
+                <Cite id={["adobe", "dc360"]} /> This is the guide we wanted when we started
                 Parleo: the measured numbers, the protocol stack as it actually shipped, the
                 benchmark evidence on how good agents really are, and the one layer nobody has
                 standardized yet.
@@ -440,7 +440,7 @@ const WhatIsAgenticCommerce = () => {
         <AnimatedSection id="demand" className="mx-auto max-w-content px-6 py-14 md:px-20 md:py-20">
           <SectionHeading
             accent="is already measurable"
-            body="Adobe Analytics covers more than a trillion visits to US retail sites, which makes it the closest thing the industry has to a census. Two things happened at once: volume compounded, and quality inverted."
+            body="Adobe Analytics covers more than a trillion visits to US retail sites, which makes it the closest thing this industry has to a census. Two things happened at once. Volume compounded, and quality inverted."
             accentTone="muted"
             bodyMaxWidth="62ch"
           >
@@ -456,16 +456,16 @@ const WhatIsAgenticCommerce = () => {
             <div className="rounded-2xl border border-border bg-[#EAE8E5] p-7 md:p-9">
               <h3 className="card-heading">Why the reversal matters more than the growth</h3>
               <p className="section-copy mt-3 max-w-[58ch]">
-                In March 2025 an AI-referred visit was worth roughly half a normal one. Twelve months
-                later it is the best-performing source a retailer has. That is not a traffic story,
-                it is a qualification story: the agent already filtered for fit, price and
-                availability before the shopper ever landed.
+                In March 2025 an AI-referred visit was worth about half a normal one. Twelve months later
+                it's the best-performing source a retailer has. That's not a traffic story, it's a
+                qualification story: the agent already filtered for fit, price and availability
+                before the shopper ever landed.
                 <Cite id={["adobe", "dc360"]} />
               </p>
               <p className="section-copy mt-4 max-w-[58ch]">
-                Which is exactly why the filtering criteria matter. If an agent qualifies on the
-                price it can read, every merchant whose real price lives behind a login is
-                pre-filtered out of a set they would have won.
+                Which is exactly why the filtering criteria matter. If an agent qualifies on the price it
+                can read, every merchant whose real price lives behind a login gets filtered out of
+                a set they would have won.
               </p>
             </div>
             <div className="relative overflow-hidden rounded-2xl">
@@ -502,7 +502,7 @@ const WhatIsAgenticCommerce = () => {
         <AnimatedSection id="market" className="mx-auto max-w-content px-6 py-14 md:px-20 md:py-20">
           <SectionHeading
             accent="are worth reading as a range"
-            body="Forecasts for a market this young are scenario work, not measurement. What is useful is the convergence: every major house models agentic commerce reaching a double-digit share of ecommerce inside this planning horizon."
+            body="Forecasts for a market this young are scenario work, not measurement. The useful part is the convergence: every major house models agentic commerce reaching a double-digit share of ecommerce inside this planning horizon."
             accentTone="muted"
             bodyMaxWidth="62ch"
           >
@@ -635,7 +635,7 @@ const WhatIsAgenticCommerce = () => {
         >
           <SectionHeading
             accent="is a data problem"
-            body="The most cited finding in Adobe's 2026 retail work is not the traffic number. It is that large portions of retail sites are not readable by machines at all, and the deficit is concentrated exactly where commerce happens."
+            body="The most cited finding in Adobe's 2026 retail work isn't the traffic number. It's that big stretches of retail sites aren't machine-readable at all, and the deficit sits exactly where commerce happens."
             accentTone="muted"
             bodyMaxWidth="62ch"
           >
@@ -659,14 +659,14 @@ const WhatIsAgenticCommerce = () => {
               <div className="rounded-2xl border border-border bg-[#EAE8E5] p-7 md:p-8">
                 <h3 className="card-heading">Read the ranking, not the average</h3>
                 <p className="section-copy mt-3">
-                  Your returns policy is more legible to an agent than your product page. Your help
-                  center outranks your catalog. Retailers optimized the pages a human reads once
-                  and left the pages a machine reads a thousand times.
+                  Your returns policy is more legible to an agent than your product page. Your help center
+                  outranks your catalog. Retailers polished the pages a human reads once and left
+                  alone the pages a machine reads a thousand times.
                 </p>
                 <p className="section-copy mt-4">
-                  Loyalty and membership pages score 78, but the number flatters the reality: what is
-                  readable there is the marketing description of the program, not the eligibility
-                  logic or the price a member would actually pay.
+                  Loyalty and membership pages score 78, which flatters the reality. What's readable there
+                  is the marketing description of the program, not the eligibility logic or the
+                  price a member would actually pay.
                   <Cite id="adobe" />
                 </p>
               </div>
@@ -683,7 +683,7 @@ const WhatIsAgenticCommerce = () => {
         >
           <SectionHeading
             accent="are still narrow"
-            body="It is worth being precise about capability. Academic benchmarks published through 2026 show shopping agents are far from solved, which changes what a merchant should optimise for."
+            body="Worth being precise about capability. Academic benchmarks published through 2026 show shopping agents are nowhere near solved, which changes what a merchant should optimize for."
             accentTone="muted"
             bodyMaxWidth="60ch"
           >
@@ -698,9 +698,9 @@ const WhatIsAgenticCommerce = () => {
                 <h3 className="card-heading">What the failure modes have in common</h3>
                 <ul className="mt-4 flex flex-col gap-3.5">
                   {[
-                    "Requirements arrive scattered across query, profile and clarification, and agents miss the ones nobody restated.",
-                    "Multi-item baskets break on compatibility, delivery fees and coupon validity, none of which are exposed as structured fields.",
-                    "Promotional language is taken at face value, so unverifiable claims outrank verifiable ones.",
+                    "Requirements arrive scattered across query, profile and clarification, and agents drop the ones nobody restated.",
+                    "Multi-item baskets break on compatibility, delivery fees and coupon validity, none of it exposed as a structured field.",
+                    "Promotional language gets taken at face value, so unverifiable claims outrank verifiable ones.",
                   ].map((t) => (
                     <li key={t} className="flex gap-3">
                       <span className="mt-[7px] h-[5px] w-[5px] shrink-0 rounded-full bg-primary" />
@@ -719,9 +719,9 @@ const WhatIsAgenticCommerce = () => {
                   A weak reader rewards a strong publisher.
                 </p>
                 <p className="mt-3 text-[13.5px] leading-[1.6] text-white/55 md:text-[14.5px]">
-                  When an agent cannot reliably verify a claim from a rendered page, it defers to the
-                  cleanest machine-readable source in the candidate set. That is a temporary,
-                  compounding advantage for whoever publishes first.
+                  When an agent can't reliably verify a claim from a rendered page, it defers to the
+                  cleanest machine-readable source in the set. That's a temporary, compounding
+                  advantage for whoever publishes first.
                 </p>
               </div>
             </div>
@@ -737,7 +737,7 @@ const WhatIsAgenticCommerce = () => {
         >
           <SectionHeading
             accent="shipped fast"
-            body="Between April 2025 and June 2026 the plumbing went from proposal to production. The sequence tells you what the industry considered urgent, and what it left out."
+            body="Between April 2025 and June 2026 the plumbing went from proposal to production. The order it shipped in tells you what the industry considered urgent, and what it left out."
             accentTone="muted"
             bodyMaxWidth="60ch"
           >
@@ -788,7 +788,7 @@ const WhatIsAgenticCommerce = () => {
             <SectionHeading
               dark
               accent="agents quote the top of it"
-              body="A member pays one price. The agent publishes another. Every line below the first is funded value that never reaches the answer, and it is booked on your balance sheet either way."
+              body="A member pays one price. The agent publishes another. Every line below the first is funded value that never reaches the answer, and your balance sheet carries it either way."
               bodyMaxWidth="62ch"
             >
               Your price is a ladder.
@@ -835,8 +835,8 @@ const WhatIsAgenticCommerce = () => {
                   <span className="font-mono text-[20px] text-primary">$51.44</span>
                 </div>
                 <p className="mt-4 text-[12px] leading-[1.5] text-white/40">
-                  A 30% gap between quoted and paid is unremarkable in beauty. The agent ranks the
-                  first line and never sees the last.
+                  A 30% gap between quoted and paid is unremarkable in beauty. The agent ranks the first
+                  line and never sees the last.
                 </p>
               </div>
 
@@ -846,11 +846,11 @@ const WhatIsAgenticCommerce = () => {
                     Funded value is not soft marketing spend
                   </h3>
                   <p className="mt-3 text-[13.5px] leading-[1.65] text-white/70 md:text-[14.5px]">
-                    Points are deferred revenue. The six largest US airline programs alone carry
-                    roughly $30B of loyalty liability, with breakage typically running 10% to 20% of
-                    points issued.<Cite id="loyalty" dark /> Retail runs the same mechanics at
-                    smaller unit size and higher frequency. Every unquoted incentive is money already
-                    committed and then wasted at the exact moment it could have won the comparison.
+                    Points are deferred revenue. The six largest US airline programs alone carry roughly
+                    $30B of loyalty liability, with breakage typically running 10% to 20% of points
+                    issued.<Cite id="loyalty" dark /> Retail runs the same mechanics at smaller
+                    unit size and higher frequency. Every unquoted incentive is money already
+                    committed, then wasted at the one moment it could have won the comparison.
                   </p>
 
                   <div className="mt-6 grid grid-cols-2 gap-5 border-t border-white/10 pt-5">
@@ -931,7 +931,7 @@ const WhatIsAgenticCommerce = () => {
         >
           <SectionHeading
             accent="in six moves"
-            body="None of this requires a replatform. It requires treating the machine-readable version of your commerce data as a first-class asset with an owner."
+            body="None of this needs a replatform. It needs someone to own the machine-readable version of your commerce data and treat it as a real asset."
             bodyMaxWidth="58ch"
           >
             What to do about it
@@ -1005,7 +1005,7 @@ const WhatIsAgenticCommerce = () => {
         >
           <SectionHeading
             accent="in full"
-            body="Every figure on this page resolves to one of these. Where a range is quoted, it is the range the source published, not an average we invented."
+            body="Every figure on this page resolves to one of these. Where a range is quoted, it's the range the source published, not an average we invented."
             accentTone="muted"
             bodyMaxWidth="58ch"
           >
@@ -1046,9 +1046,9 @@ const WhatIsAgenticCommerce = () => {
           <p className="mt-6 max-w-[72ch] text-[12.5px] leading-[1.6] text-foreground/45">
             Figures are reproduced as published by each source. Adobe traffic and conversion data
             reflect US retail unless stated. Forecast ranges are scenario estimates and differ in
-            scope: US transacted value, US autonomous value, and global agent-mediated value are not
+            scope: US transacted value, US autonomous value and global agent-mediated value aren't
             directly comparable. The price ladder is an illustrative reconstruction using typical
-            beauty-category incentive depth, not a specific merchant's data.
+            beauty-category incentive depth, not any specific merchant's data.
           </p>
         </AnimatedSection>
 

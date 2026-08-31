@@ -57,16 +57,16 @@ const post: Post = {
   body: [
     {
       type: "p",
-      text: "A few months ago I asked ChatGPT to find the best deal on a bag of Greenies, the 12-count dental treats every dog owner knows. It answered fast and confidently: $19.99. Which is true, that's the list price on [Chewy](https://www.chewy.com/greenies-bursting-blueberry-regular/dp/113459). It's also the worst of four published prices sitting on that same product page: $17.98 if you buy once, $17.08 on autoship, $11.69 on your first autoship order. Nothing hidden, nothing hacky, just Chewy running deliberate pricing design, trading margin for a subscriber because the lifetime value pays for it. The agent saw the top of the ladder and stopped.",
+      text: "A few months ago I asked ChatGPT to find the best deal on a bag of Greenies, the 12-count dental treats every dog owner knows. It came back fast and confident: $19.99. True enough, that's the list price on [Chewy](https://www.chewy.com/greenies-bursting-blueberry-regular/dp/113459). It's also the worst of four prices published on that same page: $17.98 if you buy once, $17.08 on autoship, $11.69 on your first autoship order. Nothing hidden, nothing hacky. Just Chewy running deliberate pricing design, trading margin for a subscriber because the lifetime value pays for it. The agent read the top of the ladder and stopped.",
     },
     {
       type: "p",
-      text: "I've been in and around commerce for twenty years, and I've stopped being surprised by finding these gaps. What got under my skin is that nobody can tell you how wide they run. Not per brand, not per category, not for the channel as a whole.",
+      text: "I've been in and around commerce for twenty years, so gaps like that don't surprise me anymore. What got under my skin is that nobody can tell you how wide they run. Not per brand, not per category, not for the channel as a whole.",
     },
     { type: "h", text: "Every big channel shift mints a new score" },
     {
       type: "p",
-      text: "When the fight was for physical shelf space, Share of Shelf became the metric and an $8B+ measurement industry grew around counting facings, the slots your product physically occupies on a shelf. When broadcast made reach the scarce resource, Share of Voice earned its own $12B+ industry. When discovery moved into the search box, Share of Search became the number underneath $200B+ a year of spend. The sequence is almost boring in its consistency: channel shifts, old metric stops explaining outcomes, somebody names the new one, budgets reorganize around it.",
+      text: "When the fight was for physical shelf space, Share of Shelf became the metric and an $8B+ measurement industry grew around counting facings, the slots your product physically occupies. When broadcast made reach the scarce resource, Share of Voice earned its own $12B+ industry. When discovery moved into the search box, Share of Search became the number underneath $200B+ a year of spend. The sequence is almost boring in its consistency: channel shifts, old metric stops explaining outcomes, somebody names the new one, budgets reorganize around it.",
     },
     {
       type: "list",
@@ -79,7 +79,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The channel is shifting again, faster and with more money behind it than the last three times. [McKinsey sizes US agentic retail around $1T by 2030](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-agentic-commerce-opportunity-how-ai-agents-are-ushering-in-a-new-era-for-consumers-and-merchants), and [Bain puts 15 to 25% of US e-commerce](https://www.bain.com/insights/2030-forecast-how-agentic-ai-will-reshape-us-retail-snap-chart/) through agents by the same date.",
+      text: "It's shifting again, faster and with more money behind it than the last three times. [McKinsey sizes US agentic retail around $1T by 2030](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-agentic-commerce-opportunity-how-ai-agents-are-ushering-in-a-new-era-for-consumers-and-merchants), and [Bain puts 15 to 25% of US e-commerce](https://www.bain.com/insights/2030-forecast-how-agentic-ai-will-reshape-us-retail-snap-chart/) through agents by the same date.",
     },
     {
       type: "stat",
@@ -89,17 +89,17 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "And the early returns already sort by context depth: Walmart's agent runs with full sight of identity, promotions, loyalty and fulfillment and posts 35% bigger baskets and 4x unit growth, while OpenAI's Instant Checkout ran on list price alone and was shut down in March.",
+      text: "The early returns already sort by context depth. Walmart's agent runs with full sight of identity, promotions, loyalty and fulfillment, and posts 35% bigger baskets with 4x unit growth. OpenAI's Instant Checkout ran on list price alone and was shut down in March.",
     },
     { type: "h", text: "The new shelf has a ranking rule" },
     {
       type: "p",
-      text: "[Profound's June research across about a million ChatGPT shopping offers](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive) found that products arriving through structured merchant feeds get ChatGPT's Best Price tag 100% of the time versus 21% for scraped pages, with feed-sourced offers taking the top slot in the answer 99.9% of the time. [Shopify's Q2 2026 commerce data](https://shopify.com/enterprise/blog/ai-search-category-behavior) confirmed the pattern from the platform side: AI-referred shoppers convert 2x better when the agent draws on structured catalog data versus scraped feeds.",
+      text: "[Profound's June research across about a million ChatGPT shopping offers](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive) found that products arriving through structured merchant feeds get ChatGPT's Best Price tag 100% of the time versus 21% for scraped pages, with feed-sourced offers taking the top slot 99.9% of the time. [Shopify's Q2 2026 commerce data](https://shopify.com/enterprise/blog/ai-search-category-behavior) says the same thing from the platform side: AI-referred shoppers convert 2x better when the agent draws on structured catalog data instead of scraped feeds.",
     },
     { type: "quote", text: "Rank is mostly a function of what you handed the machine." },
     {
       type: "p",
-      text: "And the thing almost nobody is handing it is the actual price, the number your best customers pay after the member tier, the card-linked offer, the autoship discount, the promo you funded. That machinery is where retail's margin protection lives, and it is structurally invisible to the systems now making the recommendation.",
+      text: "And the thing almost nobody is handing it is the actual price. The number your best customers pay after the member tier, the card-linked offer, the autoship discount, the promo you funded. That machinery is where retail's margin protection lives, and it's structurally invisible to the systems now making the recommendation.",
     },
     {
       type: "stat",
@@ -110,7 +110,7 @@ const post: Post = {
     { type: "h", text: "Share of Algorithm: three pillars, nine dimensions, one straight sum" },
     {
       type: "p",
-      text: "So we built the fourth one. After Share of Shelf, Share of Voice, and Share of Search, the score for this era is Share of Algorithm: 100 points where every point traces back to something an agent could or could not read about your store. Two pillars are table stakes. The third decides whether your value reaches the answer.",
+      text: "So we built the fourth one. After Share of Shelf, Share of Voice and Share of Search, the score for this era is Share of Algorithm: 100 points, every one of them traceable to something an agent could or could not read about your store. Two pillars are table stakes. The third decides whether your value reaches the answer.",
     },
     {
       type: "pillars",
@@ -158,12 +158,12 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "Notice the phrasing on those True Value dimensions: can agents state it, and do they. Each one is scored through two lenses, what your pages encode and what agents actually said across live shopper queries. Those two disagree constantly, and the disagreement is the diagnosis. A machine-readable price that never gets quoted is a ranking problem. A price that isn't readable at all is an encoding problem. Different fix, different team, different timeline.",
+      text: "Notice the phrasing on those True Value dimensions: can agents state it, and do they. Each one gets scored through both lenses, what your pages encode and what agents actually said across live shopper queries. They disagree constantly, and the disagreement is the diagnosis. A machine-readable price that never gets quoted is a ranking problem. A price that isn't readable at all is an encoding problem. Different fix, different team, different timeline.",
     },
     { type: "h", text: "What the benchmark keeps finding" },
     {
       type: "p",
-      text: "We've started running the benchmark category by category, and the early cuts say the gap is wider than anyone's priced in. In our grooming run, 1 in 31 mentions of the category's top performer cited any incentive at all. The deals are funded, live on the retailer sites, and structurally absent from the channel where the most price-motivated shoppers now start.",
+      text: "We've started running the benchmark category by category, and the early cuts say the gap is wider than anyone's priced in. In our grooming run, 1 in 31 mentions of the category's top performer cited any incentive at all. The deals are funded, they're live on the retailer sites, and they're structurally absent from the channel where the most price-motivated shoppers now start.",
     },
     {
       type: "stat",
@@ -173,11 +173,11 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "And the people who most need the real price are the most steered by whatever the agent surfaces: [PYMNTS found](https://pymnts.com) that paycheck-to-paycheck AI users bought AI-recommended products at twice the rate of everyone else.",
+      text: "The people who most need the real price are the ones most steered by whatever the agent surfaces. [PYMNTS found](https://pymnts.com) that paycheck-to-paycheck AI users bought AI-recommended products at twice the rate of everyone else.",
     },
     {
       type: "p",
-      text: "Commerce has never let a gap this size go unmeasured for long. I'm as guilty as anyone of talking my book here, but the pattern is three for three and that's a pretty hard thing to ignore. One question worth taking back to your own P&L: when an AI agent recommends in your category, does it know what your best customers actually pay? For almost everyone the honest answer is no. That gap is why Share of Algorithm exists.",
+      text: "Commerce has never let a gap this size go unmeasured for long. I'm as guilty as anyone of talking my book, but the pattern is three for three, and that's hard to ignore. One question worth taking back to your own P&L: when an AI agent recommends in your category, does it know what your best customers actually pay? For almost everyone the honest answer is no. That's why Share of Algorithm exists.",
     },
   ],
 };
