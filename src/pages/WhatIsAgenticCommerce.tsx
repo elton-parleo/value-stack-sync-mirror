@@ -38,7 +38,7 @@ const DESCRIPTION =
 const faq = [
   {
     q: "What is agentic commerce?",
-    a: "Agentic commerce is commerce where an AI agent does the shopping: it interprets intent, retrieves candidate products, compares them across merchants, and increasingly completes the purchase on the buyer's behalf. Bain defines it as purchases initiated, influenced or completed by third-party or retailer-hosted agents, excluding journeys that only use AI-assisted search. The shopper reads one answer instead of ten tabs, so the agent, not the storefront, becomes the point of decision.",
+    a: "Agentic commerce is commerce where an AI agent does the shopping: it interprets intent, retrieves candidate products, compares them across merchants, and increasingly completes the purchase on the buyer's behalf. Bain defines it as purchases initiated, influenced or completed by third-party or retailer-hosted agents, excluding journeys that only use AI-assisted search. The shopper reads one answer instead of opening ten tabs, so the agent becomes the point of decision, not the storefront.",
   },
   {
     q: "How big is agentic commerce right now?",
@@ -50,31 +50,31 @@ const faq = [
   },
   {
     q: "How is agentic commerce different from ecommerce?",
-    a: "Traditional ecommerce optimizes a human's path through a storefront: imagery, layout, reviews and checkout flow. Agentic commerce optimizes machine-readable structure: whether an agent can retrieve your catalog, parse your real price and cite your offer inside a single answer. Adobe's visibility benchmark makes the gap concrete, with US retail product pages scoring 66 out of 100 on machine readability while returns policy pages score 82.",
+    a: "Traditional ecommerce optimizes a human's path through a storefront: imagery, layout, reviews, checkout flow. Agentic commerce optimizes machine-readable structure: whether an agent can retrieve your catalog, parse your real price and cite your offer inside one answer. Adobe's visibility benchmark makes the gap concrete, with US retail product pages scoring 66 out of 100 on machine readability while returns policy pages score 82.",
   },
   {
     q: "How does an agentic commerce transaction work?",
-    a: "Four steps: intent capture, where the shopper states a constraint set rather than a keyword; retrieval, where the agent pulls candidates from feeds, structured pages and connected APIs; resolution, where the agent ranks on the attributes it can actually parse, usually list price and availability; and execution, where it checks out over a protocol such as ACP or hands a deep link back. Most brand value is won or lost in retrieval and resolution, before a cart exists.",
+    a: "Four steps: intent capture, where the shopper states a constraint set rather than a keyword; retrieval, where the agent pulls candidates from feeds, structured pages and connected APIs; resolution, where the agent ranks on the attributes it can actually parse, usually list price and availability; and execution, where it checks out over a protocol such as ACP or hands a deep link back. Most brand value is won or lost in retrieval and resolution, before a cart even exists.",
   },
   {
     q: "What protocols power agentic commerce?",
-    a: "Four layers matter. MCP from Anthropic exposes tools and data to agents. ACP, open-sourced by OpenAI and Stripe in September 2025, standardizes agent checkout and powers Instant Checkout in ChatGPT. UCP from Google, launched January 2026, standardizes how merchants publish catalog and offer data. AP2 from Google, backed by more than 60 organizations, carries verifiable payment mandates, alongside network programs such as Visa Intelligent Commerce and Mastercard Agent Pay. Support is additive rather than exclusive.",
+    a: "Four layers matter. MCP from Anthropic exposes tools and data to agents. ACP, open-sourced by OpenAI and Stripe in September 2025, standardizes agent checkout and powers Instant Checkout in ChatGPT. UCP from Google, launched January 2026, standardizes how merchants publish catalog and offer data. AP2 from Google, backed by more than 60 organizations, carries verifiable payment mandates, alongside network programs such as Visa Intelligent Commerce and Mastercard Agent Pay. Supporting one doesn't rule out the others.",
   },
   {
     q: "Are AI shopping agents actually accurate?",
-    a: "Not yet reliably. On ShoppingComp, a benchmark of 120 expert-curated tasks and 1,026 real-product scenarios, GPT-5 scored 11.22% and Gemini 2.5 Flash 3.92%. Documented failure modes include missing stated constraints and being misled by promotional claims. On the older WebShop benchmark the best trained agent reached 29% task success against 59% for human experts. Agents compensate by trusting clean, structured data, which is why publishing it matters.",
+    a: "Not reliably, not yet. On ShoppingComp, a benchmark of 120 expert-curated tasks and 1,026 real-product scenarios, GPT-5 scored 11.22% and Gemini 2.5 Flash 3.92%. Documented failure modes include missing stated constraints and being misled by promotional claims. On the older WebShop benchmark the best trained agent reached 29% task success against 59% for human experts. Agents compensate by trusting clean, structured data, which is why publishing it matters.",
   },
   {
     q: "Why do AI agents quote the wrong price?",
-    a: "Because the price agents can read is the list price. Member pricing, funded promotions, points multipliers and card-linked offers usually resolve at checkout or later, and agents overwhelmingly operate in the retrieval and comparison phase. Adobe scores loyalty and membership pages at 78 out of 100 for machine readability, and the eligibility logic behind them is rarely exposed at all. The result is a brand that funded a better price losing to a competitor whose list price is simply lower.",
+    a: "Because the only price agents can read is the list price. Member pricing, funded promotions, points multipliers and card-linked offers usually resolve at checkout or later, and agents overwhelmingly operate in the retrieval and comparison phase. Adobe scores loyalty and membership pages at 78 out of 100 for machine readability, and the eligibility logic behind them is rarely exposed at all. So a brand that funded a better price loses to a competitor whose list price just happens to be lower.",
   },
   {
     q: "How much value sits in incentives agents cannot see?",
-    a: "Enough to change rankings. Loyalty points are booked as deferred revenue, and the six largest US airline programs alone carry roughly $30B of liability, with industry breakage typically running 10% to 20% of points issued. Retail equivalents such as member tiers, funded promotions and issuer offers routinely move the real price by double digits. None of that reaches an agent unless it is published as structured, resolvable data.",
+    a: "Enough to change rankings. Points are booked as deferred revenue, and the six largest US airline programs alone carry roughly $30B of liability, with industry breakage typically running 10% to 20% of points issued. Retail equivalents such as member tiers, funded promotions and issuer offers routinely move the real price by double digits. None of that reaches an agent unless it is published as structured, resolvable data.",
   },
   {
     q: "How do brands prepare for agentic commerce?",
-    a: "Make three things machine-readable in order. Visibility: a crawlable, structured catalog an agent can retrieve. Accessibility: an access surface an agent can call, whether MCP tools, an OpenAPI spec or a supported checkout protocol. True value: member price, funded promotion, points and card-linked value resolved before the answer is written. Start by auditing what agents say about you today, then close the gaps that cost the most revenue.",
+    a: "Make three things machine-readable, in this order. Visibility: a crawlable, structured catalog an agent can retrieve. Accessibility: an access surface an agent can call, whether MCP tools, an OpenAPI spec or a supported checkout protocol. True value: member price, funded promotion, points and card-linked value resolved before the answer is written. Start by auditing what agents say about you today, then close the gaps costing you the most revenue.",
   },
 ];
 
