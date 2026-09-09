@@ -32,7 +32,7 @@ const IntegrationSection = () => (
           <SectionHeading
             eyebrowNumber="05"
             eyebrow="Protocols"
-            accent="that matters"
+            accent=""
           >
             Ships on every protocol that matters
           </SectionHeading>
