@@ -6,9 +6,10 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Push to mirror
         run: |
           git remote add mirror "https://x-access-token:${{ secrets.MIRROR_TOKEN }}@github.com/elton-parleo/value-stack-sync-mirror.git"
