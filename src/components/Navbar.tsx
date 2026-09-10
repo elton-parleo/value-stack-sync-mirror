@@ -5,7 +5,7 @@ import ContactFormDialog from "./ContactFormDialog";
 import AnnouncementBanner from "./AnnouncementBanner";
 import { Button } from "@/components/ui/button";
 
-const AUDIT_URL = "https://audit.parleo.io/";
+const AUDIT_URL = "https://parleo.io/audit/";
 const BANNER_KEY = "parleo_audit_launch_dismissed";
 
 type NavItem = { label: string; to: string; external?: boolean };

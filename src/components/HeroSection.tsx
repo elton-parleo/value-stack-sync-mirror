@@ -50,7 +50,7 @@ const HeroSection = () => {
 
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
-            <a href="https://audit.parleo.io/" className="btn-base btn-primary group">
+            <a href="https://parleo.io/audit/" className="btn-base btn-primary group">
               Run your free audit
               <span data-slot="arrow" aria-hidden>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
@@ -68,7 +68,7 @@ const HeroSection = () => {
             <span>No email to start</span>
             <span className="h-1 w-1 rounded-full bg-foreground/20" />
             <span>Ready in 10 to 20 minutes</span>
-            <a href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440" target="_blank" rel="noreferrer" className="link-more">
+            <a href="https://parleo.io/audit/r/b41eb69930a14d97b2a7e7a306a17440" target="_blank" rel="noreferrer" className="link-more">
               <span data-rule />
               see a sample report
             </a>

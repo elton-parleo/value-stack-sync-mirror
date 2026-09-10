@@ -43,7 +43,7 @@ const post: Post = {
     },
     {
       q: "How long does the audit take?",
-      a: "Less than a coffee. You give one URL at audit.parleo.io and see your number before we ever see your name.",
+      a: "Less than a coffee. You give one URL at parleo.io/audit and see your number before we ever see your name.",
     },
     {
       q: "What should I fix first?",
@@ -146,7 +146,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The industry spent twenty years making pages persuasive to people and about two making them legible to machines. That gap is sitting on every P&L as invisible value, and it grows every quarter as [agent-referred traffic compounds](https://www.salesforce.com/news/stories/agentic-search-growth/). The audit is free and takes less time than a coffee: [audit.parleo.io](https://audit.parleo.io). You see your number before we ever see your name. And if the report gets something wrong about your store, tell me. That's the feedback I want most, and it's how the measurement gets better.",
+      text: "The industry spent twenty years making pages persuasive to people and about two making them legible to machines. That gap is sitting on every P&L as invisible value, and it grows every quarter as [agent-referred traffic compounds](https://www.salesforce.com/news/stories/agentic-search-growth/). The audit is free and takes less time than a coffee: [parleo.io/audit](https://parleo.io/audit). You see your number before we ever see your name. And if the report gets something wrong about your store, tell me. That's the feedback I want most, and it's how the measurement gets better.",
     },
   ],
 };

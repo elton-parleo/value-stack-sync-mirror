@@ -2,7 +2,7 @@ import { ArrowUpRight, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const AUDIT_URL = "https://audit.parleo.io/";
+const AUDIT_URL = "https://parleo.io/audit/";
 
 type Props = { onDismiss: () => void };
 

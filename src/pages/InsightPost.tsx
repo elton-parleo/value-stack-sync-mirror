@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import PostBody from "@/components/insights/PostBody";
 import { getPost, posts } from "@/content/insights";
 
-const AUDIT_URL = "https://audit.parleo.io/";
+const AUDIT_URL = "https://parleo.io/audit/";
 const SITE = "https://parleo.io";
 
 const InsightPost = () => {

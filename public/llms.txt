@@ -28,4 +28,4 @@ Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-li
 
 - Sub-50ms API response time; ~60% token reduction vs direct crawling (~2K vs ~40K tokens); zero PII transmitted.
 - Supports MCP, ACP, and OpenAPI protocols.
-- Free agent-readiness audit: https://audit.parleo.io
+- Free agent-readiness audit: https://parleo.io/audit

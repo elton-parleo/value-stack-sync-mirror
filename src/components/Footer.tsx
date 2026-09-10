@@ -21,7 +21,7 @@ const Footer = () => (
           <FooterLink to="/#problem">Overview</FooterLink>
           <FooterLink to="/#dashboard">Console</FooterLink>
           <FooterLink to="/#architecture">API</FooterLink>
-          <FooterExternal href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440">How it works</FooterExternal>
+          <FooterExternal href="https://parleo.io/audit/r/b41eb69930a14d97b2a7e7a306a17440">How it works</FooterExternal>
         </FooterCol>
 
         <FooterCol title="Insights">
@@ -32,7 +32,7 @@ const Footer = () => (
         </FooterCol>
 
         <FooterCol title="Company">
-          <FooterExternal href="https://audit.parleo.io/">Free Audit</FooterExternal>
+          <FooterExternal href="https://parleo.io/audit/">Free Audit</FooterExternal>
           <FooterLink to="/#team">Team</FooterLink>
           <FooterExternal href="https://www.linkedin.com/company/parleo-sf/">LinkedIn</FooterExternal>
         </FooterCol>
