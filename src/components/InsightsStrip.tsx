@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
+import InsightThumb from "./InsightThumb";
 import { posts } from "@/content/insights";
 
 const InsightsStrip = () => (
