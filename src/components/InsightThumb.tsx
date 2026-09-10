@@ -16,13 +16,13 @@ interface Focal {
  */
 const FOCAL: Record<string, Focal> = {
   "how-big-is-agentic-commerce": { x: 0.7, y: 0.45, zoom: 2.0 },
-  "loyalty-when-the-customer-is-an-agent": { x: 0.3, y: 0.48, zoom: 1.9 },
-  "trade-spend-when-agents-shop": { x: 0.2, y: 0.52, zoom: 2.0 },
-  "how-ai-shopping-agents-decide": { x: 0.24, y: 0.22, zoom: 1.8 },
-  "inside-the-agentic-value-audit": { x: 0.27, y: 0.4, zoom: 2.1 },
+  "loyalty-when-the-customer-is-an-agent": { x: 0.3, y: 0.56, zoom: 2.0 },
+  "trade-spend-when-agents-shop": { x: 0.16, y: 0.55, zoom: 1.7 },
+  "how-ai-shopping-agents-decide": { x: 0.35, y: 0.45, zoom: 2.0 },
+  "inside-the-agentic-value-audit": { x: 0.22, y: 0.42, zoom: 2.0 },
   "share-of-algorithm": { x: 0.76, y: 0.58, zoom: 2.2 },
-  "how-agents-pick-the-best-price": { x: 0.73, y: 0.18, zoom: 2 },
-  "incentives-are-becoming-pricing-rails": { x: 0.74, y: 0.62, zoom: 2 },
+  "how-agents-pick-the-best-price": { x: 0.78, y: 0.12, zoom: 2.1 },
+  "incentives-are-becoming-pricing-rails": { x: 0.76, y: 0.6, zoom: 1.8 },
   "new-shelf-is-not-human": { x: 0.72, y: 0.72, zoom: 2.1 },
 };
 
