@@ -15,10 +15,10 @@ interface Focal {
  * image's key detail instead. Tuned per article.
  */
 const FOCAL: Record<string, Focal> = {
-  "how-big-is-agentic-commerce": { x: 0.72, y: 0.38, zoom: 2.1 },
-  "loyalty-when-the-customer-is-an-agent": { x: 0.27, y: 0.34, zoom: 1.9 },
-  "trade-spend-when-agents-shop": { x: 0.27, y: 0.55, zoom: 2.1 },
-  "how-ai-shopping-agents-decide": { x: 0.3, y: 0.28, zoom: 1.9 },
+  "how-big-is-agentic-commerce": { x: 0.7, y: 0.45, zoom: 2.0 },
+  "loyalty-when-the-customer-is-an-agent": { x: 0.3, y: 0.48, zoom: 1.9 },
+  "trade-spend-when-agents-shop": { x: 0.2, y: 0.52, zoom: 2.0 },
+  "how-ai-shopping-agents-decide": { x: 0.24, y: 0.22, zoom: 1.8 },
   "inside-the-agentic-value-audit": { x: 0.27, y: 0.4, zoom: 2.1 },
   "share-of-algorithm": { x: 0.76, y: 0.58, zoom: 2.2 },
   "how-agents-pick-the-best-price": { x: 0.73, y: 0.18, zoom: 2 },
