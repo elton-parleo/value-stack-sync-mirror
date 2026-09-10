@@ -13,6 +13,10 @@ Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-li
 
 ## Insights
 
+- [How big is agentic commerce actually going to be?](/insights/how-big-is-agentic-commerce): McKinsey/ICSC forecast ~$1T of US agentic retail by 2030, Bain 15-25% of US e-commerce. Every published figure today is a growth rate (Salesforce +200%, Shopify +197%, Walmart Sparky 4x) with no disclosed base. Only 19% of AI users have ordered through AI.
+- [What happens to loyalty programs when the customer is an agent](/insights/loyalty-when-the-customer-is-an-agent): Google's UCP identity linking is optional and scoped to order reads and checkout, so agents rank on list price and members get "guest experiences." Best Buy, CVS and Ulta member pricing is invisible at the ranking step.
+- [What happens to trade spend when agents do the shopping](/insights/trade-spend-when-agents-shop): $200B+ US trade promotion and ~$69B retail media target a browsing human. In a Parleo grooming sweep, 1.8% of agent brand mentions cited any incentive; the best brand managed 3.2%. Funded but invisible.
+- [How AI shopping agents decide what to recommend](/insights/how-ai-shopping-agents-decide): Four steps: retrieval (feeds win Best Price 100% vs 21% crawled), ranking (UCP filters are category and price), price (list, resolved for a stranger), answer (79% of agent traffic in product/search, 2.34% at checkout). The cheapest legible price wins.
 - [How agent-ready is your store?](/insights/inside-the-agentic-value-audit): Inside the Agentic Value Audit. 24 live ChatGPT queries plus a full crawl, scored out of 100 with the readiness bar at 60. Sample run: 40/100 and ~$18.4M a year in modeled exposure.
 - [Share of Algorithm](/insights/share-of-algorithm): Parleo's 100-point score for how AI agents see a brand. Three pillars and nine dimensions: Visibility (32), Accessibility (18), True Value (50).
 
