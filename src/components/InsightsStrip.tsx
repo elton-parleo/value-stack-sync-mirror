@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
+import InsightThumb from "./InsightThumb";
 import { posts } from "@/content/insights";
 
 const InsightsStrip = () => (
@@ -20,16 +21,12 @@ const InsightsStrip = () => (
       <div className="mt-10 grid gap-x-8 gap-y-10 border-t border-border pt-10 md:grid-cols-3">
         {posts.slice(0, 3).map((p) => (
           <Link key={p.slug} to={`/insights/${p.slug}`} className="group flex flex-col">
-            <div className="overflow-hidden rounded-[10px] border border-border bg-secondary">
-              <div className="aspect-[16/10] w-full">
-                <img
-                  src={p.image}
-                  alt={p.imageAlt}
-                  loading="lazy"
-                  className="h-full w-full scale-[1.02] object-cover object-top transition-transform duration-700 group-hover:scale-[1.06]"
-                />
-              </div>
-            </div>
+            <InsightThumb
+              post={p}
+              aspect="aspect-[16/10]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="rounded-[10px]"
+            />
             <div className="flex flex-1 flex-col pt-5">
               <div className="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.08em] text-muted-foreground">
                 <span className="text-primary">{p.category}</span>
