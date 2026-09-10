@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/audit", "destination": "https://audit.parleo.io/audit" },
+    { "source": "/audit/:path*", "destination": "https://audit.parleo.io/audit/:path*" },
     {
       "source": "/(.*)",
       "destination": "/index.html"
