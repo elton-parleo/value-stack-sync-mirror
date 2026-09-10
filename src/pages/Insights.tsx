@@ -208,13 +208,16 @@ const Insights = () => {
                       {String(postNumber(p.slug)).padStart(2, "0")}
                     </span>
 
-                    <InsightThumb
-                      post={p}
-                      aspect="aspect-[4/3]"
-                      sizes="(max-width: 768px) 120px, 180px"
-                      detail={false}
-                      className="rounded-md"
-                    />
+                    <div className="relative overflow-hidden rounded-md border border-border bg-card">
+                      <img
+                        src={p.image}
+                        alt={p.imageAlt}
+                        loading="lazy"
+                        sizes="(max-width: 768px) 120px, 180px"
+                        className="aspect-[4/3] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      />
+                    </div>
+
 
 
                     <div className="relative flex flex-col justify-center">
