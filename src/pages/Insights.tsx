@@ -207,25 +207,13 @@ const Insights = () => {
                       {String(postNumber(p.slug)).padStart(2, "0")}
                     </span>
 
-                    <div className="relative overflow-hidden rounded-md border border-border/70 bg-secondary">
-                      <div className="aspect-[4/3] w-full md:aspect-[4/3]">
-                        <img
-                          src={p.image}
-                          alt={p.imageAlt}
-                          loading="lazy"
-                          sizes="(max-width: 768px) 120px, 180px"
-                          className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                        />
-                      </div>
-                      <span
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                        style={{
-                          background:
-                            "linear-gradient(to top, hsl(var(--primary) / 0.14), transparent 60%)",
-                        }}
-                      />
-                    </div>
+                    <InsightThumb
+                      post={p}
+                      aspect="aspect-[4/3]"
+                      sizes="(max-width: 768px) 120px, 180px"
+                      detail={false}
+                      className="rounded-md"
+                    />
 
 
                     <div className="relative flex flex-col justify-center">
