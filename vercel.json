@@ -1,7 +1,9 @@
 {
   "rewrites": [
-    { "source": "/audit", "destination": "https://audit.parleo.io/audit" },
-    { "source": "/audit/:path*", "destination": "https://audit.parleo.io/audit/:path*" },
+     { "source": "/audit", "destination": "https://soa-audit.vercel.app/audit/" },
+    { "source": "/audit/:path*", "destination": "https://soa-audit.vercel.app/audit/:path*" },
+    { "source": "/api/public/soa-lite", "destination": "https://soa-audit.vercel.app/api/public/soa-lite" },
+    { "source": "/api/public/soa-lite/:path*", "destination": "https://soa-audit.vercel.app/api/public/soa-lite/:path*" },
     {
       "source": "/(.*)",
       "destination": "/index.html"
