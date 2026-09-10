@@ -28,7 +28,7 @@ import lifestyleHands from "@/assets/lifestyle-hands-product.jpg";
 
 const SITE = "https://parleo.io";
 const URL = `${SITE}/what-is-agentic-commerce`;
-const AUDIT_URL = "https://audit.parleo.io/";
+const AUDIT_URL = "https://parleo.io/audit/";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const TITLE = "What Is Agentic Commerce? Data, Protocols and Forecasts | Parleo";

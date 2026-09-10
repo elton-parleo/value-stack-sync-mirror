@@ -3,8 +3,8 @@ import { Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import AuditScorecard from "./AuditScorecard";
 
-const AUDIT_URL = "https://audit.parleo.io/";
-const SAMPLE_REPORT = "https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440";
+const AUDIT_URL = "https://parleo.io/audit/";
+const SAMPLE_REPORT = "https://parleo.io/audit/r/b41eb69930a14d97b2a7e7a306a17440";
 
 const deliverables = [
   { n: "01", label: "Per retailer price truth", copy: "Every price, promo, and loyalty offset an agent can resolve today." },

@@ -41,7 +41,7 @@ const CTASection = () => {
 
             <div className="flex flex-col gap-3 md:items-end">
               <a
-                href="https://audit.parleo.io/"
+                href="https://parleo.io/audit/"
                 className="btn-base btn-primary group"
               >
                 Run your free audit
@@ -65,7 +65,7 @@ const CTASection = () => {
               </button>
 
               <a
-                href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440"
+                href="https://parleo.io/audit/r/b41eb69930a14d97b2a7e7a306a17440"
                 className="text-[13px] text-background/50 underline decoration-background/25 underline-offset-4 transition-colors hover:text-background"
               >
                 How it works

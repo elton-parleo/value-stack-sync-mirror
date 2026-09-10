@@ -282,7 +282,7 @@ const Insights = () => {
                 </p>
               </div>
               <a
-                href="https://audit.parleo.io"
+                href="https://parleo.io/audit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-base btn-primary group shrink-0 self-start md:self-auto"

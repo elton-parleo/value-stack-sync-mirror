@@ -361,14 +361,14 @@ const ShareOfAlgorithmSection = () => {
                 {/* deeper links out of the framework */}
                 <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-background/10 pt-6">
                   <a
-                    href="https://audit.parleo.io/"
+                    href="https://parleo.io/audit/"
                     className="group inline-flex items-center gap-2 text-[13.5px] font-medium text-background/80 transition-colors hover:text-background"
                   >
                     <span className="inline-block h-px w-3.5 bg-primary transition-all duration-300 group-hover:w-6" />
                     Score your brand on all three pillars, free
                   </a>
                   <a
-                    href="https://audit.parleo.io/r/b41eb69930a14d97b2a7e7a306a17440"
+                    href="https://parleo.io/audit/r/b41eb69930a14d97b2a7e7a306a17440"
                     className="group inline-flex items-center gap-2 text-[13.5px] text-background/55 transition-colors hover:text-background"
                   >
                     <span className="inline-block h-px w-3.5 bg-primary transition-all duration-300 group-hover:w-6" />
