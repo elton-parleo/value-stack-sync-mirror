@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { posts, postNumber } from "@/content/insights";
-import InsightThumb from "@/components/InsightThumb";
+
 import type { Category } from "@/content/insights";
 
 const ease = [0.22, 1, 0.36, 1] as const;
