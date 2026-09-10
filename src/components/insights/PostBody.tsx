@@ -1,8 +1,23 @@
 import { Fragment, type ReactNode } from "react";
-import type { Block, Leak, Pillar } from "@/content/insights";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import type {
+  BarItem,
+  Block,
+  EraItem,
+  FlowStep,
+  GridItem,
+  LadderItem,
+  Leak,
+  Pillar,
+  RecordRow,
+  Source,
+} from "@/content/insights";
 
+const LINK_CLS =
+  "text-foreground underline decoration-primary/40 decoration-1 underline-offset-[3px] transition-colors hover:decoration-primary";
 
-/** Renders inline markdown links: [label](https://url) */
+/** Renders inline markdown links: [label](https://url). Internal links stay in-app. */
 const RichText = ({ text }: { text: string }) => {
   const parts: ReactNode[] = [];
   const re = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -10,22 +25,410 @@ const RichText = ({ text }: { text: string }) => {
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
+    const href = m[2];
     parts.push(
-      <a
-        key={m.index}
-        href={m[2]}
-        target="_blank"
-        rel="noreferrer"
-        className="text-foreground underline decoration-primary/40 decoration-1 underline-offset-[3px] transition-colors hover:decoration-primary"
-      >
-        {m[1]}
-      </a>,
+      href.startsWith("/") ? (
+        <Link key={m.index} to={href} className={LINK_CLS}>
+          {m[1]}
+        </Link>
+      ) : (
+        <a key={m.index} href={href} target="_blank" rel="noreferrer" className={LINK_CLS}>
+          {m[1]}
+        </a>
+      ),
     );
     last = m.index + m[0].length;
   }
   if (last < text.length) parts.push(text.slice(last));
   return <>{parts.map((p, i) => <Fragment key={i}>{p}</Fragment>)}</>;
 };
+
+const reveal = {
+  initial: { opacity: 0, y: 14 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-40px" },
+  transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+};
+
+const Caption = ({ children }: { children: ReactNode }) => (
+  <figcaption className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-foreground/40">
+    {children}
+  </figcaption>
+);
+
+const Frame = ({
+  children,
+  dark = false,
+  className = "",
+}: {
+  children: ReactNode;
+  dark?: boolean;
+  className?: string;
+}) => (
+  <div
+    className={`relative overflow-hidden rounded-2xl border ${
+      dark ? "border-transparent bg-[#0E0E14]" : "border-border bg-[#EAE8E5]"
+    } ${className}`}
+  >
+    <span aria-hidden className="absolute left-0 top-0 h-[2px] w-full bg-primary" />
+    {children}
+  </div>
+);
+
+/** Pipeline: the four steps a product takes to reach an answer, with what drops out. */
+const FlowBlock = ({ steps, caption }: { steps: FlowStep[]; caption?: string }) => (
+  <motion.figure {...reveal} className="my-4 flex flex-col gap-3">
+    <Frame>
+      <ol className="relative grid md:grid-cols-4">
+        {steps.map((s, i) => (
+          <li
+            key={s.label}
+            className={`relative flex flex-col px-5 pb-6 pt-6 md:px-5 ${
+              i > 0 ? "border-t border-border md:border-l md:border-t-0" : ""
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-primary/40 font-mono text-[10.5px] tabular-nums text-primary">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-foreground/45">
+                {s.label}
+              </span>
+            </div>
+            <h3
+              className="mt-4 font-heading text-[17px] leading-[1.15] text-foreground"
+              style={{ letterSpacing: "-0.015em" }}
+            >
+              {s.title}
+            </h3>
+            <p className="mt-2 text-[13px] leading-[1.5] text-foreground/60">{s.text}</p>
+            {s.drop && (
+              <div className="mt-5 flex items-start gap-2 border-t border-dashed border-foreground/20 pt-3">
+                <span
+                  aria-hidden
+                  className="mt-[3px] block h-[10px] w-[10px] shrink-0 rounded-full border-2 border-warning bg-warning/15"
+                />
+                <span className="text-[12px] leading-[1.45] text-foreground/60">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-warning">
+                    Drops out{" "}
+                  </span>
+                  <br />
+                  <span className="line-through decoration-foreground/40">{s.drop}</span>
+                </span>
+              </div>
+            )}
+            {i < steps.length - 1 && (
+              <span
+                aria-hidden
+                className="absolute -right-[9px] top-[27px] hidden h-[18px] w-[18px] rotate-45 border-r border-t border-border bg-[#EAE8E5] md:block"
+              />
+            )}
+          </li>
+        ))}
+      </ol>
+    </Frame>
+    {caption && <Caption>{caption}</Caption>}
+  </motion.figure>
+);
+
+/** Horizontal comparison bars. */
+const BarsBlock = ({
+  title,
+  items,
+  max,
+  caption,
+}: {
+  title?: string;
+  items: BarItem[];
+  max?: number;
+  caption?: string;
+}) => {
+  const top = max ?? Math.max(...items.map((i) => i.value));
+  return (
+    <motion.figure {...reveal} className="my-4 flex flex-col gap-3">
+      <Frame>
+        <div className="px-6 py-6 md:px-8">
+          {title && (
+            <div className="mb-5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-foreground/45">
+              {title}
+            </div>
+          )}
+          <div className="flex flex-col gap-5">
+            {items.map((it) => (
+              <div key={it.label} className="grid gap-2 md:grid-cols-[1fr_auto] md:items-end md:gap-6">
+                <div>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="text-[13.5px] text-foreground/70">{it.label}</span>
+                    <span
+                      className={`font-display text-[26px] leading-none md:text-[32px] ${
+                        it.highlight ? "text-primary" : "text-foreground"
+                      }`}
+                      style={{ letterSpacing: "-0.04em", fontVariantNumeric: "tabular-nums" }}
+                    >
+                      {it.display}
+                    </span>
+                  </div>
+                  <div className="mt-2 h-[8px] w-full overflow-hidden rounded-full bg-foreground/[0.08]">
+                    <motion.span
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${Math.max((it.value / top) * 100, 0.6)}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                      className={`block h-full rounded-full ${
+                        it.highlight ? "bg-primary" : "bg-foreground/35"
+                      }`}
+                    />
+                  </div>
+                  {it.note && (
+                    <p className="mt-1.5 text-[12px] leading-[1.45] text-foreground/50">{it.note}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Frame>
+      {caption && <Caption>{caption}</Caption>}
+    </motion.figure>
+  );
+};
+
+/** Price ladder: every published rung, and the one the agent read. */
+const LadderBlock = ({
+  title,
+  items,
+  caption,
+}: {
+  title: string;
+  items: LadderItem[];
+  caption?: string;
+}) => (
+  <motion.figure {...reveal} className="my-4 flex flex-col gap-3">
+    <Frame>
+      <div className="flex items-center justify-between border-b border-border px-6 py-3.5 md:px-8">
+        <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-foreground/45">
+          {title}
+        </span>
+        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-primary">
+          <span className="h-[6px] w-[6px] rounded-full bg-primary" /> quoted by the agent
+        </span>
+      </div>
+      <ol className="divide-y divide-border">
+        {items.map((it, i) => (
+          <li
+            key={it.label}
+            className={`grid grid-cols-[28px_1fr_auto] items-center gap-4 px-6 py-4 md:px-8 ${
+              it.quoted ? "bg-primary/[0.06]" : ""
+            }`}
+          >
+            <span className="font-mono text-[10.5px] tabular-nums text-foreground/30">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <div
+                className={`text-[14.5px] ${it.quoted ? "text-foreground" : "text-foreground/65"}`}
+              >
+                {it.label}
+              </div>
+              {it.note && <div className="mt-0.5 text-[12px] text-foreground/45">{it.note}</div>}
+            </div>
+            <span
+              className={`font-display text-[22px] leading-none md:text-[26px] ${
+                it.quoted ? "text-primary" : "text-foreground/55"
+              }`}
+              style={{ letterSpacing: "-0.035em", fontVariantNumeric: "tabular-nums" }}
+            >
+              {it.price}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </Frame>
+    {caption && <Caption>{caption}</Caption>}
+  </motion.figure>
+);
+
+/** A merchant record or answer window with the lines the agent never reads greyed out. */
+const RecordBlock = ({
+  title,
+  rows,
+  caption,
+  legend = ["Read by the agent", "In the data, never read"],
+}: {
+  title: string;
+  rows: RecordRow[];
+  caption?: string;
+  legend?: [string, string];
+}) => (
+  <motion.figure {...reveal} className="my-4 flex flex-col gap-3">
+    <Frame dark>
+      <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-3 md:px-7">
+        <div className="flex items-center gap-2">
+          <span className="h-[8px] w-[8px] rounded-full bg-white/15" />
+          <span className="h-[8px] w-[8px] rounded-full bg-white/15" />
+          <span className="h-[8px] w-[8px] rounded-full bg-white/15" />
+          <span className="ml-3 font-mono text-[10.5px] uppercase tracking-[0.14em] text-white/45">
+            {title}
+          </span>
+        </div>
+        <div className="hidden items-center gap-4 font-mono text-[10px] uppercase tracking-[0.1em] sm:flex">
+          <span className="flex items-center gap-1.5 text-white/60">
+            <span className="h-[6px] w-[6px] rounded-full bg-primary" /> {legend[0]}
+          </span>
+          <span className="flex items-center gap-1.5 text-white/30">
+            <span className="h-[6px] w-[6px] rounded-full border border-white/30" /> {legend[1]}
+          </span>
+        </div>
+      </div>
+      <dl className="px-5 py-4 font-mono text-[12.5px] leading-[1.7] md:px-7 md:text-[13px]">
+        {rows.map((r) => (
+          <div
+            key={r.key}
+            className={`grid grid-cols-[minmax(120px,38%)_1fr] gap-4 border-b border-white/[0.05] py-1.5 last:border-0 ${
+              r.unread ? "text-white/25" : "text-white/85"
+            }`}
+          >
+            <dt className={r.unread ? "line-through decoration-white/20" : "text-primary/90"}>
+              {r.key}
+            </dt>
+            <dd className={r.unread ? "line-through decoration-white/20" : ""}>{r.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </Frame>
+    {caption && <Caption>{caption}</Caption>}
+  </motion.figure>
+);
+
+/** Four measurement eras with their spend anchors. */
+const ErasBlock = ({ items, caption }: { items: EraItem[]; caption?: string }) => (
+  <motion.figure {...reveal} className="my-4 flex flex-col gap-3">
+    <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+      {items.map((e, i) => (
+        <div
+          key={e.era}
+          className={`relative overflow-hidden rounded-2xl border px-5 py-5 ${
+            e.current ? "border-transparent bg-[#0E0E14]" : "border-border bg-card"
+          }`}
+        >
+          <span
+            aria-hidden
+            className={`absolute left-0 top-0 h-[2px] w-full ${e.current ? "bg-primary" : "bg-border"}`}
+          />
+          <div className="flex items-center justify-between">
+            <span
+              className={`font-mono text-[10.5px] tabular-nums ${
+                e.current ? "text-primary" : "text-foreground/35"
+              }`}
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span
+              className={`font-mono text-[10px] uppercase tracking-[0.12em] ${
+                e.current ? "text-white/40" : "text-foreground/40"
+              }`}
+            >
+              {e.period}
+            </span>
+          </div>
+          <h3
+            className={`mt-4 font-heading text-[16px] leading-[1.15] ${
+              e.current ? "text-white" : "text-foreground"
+            }`}
+            style={{ letterSpacing: "-0.015em" }}
+          >
+            {e.era}
+          </h3>
+          <p className={`mt-1.5 text-[12.5px] leading-[1.45] ${e.current ? "text-white/50" : "text-foreground/55"}`}>
+            {e.unit}
+          </p>
+          <div
+            className={`mt-6 font-display leading-none ${
+              e.current ? "text-primary" : "text-foreground"
+            } ${e.spend.length > 5 ? "text-[26px]" : "text-[32px]"}`}
+            style={{ letterSpacing: "-0.04em", fontVariantNumeric: "tabular-nums" }}
+          >
+            {e.spend}
+          </div>
+          <div
+            className={`mt-1 font-mono text-[10px] uppercase tracking-[0.12em] ${
+              e.current ? "text-white/40" : "text-foreground/40"
+            }`}
+          >
+            {e.current ? "forecast, uncounted" : "measured"}
+          </div>
+        </div>
+      ))}
+    </div>
+    {caption && <Caption>{caption}</Caption>}
+  </motion.figure>
+);
+
+/** Grid of big numbers. */
+const GridBlock = ({ items, caption }: { items: GridItem[]; caption?: string }) => (
+  <motion.figure {...reveal} className="my-4 flex flex-col gap-3">
+    <Frame>
+      <div className="grid divide-y divide-border sm:grid-cols-2 sm:divide-y-0 md:grid-cols-3">
+        {items.map((g, i) => (
+          <div
+            key={g.label}
+            className={`flex flex-col px-6 py-5 ${
+              i % 3 !== 0 ? "md:border-l md:border-border" : ""
+            } ${i % 2 !== 0 ? "sm:border-l sm:border-border md:border-l-0" : ""} ${
+              i >= 3 ? "md:border-t md:border-border" : ""
+            } ${i >= 2 ? "sm:border-t sm:border-border" : ""}`}
+          >
+            <span
+              className="font-display text-[30px] leading-none text-foreground md:text-[34px]"
+              style={{ letterSpacing: "-0.04em", fontVariantNumeric: "tabular-nums" }}
+            >
+              {g.value}
+            </span>
+            <span className="mt-2 text-[13px] leading-[1.45] text-foreground/65">{g.label}</span>
+            {g.source && (
+              <span className="mt-auto pt-3 font-mono text-[10px] uppercase tracking-[0.1em] text-foreground/40">
+                {g.source}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </Frame>
+    {caption && <Caption>{caption}</Caption>}
+  </motion.figure>
+);
+
+/** Sources ledger with outbound links. */
+const SourcesBlock = ({ items }: { items: Source[] }) => (
+  <section aria-labelledby="sources" className="mt-6 border-t border-border pt-7">
+    <h2 id="sources" className="font-heading text-[16px] text-foreground">
+      Sources
+    </h2>
+    <ol className="mt-4 flex flex-col divide-y divide-border/70">
+      {items.map((s, i) => (
+        <li key={i} className="grid grid-cols-[28px_1fr] gap-3 py-3">
+          <span className="font-mono text-[10.5px] tabular-nums text-foreground/30">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <div className="text-[13px] leading-[1.5]">
+            <span className="text-foreground/70">{s.claim}</span>
+            <div className="mt-0.5 text-[12.5px] text-foreground/45">
+              {s.url ? (
+                <a href={s.url} target="_blank" rel="noreferrer" className={LINK_CLS}>
+                  {s.source}
+                </a>
+              ) : (
+                <span>{s.source}</span>
+              )}
+              <span className="px-1.5 text-foreground/25">·</span>
+              <span>{s.date}</span>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+);
 
 const PillarsBlock = ({ total, items }: { total: number; items: Pillar[] }) => (
   <figure className="my-4 flex flex-col gap-3">
@@ -299,8 +702,24 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
             return <PillarsBlock key={i} total={b.total} items={b.items} />;
           case "leaks":
             return <LeaksBlock key={i} total={b.total} items={b.items} />;
+          case "flow":
+            return <FlowBlock key={i} steps={b.steps} caption={b.caption} />;
+          case "bars":
+            return <BarsBlock key={i} title={b.title} items={b.items} max={b.max} caption={b.caption} />;
+          case "ladder":
+            return <LadderBlock key={i} title={b.title} items={b.items} caption={b.caption} />;
+          case "record":
+            return (
+              <RecordBlock key={i} title={b.title} rows={b.rows} caption={b.caption} legend={b.legend} />
+            );
+          case "eras":
+            return <ErasBlock key={i} items={b.items} caption={b.caption} />;
+          case "grid":
+            return <GridBlock key={i} items={b.items} caption={b.caption} />;
+          case "sources":
+            return <SourcesBlock key={i} items={b.items} />;
 
-          default: {
+          case "p": {
             const isLead = firstParagraph;
             firstParagraph = false;
             return (
@@ -316,6 +735,8 @@ const PostBody = ({ blocks }: { blocks: Block[] }) => {
               </p>
             );
           }
+          default:
+            return null;
         }
       })}
     </div>

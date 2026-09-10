@@ -1,3 +1,7 @@
+import howBig from "./how-big-is-agentic-commerce";
+import loyalty from "./loyalty-when-the-customer-is-an-agent";
+import tradeSpend from "./trade-spend-when-agents-shop";
+import howAgentsDecide from "./how-ai-shopping-agents-decide";
 import auditLaunch from "./inside-the-agentic-value-audit";
 import shareOfAlgorithm from "./share-of-algorithm";
 import bestPrice from "./how-agents-pick-the-best-price";
@@ -5,10 +9,34 @@ import pricingRails from "./incentives-are-becoming-pricing-rails";
 import newShelf from "./new-shelf-is-not-human";
 import type { Post } from "./types";
 
-export type { Post, Block, Category, Pillar, Leak, Faq } from "./types";
+export type {
+  Post,
+  Block,
+  Category,
+  Pillar,
+  Leak,
+  Faq,
+  FlowStep,
+  BarItem,
+  LadderItem,
+  RecordRow,
+  EraItem,
+  GridItem,
+  Source,
+} from "./types";
 
 /** Newest first. Add each new article file here. */
-export const posts: Post[] = [auditLaunch, shareOfAlgorithm, bestPrice, pricingRails, newShelf];
+export const posts: Post[] = [
+  howBig,
+  loyalty,
+  tradeSpend,
+  howAgentsDecide,
+  auditLaunch,
+  shareOfAlgorithm,
+  bestPrice,
+  pricingRails,
+  newShelf,
+];
 
 
 /** Publication order, oldest first. Drives the editorial index numbers. */
