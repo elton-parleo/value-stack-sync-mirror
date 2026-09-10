@@ -21,8 +21,8 @@ const FOCAL: Record<string, Focal> = {
   "how-ai-shopping-agents-decide": { x: 0.35, y: 0.45, zoom: 2.0 },
   "inside-the-agentic-value-audit": { x: 0.22, y: 0.42, zoom: 2.0 },
   "share-of-algorithm": { x: 0.76, y: 0.58, zoom: 2.2 },
-  "how-agents-pick-the-best-price": { x: 0.78, y: 0.12, zoom: 2.1 },
-  "incentives-are-becoming-pricing-rails": { x: 0.76, y: 0.6, zoom: 1.8 },
+  "how-agents-pick-the-best-price": { x: 0.8, y: 0.14, zoom: 1.9 },
+  "incentives-are-becoming-pricing-rails": { x: 0.74, y: 0.58, zoom: 1.6 },
   "new-shelf-is-not-human": { x: 0.72, y: 0.72, zoom: 2.1 },
 };
 
