@@ -66,7 +66,7 @@ const post: Post = {
     { type: "h", text: "Every big channel shift mints a new score" },
     {
       type: "p",
-      text: "When the fight was for physical shelf space, Share of Shelf became the metric and an $8B+ measurement industry grew around counting facings, the slots your product physically occupies. When broadcast made reach the scarce resource, Share of Voice earned its own $12B+ industry. When discovery moved into the search box, Share of Search became the number underneath $200B+ a year of spend. The sequence is almost boring in its consistency: channel shifts, old metric stops explaining outcomes, somebody names the new one, budgets reorganize around it.",
+      text: "Commerce keeps repeating the same move. A channel changes, the old metric stops explaining outcomes, and budgets reorganize around a new one. Physical retail gave us Share of Shelf. Broadcast gave us Share of Voice. Search gave us Share of Search.",
     },
     {
       type: "list",
@@ -177,7 +177,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "Commerce has never let a gap this size go unmeasured for long. I'm as guilty as anyone of talking my book, but the pattern is three for three, and that's hard to ignore. One question worth taking back to your own P&L: when an AI agent recommends in your category, does it know what your best customers actually pay? For almost everyone the honest answer is no. That's why Share of Algorithm exists.",
+      text: "Commerce has never left a gap this large unmeasured for long. I'm as guilty as anyone of talking my book, but the pattern is three for three and hard to ignore. Take one question back to your own P&L: when an AI agent recommends in your category, does it know what your best customers actually pay? For almost everyone, the honest answer is no.",
     },
   ],
 };

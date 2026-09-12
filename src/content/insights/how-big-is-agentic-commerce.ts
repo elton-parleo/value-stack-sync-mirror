@@ -52,7 +52,7 @@ const post: Post = {
   body: [
     {
       type: "p",
-      text: "The forecasts for agentic commerce are enormous and remarkably consistent. The measured size of it today is unknown, and that's not a gap anyone is rushing to close.",
+      text: "Everyone has a forecast for agentic commerce. Almost nobody will tell you how large it is today.",
     },
     {
       type: "p",
@@ -60,7 +60,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "Now try to find what it is right now. You'll find growth rates. You won't find a level.",
+      text: "Try to put a current number beside those forecasts and the trail goes cold. You'll find growth rates, but no level.",
     },
     {
       type: "grid",
@@ -71,8 +71,8 @@ const post: Post = {
       ],
       caption: "Two forecasts, one blank",
     },
-    { type: "h", text: "What is actually measured, and it's all rate of change" },
-    { type: "p", text: "The behavioral data is real and it moves fast." },
+    { type: "h", text: "What has actually been measured" },
+    { type: "p", text: "The behavioral data is real. It also tells a different story from the market forecasts." },
     {
       type: "p",
       text: "[Salesforce](https://www.salesforce.com/news/stories/agentic-search-growth/), working from 1.5 billion shoppers rather than a survey, has agentic search as a first purchase-path step up 200% year over year, with brand-owned discovery down 7% and traditional search down 15% over the same period. [Shopify's Q2 data](https://www.shopify.com/enterprise/blog/ai-search-category-behavior) has AI-referred sessions up 197% year over year with orders up 3x, against organic sessions up 12%.",
@@ -99,12 +99,12 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "Every one of those is a ratio. Up 200%, up 197%, up 4x, doubled. What this means: we can say with confidence that this is accelerating, and we can't say from published data how large it currently is.",
+      text: "Every one of those is a ratio: up 200%, up 197%, up 4x, doubled. The channel is clearly accelerating. Published data still can't tell us how large it is.",
     },
     { type: "h", text: "Nobody has published a denominator" },
     {
       type: "p",
-      text: "Read those numbers again and notice what's missing. Up 200% from what base. 4x of how many units. Doubled from what.",
+      text: "Read the numbers again. Up 200% from what base? Four times how many units? Doubled from what?",
     },
     {
       type: "p",
@@ -116,12 +116,12 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "What this means: when a category can't state its own size, every number in it is a growth rate, and growth rates are the easiest figures to report honestly and the least useful for a decision.",
+      text: "When a category can't state its own size, growth rates fill the vacuum. They're easy to report honestly and hard to use for a decision.",
     },
     { type: "h", text: "The measurement itself is leaking" },
     {
       type: "p",
-      text: "There's a second reason the level is missing, and it's more concerning than the first.",
+      text: "The missing denominator isn't only a reporting choice. The measurement itself leaks.",
     },
     {
       type: "p",
@@ -143,7 +143,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "What this means: the base is unknown partly because the plumbing that would report it was built for a web of clicks and referrers, and agents produce neither reliably.",
+      text: "Part of the base is missing because the plumbing was built for clicks and referrers, and agents produce neither reliably.",
     },
     { type: "h", text: "A growth rate without a denominator" },
     {
@@ -168,7 +168,7 @@ const post: Post = {
       type: "p",
       text: "Each of those numbers existed only after somebody defined the unit and started counting. The forecast for this era is the $1T figure above, and the counting hasn't started. That's the gap [Share of Algorithm](/insights/share-of-algorithm) is meant to fill.",
     },
-    { type: "h", text: "The number that cuts against this" },
+    { type: "h", text: "The transaction gap" },
     {
       type: "p",
       text: "The strongest case against the forecasts is the transaction gap, and it's substantial.",
@@ -192,7 +192,7 @@ const post: Post = {
       type: "p",
       text: "It might not close on schedule. Trust is the binding constraint, and trust in this channel is being spent every time an agent quotes a price that turns out to be wrong. Why that happens so often is the subject of [how AI shopping agents decide what to recommend](/insights/how-ai-shopping-agents-decide).",
     },
-    { type: "h", text: "What I'd actually do with this" },
+    { type: "h", text: "How I'd plan around an unknown" },
     {
       type: "list",
       items: [
@@ -203,7 +203,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "Everyone in commerce is being asked to plan against a number nobody has published. The honest position is that the direction is clear, the slope is steep, and the level is genuinely unknown. I'd rather say that than pick a forecast and pretend it's a measurement.",
+      text: "Everyone in commerce is being asked to plan against a number nobody has published. The direction is clear and the growth is fast. The current level is still genuinely unknown. I'd rather say that plainly than pick a forecast and pretend it's a measurement.",
     },
     {
       type: "sources",
