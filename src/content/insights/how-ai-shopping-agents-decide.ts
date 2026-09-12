@@ -251,59 +251,6 @@ const post: Post = {
       type: "p",
       text: "A recommendation can look considered even when its inputs were thin. The work now is making sure the agent has enough context to deserve the confidence of its answer.",
     },
-    {
-      type: "sources",
-      items: [
-        {
-          claim: "Best Price tag 100% feed vs 21% crawled; 99.9% of feed offers rank first; ~1M offers",
-          source: "Profound, ChatGPT shopping deep dive",
-          date: "Jun 24, 2026",
-          url: "https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive",
-        },
-        {
-          claim: "AI-referred shoppers convert ~2x better on structured catalog data",
-          source: "Shopify Enterprise, Q2 2026 commerce data",
-          date: "Aug 11, 2026",
-          url: "https://www.shopify.com/enterprise/blog/ai-search-category-behavior",
-        },
-        {
-          claim: "UCP Catalog Search defines two standard filters, category and price",
-          source: "UCP specification, search filters",
-          date: "Verified Aug 14, 2026",
-          url: "https://ucp.dev/specification/catalog/search/",
-        },
-        {
-          claim: "UCP Identity Linking is OAuth, optional, scopes are order reads and checkout management; \"guest experiences\"",
-          source: "Google Merchant UCP documentation",
-          date: "May 28, 2026",
-          url: "https://developers.google.com/merchant/ucp/guides/identity-linking",
-        },
-        {
-          claim: "Greenies 12 ct, four published prices: $19.99 / $17.98 / $17.08 / $11.69",
-          source: "Chewy product page",
-          date: "Verified Aug 6, 2026",
-          url: "https://www.chewy.com/greenies-bursting-blueberry-regular/dp/113459",
-        },
-        {
-          claim: "79% of agent activity on product and search routes vs 2.34% at checkout",
-          source: "HUMAN Security, State of Agentic Traffic",
-          date: "Jun 2026",
-          url: "https://www.humansecurity.com/learn/blog/state-of-agentic-traffic-june-2026-browser-agent-tooling-for-developers-is-catching-on-fast",
-        },
-        {
-          claim: "80% want a quality deal vs 58% merely the lowest price",
-          source: "XCCommerce / SmartBrief / NRF Shopper Study",
-          date: "Feb 18, 2026",
-          url: "https://www.businesswire.com/news/home/20260218739034/en/Shopper-Study-More-Than-70-of-Shoppers-Turn-to-AI-to-Find-Deals",
-        },
-        {
-          claim: "11% would let AI make the purchase decision; 54% double-check GenAI",
-          source: "Gartner newsroom",
-          date: "May 27, 2026",
-          url: "https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions",
-        },
-      ],
-    },
   ],
 };
 

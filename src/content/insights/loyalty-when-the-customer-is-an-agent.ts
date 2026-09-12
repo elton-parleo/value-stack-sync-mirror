@@ -209,59 +209,6 @@ const post: Post = {
       type: "p",
       text: "Retailers spent thirty years teaching customers that identifying yourself gets you a better price. The new shopper doesn't identify itself until the very end, and by then the choice has been made. The mechanics of that ranking step are in [how AI shopping agents decide what to recommend](/insights/how-ai-shopping-agents-decide).",
     },
-    {
-      type: "sources",
-      items: [
-        {
-          claim: "UCP Identity Linking is OAuth 2.0, marked optional, scopes are order:read and checkout:manage, no catalog or search scope; \"guest experiences\"",
-          source: "Google Merchant UCP documentation",
-          date: "May 28, 2026",
-          url: "https://developers.google.com/merchant/ucp/guides/identity-linking",
-        },
-        {
-          claim: "Eligibility and policy enforcement occur at checkout using binding transaction data",
-          source: "UCP specification, catalog context",
-          date: "Verified Aug 14, 2026",
-          url: "https://ucp.dev/specification/catalog/",
-        },
-        {
-          claim: "My Best Buy Plus $29.99/yr, member prices on 441 SKUs on the deals page",
-          source: "Best Buy membership page",
-          date: "Verified Aug 6, 2026",
-          url: "https://www.bestbuy.com/site/best-buy-membership/my-best-buy-plus/pcmcat1679666014312.c",
-        },
-        {
-          claim: "CVS ExtraCare Plus $48/yr returning $120 ExtraBucks plus 20% off CVS Health brand (terms verified, SKU price illustrative)",
-          source: "CVS ExtraCare Plus",
-          date: "Verified Aug 2026",
-          url: "https://www.cvs.com/extracare/plus",
-        },
-        {
-          claim: "Ulta points ~3.0¢ at 100-point redemption, ~6.25¢ at 2,000 (earn rules verified on Ulta FAQ, cent values third-party)",
-          source: "Ulta Rewards FAQ",
-          date: "Verified Aug 2026",
-          url: "https://www.ulta.com/rewards/faq",
-        },
-        {
-          claim: "80% want a quality deal vs 58% merely the lowest price; 60% would abandon over inconsistent pricing",
-          source: "XCCommerce / SmartBrief / NRF Shopper Study",
-          date: "Feb 18, 2026",
-          url: "https://www.businesswire.com/news/home/20260218739034/en/Shopper-Study-More-Than-70-of-Shoppers-Turn-to-AI-to-Find-Deals",
-        },
-        {
-          claim: "Only 19% of AI users ordered via AI",
-          source: "PYMNTS, The Overlap Effect, n=2,160",
-          date: "Aug 5, 2026",
-          url: "https://www.pymnts.com/news/retail/2026/ai-finds-the-deal-shoppers-still-make-the-call/",
-        },
-        {
-          claim: "11% would let AI make the purchase decision",
-          source: "Gartner newsroom",
-          date: "May 27, 2026",
-          url: "https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions",
-        },
-      ],
-    },
   ],
 };
 

@@ -216,50 +216,6 @@ const post: Post = {
       type: "p",
       text: "Retail's promotional machinery is one of the most sophisticated pricing systems ever built. It was built to persuade people. The reader changed, and almost none of it has been translated.",
     },
-    {
-      type: "sources",
-      items: [
-        {
-          claim: "$200B+ US trade promotion",
-          source: "Strategy&/PwC, zero-based trade for CPG",
-          date: "Industry figure",
-          url: "https://www.strategyand.pwc.com/gx/en/insights/2017/zbt-for-cpg-leaders.html",
-        },
-        {
-          claim: "~$69B US retail media",
-          source: "eMarketer retail media forecast",
-          date: "2026",
-        },
-        {
-          claim: "1.8% of agent mentions in grooming cite any incentive; best performer 3.2%, one in thirty-one",
-          source: "Parleo Benchmark, first-party",
-          date: "2026",
-        },
-        {
-          claim: "Gillette Labs $29.97 at Walmart vs Harry's $19.97; real gap after incentives ~$5",
-          source: "Parleo verified example set",
-          date: "Aug 4, 2026",
-        },
-        {
-          claim: "UCP Catalog Search defines two standard filters, category and price",
-          source: "UCP specification, search filters",
-          date: "Verified Aug 14, 2026",
-          url: "https://ucp.dev/specification/catalog/search/",
-        },
-        {
-          claim: "45% vs 21% paycheck-to-paycheck AI users bought multiple AI-recommended products; 19% of AI users ordered via AI",
-          source: "PYMNTS, The Overlap Effect, n=2,160",
-          date: "Aug 5, 2026",
-          url: "https://www.pymnts.com/news/retail/2026/ai-finds-the-deal-shoppers-still-make-the-call/",
-        },
-        {
-          claim: "11% would let AI make the purchase decision",
-          source: "Gartner newsroom",
-          date: "May 27, 2026",
-          url: "https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions",
-        },
-      ],
-    },
   ],
 };
 
