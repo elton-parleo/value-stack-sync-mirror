@@ -1,3 +1,4 @@
+import agenticPayments from "./agentic-payments";
 import howBig from "./how-big-is-agentic-commerce";
 import loyalty from "./loyalty-when-the-customer-is-an-agent";
 import tradeSpend from "./trade-spend-when-agents-shop";
@@ -27,6 +28,7 @@ export type {
 
 /** Newest first. Add each new article file here. */
 export const posts: Post[] = [
+  agenticPayments,
   howBig,
   loyalty,
   tradeSpend,
