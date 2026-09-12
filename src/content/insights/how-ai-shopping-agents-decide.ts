@@ -26,7 +26,7 @@ const post: Post = {
     "list price vs member price",
   ],
   takeaways: [
-    "Products that reach an agent through a structured merchant feed win ChatGPT's Best Price tag 100% of the time, against 21% for crawled pages, and take the top slot 99.9% of the time.",
+    "Recommendation happens in four steps: retrieval, ranking, price attachment and answer construction. A weakness early in the chain carries through to the final shortlist.",
     "UCP catalog search defines two standard filters, category and price. Whatever you've built that isn't one of those isn't in the ranking.",
     "Eligibility resolves at checkout, so the price available at ranking time is list. Chewy publishes four prices for one bag of Greenies and the agent quotes the highest.",
     "79% of agent activity happens on product and search routes, 2.34% at checkout. The shortlist gets built where the data is worst.",
@@ -34,7 +34,7 @@ const post: Post = {
   faq: [
     {
       q: "How does an AI shopping agent choose which products to recommend?",
-      a: "In four steps. It retrieves candidates by crawling pages or ingesting a structured merchant feed, ranks them on the dimensions it can compare (in UCP, category and price), attaches the price it can see at that moment, which is list price, and returns a shortlist. Feed-sourced products win ChatGPT's Best Price tag 100% of the time versus 21% for crawled pages.",
+      a: "In four steps. It retrieves candidates by crawling pages or ingesting a structured merchant feed, ranks them on the dimensions it can compare, attaches the price available at that moment and returns a shortlist. Each step narrows what can appear in the answer.",
     },
     {
       q: "Why do AI agents quote list price instead of member or sale price?",
@@ -42,7 +42,7 @@ const post: Post = {
     },
     {
       q: "Do AI agents just pick the cheapest product?",
-      a: "No. They pick the cheapest product they can read. Shopper data cuts against a pure race to the bottom: 80% of shoppers say they want a quality deal versus 58% who want the lowest price, and only 11% would let AI make the purchase outright.",
+      a: "No. They can optimize for quality, fit and other preferences, but only when those signals are available and comparable. Price often wins because it is unusually structured, not because it is the shopper's only priority.",
     },
     {
       q: "What's the fastest way to improve how agents rank my products?",
@@ -52,11 +52,11 @@ const post: Post = {
   body: [
     {
       type: "p",
-      text: "Ask ChatGPT, Gemini or Perplexity for the best option in your category and most of the outcome was decided before the model wrote a word.",
+      text: "Ask an AI assistant for the best option in your category and most of the outcome was decided before it wrote a word.",
     },
     {
       type: "p",
-      text: "Here's the short version, and the rest of this piece is the evidence for it: an AI shopping agent does not recommend the cheapest product. It recommends the cheapest product it can read. Those are different things, and the gap between them is where most brands are quietly losing.",
+      text: "An AI shopping agent doesn't recommend the cheapest product. It recommends the cheapest product it can read. Those are different things, and the gap between them is where most brands are quietly losing.",
     },
     {
       type: "p",
@@ -117,7 +117,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "What this means: the single largest lever on whether you get recommended is a plumbing decision most brands made years ago for a different channel.",
+      text: "The first surprise is how much of the recommendation comes down to a plumbing decision most brands made years ago for a different channel.",
     },
     { type: "h", text: "Step two: ranking runs on what the machine can compare" },
     {
@@ -130,11 +130,11 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "So the comparison an agent runs is, in practice, category and price. Not value. Not what a member pays. Price.",
+      text: "In practice, the comparison comes down to category and price. Not value. Not what a member pays. Price.",
     },
     {
       type: "p",
-      text: "What this means: whatever you've built that isn't a category or a number is not in the ranking.",
+      text: "Anything you've built that isn't a category or a number is missing from the ranking.",
     },
     { type: "h", text: "Step three: the price it uses is your list price" },
     {
@@ -147,7 +147,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "Google's implementation makes the consequence visible. Its UCP Identity Linking is OAuth, it's marked optional, and its two scopes are order reads and checkout management, with [no catalog scope and no search scope](https://developers.google.com/merchant/ucp/guides/identity-linking).",
+      text: "Google's implementation makes the consequence visible. Identity arrives at checkout, not while the shortlist is being built. The full scope gap is covered in [what happens to loyalty when the customer is an agent](/insights/loyalty-when-the-customer-is-an-agent).",
     },
     {
       type: "p",
@@ -175,7 +175,7 @@ const post: Post = {
     { type: "p", text: "The agent read the top of the ladder and stopped." },
     {
       type: "p",
-      text: "What this means: the number attached to your recommendation is the number that's true for nobody in particular.",
+      text: "The number attached to the recommendation is the one that's true for nobody in particular.",
     },
     { type: "h", text: "Step four: almost all of this happens where the data is worst" },
     { type: "p", text: "Agents don't spend their time where you'd think." },
@@ -206,11 +206,11 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "So the phase that decides the shortlist runs on feeds, crawls and third-party data of wildly different vintages, and the phase with accurate pricing is the one agents barely visit.",
+      text: "The shortlist is decided on feeds, crawls and third-party data of wildly different vintages. The accurate price arrives in the phase agents barely visit.",
     },
     {
       type: "p",
-      text: "What this means: correction arrives, if it arrives, after the decision was made.",
+      text: "Any correction arrives after the decision was made, if it arrives at all.",
     },
     { type: "h", text: "Put together: the cheapest legible price wins" },
     {
@@ -225,31 +225,20 @@ const post: Post = {
       type: "p",
       text: "That's the whole thing, and it's why two brands with identical economics can get completely different outcomes in an AI answer. It's also why we score this as a category rather than argue it: [Share of Algorithm](/insights/share-of-algorithm) measures whether you're in the answer, whether an agent can parse you, and whether the value behind your price survives into what the shopper actually reads.",
     },
-    { type: "h", text: "The number that cuts against this" },
+    { type: "h", text: "The ranking is only as rich as its inputs" },
     {
       type: "p",
-      text: "The obvious conclusion is that agents will race everything to the bottom and cheap wins. The data doesn't support that.",
-    },
-    {
-      type: "p",
-      text: "In the [XCCommerce/NRF shopper study](https://www.businesswire.com/news/home/20260218739034/en/Shopper-Study-More-Than-70-of-Shoppers-Turn-to-AI-to-Find-Deals), 80% of shoppers said they want a quality deal against 58% who want merely the lowest price. And [Gartner found](https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions) only 11% of US consumers would let AI make the purchase decision outright, with 54% double-checking what it tells them.",
-    },
-    {
-      type: "bars",
-      title: "What shoppers say they want",
-      max: 100,
-      items: [
-        { label: "Want a quality deal", value: 80, display: "80%", highlight: true },
-        { label: "Want merely the lowest price", value: 58, display: "58%" },
-        { label: "Would let AI make the purchase decision", value: 11, display: "11%" },
-      ],
-      caption: "XCCommerce/NRF, Feb 2026. Gartner, May 2026",
+      text: "The obvious conclusion is that agents will race everything to the bottom. That confuses the behavior of the ranking system with the preference of the shopper.",
     },
     {
       type: "p",
-      text: "So this isn't a story about a machine that only cares about price. It's a story about a machine that can only see price. Those have very different fixes, and the second one is solvable.",
+      text: "A shopper can care about quality, fit, delivery, loyalty status and total cost. If those signals arrive as prose, images or rules behind a login while list price arrives as a clean field, the ranking will look more price-sensitive than the shopper really is. [The loyalty article](/insights/loyalty-when-the-customer-is-an-agent) covers the customer side of that gap.",
     },
-    { type: "h", text: "Three things worth doing about it" },
+    {
+      type: "p",
+      text: "The machine doesn't necessarily care only about price. Right now, price is often all it can see. That's a different problem, and a solvable one.",
+    },
+    { type: "h", text: "Where to start" },
     {
       type: "list",
       items: [
@@ -260,7 +249,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The industry spent twenty years making product pages persuasive to people and about two making them legible to machines. Agents are reading them now, at scale, and quoting whatever they find.",
+      text: "A recommendation can look considered even when its inputs were thin. The work now is making sure the agent has enough context to deserve the confidence of its answer.",
     },
     {
       type: "sources",

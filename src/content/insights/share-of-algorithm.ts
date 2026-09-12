@@ -47,7 +47,7 @@ const post: Post = {
     },
     {
       q: "Why do AI agents quote the wrong price?",
-      a: "Agents live in the comparison phase, where only list price exists. HUMAN Security found 79% of agent activity sits in product and search routes versus 2.34% at checkout, and the incentive layer resolves at checkout or later.",
+      a: "The comparison often happens before identity and eligibility are known, so an agent falls back to the public price it can verify. The mechanism is explained in our guide to [how AI shopping agents decide](/insights/how-ai-shopping-agents-decide).",
     },
     {
       q: "How do I get my own Share of Algorithm score?",
@@ -57,7 +57,7 @@ const post: Post = {
   body: [
     {
       type: "p",
-      text: "A few months ago I asked ChatGPT to find the best deal on a bag of Greenies, the 12-count dental treats every dog owner knows. It came back fast and confident: $19.99. True enough, that's the list price on [Chewy](https://www.chewy.com/greenies-bursting-blueberry-regular/dp/113459). It's also the worst of four prices published on that same page: $17.98 if you buy once, $17.08 on autoship, $11.69 on your first autoship order. Nothing hidden, nothing hacky. Just Chewy running deliberate pricing design, trading margin for a subscriber because the lifetime value pays for it. The agent read the top of the ladder and stopped.",
+      text: "A few months ago I asked ChatGPT to find the best deal on a bag of Greenies. It came back fast and confident with the list price, while three better public prices sat on the same Chewy page. The full [four-price example](/insights/how-ai-shopping-agents-decide) is useful on its own. What bothered me was the larger question it exposed: how often does this happen, and how would a brand know?",
     },
     {
       type: "p",
@@ -66,7 +66,7 @@ const post: Post = {
     { type: "h", text: "Every big channel shift mints a new score" },
     {
       type: "p",
-      text: "When the fight was for physical shelf space, Share of Shelf became the metric and an $8B+ measurement industry grew around counting facings, the slots your product physically occupies. When broadcast made reach the scarce resource, Share of Voice earned its own $12B+ industry. When discovery moved into the search box, Share of Search became the number underneath $200B+ a year of spend. The sequence is almost boring in its consistency: channel shifts, old metric stops explaining outcomes, somebody names the new one, budgets reorganize around it.",
+      text: "Commerce keeps repeating the same move. A channel changes, the old metric stops explaining outcomes, and budgets reorganize around a new one. Physical retail gave us Share of Shelf. Broadcast gave us Share of Voice. Search gave us Share of Search.",
     },
     {
       type: "list",
@@ -94,7 +94,7 @@ const post: Post = {
     { type: "h", text: "The new shelf has a ranking rule" },
     {
       type: "p",
-      text: "[Profound's June research across about a million ChatGPT shopping offers](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive) found that products arriving through structured merchant feeds get ChatGPT's Best Price tag 100% of the time versus 21% for scraped pages, with feed-sourced offers taking the top slot 99.9% of the time. [Shopify's Q2 2026 commerce data](https://shopify.com/enterprise/blog/ai-search-category-behavior) says the same thing from the platform side: AI-referred shoppers convert 2x better when the agent draws on structured catalog data instead of scraped feeds.",
+      text: "The ranking evidence is already lopsided. In [Profound's June study](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive), structured feeds dominated ChatGPT's Best Price placements. [Shopify's Q2 2026 commerce data](https://shopify.com/enterprise/blog/ai-search-category-behavior) points the same way from the platform side, with AI-referred shoppers converting 2x better on structured catalog data. The detailed mechanics sit in [how AI shopping agents decide](/insights/how-ai-shopping-agents-decide).",
     },
     { type: "quote", text: "Rank is mostly a function of what you handed the machine." },
     {
@@ -166,18 +166,12 @@ const post: Post = {
       text: "We've started running the benchmark category by category, and the early cuts say the gap is wider than anyone's priced in. In our grooming run, 1 in 31 mentions of the category's top performer cited any incentive at all. The deals are funded, they're live on the retailer sites, and they're structurally absent from the channel where the most price-motivated shoppers now start.",
     },
     {
-      type: "stat",
-      value: "79% / 2.34%",
-      label:
-        "Share of agent activity in product and search routes versus checkout (HUMAN Security, June 2026). Agents live in the comparison phase, and the comparison phase is where only list price exists.",
+      type: "p",
+      text: "The benchmark isn't meant to repeat every channel statistic. It answers a narrower operating question: where does a brand lose points between being available to an agent and having its real value represented in the answer?",
     },
     {
       type: "p",
-      text: "The people who most need the real price are the ones most steered by whatever the agent surfaces. [PYMNTS found](https://pymnts.com) that paycheck-to-paycheck AI users bought AI-recommended products at twice the rate of everyone else.",
-    },
-    {
-      type: "p",
-      text: "Commerce has never let a gap this size go unmeasured for long. I'm as guilty as anyone of talking my book, but the pattern is three for three, and that's hard to ignore. One question worth taking back to your own P&L: when an AI agent recommends in your category, does it know what your best customers actually pay? For almost everyone the honest answer is no. That's why Share of Algorithm exists.",
+      text: "Commerce has never left a gap this large unmeasured for long. I'm as guilty as anyone of talking my book, but the pattern is three for three and hard to ignore. Take one question back to your own P&L: when an AI agent recommends in your category, does it know what your best customers actually pay? For almost everyone, the honest answer is no.",
     },
   ],
 };
