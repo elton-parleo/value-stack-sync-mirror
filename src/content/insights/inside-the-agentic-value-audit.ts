@@ -47,7 +47,7 @@ const post: Post = {
     },
     {
       q: "What should I fix first?",
-      a: "If agents still reach your products by scraping, ship the structured feed. It's the cheapest rank improvement available: feed-sourced offers win ChatGPT's Best Price tag 100% of the time versus 21% scraped. Then encode what you already fund, member pricing and live promotions, which no feed does for you.",
+      a: "Start with the largest scored leak. That may be a missing structured feed, an unreadable price, a live promotion agents never cite or member value trapped behind a login. The report separates those problems so the right team can own each fix.",
     },
   ],
   body: [
@@ -138,7 +138,7 @@ const post: Post = {
     { type: "h", text: "What to fix first" },
     {
       type: "p",
-      text: "The fixes rank themselves. If your products still reach agents by scraping, ship the structured feed. It's the cheapest rank improvement you'll ever buy: [Profound's data](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive) has feed-sourced offers winning ChatGPT's Best Price tag 100% of the time versus 21% scraped, and [Shopify's Q2 numbers](https://shopify.com/enterprise/blog/ai-search-category-behavior) show AI-referred shoppers converting 2x better on structured catalog data.",
+      text: "The fixes rank themselves. If discovery is the leak, improve the feed. If agents can read the price but never quote it, inspect ranking and corroboration. If the value isn't readable at all, encode it. The point of the score is to stop treating three different failures as one vague AI visibility problem.",
     },
     {
       type: "p",
