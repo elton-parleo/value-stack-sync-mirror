@@ -47,7 +47,7 @@ const post: Post = {
     },
     {
       q: "Why do AI agents quote the wrong price?",
-      a: "Agents live in the comparison phase, where only list price exists. HUMAN Security found 79% of agent activity sits in product and search routes versus 2.34% at checkout, and the incentive layer resolves at checkout or later.",
+      a: "The comparison often happens before identity and eligibility are known, so an agent falls back to the public price it can verify. The mechanism is explained in our guide to [how AI shopping agents decide](/insights/how-ai-shopping-agents-decide).",
     },
     {
       q: "How do I get my own Share of Algorithm score?",
@@ -166,14 +166,8 @@ const post: Post = {
       text: "We've started running the benchmark category by category, and the early cuts say the gap is wider than anyone's priced in. In our grooming run, 1 in 31 mentions of the category's top performer cited any incentive at all. The deals are funded, they're live on the retailer sites, and they're structurally absent from the channel where the most price-motivated shoppers now start.",
     },
     {
-      type: "stat",
-      value: "79% / 2.34%",
-      label:
-        "Share of agent activity in product and search routes versus checkout (HUMAN Security, June 2026). Agents live in the comparison phase, and the comparison phase is where only list price exists.",
-    },
-    {
       type: "p",
-      text: "The people who most need the real price are the ones most steered by whatever the agent surfaces. [PYMNTS found](https://pymnts.com) that paycheck-to-paycheck AI users bought AI-recommended products at twice the rate of everyone else.",
+      text: "The benchmark isn't meant to repeat every channel statistic. It answers a narrower operating question: where does a brand lose points between being available to an agent and having its real value represented in the answer?",
     },
     {
       type: "p",
