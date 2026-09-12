@@ -57,7 +57,7 @@ const post: Post = {
   body: [
     {
       type: "p",
-      text: "A few months ago I asked ChatGPT to find the best deal on a bag of Greenies, the 12-count dental treats every dog owner knows. It came back fast and confident: $19.99. True enough, that's the list price on [Chewy](https://www.chewy.com/greenies-bursting-blueberry-regular/dp/113459). It's also the worst of four prices published on that same page: $17.98 if you buy once, $17.08 on autoship, $11.69 on your first autoship order. Nothing hidden, nothing hacky. Just Chewy running deliberate pricing design, trading margin for a subscriber because the lifetime value pays for it. The agent read the top of the ladder and stopped.",
+      text: "A few months ago I asked ChatGPT to find the best deal on a bag of Greenies. It came back fast and confident with the list price, while three better public prices sat on the same Chewy page. The full [four-price example](/insights/how-ai-shopping-agents-decide) is useful on its own. What bothered me was the larger question it exposed: how often does this happen, and how would a brand know?",
     },
     {
       type: "p",
@@ -94,7 +94,7 @@ const post: Post = {
     { type: "h", text: "The new shelf has a ranking rule" },
     {
       type: "p",
-      text: "[Profound's June research across about a million ChatGPT shopping offers](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive) found that products arriving through structured merchant feeds get ChatGPT's Best Price tag 100% of the time versus 21% for scraped pages, with feed-sourced offers taking the top slot 99.9% of the time. [Shopify's Q2 2026 commerce data](https://shopify.com/enterprise/blog/ai-search-category-behavior) says the same thing from the platform side: AI-referred shoppers convert 2x better when the agent draws on structured catalog data instead of scraped feeds.",
+      text: "The ranking evidence is already lopsided. In [Profound's June study](https://www.tryprofound.com/blog/chatgpt-shopping-deep-dive), structured feeds dominated ChatGPT's Best Price placements. [Shopify's Q2 2026 commerce data](https://shopify.com/enterprise/blog/ai-search-category-behavior) points the same way from the platform side, with AI-referred shoppers converting 2x better on structured catalog data. The detailed mechanics sit in [how AI shopping agents decide](/insights/how-ai-shopping-agents-decide).",
     },
     { type: "quote", text: "Rank is mostly a function of what you handed the machine." },
     {
