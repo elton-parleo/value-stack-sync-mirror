@@ -1064,9 +1064,9 @@ const WhatIsAgenticCommerce = () => {
                 t: "Share of Algorithm: the score for the agentic era",
               },
               {
-                to: "/insights/how-agents-pick-the-best-price",
-                k: "Benchmark",
-                t: "How agents actually pick the best price",
+                to: "/insights/agentic-payments",
+                k: "Point of view",
+                t: "Agentic payments: what changes when the buyer is software",
               },
               {
                 to: "/insights/inside-the-agentic-value-audit",
