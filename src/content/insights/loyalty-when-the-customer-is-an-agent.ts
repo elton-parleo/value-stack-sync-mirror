@@ -56,7 +56,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "That's the whole finding, and it follows from a design decision nobody made carelessly. Loyalty is a promise about who you are, so tiers, member pricing, points, card-linked offers and subscription discounts all resolve once the shopper is identified.",
+      text: "The reason is sensible. Loyalty is a promise about who you are, so tiers, member pricing, points, card-linked offers and subscription discounts resolve only after the shopper is identified.",
     },
     {
       type: "p",
@@ -125,7 +125,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "What this means: in the largest implementation of the standard, your member is a guest until after the products have been chosen.",
+      text: "In the largest implementation of the standard, your member is a guest until after the products have been chosen.",
     },
     { type: "h", text: "The gap this opens is bigger than most teams think" },
     {
@@ -153,12 +153,12 @@ const post: Post = {
     { type: "p", text: "At the ranking step, an agent sees the list price for all three of those retailers." },
     {
       type: "p",
-      text: "What this means: the more sophisticated your loyalty program, the more of your actual value is invisible by default.",
+      text: "The more sophisticated your loyalty program, the more of your actual value can disappear by default.",
     },
     { type: "h", text: "Priced like a stranger" },
     {
       type: "p",
-      text: "That's the pattern to carry out of here. Not \"loyalty is dead,\" which is the version that gets written every few years and hasn't been true yet. Your best customer gets priced like a stranger, because at the moment of comparison the machine has no way to know they're your best customer.",
+      text: "Loyalty isn't dead. That argument turns up every few years and still hasn't come true. The immediate problem is simpler: at the moment of comparison, the machine has no way to know that your best customer is your best customer. So it prices them like a stranger.",
     },
     {
       type: "quote",
@@ -168,10 +168,10 @@ const post: Post = {
       type: "p",
       text: "It also explains why this sits in nobody's inbox. Marketing owns mention rate, e-commerce owns the feed, and loyalty owns redemption and retention.",
     },
-    { type: "h", text: "The number that cuts against this" },
+    { type: "h", text: "Why this isn't a loyalty obituary" },
     {
       type: "p",
-      text: "The natural objection is that agents will optimize for the lowest number regardless, so loyalty was always going to lose. The shopper data doesn't support that.",
+      text: "You could argue that an agent will optimize for the lowest number anyway, making loyalty irrelevant. Shoppers say otherwise.",
     },
     {
       type: "p",
@@ -190,13 +190,13 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The honest caveat in the other direction: this is early. Only [19% of AI users have ordered anything through AI](https://www.pymnts.com/news/retail/2026/ai-finds-the-deal-shoppers-still-make-the-call/), and [Gartner has 11% of consumers](https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions) willing to let AI make the purchase decision. Nobody's loyalty P&L is being visibly damaged this quarter.",
+      text: "This is still early. Only [19% of AI users have ordered anything through AI](https://www.pymnts.com/news/retail/2026/ai-finds-the-deal-shoppers-still-make-the-call/). Gartner puts the share willing to hand over the purchase decision at 11%. Nobody's loyalty P&L is being visibly damaged this quarter.",
     },
     {
       type: "p",
-      text: "I'd still treat it as urgent, because the fix is encoding work with a long lead time and the channel is compounding while the work is undone.",
+      text: "The reason to start now is lead time. This is encoding work, and the channel keeps compounding while it sits undone.",
     },
-    { type: "h", text: "Three things worth doing about it" },
+    { type: "h", text: "Make loyalty legible before checkout" },
     {
       type: "list",
       items: [

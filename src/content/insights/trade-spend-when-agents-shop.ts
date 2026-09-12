@@ -52,7 +52,7 @@ const post: Post = {
   body: [
     {
       type: "p",
-      text: "Two of the largest line items in consumer goods are aimed at a shopper who is no longer doing the looking.",
+      text: "Consumer goods companies spend two enormous budgets trying to influence the moment of choice. Increasingly, the shopper isn't the one looking.",
     },
     {
       type: "p",
@@ -64,7 +64,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The money doesn't vanish. It stops being visible at the exact moment the decision gets made. I've been measuring how often that happens, and the number is worse than most brand teams guess.",
+      text: "The budgets don't disappear. Their signals do, right when the shortlist gets built. We measured how often a funded incentive survives that handoff. The number was worse than most brand teams guessed.",
     },
     {
       type: "grid",
@@ -86,10 +86,10 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "What this means: the more of your category's traffic moves to agents, the more of your retail media budget is buying attention from an audience that isn't there.",
+      text: "As more category traffic moves to agents, more retail media budget risks buying attention from an audience that isn't there.",
     },
     { type: "h", text: "Trade promotion funds a discount that resolves too late" },
-    { type: "p", text: "Trade promotion is different, and the failure is more interesting." },
+    { type: "p", text: "Trade promotion breaks in a different place." },
     {
       type: "p",
       text: "The money is real, the discount is real, and it's usually live on the retailer's site. The problem is when it becomes true. A funded promotion is conditional: it depends on the retailer, the basket, the timing, sometimes the shopper. Conditions resolve at checkout, against binding transaction data.",
@@ -117,10 +117,10 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "What this means: you can fund a promotion that makes you the best value in the category and still lose the comparison to a competitor with a lower number on the page.",
+      text: "You can fund the best value in the category and still lose to a competitor with a lower number on the page.",
     },
     { type: "h", text: "We measured how often an incentive survives. It was 1.8%" },
-    { type: "p", text: "This is the part I couldn't find published anywhere, so we ran it." },
+    { type: "p", text: "I couldn't find this number published anywhere, so we ran the sweep ourselves." },
     {
       type: "p",
       text: "Across a grooming sweep of agent answers, 1.8% of brand mentions cited any incentive at all. Not the right incentive. Any. The best-performing brand in the category managed 3.2%, which is roughly one mention in thirty-one.",
@@ -160,12 +160,12 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "What this means: trade spend isn't being outcompeted in the agent channel. It isn't being counted.",
+      text: "Trade spend isn't being outcompeted in the agent channel. It never entered the comparison.",
     },
     { type: "h", text: "Funded but invisible" },
     {
       type: "p",
-      text: "That's the pattern worth carrying out of here. Not \"agents are cheap,\" not \"discounting doesn't work.\" Funded but invisible. The dollars are committed, the offer is live, the shopper would qualify, and none of it reaches the surface where the decision happens.",
+      text: "The pattern is funded but invisible. The dollars are committed, the offer is live and the shopper would qualify. None of it reaches the surface where the decision happens.",
     },
     {
       type: "quote",
@@ -175,18 +175,18 @@ const post: Post = {
       type: "p",
       text: "It also explains why this is so hard to see from inside a brand. Trade spend is measured on redemption and lift at the retailer. Retail media is measured on impressions and attributed conversions on the retailer's own property. Neither instrument has a field for whether the offer survived into an agent's answer.",
     },
-    { type: "h", text: "The number that cuts against this" },
+    { type: "h", text: "The honest counterpoint" },
     {
       type: "p",
       text: "The obvious objection is that this only matters if agents are actually driving purchases, and mostly they aren't yet.",
     },
     {
       type: "p",
-      text: "That's fair. [PYMNTS found only 19% of AI users had ordered anything through AI](https://www.pymnts.com/news/retail/2026/ai-finds-the-deal-shoppers-still-make-the-call/), and [Gartner has just 11% of US consumers](https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions) willing to let AI make the purchase decision outright. Influence is running well ahead of transaction.",
+      text: "That's fair. Gartner finds just 11% of US consumers willing to let AI make the purchase outright. PYMNTS found that 19% of AI users had ordered anything through AI. Influence is running well ahead of transaction.",
     },
     {
       type: "p",
-      text: "I'd still act now rather than in a year, for one reason. The same research shows the people who lean hardest on AI recommendations are the ones with the least room in their budget: paycheck-to-paycheck AI users bought multiple AI-recommended products at 45% against 21% for everyone else, roughly twice the rate. The shoppers most steered by these answers are the shoppers your promotional dollars were built to reach.",
+      text: "One finding makes waiting harder to justify. The people leaning hardest on AI recommendations have the least room in their budgets: paycheck-to-paycheck AI users bought multiple AI-recommended products at 45% against 21% for everyone else, roughly twice the rate. These are exactly the shoppers promotional dollars were built to reach.",
     },
     {
       type: "bars",
@@ -203,7 +203,7 @@ const post: Post = {
       type: "p",
       text: "And the fix is a data project, not a media buy. It's cheap right now and it gets more expensive as more of the category shows up.",
     },
-    { type: "h", text: "Three things worth doing about it" },
+    { type: "h", text: "What to do this quarter" },
     {
       type: "list",
       items: [
