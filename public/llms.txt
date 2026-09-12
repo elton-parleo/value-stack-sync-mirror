@@ -13,6 +13,7 @@ Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-li
 
 ## Insights
 
+- [Agentic payments: what actually changes when the buyer is software](/insights/agentic-payments): AP2 signs Checkout and Payment Mandates, ACP has the PSP mint a scoped single-use delegated token, and Visa Intelligent Commerce and Mastercard Agent Pay provision agent-specific network credentials. All four authorize the spend; none carry loyalty tier, member price, promotion funding or true cost.
 - [How big is agentic commerce actually going to be?](/insights/how-big-is-agentic-commerce): McKinsey/ICSC forecast ~$1T of US agentic retail by 2030, Bain 15-25% of US e-commerce. Every published figure today is a growth rate (Salesforce +200%, Shopify +197%, Walmart Sparky 4x) with no disclosed base. Only 19% of AI users have ordered through AI.
 - [What happens to loyalty programs when the customer is an agent](/insights/loyalty-when-the-customer-is-an-agent): Google's UCP identity linking is optional and scoped to order reads and checkout, so agents rank on list price and members get "guest experiences." Best Buy, CVS and Ulta member pricing is invisible at the ranking step.
 - [What happens to trade spend when agents do the shopping](/insights/trade-spend-when-agents-shop): $200B+ US trade promotion and ~$69B retail media target a browsing human. In a Parleo grooming sweep, 1.8% of agent brand mentions cited any incentive; the best brand managed 3.2%. Funded but invisible.
