@@ -29,8 +29,24 @@ const AnnouncementBanner = ({ onDismiss }: Props) => (
 
       <span className="min-w-0 flex-1 md:flex md:items-center md:gap-4">
         <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-primary md:w-24 md:shrink-0">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-          Now live
+          <span className="relative flex h-1.5 w-1.5">
+            <motion.span
+              className="absolute inset-0 rounded-full bg-primary"
+              animate={{ scale: [1, 2.4], opacity: [0.55, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeOut" }}
+            />
+            <motion.span
+              className="relative h-1.5 w-1.5 rounded-full bg-primary"
+              animate={{ opacity: [1, 0.65, 1] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </span>
+          <motion.span
+            animate={{ opacity: [1, 0.72, 1] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            Now live
+          </motion.span>
         </span>
         <span className="block truncate text-[14px] font-semibold leading-tight text-background md:text-[15px]">
           The Agentic Value Audit
