@@ -119,7 +119,7 @@ const Insights = () => {
                   className="max-w-[620px] font-display text-[34px] leading-[1] text-foreground md:text-[46px]"
                   style={{ letterSpacing: "-0.022em", wordSpacing: "0.04em", textWrap: "balance" }}
                 >
-                  Insights from the new shelf
+                  Insights from the agentic commerce shelf
 
                 </h1>
                 <p className="section-copy mt-5 max-w-[520px]">
