@@ -20,6 +20,11 @@ export const initPostHog = () => {
     capture_pageview: false,
     capture_pageleave: true,
     autocapture: true,
+    loaded: (ph) => {
+      if (typeof window !== "undefined") {
+        (window as unknown as { posthog?: unknown }).posthog = ph;
+      }
+    },
   });
 };
 
