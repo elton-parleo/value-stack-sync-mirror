@@ -8,7 +8,7 @@ const InsightsStrip = () => (
   <AnimatedSection id="insights" className="border-t border-border py-14 md:py-20">
     <div className="mx-auto max-w-content px-6 md:px-20">
       <div className="flex flex-wrap items-end justify-between gap-6">
-        <SectionHeading maxWidth="620px">Research from the new shelf</SectionHeading>
+        <SectionHeading maxWidth="620px">Research from the agentic commerce shelf</SectionHeading>
         <Link
           to="/insights"
           className="link-more"
