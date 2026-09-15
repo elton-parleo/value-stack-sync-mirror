@@ -8,11 +8,12 @@ type Props = { onDismiss: () => void };
 
 const AnnouncementBanner = ({ onDismiss }: Props) => (
   <div className="relative h-11 overflow-hidden border-b border-primary/45 bg-code-bg text-background">
+    <div className="absolute inset-x-0 bottom-0 h-px bg-primary/25" aria-hidden />
     <motion.div
-      className="absolute inset-x-0 bottom-0 h-px origin-left bg-primary"
+      className="absolute bottom-0 h-[2px] w-48 bg-gradient-to-r from-transparent via-primary to-transparent"
       aria-hidden
-      animate={{ scaleX: [0.15, 1, 0.15], opacity: [0.45, 1, 0.45] }}
-      transition={{ duration: 3.6, repeat: Infinity, ease: [0.65, 0, 0.35, 1] }}
+      animate={{ left: ["-18%", "106%"], opacity: [0, 1, 1, 0] }}
+      transition={{ duration: 4.4, times: [0, 0.12, 0.86, 1], repeat: Infinity, repeatDelay: 1.8, ease: "easeInOut" }}
     />
 
     <a
@@ -36,20 +37,22 @@ const AnnouncementBanner = ({ onDismiss }: Props) => (
         <span className="hidden font-normal text-background/55 md:inline">: See what agents quote for your brand</span>
       </span>
 
-      <span className="flex shrink-0 items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-background/75 sm:text-[10px]">
-          <span className="relative flex h-1.5 w-1.5">
-            <motion.span
-              className="absolute inset-0 rounded-full bg-primary"
-              animate={{ scale: [1, 2.8], opacity: [0.8, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeOut" }}
-            />
-            <motion.span
-              className="relative h-1.5 w-1.5 rounded-full bg-primary"
-              animate={{ opacity: [1, 0.55, 1] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </span>
-        <span className="hidden min-[360px]:inline">Now live</span>
+      <span className="relative flex shrink-0 items-center rounded-full bg-primary py-1 pl-2.5 pr-2 sm:pl-3">
+        <span className="relative flex h-1.5 w-1.5" aria-hidden>
+          <motion.span
+            className="absolute inset-0 rounded-full bg-primary-foreground"
+            animate={{ scale: [1, 3.1], opacity: [0.7, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+          />
+          <span className="relative h-1.5 w-1.5 rounded-full bg-primary-foreground" />
+        </span>
+        <motion.span
+          className="ml-1.5 text-[9px] font-semibold uppercase leading-none tracking-[0.14em] text-primary-foreground sm:text-[10px]"
+          animate={{ opacity: [1, 0.55, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <span className="hidden min-[360px]:inline">Now live</span>
+        </motion.span>
       </span>
 
       <span className="inline-flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-background/70 transition-colors group-hover:text-primary">
