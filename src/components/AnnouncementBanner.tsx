@@ -9,11 +9,9 @@ type Props = { onDismiss: () => void };
 const AnnouncementBanner = ({ onDismiss }: Props) => (
   <div className="relative h-11 overflow-hidden border-b border-primary/45 bg-code-bg text-background">
     <div className="absolute inset-x-0 bottom-0 h-px bg-primary/25" aria-hidden />
-    <motion.div
-      className="absolute bottom-0 h-[2px] w-48 bg-gradient-to-r from-transparent via-primary to-transparent"
+    <div
+      className="absolute bottom-0 left-0 h-[2px] w-48 animate-banner-sweep bg-gradient-to-r from-transparent via-primary to-transparent"
       aria-hidden
-      animate={{ left: ["-18%", "106%"], opacity: [0, 1, 1, 0] }}
-      transition={{ duration: 4.4, times: [0, 0.12, 0.86, 1], repeat: Infinity, repeatDelay: 1.8, ease: "easeInOut" }}
     />
 
     <a
