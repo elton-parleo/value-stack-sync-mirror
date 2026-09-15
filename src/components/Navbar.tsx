@@ -72,7 +72,7 @@ const Navbar = () => {
           {bannerOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 56, opacity: 1 }}
+              animate={{ height: 44, opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden"
@@ -148,7 +148,7 @@ const Navbar = () => {
       </div>
 
       {/* Spacer to offset fixed nav + banner */}
-      <div style={{ height: bannerOpen ? 112 : 56 }} className="transition-all duration-300" />
+      <div style={{ height: bannerOpen ? 100 : 56 }} className="transition-all duration-300" />
 
 
       {/* Mobile drawer */}
