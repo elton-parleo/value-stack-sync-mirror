@@ -287,7 +287,7 @@ const Insights = () => {
                 rel="noopener noreferrer"
                 className="btn-base btn-primary group shrink-0 self-start md:self-auto"
               >
-                Run your free audit
+                Free Agentic Audit
                 <span data-slot="arrow">↗</span>
               </a>
             </div>

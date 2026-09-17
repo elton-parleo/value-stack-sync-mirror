@@ -17,7 +17,7 @@ const AnnouncementBanner = ({ onDismiss }: Props) => (
     <a
       href={AUDIT_URL}
       className="group mx-auto flex h-full max-w-content items-center gap-2.5 px-4 pr-12 md:gap-4 md:px-8 md:pr-14 lg:px-20"
-      aria-label="Agentic Value Audit is live. Run your free audit"
+      aria-label="Agentic Value Audit is live. Free Agentic Audit"
     >
       <span className="relative flex h-6 w-8 shrink-0 items-center justify-center gap-[2px] border-x border-background/20" aria-hidden>
         {[5, 9, 13, 8].map((height, index) => (
