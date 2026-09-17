@@ -249,6 +249,15 @@ document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(
   var tight=kids.some(function(k){return (k.scrollWidth-k.clientWidth>6)||(k.clientWidth>0&&k.clientWidth<170);});
   if(tight) markWide(f, kids.length*250);
 });
+document.querySelectorAll('.m-chapter:not(#ch-01) section [style*="display:flex"]').forEach(function(f){
+  if(f.closest('.m-keep')||/flex-direction:column/.test(f.getAttribute('style')||''))return;
+  var kids=Array.prototype.slice.call(f.children);
+  if(kids.length<2)return;
+  var tight=kids.some(function(k){return k.clientWidth>0&&k.clientWidth<210&&(k.textContent||'').trim().length>18;});
+  if(!tight)return;
+  f.style.setProperty('display','block','important');
+  kids.forEach(function(k){k.style.setProperty('width','100%','important');k.style.marginBottom='18px';});
+});
 document.querySelectorAll('#ch-09 section > *').forEach(function(ch){
   if(ch.classList.contains('deck-atmosphere')||ch.closest('.m-scroll'))return;
   var deep=ch.querySelectorAll('*').length;
