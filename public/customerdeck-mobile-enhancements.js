@@ -77,6 +77,11 @@
   `;
   document.head.appendChild(style);
 
+  const exposeForCapture = () => {
+    document.documentElement.style.backgroundColor = "#F2F0EF";
+  };
+  exposeForCapture();
+
   Object.entries(layers).forEach(([id, config]) => {
     const section = document.getElementById(id);
     if (!section || section.querySelector(":scope > .parleo-mobile-depth")) return;

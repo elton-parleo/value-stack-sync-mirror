@@ -30,4 +30,4 @@
 - [x] Visually verify desktop deck mechanics across presentation-sized viewports
 - [x] Install the supplied mobile deck without changing its content or mechanics
 - [x] Add restrained editorial photographic depth to selected mobile slides
-- [ ] Route phone visitors to the supplied mobile deck and verify all 13 slides
+- [x] Route phone visitors to the supplied mobile deck and verify all 13 slides
