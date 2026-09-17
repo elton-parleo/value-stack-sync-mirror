@@ -19,3 +19,5 @@
 - [x] Give every mobile slide a distinct visual identity, purposeful motion, and clear transition into the next chapter
 - [x] Visually verify all 13 mobile sections against the desktop originals
 - [x] Add clear homepage and free-audit navigation to both deck views
+- [ ] Refine all 13 mobile chapters using the selected editorial-journal direction
+- [ ] Visually review every mobile chapter for density, hierarchy, and composition
