@@ -9,6 +9,7 @@ import WhatIsAgenticCommerce from "./pages/WhatIsAgenticCommerce.tsx";
 import Insights from "./pages/Insights.tsx";
 import InsightPost from "./pages/InsightPost.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import CustomerDeck from "./pages/CustomerDeck.tsx";
 import ScrollToHash from "./components/ScrollToHash.tsx";
 import PostHogPageView from "./components/PostHogPageView.tsx";
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/insights/:slug" element={<InsightPost />} />
           <Route path="/demo" element={<Demo />} />
           <Route path="/what-is-agentic-commerce" element={<WhatIsAgenticCommerce />} />
+          <Route path="/customerdeck" element={<CustomerDeck />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
