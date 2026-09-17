@@ -114,7 +114,10 @@ body{margin:0;background:var(--ink);font-family:'Inter Tight',system-ui,sans-ser
 #ch-03 .m-swipe{display:none!important}
 #ch-03 section [style*="grid-template-columns"],
 #ch-03 section [style*="display:flex"]:not([style*="column"]){display:block!important}
-#ch-03 section [style*="display:flex"]:not([style*="column"]) > *{width:100%!important;max-width:100%!important;margin-bottom:14px}
+#ch-03 section [style*="display:flex"]:not([style*="column"]) > *{width:100%!important;max-width:100%!important;margin-bottom:22px}
+#ch-03 section *{max-width:100%!important}
+#ch-03 section [style*="width:"]:not(.m-kicker){width:auto!important}
+#ch-03 section > *:first-child{overflow:visible!important}
 }
 .m-slide section[data-screen-label] .m-scroll{overflow-x:auto!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .m-slide section[data-screen-label] .m-scroll::-webkit-scrollbar{display:none}
