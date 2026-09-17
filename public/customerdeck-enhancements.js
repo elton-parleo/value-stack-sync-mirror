@@ -67,11 +67,16 @@
         background: ${BLUE};
         transition: width 480ms cubic-bezier(.22,.8,.22,1);
       }
-      .parleo-next {
+      .parleo-controls {
         position: fixed;
         right: 24px;
         bottom: 22px;
         z-index: 2147483100;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .parleo-control {
         appearance: none;
         border: 1px solid rgba(242,240,239,.16);
         border-radius: 999px;
@@ -90,15 +95,16 @@
         backdrop-filter: blur(14px);
         transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
       }
-      .parleo-next:hover {
+      .parleo-control:hover:not(:disabled) {
         border-color: rgba(242,240,239,.36);
         background: #0a0e1a;
         transform: translateY(-2px);
       }
-      .parleo-next:focus-visible { outline: 2px solid ${BLUE}; outline-offset: 3px; }
-      .parleo-next .label { color: rgba(242,240,239,.62); }
-      .parleo-next .number { color: #f2f0ef; }
-      .parleo-next .arrow {
+      .parleo-control:disabled { opacity: .38; cursor: default; }
+      .parleo-control:focus-visible { outline: 2px solid ${BLUE}; outline-offset: 3px; }
+      .parleo-control .label { color: rgba(242,240,239,.62); }
+      .parleo-control .number { color: #f2f0ef; }
+      .parleo-control .arrow {
         width: 28px;
         height: 28px;
         border-radius: 50%;
@@ -111,13 +117,14 @@
         transition: transform 180ms ease;
       }
       .parleo-next:hover .arrow { transform: translateX(2px); }
+      .parleo-prev:hover .arrow { transform: translateX(-2px); }
       .parleo-next[data-last] .arrow { transform: rotate(-90deg); }
       @media (max-width: 760px) {
         .parleo-progress { left: 0; }
-        .parleo-next { right: 12px; bottom: 12px; }
+        .parleo-controls { right: 12px; bottom: 12px; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .thumb .frame, .parleo-next, .parleo-next .arrow, .parleo-progress > span { transition: none; }
+        .thumb .frame, .parleo-control, .parleo-control .arrow, .parleo-progress > span { transition: none; }
       }
     `;
     shadow.appendChild(style);
@@ -128,10 +135,16 @@
     progress.innerHTML = "<span></span>";
     shadow.appendChild(progress);
 
+    const controls = document.createElement("div");
+    controls.className = "parleo-controls";
+    const previous = document.createElement("button");
+    previous.type = "button";
+    previous.className = "parleo-control parleo-prev";
     const next = document.createElement("button");
     next.type = "button";
-    next.className = "parleo-next";
-    shadow.appendChild(next);
+    next.className = "parleo-control parleo-next";
+    controls.append(previous, next);
+    shadow.appendChild(controls);
 
     const slides = Array.from(deck.querySelectorAll(":scope > [data-screen-label]"));
     const count = slides.length;
@@ -165,6 +178,13 @@
       const index = Math.max(0, slides.findIndex((slide) => slide.hasAttribute("data-deck-active")));
       const isLast = index === count - 1;
       progress.style.setProperty("--parleo-progress", `${((index + 1) / count) * 100}%`);
+      previous.disabled = index === 0;
+      previous.setAttribute("aria-label", index === 0 ? "Already on first slide" : `Go to slide ${index}`);
+      previous.innerHTML = `
+        <span class="arrow" aria-hidden="true">←</span>
+        <span class="label">Previous</span>
+        <span class="number">${String(Math.max(1, index)).padStart(2, "0")}</span>
+      `;
       next.toggleAttribute("data-last", isLast);
       next.setAttribute("aria-label", isLast ? "Return to first slide" : `Go to slide ${index + 2}`);
       next.innerHTML = `
@@ -180,6 +200,9 @@
     next.addEventListener("click", () => {
       if (deck.index >= count - 1) deck.goTo(0);
       else deck.next();
+    });
+    previous.addEventListener("click", () => {
+      if (deck.index > 0) deck.goTo(deck.index - 1);
     });
 
     const observer = new MutationObserver((records) => {
