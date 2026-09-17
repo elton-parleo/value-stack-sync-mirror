@@ -9,3 +9,6 @@
 - [x] Add private-page search protections without linking it from the site
 - [x] Make the presentation usable on phone, tablet, and desktop
 - [x] Visually verify every slide and presentation control at key screen sizes
+- [ ] Strengthen the customer-deck title slide without changing its content
+- [ ] Add the homepage-style soft-focus photographic depth across all slides
+- [ ] Visually verify the revised deck on desktop and mobile
