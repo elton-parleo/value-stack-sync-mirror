@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowUpRight, Monitor } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import beautyImage from "@/assets/lifestyle-beauty-flatlay.jpg";
 import fashionImage from "@/assets/lifestyle-fashion.jpg";
@@ -49,11 +50,14 @@ const Step = ({ number, title, children }: { number: string; title: string; chil
 const MobileCustomerDeck = () => (
   <div className="bg-background md:hidden">
     <header className="sticky inset-x-0 top-0 z-50 border-b border-background/10 bg-code-bg/95 px-4 py-2.5 text-background backdrop-blur-sm">
-      <div className="mx-auto flex max-w-lg items-center justify-between">
-        <a href="#deck-01" className="text-sm font-bold" aria-label="Return to presentation start">PARLEO</a>
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-background/50">Customer introduction</span>
-          <a href="/customerdeck-presentation.html" aria-label="Open desktop presentation" className="text-background/70"><Monitor className="h-4 w-4" /></a>
+      <div className="mx-auto flex max-w-lg items-center justify-between gap-3">
+        <Link to="/" className="text-sm font-bold" aria-label="Go to Parleo homepage">PARLEO</Link>
+        <div className="flex items-center gap-2">
+          <Link to="/" className="px-1.5 py-2 text-[11px] font-medium text-background/70">Home</Link>
+          <Button asChild size="sm" className="h-8 px-3 text-[11px]">
+            <a href="https://parleo.io/audit/">Free audit</a>
+          </Button>
+          <a href="/customerdeck-presentation.html" aria-label="Open desktop presentation" className="p-2 text-background/70"><Monitor className="h-4 w-4" /></a>
         </div>
       </div>
     </header>

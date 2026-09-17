@@ -18,3 +18,4 @@
 - [x] Recompose every slide's diagrams, logos, imagery, and data graphics for phones
 - [x] Give every mobile slide a distinct visual identity, purposeful motion, and clear transition into the next chapter
 - [x] Visually verify all 13 mobile sections against the desktop originals
+- [x] Add clear homepage and free-audit navigation to both deck views
