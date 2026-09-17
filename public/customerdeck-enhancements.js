@@ -143,11 +143,14 @@
         return style.display !== "none" && !element.classList.contains("deck-atmosphere");
       });
       elements.slice(0, 10).forEach((element, index) => {
+        const hasAuthoredTransform = getComputedStyle(element).transform !== "none";
         element.animate(
-          [
-            { opacity: 0, transform: "translateY(16px)" },
-            { opacity: 1, transform: "translateY(0)" }
-          ],
+          hasAuthoredTransform
+            ? [{ opacity: 0 }, { opacity: 1 }]
+            : [
+                { opacity: 0, transform: "translateY(16px)" },
+                { opacity: 1, transform: "translateY(0)" }
+              ],
           {
             duration: 560,
             delay: 80 + Math.min(index, 7) * 62,

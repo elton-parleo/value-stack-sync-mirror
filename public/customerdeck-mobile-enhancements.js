@@ -41,6 +41,14 @@
       overflow: hidden;
       pointer-events: none;
     }
+    .parleo-mobile-depth-section {
+      position: relative !important;
+      isolation: isolate;
+    }
+    .parleo-mobile-depth-section > *:not(.parleo-mobile-depth) {
+      position: relative;
+      z-index: 1;
+    }
     .parleo-mobile-depth img {
       position: absolute;
       top: 8%;
@@ -85,6 +93,7 @@
   Object.entries(layers).forEach(([id, config]) => {
     const section = document.getElementById(id);
     if (!section || section.querySelector(":scope > .parleo-mobile-depth")) return;
+    section.classList.add("parleo-mobile-depth-section");
 
     const depth = document.createElement("div");
     depth.className = "parleo-mobile-depth";
