@@ -29,8 +29,8 @@ const chapterNames: Record<string, string> = {
 
 const Frame = ({ number, children, dark = false, image }: { number: string; children: React.ReactNode; dark?: boolean; image?: string }) => (
   <section id={`deck-${number}`} className={dark ? "relative overflow-hidden border-t-2 border-primary bg-code-bg text-background" : number === "02" || number === "05" || number === "08" || number === "11" ? "relative overflow-hidden border-t border-foreground/10 bg-secondary text-foreground" : "relative overflow-hidden border-t border-foreground/10 bg-background text-foreground"}>
-    {image && <img src={image} alt="" className="absolute inset-y-0 right-0 h-full w-[88%] object-cover opacity-[0.16] saturate-[0.75] [mask-image:linear-gradient(to_right,transparent,black_52%)]" />}
-    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.04 }} transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto min-h-[92svh] max-w-lg px-5 pb-12 pt-10">
+    {image && <img src={image} alt="" className={dark ? "absolute inset-y-0 right-0 h-full w-full object-cover opacity-[0.17] saturate-[0.75] [mask-image:linear-gradient(to_right,transparent,black_60%)]" : "absolute inset-x-0 bottom-0 h-[74%] w-full object-cover opacity-[0.1] saturate-[0.7] [mask-image:linear-gradient(to_bottom,transparent,black_38%)]"} />}
+    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.04 }} transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto min-h-[min(92svh,920px)] max-w-lg px-5 pb-12 pt-10">
       <div className="mb-8 flex items-end justify-between border-b border-current/15 pb-3">
         <div><span className="block font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-primary">Chapter {number}</span><span className="mt-1 block text-[11px] font-medium text-current/45">{chapterNames[number]}</span></div>
         <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-current/45">{number === "A1" ? "Appendix" : `${number} / 12`}</span>
