@@ -115,7 +115,7 @@ export const OriginalSlideVisual = ({ number, dark = false }: { number: SlideNum
                 }}
               />
               <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-current/10" />
-              {index === focalPoints[number].length - 1 && (
+              {index === crops[number].length - 1 && (
                 <Button
                   type="button"
                   size="icon"
