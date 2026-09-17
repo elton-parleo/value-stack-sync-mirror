@@ -5,14 +5,32 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const CustomerDeck = () => {
-  const [isMobile] = useState(() => window.matchMedia("(max-width: 767px)").matches);
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia("(max-width: 767px)").matches);
 
   useEffect(() => {
-    if (isMobile) window.location.replace("/customerdeck-mobile.html");
-  }, [isMobile]);
+    const query = window.matchMedia("(max-width: 767px)");
+    const updateView = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    setIsMobile(query.matches);
+    query.addEventListener("change", updateView);
+    return () => query.removeEventListener("change", updateView);
+  }, []);
 
   if (isMobile) {
-    return <main className="min-h-[100dvh] w-full bg-code-bg" aria-label="Opening mobile presentation" />;
+    return (
+      <main className="h-[100dvh] w-full overflow-hidden bg-code-bg">
+        <Helmet>
+          <title>Parleo Customer Introduction</title>
+          <meta name="description" content="Private Parleo customer introduction presentation." />
+          <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+          <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
+        </Helmet>
+        <iframe
+          src="/customerdeck-mobile.html"
+          title="Parleo mobile customer introduction presentation"
+          className="block h-full w-full border-0"
+        />
+      </main>
+    );
   }
 
   return (
