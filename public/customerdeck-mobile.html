@@ -53,6 +53,21 @@ body{margin:0;background:var(--ink);font-family:'Inter Tight',system-ui,sans-ser
 .m-slide section[data-screen-label] .m-keep [style*="display:flex"]{flex-wrap:nowrap!important}
 .m-slide section[data-screen-label] .m-keep [style*="flex:1"]{flex:1 0 auto!important}
 @media (max-width:767px){
+section[data-screen-label^="01"]{display:flex!important;flex-direction:column!important;gap:16px!important;align-items:stretch!important}
+section[data-screen-label^="01"] > *{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%!important;max-width:100%!important;min-width:0!important;transform:none!important}
+section[data-screen-label^="01"] > .deck-atmosphere{position:absolute!important;inset:0!important;width:100%!important}
+section[data-screen-label^="01"] > svg{display:none!important}
+section[data-screen-label^="01"] > *:nth-child(9){order:1}
+section[data-screen-label^="01"] > *:nth-child(10){order:2}
+section[data-screen-label^="01"] > *:nth-child(8){order:3}
+section[data-screen-label^="01"] > *:nth-child(4){order:4}
+section[data-screen-label^="01"] > *:nth-child(5){order:5}
+section[data-screen-label^="01"] > *:nth-child(6){order:6}
+section[data-screen-label^="01"] > *:nth-child(7){order:7}
+section[data-screen-label^="01"] > *:nth-child(11){order:8}
+section[data-screen-label^="01"] h1{font-size:44px!important;line-height:1.02!important}
+section[data-screen-label^="01"] .m-keep{width:100%!important;min-width:0!important}
+section[data-screen-label^="01"] *{max-width:100%!important}
 #ch-03 .m-keep{width:100%!important;min-width:0!important}
 #ch-03 .m-scroll{overflow:visible!important}
 #ch-03 .m-swipe{display:none!important}
@@ -624,6 +639,11 @@ document.querySelectorAll('.m-chapter:not(#ch-01) section [style*="display:flex"
   f.style.setProperty('display','block','important');
   kids.forEach(function(k){k.style.setProperty('width','100%','important');k.style.marginBottom='18px';});
 });
+document.querySelectorAll('#ch-01 .m-keep').forEach(function(e){
+  e.classList.remove('m-keep'); e.style.removeProperty('width'); e.style.removeProperty('min-width');
+  e.style.setProperty('width','100%','important'); e.style.setProperty('min-width','0','important');
+});
+document.querySelectorAll('#ch-01 .m-scroll').forEach(function(e){e.classList.remove('m-scroll');});
 document.querySelectorAll('#ch-03 .m-keep').forEach(function(e){
   e.classList.remove('m-keep'); e.style.removeProperty('width'); e.style.removeProperty('min-width');
   e.style.setProperty('width','100%','important'); e.style.setProperty('min-width','0','important');
