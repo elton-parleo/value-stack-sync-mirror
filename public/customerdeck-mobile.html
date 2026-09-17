@@ -546,12 +546,22 @@ document.querySelectorAll('.m-chapter section svg').forEach(function(svg){
 
 function pxSum(t){var m=t.match(/(\d+)px/g);return m?m.reduce(function(a,b){return a+parseInt(b,10);},0):0;}
 function markWide(el, est){
+  if(el.classList.contains('m-keep'))return;
+  var w = est<=820 ? 700 : Math.min(1560, est);
   el.classList.add('m-keep');
-  el.style.setProperty('width', Math.min(1560, Math.max(720, est))+'px', 'important');
-  el.style.setProperty('min-width', Math.min(1560, Math.max(720, est))+'px', 'important');
+  el.style.setProperty('width', w+'px', 'important');
+  el.style.setProperty('min-width', w+'px', 'important');
+  if(w<=700) return;
   var sec=el.closest('section'), host=el.parentElement;
   while(host&&host!==sec&&host.clientWidth<300){host=host.parentElement;}
-  (host&&host!==sec?host:el.parentElement).classList.add('m-scroll');
+  if(!host||host===sec){
+    var wrap=document.createElement('div');
+    wrap.className='m-scroll';
+    el.parentNode.insertBefore(wrap, el);
+    wrap.appendChild(el);
+  } else {
+    host.classList.add('m-scroll');
+  }
 }
 document.querySelectorAll('.m-chapter section [style*="grid-template-columns"]').forEach(function(g){
   var sec=g.closest('section'); if(g.parentElement===sec)return;
@@ -575,6 +585,12 @@ document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(
 
 
 
+document.querySelectorAll('.m-chapter section > *').forEach(function(ch){
+  if(ch.classList.contains('m-scroll')||ch.classList.contains('deck-atmosphere')||ch.closest('.m-scroll'))return;
+  var bad=false;
+  ch.querySelectorAll('*').forEach(function(e){ if(e.scrollWidth-e.clientWidth>10 && e.clientWidth>60 && !e.closest('.m-keep')) bad=true; });
+  if(bad) markWide(ch, 1460);
+});
 document.querySelectorAll('.m-chapter section').forEach(function(sec){
   sec.querySelectorAll('*').forEach(function(el){
     if(el.children.length)return;
