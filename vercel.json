@@ -17,15 +17,6 @@
           "value": "noindex, nofollow, noarchive, nosnippet"
         }
       ]
-    },
-    {
-      "source": "/customerdeck-mobile.html",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow, noarchive, nosnippet"
-        }
-      ]
     }
   ],
   "rewrites": [
