@@ -28,3 +28,6 @@
 - [x] Remove the rejected temporary mobile deck and wait for the supplied replacement HTML
 - [x] Add polished desktop deck navigation, slide framing, jump rail, next-slide cue, and reveals
 - [x] Visually verify desktop deck mechanics across presentation-sized viewports
+- [ ] Install the supplied mobile deck without changing its content or mechanics
+- [ ] Add restrained editorial photographic depth to selected mobile slides
+- [ ] Route phone visitors to the supplied mobile deck and verify all 13 slides
