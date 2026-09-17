@@ -15,6 +15,14 @@
       .canvas {
         box-shadow: 0 0 0 1px rgba(242,240,239,.18), 0 26px 80px rgba(0,0,0,.42);
       }
+      section[data-screen-label^="01"] h1 {
+        font-family: "Inter Tight", Inter, sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 104px !important;
+        line-height: .98 !important;
+        letter-spacing: 0 !important;
+        text-wrap: balance;
+      }
       .rail {
         background: #0d0f14;
         border-right-color: rgba(242,240,239,.1);
