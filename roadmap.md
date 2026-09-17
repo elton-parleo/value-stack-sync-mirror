@@ -14,6 +14,7 @@
 - [x] Visually verify the revised deck on desktop and mobile
 - [x] Build a dedicated vertical customer-deck story for phones
 - [x] Verify all mobile deck content, widths, links, and desktop preservation
-- [ ] Restore the desktop deck's visual storytelling in the mobile presentation
-- [ ] Recompose every slide's diagrams, logos, imagery, and data graphics for phones
-- [ ] Visually verify all 13 mobile sections against the desktop originals
+- [x] Restore the desktop deck's visual storytelling in the mobile presentation
+- [x] Recompose every slide's diagrams, logos, imagery, and data graphics for phones
+- [x] Give every mobile slide a distinct visual identity, purposeful motion, and clear transition into the next chapter
+- [x] Visually verify all 13 mobile sections against the desktop originals
