@@ -42,8 +42,8 @@
     #s01 h1 {
       font-family: "Instrument Serif", Georgia, serif !important;
       font-weight: 400 !important;
-      font-size: clamp(48px, 14vw, 58px) !important;
-      line-height: .92 !important;
+      font-size: clamp(47px, 13.5vw, 56px) !important;
+      line-height: .94 !important;
       letter-spacing: 0 !important;
       text-wrap: balance;
     }
@@ -107,7 +107,7 @@
 
   const title = document.querySelector("#s01 h1");
   if (title instanceof HTMLElement) {
-    title.innerHTML = 'Your next customer just <span class="parleo-title-emphasis">asked an AI</span> <span class="parleo-title-accent">what to buy.</span>';
+    title.innerHTML = 'Your next<br>customer just<br><span class="parleo-title-emphasis">asked an AI</span><br><span class="parleo-title-accent">what to buy.</span>';
   }
 
   const exposeForCapture = () => {
