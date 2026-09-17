@@ -24,11 +24,20 @@ const sources: Record<SlideNumber, string> = {
   A1: slideA1.url,
 };
 
-const focalPoint: Record<SlideNumber, string> = {
-  "01": "50% 52%", "02": "52% 66%", "03": "55% 66%", "04": "55% 65%",
-  "05": "51% 64%", "06": "57% 63%", "07": "53% 64%", "08": "54% 63%",
-  "09": "54% 64%", "10": "51% 65%", "11": "52% 66%", "12": "50% 53%",
-  A1: "52% 63%",
+const focalPoints: Record<SlideNumber, string[]> = {
+  "01": ["78% 52%"],
+  "02": ["22% 65%", "72% 64%"],
+  "03": ["38% 65%", "82% 63%"],
+  "04": ["20% 64%", "69% 63%"],
+  "05": ["35% 64%", "78% 63%"],
+  "06": ["23% 63%", "73% 62%"],
+  "07": ["38% 64%", "82% 63%"],
+  "08": ["36% 64%", "81% 63%"],
+  "09": ["39% 64%", "84% 63%"],
+  "10": ["35% 61%", "74% 70%"],
+  "11": ["26% 64%", "76% 64%"],
+  "12": ["76% 54%"],
+  A1: ["29% 64%", "76% 64%"],
 };
 
 export const OriginalSlideVisual = ({ number, dark = false }: { number: SlideNumber; dark?: boolean }) => {
@@ -47,28 +56,34 @@ export const OriginalSlideVisual = ({ number, dark = false }: { number: SlideNum
 
   return (
     <>
-      <div className={`relative mt-8 overflow-hidden border-y ${dark ? "border-background/20 bg-code-bg" : "border-foreground/15 bg-secondary"}`}>
-        <div className="relative aspect-[5/4] overflow-hidden">
-          <img
-            src={sources[number]}
-            alt={`Original Parleo customer presentation slide ${number}`}
-            className="h-full w-full object-cover"
-            style={{ objectPosition: focalPoint[number] }}
-          />
-          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-current/10" />
-          <Button
-            type="button"
-            size="icon"
-            variant="secondary"
-            className="absolute bottom-3 right-3 h-9 w-9 rounded-full"
-            aria-label={`Open full slide ${number}`}
-            onClick={() => setExpanded(true)}
-          >
-            <Expand className="h-4 w-4" />
-          </Button>
+      <div className={`relative mt-8 border-y py-3 ${dark ? "border-background/20 bg-code-bg" : "border-foreground/15 bg-secondary"}`}>
+        <div className="space-y-3">
+          {focalPoints[number].map((point, index) => (
+            <div key={point} className="relative aspect-[4/3] overflow-hidden border border-current/10 bg-background">
+              <img
+                src={sources[number]}
+                alt={`Detail ${index + 1} from Parleo customer presentation slide ${number}`}
+                className="h-full w-full scale-[1.82] object-cover"
+                style={{ transformOrigin: point }}
+              />
+              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-current/10" />
+              {index === focalPoints[number].length - 1 && (
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="secondary"
+                  className="absolute bottom-3 right-3 h-9 w-9 rounded-full"
+                  aria-label={`Open full slide ${number}`}
+                  onClick={() => setExpanded(true)}
+                >
+                  <Expand className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+          ))}
         </div>
-        <div className="flex items-center justify-between border-t border-current/10 px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-current/50">
-          <span>Original composition</span><span>{number}</span>
+        <div className="flex items-center justify-between px-1 pt-3 font-mono text-[8px] uppercase tracking-[0.12em] text-current/50">
+          <span>Slide {number}</span><span>{focalPoints[number].length} details</span>
         </div>
       </div>
 
