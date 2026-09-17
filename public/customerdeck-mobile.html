@@ -596,7 +596,7 @@ document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(
   if(tight) markWide(f, kids.length*250);
 });
 ['#ch-03'].forEach(function(id){
-  document.querySelectorAll(id+' section > * [style*="display:flex"], '+id+' section > * [style*="grid-template-columns"]').forEach(function(f){
+  document.querySelectorAll(id+' section [style*="display:flex"], '+id+' section [style*="grid-template-columns"]').forEach(function(f){
     if(f.closest('.m-keep')||/flex-direction:column/.test(f.getAttribute('style')||''))return;
     var kids=f.children.length; if(kids<3)return;
     markWide(f, kids*300);
