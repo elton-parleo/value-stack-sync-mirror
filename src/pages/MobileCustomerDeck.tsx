@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUpRight, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import beautyImage from "@/assets/lifestyle-beauty-flatlay.jpg";
 import fashionImage from "@/assets/lifestyle-fashion.jpg";
@@ -26,32 +27,50 @@ import {
 
 const surfaces = ["Site schema", "Google Merchant Center", "OpenAI ACP", "Google UCP", "MCP + API"];
 
+const chapterNames: Record<string, string> = {
+  "01": "Introduction",
+  "02": "The new funnel",
+  "03": "The scoreboard",
+  "04": "Category exposure",
+  "05": "The platform",
+  "06": "True value",
+  "07": "The brand case",
+  "08": "The retailer case",
+  "09": "The console",
+  "10": "TrueSync",
+  "11": "The progression",
+  "12": "Start here",
+  A1: "The operators",
+};
+
 const Frame = ({ number, children, dark = false, image }: { number: string; children: React.ReactNode; dark?: boolean; image?: string }) => (
-  <section id={`deck-${number}`} className={dark ? "relative overflow-hidden border-t-[6px] border-primary bg-code-bg text-background" : "relative overflow-hidden border-t-[6px] border-primary bg-background text-foreground"}>
-    {image && <img src={image} alt="" className="absolute inset-y-0 right-0 h-full w-[82%] object-cover opacity-20 [mask-image:linear-gradient(to_right,transparent,black_45%)]" />}
-    <span aria-hidden="true" className="pointer-events-none absolute -right-2 top-24 font-mono text-[108px] font-bold leading-none text-current/[0.035]">{number}</span>
-    <div className="relative mx-auto min-h-[100svh] max-w-lg px-5 pb-20 pt-20">
-      <div className="mb-12 flex items-center justify-between border-b border-current/15 pb-3 font-mono text-[10px] uppercase tracking-[0.12em]">
-        <span>Parleo</span><span>{number === "A1" ? "Appendix" : `${number} / 12`}</span>
+  <section id={`deck-${number}`} className={dark ? "relative overflow-hidden border-t-2 border-primary bg-code-bg text-background" : number === "02" || number === "05" || number === "08" || number === "11" ? "relative overflow-hidden border-t border-foreground/10 bg-secondary text-foreground" : "relative overflow-hidden border-t border-foreground/10 bg-background text-foreground"}>
+    {image && <img src={image} alt="" className="absolute inset-y-0 right-0 h-full w-[88%] object-cover opacity-[0.16] saturate-[0.75] [mask-image:linear-gradient(to_right,transparent,black_52%)]" />}
+    <span aria-hidden="true" className="pointer-events-none absolute -right-1 top-20 font-mono text-[88px] font-semibold leading-none text-current/[0.045]">{number}</span>
+    <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.06 }} transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto min-h-[92svh] max-w-lg px-6 pb-12 pt-14">
+      <div className="mb-10 flex items-end justify-between border-b border-current/15 pb-3">
+        <div><span className="block font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-primary">Chapter {number}</span><span className="mt-1 block text-[11px] font-medium text-current/45">{chapterNames[number]}</span></div>
+        <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-current/45">{number === "A1" ? "Appendix" : `${number} / 12`}</span>
       </div>
       {children}
-    </div>
+      {number !== "A1" && <a href={`#deck-${String(Number(number) + 1).padStart(2, "0")}`} className="mt-12 flex items-center justify-between border-t border-current/15 pt-4 font-mono text-[9px] uppercase tracking-[0.12em] text-current/45"><span>Continue</span><ArrowDown className="h-4 w-4 text-primary" /></a>}
+    </motion.div>
   </section>
 );
 
-const Title = ({ children }: { children: React.ReactNode }) => <h2 className="text-[38px] font-bold leading-[1.02] tracking-normal text-balance">{children}</h2>;
-const Lead = ({ children }: { children: React.ReactNode }) => <p className="mt-5 text-[18px] leading-[1.45] text-current/65">{children}</p>;
+const Title = ({ children }: { children: React.ReactNode }) => <h2 className="max-w-[12ch] text-[34px] font-semibold leading-[1.01] tracking-normal text-balance">{children}</h2>;
+const Lead = ({ children }: { children: React.ReactNode }) => <p className="mt-5 max-w-[34ch] text-[17px] font-normal leading-[1.5] text-current/65">{children}</p>;
 const Label = ({ children }: { children: React.ReactNode }) => <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-primary">{children}</p>;
-const Rule = () => <div className="my-8 h-px bg-current/15" />;
-const Metric = ({ value, children }: { value: string; children: React.ReactNode }) => <div className="border-t border-current/15 py-5"><strong className="block text-4xl font-bold leading-none text-primary">{value}</strong><span className="mt-2 block text-sm leading-snug text-current/65">{children}</span></div>;
-const Row = ({ title, value, note }: { title: string; value?: string; note: string }) => <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-current/15 py-4"><div><strong className="block text-base">{title}</strong><span className="mt-1 block text-sm leading-snug text-current/55">{note}</span></div>{value && <strong className="text-right text-lg text-primary">{value}</strong>}</div>;
-const Step = ({ number, title, children }: { number: string; title: string; children: React.ReactNode }) => <div className="border-t border-current/15 py-5"><div className="mb-2 flex items-baseline gap-3"><span className="font-mono text-[10px] text-primary">{number}</span><strong className="text-xl">{title}</strong></div><p className="text-[15px] leading-relaxed text-current/60">{children}</p></div>;
+const Rule = () => <div className="my-7 h-px bg-current/15" />;
+const Metric = ({ value, children }: { value: string; children: React.ReactNode }) => <div className="border-t border-current/15 py-5"><strong className="block text-[38px] font-semibold leading-none text-primary">{value}</strong><span className="mt-2 block text-sm leading-snug text-current/60">{children}</span></div>;
+const Row = ({ title, value, note }: { title: string; value?: string; note: string }) => <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-current/15 py-4"><div><strong className="block text-[15px] font-semibold">{title}</strong><span className="mt-1 block text-[13px] leading-snug text-current/55">{note}</span></div>{value && <strong className="text-right text-base text-primary">{value}</strong>}</div>;
+const Step = ({ number, title, children }: { number: string; title: string; children: React.ReactNode }) => <div className="grid grid-cols-[32px_1fr] gap-3 border-t border-current/15 py-5"><span className="pt-1 font-mono text-[9px] text-primary">{number}</span><div><strong className="text-lg font-semibold">{title}</strong><p className="mt-2 text-[14px] leading-relaxed text-current/60">{children}</p></div></div>;
 
 const MobileCustomerDeck = () => (
   <div className="bg-background md:hidden">
-    <header className="sticky inset-x-0 top-0 z-50 border-b border-background/10 bg-code-bg/95 px-4 py-2.5 text-background backdrop-blur-sm">
+    <header className="sticky inset-x-0 top-0 z-50 border-b border-background/10 bg-code-bg/95 px-4 py-2 text-background backdrop-blur-sm">
       <div className="mx-auto flex max-w-lg items-center justify-between gap-3">
-        <Link to="/" className="text-sm font-bold" aria-label="Go to Parleo homepage">PARLEO</Link>
+        <Link to="/" className="text-[13px] font-bold" aria-label="Go to Parleo homepage">PARLEO</Link>
         <div className="flex items-center gap-2">
           <Link to="/" className="px-1.5 py-2 text-[11px] font-medium text-background/70">Home</Link>
           <Button asChild size="sm" className="h-8 px-3 text-[11px]">
@@ -63,10 +82,10 @@ const MobileCustomerDeck = () => (
     </header>
 
     <Frame number="01" dark image={beautyImage}>
-      <div className="flex min-h-[72svh] flex-col justify-between">
+      <div className="flex min-h-[68svh] flex-col justify-between">
         <div>
           <Label>Introduction, September 2026</Label>
-          <h1 className="mt-6 max-w-[11ch] text-[52px] font-bold leading-[0.98] tracking-normal text-balance">Your next customer just asked an AI what to buy.</h1>
+          <h1 className="mt-6 max-w-[11ch] text-[48px] font-semibold leading-[0.96] tracking-normal text-balance">Your next customer just asked an AI what to buy.</h1>
           <Lead>Parleo is the agentic commerce platform: your catalog, content, pricing and incentives, published to every AI surface, verified back, and proven in revenue.</Lead>
         </div>
         <div>
