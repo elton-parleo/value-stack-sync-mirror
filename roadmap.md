@@ -16,4 +16,5 @@
 - [x] Verify all mobile deck content, widths, links, and desktop preservation
 - [ ] Restore the desktop deck's visual storytelling in the mobile presentation
 - [ ] Recompose every slide's diagrams, logos, imagery, and data graphics for phones
+- [ ] Give every mobile slide a distinct visual identity, purposeful motion, and clear transition into the next chapter
 - [ ] Visually verify all 13 mobile sections against the desktop originals
