@@ -637,7 +637,11 @@ document.querySelectorAll('.m-chapter:not(#ch-01) section [style*="display:flex"
   var tight=kids.some(function(k){return k.clientWidth>0&&k.clientWidth<210&&(k.textContent||'').trim().length>18;});
   if(!tight)return;
   f.style.setProperty('display','block','important');
-  kids.forEach(function(k){k.style.setProperty('width','100%','important');k.style.marginBottom='18px';});
+  kids.forEach(function(k){
+    var txt=(k.textContent||'').trim().length;
+    if(txt<8 && k.clientWidth<140){k.style.setProperty('flex','0 0 auto','important');return;}
+    k.style.setProperty('width','100%','important');k.style.marginBottom='18px';
+  });
 });
 document.querySelectorAll('#ch-01 .m-keep').forEach(function(e){
   e.classList.remove('m-keep'); e.style.removeProperty('width'); e.style.removeProperty('min-width');
