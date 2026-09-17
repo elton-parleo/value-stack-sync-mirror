@@ -111,7 +111,7 @@ const Navbar = () => {
             </div>
 
             <Button asChild size="sm">
-              <a href={AUDIT_URL}>Free audit</a>
+              <a href={AUDIT_URL}>Free Agentic Audit</a>
             </Button>
             <Button
               variant="outline"
@@ -181,7 +181,7 @@ const Navbar = () => {
               </div>
               <div className="mt-auto flex flex-col gap-2.5">
                 <Button asChild size="lg" className="w-full">
-                  <a href={AUDIT_URL} onClick={() => setMobileOpen(false)}>Run your free audit</a>
+                  <a href={AUDIT_URL} onClick={() => setMobileOpen(false)}>Free Agentic Audit</a>
                 </Button>
                 <Button
                   variant="outline"

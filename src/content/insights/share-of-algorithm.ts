@@ -51,7 +51,7 @@ const post: Post = {
     },
     {
       q: "How do I get my own Share of Algorithm score?",
-      a: "Run the free audit at parleo.io/audit. It takes one URL and returns your score across all three pillars, with every point inspectable.",
+      a: "Run the Free Agentic Audit at parleo.io/audit. It takes one URL and returns your score across all three pillars, with every point inspectable.",
     },
   ],
   body: [

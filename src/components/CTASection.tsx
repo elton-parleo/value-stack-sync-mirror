@@ -44,7 +44,7 @@ const CTASection = () => {
                 href="https://parleo.io/audit/"
                 className="btn-base btn-primary group"
               >
-                Run your free audit
+                Free Agentic Audit
                 <svg
                   width="14"
                   height="14"

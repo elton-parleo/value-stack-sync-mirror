@@ -51,7 +51,7 @@ const CustomerDeck = () => {
             <Link to="/" className="text-sm text-background/65 transition-colors hover:text-background">Homepage</Link>
             <Link to="/insights" className="text-sm text-background/65 transition-colors hover:text-background">Insights</Link>
             <Button asChild size="sm">
-              <a href="https://parleo.io/audit/">Free audit <ArrowUpRight className="h-3.5 w-3.5" /></a>
+              <a href="https://parleo.io/audit/">Free Agentic Audit <ArrowUpRight className="h-3.5 w-3.5" /></a>
             </Button>
           </div>
         </nav>

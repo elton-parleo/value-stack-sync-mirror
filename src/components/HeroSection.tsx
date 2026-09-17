@@ -51,7 +51,7 @@ const HeroSection = () => {
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a href="https://parleo.io/audit/" className="btn-base btn-primary group">
-              Run your free audit
+              Free Agentic Audit
               <span data-slot="arrow" aria-hidden>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
                   <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />

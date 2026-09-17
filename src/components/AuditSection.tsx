@@ -41,7 +41,7 @@ const AuditSection = () => {
           <div className="min-w-0 max-w-[540px]">
             <h2 className="section-heading text-foreground">Score how agents read your brand</h2>
             <p className="section-copy mt-5 max-w-[440px]">
-              One free audit returns a 100 point readiness score across visibility, accessibility, and true value.
+              One Free Agentic Audit returns a 100 point readiness score across visibility, accessibility, and true value.
             </p>
 
             <form onSubmit={submit} className="mt-8 max-w-[460px]">
@@ -60,7 +60,7 @@ const AuditSection = () => {
 
               <div className="mt-5 flex flex-wrap items-center gap-4">
                 <button type="submit" className="btn-base btn-primary group">
-                  Run your free audit
+                  Free Agentic Audit
                   <span data-slot="arrow" aria-hidden>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
                       <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />

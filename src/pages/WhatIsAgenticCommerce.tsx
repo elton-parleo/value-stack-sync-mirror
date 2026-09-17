@@ -363,7 +363,7 @@ const WhatIsAgenticCommerce = () => {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button asChild size="lg" className="rounded-full">
                   <a href={AUDIT_URL}>
-                    Run your free audit
+                    Free Agentic Audit
                     <ArrowRight className="ml-1.5 h-4 w-4" />
                   </a>
                 </Button>
@@ -1102,7 +1102,7 @@ const WhatIsAgenticCommerce = () => {
             </div>
             <Button asChild size="lg" className="rounded-full">
               <a href={AUDIT_URL}>
-                Run your free audit
+                Free Agentic Audit
                 <ArrowRight className="ml-1.5 h-4 w-4" />
               </a>
             </Button>

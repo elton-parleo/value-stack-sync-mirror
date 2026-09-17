@@ -230,12 +230,12 @@ const InsightPost = () => {
                 Find your own gap
               </h2>
               <p className="section-copy section-copy-dark mt-3 max-w-[420px]">
-                Run the free audit and see what agents quote for your catalog, and what your funded
+                Run the Free Agentic Audit and see what agents quote for your catalog, and what your funded
                 value is worth in the answer.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a href={AUDIT_URL} className="btn-base btn-primary group">
-                  Run your free audit
+                  Free Agentic Audit
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
               </div>

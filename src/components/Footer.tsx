@@ -33,7 +33,7 @@ const Footer = () => (
         </FooterCol>
 
         <FooterCol title="Company">
-          <FooterExternal href="https://parleo.io/audit/">Free Audit</FooterExternal>
+          <FooterExternal href="https://parleo.io/audit/">Free Agentic Audit</FooterExternal>
           <FooterLink to="/#team">Team</FooterLink>
           <FooterExternal href="https://www.linkedin.com/company/parleo-sf/">LinkedIn</FooterExternal>
         </FooterCol>
