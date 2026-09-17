@@ -156,6 +156,15 @@
 
     const slides = Array.from(deck.querySelectorAll(":scope > [data-screen-label]"));
     const count = slides.length;
+    const title = slides[0]?.querySelector("h1");
+    if (title instanceof HTMLElement) {
+      title.style.setProperty("font-family", '"Inter Tight", Inter, sans-serif');
+      title.style.setProperty("font-weight", "700");
+      title.style.setProperty("font-size", "104px");
+      title.style.setProperty("line-height", ".98");
+      title.style.setProperty("letter-spacing", "0");
+      title.style.setProperty("text-wrap", "balance");
+    }
 
     const animateSlide = (slide) => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
