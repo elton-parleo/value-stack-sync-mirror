@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import MobileCustomerDeck from "./MobileCustomerDeck";
+
+const MOBILE_DECK = "/customerdeck-mobile.html";
 
 const CustomerDeck = () => {
   const [isMobile, setIsMobile] = useState(() => window.matchMedia("(max-width: 767px)").matches);
@@ -14,6 +15,10 @@ const CustomerDeck = () => {
     query.addEventListener("change", update);
     return () => query.removeEventListener("change", update);
   }, []);
+
+  useEffect(() => {
+    if (isMobile) window.location.replace(MOBILE_DECK);
+  }, [isMobile]);
 
   return (
     <main className="min-h-[100dvh] w-full bg-code-bg">
@@ -27,8 +32,11 @@ const CustomerDeck = () => {
         <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
       </Helmet>
       {isMobile ? (
-        <MobileCustomerDeck />
+        <div className="flex h-[100dvh] items-center justify-center px-8 text-center text-sm text-background/70">
+          Opening the presentation…
+        </div>
       ) : (
+
         <div className="flex h-[100dvh] flex-col">
           <nav className="relative z-10 flex h-14 shrink-0 items-center justify-between border-b border-background/10 bg-code-bg px-6 text-background lg:px-10" aria-label="Presentation links">
             <Link to="/" className="text-[15px] font-bold tracking-normal">PARLEO</Link>
