@@ -34,6 +34,14 @@
 
   const style = document.createElement("style");
   style.textContent = `
+    #s01 h1 {
+      font-family: "Inter Tight", Inter, sans-serif !important;
+      font-weight: 700 !important;
+      font-size: clamp(44px, 12.75vw, 52px) !important;
+      line-height: 1.01 !important;
+      letter-spacing: 0 !important;
+      text-wrap: balance;
+    }
     .parleo-mobile-depth {
       position: absolute !important;
       inset: 0 !important;
