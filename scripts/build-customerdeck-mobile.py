@@ -227,7 +227,7 @@ document.querySelectorAll('.m-chapter section [style*="grid-template-columns"]')
   var gap=parseFloat(getComputedStyle(g).columnGap)||0;
   var cols=t.trim().split(/\s+/).length;
   var est=pxSum(t)+fr*230+gap*Math.max(0,cols-1);
-  if(est>700) markWide(g, est);
+  if(est>700 && cols>=3) markWide(g, est);
 });
 document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(function(f){
   var sec=f.closest('section'); if(f===sec||f.closest('.m-keep'))return;
@@ -248,10 +248,6 @@ document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(
   if(kids.length<3)return;
   var tight=kids.some(function(k){return (k.scrollWidth-k.clientWidth>6)||(k.clientWidth>0&&k.clientWidth<170);});
   if(tight) markWide(f, kids.length*250);
-});
-document.querySelectorAll('#ch-03 section > *').forEach(function(ch){
-  if(ch.classList.contains('deck-atmosphere'))return;
-  if(ch.querySelectorAll('*').length>8) markWide(ch, 1620);
 });
 document.querySelectorAll('#ch-09 section > *').forEach(function(ch){
   if(ch.classList.contains('deck-atmosphere')||ch.closest('.m-scroll'))return;
