@@ -25,3 +25,6 @@
 - [x] Verify every rebuilt mobile chapter visually at 390px and 430px
 - [x] Replace careless mobile artwork crops with slide-specific compositions
 - [x] Re-audit all 13 chapters for legibility, hierarchy, and visual continuity
+- [x] Remove the rejected temporary mobile deck and wait for the supplied replacement HTML
+- [x] Add polished desktop deck navigation, slide framing, jump rail, next-slide cue, and reveals
+- [x] Visually verify desktop deck mechanics across presentation-sized viewports

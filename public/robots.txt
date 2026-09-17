@@ -2,13 +2,11 @@ User-agent: Googlebot
 Allow: /
 Disallow: /customerdeck
 Disallow: /customerdeck-presentation.html
-Disallow: /customerdeck-mobile.html
 
 User-agent: Bingbot
 Allow: /
 Disallow: /customerdeck
 Disallow: /customerdeck-presentation.html
-Disallow: /customerdeck-mobile.html
 
 User-agent: Twitterbot
 Allow: /
@@ -20,6 +18,5 @@ User-agent: *
 Allow: /
 Disallow: /customerdeck
 Disallow: /customerdeck-presentation.html
-Disallow: /customerdeck-mobile.html
 
 Sitemap: https://parleo.io/sitemap.xml
