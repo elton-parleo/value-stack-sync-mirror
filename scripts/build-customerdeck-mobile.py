@@ -190,7 +190,7 @@ document.querySelectorAll('.m-chapter').forEach(function(ch){
   var n=ch.id.replace('ch-',''), sec=ch.querySelector('section');
   if(sec && n!=='01'){
     var row=Array.prototype.find.call(sec.children,function(el){var t=(el.textContent||'').trim();return t.indexOf('PARLEO')===0&&t.length<40;});
-    if(row) row.classList.add('m-shead'); row.style.setProperty('display','none','important');
+    if(row){ row.classList.add('m-shead'); row.style.setProperty('display','none','important'); }
   }
   var sc=ch.querySelectorAll('.m-scroll');
   sc.forEach(function(el){var h=document.createElement('div');h.className='m-swipe';h.innerHTML='<span>&#8594;</span><span>Swipe the table</span>';el.parentElement.insertBefore(h,el.nextSibling);});
