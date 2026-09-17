@@ -26,5 +26,5 @@
 - [x] Replace careless mobile artwork crops with slide-specific compositions
 - [x] Re-audit all 13 chapters for legibility, hierarchy, and visual continuity
 - [x] Remove the rejected temporary mobile deck and wait for the supplied replacement HTML
-- [ ] Add polished desktop deck navigation, slide framing, jump rail, next-slide cue, and reveals
-- [ ] Visually verify desktop deck mechanics across presentation-sized viewports
+- [x] Add polished desktop deck navigation, slide framing, jump rail, next-slide cue, and reveals
+- [x] Visually verify desktop deck mechanics across presentation-sized viewports
