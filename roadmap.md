@@ -23,3 +23,5 @@
 - [x] Visually review every mobile chapter for density, hierarchy, and composition
 - [x] Rebuild the mobile customer deck from the original desktop slide artwork
 - [x] Verify every rebuilt mobile chapter visually at 390px and 430px
+- [x] Replace careless mobile artwork crops with slide-specific compositions
+- [x] Re-audit all 13 chapters for legibility, hierarchy, and visual continuity

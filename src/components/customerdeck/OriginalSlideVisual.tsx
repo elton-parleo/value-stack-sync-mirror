@@ -17,6 +17,8 @@ import slideA1 from "@/assets/customerdeck/original-slides/A1.png.asset.json";
 
 type SlideNumber = "01" | "02" | "03" | "04" | "05" | "06" | "07" | "08" | "09" | "10" | "11" | "12" | "A1";
 
+type Crop = { x: number; y: number; width: number; height: number; label: string };
+
 const sources: Record<SlideNumber, string> = {
   "01": slide01.url, "02": slide02.url, "03": slide03.url, "04": slide04.url,
   "05": slide05.url, "06": slide06.url, "07": slide07.url, "08": slide08.url,
@@ -24,20 +26,57 @@ const sources: Record<SlideNumber, string> = {
   A1: slideA1.url,
 };
 
-const focalPoints: Record<SlideNumber, string[]> = {
-  "01": ["78% 52%"],
-  "02": ["22% 65%", "72% 64%"],
-  "03": ["38% 65%", "82% 63%"],
-  "04": ["20% 64%", "69% 63%"],
-  "05": ["35% 64%", "78% 63%"],
-  "06": ["23% 63%", "73% 62%"],
-  "07": ["38% 64%", "82% 63%"],
-  "08": ["36% 64%", "81% 63%"],
-  "09": ["39% 64%", "84% 63%"],
-  "10": ["35% 61%", "74% 70%"],
-  "11": ["26% 64%", "76% 64%"],
-  "12": ["76% 54%"],
-  A1: ["29% 64%", "76% 64%"],
+const crops: Record<SlideNumber, Crop[]> = {
+  "01": [{ x: 39, y: 19, width: 58, height: 66, label: "Product truth published to every agent" }],
+  "02": [
+    { x: 5, y: 21, width: 29, height: 59, label: "The funnel collapses into one chat window" },
+    { x: 35, y: 21, width: 60, height: 18, label: "The shopper's question" },
+    { x: 39, y: 36, width: 56, height: 43, label: "The agent's product recommendation" },
+  ],
+  "03": [
+    { x: 5, y: 32, width: 64, height: 49, label: "Commerce scoreboards by era" },
+    { x: 70, y: 32, width: 25, height: 49, label: "The new algorithmic scoreboard" },
+  ],
+  "04": [
+    { x: 5, y: 24, width: 26, height: 63, label: "Category exposure and modeled revenue" },
+    { x: 32, y: 24, width: 63, height: 63, label: "Agentic exposure by category" },
+  ],
+  "05": [
+    { x: 5, y: 29, width: 21, height: 43, label: "Connected product truth" },
+    { x: 26, y: 20, width: 45, height: 57, label: "Parleo's verify and publish workflow" },
+    { x: 72, y: 25, width: 23, height: 48, label: "Every agent surface" },
+  ],
+  "06": [
+    { x: 5, y: 26, width: 28, height: 61, label: "The product and current offer" },
+    { x: 34, y: 26, width: 61, height: 61, label: "Sticker price compared with true value" },
+  ],
+  "07": [
+    { x: 5, y: 27, width: 63, height: 48, label: "Brand investment reaching the agent" },
+    { x: 68, y: 27, width: 27, height: 48, label: "The decision layer" },
+  ],
+  "08": [
+    { x: 5, y: 25, width: 34, height: 60, label: "The product comparison" },
+    { x: 39, y: 25, width: 36, height: 60, label: "Member value calculation" },
+    { x: 76, y: 25, width: 19, height: 60, label: "Retailer advantage" },
+  ],
+  "09": [
+    { x: 18, y: 26, width: 77, height: 26, label: "Agent channel performance" },
+    { x: 18, y: 50, width: 77, height: 42, label: "Recommendation queue and recoverable revenue" },
+  ],
+  "10": [
+    { x: 5, y: 25, width: 45, height: 47, label: "Publish once" },
+    { x: 51, y: 25, width: 44, height: 47, label: "Read back what agents say" },
+    { x: 28, y: 72, width: 67, height: 17, label: "Automatic drift detection" },
+  ],
+  "11": [
+    { x: 5, y: 33, width: 44, height: 54, label: "Diagnostic and visibility" },
+    { x: 50, y: 33, width: 45, height: 54, label: "Syndication and agentic pricing" },
+  ],
+  "12": [{ x: 63, y: 25, width: 32, height: 48, label: "A sample audit result" }],
+  A1: [
+    { x: 5, y: 27, width: 44, height: 62, label: "Samar Birwadker" },
+    { x: 51, y: 27, width: 44, height: 62, label: "Elton Cheung" },
+  ],
 };
 
 export const OriginalSlideVisual = ({ number, dark = false }: { number: SlideNumber; dark?: boolean }) => {
@@ -56,18 +95,27 @@ export const OriginalSlideVisual = ({ number, dark = false }: { number: SlideNum
 
   return (
     <>
-      <div className={`relative mt-8 border-y py-3 ${dark ? "border-background/20 bg-code-bg" : "border-foreground/15 bg-secondary"}`}>
+      <figure className={`relative mt-8 border-y py-3 ${dark ? "border-background/20 bg-code-bg" : "border-foreground/15 bg-secondary"}`}>
         <div className="space-y-3">
-          {focalPoints[number].map((point, index) => (
-            <div key={point} className="relative aspect-[4/3] overflow-hidden border border-current/10 bg-background">
+          {crops[number].map((crop, index) => (
+            <div
+              key={crop.label}
+              className="relative overflow-hidden border border-current/10 bg-background"
+              style={{ aspectRatio: `${crop.width * 16} / ${crop.height * 9}` }}
+            >
               <img
                 src={sources[number]}
-                alt={`Detail ${index + 1} from Parleo customer presentation slide ${number}`}
-                className="h-full w-full scale-[1.82] object-cover"
-                style={{ transformOrigin: point }}
+                alt={crop.label}
+                className="absolute max-w-none"
+                style={{
+                  width: `${10000 / crop.width}%`,
+                  height: `${10000 / crop.height}%`,
+                  left: `${-100 * crop.x / crop.width}%`,
+                  top: `${-100 * crop.y / crop.height}%`,
+                }}
               />
               <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-current/10" />
-              {index === focalPoints[number].length - 1 && (
+              {index === crops[number].length - 1 && (
                 <Button
                   type="button"
                   size="icon"
@@ -82,10 +130,10 @@ export const OriginalSlideVisual = ({ number, dark = false }: { number: SlideNum
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between px-1 pt-3 font-mono text-[8px] uppercase tracking-[0.12em] text-current/50">
-          <span>Slide {number}</span><span>{focalPoints[number].length} details</span>
-        </div>
-      </div>
+        <figcaption className="flex items-center justify-between px-1 pt-3 font-mono text-[8px] uppercase tracking-[0.12em] text-current/50">
+          <span>Original slide {number}</span><span>Tap to expand</span>
+        </figcaption>
+      </figure>
 
       {expanded && (
         <div className="fixed inset-0 z-[100] bg-code-bg text-background" role="dialog" aria-modal="true" aria-label={`Full slide ${number}`}>
