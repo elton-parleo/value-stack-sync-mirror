@@ -12,3 +12,5 @@
 - [x] Strengthen the customer-deck title slide without changing its content
 - [x] Add the homepage-style soft-focus photographic depth across all slides
 - [x] Visually verify the revised deck on desktop and mobile
+- [ ] Build a dedicated vertical customer-deck story for phones
+- [ ] Verify all mobile deck content, widths, links, and desktop preservation
