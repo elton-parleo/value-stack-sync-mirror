@@ -239,11 +239,10 @@ document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(
 
 
 
-document.querySelectorAll('.m-chapter section > *').forEach(function(ch){
-  if(ch.classList.contains('m-scroll')||ch.classList.contains('deck-atmosphere')||ch.closest('.m-scroll'))return;
-  var bad=false;
-  ch.querySelectorAll('*').forEach(function(e){ if(e.scrollWidth-e.clientWidth>10 && e.clientWidth>60 && !e.closest('.m-keep')) bad=true; });
-  if(bad) markWide(ch, 1460);
+document.querySelectorAll('#ch-09 section > *').forEach(function(ch){
+  if(ch.classList.contains('deck-atmosphere')||ch.closest('.m-scroll'))return;
+  var deep=ch.querySelectorAll('*').length;
+  if(deep>40) markWide(ch, 1500);
 });
 document.querySelectorAll('.m-chapter section').forEach(function(sec){
   sec.querySelectorAll('*').forEach(function(el){
