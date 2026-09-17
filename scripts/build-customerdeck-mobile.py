@@ -249,12 +249,9 @@ document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(
   var tight=kids.some(function(k){return (k.scrollWidth-k.clientWidth>6)||(k.clientWidth>0&&k.clientWidth<170);});
   if(tight) markWide(f, kids.length*250);
 });
-['#ch-03'].forEach(function(id){
-  document.querySelectorAll(id+' section [style*="display:flex"], '+id+' section [style*="grid-template-columns"]').forEach(function(f){
-    if(f.closest('.m-keep')||/flex-direction:column/.test(f.getAttribute('style')||''))return;
-    var kids=f.children.length; if(kids<3)return;
-    markWide(f, kids*300);
-  });
+document.querySelectorAll('#ch-03 section > *').forEach(function(ch){
+  if(ch.classList.contains('deck-atmosphere'))return;
+  if(ch.querySelectorAll('*').length>8) markWide(ch, 1620);
 });
 document.querySelectorAll('#ch-09 section > *').forEach(function(ch){
   if(ch.classList.contains('deck-atmosphere')||ch.closest('.m-scroll'))return;
