@@ -21,3 +21,5 @@
 - [x] Add clear homepage and free-audit navigation to both deck views
 - [x] Refine all 13 mobile chapters using the selected editorial-journal direction
 - [x] Visually review every mobile chapter for density, hierarchy, and composition
+- [x] Rebuild the mobile customer deck from the original desktop slide artwork
+- [x] Verify every rebuilt mobile chapter visually at 390px and 430px
