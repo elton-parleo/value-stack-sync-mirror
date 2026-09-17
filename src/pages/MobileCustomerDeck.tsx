@@ -52,7 +52,7 @@ const Step = ({ number, title, children }: { number: string; title: string; chil
 
 const MobileCustomerDeck = () => (
   <div className="bg-background md:hidden">
-    <header className="sticky inset-x-0 top-0 z-50 border-b border-background/10 bg-code-bg/95 px-4 py-2 text-background backdrop-blur-sm">
+    <header className="relative z-50 border-b border-background/10 bg-code-bg px-4 py-2 text-background">
       <div className="mx-auto flex max-w-lg items-center justify-between gap-3">
         <Link to="/" className="text-[13px] font-bold" aria-label="Go to Parleo homepage">PARLEO</Link>
         <div className="flex items-center gap-2">
