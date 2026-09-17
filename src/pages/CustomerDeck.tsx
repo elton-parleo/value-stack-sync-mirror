@@ -1,9 +1,20 @@
 import { Helmet } from "react-helmet-async";
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const CustomerDeck = () => {
+  const [isMobile] = useState(() => window.matchMedia("(max-width: 767px)").matches);
+
+  useEffect(() => {
+    if (isMobile) window.location.replace("/customerdeck-mobile.html");
+  }, [isMobile]);
+
+  if (isMobile) {
+    return <main className="min-h-[100dvh] w-full bg-code-bg" aria-label="Opening mobile presentation" />;
+  }
+
   return (
     <main className="min-h-[100dvh] w-full bg-code-bg">
       <Helmet>
