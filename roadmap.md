@@ -31,5 +31,5 @@
 - [x] Install the supplied mobile deck without changing its content or mechanics
 - [x] Add restrained editorial photographic depth to selected mobile slides
 - [x] Route phone visitors to the supplied mobile deck and verify all 13 slides
-- [ ] Add a matching previous-slide control to the desktop presentation
-- [ ] Make desktop and mobile presentations switch live at the phone breakpoint
+- [x] Add a matching previous-slide control to the desktop presentation
+- [x] Make desktop and mobile presentations switch live at the phone breakpoint
