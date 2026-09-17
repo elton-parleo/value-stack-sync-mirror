@@ -1,4 +1,9 @@
 (() => {
+  const fontLink = document.createElement("link");
+  fontLink.rel = "stylesheet";
+  fontLink.href = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap";
+  document.head.appendChild(fontLink);
+
   const layers = {
     s03: {
       source: '#s08 img[alt="Patagonia Down Sweater Hoody"]',
@@ -35,12 +40,19 @@
   const style = document.createElement("style");
   style.textContent = `
     #s01 h1 {
-      font-family: "Inter Tight", Inter, sans-serif !important;
-      font-weight: 700 !important;
-      font-size: clamp(44px, 12.75vw, 52px) !important;
-      line-height: 1.01 !important;
+      font-family: "Instrument Serif", Georgia, serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(48px, 14vw, 58px) !important;
+      line-height: .92 !important;
       letter-spacing: 0 !important;
       text-wrap: balance;
+    }
+    #s01 h1 .parleo-title-emphasis {
+      font-style: italic;
+      color: #F2F0EF;
+    }
+    #s01 h1 .parleo-title-accent {
+      color: #0166FF;
     }
     .parleo-mobile-depth {
       position: absolute !important;
@@ -92,6 +104,11 @@
     }
   `;
   document.head.appendChild(style);
+
+  const title = document.querySelector("#s01 h1");
+  if (title instanceof HTMLElement) {
+    title.innerHTML = 'Your next customer just <span class="parleo-title-emphasis">asked an AI</span> <span class="parleo-title-accent">what to buy.</span>';
+  }
 
   const exposeForCapture = () => {
     document.documentElement.style.backgroundColor = "#F2F0EF";

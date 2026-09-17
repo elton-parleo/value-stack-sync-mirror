@@ -1,6 +1,11 @@
 (() => {
   const BLUE = "#0166FF";
 
+  const fontLink = document.createElement("link");
+  fontLink.rel = "stylesheet";
+  fontLink.href = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap";
+  document.head.appendChild(fontLink);
+
   const mount = () => {
     const deck = document.querySelector("deck-stage");
     if (!deck || !deck.shadowRoot || deck.dataset.parleoEnhanced === "true") return false;
@@ -16,12 +21,19 @@
         box-shadow: 0 0 0 1px rgba(242,240,239,.18), 0 26px 80px rgba(0,0,0,.42);
       }
       section[data-screen-label^="01"] h1 {
-        font-family: "Inter Tight", Inter, sans-serif !important;
-        font-weight: 700 !important;
-        font-size: 104px !important;
-        line-height: .98 !important;
+        font-family: "Instrument Serif", Georgia, serif !important;
+        font-weight: 400 !important;
+        font-size: 116px !important;
+        line-height: .9 !important;
         letter-spacing: 0 !important;
         text-wrap: balance;
+      }
+      section[data-screen-label^="01"] h1 .parleo-title-emphasis {
+        font-style: italic;
+        color: #f2f0ef;
+      }
+      section[data-screen-label^="01"] h1 .parleo-title-accent {
+        color: ${BLUE};
       }
       .rail {
         background: #0d0f14;
@@ -158,10 +170,11 @@
     const count = slides.length;
     const title = slides[0]?.querySelector("h1");
     if (title instanceof HTMLElement) {
-      title.style.setProperty("font-family", '"Inter Tight", Inter, sans-serif');
-      title.style.setProperty("font-weight", "700");
-      title.style.setProperty("font-size", "104px");
-      title.style.setProperty("line-height", ".98");
+      title.innerHTML = 'Your next customer<br>just <span class="parleo-title-emphasis">asked an AI</span><br><span class="parleo-title-accent">what to buy.</span>';
+      title.style.setProperty("font-family", '"Instrument Serif", Georgia, serif');
+      title.style.setProperty("font-weight", "400");
+      title.style.setProperty("font-size", "116px");
+      title.style.setProperty("line-height", ".9");
       title.style.setProperty("letter-spacing", "0");
       title.style.setProperty("text-wrap", "balance");
     }
