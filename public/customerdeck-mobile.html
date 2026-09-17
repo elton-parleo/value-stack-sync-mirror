@@ -544,17 +544,35 @@ document.querySelectorAll('.m-chapter section svg').forEach(function(svg){
 });
 
 
+function pxSum(t){var m=t.match(/(\d+)px/g);return m?m.reduce(function(a,b){return a+parseInt(b,10);},0):0;}
+function markWide(el, est){
+  el.classList.add('m-keep');
+  el.style.setProperty('width', Math.min(1560, Math.max(720, est))+'px', 'important');
+  el.style.setProperty('min-width', Math.min(1560, Math.max(720, est))+'px', 'important');
+  var sec=el.closest('section'), host=el.parentElement;
+  while(host&&host!==sec&&host.clientWidth<300){host=host.parentElement;}
+  (host&&host!==sec?host:el.parentElement).classList.add('m-scroll');
+}
 document.querySelectorAll('.m-chapter section [style*="grid-template-columns"]').forEach(function(g){
   var sec=g.closest('section'); if(g.parentElement===sec)return;
-  var t=g.style.gridTemplateColumns||'',n;
-  var m=t.match(/repeat\((\d+)/);
-  n=m?parseInt(m[1],10):t.trim().split(/\s+/).length;
-  if(n<3)return;
-  g.classList.add('m-keep');
-  var host=g.parentElement;
-  while(host&&host!==sec&&host.clientWidth<300){host=host.parentElement;}
-  (host&&host!==sec?host:g.parentElement).classList.add('m-scroll');
+  var t=g.style.gridTemplateColumns||'';
+  var fr=(t.match(/fr/g)||[]).length;
+  var gap=parseFloat(getComputedStyle(g).columnGap)||0;
+  var cols=t.trim().split(/\s+/).length;
+  var est=pxSum(t)+fr*230+gap*Math.max(0,cols-1);
+  if(est>700) markWide(g, est);
 });
+document.querySelectorAll('.m-chapter section [style*="display:flex"]').forEach(function(f){
+  var sec=f.closest('section'); if(f===sec||f.closest('.m-keep'))return;
+  if(/flex-direction:column/.test(f.getAttribute('style')||''))return;
+  var kids=Array.prototype.slice.call(f.children);
+  if(kids.length<2)return;
+  var sum=0, fixed=0;
+  kids.forEach(function(k){var w=pxSum((k.getAttribute('style')||'').split('height')[0].match(/width:\s*\d+px/)?RegExp.lastMatch:'');if(w){sum+=w;fixed++;}});
+  var gap=parseFloat(getComputedStyle(f).columnGap)||0;
+  if(fixed>=2 && sum+gap*(kids.length-1)>700) markWide(f, sum+gap*(kids.length-1)+20);
+});
+
 
 
 document.querySelectorAll('.m-chapter section').forEach(function(sec){
