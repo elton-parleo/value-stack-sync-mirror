@@ -416,6 +416,7 @@
       cancelAnimationFrame(syncFrame);
       syncFrame = requestAnimationFrame(syncControls);
     }, { passive: true });
+    window.setInterval(syncControls, 180);
     syncControls();
   }
 })();
