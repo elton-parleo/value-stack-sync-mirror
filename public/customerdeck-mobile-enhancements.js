@@ -393,11 +393,8 @@
     controls.prepend(previous);
     controls.insertBefore(status, nextButton);
 
-    const currentIndex = () => {
-      const visibleNumber = document.querySelector("[data-slideno]")?.textContent;
-      const parsed = Number(visibleNumber?.split("/")[0]);
-      return Number.isFinite(parsed) && parsed > 0 ? parsed - 1 : 0;
-    };
+    let activeIndex = 0;
+    const currentIndex = () => activeIndex;
     const syncControls = () => {
       const index = currentIndex();
       previous.disabled = index === 0;
@@ -408,12 +405,17 @@
       const target = sections[currentIndex() - 1];
       target?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-    let syncFrame = 0;
-    window.addEventListener("scroll", () => {
-      cancelAnimationFrame(syncFrame);
-      syncFrame = requestAnimationFrame(syncControls);
-    }, { passive: true });
-    window.setInterval(syncControls, 180);
+    const chapterObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const nextIndex = sections.indexOf(visible.target);
+      if (nextIndex < 0) return;
+      activeIndex = nextIndex;
+      syncControls();
+    }, { rootMargin: "-18% 0px -42% 0px", threshold: [0, .1, .25, .5] });
+    sections.forEach((section) => chapterObserver.observe(section));
     syncControls();
   }
 })();
