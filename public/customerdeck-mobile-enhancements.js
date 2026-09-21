@@ -183,6 +183,15 @@
       background: var(--parleo-blue) !important;
       opacity: 1;
     }
+    [data-slideno] {
+      min-width: 58px;
+      padding: 5px 8px;
+      border: 1px solid rgba(127,176,255,.35);
+      border-radius: 999px;
+      background: rgba(1,102,255,.13);
+      font-size: 12px !important;
+      text-align: center;
+    }
     .parleo-mobile-controls {
       justify-content: space-between !important;
       gap: 8px !important;
@@ -207,16 +216,6 @@
     .parleo-deck-control:disabled {
       opacity: .24;
       cursor: default;
-    }
-    .parleo-control-status {
-      min-width: 42px;
-      text-align: center;
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 19px;
-      line-height: 1;
-      font-style: italic;
-      color: var(--parleo-paper);
-      font-variant-numeric: tabular-nums;
     }
     #s01 h1 {
       font-family: "Instrument Serif", Georgia, serif !important;
@@ -386,36 +385,25 @@
     previous.setAttribute("aria-label", "Previous chapter");
     previous.textContent = "↑";
 
-    const status = document.createElement("span");
-    status.className = "parleo-control-status";
-    status.setAttribute("aria-live", "polite");
-
     controls.prepend(previous);
-    controls.insertBefore(status, nextButton);
 
-    let activeIndex = 0;
-    const currentIndex = () => activeIndex;
+    const currentIndex = () => {
+      const visibleNumber = document.querySelector("[data-slideno]")?.textContent;
+      const parsed = Number(visibleNumber?.split("/")[0]);
+      return Number.isFinite(parsed) && parsed > 0 ? parsed - 1 : 0;
+    };
     const syncControls = () => {
       const index = currentIndex();
       previous.disabled = index === 0;
       previous.setAttribute("aria-label", index === 0 ? "Already on first chapter" : `Previous chapter: ${chapters[index - 1]}`);
-      status.textContent = `${String(index + 1).padStart(2, "0")}/${sections.length}`;
     };
     previous.addEventListener("click", () => {
       const target = sections[currentIndex() - 1];
       target?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-    const chapterObserver = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      const nextIndex = sections.indexOf(visible.target);
-      if (nextIndex < 0) return;
-      activeIndex = nextIndex;
-      syncControls();
-    }, { rootMargin: "-18% 0px -42% 0px", threshold: [0, .1, .25, .5] });
-    sections.forEach((section) => chapterObserver.observe(section));
+    const visibleNumber = document.querySelector("[data-slideno]");
+    if (visibleNumber) new MutationObserver(syncControls).observe(visibleNumber, { characterData: true, childList: true, subtree: true });
+    window.addEventListener("scroll", syncControls, { passive: true });
     syncControls();
   }
 })();
