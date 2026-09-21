@@ -394,12 +394,9 @@
     controls.insertBefore(status, nextButton);
 
     const currentIndex = () => {
-      const probe = window.innerHeight * .34;
-      const found = sections.findIndex((section) => {
-        const bounds = section.getBoundingClientRect();
-        return bounds.top <= probe && bounds.bottom > probe;
-      });
-      return found >= 0 ? found : 0;
+      const visibleNumber = document.querySelector("[data-slideno]")?.textContent;
+      const parsed = Number(visibleNumber?.split("/")[0]);
+      return Number.isFinite(parsed) && parsed > 0 ? parsed - 1 : 0;
     };
     const syncControls = () => {
       const index = currentIndex();
