@@ -388,21 +388,21 @@
     controls.prepend(previous);
 
     const currentIndex = () => {
-      const probe = window.innerHeight * .34;
-      const index = sections.findIndex((section) => {
-        const bounds = section.getBoundingClientRect();
-        return bounds.top <= probe && bounds.bottom > probe;
-      });
-      return index >= 0 ? index : 0;
+      const visibleNumber = document.querySelector("[data-slideno]")?.textContent;
+      const parsed = Number(visibleNumber?.split("/")[0]);
+      return Number.isFinite(parsed) && parsed > 0 ? parsed - 1 : 0;
     };
     const syncControls = () => {
       const index = currentIndex();
       previous.disabled = index === 0;
       previous.setAttribute("aria-label", index === 0 ? "Already on first chapter" : `Previous chapter: ${chapters[index - 1]}`);
     };
-    previous.addEventListener("click", () => {
+    previous.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       const target = sections[currentIndex() - 1];
-      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (!(target instanceof HTMLElement)) return;
+      window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
     });
     const visibleNumber = document.querySelector("[data-slideno]");
     if (visibleNumber) new MutationObserver(syncControls).observe(visibleNumber, { characterData: true, childList: true, subtree: true });
