@@ -394,9 +394,9 @@
     controls.insertBefore(status, nextButton);
 
     const currentIndex = () => {
-      const active = document.querySelector("[data-rail] .railtick[data-on]");
-      const parsed = Number(active?.getAttribute("data-i"));
-      return Number.isFinite(parsed) ? parsed : 0;
+      const visibleNumber = document.querySelector("[data-slideno]")?.textContent;
+      const parsed = Number(visibleNumber?.split("/")[0]);
+      return Number.isFinite(parsed) && parsed > 0 ? parsed - 1 : 0;
     };
     const syncControls = () => {
       const index = currentIndex();
@@ -408,8 +408,9 @@
       const target = sections[currentIndex() - 1];
       target?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-    const rail = document.querySelector("[data-rail]");
-    if (rail) new MutationObserver(syncControls).observe(rail, { attributes: true, subtree: true });
+    const visibleNumber = document.querySelector("[data-slideno]");
+    if (visibleNumber) new MutationObserver(syncControls).observe(visibleNumber, { characterData: true, childList: true, subtree: true });
+    window.addEventListener("scroll", syncControls, { passive: true });
     syncControls();
   }
 })();
