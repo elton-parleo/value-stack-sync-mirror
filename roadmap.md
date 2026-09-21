@@ -35,4 +35,4 @@
 - [x] Make desktop and mobile presentations switch live at the phone breakpoint
 - [x] Establish clear chapter boundaries and narrative pacing in the supplied mobile deck
 - [x] Add prominent mobile chapter progress plus previous and next navigation
-- [ ] Visually verify every chapter and transition at 320px, 390px, and 430px
+- [x] Visually verify every chapter and transition at 320px, 390px, and 430px

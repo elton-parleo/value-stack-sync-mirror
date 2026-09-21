@@ -394,9 +394,12 @@
     controls.insertBefore(status, nextButton);
 
     const currentIndex = () => {
-      const visibleNumber = document.querySelector("[data-slideno]")?.textContent;
-      const parsed = Number(visibleNumber?.split("/")[0]);
-      return Number.isFinite(parsed) && parsed > 0 ? parsed - 1 : 0;
+      const probe = window.innerHeight * .34;
+      const found = sections.findIndex((section) => {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= probe && bounds.bottom > probe;
+      });
+      return found >= 0 ? found : 0;
     };
     const syncControls = () => {
       const index = currentIndex();
@@ -408,9 +411,11 @@
       const target = sections[currentIndex() - 1];
       target?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-    const visibleNumber = document.querySelector("[data-slideno]");
-    if (visibleNumber) new MutationObserver(syncControls).observe(visibleNumber, { characterData: true, childList: true, subtree: true });
-    window.addEventListener("scroll", syncControls, { passive: true });
+    let syncFrame = 0;
+    window.addEventListener("scroll", () => {
+      cancelAnimationFrame(syncFrame);
+      syncFrame = requestAnimationFrame(syncControls);
+    }, { passive: true });
     syncControls();
   }
 })();
