@@ -398,13 +398,19 @@
       previous.disabled = index === 0;
       previous.setAttribute("aria-label", index === 0 ? "Already on first chapter" : `Previous chapter: ${chapters[index - 1]}`);
     };
-    previous.addEventListener("click", (event) => {
+    previous.onclick = (event) => {
       event.preventDefault();
       event.stopPropagation();
-      const target = sections[currentIndex() - 1];
+      const displayed = Number(document.querySelector("[data-slideno]")?.textContent?.split("/")[0]);
+      const index = Number.isFinite(displayed) && displayed > 0 ? displayed - 1 : currentIndex();
+      const target = sections[index - 1];
       if (!(target instanceof HTMLElement)) return;
-      window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
-    });
+      document.documentElement.style.scrollSnapType = "none";
+      window.scrollTo(0, target.offsetTop);
+      requestAnimationFrame(() => {
+        document.documentElement.style.scrollSnapType = "y proximity";
+      });
+    };
     const visibleNumber = document.querySelector("[data-slideno]");
     if (visibleNumber) new MutationObserver(syncControls).observe(visibleNumber, { characterData: true, childList: true, subtree: true });
     window.addEventListener("scroll", syncControls, { passive: true });
