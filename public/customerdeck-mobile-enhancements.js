@@ -388,9 +388,10 @@
     controls.prepend(previous);
 
     const currentIndex = () => {
-      const visibleNumber = document.querySelector("[data-slideno]")?.textContent;
-      const parsed = Number(visibleNumber?.split("/")[0]);
-      return Number.isFinite(parsed) && parsed > 0 ? parsed - 1 : 0;
+      return sections.reduce((closest, section, index) => {
+        const distance = Math.abs(section.getBoundingClientRect().top - 54);
+        return distance < closest.distance ? { index, distance } : closest;
+      }, { index: 0, distance: Number.POSITIVE_INFINITY }).index;
     };
     const syncControls = () => {
       const index = currentIndex();
