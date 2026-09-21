@@ -33,3 +33,6 @@
 - [x] Route phone visitors to the supplied mobile deck and verify all 13 slides
 - [x] Add a matching previous-slide control to the desktop presentation
 - [x] Make desktop and mobile presentations switch live at the phone breakpoint
+- [x] Establish clear chapter boundaries and narrative pacing in the supplied mobile deck
+- [x] Add prominent mobile chapter progress plus previous and next navigation
+- [x] Visually verify every chapter and transition at 320px, 390px, and 430px
