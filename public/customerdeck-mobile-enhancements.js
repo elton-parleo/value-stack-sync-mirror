@@ -406,10 +406,12 @@
       const target = sections[index - 1];
       if (!(target instanceof HTMLElement)) return;
       document.documentElement.style.scrollSnapType = "none";
-      window.scrollTo(0, target.offsetTop);
-      requestAnimationFrame(() => {
+      document.body.style.scrollSnapType = "none";
+      target.scrollIntoView({ behavior: "instant", block: "start" });
+      window.setTimeout(() => {
         document.documentElement.style.scrollSnapType = "y proximity";
-      });
+        document.body.style.scrollSnapType = "";
+      }, 350);
     };
     const visibleNumber = document.querySelector("[data-slideno]");
     if (visibleNumber) new MutationObserver(syncControls).observe(visibleNumber, { characterData: true, childList: true, subtree: true });
