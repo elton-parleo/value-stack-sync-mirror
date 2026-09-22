@@ -321,9 +321,10 @@
     title.innerHTML = 'Your next<br>customer just<br>asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
   }
 
-  const cover = document.querySelector("#s01 > img");
-  if (cover instanceof HTMLImageElement) {
-    cover.src = "/customerdeck-title-mobile.jpg";
+  const applyCover = () => {
+    const cover = document.querySelector("#s01 > img");
+    if (!(cover instanceof HTMLImageElement)) return;
+    if (!cover.src.includes("customerdeck-title-mobile")) cover.src = "/customerdeck-title-mobile.jpg";
     Object.entries({
       position: "absolute",
       inset: "auto",
@@ -335,21 +336,27 @@
       "object-fit": "cover",
       "object-position": "78% 70%",
       opacity: "1",
-      filter: "saturate(.62) contrast(1.06) brightness(1.75)",
+      filter: "saturate(.62) contrast(1.06) brightness(1.7)",
       "mix-blend-mode": "normal",
       "mask-image": "none",
       "-webkit-mask-image": "none"
     }).forEach(([property, value]) => cover.style.setProperty(property, value, "important"));
     const glow = cover.nextElementSibling;
-    if (glow instanceof HTMLElement) {
-      glow.style.setProperty("opacity", ".4");
+    if (glow instanceof HTMLElement && !glow.classList.contains("parleo-cover-scrim")) {
+      glow.style.setProperty("opacity", ".38");
       glow.after(cover);
     }
-    const scrim = document.createElement("div");
-    scrim.className = "parleo-cover-scrim";
-    scrim.setAttribute("aria-hidden", "true");
-    cover.after(scrim);
-  }
+    if (!document.querySelector(".parleo-cover-scrim")) {
+      const scrim = document.createElement("div");
+      scrim.className = "parleo-cover-scrim";
+      scrim.setAttribute("aria-hidden", "true");
+      cover.after(scrim);
+    }
+  };
+  applyCover();
+  const coverTimer = window.setInterval(applyCover, 250);
+  window.setTimeout(() => window.clearInterval(coverTimer), 12000);
+
 
 
   const exposeForCapture = () => {
