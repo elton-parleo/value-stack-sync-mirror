@@ -242,7 +242,7 @@
       z-index: 0;
       pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(8,10,16,.34) 0%, rgba(8,10,16,.24) 26%, rgba(8,10,16,.3) 48%, rgba(14,19,34,.84) 62%, #0E1322 70%, #0E1322 100%),
+        linear-gradient(180deg, rgba(8,10,16,.72) 0%, rgba(8,10,16,.58) 26%, rgba(8,10,16,.3) 50%, rgba(14,19,34,.86) 63%, #0E1322 70%, #0E1322 100%),
         linear-gradient(90deg, rgba(8,10,16,.5) 0%, rgba(8,10,16,.1) 56%, rgba(8,10,16,0) 100%);
     }
 
@@ -324,16 +324,16 @@
       height: "66%",
       width: "100%",
       "object-fit": "cover",
-      "object-position": "62% 74%",
+      "object-position": "58% 78%",
       opacity: "1",
-      filter: "saturate(.9) contrast(1.05) brightness(1.06)",
+      filter: "saturate(.95) contrast(1.18) brightness(.92)",
       "mix-blend-mode": "normal",
       "mask-image": "none",
       "-webkit-mask-image": "none"
     }).forEach(([property, value]) => cover.style.setProperty(property, value, "important"));
     const glow = cover.nextElementSibling;
     if (glow instanceof HTMLElement && !glow.classList.contains("parleo-cover-scrim")) {
-      glow.style.setProperty("opacity", ".38");
+      glow.style.setProperty("opacity", ".1");
       glow.after(cover);
     }
     if (!document.querySelector(".parleo-cover-scrim")) {
