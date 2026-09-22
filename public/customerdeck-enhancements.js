@@ -194,10 +194,10 @@
         width: "100%",
         height: "100%",
         "object-fit": "cover",
-        "object-position": "60% 42%",
+        "object-position": "72% 58%",
         transform: "none",
-        opacity: ".62",
-        filter: "saturate(.62) contrast(1.12) brightness(1.18) blur(1.5px)",
+        opacity: ".92",
+        filter: "saturate(.88) contrast(1.06) brightness(1.02)",
         "mix-blend-mode": "normal",
         "-webkit-mask-image": "none",
         "mask-image": "none"
@@ -213,12 +213,12 @@
     if (title instanceof HTMLElement) {
       title.innerHTML = 'Your next customer<br>just asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
       title.style.setProperty("font-family", '"Inter Tight", Inter, -apple-system, sans-serif');
-      title.style.setProperty("font-weight", "760");
-      title.style.setProperty("font-size", "104px");
-      title.style.setProperty("line-height", "1.01");
-      title.style.setProperty("letter-spacing", "-0.032em");
+      title.style.setProperty("font-weight", "300");
+      title.style.setProperty("font-size", "92px");
+      title.style.setProperty("line-height", "1.04");
+      title.style.setProperty("letter-spacing", "-0.03em");
       title.style.setProperty("font-feature-settings", '"ss01","cv11","cv06"');
-      title.style.setProperty("text-wrap", "balance");
+      title.style.removeProperty("text-wrap");
     }
 
 
