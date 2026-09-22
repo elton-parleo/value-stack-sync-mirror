@@ -3,8 +3,9 @@
 
   const fontLink = document.createElement("link");
   fontLink.rel = "stylesheet";
-  fontLink.href = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap";
+  fontLink.href = "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,300..800&display=swap";
   document.head.appendChild(fontLink);
+
 
   const mount = () => {
     const deck = document.querySelector("deck-stage");
@@ -21,20 +22,29 @@
         box-shadow: 0 0 0 1px rgba(242,240,239,.18), 0 26px 80px rgba(0,0,0,.42);
       }
       section[data-screen-label^="01"] h1 {
-        font-family: "Instrument Serif", Georgia, serif !important;
-        font-weight: 400 !important;
-        font-size: 116px !important;
-        line-height: .9 !important;
-        letter-spacing: 0 !important;
+        font-family: "Inter Tight", Inter, -apple-system, sans-serif !important;
+        font-weight: 760 !important;
+        font-size: 104px !important;
+        line-height: 1.01 !important;
+        letter-spacing: -0.032em !important;
+        font-feature-settings: "ss01","cv11","cv06";
         text-wrap: balance;
       }
-      section[data-screen-label^="01"] h1 .parleo-title-emphasis {
-        font-style: italic;
-        color: #f2f0ef;
-      }
       section[data-screen-label^="01"] h1 .parleo-title-accent {
-        color: ${BLUE};
+        color: rgba(242,240,239,.42);
+        font-weight: 640;
+        letter-spacing: -0.024em;
       }
+      section[data-screen-label^="01"] h1 .parleo-title-mark {
+        display: inline-block;
+        width: .3em;
+        height: .3em;
+        margin-left: .16em;
+        border-radius: 3px;
+        background: ${BLUE};
+        vertical-align: baseline;
+      }
+
       .rail {
         background: #0d0f14;
         border-right-color: rgba(242,240,239,.1);
@@ -170,14 +180,16 @@
     const count = slides.length;
     const title = slides[0]?.querySelector("h1");
     if (title instanceof HTMLElement) {
-      title.innerHTML = 'Your next customer<br>just <span class="parleo-title-emphasis">asked an AI</span><br><span class="parleo-title-accent">what to buy.</span>';
-      title.style.setProperty("font-family", '"Instrument Serif", Georgia, serif');
-      title.style.setProperty("font-weight", "400");
-      title.style.setProperty("font-size", "116px");
-      title.style.setProperty("line-height", ".9");
-      title.style.setProperty("letter-spacing", "0");
+      title.innerHTML = 'Your next customer<br>just asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
+      title.style.setProperty("font-family", '"Inter Tight", Inter, -apple-system, sans-serif');
+      title.style.setProperty("font-weight", "760");
+      title.style.setProperty("font-size", "104px");
+      title.style.setProperty("line-height", "1.01");
+      title.style.setProperty("letter-spacing", "-0.032em");
+      title.style.setProperty("font-feature-settings", '"ss01","cv11","cv06"');
       title.style.setProperty("text-wrap", "balance");
     }
+
 
     const animateSlide = (slide) => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

@@ -1,7 +1,7 @@
 (() => {
   const fontLink = document.createElement("link");
   fontLink.rel = "stylesheet";
-  fontLink.href = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap";
+  fontLink.href = "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,300..800&display=swap";
   document.head.appendChild(fontLink);
 
   const layers = {
@@ -82,12 +82,15 @@
       background: var(--parleo-blue);
     }
     .parleo-chapter-number {
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 68px;
-      line-height: .72;
-      font-style: italic;
-      color: var(--parleo-paper);
+      font-family: "Inter Tight", Inter, sans-serif;
+      font-size: 58px;
+      font-weight: 760;
+      line-height: .78;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+      color: rgba(242,240,239,.42);
     }
+
     .parleo-chapter-meta {
       min-width: 0;
       padding-bottom: 1px;
@@ -145,11 +148,13 @@
     }
     .parleo-chapter-end-title {
       display: block;
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 27px;
-      line-height: 1;
-      font-style: italic;
+      font-family: "Inter Tight", Inter, sans-serif;
+      font-size: 25px;
+      font-weight: 720;
+      line-height: 1.04;
+      letter-spacing: -0.028em;
     }
+
     .parleo-chapter-end-arrow {
       width: 42px;
       height: 42px;
@@ -218,20 +223,30 @@
       cursor: default;
     }
     #s01 h1 {
-      font-family: "Instrument Serif", Georgia, serif !important;
-      font-weight: 400 !important;
-      font-size: clamp(47px, 13.5vw, 56px) !important;
-      line-height: .94 !important;
-      letter-spacing: 0 !important;
+      font-family: "Inter Tight", Inter, -apple-system, sans-serif !important;
+      font-weight: 760 !important;
+      font-size: clamp(40px, 11.2vw, 50px) !important;
+      line-height: 1.02 !important;
+      letter-spacing: -0.034em !important;
+      font-feature-settings: "ss01","cv11","cv06";
       text-wrap: balance;
     }
-    #s01 h1 .parleo-title-emphasis {
-      font-style: italic;
-      color: #F2F0EF;
-    }
     #s01 h1 .parleo-title-accent {
-      color: #0166FF;
+      display: block !important;
+      color: rgba(242,240,239,.44) !important;
+      font-weight: 640 !important;
+      letter-spacing: -0.026em !important;
     }
+    #s01 h1 .parleo-title-mark {
+      display: inline-block;
+      width: .3em;
+      height: .3em;
+      margin-left: .16em;
+      border-radius: 3px;
+      background: #0166FF;
+      vertical-align: baseline;
+    }
+
     .parleo-mobile-depth {
       position: absolute !important;
       inset: 0 !important;
@@ -292,7 +307,7 @@
 
   const title = document.querySelector("#s01 h1");
   if (title instanceof HTMLElement) {
-    title.innerHTML = 'Your next<br>customer just<br><span class="parleo-title-emphasis">asked an AI</span><br><span class="parleo-title-accent">what to buy.</span>';
+    title.innerHTML = 'Your next<br>customer just<br>asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
   }
 
   const exposeForCapture = () => {
