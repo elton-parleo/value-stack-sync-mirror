@@ -45,6 +45,19 @@
         vertical-align: baseline;
       }
 
+      .parleo-cover-scrim {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+          linear-gradient(90deg, rgba(10,14,26,.95) 0%, rgba(10,14,26,.9) 32%, rgba(10,14,26,.62) 56%, rgba(10,14,26,.4) 78%, rgba(10,14,26,.52) 100%),
+          linear-gradient(180deg, rgba(10,14,26,.72) 0%, rgba(10,14,26,.1) 26%, rgba(10,14,26,.14) 72%, rgba(10,14,26,.66) 100%);
+      }
+
+
+
+
       .rail {
         background: #0d0f14;
         border-right-color: rgba(242,240,239,.1);
@@ -178,6 +191,34 @@
 
     const slides = Array.from(deck.querySelectorAll(":scope > [data-screen-label]"));
     const count = slides.length;
+    const atmosphere = slides[0]?.querySelector(".deck-atmosphere");
+    const coverImage = atmosphere?.querySelector("img");
+    if (atmosphere instanceof HTMLElement && coverImage instanceof HTMLImageElement) {
+      coverImage.src = "/customerdeck-title-desktop.jpg";
+      const cover = {
+        position: "absolute",
+        left: "0",
+        right: "auto",
+        top: "0",
+        bottom: "auto",
+        width: "100%",
+        height: "100%",
+        "object-fit": "cover",
+        "object-position": "60% 42%",
+        transform: "none",
+        opacity: ".62",
+        filter: "saturate(.62) contrast(1.12) brightness(1.18) blur(1.5px)",
+        "mix-blend-mode": "normal",
+        "-webkit-mask-image": "none",
+        "mask-image": "none"
+      };
+      Object.entries(cover).forEach(([property, value]) => coverImage.style.setProperty(property, value, "important"));
+      const scrim = document.createElement("div");
+      scrim.className = "parleo-cover-scrim";
+      scrim.setAttribute("aria-hidden", "true");
+      atmosphere.append(scrim);
+    }
+
     const title = slides[0]?.querySelector("h1");
     if (title instanceof HTMLElement) {
       title.innerHTML = 'Your next customer<br>just asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
@@ -189,6 +230,7 @@
       title.style.setProperty("font-feature-settings", '"ss01","cv11","cv06"');
       title.style.setProperty("text-wrap", "balance");
     }
+
 
 
     const animateSlide = (slide) => {
