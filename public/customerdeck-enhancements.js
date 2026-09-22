@@ -180,14 +180,16 @@
     const count = slides.length;
     const title = slides[0]?.querySelector("h1");
     if (title instanceof HTMLElement) {
-      title.innerHTML = 'Your next customer<br>just <span class="parleo-title-emphasis">asked an AI</span><br><span class="parleo-title-accent">what to buy.</span>';
-      title.style.setProperty("font-family", '"Instrument Serif", Georgia, serif');
-      title.style.setProperty("font-weight", "400");
-      title.style.setProperty("font-size", "116px");
-      title.style.setProperty("line-height", ".9");
-      title.style.setProperty("letter-spacing", "0");
+      title.innerHTML = 'Your next customer<br>just asked an AI<br><span class="parleo-title-accent">what to buy.</span><span class="parleo-title-mark" aria-hidden="true"></span>';
+      title.style.setProperty("font-family", '"Inter Tight", Inter, -apple-system, sans-serif');
+      title.style.setProperty("font-weight", "760");
+      title.style.setProperty("font-size", "104px");
+      title.style.setProperty("line-height", "1.01");
+      title.style.setProperty("letter-spacing", "-0.032em");
+      title.style.setProperty("font-feature-settings", '"ss01","cv11","cv06"');
       title.style.setProperty("text-wrap", "balance");
     }
+
 
     const animateSlide = (slide) => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
