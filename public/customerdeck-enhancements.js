@@ -23,26 +23,16 @@
       }
       section[data-screen-label^="01"] h1 {
         font-family: "Inter Tight", Inter, -apple-system, sans-serif !important;
-        font-weight: 760 !important;
-        font-size: 104px !important;
-        line-height: 1.01 !important;
-        letter-spacing: -0.032em !important;
+        font-weight: 300 !important;
+        font-size: 92px !important;
+        line-height: 1.04 !important;
+        letter-spacing: -0.03em !important;
+        color: #F6F4F2 !important;
         font-feature-settings: "ss01","cv11","cv06";
-        text-wrap: balance;
       }
       section[data-screen-label^="01"] h1 .parleo-title-accent {
-        color: rgba(242,240,239,.42);
-        font-weight: 640;
-        letter-spacing: -0.024em;
-      }
-      section[data-screen-label^="01"] h1 .parleo-title-mark {
-        display: inline-block;
-        width: .3em;
-        height: .3em;
-        margin-left: .16em;
-        border-radius: 3px;
-        background: ${BLUE};
-        vertical-align: baseline;
+        font-weight: 600;
+        letter-spacing: -0.038em;
       }
 
       .parleo-cover-scrim {
@@ -51,8 +41,8 @@
         z-index: 1;
         pointer-events: none;
         background:
-          linear-gradient(90deg, rgba(10,14,26,.95) 0%, rgba(10,14,26,.9) 32%, rgba(10,14,26,.62) 56%, rgba(10,14,26,.4) 78%, rgba(10,14,26,.52) 100%),
-          linear-gradient(180deg, rgba(10,14,26,.72) 0%, rgba(10,14,26,.1) 26%, rgba(10,14,26,.14) 72%, rgba(10,14,26,.66) 100%);
+          linear-gradient(90deg, rgba(8,10,16,.93) 0%, rgba(8,10,16,.86) 34%, rgba(8,10,16,.5) 58%, rgba(8,10,16,.16) 80%, rgba(8,10,16,.3) 100%),
+          linear-gradient(180deg, rgba(8,10,16,.5) 0%, rgba(8,10,16,0) 30%, rgba(8,10,16,.06) 70%, rgba(8,10,16,.6) 100%);
       }
 
 
@@ -204,10 +194,10 @@
         width: "100%",
         height: "100%",
         "object-fit": "cover",
-        "object-position": "60% 42%",
+        "object-position": "72% 58%",
         transform: "none",
-        opacity: ".62",
-        filter: "saturate(.62) contrast(1.12) brightness(1.18) blur(1.5px)",
+        opacity: ".92",
+        filter: "saturate(.88) contrast(1.06) brightness(1.02)",
         "mix-blend-mode": "normal",
         "-webkit-mask-image": "none",
         "mask-image": "none"
@@ -223,12 +213,12 @@
     if (title instanceof HTMLElement) {
       title.innerHTML = 'Your next customer<br>just asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
       title.style.setProperty("font-family", '"Inter Tight", Inter, -apple-system, sans-serif');
-      title.style.setProperty("font-weight", "760");
-      title.style.setProperty("font-size", "104px");
-      title.style.setProperty("line-height", "1.01");
-      title.style.setProperty("letter-spacing", "-0.032em");
+      title.style.setProperty("font-weight", "300");
+      title.style.setProperty("font-size", "92px");
+      title.style.setProperty("line-height", "1.04");
+      title.style.setProperty("letter-spacing", "-0.03em");
       title.style.setProperty("font-feature-settings", '"ss01","cv11","cv06"');
-      title.style.setProperty("text-wrap", "balance");
+      title.style.removeProperty("text-wrap");
     }
 
 

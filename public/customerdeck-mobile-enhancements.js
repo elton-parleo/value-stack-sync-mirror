@@ -224,27 +224,17 @@
     }
     #s01 h1 {
       font-family: "Inter Tight", Inter, -apple-system, sans-serif !important;
-      font-weight: 760 !important;
-      font-size: clamp(40px, 11.2vw, 50px) !important;
-      line-height: 1.02 !important;
-      letter-spacing: -0.034em !important;
+      font-weight: 300 !important;
+      font-size: clamp(38px, 10.6vw, 48px) !important;
+      line-height: 1.06 !important;
+      letter-spacing: -0.03em !important;
+      color: #F6F4F2 !important;
       font-feature-settings: "ss01","cv11","cv06";
-      text-wrap: balance;
     }
     #s01 h1 .parleo-title-accent {
       display: block !important;
-      color: rgba(242,240,239,.44) !important;
-      font-weight: 640 !important;
-      letter-spacing: -0.026em !important;
-    }
-    #s01 h1 .parleo-title-mark {
-      display: inline-block;
-      width: .3em;
-      height: .3em;
-      margin-left: .16em;
-      border-radius: 3px;
-      background: #0166FF;
-      vertical-align: baseline;
+      font-weight: 600 !important;
+      letter-spacing: -0.038em !important;
     }
     .parleo-cover-scrim {
       position: absolute;
@@ -252,8 +242,8 @@
       z-index: 0;
       pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(10,14,26,.86) 0%, rgba(10,14,26,.62) 26%, rgba(10,14,26,.34) 52%, rgba(14,19,34,.86) 64%, #0E1322 70%, #0E1322 100%),
-        linear-gradient(90deg, rgba(10,14,26,.62) 0%, rgba(10,14,26,.14) 54%, rgba(10,14,26,0) 100%);
+        linear-gradient(180deg, rgba(8,10,16,.8) 0%, rgba(8,10,16,.52) 22%, rgba(8,10,16,.22) 40%, rgba(14,19,34,.72) 52%, #0E1322 58%, #0E1322 100%),
+        linear-gradient(90deg, rgba(8,10,16,.9) 0%, rgba(8,10,16,.62) 46%, rgba(8,10,16,.1) 100%);
     }
 
 
@@ -331,19 +321,19 @@
       left: "0",
       right: "0",
       top: "0",
-      height: "66%",
+      height: "56%",
       width: "100%",
       "object-fit": "cover",
-      "object-position": "78% 70%",
+      "object-position": "66% 64%",
       opacity: "1",
-      filter: "saturate(.62) contrast(1.06) brightness(1.7)",
+      filter: "saturate(.95) contrast(1.16) brightness(1.12)",
       "mix-blend-mode": "normal",
       "mask-image": "none",
       "-webkit-mask-image": "none"
     }).forEach(([property, value]) => cover.style.setProperty(property, value, "important"));
     const glow = cover.nextElementSibling;
     if (glow instanceof HTMLElement && !glow.classList.contains("parleo-cover-scrim")) {
-      glow.style.setProperty("opacity", ".38");
+      glow.style.setProperty("opacity", ".1");
       glow.after(cover);
     }
     if (!document.querySelector(".parleo-cover-scrim")) {
