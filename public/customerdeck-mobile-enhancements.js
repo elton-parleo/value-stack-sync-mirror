@@ -324,9 +324,9 @@
       height: "66%",
       width: "100%",
       "object-fit": "cover",
-      "object-position": "78% 70%",
+      "object-position": "62% 74%",
       opacity: "1",
-      filter: "saturate(.62) contrast(1.06) brightness(1.7)",
+      filter: "saturate(.9) contrast(1.05) brightness(1.06)",
       "mix-blend-mode": "normal",
       "mask-image": "none",
       "-webkit-mask-image": "none"
