@@ -246,6 +246,17 @@
       background: #0166FF;
       vertical-align: baseline;
     }
+    .parleo-cover-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(10,14,26,.86) 0%, rgba(10,14,26,.62) 26%, rgba(10,14,26,.34) 52%, rgba(14,19,34,.86) 64%, #0E1322 70%, #0E1322 100%),
+        linear-gradient(90deg, rgba(10,14,26,.62) 0%, rgba(10,14,26,.14) 54%, rgba(10,14,26,0) 100%);
+    }
+
+
 
     .parleo-mobile-depth {
       position: absolute !important;
@@ -309,6 +320,37 @@
   if (title instanceof HTMLElement) {
     title.innerHTML = 'Your next<br>customer just<br>asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
   }
+
+  const cover = document.querySelector("#s01 > img");
+  if (cover instanceof HTMLImageElement) {
+    cover.src = "/customerdeck-title-mobile.jpg";
+    Object.entries({
+      position: "absolute",
+      inset: "auto",
+      left: "0",
+      right: "0",
+      top: "0",
+      height: "66%",
+      width: "100%",
+      "object-fit": "cover",
+      "object-position": "78% 70%",
+      opacity: "1",
+      filter: "saturate(.62) contrast(1.06) brightness(1.75)",
+      "mix-blend-mode": "normal",
+      "mask-image": "none",
+      "-webkit-mask-image": "none"
+    }).forEach(([property, value]) => cover.style.setProperty(property, value, "important"));
+    const glow = cover.nextElementSibling;
+    if (glow instanceof HTMLElement) {
+      glow.style.setProperty("opacity", ".4");
+      glow.after(cover);
+    }
+    const scrim = document.createElement("div");
+    scrim.className = "parleo-cover-scrim";
+    scrim.setAttribute("aria-hidden", "true");
+    cover.after(scrim);
+  }
+
 
   const exposeForCapture = () => {
     document.documentElement.style.backgroundColor = "#F2F0EF";
