@@ -232,9 +232,10 @@
       text-wrap: balance;
     }
     #s01 h1 .parleo-title-accent {
-      color: rgba(242,240,239,.42);
-      font-weight: 640;
-      letter-spacing: -0.026em;
+      display: block !important;
+      color: rgba(242,240,239,.44) !important;
+      font-weight: 640 !important;
+      letter-spacing: -0.026em !important;
     }
     #s01 h1 .parleo-title-mark {
       display: inline-block;
@@ -306,7 +307,7 @@
 
   const title = document.querySelector("#s01 h1");
   if (title instanceof HTMLElement) {
-    title.innerHTML = 'Your next<br>customer just<br>asked an AI<br><span class="parleo-title-accent">what to buy.</span><span class="parleo-title-mark" aria-hidden="true"></span>';
+    title.innerHTML = 'Your next<br>customer just<br>asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
   }
 
   const exposeForCapture = () => {

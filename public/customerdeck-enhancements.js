@@ -180,7 +180,7 @@
     const count = slides.length;
     const title = slides[0]?.querySelector("h1");
     if (title instanceof HTMLElement) {
-      title.innerHTML = 'Your next customer<br>just asked an AI<br><span class="parleo-title-accent">what to buy.</span><span class="parleo-title-mark" aria-hidden="true"></span>';
+      title.innerHTML = 'Your next customer<br>just asked an AI<br><span class="parleo-title-accent">what to buy.</span>';
       title.style.setProperty("font-family", '"Inter Tight", Inter, -apple-system, sans-serif');
       title.style.setProperty("font-weight", "760");
       title.style.setProperty("font-size", "104px");
