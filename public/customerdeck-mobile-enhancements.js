@@ -243,7 +243,7 @@
       pointer-events: none;
       background:
         linear-gradient(180deg, rgba(8,10,16,.72) 0%, rgba(8,10,16,.58) 26%, rgba(8,10,16,.3) 50%, rgba(14,19,34,.86) 63%, #0E1322 70%, #0E1322 100%),
-        linear-gradient(90deg, rgba(8,10,16,.5) 0%, rgba(8,10,16,.1) 56%, rgba(8,10,16,0) 100%);
+        linear-gradient(90deg, rgba(8,10,16,.9) 0%, rgba(8,10,16,.62) 46%, rgba(8,10,16,.1) 100%);
     }
 
 
@@ -321,10 +321,10 @@
       left: "0",
       right: "0",
       top: "0",
-      height: "66%",
+      height: "78%",
       width: "100%",
       "object-fit": "cover",
-      "object-position": "58% 78%",
+      "object-position": "88% 30%",
       opacity: "1",
       filter: "saturate(.95) contrast(1.18) brightness(.92)",
       "mix-blend-mode": "normal",
