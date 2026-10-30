@@ -1,5 +1,4 @@
 import { defineTool } from "@lovable.dev/mcp-js";
-import { z } from "zod";
 
 const PROTOCOLS = [
   { id: "mcp", name: "Anthropic MCP", description: "Model Context Protocol for tool-using assistants." },

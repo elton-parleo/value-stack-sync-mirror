@@ -1,5 +1,6 @@
-import imageAsset from "@/assets/insights/rendered/share-of-algorithm.webp";
 import type { Post } from "./types";
+
+const image = "/insights/share-of-algorithm.webp";
 
 const post: Post = {
   slug: "share-of-algorithm",
@@ -9,7 +10,8 @@ const post: Post = {
   dateLabel: "August 18, 2026",
   category: "Framework",
   readTime: "6 min read",
-  image: imageAsset,
+  figure: { value: "50", label: "of 100 points sit on True Value" },
+  image,
   imageAlt:
     "The Share of Algorithm framework: Visibility 32, Accessibility 18, and a highlighted True Value pillar worth 50 points across Price Truth, Value Protocols, Deal Citability and Member Value.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
@@ -17,15 +19,7 @@ const post: Post = {
   seoTitle: "Share of Algorithm: How Brands Win the AI Shopping Answer | Parleo",
   seoDescription:
     "AI agents quote list prices and skip the incentives brands fund. Share of Algorithm scores what survives into agent answers across three pillars and nine dimensions, and half the score sits on True Value.",
-  keywords: [
-    "Share of Algorithm",
-    "AI shopping agents",
-    "agentic commerce",
-    "AI agent recommendations",
-    "agent-ready",
-    "incentive visibility",
-    "True Value",
-  ],
+  keywords: ["Share of Algorithm", "AI shopping agents", "agentic commerce", "AI agent recommendations", "agent-ready", "incentive visibility", "True Value"],
   takeaways: [
     "Every channel shift mints a new score: Share of Shelf, Share of Voice, Share of Search. Share of Algorithm is the fourth.",
     "It's 100 points across three pillars and nine dimensions, and every point traces back to something an agent could or could not read about your store.",

@@ -26,9 +26,43 @@
           "value": "noindex, nofollow, noarchive, nosnippet"
         }
       ]
+    },
+    {
+      "source": "/(.*)\\.(webp|jpg|png|woff2|ttf)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/reports/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive, nosnippet"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/demo",
+      "destination": "/product",
+      "permanent": true
+    },
+    {
+      "source": "/reports/:slug([a-z0-9-]+)",
+      "destination": "/reports/:slug/",
+      "permanent": false
     }
   ],
   "rewrites": [
+    {
+      "source": "/reports/:path*",
+      "destination": "https://parleo-reports.vercel.app/reports/:path*"
+    },
     {
       "source": "/audit",
       "destination": "https://soa-audit.vercel.app/audit/"

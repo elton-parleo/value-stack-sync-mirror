@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/trade-spend.webp";
 import type { Post } from "./types";
+
+const image = "/insights/trade-spend.webp";
 
 const post: Post = {
   slug: "trade-spend-when-agents-shop",
@@ -9,6 +10,7 @@ const post: Post = {
   dateLabel: "August 27, 2026",
   category: "Benchmark",
   readTime: "6 min read",
+  figure: { value: "1.8%", label: "of agent brand mentions cited any incentive" },
   image,
   imageAlt:
     "A merchant offer record as an AI agent reads it, with the funded promotion and sponsored placement greyed out.",

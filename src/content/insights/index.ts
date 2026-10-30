@@ -10,43 +10,11 @@ import pricingRails from "./incentives-are-becoming-pricing-rails";
 import newShelf from "./new-shelf-is-not-human";
 import type { Post } from "./types";
 
-export type {
-  Post,
-  Block,
-  Category,
-  Pillar,
-  Leak,
-  Faq,
-  FlowStep,
-  BarItem,
-  LadderItem,
-  RecordRow,
-  EraItem,
-  GridItem,
-  Source,
-} from "./types";
+export type { Post, Block, Category, Pillar, Leak, Faq, FlowStep, BarItem, LadderItem, RecordRow, EraItem, GridItem, Source } from "./types";
 
-/** Newest first. Add each new article file here. */
-export const posts: Post[] = [
-  agenticPayments,
-  howBig,
-  loyalty,
-  tradeSpend,
-  howAgentsDecide,
-  auditLaunch,
-  shareOfAlgorithm,
-  bestPrice,
-  pricingRails,
-  newShelf,
-];
+/** Newest first. */
+export const posts: Post[] = [agenticPayments, howBig, loyalty, tradeSpend, howAgentsDecide, auditLaunch, shareOfAlgorithm, bestPrice, pricingRails, newShelf];
 
-
-/** Publication order, oldest first. Drives the editorial index numbers. */
 export const chronological: Post[] = [...posts].sort((a, b) => a.date.localeCompare(b.date));
-
-/** 1-based publication number for a post (first ever published = 1). */
-export const postNumber = (slug: string): number =>
-  chronological.findIndex((p) => p.slug === slug) + 1;
-
-export const getPost = (slug?: string): Post | undefined =>
-  posts.find((p) => p.slug === slug);
+export const postNumber = (slug: string): number => chronological.findIndex((p) => p.slug === slug) + 1;
+export const getPost = (slug?: string): Post | undefined => posts.find((p) => p.slug === slug);

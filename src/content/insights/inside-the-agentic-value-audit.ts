@@ -1,6 +1,6 @@
-import image from "@/assets/insights/rendered/audit-scorecard.webp";
-import socialImageAsset from "@/assets/social/inside-the-agentic-value-audit.jpg.asset.json";
 import type { Post } from "./types";
+
+const image = "/insights/audit-scorecard.webp";
 
 const post: Post = {
   slug: "inside-the-agentic-value-audit",
@@ -10,22 +10,14 @@ const post: Post = {
   dateLabel: "August 19, 2026",
   category: "Point of view",
   readTime: "6 min read",
+  figure: { value: "60", label: "of 100 is the readiness bar" },
   image,
-  socialImage: socialImageAsset.url,
-  imageAlt:
-    "Sample Agentic Value Audit scorecard for an enterprise beauty brand.",
+  imageAlt: "Sample Agentic Value Audit scorecard for an enterprise beauty brand.",
   author: "Samar Birwadker",
   seoTitle: "How Agent-Ready Is Your Store? Inside the Agentic Value Audit | Parleo",
   seoDescription:
     "24 live ChatGPT queries and a full site crawl reveal how AI agents see your store. Your score on the Share of Algorithm framework, where the points leak, and what to fix first.",
-  keywords: [
-    "Agentic Value Audit",
-    "agent-ready",
-    "AI agent audit",
-    "Share of Algorithm",
-    "AI shopping visibility",
-    "agentic commerce audit",
-  ],
+  keywords: ["Agentic Value Audit", "agent-ready", "AI agent audit", "Share of Algorithm", "AI shopping visibility", "agentic commerce audit"],
   takeaways: [
     "The audit runs two instruments in one pass: 24 live ChatGPT shopper queries in your category, and a full crawl reading only what an agent can read.",
     "It returns a score out of 100 on the Share of Algorithm framework, with the readiness bar at 60. Crossing it takes real points on True Value.",
@@ -71,8 +63,7 @@ const post: Post = {
     {
       type: "stat",
       value: "60 / 100",
-      label:
-        "Where the readiness bar sits, and crossing it takes real points on True Value. A store that's famous but value-invisible isn't agent-ready, it's agent-exposed.",
+      label: "Where the readiness bar sits, and crossing it takes real points on True Value. A store that's famous but value-invisible isn't agent-ready, it's agent-exposed.",
     },
     { type: "h", text: "Where the points leak" },
     {
@@ -123,10 +114,7 @@ const post: Post = {
       text: "The better your incentive machinery, the more of your value is invisible by default.",
     },
     { type: "h", text: "How to read your score" },
-    {
-      type: "p",
-      text: "Three things matter more than the headline number.",
-    },
+    { type: "p", text: "Three things matter more than the headline number." },
     {
       type: "list",
       items: [
@@ -146,7 +134,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The audit turns an abstract channel problem into a list someone can own. Run it free at [parleo.io/audit](https://parleo.io/audit). You see your number before we ever see your name. If the report gets something wrong about your store, tell me. That's the feedback that makes the measurement better.",
+      text: "The audit turns an abstract channel problem into a list someone can own. Run the instant version free at [parleo.io/audit](https://parleo.io/audit), or [request the full read-out](/agentic-value-report) on your top SKUs. If the report gets something wrong about your store, tell me. That's the feedback that makes the measurement better.",
     },
   ],
 };

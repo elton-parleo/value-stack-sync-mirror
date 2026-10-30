@@ -1,0 +1,127 @@
+@font-face {
+  font-family: "Inter Tight";
+  src: url("/fonts/InterTight[wght].woff2") format("woff2"), url("/fonts/InterTight[wght].ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter Tight";
+  src: url("/fonts/InterTight-Italic[wght].woff2") format("woff2"), url("/fonts/InterTight-Italic[wght].ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader[opsz,wght].woff2") format("woff2"), url("/fonts/Newsreader[opsz,wght].ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono[wght].woff2") format("woff2"), url("/fonts/JetBrainsMono[wght].ttf") format("truetype");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* fonts */
+  --font-sans: "Inter Tight", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --feat: "ss01", "cv11", "cv06";
+
+  /* canvas + surfaces */
+  --canvas: #f2f0ef;
+  --canvas-dim: #eceae7;
+  --surface: #ffffff;
+  --surface-warm: #fbfaf9;
+  --container: #eae8e5;
+  --well: #f4f5f8;
+
+  /* ink + text */
+  --ink: #1e1e2e;
+  --ink-2: #262836;
+  --ink-deep: #0c0d13;
+  --code-bg: #1d1b22;
+  --text: #464555;
+  --text-strong: #262836;
+  --muted: #5f5d6a;
+  --faint: #6b6976;
+
+  /* on dark */
+  --dark-text: #f2f0ef;
+  --dark-muted: rgba(242, 240, 239, 0.66);
+  --dark-faint: rgba(242, 240, 239, 0.42);
+  --dark-border: rgba(242, 240, 239, 0.12);
+
+  /* lines */
+  --border: #dcd9d6;
+  --border-strong: #cbc7c2;
+  --hairline: rgba(70, 69, 85, 0.1);
+
+  /* brand */
+  --blue: #0166ff;
+  --blue-deep: #0052cc;
+  --blue-soft: rgba(1, 102, 255, 0.08);
+  --blue-tint: #edf3ff;
+  --blue-light: #7fb0ff;
+
+  /* status */
+  --green: #188650;
+  --green-tint: #e7f5ed;
+  --amber: #b45309;
+  --amber-tint: #fbf2e2;
+  --red: #ef4343;
+  --red-tint: #fceaea;
+
+  /* layout */
+  --content-max: 1200px;
+  --gutter: 24px;
+  --section-y: 144px;
+
+  /* radius */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --r-pill: 999px;
+
+  /* shadows */
+  --shadow-card: 0 1px 3px 0 rgba(70, 69, 85, 0.04), 0 0 0 1px rgba(213, 209, 203, 0.6);
+  --shadow-card-hover: 0 8px 24px -4px rgba(70, 69, 85, 0.08), 0 0 0 1px rgba(213, 209, 203, 0.8);
+  --shadow-elevated: 0 16px 48px -8px rgba(70, 69, 85, 0.1), 0 4px 12px -2px rgba(70, 69, 85, 0.05);
+  --shadow-float: 0 24px 64px -12px rgba(30, 30, 46, 0.16), 0 6px 16px -4px rgba(30, 30, 46, 0.08);
+  --shadow-dark: 0 24px 64px -16px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  /* weights */
+  --w-regular: 420;
+  --w-medium: 520;
+  --w-semibold: 620;
+  --w-heading: 720;
+  --w-display: 760;
+
+  /* tracking */
+  --track-display: -0.034em;
+  --track-heading: -0.028em;
+  --track-card: -0.018em;
+
+  /* motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-apple: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 220ms;
+  --dur-reveal: 520ms;
+
+  /* ink wash */
+  --ink-wash: linear-gradient(112deg, rgba(30, 30, 46, 0.93) 26%, rgba(30, 30, 46, 0.72) 62%, rgba(22, 22, 31, 0.6) 100%);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 20px;
+    --section-y: 88px;
+  }
+}

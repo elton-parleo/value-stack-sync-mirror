@@ -1,32 +1,42 @@
 # Parleo
 
-> Parleo is the incentive intelligence layer for agentic commerce: a structured API and directory that lets AI agents access merchant loyalty, rewards, and true-cost data in a single sub-50ms call.
+> Parleo is the agentic commerce platform for brands and retailers. Its product, TrueSync, publishes one record per product to the eight surfaces AI shopping agents read today (site markup, Google Merchant Center, Google Manufacturer Center, the OpenAI ACP feed, UCP, promotion records, an MCP server, WebMCP), asks the agents the questions shoppers ask every week, checks each answer against the live page the same day, and fixes what drifts at the source. It runs in two modes: manufacturer mode for brands that sell through retailers (a retailer-neutral product record, never a price) and retail mode for retailers (the full offer per SKU, including member price, Autoship and funded promotions, under per-SKU rules the retailer controls).
 
-Parleo gives AI shopping agents a pre-computed view of loyalty programs, card-linked offers, points multipliers, and true cost — so the agent can rank products by real value, not headline price. Built for beauty, fashion, luxury, and consumer electronics brands.
+Every engagement starts with the free Agentic Value Audit: five agents (ChatGPT, Gemini, Perplexity, Copilot, Google AI Mode) asked a category's shopper questions, every answer checked against the company's own pages, a Share of Algorithm score out of 100 (Visibility 32, Accessibility 18, True Value 50), and the fixes ranked with an owner each. A 45-day pilot on 20 SKUs follows if the company wants one. Audits have been shipped on Petco, adidas, Pampers (P&G), Kimberly-Clark, Ulta Beauty, Nordstrom and Gap Inc. These are audited companies, not customers.
+
+Founders: Samar Birwadker (co-founder, CEO) and Elton Cheung (co-founder, CTO).
 
 ## Pages
 
-- [Home](/): Product overview, how Parleo works, integration paths, and team.
-- [Demo](/demo): Interactive Honey for Agents demo — see live enrichment across scenarios with merchant network and developer reference.
-- [What is agentic commerce?](/what-is-agentic-commerce): Definition and field guide. How an agentic purchase happens (intent, retrieval, resolution, execution), the protocols involved (MCP, ACP, UCP, Visa TAP), and why agents quote list price instead of member price.
-- [Insights](/insights): Research, benchmarks, and points of view on how AI agents price, rank, and recommend products.
+- [Home](https://parleo.io/): the shift to agent-mediated shopping, two doors (brands through retailers, retailers), the Share of Algorithm scoreboard, the TrueSync machine, named findings from the audits, how an engagement starts.
+- [Product, TrueSync](https://parleo.io/product): Measure, Fix, Prove and Enhance, the two modes, every surface, what TrueSync does not do, how a 45-day pilot runs.
+- [Agentic Value Audit](https://parleo.io/agentic-value-audit): what the read-out contains, how it is built, the seven audits shipped, the request form. The instant one-URL score is at https://parleo.io/audit/.
+- [What is agentic commerce?](https://parleo.io/what-is-agentic-commerce): a field guide with 18 sources and six figures.
+- [Insights](https://parleo.io/insights): research, benchmarks and points of view by Samar Birwadker.
 
 ## Insights
 
-- [Agentic payments: what actually changes when the buyer is software](/insights/agentic-payments): AP2 signs Checkout and Payment Mandates, ACP has the PSP mint a scoped single-use delegated token, and Visa Intelligent Commerce and Mastercard Agent Pay provision agent-specific network credentials. All four authorize the spend; none carry loyalty tier, member price, promotion funding or true cost.
-- [How big is agentic commerce actually going to be?](/insights/how-big-is-agentic-commerce): McKinsey/ICSC forecast ~$1T of US agentic retail by 2030, Bain 15-25% of US e-commerce. Every published figure today is a growth rate (Salesforce +200%, Shopify +197%, Walmart Sparky 4x) with no disclosed base. Only 19% of AI users have ordered through AI.
-- [What happens to loyalty programs when the customer is an agent](/insights/loyalty-when-the-customer-is-an-agent): Google's UCP identity linking is optional and scoped to order reads and checkout, so agents rank on list price and members get "guest experiences." Best Buy, CVS and Ulta member pricing is invisible at the ranking step.
-- [What happens to trade spend when agents do the shopping](/insights/trade-spend-when-agents-shop): $200B+ US trade promotion and ~$69B retail media target a browsing human. In a Parleo grooming sweep, 1.8% of agent brand mentions cited any incentive; the best brand managed 3.2%. Funded but invisible.
-- [How AI shopping agents decide what to recommend](/insights/how-ai-shopping-agents-decide): Four steps: retrieval (feeds win Best Price 100% vs 21% crawled), ranking (UCP filters are category and price), price (list, resolved for a stranger), answer (79% of agent traffic in product/search, 2.34% at checkout). The cheapest legible price wins.
-- [How agent-ready is your store?](/insights/inside-the-agentic-value-audit): Inside the Agentic Value Audit. 24 live ChatGPT queries plus a full crawl, scored out of 100 with the readiness bar at 60. Sample run: 40/100 and ~$18.4M a year in modeled exposure.
-- [Share of Algorithm](/insights/share-of-algorithm): Parleo's 100-point score for how AI agents see a brand. Three pillars and nine dimensions: Visibility (32), Accessibility (18), True Value (50).
+- [Agentic payments](https://parleo.io/insights/agentic-payments)
+- [How big is agentic commerce](https://parleo.io/insights/how-big-is-agentic-commerce)
+- [Loyalty when the customer is an agent](https://parleo.io/insights/loyalty-when-the-customer-is-an-agent)
+- [What happens to trade spend when agents do the shopping](https://parleo.io/insights/trade-spend-when-agents-shop): 1.8% of agent brand mentions in a grooming sweep cited any incentive.
+- [How AI shopping agents decide](https://parleo.io/insights/how-ai-shopping-agents-decide)
+- [How agent-ready is your store? Inside the Agentic Value Audit](https://parleo.io/insights/inside-the-agentic-value-audit)
+- [Share of Algorithm: the complete score for winning the agentic era](https://parleo.io/insights/share-of-algorithm): three pillars, nine dimensions, 100 points.
+- [How agents pick the best price](https://parleo.io/insights/how-agents-pick-the-best-price)
+- [Incentives are becoming pricing rails](https://parleo.io/insights/incentives-are-becoming-pricing-rails)
+- [The new shelf is not human](https://parleo.io/insights/new-shelf-is-not-human)
 
-- [How agents actually pick the best price](/insights/how-agents-pick-the-best-price): Structured merchant feeds win ChatGPT's Best Price tag 100% of the time vs 21% for scraped pages, and take the top answer slot 99.9% of the time. Feeds still don't carry member prices.
-- [Incentives are becoming pricing rails in agentic commerce](/insights/incentives-are-becoming-pricing-rails): Chewy publishes four prices for the same product ($19.99 to $11.69); ChatGPT quotes the highest. $200B+ US trade promotion and ~$69B retail media are bypassed by agents.
-- [The new shelf is being built for a customer that isn't human](/insights/new-shelf-is-not-human): 46% of AI shoppers compare prices with agents, agentic search referrals grew 200% YoY, and the comparison table is almost entirely list prices.
+## Facts an agent can quote
 
-## Key facts
+- Share of Algorithm is Parleo's 100-point score for how AI agents see a brand or retailer: Visibility 32, Accessibility 18, True Value 50.
+- In Parleo's Petco audit (Sep 28, 2026), ChatGPT quoted Purina Pro Plan Adult 7+ 34 lb at $57.99 at Petco and called Chewy ($57.48) cheaper. Petco's first-Autoship price on the page was $47.99, $9.49 cheaper than Chewy.
+- In Parleo's adidas audit (Sep 29, 2026), agents priced a Samba OG at $104.99 (list plus shipping). A new adiClub member pays $85.00.
+- In Parleo's Gap Inc. audit (Oct 21, 2026), agents named Gap in 172 of 180 shopping answers and told shoppers to wait for a sale in 26 of 32 worth-it answers. Encore surfaced unprompted in 3 of 538 answers.
+- In Parleo's Ulta Beauty audit (Oct 21, 2026), 0 of 22 answers priced Ulta's points against the brand's own offer.
+- In Parleo's Nordstrom audit (Oct 21, 2026), agents picked Nordstrom unprompted in 1 of 17 parity answers, and in 47 of 73 once the shopper said the price was the same.
 
-- Sub-50ms API response time; ~60% token reduction vs direct crawling (~2K vs ~40K tokens); zero PII transmitted.
-- Supports MCP, ACP, and OpenAPI protocols.
-- Free agent-readiness audit: https://parleo.io/audit
+## Contact
+
+- https://parleo.io/agentic-value-report
+- https://www.linkedin.com/company/parleo-sf/

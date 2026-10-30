@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/pricing-rails.webp";
 import type { Post } from "./types";
+
+const image = "/insights/pricing-rails.webp";
 
 const post: Post = {
   slug: "incentives-are-becoming-pricing-rails",
@@ -10,18 +11,10 @@ const post: Post = {
   category: "Point of view",
   readTime: "3 min read",
   image,
-  imageAlt:
-    "An AI shopping answer beside the member prices and funded incentives that shape what a customer actually pays.",
+  imageAlt: "An AI shopping answer beside the member prices and funded incentives that shape what a customer actually pays.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
   author: "Samar Birwadker",
-  keywords: [
-    "incentives",
-    "pricing infrastructure",
-    "trade promotion",
-    "retail media",
-    "agentic commerce",
-    "autoship pricing",
-  ],
+  keywords: ["incentives", "pricing infrastructure", "trade promotion", "retail media", "agentic commerce", "autoship pricing"],
   takeaways: [
     "An incentive becomes pricing infrastructure when it changes the computable cost an agent uses to compare offers.",
     "That creates a useful split: merchandising decides the offer, while product data decides whether the offer reaches the machine.",

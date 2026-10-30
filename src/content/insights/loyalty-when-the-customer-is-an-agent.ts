@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/loyalty-stranger.webp";
 import type { Post } from "./types";
+
+const image = "/insights/loyalty-stranger.webp";
 
 const post: Post = {
   slug: "loyalty-when-the-customer-is-an-agent",
