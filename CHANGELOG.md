@@ -2,6 +2,14 @@
 
 Newest first. Each entry is one git commit you can revert to.
 
+## v8.3 · Oct 30, 2026 · PR #1 on unlikelylemon/value-stack-sync
+
+- About rebuilt around the vision: a dark hero over the deck cover still ("Commerce was built for the human eye. It's being rebuilt for agents."), the four measurement eras with Share of Algorithm as the fourth, four beliefs drawn as product moments (the best offer should win, neutral by design, mentioned is not chosen, private by default).
+- Founder bios restored word for word from the previous site. Good&Co and Landor added to Samar. Josh added with IBM, Equinix, StackPath and SoftLayer. Cascade Seed Fund shown as Long Way Ventures. Backers on a dark band with their cities.
+- `/reports/*` on parleo.io now serves the audit reports from parleo-reports.vercel.app, noindex.
+- Lovable workspace instructions replaced with the v2 text in `docs/lovable/workspace-instructions.md`.
+- Shipped as PR #1. The previous site is tagged `archive/site-v1-20261030`.
+
 ## v8.2 · Oct 30, 2026 · branch v8 · launch prep
 
 - No page two: the screen overlay is drawn slightly larger than the glass and clipped by a mask cut from the still itself, so it sits flush on every edge. The real notch shows through.
