@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/how-agents-decide.webp";
 import type { Post } from "./types";
+
+const image = "/insights/how-agents-decide.webp";
 
 const post: Post = {
   slug: "how-ai-shopping-agents-decide",

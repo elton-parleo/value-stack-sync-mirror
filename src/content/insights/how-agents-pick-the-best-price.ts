@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/best-price.webp";
 import type { Post } from "./types";
+
+const image = "/insights/best-price.webp";
 
 const post: Post = {
   slug: "how-agents-pick-the-best-price",
@@ -9,19 +10,13 @@ const post: Post = {
   dateLabel: "August 12, 2026",
   category: "Research",
   readTime: "5 min read",
+  figure: { value: "5", label: "prices on one jar at one retailer in 27 days" },
   image,
   imageAlt:
     "ChatGPT quoting $565 for Augustinus Bader face cream across retailers, next to a panel showing the $423.75 Anniversary Sale price gated by card status.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
   author: "Samar Birwadker",
-  keywords: [
-    "agentic commerce",
-    "AI shopping agents",
-    "best price",
-    "merchant feeds",
-    "loyalty pricing",
-    "ChatGPT shopping",
-  ],
+  keywords: ["agentic commerce", "AI shopping agents", "best price", "merchant feeds", "loyalty pricing", "ChatGPT shopping"],
   takeaways: [
     "ChatGPT's Best Price badge reflects the offer data it can read, not every price a particular shopper can claim.",
     "Structured feeds make an offer easier to rank, but they still leave out member status, card eligibility and timing.",

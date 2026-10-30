@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/new-shelf.webp";
 import type { Post } from "./types";
+
+const image = "/insights/new-shelf.webp";
 
 const post: Post = {
   slug: "new-shelf-is-not-human",
@@ -9,19 +10,12 @@ const post: Post = {
   dateLabel: "August 10, 2026",
   category: "Point of view",
   readTime: "4 min read",
+  figure: { value: "+200%", label: "growth in shoppers starting with agentic search" },
   image,
-  imageAlt:
-    "ChatGPT comparing a Patagonia Down Sweater at Amazon and REI, with a panel showing the REI true price is $228.65 after member benefits.",
+  imageAlt: "ChatGPT comparing a Patagonia Down Sweater at Amazon and REI, with a panel showing the REI true price is $228.65 after member benefits.",
   linkedInUrl: "https://www.linkedin.com/in/samarbirwadker/recent-activity/all/",
   author: "Samar Birwadker",
-  keywords: [
-    "agentic commerce",
-    "AI shopping",
-    "list price",
-    "loyalty",
-    "true cost",
-    "agentic search",
-  ],
+  keywords: ["agentic commerce", "AI shopping", "list price", "loyalty", "true cost", "agentic search"],
   takeaways: [
     "The product detail page is no longer the only surface that decides discovery. Agents can assemble a shelf before a shopper visits a retailer.",
     "Walmart pulled 200,000 products out of third-party agent checkout, rebuilt inside its own walls, and now posts 35% bigger baskets.",

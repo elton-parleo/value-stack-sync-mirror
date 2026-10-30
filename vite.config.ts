@@ -1,23 +1,27 @@
-import { defineConfig } from "vite";
+import { defineConfig, type PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 import { prerenderSocial } from "./plugins/prerender-social";
 
-// https://vitejs.dev/config/
+// ARTIFACT=1 builds a relative-path, hash-routed copy for claude.ai artifact previews (dist-artifact/).
+const artifact = !!process.env.ARTIFACT;
+
 export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-    hmr: {
-      overlay: false,
-    },
-  },
-  plugins: [react(), mcpPlugin(), prerenderSocial(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+  // Lovable's sandbox proxies the dev server on [::]:8080.
+  server: { host: "::", port: 8080, hmr: { overlay: false } },
+  plugins: [react(), !artifact && mcpPlugin(), prerenderSocial(), mode === "development" && componentTagger()].filter(Boolean) as PluginOption[],
+  base: artifact ? "./" : "/",
+  define: { __HASH_ROUTER__: JSON.stringify(artifact) },
+  resolve: { alias: { "@": "/src" } },
+  build: {
+    target: "es2020",
+    cssCodeSplit: false,
+    outDir: artifact ? "dist-artifact" : "dist",
+    rollupOptions: {
+      output: {
+        manualChunks: { vendor: ["react", "react-dom", "react-router-dom"], motion: ["framer-motion"] },
+      },
     },
   },
 }));

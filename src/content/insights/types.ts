@@ -6,7 +6,6 @@ export interface Pillar {
   note?: string;
   highlight?: boolean;
 }
-
 export interface Leak {
   name: string;
   points: number;
@@ -14,15 +13,12 @@ export interface Leak {
   detail: string;
   highlight?: boolean;
 }
-
 export interface FlowStep {
   label: string;
   title: string;
   text: string;
-  /** Something that falls out of the pipeline at this step. */
   drop?: string;
 }
-
 export interface BarItem {
   label: string;
   value: number;
@@ -30,22 +26,17 @@ export interface BarItem {
   note?: string;
   highlight?: boolean;
 }
-
 export interface LadderItem {
   label: string;
   price: string;
   note?: string;
-  /** The rung the agent actually quoted. */
   quoted?: boolean;
 }
-
 export interface RecordRow {
   key: string;
   value: string;
-  /** Rendered greyed out: present in the data, absent from the agent's read. */
   unread?: boolean;
 }
-
 export interface EraItem {
   era: string;
   unit: string;
@@ -53,20 +44,17 @@ export interface EraItem {
   period: string;
   current?: boolean;
 }
-
 export interface GridItem {
   value: string;
   label: string;
   source?: string;
 }
-
 export interface Source {
   claim: string;
   source: string;
   date: string;
   url?: string;
 }
-
 export type Block =
   | { type: "p"; text: string }
   | { type: "h"; text: string }
@@ -82,36 +70,30 @@ export type Block =
   | { type: "eras"; items: EraItem[]; caption?: string }
   | { type: "grid"; items: GridItem[]; caption?: string }
   | { type: "sources"; items: Source[] };
-
-
 export type Category = "Research" | "Benchmark" | "Point of view" | "Framework";
-
 export interface Faq {
   q: string;
   a: string;
 }
-
 export interface Post {
   slug: string;
   title: string;
   dek: string;
-  date: string;          // ISO
-  dateModified?: string; // ISO
+  date: string;
+  dateModified?: string;
   dateLabel: string;
   category: Category;
   readTime: string;
+  /** The one figure the piece is known for, shown beside its title in lists. */
+  figure?: { value: string; label: string };
   image: string;
-  /** Dedicated 1200x630 social card. Falls back to the article image. */
   socialImage?: string;
   imageAlt: string;
   linkedInUrl?: string;
   author?: string;
-  /** Overrides for the <title> and meta description when SEO copy differs from the headline. */
   seoTitle?: string;
   seoDescription?: string;
-  /** Answer-first summary. Powers the on-page takeaways card and AI answer extraction. */
   takeaways?: string[];
-  /** Question-led Q&A block for answer engines. */
   faq?: Faq[];
   keywords?: string[];
   body: Block[];

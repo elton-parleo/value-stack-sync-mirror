@@ -1,0 +1,169 @@
+.af {
+  background: #fff;
+  color: var(--text);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.af__head h3 {
+  font-size: 22px;
+  font-weight: 740;
+  letter-spacing: -0.024em;
+  color: var(--text-strong);
+  line-height: 1.1;
+}
+.af__head p {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.af__grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.af label {
+  display: block;
+}
+.af label > span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+.af input[type="text"],
+.af input[type="email"],
+.af input:not([type]),
+.af textarea {
+  width: 100%;
+  height: 44px;
+  padding: 0 13px;
+  border-radius: 9px;
+  border: 1px solid var(--border-strong);
+  background: #fff;
+  font-size: 14.5px;
+  color: var(--text-strong);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.af textarea {
+  height: auto;
+  padding: 10px 13px;
+  resize: vertical;
+  line-height: 1.45;
+}
+.af input::placeholder,
+.af textarea::placeholder {
+  color: var(--faint);
+}
+.af input:focus,
+.af textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(1, 102, 255, 0.12);
+}
+.af__wide {
+  margin-top: 12px;
+}
+.af__grid .af__wide {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+.af__row {
+  margin-top: 14px;
+}
+.af__mode {
+  border: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3px;
+  border-radius: 8px;
+  background: var(--canvas-dim);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.af__mode label {
+  position: relative;
+}
+.af__mode input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.af .af__mode span {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  align-items: center;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 560;
+  color: var(--muted);
+  cursor: pointer;
+  margin: 0;
+  white-space: nowrap;
+  transition: all 160ms ease;
+}
+.af .af__mode input:checked + span {
+  background: #fff;
+  color: var(--text-strong);
+  box-shadow: 0 0 0 1px rgba(30, 30, 46, 0.08);
+}
+.af .af__mode input:focus-visible + span {
+  box-shadow: 0 0 0 3px rgba(1, 102, 255, 0.3);
+}
+.af__err {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--red);
+}
+.af__submit {
+  margin-top: 18px;
+  width: 100%;
+}
+.af__fine {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.af--done {
+  text-align: left;
+}
+.af__check {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--green-tint);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.af--done h3 {
+  margin-top: 16px;
+  font-size: 22px;
+  font-weight: 740;
+  letter-spacing: -0.024em;
+  color: var(--text-strong);
+}
+.af--done p {
+  margin-top: 8px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+@media (max-width: 760px) {
+  .af {
+    padding: 22px 18px 20px;
+  }
+  .af__grid {
+    grid-template-columns: 1fr;
+  }
+}

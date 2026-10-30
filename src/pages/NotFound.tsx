@@ -1,24 +1,33 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import { Btn, SectionHeading } from "@/components/primitives";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
+export default function NotFound() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Page not found | Parleo</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
+      <Nav />
+      <main className="section" style={{ paddingTop: 180, minHeight: "70vh" }}>
+        <div className="wrap">
+          <SectionHeading>That page isn't in the record.</SectionHeading>
+          <p className="lede" style={{ marginTop: 20 }}>
+            The link may have moved when the site did. The product, the Agentic Value Report and the insights are all one click away.
+          </p>
+          <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <Btn to="/" variant="blue" arrow>
+              Back to the start
+            </Btn>
+            <Btn to="/insights" variant="outline">
+              Insights
+            </Btn>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
-};
-
-export default NotFound;
+}

@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/no-denominator.webp";
 import type { Post } from "./types";
+
+const image = "/insights/no-denominator.webp";
 
 const post: Post = {
   slug: "how-big-is-agentic-commerce",
@@ -9,6 +10,7 @@ const post: Post = {
   dateLabel: "September 10, 2026",
   category: "Research",
   readTime: "7 min read",
+  figure: { value: "~$1T", label: "by 2030, and no number for today" },
   image,
   imageAlt:
     "Four measurement eras of retail, Shelf, Voice, Search and Algorithm, with spend anchors and the Algorithm era sized but undated.",
@@ -66,7 +68,7 @@ const post: Post = {
       type: "grid",
       items: [
         { value: "~$1T", label: "US agentic retail by 2030", source: "McKinsey / ICSC, Apr 2026" },
-        { value: "15–25%", label: "of US e-commerce via agents by 2030", source: "Bain, Dec 2025" },
+        { value: "15 to 25%", label: "of US e-commerce via agents by 2030", source: "Bain, Dec 2025" },
         { value: "?", label: "Measured size today", source: "Not published, anywhere" },
       ],
       caption: "Two forecasts, one blank",
@@ -87,13 +89,13 @@ const post: Post = {
       legend: ["Disclosed", "Not disclosed"],
       rows: [
         { key: "salesforce.agentic_search_yoy", value: "+200%" },
-        { key: "salesforce.base", value: "—", unread: true },
+        { key: "salesforce.base", value: "null", unread: true },
         { key: "shopify.ai_sessions_yoy", value: "+197%, orders 3x" },
-        { key: "shopify.base", value: "—", unread: true },
+        { key: "shopify.base", value: "null", unread: true },
         { key: "amazon.alexa_shopping_actives", value: "~2x in quarter, 350M+ users" },
-        { key: "amazon.orders_via_agent", value: "—", unread: true },
+        { key: "amazon.orders_via_agent", value: "null", unread: true },
         { key: "walmart.sparky_units", value: "4x, WAU +100%" },
-        { key: "walmart.base", value: "—", unread: true },
+        { key: "walmart.base", value: "null", unread: true },
       ],
       caption: "Salesforce Jul 2026, Shopify Aug 2026, Amazon Q2 2026 call, Walmart Q1 FY27 call",
     },
@@ -135,7 +137,7 @@ const post: Post = {
         { label: "Arrived as direct traffic", value: 74, display: "~3 in 4" },
         { label: "Arrived carrying an AI referrer", value: 1.1, display: "1.1%", highlight: true },
       ],
-      caption: "Scrunch AI, opt-in panel, Feb–Jun 2026. Publisher data. Not to be inverted into a share of visits caused by AI",
+      caption: "Scrunch AI, opt-in panel, Feb to Jun 2026. Publisher data. Not to be inverted into a share of visits caused by AI",
     },
     {
       type: "p",
@@ -157,9 +159,9 @@ const post: Post = {
     {
       type: "eras",
       items: [
-        { era: "Share of Shelf", unit: "Facings counted in store", spend: "$8B", period: "1950s–1990s" },
-        { era: "Share of Voice", unit: "Impressions and GRPs", spend: "$12B", period: "1960s–2000s" },
-        { era: "Share of Search", unit: "Queries, clicks, rank", spend: "$200B+", period: "2000s–today" },
+        { era: "Share of Shelf", unit: "Facings counted in store", spend: "$8B", period: "1950s to 1990s" },
+        { era: "Share of Voice", unit: "Impressions and GRPs", spend: "$12B", period: "1960s to 2000s" },
+        { era: "Share of Search", unit: "Queries, clicks, rank", spend: "$200B+", period: "2000s to today" },
         { era: "Share of Algorithm", unit: "Not yet defined", spend: "~$1T forecast", period: "Undated", current: true },
       ],
       caption: "Each number existed only after somebody defined the unit and started counting",

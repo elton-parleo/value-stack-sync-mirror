@@ -1,69 +1,47 @@
 import { Helmet } from "react-helmet-async";
-import { ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Btn, Wordmark } from "@/components/primitives";
 
-const CustomerDeck = () => {
-  const [isMobile, setIsMobile] = useState(() => window.matchMedia("(max-width: 767px)").matches);
-
+export default function CustomerDeck() {
+  const [mobile, setMobile] = useState(() => window.matchMedia("(max-width: 767px)").matches);
   useEffect(() => {
-    const query = window.matchMedia("(max-width: 767px)");
-    const updateView = (event: MediaQueryListEvent) => setIsMobile(event.matches);
-    setIsMobile(query.matches);
-    query.addEventListener("change", updateView);
-    return () => query.removeEventListener("change", updateView);
+    const q = window.matchMedia("(max-width: 767px)");
+    const f = (e: MediaQueryListEvent) => setMobile(e.matches);
+    q.addEventListener("change", f);
+    return () => q.removeEventListener("change", f);
   }, []);
-
-  if (isMobile) {
+  const head = (
+    <Helmet>
+      <title>Parleo Customer Introduction</title>
+      <meta name="description" content="Private Parleo customer introduction presentation." />
+      <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    </Helmet>
+  );
+  if (mobile) {
     return (
-      <main className="h-[100dvh] w-full overflow-hidden bg-code-bg">
-        <Helmet>
-          <title>Parleo Customer Introduction</title>
-          <meta name="description" content="Private Parleo customer introduction presentation." />
-          <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
-          <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
-        </Helmet>
-        <iframe
-          src="/customerdeck-mobile.html"
-          title="Parleo mobile customer introduction presentation"
-          className="block h-full w-full border-0"
-        />
+      <main style={{ height: "100dvh", background: "#0E0E14" }}>
+        {head}
+        <iframe src="/customerdeck-mobile.html" title="Parleo customer introduction" style={{ display: "block", width: "100%", height: "100%", border: 0 }} />
       </main>
     );
   }
-
   return (
-    <main className="min-h-[100dvh] w-full bg-code-bg">
-      <Helmet>
-        <title>Parleo Customer Introduction</title>
-        <meta
-          name="description"
-          content="Private Parleo customer introduction presentation."
-        />
-        <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
-        <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
-      </Helmet>
-      <div className="flex h-[100dvh] flex-col">
-        <nav className="relative z-10 flex h-14 shrink-0 items-center justify-between border-b border-background/10 bg-code-bg px-6 text-background lg:px-10" aria-label="Presentation links">
-          <Link to="/" className="text-[15px] font-bold tracking-normal">PARLEO</Link>
-          <div className="flex items-center gap-6">
-            <Link to="/" className="text-sm text-background/65 transition-colors hover:text-background">Homepage</Link>
-            <Link to="/insights" className="text-sm text-background/65 transition-colors hover:text-background">Insights</Link>
-            <Button asChild size="sm">
-              <a href="https://parleo.io/audit/">Free Agentic Audit <ArrowUpRight className="h-3.5 w-3.5" /></a>
-            </Button>
-          </div>
-        </nav>
-        <iframe
-          src="/customerdeck-presentation.html"
-          title="Parleo customer introduction presentation"
-          className="block min-h-0 flex-1 w-full border-0"
-          allow="fullscreen"
-        />
-      </div>
+    <main style={{ minHeight: "100dvh", background: "#0E0E14", display: "flex", flexDirection: "column" }}>
+      {head}
+      <nav style={{ height: 56, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", borderBottom: "1px solid rgba(242,240,239,.1)" }} aria-label="Presentation links">
+        <Link to="/" aria-label="Parleo home">
+          <Wordmark size={14} dark />
+        </Link>
+        <div style={{ display: "flex", gap: 18, alignItems: "center", fontSize: 14, color: "rgba(242,240,239,.65)" }}>
+          <Link to="/">Homepage</Link>
+          <Link to="/insights">Insights</Link>
+          <Btn to="/agentic-value-report" variant="blue" size="sm">
+            Get your report
+          </Btn>
+        </div>
+      </nav>
+      <iframe src="/customerdeck-presentation.html" title="Parleo customer introduction" style={{ display: "block", flex: 1, width: "100%", border: 0 }} allow="fullscreen" />
     </main>
   );
-};
-
-export default CustomerDeck;
+}

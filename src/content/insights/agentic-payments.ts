@@ -1,5 +1,6 @@
-import image from "@/assets/insights/rendered/agentic-payments.webp";
 import type { Post } from "./types";
+
+const image = "/insights/agentic-payments.webp";
 
 const post: Post = {
   slug: "agentic-payments",
@@ -129,11 +130,11 @@ const post: Post = {
         { key: "mandate.cart_total", value: "$89.00" },
         { key: "mandate.allowance", value: "scoped, single use" },
         { key: "agent.identity", value: "authenticated, permissioned" },
-        { key: "buyer.loyalty_tier", value: "—", unread: true },
-        { key: "offer.member_price", value: "—", unread: true },
-        { key: "offer.funded_by", value: "—", unread: true },
-        { key: "offer.stackable", value: "—", unread: true },
-        { key: "cost.true_after_returns", value: "—", unread: true },
+        { key: "buyer.loyalty_tier", value: "null", unread: true },
+        { key: "offer.member_price", value: "null", unread: true },
+        { key: "offer.funded_by", value: "null", unread: true },
+        { key: "offer.stackable", value: "null", unread: true },
+        { key: "cost.true_after_returns", value: "null", unread: true },
       ],
       caption:
         "Composite of the AP2 mandate fields and the ACP delegated payment token. The greyed rows exist in merchant systems and don't travel with the payment.",
@@ -176,7 +177,7 @@ const post: Post = {
     },
     {
       type: "p",
-      text: "The payments layer is getting solved in public, fast, by people who are good at it. That's the good news, and it means the constraint moves. Once any agent can pay any merchant safely, the thing that decides where the order lands is whether your price and your incentives were legible before the mandate was ever signed. That's the layer we work on. If you want to know where yours stands, the [free agentic value audit](https://parleo.io/audit) scores it, or start with [what agentic commerce actually is](/what-is-agentic-commerce).",
+      text: "The payments layer is getting solved in public, fast, by people who are good at it. That's the good news, and it means the constraint moves. Once any agent can pay any merchant safely, the thing that decides where the order lands is whether your price and your incentives were legible before the mandate was ever signed. That's the layer we work on. If you want to know where yours stands, the [free Agentic Value Audit](/agentic-value-audit) scores it, or start with [what agentic commerce actually is](/what-is-agentic-commerce).",
     },
   ],
 };

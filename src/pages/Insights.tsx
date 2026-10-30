@@ -1,303 +1,163 @@
-import { useState, useMemo } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
+import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { posts, postNumber } from "@/content/insights";
+import { Btn } from "@/components/primitives";
+import { posts, type Category } from "@/content/insights";
+import { Glow, H, Rise, img } from "@/ds";
+import "@/home/home.css";
+import "@/insights/insights.css";
 
-import type { Category } from "@/content/insights";
+const CATS: Array<Category | "All"> = ["All", "Research", "Benchmark", "Framework", "Point of view"];
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const categories: ("All" | Category)[] = [
-  "All",
-  ...Array.from(new Set(posts.map((p) => p.category))),
-];
-
-const Insights = () => {
-  const [active, setActive] = useState<"All" | Category>("All");
-  const visiblePosts = useMemo(
-    () => (active === "All" ? posts : posts.filter((p) => p.category === active)),
-    [active],
-  );
-
+export default function Insights() {
+  const [cat, setCat] = useState<Category | "All">("All");
+  const [lead, ...rest] = posts;
+  const list = useMemo(() => (cat === "All" ? rest : posts.filter((p) => p.category === cat)), [cat, rest]);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Parleo Insights",
+    url: "https://parleo.io/insights",
+    hasPart: posts.map((p) => ({ "@type": "Article", headline: p.title, url: `https://parleo.io/insights/${p.slug}`, datePublished: p.date, image: `https://parleo.io${p.image}` })),
+  };
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background grain-overlay">
+    <>
       <Helmet>
-        <title>Insights: research on agentic commerce | Parleo</title>
-        <meta
-          name="description"
-          content="Parleo research and points of view on how AI agents price, rank, and recommend products, and the funded value they can't see."
-        />
+        <title>Insights on agentic commerce | Parleo</title>
+        <meta name="description" content="Research, benchmarks and points of view on how AI shopping agents choose, what they get wrong about price and value, and what brands and retailers can do about it." />
         <link rel="canonical" href="https://parleo.io/insights" />
-        <meta
-          name="keywords"
-          content="agentic commerce, AI shopping agents, agentic search, loyalty pricing, true cost, merchant feeds"
-        />
-        <meta property="og:title" content="Insights: research on agentic commerce | Parleo" />
-        <meta
-          property="og:description"
-          content="How AI agents price, rank, and recommend products, and the funded value they can't see."
-        />
-        <meta property="og:url" content="https://parleo.io/insights" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Insights: research on agentic commerce | Parleo" />
-        <meta
-          name="twitter:description"
-          content="How AI agents price, rank, and recommend products, and the funded value they can't see."
-        />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            name: "Parleo Insights",
-            url: "https://parleo.io/insights",
-            description:
-              "Research, benchmarks, and points of view on how AI agents price, rank, and recommend products.",
-            inLanguage: "en-US",
-            publisher: { "@type": "Organization", name: "Parleo", url: "https://parleo.io/" },
-            blogPost: posts.map((p) => ({
-              "@type": "BlogPosting",
-              headline: p.title,
-              description: p.dek,
-              datePublished: p.date,
-              articleSection: p.category,
-              author: { "@type": "Person", name: p.author ?? "Parleo" },
-              url: `https://parleo.io/insights/${p.slug}`,
-              image: `https://parleo.io${p.image}`,
-            })),
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://parleo.io/" },
-              { "@type": "ListItem", position: 2, name: "Insights", item: "https://parleo.io/insights" },
-            ],
-          })}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
-
-      <Navbar />
-
+      <Nav />
       <main>
-        {/* Masthead */}
-        <section className="relative overflow-hidden border-b border-border">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.45]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px)",
-              backgroundSize: "88px 100%",
-              maskImage: "linear-gradient(to bottom, black, transparent 82%)",
-              WebkitMaskImage: "linear-gradient(to bottom, black, transparent 82%)",
-            }}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -left-20 -top-36 h-[360px] w-[460px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(closest-side, hsl(var(--primary) / 0.12), transparent 72%)",
-              filter: "blur(2px)",
-            }}
-          />
-
-          <div className="relative mx-auto max-w-content px-6 py-12 md:px-20 md:py-16">
-            <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end md:gap-14">
-              <motion.div
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease }}
-              >
-                <h1
-                  className="max-w-[620px] font-display text-[34px] leading-[1] text-foreground md:text-[46px]"
-                  style={{ letterSpacing: "-0.022em", wordSpacing: "0.04em", textWrap: "balance" }}
-                >
-                  Insights from the agentic commerce shelf
-
-                </h1>
-                <p className="section-copy mt-5 max-w-[520px]">
-                  Essays, frameworks, and field notes on the incentives, infrastructure, and
-                  merchant strategy behind agentic commerce.
-                </p>
-              </motion.div>
-
-              {/* Topic filter */}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.12, ease }}
-                className="flex flex-col gap-4"
-              >
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((cat) => {
-                    const count =
-                      cat === "All" ? posts.length : posts.filter((p) => p.category === cat).length;
-                    const selected = active === cat;
-                    return (
-                      <button
-                        key={cat}
-                        onClick={() => setActive(cat)}
-                        className={`rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-all ${
-                          selected
-                            ? "border-primary bg-primary text-primary-foreground"
-                            : "border-foreground/10 bg-card/60 text-foreground/60 hover:border-foreground/25 hover:text-foreground"
-                        }`}
-                      >
-                        {cat}
-                        <span
-                          className={`ml-1.5 inline-block rounded-full px-1.5 py-0.5 text-[10px] tabular-nums ${
-                            selected
-                              ? "bg-primary-foreground/20 text-primary-foreground"
-                              : "bg-foreground/5 text-foreground/40"
-                          }`}
-                        >
-                          {count}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <p className="text-[12.5px] leading-[1.5] text-foreground/45">
-                  {visiblePosts.length} {visiblePosts.length === 1 ? "piece" : "pieces"} in this
-                  view.
-                </p>
-              </motion.div>
+        <section className="sx inx__hero inx7__hero">
+          <Glow img={img("overhead-grid-2", 900)} pos="tr" />
+          <div className="inx7__bg" aria-hidden="true">
+            <i className="inx7__lines" />
+            <i className="inx7__glow" />
+          </div>
+          <div className="wrap">
+            <div className="inx__head">
+              <Rise>
+                <H as="h1" lead="Research from the agentic" accent="commerce shelf." />
+              </Rise>
+              <Rise delay={0.06}>
+                <p className="sub">What AI shopping agents say about real products, measured against the pages those products live on. Every number traces to a source or a sweep we ran ourselves.</p>
+              </Rise>
             </div>
+            <Rise delay={0.1}>
+              <Link to={`/insights/${lead.slug}`} className="card card--hover inx__lead">
+                <div className="inx__lead-img">
+                  <img src={lead.image} alt={lead.imageAlt} />
+                </div>
+                <div className="inx__lead-body">
+                  <h2>{lead.title}</h2>
+                  <span className="ml inx7__meta">
+                    <b>Latest</b> {lead.category} <i /> {lead.dateLabel} <i /> {lead.readTime}
+                  </span>
+                  <p>{lead.dek}</p>
+                  {lead.takeaways?.[0] && <blockquote className="inx7__pull">{lead.takeaways[0]}</blockquote>}
+                  {lead.figure && (
+                    <div className="inx__fig">
+                      <span className="big big--blue tnum">{lead.figure.value}</span>
+                      <span>{lead.figure.label}</span>
+                    </div>
+                  )}
+                  <span className="link-more">Read</span>
+                </div>
+              </Link>
+            </Rise>
           </div>
         </section>
 
-        {/* Editorial list */}
-        <section className="mx-auto max-w-content px-6 pb-16 md:px-20 md:pb-24">
-          {visiblePosts.length === 0 ? (
-            <div className="py-16">
-              <p className="section-copy text-foreground/55">No pieces match this topic yet.</p>
-            </div>
-          ) : (
-            <div className="flex flex-col">
-              {visiblePosts.map((p, i) => (
-                <motion.article
-                  key={p.slug}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: i * 0.05, ease }}
-                  className="relative border-b border-border"
-                >
-                  <Link
-                    to={`/insights/${p.slug}`}
-                    className="group relative grid grid-cols-[120px_1fr] items-start gap-4 py-7 transition-colors md:grid-cols-[44px_180px_1fr] md:items-start md:gap-8 md:py-10"
-                  >
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute -inset-x-5 inset-y-0 rounded-lg bg-foreground/[0.02] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                    />
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute left-[-20px] top-1/2 h-0 w-[2px] -translate-y-1/2 bg-primary transition-all duration-500 group-hover:h-[62%]"
-                    />
-
-                    <span className="relative hidden pt-1 font-mono text-[11px] tabular-nums text-foreground/25 transition-colors group-hover:text-primary md:block">
-                      {String(postNumber(p.slug)).padStart(2, "0")}
-                    </span>
-
-                    <div className="relative overflow-hidden rounded-md border border-border bg-card">
-                      <img
-                        src={p.image}
-                        alt={p.imageAlt}
-                        loading="lazy"
-                        sizes="(max-width: 768px) 120px, 180px"
-                        className="aspect-[4/3] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                      />
-                    </div>
-
-
-
-                    <div className="relative flex flex-col justify-center">
-                      <div className="flex flex-wrap items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.09em] text-foreground/40">
-                        <span className="text-primary">{p.category}</span>
-                        <span className="h-[3px] w-[3px] rounded-full bg-foreground/20" />
-                        <span>{p.dateLabel}</span>
-                        <span className="h-[3px] w-[3px] rounded-full bg-foreground/20" />
-                        <span>{p.readTime}</span>
-                      </div>
-                      <h2
-                        className="mt-2.5 max-w-[560px] font-heading text-[22px] leading-[1.08] text-foreground transition-colors group-hover:text-foreground/80 md:text-[28px]"
-                        style={{ letterSpacing: "-0.02em", textWrap: "balance" }}
-                      >
-                        {p.title}
-                      </h2>
-                      <p className="mt-2.5 max-w-[520px] text-[14px] leading-[1.55] text-muted-foreground md:text-[15px]">
-                        {p.dek}
-                      </p>
-                      {p.takeaways?.[0] && (
-                        <p className="mt-3 hidden max-w-[520px] border-l border-primary/30 pl-3 text-[13px] leading-[1.5] text-foreground/50 md:block">
-                          {p.takeaways[0]}
-                        </p>
-                      )}
-
-                      <span className="mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-foreground/70 transition-colors group-hover:text-foreground">
-                        Read
-                        <span className="inline-block text-primary transition-transform duration-300 group-hover:translate-x-1.5">
-                          →
-                        </span>
-                      </span>
-                    </div>
-                  </Link>
-                </motion.article>
-              ))}
-            </div>
-          )}
+        <section className="sx sx--top0">
+          <div className="wrap">
+            <Rise className="dcard inx__guide">
+              <img className="dcard__img" src={img("inkfield-2", 1400)} alt="" loading="lazy" />
+              <div className="dcard__wash" />
+              <div className="inx__guide-in">
+                <div>
+                  <span className="ml ml--dark">Field guide, 18 sources, six charts</span>
+                  <h2 className="hd hd--dark hd--serif inx__guide-h">
+                    What is <em>agentic commerce?</em>
+                  </h2>
+                  <p className="sub sub--dark">The measured numbers, the protocol stack as it shipped, the benchmark evidence on how good agents really are, and the one layer nobody has standardized: what a shopper actually pays.</p>
+                </div>
+                <Btn to="/what-is-agentic-commerce" variant="blue" size="lg" arrow>
+                  Read the guide
+                </Btn>
+              </div>
+            </Rise>
+          </div>
         </section>
 
-        {/* Closing band */}
-        <section className="border-t border-border bg-[#0E0E14]">
-          <div className="relative mx-auto max-w-content overflow-hidden px-6 py-14 md:px-20 md:py-16">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-20 -top-24 h-[360px] w-[420px] rounded-full"
-              style={{
-                background:
-                  "radial-gradient(closest-side, hsl(var(--primary) / 0.28), transparent 70%)",
-              }}
-            />
-            <div className="relative flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
-              <div>
-                <h2
-                  className="max-w-[520px] font-display text-[28px] leading-[1.06] text-white md:text-[40px]"
-                  style={{ letterSpacing: "-0.015em", textWrap: "balance" }}
-                >
-                  See what agents quote for your brand
-                </h2>
-                <p className="mt-4 max-w-[420px] text-[14.5px] leading-[1.6] text-white/55 md:text-[15px]">
-                  The average brand we score sits at 59 out of 100. The audit takes one URL and
-                  returns the gaps in under a minute.
-                </p>
+        <section className="sx sx--top0 inx__all">
+          <div className="wrap">
+            <div className="inx7__bar">
+              <div className="inx__filter" role="tablist" aria-label="Filter by category">
+                {CATS.map((c) => (
+                  <button key={c} role="tab" aria-selected={cat === c} className={cat === c ? "is-on" : ""} onClick={() => setCat(c)}>
+                    {cat === c && <motion.i layoutId="inx-pill" className="seg__pill" transition={{ type: "spring", stiffness: 420, damping: 36 }} />}
+                    <span>{c}</span>
+                    <em className="inx7__count">{c === "All" ? rest.length : posts.filter((p) => p.category === c).length}</em>
+                  </button>
+                ))}
               </div>
-              <a
-                href="https://parleo.io/audit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-base btn-primary group shrink-0 self-start md:self-auto"
-              >
-                Free Agentic Audit
-                <span data-slot="arrow">↗</span>
-              </a>
+              <span className="inx7__n">
+                {list.length} {list.length === 1 ? "piece" : "pieces"} in this view
+              </span>
             </div>
+            <motion.div layout className="inx__grid">
+              <AnimatePresence mode="popLayout">
+                {list.map((p, i) => (
+                  <motion.div key={p.slug} layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
+                    <Link to={`/insights/${p.slug}`} className="card card--hover inx__card">
+                      <div className="inx__card-img">
+                        <img src={p.image} alt="" loading="lazy" />
+                        <span className="inx7__no">{String(list.length - i).padStart(2, "0")}</span>
+                      </div>
+                      <div className="inx__card-body">
+                        <h3>{p.title}</h3>
+                        <p>{p.dek}</p>
+                        <span className="ml inx7__meta">
+                          <b>{p.category}</b> {p.dateLabel} <i /> {p.readTime}
+                        </span>
+                        <div className="inx__card-foot">
+                          {p.figure ? (
+                            <span className="inx__card-fig">
+                              <b className="tnum">{p.figure.value}</b> {p.figure.label}
+                            </span>
+                          ) : (
+                            <span className="link-more">Read</span>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="sx sx--top0">
+          <div className="wrap">
+            <Rise className="card inx__cta">
+              <div>
+                <H lead="See what agents say about your products" accent="this week." size="sm" />
+                <p className="sub">The free Agentic Value Report asks the questions your shoppers ask, across five agents, and checks every answer against your own pages the same day.</p>
+              </div>
+              <Btn to="/agentic-value-report" variant="blue" size="lg" arrow>
+                Get your report
+              </Btn>
+            </Rise>
           </div>
         </section>
       </main>
-
       <Footer />
-    </div>
+    </>
   );
-};
-
-export default Insights;
+}
