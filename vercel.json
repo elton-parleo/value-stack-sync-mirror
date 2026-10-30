@@ -60,6 +60,18 @@
   ],
   "rewrites": [
     {
+      "source": "/reports",
+      "destination": "https://parleo-reports.vercel.app/reports/"
+    },
+    {
+      "source": "/reports/",
+      "destination": "https://parleo-reports.vercel.app/reports/"
+    },
+    {
+      "source": "/reports/:slug/",
+      "destination": "https://parleo-reports.vercel.app/reports/:slug/"
+    },
+    {
       "source": "/reports/:path*",
       "destination": "https://parleo-reports.vercel.app/reports/:path*"
     },
